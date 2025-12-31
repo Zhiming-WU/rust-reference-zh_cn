@@ -1,6 +1,6 @@
 # The Rust Reference
 
-[Introduction](introduction.md)
+[引言](introduction.md)
 
 - [Notation](notation.md)
 

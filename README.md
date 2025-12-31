@@ -1,6 +1,14 @@
-# The Rust Language Reference
+<!-- https://github.com/rust-lang/reference/blob/master/README.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
 
-This document is the primary reference for the Rust programming language.
+# Rust语言参考
+
+本文档是Rust编程语言的主要参考资料。
+
+## 翻译说明
+
+本项目在尝试把 `Rust语言参考手册` 文档翻译成简体中文。主要翻译方法是机器翻译加人工确认/编辑。术语对照表等请参考<a href="中文翻译说明.md">`中文翻译说明`</a>。目前处在尝试阶段。结果网页请参考 [这里](https://zhiming-wu.github.io/rust-reference-zh_cn/) 。
+> 注：本节及"中文翻译说明.md"为译者添加内容，其它部分为原始英文内容或其译文。
 
 ## Contributor docs
 

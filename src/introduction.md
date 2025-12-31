@@ -1,144 +1,146 @@
-# Introduction
+<!-- https://github.com/rust-lang/reference/blob/master/src/introduction.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
 
-This book is the primary reference for the Rust programming language.
+# 引言
 
+本书是 Rust 编程语言的主要参考资料。
 > [!NOTE]
-> For known bugs and omissions in this book, see our [GitHub issues]. If you see a case where the compiler behavior and the text here do not agree, file an issue so we can think about which is correct.
+> 有关本书中已知错误和遗漏，请参阅我们的 [问题单][github issues]。如果您发现编译器行为与本文描述不符的情况，请提交问题，以便我们讨论哪个是正确的。
 
-## Rust releases
+## Rust 发布版本
 
-Rust has a new language release every six weeks.
-The first stable release of the language was Rust 1.0.0, followed by Rust 1.1.0 and so on.
-Tools (`rustc`, `cargo`, etc.) and documentation ([Standard library], this book, etc.) are released with the language release.
+Rust 每六周发布一个新的语言版本。
+该语言的第一个稳定版本是 Rust 1.0.0，随后是 Rust 1.1.0 等。
+工具（`rustc`、`cargo` 等）和文档（[标准库][standard library]、本书等）随语言版本一起发布。
 
-The latest release of this book, matching the latest Rust version, can always be found at <https://doc.rust-lang.org/reference/>.
-Prior versions can be found by adding the Rust version before the "reference" directory.
-For example, the Reference for Rust 1.49.0 is located at <https://doc.rust-lang.org/1.49.0/reference/>.
+本书的最新版本，与最新的 Rust 版本相匹配，始终可在 <https://doc.rust-lang.org/reference/> 找到。
+可以通过在 "reference" 目录前添加 Rust 版本号来查找以前的版本。
+例如，Rust 1.49.0 的参考资料位于 <https://doc.rust-lang.org/1.49.0/reference/>。
 
-## What *The Reference* is not
+## 《参考手册》不是什么
 
-This book does not serve as an introduction to the language.
-Background familiarity with the language is assumed.
-A separate [book] is available to help acquire such background familiarity.
+本书并非语言入门指南。
+阅读本书需假定您已具备语言基础知识。
+另有一本 [书籍][book] 可帮助您获取此类基础知识。
 
-This book also does not serve as a reference to the [standard library] included in the language distribution.
-Those libraries are documented separately by extracting documentation attributes from their source code.
-Many of the features that one might expect to be language features are library features in Rust, so what you're looking for may be there, not here.
+本书也不是语言发行版中包含的 [标准库][standard library] 的参考资料。
+这些库通过从其源代码中提取文档属性来单独记录。
+许多您可能期望是语言特性的功能在 Rust 中是库特性，因此您要查找的内容可能在那里，而不是在这里。
 
-Similarly, this book does not usually document the specifics of `rustc` as a tool or of Cargo.
-`rustc` has its own [book][rustc book].
-Cargo has a [book][cargo book] that contains a [reference][cargo reference].
-There are a few pages such as [linkage] that still describe how `rustc` works.
+同样，本书通常不记录 `rustc` 作为工具或 Cargo 的具体细节。
+`rustc` 有自己的 [书籍][rustc book]。
+Cargo 有一本 [书籍][cargo book]，其中包含一份 [参考资料][cargo reference]。
+还有一些页面，例如 [链接][linkage]，也是描述 `rustc` 的工作方式。
 
-This book also only serves as a reference to what is available in stable Rust.
-For unstable features being worked on, see the [Unstable Book].
+本书也仅作为稳定版 Rust 中可用功能的参考。
+对于正在开发的不稳定功能，请参阅 [不稳定手册][Unstable Book]。
 
-Rust compilers, including `rustc`, will perform optimizations.
-The reference does not specify what optimizations are allowed or disallowed.
-Instead, think of the compiled program as a black box.
-You can only probe by running it, feeding it input and observing its output.
-Everything that happens that way must conform to what the reference says.
+Rust 编译器，包括 `rustc`，会执行优化。
+本参考手册没有指定允许或不允许哪些优化。
+相反，请将编译后的程序视为一个黑盒子。
+您只能通过运行它，提供输入并观察其输出来进行探测。
+所有以这种方式发生的事情都必须符合参考手册的规定。
 
-## How to use this book
+## 如何使用本书
 
-This book does not assume you are reading this book sequentially.
-Each chapter generally can be read standalone, but will cross-link to other chapters for facets of the language they refer to, but do not discuss.
+本书不假设您是按顺序阅读本书的。
+每个章节通常可以独立阅读，但会交叉链接到其他章节，以提及它们所涉及但不讨论的语言方面。
 
-There are two main ways to read this document.
+阅读本文档主要有两种方式。
 
-The first is to answer a specific question.
-If you know which chapter answers that question, you can jump to that chapter in the table of contents.
-Otherwise, you can press `s` or click the magnifying glass on the top bar to search for keywords related to your question.
-For example, say you wanted to know when a temporary value created in a let statement is dropped.
-If you didn't already know that the [lifetime of temporaries] is defined in the [expressions chapter], you could search "temporary let" and the first search result will take you to that section.
+第一种是回答一个具体问题。
+如果您知道哪个章节回答了该问题，您可以直接跳转到目录中的该章节。
+否则，您可以按 `s` 键或点击顶部栏的放大镜图标来搜索与您问题相关的关键词。
+例如，假设您想知道在 let 语句中创建的临时值何时被丢弃。
+如果您不知道 [临时值的生命周期][lifetime of temporaries] 定义在 [表达式章节][expressions chapter] 中，您可以搜索“临时 let”，第一个搜索结果将带您到该部分。
 
-The second is to generally improve your knowledge of a facet of the language.
-In that case, just browse the table of contents until you see something you want to know more about, and just start reading.
-If a link looks interesting, click it, and read about that section.
+第二种是普遍提高您对语言某方面的知识。
+在这种情况下，只需浏览目录，直到看到您想了解更多内容的部分，然后开始阅读即可。
+如果某个链接看起来很有趣，请点击它，然后阅读该部分。
 
-That said, there is no wrong way to read this book. Read it however you feel helps you best.
+话虽如此，阅读本书没有错误的方式。请以您认为最有帮助的方式阅读。
 
-### Conventions
+### 约定
 
-Like all technical books, this book has certain conventions in how it displays information.
-These conventions are documented here.
+像所有技术书籍一样，本书在信息展示方面也有某些约定。
+这些约定在此处记录。
 
-* Statements that define a term contain that term in *italics*.
-  Whenever that term is used outside of that chapter, it is usually a link to the section that has this definition.
+* 定义术语的语句包含 *斜体* 的该术语。
+  每当该术语在该章节之外使用时，它通常是链接到包含此定义的章节。
 
-  An *example term* is an example of a term being defined.
+  *示例术语* 是一个正在定义的术语的示例。
 
-* The main text describes the latest stable edition. Differences to previous editions are separated in edition blocks:
+* 主要文本描述最新的稳定版本。与以前版本的差异在版本块中分离：
 
   > [!EDITION-2018]
-  > Before the 2018 edition, the behavior was this. As of the 2018 edition, the behavior is that.
+  > 在 2018 版次之前，行为是这样的。从 2018 版次开始，行为是那样的。
 
-* Notes that contain useful information about the state of the book or point out useful, but mostly out of scope, information are in note blocks.
+* 包含有关本书状态的有用信息或指出有用但大多超出范围的信息的注释位于注释块中。
 
   > [!NOTE]
-  > This is an example note.
+  > 这是一个示例注释。
 
-* Example blocks show an example that demonstrates some rule or points out some interesting aspect. Some examples may have hidden lines which can be viewed by clicking the eye icon that appears when hovering or tapping the example.
+* 示例块显示一个示例，演示某个规则或指出某个有趣的方面。一些示例可能有隐藏行，可以通过将鼠标悬停或点击示例时出现的眼睛图标来查看。
 
   > [!EXAMPLE]
-  > This is a code example.
+  > 这是一个代码示例。
   > ```rust
   > println!("hello world");
   > ```
 
-* Warnings that show unsound behavior in the language or possibly confusing interactions of language features are in a special warning box.
+* 显示语言中不健全行为或语言功能之间可能令人困惑的交互的警告位于特殊的警告框中。
 
   > [!WARNING]
-  > This is an example warning.
+  > 这是一个示例警告。
 
-* Code snippets inline in the text are inside `<code>` tags.
+* 文本中的内联代码片段位于 `<code>` 标签内。
 
-  Longer code examples are in a syntax highlighted box that has controls for copying, executing, and showing hidden lines in the top right corner.
+  较长的代码示例位于一个带有语法高亮显示的框中，其右上角有复制、执行和显示隐藏行的控件。
 
   ```rust
-  # // This is a hidden line.
+  # // 这是一行隐藏行。
   fn main() {
-      println!("This is a code example");
+      println!("这是一个代码示例");
   }
   ```
 
-  All examples are written for the latest edition unless otherwise stated.
+  除非另有说明，所有示例均针对最新版本编写。
 
-* The grammar and lexical productions are described in the [Notation] chapter.
+* 语法和词法产生式在 [符号][Notation] 章节中描述。
 
 r[example.rule.label]
-* Rule identifiers appear before each language rule enclosed in square brackets. These identifiers provide a way to refer to and link to a specific rule in the language ([e.g.][example rule]). The rule identifier uses periods to separate sections from most general to most specific ([destructors.scope.nesting.function-body] for example). On narrow screens, the rule name will collapse to display `[*]`.
+* 规则标识符出现在每个语言规则之前，用方括号括起来。这些标识符提供了一种引用和链接到语言中特定规则的方法（例如，[示例规则][example rule]）。规则标识符使用句点将部分从最一般到最具体地分开（例如，[解构器.作用域.嵌套.函数体][destructors.scope.nesting.function-body]）。在窄屏幕上，规则名称将折叠显示 `[*]`。
 
-  The rule name can be clicked to link to that rule.
+  可以点击规则名称以链接到该规则。
 
   > [!WARNING]
-  > The organization of the rules is currently in flux. For the time being, these identifier names are not stable between releases, and links to these rules may fail if they are changed. We intend to stabilize these once the organization has settled so that links to the rule names will not break between releases.
+  > 规则的组织目前处于变动中。暂时而言，这些标识符名称在不同版本之间不稳定，如果它们发生更改，指向这些规则的链接可能会失效。我们打算在组织稳定后将其稳定化，以便指向规则名称的链接在不同版本之间不会中断。
 
-* Rules that have associated tests will include a `Tests` link below them (on narrow screens, the link is `[T]`). Clicking the link will pop up a list of tests, which can be clicked to view the test. For example, see [input.encoding.utf8].
+* 具有相关测试的规则将在其下方包含一个“测试”链接（在窄屏幕上，该链接为 `[T]`）。单击该链接将弹出一个测试列表，可以单击以查看测试。例如，请参见 [输入.编码.utf8][input.encoding.utf8]。
 
-  Linking rules to tests is an ongoing effort. See the [Test summary](test-summary.md) chapter for an overview.
+  将规则链接到测试是一项持续进行的工作。有关概述，请参阅 [测试摘要](test-summary.md) 章节。
 
-## Contributing
+## 贡献
 
-We welcome contributions of all kinds.
+我们欢迎各种形式的贡献。
 
-You can contribute to this book by opening an issue or sending a pull request to [the Rust Reference repository].
-If this book does not answer your question, and you think its answer is in scope of it, please do not hesitate to [file an issue] or ask about it in the `t-lang/doc` stream on [Zulip].
-Knowing what people use this book for the most helps direct our attention to making those sections the best that they can be.
-And of course, if you see anything that is wrong or is non-normative but not specifically called out as such, please also [file an issue].
+您可以通过在 [Rust语言参考仓库][the Rust Reference repository] 中提出问题或发送拉取请求来为本书做出贡献。
+如果本书没有回答您的问题，并且您认为它的答案属于其范围，请不要犹豫 [提交问题][github issues] 或在 [Zulip] 上的 `t-lang/doc` 流中提问。
+了解人们最常使用本书做什么有助于我们将注意力集中在使这些部分尽善尽美上。
+当然，如果您发现任何错误或非规范性但未明确指出的内容，也请 [提交问题][github issues]。
 
-[book]: ../book/index.html
+[book]: https://doc.rust-lang.org/book/index.html
 [github issues]: https://github.com/rust-lang/reference/issues
-[standard library]: std
+[standard library]: https://doc.rust-lang.org/std/index.html
 [the Rust Reference repository]: https://github.com/rust-lang/reference/
 [Unstable Book]: https://doc.rust-lang.org/nightly/unstable-book/
-[cargo book]: ../cargo/index.html
-[cargo reference]: ../cargo/reference/index.html
+[cargo book]: https://doc.rust-lang.org/cargo/index.html
+[cargo reference]: https://doc.rust-lang.org/cargo/reference/index.html
 [example rule]: example.rule.label
 [expressions chapter]: expressions.html
 [file an issue]: https://github.com/rust-lang/reference/issues
 [lifetime of temporaries]: expressions.html#temporaries
 [linkage]: linkage.html
-[rustc book]: ../rustc/index.html
+[rustc book]: https://doc.rust-lang.org/rustc/index.html
 [Notation]: notation.md
 [Zulip]: https://rust-lang.zulipchat.com/#narrow/stream/237824-t-lang.2Fdoc

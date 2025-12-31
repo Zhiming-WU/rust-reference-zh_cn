@@ -45,7 +45,8 @@ pub fn admonitions(chapter: &Chapter, diag: &mut Diagnostics) -> String {
     ADMONITION_RE
         .replace_all(&chapter.content, |caps: &Captures<'_>| {
             let lower = caps["admon"].to_lowercase();
-            let term = to_initial_case(&caps["admon"]);
+            //let term = to_initial_case(&caps["admon"]);
+            let term = get_chinese_admon(&lower);
             let blockquote = &caps["blockquote"];
             let initial_spaces = blockquote.chars().position(|ch| ch != ' ').unwrap_or(0);
             let space = &blockquote[..initial_spaces];
@@ -68,7 +69,7 @@ pub fn admonitions(chapter: &Chapter, diag: &mut Diagnostics) -> String {
                 return format_div(
                     "edition",
                     format!(
-                        "<span class=\"alert-title-edition\">{edition}</span> Edition differences"
+                        "<span class=\"alert-title-edition\">{edition}</span> 版次差异"
                     ),
                 );
             }
@@ -98,9 +99,26 @@ pub fn admonitions(chapter: &Chapter, diag: &mut Diagnostics) -> String {
         .to_string()
 }
 
-fn to_initial_case(s: &str) -> String {
+/*fn to_initial_case(s: &str) -> String {
     let mut chars = s.chars();
     let first = chars.next().expect("not empty").to_uppercase();
     let rest = chars.as_str().to_lowercase();
     format!("{first}{rest}")
+}*/
+
+fn get_chinese_admon(s: &str) -> String {
+    if s == "note" {
+        return String::from("注意");
+    } else if s == "tip" {
+        return String::from("小贴士");
+    } else if s == "important" {
+        return String::from("重要");
+    } else if s == "warning" {
+        return String::from("警告");
+    } else if s == "caution" {
+        return String::from("慎重");
+    } else if s == "example" {
+        return String::from("例子");
+    }
+    String::from("未知admon")
 }
