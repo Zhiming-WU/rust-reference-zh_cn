@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-b2251995.js";
+            window.path_to_searchindex_js = "searchindex-59569cd7.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -296,7 +296,7 @@ Cargo 有一本 <a href="https://doc.rust-lang.org/cargo/index.html">书籍</a>�
 <p>除非另有说明，所有示例均针对最新版本编写。</p>
 </li>
 <li>
-<p>语法和词法产生式在 <a href="#notation">符号</a> 章节中描述。</p>
+<p>语法和词法产生式在 <a href="#记法">符号</a> 章节中描述。</p>
 </li>
 </ul>
 <div class="rule" id="r-example.rule.label"><a class="rule-link" href="#r-example.rule.label" title="example.rule.label"><span>[example<wbr>.rule<wbr>.label]</span></a>
@@ -326,66 +326,59 @@ Cargo 有一本 <a href="https://doc.rust-lang.org/cargo/index.html">书籍</a>�
 如果本书没有回答您的问题，并且您认为它的答案属于其范围，请不要犹豫 <a href="https://github.com/rust-lang/reference/issues">提交问题</a> 或在 <a href="https://rust-lang.zulipchat.com/#narrow/stream/237824-t-lang.2Fdoc">Zulip</a> 上的 <code>t-lang/doc</code> 流中提问。
 了解人们最常使用本书做什么有助于我们将注意力集中在使这些部分尽善尽美上。
 当然，如果您发现任何错误或非规范性但未明确指出的内容，也请 <a href="https://github.com/rust-lang/reference/issues">提交问题</a>。</p>
-<div style="break-before: page; page-break-before: always;"></div>
+<div style="break-before: page; page-break-before: always;"></div><!-- https://github.com/rust-lang/reference/blob/master/src/notation.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
 <div class="rule" id="r-notation"><a class="rule-link" href="#r-notation" title="notation"><span>[notation]</span></a>
 </div>
 
-<h1 id="notation"><a class="header" href="#notation">Notation</a></h1>
+<h1 id="记法"><a class="header" href="#记法">记法</a></h1>
 <div class="rule" id="r-notation.grammar"><a class="rule-link" href="#r-notation.grammar" title="notation.grammar"><span>[notation<wbr>.grammar]</span></a>
 </div>
 
-<h2 id="grammar"><a class="header" href="#grammar">Grammar</a></h2>
+<h2 id="语法"><a class="header" href="#语法">语法</a></h2>
 <div class="rule" id="r-notation.grammar.syntax"><a class="rule-link" href="#r-notation.grammar.syntax" title="notation.grammar.syntax"><span>[notation<wbr>.grammar<wbr>.syntax]</span></a>
 </div>
 
-<p>The following notations are used by the <em>Lexer</em> and <em>Syntax</em> grammar snippets:</p>
+<p>以下记法用于<em>词法分析器</em>和<em>语法格式</em>文法片段：</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Notation</th><th>Examples</th><th>Meaning</th></tr>
+<tr><th>记法</th><th>示例</th><th>含义</th><th>译者注</th></tr>
 </thead>
 <tbody>
-<tr><td>CAPITAL</td><td>KW_IF, INTEGER_LITERAL</td><td>A token produced by the lexer</td></tr>
-<tr><td><em>ItalicCamelCase</em></td><td><em>LetStatement</em>, <em>Item</em></td><td>A syntactical production</td></tr>
-<tr><td><code>string</code></td><td><code>x</code>, <code>while</code>, <code>*</code></td><td>The exact character(s)</td></tr>
-<tr><td>x<sup>?</sup></td><td><code>pub</code><sup>?</sup></td><td>An optional item</td></tr>
-<tr><td>x<sup>*</sup></td><td><em>OuterAttribute</em><sup>*</sup></td><td>0 or more of x</td></tr>
-<tr><td>x<sup>+</sup></td><td><em>MacroMatch</em><sup>+</sup></td><td>1 or more of x</td></tr>
-<tr><td>x<sup>a..b</sup></td><td>HEX_DIGIT<sup>1..6</sup></td><td>a to b repetitions of x</td></tr>
-<tr><td>Rule1 Rule2</td><td><code>fn</code> <em>Name</em> <em>Parameters</em></td><td>Sequence of rules in order</td></tr>
-<tr><td>|</td><td><code>u8</code> | <code>u16</code>, Block | Item</td><td>Either one or another</td></tr>
-<tr><td>[ ]</td><td>[<code>b</code> <code>B</code>]</td><td>Any of the characters listed</td></tr>
-<tr><td>[ - ]</td><td>[<code>a</code>-<code>z</code>]</td><td>Any of the characters in the range</td></tr>
-<tr><td>~[ ]</td><td>~[<code>b</code> <code>B</code>]</td><td>Any characters, except those listed</td></tr>
-<tr><td>~<code>string</code></td><td>~<code>\n</code>, ~<code>*/</code></td><td>Any characters, except this sequence</td></tr>
-<tr><td>( )</td><td>(<code>,</code> <em>Parameter</em>)<sup>?</sup></td><td>Groups items</td></tr>
-<tr><td>U+xxxx</td><td>U+0060</td><td>A single unicode character</td></tr>
-<tr><td>&lt;text&gt;</td><td>&lt;any ASCII char except CR&gt;</td><td>An English description of what should be matched</td></tr>
-<tr><td>Rule <sub>suffix</sub></td><td>IDENTIFIER_OR_KEYWORD <sub><em>except <code>crate</code></em></sub></td><td>A modification to the previous rule</td></tr>
-<tr><td>// Comment.</td><td>// Single line comment.</td><td>A comment extending to the end of the line.</td></tr>
+<tr><td>CAPITAL</td><td>KW_IF, INTEGER_LITERAL</td><td>词法分析器生成的词法单元</td><td>大写</td></tr>
+<tr><td><em>ItalicCamelCase</em></td><td><em>LetStatement</em>, <em>Item</em></td><td>一个语法产生式</td><td>斜体、驼峰方式大小写(单词首字母大写)</td></tr>
+<tr><td><code>string</code></td><td><code>x</code>, <code>while</code>, <code>*</code></td><td>确切的字符(或字符串)</td><td></td></tr>
+<tr><td>x<sup>?</sup></td><td><code>pub</code><sup>?</sup></td><td>一个可选的项</td><td></td></tr>
+<tr><td>x<sup>*</sup></td><td><em>OuterAttribute</em><sup>*</sup></td><td>0个或多个x</td><td></td></tr>
+<tr><td>x<sup>+</sup></td><td><em>MacroMatch</em><sup>+</sup></td><td>1个或多个x</td><td></td></tr>
+<tr><td>x<sup>a..b</sup></td><td>HEX_DIGIT<sup>1..6</sup></td><td>a到b次重复x</td><td></td></tr>
+<tr><td>Rule1 Rule2</td><td><code>fn</code> <em>Name</em> <em>Parameters</em></td><td>规则的顺序序列</td><td></td></tr>
+<tr><td>|</td><td><code>u8</code> | <code>u16</code>, Block | Item</td><td>二者之一</td><td></td></tr>
+<tr><td>[ ]</td><td>[<code>b</code> <code>B</code>]</td><td>列出的任意字符</td><td></td></tr>
+<tr><td>[ - ]</td><td>[<code>a</code>-<code>z</code>]</td><td>范围内的任意字符</td><td></td></tr>
+<tr><td>~[ ]</td><td>~[<code>b</code> <code>B</code>]</td><td>任意字符，除了列出的</td><td></td></tr>
+<tr><td>~<code>string</code></td><td>~<code>\n</code>, ~<code>*/</code></td><td>任意字符，除了此序列</td><td></td></tr>
+<tr><td>( )</td><td>(<code>,</code> <em>Parameter</em>)<sup>?</sup></td><td>分组项</td><td></td></tr>
+<tr><td>U+xxxx</td><td>U+0060</td><td>一个Unicode字符</td><td></td></tr>
+<tr><td>&lt;text&gt;</td><td>&lt;any ASCII char except CR&gt;</td><td>一个匹配内容的英文描述</td><td></td></tr>
+<tr><td>Rule <sub>suffix</sub></td><td>IDENTIFIER_OR_KEYWORD <sub><em>except <code>crate</code></em></sub></td><td>对前一个规则的修改</td><td></td></tr>
+<tr><td>// Comment.</td><td>// Single line comment.</td><td>延伸到行尾的注释。</td><td></td></tr>
 </tbody>
 </table>
 </div>
-<p>Sequences have a higher precedence than <code>|</code> alternation.</p>
+<p>序列的优先级高于<code>|</code>选项。</p>
 <div class="rule" id="r-notation.grammar.string-tables"><a class="rule-link" href="#r-notation.grammar.string-tables" title="notation.grammar.string-tables"><span>[notation<wbr>.grammar<wbr>.string-tables]</span></a>
 </div>
 
-<h3 id="string-table-productions"><a class="header" href="#string-table-productions">String table productions</a></h3>
-<p>Some rules in the grammar — notably <a href="#borrow-operators">unary operators</a>, <a href="#arithmetic-and-logical-binary-operators">binary
-operators</a>, and <a href="#keywords">keywords</a> — are given in a simplified form: as a listing
-of printable strings. These cases form a subset of the rules regarding the
-<a href="#tokens">token</a> rule, and are assumed to be the result of a lexical-analysis
-phase feeding the parser, driven by a <abbr title="Deterministic Finite
-Automaton">DFA</abbr>, operating over the disjunction of all such string table
-entries.</p>
-<p>When such a string in <code>monospace</code> font occurs inside the grammar,
-it is an implicit reference to a single member of such a string table
-production. See <a href="#tokens">tokens</a> for more information.</p>
+<h3 id="字符串表产生式"><a class="header" href="#字符串表产生式">字符串表产生式</a></h3>
+<p>语法中的某些规则 —— 特别是<a href="#borrow-operators">一元运算符</a>、<a href="#arithmetic-and-logical-binary-operators">二元运算符</a>和<a href="#keywords">关键字</a> —— 以简化形式给出：作为可打印字符串的列表。这些情况构成了关于<a href="#tokens">词法单元</a>规则的一个子集，并被认为是词法分析阶段的结果，该阶段由一个<abbr title="确定性有限自动机">DFA</abbr>驱动，作用于所有此类字符串表条目的析取，从而为解析器提供输入。</p>
+<p>当语法中出现<code>等宽字体</code>的字符串时，它隐式引用了此类字符串表产生式的一个成员。有关更多信息，请参阅<a href="#tokens">词法单元</a>。</p>
 <div class="rule" id="r-notation.grammar.visualizations"><a class="rule-link" href="#r-notation.grammar.visualizations" title="notation.grammar.visualizations"><span>[notation<wbr>.grammar<wbr>.visualizations]</span></a>
 </div>
 
-<h3 id="grammar-visualizations"><a class="header" href="#grammar-visualizations">Grammar visualizations</a></h3>
-<p>Below each grammar block is a button to toggle the display of a <a href="https://en.wikipedia.org/wiki/Syntax_diagram">syntax diagram</a>. A square element is a non-terminal rule, and a rounded rectangle is a terminal.</p>
+<h3 id="语法可视化"><a class="header" href="#语法可视化">语法可视化</a></h3>
+<p>在每个语法块下方都有一个按钮，用于切换<a href="https://en.wikipedia.org/wiki/Syntax_diagram">语法格式图</a>的显示。一个方形元素是一个非终结规则，一个圆角矩形是一个终结符。</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="lexical-structure"><a class="header" href="#lexical-structure">Lexical structure</a></h1>
 <!-- Editor Note: Oh, there's nothing here -->
@@ -11201,7 +11194,7 @@ execution, and may reside in read-only memory.</p>
 <ul>
 <li><a href="#modules">modules</a></li>
 <li><a href="#extern-crate-declarations"><code>extern crate</code> declarations</a></li>
-<li><a href="#use-declarations"><code>use</code> declarations</a></li>
+<li><a href="#use声明"><code>use</code> declarations</a></li>
 <li><a href="#functions">function definitions</a></li>
 <li><a href="#type-aliases">type alias definitions</a></li>
 <li><a href="#structs">struct definitions</a></li>
@@ -11820,19 +11813,20 @@ other_crate::some_macro!();</code></pre>
 </blockquote>
 </div>
 
-<div style="break-before: page; page-break-before: always;"></div>
+<div style="break-before: page; page-break-before: always;"></div><!-- https://github.com/rust-lang/reference/blob/master/src/items/use-declarations.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
 <div class="rule" id="r-items.use"><a class="rule-link" href="#r-items.use" title="items.use"><span>[items<wbr>.use]</span></a>
 </div>
 
-<h1 id="use-declarations"><a class="header" href="#use-declarations">Use declarations</a></h1>
+<h1 id="use声明"><a class="header" href="#use声明">use声明</a></h1>
 <div class="rule" id="r-items.use.syntax"><a class="rule-link" href="#r-items.use.syntax" title="items.use.syntax"><span>[items<wbr>.use<wbr>.syntax]</span></a>
 </div>
 
 <div class="grammar-container">
 <p><strong><sup>Syntax</sup></strong>
 <br>
-<span class="grammar-text grammar-production" id="grammar-UseDeclaration" onclick="show_railroad()"><a href="#railroad-UseDeclaration">UseDeclaration</a></span> → <span class="grammar-literal">use</span> <span class="grammar-text"><a href="#grammar-UseTree">UseTree</a></span> <span class="grammar-literal">;</span></p>
-<p><span class="grammar-text grammar-production" id="grammar-UseTree" onclick="show_railroad()"><a href="#railroad-UseTree">UseTree</a></span> → <br>      ( <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span><sup>?</sup> <span class="grammar-literal">::</span> )<sup>?</sup> <span class="grammar-literal">*</span> <br>    | ( <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span><sup>?</sup> <span class="grammar-literal">::</span> )<sup>?</sup> <span class="grammar-literal">{</span> ( <span class="grammar-text"><a href="#grammar-UseTree">UseTree</a></span> ( <span class="grammar-literal">,</span> <span class="grammar-text"><a href="#grammar-UseTree">UseTree</a></span> )<sup>*</sup> <span class="grammar-literal">,</span><sup>?</sup> )<sup>?</sup> <span class="grammar-literal">}</span> <br>    | <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span> ( <span class="grammar-literal">as</span> ( <span class="grammar-text"><a href="#grammar-IDENTIFIER">IDENTIFIER</a></span> | <span class="grammar-literal">_</span> ) )<sup>?</sup></p>
+<span class="grammar-text grammar-production" id="grammar-UseDeclaration" onclick="show_railroad()"><a href="#railroad-UseDeclaration">UseDeclaration</a></span> → <span class="grammar-literal">use</span> <span class="grammar-text"><a href="items/use-declarations.orig.html#grammar-UseTree">UseTree</a></span> <span class="grammar-literal">;</span></p>
+<p><span class="grammar-text grammar-production" id="grammar-UseTree" onclick="show_railroad()"><a href="items/use-declarations.orig.html#railroad-UseTree">UseTree</a></span> → <br>      ( <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span><sup>?</sup> <span class="grammar-literal">::</span> )<sup>?</sup> <span class="grammar-literal">*</span> <br>    | ( <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span><sup>?</sup> <span class="grammar-literal">::</span> )<sup>?</sup> <span class="grammar-literal">{</span> ( <span class="grammar-text"><a href="items/use-declarations.orig.html#grammar-UseTree">UseTree</a></span> ( <span class="grammar-literal">,</span> <span class="grammar-text"><a href="items/use-declarations.orig.html#grammar-UseTree">UseTree</a></span> )<sup>*</sup> <span class="grammar-literal">,</span><sup>?</sup> )<sup>?</sup> <span class="grammar-literal">}</span> <br>    | <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span> ( <span class="grammar-literal">as</span> ( <span class="grammar-text"><a href="#grammar-IDENTIFIER">IDENTIFIER</a></span> | <span class="grammar-literal">_</span> ) )<sup>?</sup></p>
 <p><button class="grammar-toggle-railroad" type="button" title="Toggle railroad display" onclick="toggle_railroad()">Show Railroad</button></p>
 </div>
 
@@ -11852,7 +11846,7 @@ UseDeclaration</text>
 <text x="57" y="58">
 use</text>
 </g>
-<a class="link" xlink:href="#railroad-UseTree">
+<a class="link" xlink:href="items/use-declarations.orig.html#railroad-UseTree">
 <g class="nonterminal">
 <rect height="22" width="76" x="89" y="42" />
 <text x="127" y="58">
@@ -11878,7 +11872,7 @@ UseTree</text>
 <div style="width: 852px; height: auto; max-width: 100%; max-height: 100%" class="railroad-production" id="railroad-UseTree"><svg class="railroad" viewbox="0 0 852 247" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect class="railroad_canvas" height="100%" width="100%" />
 <g class="verticalgrid">
-<a class="link" xlink:href="#grammar-UseTree">
+<a class="link" xlink:href="items/use-declarations.orig.html#grammar-UseTree">
 <text class="comment" x="39" y="25">
 UseTree</text>
 </a>
@@ -11948,7 +11942,7 @@ SimplePath</text>
 <g class="optional">
 <path d=" M 349 135 h 24 m -24 0 a 12 12 0 0 0 12 -12 v -12 a 12 12 0 0 1 12 -12 h 358 m -176 0 l -5 -5 m 0 10 l 5 -5 m 176 0 a 12 12 0 0 1 12 12 v 12 a 12 12 0 0 0 12 12 h -24" />
 <g class="sequence">
-<a class="link" xlink:href="#railroad-UseTree">
+<a class="link" xlink:href="items/use-declarations.orig.html#railroad-UseTree">
 <g class="nonterminal">
 <rect height="22" width="76" x="373" y="124" />
 <text x="411" y="140">
@@ -11966,7 +11960,7 @@ UseTree</text>
 <text x="509" y="140">
 ,</text>
 </g>
-<a class="link" xlink:href="#railroad-UseTree">
+<a class="link" xlink:href="items/use-declarations.orig.html#railroad-UseTree">
 <g class="nonterminal">
 <rect height="22" width="76" x="533" y="124" />
 <text x="571" y="140">
@@ -12051,65 +12045,57 @@ _</text>
 <div class="rule" id="r-items.use.intro"><a class="rule-link" href="#r-items.use.intro" title="items.use.intro"><span>[items<wbr>.use<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>use declaration</em> creates one or more local name bindings synonymous with
-some other <a href="#paths">path</a>. Usually a <code>use</code> declaration is used to shorten the path
-required to refer to a module item. These declarations may appear in <a href="#modules">modules</a>
-and <a href="#block-expressions">blocks</a>, usually at the top.
-A <code>use</code> declaration is also sometimes called an <em>import</em>, or, if it is public, a <em>re-export</em>.</p>
+<p>一个 <em>use声明</em> 创建一个或多个局部名称绑定，作为某个其他<a href="#paths">路径</a>的同义词。通常，<code>use</code>声明用于缩短引用模块项所需的路径。这些声明可以出现在<a href="#modules">模块</a>和<a href="#block-expressions">块</a>中，通常在顶部。
+一个<code>use</code>声明有时也称为 <em>导入</em>，如果它是公共的，则称为 <em>重新导出</em>。</p>
 <div class="rule" id="r-items.use.forms"><a class="rule-link" href="#r-items.use.forms" title="items.use.forms"><span>[items<wbr>.use<wbr>.forms]</span></a>
 </div>
 
-<p>Use declarations support a number of convenient shortcuts:</p>
+<p>use声明支持许多方便的快捷方式：</p>
 <div class="rule" id="r-items.use.forms.multiple"><a class="rule-link" href="#r-items.use.forms.multiple" title="items.use.forms.multiple"><span>[items<wbr>.use<wbr>.forms<wbr>.multiple]</span></a>
 </div>
 
 <ul>
-<li>Simultaneously binding a list of paths with a common prefix, using the
-brace syntax <code>use a::b::{c, d, e::f, g::h::i};</code></li>
+<li>使用大括号语法 <code>use a::b::{c, d, e::f, g::h::i};</code> 同时绑定具有共同前缀的路径列表。</li>
 </ul>
 <div class="rule" id="r-items.use.forms.self"><a class="rule-link" href="#r-items.use.forms.self" title="items.use.forms.self"><span>[items<wbr>.use<wbr>.forms<wbr>.self]</span></a>
 </div>
 
 <ul>
-<li>Simultaneously binding a list of paths with a common prefix and their common
-parent module, using the <code>self</code> keyword, such as <code>use a::b::{self, c, d::e};</code></li>
+<li>使用<code>self</code>关键字同时绑定具有共同前缀的路径列表及其共同的父模块，例如 <code>use a::b::{self, c, d::e};</code>。</li>
 </ul>
 <div class="rule" id="r-items.use.forms.as"><a class="rule-link" href="#r-items.use.forms.as" title="items.use.forms.as"><span>[items<wbr>.use<wbr>.forms<wbr>.as]</span></a>
 </div>
 
 <ul>
-<li>Rebinding the target name as a new local name, using the syntax <code>use p::q::r as x;</code>. This can also be used with the last two features:
-<code>use a::b::{self as ab, c as abc}</code>.</li>
+<li>使用<code>use p::q::r as x;</code>语法将目标名称重新绑定为新的局部名称。这也可以与最后两个特性一起使用：<code>use a::b::{self as ab, c as abc}</code>。</li>
 </ul>
 <div class="rule" id="r-items.use.forms.glob"><a class="rule-link" href="#r-items.use.forms.glob" title="items.use.forms.glob"><span>[items<wbr>.use<wbr>.forms<wbr>.glob]</span></a>
 </div>
 
 <ul>
-<li>Binding all paths matching a given prefix, using the asterisk wildcard syntax
-<code>use a::b::*;</code>.</li>
+<li>使用星号通配符语法 <code>use a::b::*;</code> 绑定所有匹配给定前缀的路径。</li>
 </ul>
 <div class="rule" id="r-items.use.forms.nesting"><a class="rule-link" href="#r-items.use.forms.nesting" title="items.use.forms.nesting"><span>[items<wbr>.use<wbr>.forms<wbr>.nesting]</span></a>
 </div>
 
 <ul>
-<li>Nesting groups of the previous features multiple times, such as
-<code>use a::b::{self as ab, c, d::{*, e::f}};</code></li>
+<li>多次嵌套前述特性的组，例如 <code>use a::b::{self as ab, c, d::{*, e::f}};</code>。</li>
 </ul>
-<p>An example of <code>use</code> declarations:</p>
+<p><code>use</code>声明的示例：</p>
 <pre class="playground"><code class="language-rust edition2024">use std::collections::hash_map::{self, HashMap};
 
 fn foo&lt;T&gt;(_: T){}
 fn bar(map1: HashMap&lt;String, usize&gt;, map2: hash_map::HashMap&lt;String, usize&gt;){}
 
 fn main() {
-    // use declarations can also exist inside of functions
+    // use声明也可以存在于函数内部
     use std::option::Option::{Some, None};
 
-    // Equivalent to 'foo(vec![std::option::Option::Some(1.0f64),
+    // 等价于'foo(vec![std::option::Option::Some(1.0f64),
     // std::option::Option::None]);'
     foo(vec![Some(1.0f64), None]);
 
-    // Both `hash_map` and `HashMap` are in scope.
+    // `hash_map`和`HashMap`都在作用域内。
     let map1 = HashMap::new();
     let map2 = hash_map::HashMap::new();
     bar(map1, map2);
@@ -12117,22 +12103,16 @@ fn main() {
 <div class="rule" id="r-items.use.visibility"><a class="rule-link" href="#r-items.use.visibility" title="items.use.visibility"><span>[items<wbr>.use<wbr>.visibility]</span></a>
 </div>
 
-<h2 id="use-visibility"><a class="header" href="#use-visibility"><code>use</code> Visibility</a></h2>
+<h2 id="use可见性"><a class="header" href="#use可见性"><code>use</code>可见性</a></h2>
 <div class="rule" id="r-items.use.visibility.intro"><a class="rule-link" href="#r-items.use.visibility.intro" title="items.use.visibility.intro"><span>[items<wbr>.use<wbr>.visibility<wbr>.intro]</span></a>
 </div>
 
-<p>Like items, <code>use</code> declarations are private to the containing module, by
-default. Also like items, a <code>use</code> declaration can be public, if qualified by
-the <code>pub</code> keyword. Such a <code>use</code> declaration serves to <em>re-export</em> a name. A
-public <code>use</code> declaration can therefore <em>redirect</em> some public name to a
-different target definition: even a definition with a private canonical path,
-inside a different module.</p>
+<p>默认情况下，与项一样，<code>use</code>声明对其包含的模块是私有的。与项一样，如果用<code>pub</code>关键字限定，<code>use</code>声明也可以是公共的。这样的<code>use</code>声明用于 <em>重新导出</em> 一个名称。因此，公共<code>use</code>声明可以 <em>重定向</em> 某个公共名称到不同的目标定义：即使是位于不同模块内具有私有规范路径的定义。</p>
 <div class="rule" id="r-items.use.visibility.unambiguous"><a class="rule-link" href="#r-items.use.visibility.unambiguous" title="items.use.visibility.unambiguous"><span>[items<wbr>.use<wbr>.visibility<wbr>.unambiguous]</span></a>
 </div>
 
-<p>If a sequence of such redirections form a cycle or
-cannot be resolved unambiguously, they represent a compile-time error.</p>
-<p>An example of re-exporting:</p>
+<p>如果一系列此类重定向形成循环或无法明确解析，则它们会引发编译时错误。</p>
+<p>重新导出的示例：</p>
 <pre class="playground"><code class="language-rust edition2024">mod quux {
     pub use self::foo::{bar, baz};
     pub mod foo {
@@ -12145,46 +12125,45 @@ fn main() {
     quux::bar();
     quux::baz();
 }</code></pre>
-<p>In this example, the module <code>quux</code> re-exports two public names defined in
-<code>foo</code>.</p>
+<p>在此示例中，模块<code>quux</code>重新导出了在<code>foo</code>中定义的两个公共名称。</p>
 <div class="rule" id="r-items.use.path"><a class="rule-link" href="#r-items.use.path" title="items.use.path"><span>[items<wbr>.use<wbr>.path]</span></a>
 </div>
 
-<h2 id="use-paths"><a class="header" href="#use-paths"><code>use</code> Paths</a></h2>
+<h2 id="use路径"><a class="header" href="#use路径"><code>use</code>路径</a></h2>
 <div class="rule" id="r-items.use.path.intro"><a class="rule-link" href="#r-items.use.path.intro" title="items.use.path.intro"><span>[items<wbr>.use<wbr>.path<wbr>.intro]</span></a>
 </div>
 
-<p>The <a href="#paths">paths</a> that are allowed in a <code>use</code> item follow the <a href="#grammar-SimplePath">SimplePath</a> grammar and are similar to the paths that may be used in an expression.
-They may create bindings for:</p>
+<p><code>use</code>项中允许的<a href="#paths">路径</a>遵循<a href="#grammar-SimplePath">简单路径</a>语法格式，并且与表达式中可用的路径相似。
+它们可以为以下内容创建绑定：</p>
 <ul>
-<li>Nameable <a href="#items">items</a></li>
-<li><a href="#enumerations">Enum variants</a></li>
-<li><a href="#types">Built-in types</a></li>
-<li><a href="#attributes-1">Attributes</a></li>
-<li><a href="#r-macro.proc.derive">Derive macros</a></li>
+<li>可命名的<a href="#items">项</a></li>
+<li><a href="#enumerations">枚举变体</a></li>
+<li><a href="#types">内置类型</a></li>
+<li><a href="#attributes-1">属性</a></li>
+<li><a href="#r-macro.proc.derive">派生宏</a></li>
 <li><a href="#macros-by-example"><code>macro_rules</code></a></li>
 </ul>
 <div class="rule" id="r-items.use.path.disallowed"><a class="rule-link" href="#r-items.use.path.disallowed" title="items.use.path.disallowed"><span>[items<wbr>.use<wbr>.path<wbr>.disallowed]</span></a>
 </div>
 
-<p>They cannot import <a href="#associated-items">associated items</a>, <a href="#generic-parameters">generic parameters</a>, <a href="#variables">local variables</a>, paths with <a href="#self"><code>Self</code></a>, or <a href="#tool-attributes">tool attributes</a>. More restrictions are described below.</p>
+<p>它们不能导入<a href="#associated-items">关联项</a>、<a href="#generic-parameters">泛型参数</a>、<a href="#variables">局部变量</a>、包含<a href="#self"><code>Self</code></a>的路径或<a href="#tool-attributes">工具属性</a>。更多限制如下所述。</p>
 <div class="rule" id="r-items.use.path.namespace"><a class="rule-link" href="#r-items.use.path.namespace" title="items.use.path.namespace"><span>[items<wbr>.use<wbr>.path<wbr>.namespace]</span></a>
 </div>
 
-<p><code>use</code> will create bindings for all <a href="#namespaces">namespaces</a> from the imported entities, with the exception that a <code>self</code> import will only import from the type namespace (as described below).
-For example, the following illustrates creating bindings for the same name in two namespaces:</p>
+<p><code>use</code>将为所有导入实体的<a href="#namespaces">命名空间</a>创建绑定，但<code>self</code>导入仅从类型命名空间导入（如下所述）。
+例如，以下示例说明了在两个命名空间中为相同名称创建绑定：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod stuff {
     pub struct Foo(pub i32);
 }
 
-// Imports the `Foo` type and the `Foo` constructor.
+// 导入`Foo`类型和`Foo`构造函数。
 use stuff::Foo;
 
 fn example() {
-    let ctor = Foo; // Uses `Foo` from the value namespace.
-    let x: Foo = ctor(123); // Uses `Foo` From the type namespace.
+    let ctor = Foo; // 使用值命名空间中的`Foo`。
+    let x: Foo = ctor(123); // 使用类型命名空间中的`Foo`。
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.use.path.edition2018"><a class="rule-link" href="#r-items.use.path.edition2018" title="items.use.path.edition2018"><span>[items<wbr>.use<wbr>.path<wbr>.edition2018]</span></a>
@@ -12194,35 +12173,34 @@ fn example() {
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>In the 2015 edition, <code>use</code> paths are relative to the crate root. For example:</p>
+<p>在2015版次中，<code>use</code>路径相对于crate根。例如：</p>
 <pre class="playground"><code class="language-rust edition2015">mod foo {
     pub mod example { pub mod iter {} }
     pub mod baz { pub fn foobaz() {} }
 }
 mod bar {
-    // Resolves `foo` from the crate root.
+    // 从crate根解析`foo`。
     use foo::example::iter;
-    // The `::` prefix explicitly resolves `foo`
-    // from the crate root.
+    // `::`前缀显式地从crate根解析`foo`。
     use ::foo::baz::foobaz;
 }
 
 <span class="boring">fn main() {}</span></code></pre>
-<p>The 2015 edition does not allow use declarations to reference the <a href="#extern-prelude">extern prelude</a>.
-Thus, <a href="#extern-crate-declarations"><code>extern crate</code></a> declarations are still required in 2015 to reference an external crate in a <code>use</code> declaration.
-Beginning with the 2018 edition, <code>use</code> declarations can specify an external crate dependency the same way <code>extern crate</code> can.</p>
+<p>2015版次不允许use声明引用<a href="#extern-prelude">外部预导入</a>。
+因此，在2015版次中仍然需要<a href="#extern-crate-declarations"><code>extern crate</code></a>声明才能在use声明中引用外部crate。
+从2018版次开始，<code>use</code>声明可以像<code>extern crate</code>一样指定外部crate依赖项。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.use.as"><a class="rule-link" href="#r-items.use.as" title="items.use.as"><span>[items<wbr>.use<wbr>.as]</span></a>
 </div>
 
-<h2 id="as-renames"><a class="header" href="#as-renames"><code>as</code> renames</a></h2>
-<p>The <code>as</code> keyword can be used to change the name of an imported entity.
-For example:</p>
+<h2 id="as重命名"><a class="header" href="#as重命名"><code>as</code>重命名</a></h2>
+<p><code>as</code>关键字可用于更改导入实体的名称。
+例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Creates a non-public alias `bar` for the function `foo`.
+</span>// 为函数`foo`创建一个非公共别名`bar`。
 use inner::foo as bar;
 
 mod inner {
@@ -12232,15 +12210,15 @@ mod inner {
 <div class="rule" id="r-items.use.multiple-syntax"><a class="rule-link" href="#r-items.use.multiple-syntax" title="items.use.multiple-syntax"><span>[items<wbr>.use<wbr>.multiple-syntax]</span></a>
 </div>
 
-<h2 id="brace-syntax"><a class="header" href="#brace-syntax">Brace syntax</a></h2>
+<h2 id="大括号语法"><a class="header" href="#大括号语法">大括号语法</a></h2>
 <div class="rule" id="r-items.use.multiple-syntax.intro"><a class="rule-link" href="#r-items.use.multiple-syntax.intro" title="items.use.multiple-syntax.intro"><span>[items<wbr>.use<wbr>.multiple-syntax<wbr>.intro]</span></a>
 </div>
 
-<p>Braces can be used in the last segment of the path to import multiple entities from the previous segment, or, if there are no previous segments, from the current scope.
-Braces can be nested, creating a tree of paths, where each grouping of segments is logically combined with its parent to create a full path.</p>
+<p>大括号可用于路径的最后一个段中，以从前一个段导入多个实体，或者，如果前一个段不存在，则从当前作用域导入。
+大括号可以嵌套，创建路径树，其中每个段组都与其父级逻辑组合以创建完整路径。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Creates bindings to:
+</span>// 创建以下绑定：
 // - `std::collections::BTreeSet`
 // - `std::collections::hash_map`
 // - `std::collections::hash_map::HashMap`
@@ -12249,7 +12227,7 @@ use std::collections::{BTreeSet, hash_map::{self, HashMap}};
 <div class="rule" id="r-items.use.multiple-syntax.empty"><a class="rule-link" href="#r-items.use.multiple-syntax.empty" title="items.use.multiple-syntax.empty"><span>[items<wbr>.use<wbr>.multiple-syntax<wbr>.empty]</span></a>
 </div>
 
-<p>An empty brace does not import anything, though the leading path is validated that it is accessible.</p>
+<p>一个空大括号不导入任何内容，尽管会验证其前导路径是否可访问。</p>
 <!-- This is slightly wrong, see: https://github.com/rust-lang/rust/issues/61826 -->
 <div class="rule" id="r-items.use.multiple-syntax.edition2018"><a class="rule-link" href="#r-items.use.multiple-syntax.edition2018" title="items.use.multiple-syntax.edition2018"><span>[items<wbr>.use<wbr>.multiple-syntax<wbr>.edition2018]</span></a>
 </div>
@@ -12258,24 +12236,24 @@ use std::collections::{BTreeSet, hash_map::{self, HashMap}};
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>In the 2015 edition, paths are relative to the crate root, so an import such as <code>use {foo, bar};</code> will import the names <code>foo</code> and <code>bar</code> from the crate root, whereas starting in 2018, those names are relative to the current scope.</p>
+<p>在2015版次中，路径是相对于crate根的，因此像<code>use {foo, bar};</code>这样的导入会从crate根导入名称<code>foo</code>和<code>bar</code>，而从2018版次开始，这些名称是相对于当前作用域的。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.use.self"><a class="rule-link" href="#r-items.use.self" title="items.use.self"><span>[items<wbr>.use<wbr>.self]</span></a>
 </div>
 
-<h2 id="self-imports"><a class="header" href="#self-imports"><code>self</code> imports</a></h2>
+<h2 id="self导入"><a class="header" href="#self导入"><code>self</code>导入</a></h2>
 <div class="rule" id="r-items.use.self.intro"><a class="rule-link" href="#r-items.use.self.intro" title="items.use.self.intro"><span>[items<wbr>.use<wbr>.self<wbr>.intro]</span></a>
 </div>
 
-<p>The keyword <code>self</code> may be used within <a href="#brace-syntax">brace syntax</a> to create a binding of the parent entity under its own name.</p>
+<p>关键字<code>self</code>可在<a href="#brace-syntax">大括号语法</a>中使用，以其自身名称创建父实体的绑定。</p>
 <pre class="playground"><code class="language-rust edition2024">mod stuff {
     pub fn foo() {}
     pub fn bar() {}
 }
 mod example {
-    // Creates a binding for `stuff` and `foo`.
+    // 为`stuff`和`foo`创建绑定。
     use crate::stuff::{self, foo};
     pub fn baz() {
         foo();
@@ -12286,40 +12264,40 @@ mod example {
 <div class="rule" id="r-items.use.self.namespace"><a class="rule-link" href="#r-items.use.self.namespace" title="items.use.self.namespace"><span>[items<wbr>.use<wbr>.self<wbr>.namespace]</span></a>
 </div>
 
-<p><code>self</code> only creates a binding from the <a href="#namespaces">type namespace</a> of the parent entity.
-For example, in the following, only the <code>foo</code> mod is imported:</p>
+<p><code>self</code>只从父实体的<a href="#namespaces">类型命名空间</a>创建绑定。
+例如，在以下代码中，只导入了<code>foo</code>模块：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024">mod bar {
     pub mod foo {}
     pub fn foo() {}
 }
 
-// This only imports the module `foo`. The function `foo` lives in
-// the value namespace and is not imported.
+// 这仅导入模块`foo`。函数`foo`存在于
+// 值命名空间中，且未被导入。
 use bar::foo::{self};
 
 fn main() {
-    foo(); //~ ERROR `foo` is a module
+    foo(); //~ 错误 `foo`是一个模块
 }</code></pre>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>self</code> may also be used as the first segment of a path. The usage of <code>self</code> as the first segment and inside a <code>use</code> brace is logically the same; it means the current module of the parent segment, or the current module if there is no parent segment. See <a href="#self"><code>self</code></a> in the paths chapter for more information on the meaning of a leading <code>self</code>.</p>
+<p><code>self</code>也可以用作路径的第一个段。<code>self</code>作为第一个段的用法与在<code>use</code>大括号内的用法在逻辑上是相同的；它表示父段的当前模块，或者如果没有父段，则表示当前模块。有关前导<code>self</code>的含义的更多信息，请参见路径章节中的<a href="#self"><code>self</code></a>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.use.glob"><a class="rule-link" href="#r-items.use.glob" title="items.use.glob"><span>[items<wbr>.use<wbr>.glob]</span></a>
 </div>
 
-<h2 id="glob-imports"><a class="header" href="#glob-imports">Glob imports</a></h2>
+<h2 id="通配符导入"><a class="header" href="#通配符导入">通配符导入</a></h2>
 <div class="rule" id="r-items.use.glob.intro"><a class="rule-link" href="#r-items.use.glob.intro" title="items.use.glob.intro"><span>[items<wbr>.use<wbr>.glob<wbr>.intro]</span></a>
 </div>
 
-<p>The <code>*</code> character may be used as the last segment of a <code>use</code> path to import all importable entities from the entity of the preceding segment.
-For example:</p>
+<p><code>*</code>字符可用作<code>use</code>路径的最后一个段，以从前一个段的实体中导入所有可导入的实体。
+例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Creates a non-public alias to `bar`.
+</span>// 为`bar`创建一个非公共别名。
 use foo::*;
 
 mod foo {
@@ -12329,8 +12307,7 @@ mod foo {
         V2,
     }
     pub fn bar() {
-        // Creates local aliases to `V1` and `V2`
-        // of the `Example` enum.
+        // 为`Example`枚举的`V1`和`V2`创建局部别名。
         use Example::*;
         let x = V1;
     }
@@ -12339,28 +12316,26 @@ mod foo {
 <div class="rule" id="r-items.use.glob.shadowing"><a class="rule-link" href="#r-items.use.glob.shadowing" title="items.use.glob.shadowing"><span>[items<wbr>.use<wbr>.glob<wbr>.shadowing]</span></a>
 </div>
 
-<p>Items and named imports are allowed to shadow names from glob imports in the same <a href="#namespaces">namespace</a>.
-That is, if there is a name already defined by another item in the same namespace, the glob import will be shadowed.
-For example:</p>
+<p>允许项和命名导入遮蔽来自同一<a href="#namespaces">命名空间</a>中通配符导入的名称。
+也就是说，如果同一命名空间中已由另一个项定义了某个名称，则通配符导入将被遮蔽。
+例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// This creates a binding to the `clashing::Foo` tuple struct
-// constructor, but does not import its type because that would
-// conflict with the `Foo` struct defined here.
+</span>// 这为`clashing::Foo`元组结构体构造器创建了一个绑定，
+// 但没有导入其类型，因为那会与此处定义的`Foo`结构体冲突。
 //
-// Note that the order of definition here is unimportant.
+// 注意，此处的定义顺序并不重要。
 use clashing::*;
 struct Foo {
     field: f32,
 }
 
 fn do_stuff() {
-    // Uses the constructor from `clashing::Foo`.
+    // 使用`clashing::Foo`的构造器。
     let f1 = Foo(123);
-    // The struct expression uses the type from
-    // the `Foo` struct defined above.
+    // 结构体表达式使用上面定义的`Foo`结构体的类型。
     let f2 = Foo { field: 1.0 };
-    // `Bar` is also in scope due to the glob import.
+    // 由于通配符导入，`Bar`也在作用域内。
     let z = Bar {};
 }
 
@@ -12373,18 +12348,18 @@ mod clashing {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>For areas where shadowing is not allowed, see <a href="#r-names.resolution.expansion.imports.ambiguity">name resolution ambiguities</a>.</p>
+<p>对于不允许遮蔽的区域，请参见<a href="#r-names.resolution.expansion.imports.ambiguity">名称解析歧义</a>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.use.glob.last-segment-only"><a class="rule-link" href="#r-items.use.glob.last-segment-only" title="items.use.glob.last-segment-only"><span>[items<wbr>.use<wbr>.glob<wbr>.last-segment-only]</span></a>
 </div>
 
-<p><code>*</code> cannot be used as the first or intermediate segments.</p>
+<p><code>*</code>不能用作第一个或中间段。</p>
 <div class="rule" id="r-items.use.glob.self-import"><a class="rule-link" href="#r-items.use.glob.self-import" title="items.use.glob.self-import"><span>[items<wbr>.use<wbr>.glob<wbr>.self-import]</span></a>
 </div>
 
-<p><code>*</code> cannot be used to import a module’s contents into itself (such as <code>use self::*;</code>).</p>
+<p><code>*</code>不能用于将模块的内容导入自身（例如 <code>use self::*;</code>）。</p>
 <div class="rule" id="r-items.use.glob.edition2018"><a class="rule-link" href="#r-items.use.glob.edition2018" title="items.use.glob.edition2018"><span>[items<wbr>.use<wbr>.glob<wbr>.edition2018]</span></a>
 </div>
 
@@ -12392,27 +12367,22 @@ mod clashing {
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>In the 2015 edition, paths are relative to the crate root, so an import such as <code>use *;</code> is valid, and it means to import everything from the crate root. This cannot be used in the crate root itself.</p>
+<p>在2015版次中，路径是相对于crate根的，因此像<code>use *;</code>这样的导入是有效的，它意味着从crate根导入所有内容。这不能在crate根本身中使用。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.use.as-underscore"><a class="rule-link" href="#r-items.use.as-underscore" title="items.use.as-underscore"><span>[items<wbr>.use<wbr>.as-underscore]</span></a>
 </div>
 
-<h2 id="underscore-imports-1"><a class="header" href="#underscore-imports-1">Underscore imports</a></h2>
+<h2 id="下划线导入"><a class="header" href="#下划线导入">下划线导入</a></h2>
 <div class="rule" id="r-items.use.as-underscore.intro"><a class="rule-link" href="#r-items.use.as-underscore.intro" title="items.use.as-underscore.intro"><span>[items<wbr>.use<wbr>.as-underscore<wbr>.intro]</span></a>
 </div>
 
-<p>Items can be imported without binding to a name by using an underscore with
-the form <code>use path as _</code>. This is particularly useful to import a trait so
-that its methods may be used without importing the trait’s symbol, for example
-if the trait’s symbol may conflict with another symbol. Another example is to
-link an external crate without importing its name.</p>
+<p>可以通过使用下划线形式<code>use path as _</code>导入项而不绑定到名称。这对于导入一个特型特别有用，以便可以使用其方法而无需导入该特型的符号，例如，如果该特型的符号可能与其他符号冲突。另一个例子是链接外部crate而不导入其名称。</p>
 <div class="rule" id="r-items.use.as-underscore.glob"><a class="rule-link" href="#r-items.use.as-underscore.glob" title="items.use.as-underscore.glob"><span>[items<wbr>.use<wbr>.as-underscore<wbr>.glob]</span></a>
 </div>
 
-<p>Asterisk glob imports will import items imported with <code>_</code> in their unnameable
-form.</p>
+<p>星号通配符导入将以不可命名的形式导入带有<code>_</code>的项。</p>
 <pre class="playground"><code class="language-rust edition2024">mod foo {
     pub trait Zoo {
         fn zoo(&amp;self) {}
@@ -12422,7 +12392,7 @@ form.</p>
 }
 
 use self::foo::Zoo as _;
-struct Zoo;  // Underscore import avoids name conflict with this item.
+struct Zoo;  // 下划线导入避免与此项发生命名冲突。
 
 fn main() {
     let z = Zoo;
@@ -12431,9 +12401,7 @@ fn main() {
 <div class="rule" id="r-items.use.as-underscore.macro"><a class="rule-link" href="#r-items.use.as-underscore.macro" title="items.use.as-underscore.macro"><span>[items<wbr>.use<wbr>.as-underscore<wbr>.macro]</span></a>
 </div>
 
-<p>The unique, unnameable symbols are created after macro expansion so that
-macros may safely emit multiple references to <code>_</code> imports. For example, the
-following should not produce an error:</p>
+<p>独特的、不可命名的符号在宏展开后创建，这样宏可以安全地发出对<code>_</code>导入的多个引用。例如，以下代码不应产生错误：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! m {
@@ -12441,44 +12409,44 @@ following should not produce an error:</p>
 }
 
 m!(use std as _;);
-// This expands to:
+// 这将展开为：
 // use std as _;
 // use std as _;
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.use.restrictions"><a class="rule-link" href="#r-items.use.restrictions" title="items.use.restrictions"><span>[items<wbr>.use<wbr>.restrictions]</span></a>
 </div>
 
-<h2 id="restrictions"><a class="header" href="#restrictions">Restrictions</a></h2>
-<p>The following are restrictions for valid <code>use</code> declarations:</p>
+<h2 id="限制"><a class="header" href="#限制">限制</a></h2>
+<p>以下是有效<code>use</code>声明的限制：</p>
 <div class="rule" id="r-items.use.restrictions.crate"><a class="rule-link" href="#r-items.use.restrictions.crate" title="items.use.restrictions.crate"><span>[items<wbr>.use<wbr>.restrictions<wbr>.crate]</span></a>
 </div>
 
 <ul>
-<li><code>use crate;</code> must use <code>as</code> to define the name to which to bind the crate root.</li>
+<li><code>use crate;</code>必须使用<code>as</code>来定义要绑定crate根的名称。</li>
 </ul>
 <div class="rule" id="r-items.use.restrictions.self"><a class="rule-link" href="#r-items.use.restrictions.self" title="items.use.restrictions.self"><span>[items<wbr>.use<wbr>.restrictions<wbr>.self]</span></a>
 </div>
 
 <ul>
-<li><code>use {self};</code> is an error; there must be a leading segment when using <code>self</code>.</li>
+<li><code>use {self};</code>是一个错误；使用<code>self</code>时必须有一个前导段。</li>
 </ul>
 <div class="rule" id="r-items.use.restrictions.duplicate-name"><a class="rule-link" href="#r-items.use.restrictions.duplicate-name" title="items.use.restrictions.duplicate-name"><span>[items<wbr>.use<wbr>.restrictions<wbr>.duplicate-name]</span></a>
 </div>
 
 <ul>
-<li>As with any item definition, <code>use</code> imports cannot create duplicate bindings of the same name in the same namespace in a module or block.</li>
+<li>与任何项定义一样，<code>use</code>导入不能在模块或块中的同一命名空间内创建相同名称的重复绑定。</li>
 </ul>
 <div class="rule" id="r-items.use.restrictions.macro-crate"><a class="rule-link" href="#r-items.use.restrictions.macro-crate" title="items.use.restrictions.macro-crate"><span>[items<wbr>.use<wbr>.restrictions<wbr>.macro-crate]</span></a>
 </div>
 
 <ul>
-<li><code>use</code> paths with <code>$crate</code> are not allowed in a <a href="#macros-by-example"><code>macro_rules</code></a> expansion.</li>
+<li>包含<code>$crate</code>的<code>use</code>路径不允许在<a href="#macros-by-example"><code>macro_rules</code></a>展开中使用。</li>
 </ul>
 <div class="rule" id="r-items.use.restrictions.variant"><a class="rule-link" href="#r-items.use.restrictions.variant" title="items.use.restrictions.variant"><span>[items<wbr>.use<wbr>.restrictions<wbr>.variant]</span></a>
 </div>
 
 <ul>
-<li><code>use</code> paths cannot refer to enum variants through a <a href="#type-aliases">type alias</a>. For example:
+<li><code>use</code>路径不能通过<a href="#type-aliases">类型别名</a>引用枚举变体。例如：
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum MyEnum {
@@ -12486,8 +12454,8 @@ m!(use std as _;);
 }
 type TypeAlias = MyEnum;
 
-use MyEnum::MyVariant; //~ OK
-use TypeAlias::MyVariant; //~ ERROR
+use MyEnum::MyVariant; //~ 正常
+use TypeAlias::MyVariant; //~ 错误
 <span class="boring">}</span></code></pre>
 </li>
 </ul>
@@ -14786,7 +14754,7 @@ called an enum variant.</p>
 <div class="rule" id="r-items.enum.constructor-names"><a class="rule-link" href="#r-items.enum.constructor-names" title="items.enum.constructor-names"><span>[items<wbr>.enum<wbr>.constructor-names]</span></a>
 </div>
 
-<p>Variant constructors are similar to <a href="#structs">struct</a> definitions, and can be referenced by a path from the enumeration name, including in <a href="#use-declarations">use declarations</a>.</p>
+<p>Variant constructors are similar to <a href="#structs">struct</a> definitions, and can be referenced by a path from the enumeration name, including in <a href="#use声明">use declarations</a>.</p>
 <div class="rule" id="r-items.enum.constructor-namespace"><a class="rule-link" href="#r-items.enum.constructor-namespace" title="items.enum.constructor-namespace"><span>[items<wbr>.enum<wbr>.constructor-namespace]</span></a>
 </div>
 
@@ -14894,7 +14862,7 @@ assert_eq!(baz_discriminant, 123);
 <div class="rule" id="r-items.enum.discriminant.restrictions"><a class="rule-link" href="#r-items.enum.discriminant.restrictions" title="items.enum.discriminant.restrictions"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.restrictions]</span></a>
 </div>
 
-<h4 id="restrictions-1"><a class="header" href="#restrictions-1">Restrictions</a></h4>
+<h4 id="restrictions"><a class="header" href="#restrictions">Restrictions</a></h4>
 <div class="rule" id="r-items.enum.discriminant.restrictions.same-discriminant"><a class="rule-link" href="#r-items.enum.discriminant.restrictions.same-discriminant" title="items.enum.discriminant.restrictions.same-discriminant"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.restrictions<wbr>.same-discriminant]</span></a>
 </div>
 
@@ -15606,7 +15574,7 @@ const _: () =  { struct _SameNameTwice; };
 <div class="rule" id="r-items.const.unnamed.repetition"><a class="rule-link" href="#r-items.const.unnamed.repetition" title="items.const.unnamed.repetition"><span>[items<wbr>.const<wbr>.unnamed<wbr>.repetition]</span></a>
 </div>
 
-<p>As with <a href="#underscore-imports-1">underscore imports</a>, macros may safely emit the same unnamed constant in
+<p>As with <a href="#underscore-imports">underscore imports</a>, macros may safely emit the same unnamed constant in
 the same scope more than once. For example, the following should not produce an error:</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -43443,7 +43411,7 @@ and labels to entity declarations.</p>
 <ul>
 <li><a href="#modules">Module declarations</a></li>
 <li><a href="#extern-crate-declarations">External crate declarations</a></li>
-<li><a href="#use-declarations">Use declarations</a></li>
+<li><a href="#use声明">Use declarations</a></li>
 <li><a href="#functions">Function declarations</a> and <a href="#function-parameters">function parameters</a></li>
 <li><a href="#type-aliases">Type aliases</a></li>
 <li><a href="#structs">struct</a>, <a href="#unions">union</a>, <a href="#enumerations">enum</a>, enum variant declarations, and their named
@@ -43701,11 +43669,11 @@ any specific namespace.</p>
 live in an explicit namespace. They can only be accessed via a <a href="#field-access-expressions">field
 expression</a>, which only inspects the field names of the specific type being
 accessed.</p>
-<h3 id="use-declarations-1"><a class="header" href="#use-declarations-1">Use declarations</a></h3>
+<h3 id="use-declarations"><a class="header" href="#use-declarations">Use declarations</a></h3>
 <div class="rule" id="r-names.namespaces.without.use"><a class="rule-link" href="#r-names.namespaces.without.use" title="names.namespaces.without.use"><span>[names<wbr>.namespaces<wbr>.without<wbr>.use]</span></a>
 </div>
 
-<p>A <a href="#use-declarations">use declaration</a> has named aliases that it imports into scope, but the
+<p>A <a href="#use声明">use declaration</a> has named aliases that it imports into scope, but the
 <code>use</code> item itself does not belong to a specific namespace. Instead, it can
 introduce aliases into multiple namespaces, depending on the item kind being
 imported.</p>
@@ -43764,7 +43732,7 @@ More information on “drop scopes” used for the purpose of running destructor
 </div>
 
 <p>It is an error to introduce an item with a duplicate name of another item in the same <a href="#namespaces">namespace</a> within the same module or block.
-<a href="#use-declarations">Asterisk glob imports</a> have special behavior for dealing with duplicate names and shadowing, see the linked chapter for more details.</p>
+<a href="#use声明">Asterisk glob imports</a> have special behavior for dealing with duplicate names and shadowing, see the linked chapter for more details.</p>
 <div class="rule" id="r-names.scopes.items.shadow-prelude"><a class="rule-link" href="#r-names.scopes.items.shadow-prelude" title="names.scopes.items.shadow-prelude"><span>[names<wbr>.scopes<wbr>.items<wbr>.shadow-prelude]</span></a>
 </div>
 
@@ -44217,8 +44185,8 @@ to the compiler (as with the <code>--extern</code> flag with <code>rustc</code>)
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>In the 2015 edition, crates in the extern prelude cannot be referenced via <a href="#use-declarations">use declarations</a>, so it is generally standard practice to include <code>extern crate</code> declarations to bring them into scope.</p>
-<p>Beginning in the 2018 edition, <a href="#use-declarations">use declarations</a> can reference crates in the extern prelude, so it is considered unidiomatic to use <code>extern crate</code>.</p>
+<p>In the 2015 edition, crates in the extern prelude cannot be referenced via <a href="#use声明">use declarations</a>, so it is generally standard practice to include <code>extern crate</code> declarations to bring them into scope.</p>
+<p>Beginning in the 2018 edition, <a href="#use声明">use declarations</a> can reference crates in the extern prelude, so it is considered unidiomatic to use <code>extern crate</code>.</p>
 </blockquote>
 </div>
 
@@ -44588,7 +44556,7 @@ $crate</text>
 <div class="rule" id="r-paths.simple.intro"><a class="rule-link" href="#r-paths.simple.intro" title="paths.simple.intro"><span>[paths<wbr>.simple<wbr>.intro]</span></a>
 </div>
 
-<p>Simple paths are used in <a href="#visibility-and-privacy">visibility</a> markers, <a href="#attributes-1">attributes</a>, <a href="#macros-by-example">macros</a>, and <a href="#use-declarations"><code>use</code></a> items.
+<p>Simple paths are used in <a href="#visibility-and-privacy">visibility</a> markers, <a href="#attributes-1">attributes</a>, <a href="#macros-by-example">macros</a>, and <a href="#use声明"><code>use</code></a> items.
 For example:</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -45897,7 +45865,7 @@ the path segment the item itself defines.</p>
 <div class="rule" id="r-paths.canonical.non-canonical"><a class="rule-link" href="#r-paths.canonical.non-canonical" title="paths.canonical.non-canonical"><span>[paths<wbr>.canonical<wbr>.non-canonical]</span></a>
 </div>
 
-<p><a href="#implementations">Implementations</a> and <a href="#use-declarations">use declarations</a> do not have canonical paths, although
+<p><a href="#implementations">Implementations</a> and <a href="#use声明">use declarations</a> do not have canonical paths, although
 the items that implementations define do have them. Items defined in
 block expressions do not have canonical paths. Items defined in a module that
 does not have a canonical path do not have a canonical path. Associated items
@@ -45975,7 +45943,7 @@ mod without { // crate::without
 </div>
 
 <p><em>Name resolution</em> is the process of tying paths and other identifiers to the declarations of those entities. Names are segregated into different <a href="#namespaces">namespaces</a>, allowing entities in different namespaces to share the same name without conflict. Each name is valid within a <a href="#scopes">scope</a>, or a region of source text where that name may be referenced. Access to a name may be restricted based on its <a href="#visibility-and-privacy">visibility</a>.</p>
-<p>Name resolution is split into three stages throughout the compilation process. The first stage, <em>expansion-time resolution</em>, resolves all <a href="#use-declarations"><code>use</code> declarations</a> and <a href="#macro-invocation">macro invocations</a>. The second stage, <em>primary resolution</em>, resolves all names that have not yet been resolved and that do not depend on type information to resolve. The last stage, <em>type-relative resolution</em>, resolves the remaining names once type information is available.</p>
+<p>Name resolution is split into three stages throughout the compilation process. The first stage, <em>expansion-time resolution</em>, resolves all <a href="#use声明"><code>use</code> declarations</a> and <a href="#macro-invocation">macro invocations</a>. The second stage, <em>primary resolution</em>, resolves all names that have not yet been resolved and that do not depend on type information to resolve. The last stage, <em>type-relative resolution</em>, resolves the remaining names once type information is available.</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>

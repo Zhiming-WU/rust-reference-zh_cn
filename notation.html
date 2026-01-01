@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-b2251995.js";
+            window.path_to_searchindex_js = "searchindex-59569cd7.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -181,65 +181,59 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-notation"><a class="rule-link" href="#r-notation" title="notation"><span>[notation]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/notation.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-notation"><a class="rule-link" href="#r-notation" title="notation"><span>[notation]</span></a>
 </div>
 
-<h1 id="notation"><a class="header" href="#notation">Notation</a></h1>
+<h1 id="记法"><a class="header" href="#记法">记法</a></h1>
 <div class="rule" id="r-notation.grammar"><a class="rule-link" href="#r-notation.grammar" title="notation.grammar"><span>[notation<wbr>.grammar]</span></a>
 </div>
 
-<h2 id="grammar"><a class="header" href="#grammar">Grammar</a></h2>
+<h2 id="语法"><a class="header" href="#语法">语法</a></h2>
 <div class="rule" id="r-notation.grammar.syntax"><a class="rule-link" href="#r-notation.grammar.syntax" title="notation.grammar.syntax"><span>[notation<wbr>.grammar<wbr>.syntax]</span></a>
 </div>
 
-<p>The following notations are used by the <em>Lexer</em> and <em>Syntax</em> grammar snippets:</p>
+<p>以下记法用于<em>词法分析器</em>和<em>语法格式</em>文法片段：</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Notation</th><th>Examples</th><th>Meaning</th></tr>
+<tr><th>记法</th><th>示例</th><th>含义</th><th>译者注</th></tr>
 </thead>
 <tbody>
-<tr><td>CAPITAL</td><td>KW_IF, INTEGER_LITERAL</td><td>A token produced by the lexer</td></tr>
-<tr><td><em>ItalicCamelCase</em></td><td><em>LetStatement</em>, <em>Item</em></td><td>A syntactical production</td></tr>
-<tr><td><code>string</code></td><td><code>x</code>, <code>while</code>, <code>*</code></td><td>The exact character(s)</td></tr>
-<tr><td>x<sup>?</sup></td><td><code>pub</code><sup>?</sup></td><td>An optional item</td></tr>
-<tr><td>x<sup>*</sup></td><td><em>OuterAttribute</em><sup>*</sup></td><td>0 or more of x</td></tr>
-<tr><td>x<sup>+</sup></td><td><em>MacroMatch</em><sup>+</sup></td><td>1 or more of x</td></tr>
-<tr><td>x<sup>a..b</sup></td><td>HEX_DIGIT<sup>1..6</sup></td><td>a to b repetitions of x</td></tr>
-<tr><td>Rule1 Rule2</td><td><code>fn</code> <em>Name</em> <em>Parameters</em></td><td>Sequence of rules in order</td></tr>
-<tr><td>|</td><td><code>u8</code> | <code>u16</code>, Block | Item</td><td>Either one or another</td></tr>
-<tr><td>[ ]</td><td>[<code>b</code> <code>B</code>]</td><td>Any of the characters listed</td></tr>
-<tr><td>[ - ]</td><td>[<code>a</code>-<code>z</code>]</td><td>Any of the characters in the range</td></tr>
-<tr><td>~[ ]</td><td>~[<code>b</code> <code>B</code>]</td><td>Any characters, except those listed</td></tr>
-<tr><td>~<code>string</code></td><td>~<code>\n</code>, ~<code>*/</code></td><td>Any characters, except this sequence</td></tr>
-<tr><td>( )</td><td>(<code>,</code> <em>Parameter</em>)<sup>?</sup></td><td>Groups items</td></tr>
-<tr><td>U+xxxx</td><td>U+0060</td><td>A single unicode character</td></tr>
-<tr><td>&lt;text&gt;</td><td>&lt;any ASCII char except CR&gt;</td><td>An English description of what should be matched</td></tr>
-<tr><td>Rule <sub>suffix</sub></td><td>IDENTIFIER_OR_KEYWORD <sub><em>except <code>crate</code></em></sub></td><td>A modification to the previous rule</td></tr>
-<tr><td>// Comment.</td><td>// Single line comment.</td><td>A comment extending to the end of the line.</td></tr>
+<tr><td>CAPITAL</td><td>KW_IF, INTEGER_LITERAL</td><td>词法分析器生成的词法单元</td><td>大写</td></tr>
+<tr><td><em>ItalicCamelCase</em></td><td><em>LetStatement</em>, <em>Item</em></td><td>一个语法产生式</td><td>斜体、驼峰方式大小写(单词首字母大写)</td></tr>
+<tr><td><code>string</code></td><td><code>x</code>, <code>while</code>, <code>*</code></td><td>确切的字符(或字符串)</td><td></td></tr>
+<tr><td>x<sup>?</sup></td><td><code>pub</code><sup>?</sup></td><td>一个可选的项</td><td></td></tr>
+<tr><td>x<sup>*</sup></td><td><em>OuterAttribute</em><sup>*</sup></td><td>0个或多个x</td><td></td></tr>
+<tr><td>x<sup>+</sup></td><td><em>MacroMatch</em><sup>+</sup></td><td>1个或多个x</td><td></td></tr>
+<tr><td>x<sup>a..b</sup></td><td>HEX_DIGIT<sup>1..6</sup></td><td>a到b次重复x</td><td></td></tr>
+<tr><td>Rule1 Rule2</td><td><code>fn</code> <em>Name</em> <em>Parameters</em></td><td>规则的顺序序列</td><td></td></tr>
+<tr><td>|</td><td><code>u8</code> | <code>u16</code>, Block | Item</td><td>二者之一</td><td></td></tr>
+<tr><td>[ ]</td><td>[<code>b</code> <code>B</code>]</td><td>列出的任意字符</td><td></td></tr>
+<tr><td>[ - ]</td><td>[<code>a</code>-<code>z</code>]</td><td>范围内的任意字符</td><td></td></tr>
+<tr><td>~[ ]</td><td>~[<code>b</code> <code>B</code>]</td><td>任意字符，除了列出的</td><td></td></tr>
+<tr><td>~<code>string</code></td><td>~<code>\n</code>, ~<code>*/</code></td><td>任意字符，除了此序列</td><td></td></tr>
+<tr><td>( )</td><td>(<code>,</code> <em>Parameter</em>)<sup>?</sup></td><td>分组项</td><td></td></tr>
+<tr><td>U+xxxx</td><td>U+0060</td><td>一个Unicode字符</td><td></td></tr>
+<tr><td>&lt;text&gt;</td><td>&lt;any ASCII char except CR&gt;</td><td>一个匹配内容的英文描述</td><td></td></tr>
+<tr><td>Rule <sub>suffix</sub></td><td>IDENTIFIER_OR_KEYWORD <sub><em>except <code>crate</code></em></sub></td><td>对前一个规则的修改</td><td></td></tr>
+<tr><td>// Comment.</td><td>// Single line comment.</td><td>延伸到行尾的注释。</td><td></td></tr>
 </tbody>
 </table>
 </div>
-<p>Sequences have a higher precedence than <code>|</code> alternation.</p>
+<p>序列的优先级高于<code>|</code>选项。</p>
 <div class="rule" id="r-notation.grammar.string-tables"><a class="rule-link" href="#r-notation.grammar.string-tables" title="notation.grammar.string-tables"><span>[notation<wbr>.grammar<wbr>.string-tables]</span></a>
 </div>
 
-<h3 id="string-table-productions"><a class="header" href="#string-table-productions">String table productions</a></h3>
-<p>Some rules in the grammar — notably <a href="expressions/operator-expr.html#borrow-operators">unary operators</a>, <a href="expressions/operator-expr.html#arithmetic-and-logical-binary-operators">binary
-operators</a>, and <a href="keywords.html">keywords</a> — are given in a simplified form: as a listing
-of printable strings. These cases form a subset of the rules regarding the
-<a href="tokens.html">token</a> rule, and are assumed to be the result of a lexical-analysis
-phase feeding the parser, driven by a <abbr title="Deterministic Finite
-Automaton">DFA</abbr>, operating over the disjunction of all such string table
-entries.</p>
-<p>When such a string in <code>monospace</code> font occurs inside the grammar,
-it is an implicit reference to a single member of such a string table
-production. See <a href="tokens.html">tokens</a> for more information.</p>
+<h3 id="字符串表产生式"><a class="header" href="#字符串表产生式">字符串表产生式</a></h3>
+<p>语法中的某些规则 —— 特别是<a href="expressions/operator-expr.html#borrow-operators">一元运算符</a>、<a href="expressions/operator-expr.html#arithmetic-and-logical-binary-operators">二元运算符</a>和<a href="keywords.html">关键字</a> —— 以简化形式给出：作为可打印字符串的列表。这些情况构成了关于<a href="tokens.html">词法单元</a>规则的一个子集，并被认为是词法分析阶段的结果，该阶段由一个<abbr title="确定性有限自动机">DFA</abbr>驱动，作用于所有此类字符串表条目的析取，从而为解析器提供输入。</p>
+<p>当语法中出现<code>等宽字体</code>的字符串时，它隐式引用了此类字符串表产生式的一个成员。有关更多信息，请参阅<a href="tokens.html">词法单元</a>。</p>
 <div class="rule" id="r-notation.grammar.visualizations"><a class="rule-link" href="#r-notation.grammar.visualizations" title="notation.grammar.visualizations"><span>[notation<wbr>.grammar<wbr>.visualizations]</span></a>
 </div>
 
-<h3 id="grammar-visualizations"><a class="header" href="#grammar-visualizations">Grammar visualizations</a></h3>
-<p>Below each grammar block is a button to toggle the display of a <a href="https://en.wikipedia.org/wiki/Syntax_diagram">syntax diagram</a>. A square element is a non-terminal rule, and a rounded rectangle is a terminal.</p>
+<h3 id="语法可视化"><a class="header" href="#语法可视化">语法可视化</a></h3>
+<p>在每个语法块下方都有一个按钮，用于切换<a href="https://en.wikipedia.org/wiki/Syntax_diagram">语法格式图</a>的显示。一个方形元素是一个非终结规则，一个圆角矩形是一个终结符。</p>
 
                     </main>
 
