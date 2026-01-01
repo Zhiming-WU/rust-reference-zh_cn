@@ -315,11 +315,11 @@ example of an uninhabited type is the [never type] `!`, or an enum with no varia
 [inherent implementation]: items/implementations.md#inherent-implementations
 [item]: items.md
 [items]: items.md
-[labels]: tokens.md#lifetimes-and-loop-labels
-[lifetime or loop label]: tokens.md#lifetimes-and-loop-labels
-[lifetimes]: tokens.md#lifetimes-and-loop-labels
+[labels]: tokens.md#生命周期和循环标签
+[lifetime or loop label]: tokens.md#生命周期和循环标签
+[lifetimes]: tokens.md#生命周期和循环标签
 [lints]: attributes/diagnostics.md#lint-check-attributes
-[loop labels]: tokens.md#lifetimes-and-loop-labels
+[loop labels]: tokens.md#生命周期和循环标签
 [method]: items/associated-items.md#methods
 [modules]: items/modules.md
 [*Name resolution*]: names/name-resolution.md

@@ -1,5 +1,8 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/comments.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[comments]
-# Comments
+# 注释
 
 r[comments.syntax]
 ```grammar,lexer
@@ -37,65 +40,65 @@ OUTER_BLOCK_DOC ->
 ```
 
 r[comments.normal]
-## Non-doc comments
+## 非文档注释
 
-Comments follow the general C++ style of line (`//`) and block (`/* ... */`) comment forms. Nested block comments are supported.
+注释遵循C++风格的单行注释（`//`）和块注释（`/* ... */`）形式。支持嵌套的块注释。
 
 r[comments.normal.tokenization]
-Non-doc comments are interpreted as a form of whitespace.
+非文档注释被解释为一种空白字符。
 
 r[comments.doc]
-## Doc comments
+## 文档注释
 
 r[comments.doc.syntax]
-Line doc comments beginning with exactly _three_ slashes (`///`), and block doc comments (`/** ... */`), both outer doc comments, are interpreted as a special syntax for [`doc` attributes].
+以恰好_三_个斜杠（`///`）开头的行文档注释，以及块文档注释（`/** ... */`），这两种都是外部文档注释，被解释为[`doc`属性][`doc` attributes]的一种特殊语法格式。
 
 r[comments.doc.attributes]
-That is, they are equivalent to writing `#[doc="..."]` around the body of the comment, i.e., `/// Foo` turns into `#[doc="Foo"]` and `/** Bar */` turns into `#[doc="Bar"]`. They must therefore appear before something that accepts an outer attribute.
+也就是说，它们等价于在注释主体周围编写`#[doc="..."]`，例如，`/// Foo` 变为`#[doc="Foo"]`，`/** Bar */` 变为`#[doc="Bar"]`。因此，它们必须出现在接受外部属性的项之前。
 
 r[comments.doc.inner-syntax]
-Line comments beginning with `//!` and block comments `/*! ... */` are doc comments that apply to the parent of the comment, rather than the item that follows.
+以`//!`开头的行注释和`/*! ... */`块注释是文档注释，它们应用于注释的父级，而不是紧随其后的项。
 
 r[comments.doc.inner-attributes]
-That is, they are equivalent to writing `#![doc="..."]` around the body of the comment. `//!` comments are usually used to document modules that occupy a source file.
+也就是说，它们等价于在注释主体周围编写`#![doc="..."]`。`//!`注释通常用于文档化占据一个源文件的模块。
 
 r[comments.doc.bare-crs]
-The character `U+000D` (CR) is not allowed in doc comments.
+字符`U+000D`(CR)不允许出现在文档注释中。
 
 > [!NOTE]
-> It is conventional for doc comments to contain Markdown, as expected by `rustdoc`. However, the comment syntax does not respect any internal Markdown. ``/** `glob = "*/*.rs";` */`` terminates the comment at the first `*/`, and the remaining code would cause a syntax error. This slightly limits the content of block doc comments compared to line doc comments.
+> 按照惯例，文档注释包含Markdown，这是`rustdoc`所期望的。然而，注释语法格式不识别任何内部Markdown。`/** \`glob = "*/*.rs";\` */` 会在第一个`*/`处终止注释，其余代码将导致语法格式错误。与行文档注释相比，这稍微限制了块文档注释的内容。
 
 > [!NOTE]
-> The sequence `U+000D` (CR) immediately followed by `U+000A` (LF) would have been previously transformed into a single `U+000A` (LF).
+> 序列`U+000D`(CR)紧跟`U+000A`(LF)在之前会被转换为单个`U+000A`(LF)。
 
-## Examples
+## 示例
 
 ```rust
-//! A doc comment that applies to the implicit anonymous module of this crate
+//! 适用于此crate的隐式匿名模块的文档注释
 
 pub mod outer_module {
 
-    //!  - Inner line doc
-    //!! - Still an inner line doc (but with a bang at the beginning)
+    //!  - 内部行级文档注释
+    //!! - 仍然是内部行级文档注释（但开头带感叹号）
 
-    /*!  - Inner block doc */
-    /*!! - Still an inner block doc (but with a bang at the beginning) */
+    /*!  - 内部块级文档注释 */
+    /*!! - 仍然是内部块级文档注释（但开头带感叹号） */
 
-    //   - Only a comment
-    ///  - Outer line doc (exactly 3 slashes)
-    //// - Only a comment
+    //   - 仅是普通注释
+    ///  - 外部行级文档注释（恰好三个斜杠）
+    //// - 仅是普通注释
 
-    /*   - Only a comment */
-    /**  - Outer block doc (exactly) 2 asterisks */
-    /*** - Only a comment */
+    /*   - 仅是普通注释 */
+    /**  - 外部块级文档注释（恰好两个星号） */
+    /*** - 仅是普通注释 */
 
     pub mod inner_module {}
 
     pub mod nested_comments {
-        /* In Rust /* we can /* nest comments */ */ */
+        /* 在 Rust 中 /* 我们可以 /* 嵌套注释 */ */ */
 
-        // All three types of block comments can contain or be nested inside
-        // any other type:
+        // 所有三种块级注释都可以包含或嵌套在
+        // 任何其他类型的注释中：
 
         /*   /* */  /** */  /*! */  */
         /*!  /* */  /** */  /*! */  */
@@ -104,34 +107,34 @@ pub mod outer_module {
     }
 
     pub mod degenerate_cases {
-        // empty inner line doc
+        // 空的内部行级文档注释
         //!
 
-        // empty inner block doc
+        // 空的内部块级文档注释
         /*!*/
 
-        // empty line comment
+        // 空的行级注释
         //
 
-        // empty outer line doc
+        // 空的外部行级文档注释
         ///
 
-        // empty block comment
+        // 空的块级注释
         /**/
 
         pub mod dummy_item {}
 
-        // empty 2-asterisk block isn't a doc block, it is a block comment
+        // 空的两个星号的块注释不是文档块，它是普通的块注释
         /***/
 
     }
 
-    /* The next one isn't allowed because outer doc comments
-       require an item that will receive the doc */
+    /* 下一个是不允许的，因为外部文档注释
+       需要一个接收文档的条目 */
 
-    /// Where is my item?
+    /// 我的条目在哪里？
 #   mod boo {}
 }
 ```
 
-[`doc` attributes]: ../rustdoc/the-doc-attribute.html
+[`doc` attributes]: https://doc.rust-lang.org/rustdoc/the-doc-attribute.html

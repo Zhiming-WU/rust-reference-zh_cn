@@ -121,7 +121,7 @@ Macros invocations can be resolved via two kinds of scopes:
 [Procedural Macros]: procedural-macros.md
 [`macro_rules`]: macros-by-example.md
 [associated items]: items/associated-items.md
-[delimiters]: tokens.md#delimiters
+[delimiters]: tokens.md#分隔符
 [expressions]: expressions.md
 [items]: items.md
 [patterns]: patterns.md

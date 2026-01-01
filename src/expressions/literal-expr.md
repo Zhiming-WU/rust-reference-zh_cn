@@ -515,10 +515,10 @@ The expression's type is the primitive [boolean type], and its value is:
 [CStr]: core::ffi::CStr
 [floating-point types]: ../types/numeric.md#floating-point-types
 [lint check]: ../attributes/diagnostics.md#lint-check-attributes
-[literal tokens]: ../tokens.md#literals
+[literal tokens]: ../tokens.md#字面量
 [numeric cast]: operator-expr.md#numeric-cast
 [numeric types]: ../types/numeric.md
-[suffix]: ../tokens.md#suffixes
+[suffix]: ../tokens.md#后缀
 [negation operator]: operator-expr.md#negation-operators
 [overflow]: operator-expr.md#overflow
 [textual types]: ../types/textual.md

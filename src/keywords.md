@@ -1,29 +1,32 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/keywords.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[lex.keywords]
-# Keywords
+# 关键字
 
-Rust divides keywords into three categories:
+Rust 将关键字分为三类：
 
-* [strict](#strict-keywords)
-* [reserved](#reserved-keywords)
-* [weak](#weak-keywords)
+* [严格关键字](#严格关键字)
+* [保留关键字](#保留关键字)
+* [弱关键字](#弱关键字)
 
 r[lex.keywords.strict]
-## Strict keywords
+## 严格关键字
 
 r[lex.keywords.strict.intro]
-These keywords can only be used in their correct contexts. They cannot be used as the names of:
+这些关键字只能在其正确的上下文中使用。它们不能用作以下内容的名称：
 
-* [Items]
-* [Variables] and function parameters
-* Fields and [variants]
-* [Type parameters]
-* Lifetime parameters or [loop labels]
-* [Macros] or [attributes]
-* [Macro placeholders]
-* [Crates]
+* [项][Items]
+* [变量][Variables]和函数参数
+* 字段和[变体][variants]
+* [类型参数][Type parameters]
+* 生命周期参数或[循环标签][loop labels]
+* [宏][Macros]或[属性][attributes]
+* [宏占位符][Macro placeholders]
+* [crate][Crates]
 
 r[lex.keywords.strict.list]
-The following keywords are in all editions:
+以下关键字在所有版次中都存在：
 
 - `_`
 - `as`
@@ -67,17 +70,17 @@ The following keywords are in all editions:
 
 r[lex.keywords.strict.edition2018]
 > [!EDITION-2018]
-> The following keywords were added in the 2018 edition:
+> 以下关键字在 2018 版次中添加：
 >
 > - `async`
 > - `await`
 > - `dyn`
 
 r[lex.keywords.reserved]
-## Reserved keywords
+## 保留关键字
 
 r[lex.keywords.reserved.intro]
-These keywords aren't used yet, but they are reserved for future use. They have the same restrictions as strict keywords. The reasoning behind this is to make current programs forward compatible with future versions of Rust by forbidding them to use these keywords.
+这些关键字尚未投入使用，但已为将来保留。它们与严格关键字具有相同的限制。这样做的理由是通过禁止当前程序使用这些关键字，使其与 Rust 的未来版本向前兼容。
 
 r[lex.keywords.reserved.list]
 - `abstract`
@@ -97,17 +100,17 @@ r[lex.keywords.reserved.list]
 
 r[lex.keywords.reserved.edition2018]
 > [!EDITION-2018]
-> The `try` keyword was added as a reserved keyword in the 2018 edition.
+> `try`关键字在 2018 版次中作为保留关键字添加。
 
 r[lex.keywords.reserved.edition2024]
 > [!EDITION-2024]
-> The `gen` keyword was added as a reserved keyword in the 2024 edition.
+> `gen`关键字在 2024 版次中作为保留关键字添加。
 
 r[lex.keywords.weak]
-## Weak keywords
+## 弱关键字
 
 r[lex.keywords.weak.intro]
-These keywords have special meaning only in certain contexts. For example, it is possible to declare a variable or method with the name `union`.
+这些关键字仅在特定上下文中有特殊含义。例如，可以使用`union`这个名字声明一个变量或方法。
 
 - `'static`
 - `macro_rules`
@@ -116,13 +119,13 @@ These keywords have special meaning only in certain contexts. For example, it is
 - `union`
 
 r[lex.keywords.weak.macro_rules]
-* `macro_rules` is used to create custom [macros].
+* `macro_rules`用于创建自定义[宏][macros]。
 
 r[lex.keywords.weak.union]
-* `union` is used to declare a [union] and is only a keyword when used in a union declaration.
+* `union`用于声明一个[联合体][union]，并且仅在联合体声明中使用时才作为关键字。
 
 r[lex.keywords.weak.lifetime-static]
-* `'static` is used for the static lifetime and cannot be used as a [generic lifetime parameter] or [loop label]
+* `'static`用于静态生命周期，不能用作[泛型生命周期参数][generic lifetime parameter]或[循环标签][loop label]
 
   ```compile_fail
   // error[E0262]: invalid lifetime parameter name: `'static`
@@ -130,16 +133,16 @@ r[lex.keywords.weak.lifetime-static]
   ```
 
 r[lex.keywords.weak.safe]
-* `safe` is used for functions and statics, which has meaning in [external blocks].
+* `safe`用于函数和静态量，在[外部块][external blocks]中有特殊含义。
 
 r[lex.keywords.weak.raw]
-* `raw` is used for [raw borrow operators], and is only a keyword when matching a raw borrow operator form (such as `&raw const expr` or `&raw mut expr`).
+* `raw`用于[原始借用运算符][raw borrow operators]，并且仅在匹配原始借用运算符形式（例如`&raw const expr`或`&raw mut expr`）时才作为关键字。
 
 r[lex.keywords.weak.dyn.edition2018]
 > [!EDITION-2018]
-> In the 2015 edition, [`dyn`] is a keyword when used in a type position followed by a path that does not start with `::` or `<`, a lifetime, a question mark, a `for` keyword or an opening parenthesis.
+> 在 2015 版次中，[`dyn`]在类型位置后跟不以`::`或`<`开头的路径、生命周期、问号、`for`关键字或左括号时是一个关键字。
 >
-> Beginning in the 2018 edition, `dyn` has been promoted to a strict keyword.
+> 从 2018 版次开始，`dyn`已被提升为严格关键字。
 
 [items]: items.md
 [Variables]: variables.md

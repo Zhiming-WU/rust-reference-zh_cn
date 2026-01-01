@@ -31,7 +31,7 @@ This document serves as a guide for editors and reviewers. Some conventions and 
 There are automated checks for some of these rules. Run `cargo xtask style-check` to run them locally.
 
 [atx]: https://spec.commonmark.org/0.31.2/#atx-headings
-[conventions]: ../src/introduction.md#conventions
+[conventions]: ../src/introduction.md#约定
 [sentence case]: https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case
 [smart punctuation]: https://rust-lang.github.io/mdBook/format/markdown.html#smart-punctuation
 

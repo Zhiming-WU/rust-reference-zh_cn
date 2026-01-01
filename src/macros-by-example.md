@@ -821,9 +821,9 @@ For more detail, see the [formal specification].
 [`extern crate self`]: items.extern-crate.self
 [`macro_use` prelude]: names/preludes.md#macro_use-prelude
 [block labels]: expr.loop.block-labels
-[delimiters]: tokens.md#delimiters
+[delimiters]: tokens.md#分隔符
 [formal specification]: macro-ambiguity.md
 [loop labels]: expressions/loop-expr.md#loop-labels
 [name resolution ambiguities]: names/name-resolution.md#r-names.resolution.expansion.imports.ambiguity
 [token]: tokens.md
-[use declaration re-export]: items/use-declarations.md#use-visibility
+[use declaration re-export]: items/use-declarations.md#use可见性

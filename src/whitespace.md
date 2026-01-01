@@ -1,35 +1,38 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/whitespace.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[lex.whitespace]
-# Whitespace
+# 空白字符
 
 r[whitespace.syntax]
 ```grammar,lexer
 @root WHITESPACE ->
-      U+0009 // Horizontal tab, `'\t'`
-    | U+000A // Line feed, `'\n'`
-    | U+000B // Vertical tab
-    | U+000C // Form feed
-    | U+000D // Carriage return, `'\r'`
-    | U+0020 // Space, `' '`
-    | U+0085 // Next line
-    | U+200E // Left-to-right mark
-    | U+200F // Right-to-left mark
-    | U+2028 // Line separator
-    | U+2029 // Paragraph separator
+      U+0009 // 水平制表符，`'\t'`
+    | U+000A // 换行符，`'\n'`
+    | U+000B // 垂直制表符
+    | U+000C // 换页符
+    | U+000D // 回车符，`'\r'`
+    | U+0020 // 空格，`' '`
+    | U+0085 // 下一行
+    | U+200E // 从左到右标记
+    | U+200F // 从右到左标记
+    | U+2028 // 行分隔符
+    | U+2029 // 段落分隔符
 
-TAB -> U+0009 // Horizontal tab, `'\t'`
+TAB -> U+0009 // 水平制表符，`'\t'`
 
-LF -> U+000A  // Line feed, `'\n'`
+LF -> U+000A  // 换行符，`'\n'`
 
-CR -> U+000D  // Carriage return, `'\r'`
+CR -> U+000D  // 回车符，`'\r'`
 ```
 
 r[lex.whitespace.intro]
-Whitespace is any non-empty string containing only characters that have the [`Pattern_White_Space`] Unicode property.
+空白字符是指任何非空字符串，它只包含具有[`Pattern_White_Space`] Unicode属性的字符。
 
 r[lex.whitespace.token-sep]
-Rust is a "free-form" language, meaning that all forms of whitespace serve only to separate _tokens_ in the grammar, and have no semantic significance.
+Rust是一种自由格式语言，这意味着所有形式的空白字符仅用于在语法格式中分隔_词法单元_，并且没有语义上的意义。
 
 r[lex.whitespace.replacement]
-A Rust program has identical meaning if each whitespace element is replaced with any other legal whitespace element, such as a single space character.
+如果Rust程序中的每个空白字符元素被任何其他合法的空白字符元素（例如一个空格字符）替换，其含义保持不变。
 
 [`Pattern_White_Space`]: https://www.unicode.org/reports/tr31/

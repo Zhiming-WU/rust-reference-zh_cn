@@ -127,7 +127,7 @@ The array index expression can be implemented for types other than arrays and sl
 [constant expression]: ../const_eval.md#constant-expressions
 [constant item]: ../items/constant-items.md
 [inferred const]: items.generics.const.inferred
-[literal]: ../tokens.md#literals
+[literal]: ../tokens.md#字面量
 [memory location]: ../expressions.md#place-expressions-and-value-expressions
 [panic]: ../panic.md
 [path]: path-expr.md

@@ -126,7 +126,7 @@ fn unused_generic_function<T>() {
 [free]: ../glossary.md#free-item
 [static lifetime elision]: ../lifetime-elision.md#const-and-static-elision
 [trait definition]: traits.md
-[underscore imports]: use-declarations.md#underscore-imports
+[underscore imports]: use-declarations.md#下划线导入
 [`Copy`]: ../special-types-and-traits.md#copy
 [value namespace]: ../names/namespaces.md
 [promotion]: destructors.scope.const-promotion

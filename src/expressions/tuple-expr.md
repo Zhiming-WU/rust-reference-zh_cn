@@ -90,7 +90,7 @@ assert_eq!(point.1, 0.0);
 
 [array or slice indexing expression]: array-expr.md#array-and-slice-indexing-expressions
 [call expression]: ./call-expr.md
-[decimal literal]: ../tokens.md#integer-literals
+[decimal literal]: ../tokens.md#整数字面量
 [field access expressions]: ./field-expr.html#field-access-expressions
 [operands]: ../expressions.md
 [parenthetical expression]: grouped-expr.md

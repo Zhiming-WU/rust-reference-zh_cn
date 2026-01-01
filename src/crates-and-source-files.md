@@ -169,6 +169,6 @@ or `_` (U+005F) characters.
 [module]: items/modules.md
 [module path]: paths.md
 [panic-docs]: panic.md#unwinding-across-ffi-boundaries
-[shebang]: input-format.md#shebang-removal
+[shebang]: input-format.md#shebang移除
 [trait or lifetime bounds]: trait-bounds.md
 [where clauses]: items/generics.md#where-clauses

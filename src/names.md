@@ -126,7 +126,7 @@ to with certain [path qualifiers] or aliases.
 [*paths*]: paths.md
 [*scope*]: names/scopes.md
 [*visibility*]: visibility-and-privacy.md
-[`'static`]: keywords.md#weak-keywords
+[`'static`]: keywords.md#弱关键字
 [`for`]: expressions/loop-expr.md#iterator-loops
 [`if let`]: expressions/if-expr.md#if-let-patterns
 [`let` statement]: statements.md#let-statements
@@ -157,8 +157,8 @@ to with certain [path qualifiers] or aliases.
 [Integer types]: types/numeric.md#integer-types
 [Items]: items.md
 [Language prelude]: names/preludes.md#language-prelude
-[lifetimes-and-loop-labels]: tokens.md#lifetimes-and-loop-labels
-[lifetimes]: tokens.md#lifetimes-and-loop-labels
+[lifetimes-and-loop-labels]: tokens.md#生命周期和循环标签
+[lifetimes]: tokens.md#生命周期和循环标签
 [Lints]: attributes/diagnostics.md#lint-check-attributes
 [Loop labels]: expressions/loop-expr.md#loop-labels
 [Machine-dependent integer types]: types/numeric.md#machine-dependent-integer-types
