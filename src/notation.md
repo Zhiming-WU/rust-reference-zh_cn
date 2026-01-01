@@ -1,55 +1,50 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/notation.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[notation]
-# Notation
+# 记法
 
 r[notation.grammar]
-## Grammar
+## 语法
 
 r[notation.grammar.syntax]
 
-The following notations are used by the *Lexer* and *Syntax* grammar snippets:
+以下记法用于*词法分析器*和*语法格式*文法片段：
 
-| Notation          | Examples                      | Meaning                                   |
-|-------------------|-------------------------------|-------------------------------------------|
-| CAPITAL           | KW_IF, INTEGER_LITERAL        | A token produced by the lexer             |
-| _ItalicCamelCase_ | _LetStatement_, _Item_        | A syntactical production                  |
-| `string`          | `x`, `while`, `*`             | The exact character(s)                    |
-| x<sup>?</sup>     | `pub`<sup>?</sup>             | An optional item                          |
-| x<sup>\*</sup>    | _OuterAttribute_<sup>\*</sup> | 0 or more of x                            |
-| x<sup>+</sup>     |  _MacroMatch_<sup>+</sup>     | 1 or more of x                            |
-| x<sup>a..b</sup>  | HEX_DIGIT<sup>1..6</sup>      | a to b repetitions of x                   |
-| Rule1 Rule2       | `fn` _Name_ _Parameters_      | Sequence of rules in order                |
-| \|                | `u8` \| `u16`, Block \| Item  | Either one or another                     |
-| \[ ]               | \[`b` `B`]                     | Any of the characters listed              |
-| \[ - ]             | \[`a`-`z`]                     | Any of the characters in the range        |
-| ~\[ ]              | ~\[`b` `B`]                    | Any characters, except those listed       |
-| ~`string`         | ~`\n`, ~`*/`                  | Any characters, except this sequence      |
-| ( )               | (`,` _Parameter_)<sup>?</sup> | Groups items                              |
-| U+xxxx            | U+0060                        | A single unicode character                |
-| \<text\>          | \<any ASCII char except CR\>  | An English description of what should be matched |
-| Rule <sub>suffix</sub> | IDENTIFIER_OR_KEYWORD <sub>_except `crate`_</sub> | A modification to the previous rule |
-| // Comment. | // Single line comment. | A comment extending to the end of the line. |
+| 记法          | 示例                      | 含义                                   | 译者注 |
+|-------------------|-------------------------------|-------------------------------------------|----|
+| CAPITAL           | KW_IF, INTEGER_LITERAL        | 词法分析器生成的词法单元             | 大写 |
+| _ItalicCamelCase_ | _LetStatement_, _Item_        | 一个语法产生式                  | 斜体、驼峰方式大小写(单词首字母大写) |
+| `string`          | `x`, `while`, `*`             | 确切的字符(或字符串)                  | |
+| x<sup>?</sup>     | `pub`<sup>?</sup>             | 一个可选的项                          | |
+| x<sup>\*</sup>    | _OuterAttribute_<sup>\*</sup> | 0个或多个x                            | |
+| x<sup>+</sup>     |  _MacroMatch_<sup>+</sup>     | 1个或多个x                            | |
+| x<sup>a..b</sup>  | HEX_DIGIT<sup>1..6</sup>      | a到b次重复x                   | |
+| Rule1 Rule2       | `fn` _Name_ _Parameters_      | 规则的顺序序列                | |
+| \|                | `u8` \| `u16`, Block \| Item  | 二者之一                     | |
+| \[ ]               | \[`b` `B`]                     | 列出的任意字符               | |
+| \[ - ]             | \[`a`-`z`]                     | 范围内的任意字符             | |
+| ~\[ ]              | ~\[`b` `B`]                    | 任意字符，除了列出的       | |
+| ~`string`         | ~`\n`, ~`*/`                  | 任意字符，除了此序列      | |
+| ( )               | (`,` _Parameter_)<sup>?</sup> | 分组项                             | |
+| U+xxxx            | U+0060                        | 一个Unicode字符                | |
+| \<text\>          | \<any ASCII char except CR\>  | 一个匹配内容的英文描述 | |
+| Rule <sub>suffix</sub> | IDENTIFIER_OR_KEYWORD <sub>_except `crate`_</sub> | 对前一个规则的修改 | |
+| // Comment. | // Single line comment. | 延伸到行尾的注释。 | |
 
-Sequences have a higher precedence than `|` alternation.
+序列的优先级高于`|`选项。
 
 r[notation.grammar.string-tables]
-### String table productions
+### 字符串表产生式
 
-Some rules in the grammar &mdash; notably [unary operators], [binary
-operators], and [keywords] &mdash; are given in a simplified form: as a listing
-of printable strings. These cases form a subset of the rules regarding the
-[token][tokens] rule, and are assumed to be the result of a lexical-analysis
-phase feeding the parser, driven by a <abbr title="Deterministic Finite
-Automaton">DFA</abbr>, operating over the disjunction of all such string table
-entries.
+语法中的某些规则 —— 特别是[一元运算符][unary operators]、[二元运算符][binary operators]和[关键字][keywords] —— 以简化形式给出：作为可打印字符串的列表。这些情况构成了关于[词法单元][tokens]规则的一个子集，并被认为是词法分析阶段的结果，该阶段由一个<abbr title="确定性有限自动机">DFA</abbr>驱动，作用于所有此类字符串表条目的析取，从而为解析器提供输入。
 
-When such a string in `monospace` font occurs inside the grammar,
-it is an implicit reference to a single member of such a string table
-production. See [tokens] for more information.
+当语法中出现`等宽字体`的字符串时，它隐式引用了此类字符串表产生式的一个成员。有关更多信息，请参阅[词法单元][tokens]。
 
 r[notation.grammar.visualizations]
-### Grammar visualizations
+### 语法可视化
 
-Below each grammar block is a button to toggle the display of a [syntax diagram]. A square element is a non-terminal rule, and a rounded rectangle is a terminal.
+在每个语法块下方都有一个按钮，用于切换[语法格式图][syntax diagram]的显示。一个方形元素是一个非终结规则，一个圆角矩形是一个终结符。
 
 [binary operators]: expressions/operator-expr.md#arithmetic-and-logical-binary-operators
 [keywords]: keywords.md
