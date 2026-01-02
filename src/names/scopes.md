@@ -343,9 +343,9 @@ impl ImplExample {
 [`if let`]: ../expressions/if-expr.md#if-let-patterns
 [`while let`]: ../expressions/loop-expr.md#while-let-patterns
 [`let` statement]: ../statements.md#let-statements
-[`macro_export`]: ../macros-by-example.md#the-macro_export-attribute
+[`macro_export`]: ../macros-by-example.md#macro_export属性
 [`macro_use` prelude]: preludes.md#macro_use-prelude
-[`macro_use`]: ../macros-by-example.md#the-macro_use-attribute
+[`macro_use`]: ../macros-by-example.md#macro_use属性
 [`match` arms]: ../expressions/match-expr.md
 [`Self`]: ../paths.md#self-1
 [Associated consts]: ../items/associated-items.md#associated-constants
@@ -360,7 +360,7 @@ impl ImplExample {
 [Const generic parameters]: ../items/generics.md#const-generics
 [Const items]: ../items/constant-items.md
 [Constant]: ../items/constant-items.md
-[Derive macro helper attributes]: ../procedural-macros.md#derive-macro-helper-attributes
+[Derive macro helper attributes]: ../procedural-macros.md#派生宏辅助属性
 [destructors]: ../destructors.md
 [entity]: ../names.md
 [enum]: ../items/enumerations.mdr

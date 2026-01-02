@@ -198,7 +198,7 @@ r[names.preludes.no_implicit_prelude.edition2018]
 > In the 2015 edition, the `no_implicit_prelude` attribute does not affect the [`macro_use` prelude], and all macros exported from the standard library are still included in the `macro_use` prelude. Starting in the 2018 edition, the attribute does remove the `macro_use` prelude.
 
 [`extern crate`]: ../items/extern-crates.md
-[`macro_use` attribute]: ../macros-by-example.md#the-macro_use-attribute
+[`macro_use` attribute]: ../macros-by-example.md#macro_use属性
 [`macro_use` prelude]: #macro_use-prelude
 [`no_std` attribute]: #the-no_std-attribute
 [attribute]: ../attributes.md

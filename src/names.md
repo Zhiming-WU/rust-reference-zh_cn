@@ -130,9 +130,9 @@ to with certain [path qualifiers] or aliases.
 [`for`]: expressions/loop-expr.md#iterator-loops
 [`if let`]: expressions/if-expr.md#if-let-patterns
 [`let` statement]: statements.md#let-statements
-[`macro_export` attribute]: macros-by-example.md#the-macro_export-attribute
+[`macro_export` attribute]: macros-by-example.md#macro_export属性
 [`macro_rules` declarations]: macros-by-example.md
-[`macro_use` attribute]: macros-by-example.md#the-macro_use-attribute
+[`macro_use` attribute]: macros-by-example.md#macro_use属性
 [`match`]: expressions/match-expr.md
 [`while let`]: expressions/loop-expr.md#while-let-patterns
 [associated items]: items/associated-items.md
@@ -141,7 +141,7 @@ to with certain [path qualifiers] or aliases.
 [Built-in attributes]: attributes.md#built-in-attributes-index
 [Closure]: expressions/closure-expr.md
 [Constant item declarations]: items/constant-items.md
-[Derive helper attributes]: procedural-macros.md#derive-macro-helper-attributes
+[Derive helper attributes]: procedural-macros.md#派生宏辅助属性
 [enum]: items/enumerations.md
 [Expressions]: expressions.md
 [extern-prelude]: names/preludes.md#extern-prelude
@@ -162,8 +162,8 @@ to with certain [path qualifiers] or aliases.
 [Lints]: attributes/diagnostics.md#lint-check-attributes
 [Loop labels]: expressions/loop-expr.md#loop-labels
 [Machine-dependent integer types]: types/numeric.md#machine-dependent-integer-types
-[macro invocations]: macros.md#macro-invocation
-[matcher metavariables]: macros-by-example.md#metavariables
+[macro invocations]: macros.md#宏调用
+[matcher metavariables]: macros-by-example.md#元变量
 [Module declarations]: items/modules.md
 [path]: paths.md
 [path qualifiers]: paths.md#path-qualifiers

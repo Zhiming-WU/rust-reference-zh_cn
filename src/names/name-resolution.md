@@ -546,7 +546,7 @@ r[names.resolution.type-relative]
 [`use` glob shadowing]: ../items/use-declarations.md#r-items.use.glob.shadowing
 [derive helper scope]: ../procedural-macros.md#r-macro.proc.derive.attributes.scope
 [item definitions]: ../items.md
-[macro invocations]: ../macros.md#macro-invocation
+[macro invocations]: ../macros.md#宏调用
 [macro textual scope shadowing]: ../macros-by-example.md#r-macro.decl.scope.textual.shadow
 [name resolution ambiguities]: #r-names.resolution.expansion.imports.ambiguity
 [namespaces]: ../names/namespaces.md

@@ -109,7 +109,7 @@ Only the first use of `no_link` on an `extern crate` declaration has effect.
 
 [identifier]: ../identifiers.md
 [RFC 940]: https://github.com/rust-lang/rfcs/blob/master/text/0940-hyphens-considered-harmful.md
-[`macro_use` attribute]: ../macros-by-example.md#the-macro_use-attribute
+[`macro_use` attribute]: ../macros-by-example.md#macro_use属性
 [extern prelude]: ../names/preludes.md#extern-prelude
 [`macro_use` prelude]: ../names/preludes.md#macro_use-prelude
 [`crate_name` attributes]: ../crates-and-source-files.md#the-crate_name-attribute

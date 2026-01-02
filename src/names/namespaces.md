@@ -144,7 +144,7 @@ For example, the [`cfg` attribute] and the [`cfg` macro] are two different entit
 [Associated const declarations]: ../items/associated-items.md#associated-constants
 [Associated function declarations]: ../items/associated-items.md#associated-functions-and-methods
 [Associated type declarations]: ../items/associated-items.md#associated-types
-[Attribute macros]: ../procedural-macros.md#the-proc_macro_attribute-attribute
+[Attribute macros]: ../procedural-macros.md#proc_macro_attribute属性
 [attributes]: ../attributes.md
 [bang-style macros]: ../macros.md
 [Block labels]: expr.loop.block-labels
@@ -153,7 +153,7 @@ For example, the [`cfg` attribute] and the [`cfg` macro] are two different entit
 [closure parameters]: ../expressions/closure-expr.md
 [closure]: ../expressions/closure-expr.md
 [Constant item declarations]: ../items/constant-items.md
-[Derive macro helpers]: ../procedural-macros.md#derive-macro-helper-attributes
+[Derive macro helpers]: ../procedural-macros.md#派生宏辅助属性
 [Derive macros]: macro.proc.derive
 [entity]: ../glossary.md#entity
 [Enum variant constructors]: ../items/enumerations.md
@@ -163,7 +163,7 @@ For example, the [`cfg` attribute] and the [`cfg` macro] are two different entit
 [field expression]: ../expressions/field-expr.md
 [Function declarations]: ../items/functions.md
 [function parameters]: ../items/functions.md#function-parameters
-[Function-like procedural macros]: ../procedural-macros.md#the-proc_macro-attribute
+[Function-like procedural macros]: ../procedural-macros.md#proc_macro属性
 [Generic const parameters]: ../items/generics.md#const-generics
 [Generic lifetime parameters]: ../items/generics.md
 [Generic type parameters]: ../items/generics.md

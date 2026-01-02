@@ -362,8 +362,8 @@ The following is an index of all built-in attributes.
 [`link_ordinal`]: items/external-blocks.md#the-link_ordinal-attribute
 [`link_section`]: abi.md#the-link_section-attribute
 [`link`]: items/external-blocks.md#the-link-attribute
-[`macro_export`]: macros-by-example.md#the-macro_export-attribute
-[`macro_use`]: macros-by-example.md#the-macro_use-attribute
+[`macro_export`]: macros-by-example.md#macro_export属性
+[`macro_use`]: macros-by-example.md#macro_use属性
 [`must_use`]: attributes/diagnostics.md#the-must_use-attribute
 [`naked`]: attributes/codegen.md#the-naked-attribute
 [`no_builtins`]: attributes/codegen.md#the-no_builtins-attribute
@@ -375,9 +375,9 @@ The following is an index of all built-in attributes.
 [`non_exhaustive`]: attributes/type_system.md#the-non_exhaustive-attribute
 [`panic_handler`]: panic.md#the-panic_handler-attribute
 [`path`]: items/modules.md#the-path-attribute
-[`proc_macro_attribute`]: procedural-macros.md#the-proc_macro_attribute-attribute
+[`proc_macro_attribute`]: procedural-macros.md#proc_macro_attribute属性
 [`proc_macro_derive`]: macro.proc.derive
-[`proc_macro`]: procedural-macros.md#the-proc_macro-attribute
+[`proc_macro`]: procedural-macros.md#proc_macro属性
 [`recursion_limit`]: attributes/limits.md#the-recursion_limit-attribute
 [`repr`]: type-layout.md#representations
 [`should_panic`]: attributes/testing.md#the-should_panic-attribute
@@ -388,10 +388,10 @@ The following is an index of all built-in attributes.
 [`used`]: abi.md#the-used-attribute
 [`warn`]: attributes/diagnostics.md#lint-check-attributes
 [`windows_subsystem`]: runtime.md#the-windows_subsystem-attribute
-[attribute macros]: procedural-macros.md#the-proc_macro_attribute-attribute
+[attribute macros]: procedural-macros.md#proc_macro_attribute属性
 [block expressions]: expressions/block-expr.md
 [built-in attributes]: #built-in-attributes-index
-[derive macro helper attributes]: procedural-macros.md#derive-macro-helper-attributes
+[derive macro helper attributes]: procedural-macros.md#派生宏辅助属性
 [enum]: items/enumerations.md
 [expression statement]: statements.md#expression-statements
 [external blocks]: items/external-blocks.md
