@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-be2adbd7.js";
+            window.path_to_searchindex_js = "../searchindex-e9a62445.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -189,7 +189,7 @@
 </div>
 
 <p><em>Name resolution</em> is the process of tying paths and other identifiers to the declarations of those entities. Names are segregated into different <a href="../names/namespaces.html">namespaces</a>, allowing entities in different namespaces to share the same name without conflict. Each name is valid within a <a href="../names/scopes.html">scope</a>, or a region of source text where that name may be referenced. Access to a name may be restricted based on its <a href="../visibility-and-privacy.html">visibility</a>.</p>
-<p>Name resolution is split into three stages throughout the compilation process. The first stage, <em>expansion-time resolution</em>, resolves all <a href="../items/use-declarations.html"><code>use</code> declarations</a> and <a href="../macros.html#macro-invocation">macro invocations</a>. The second stage, <em>primary resolution</em>, resolves all names that have not yet been resolved and that do not depend on type information to resolve. The last stage, <em>type-relative resolution</em>, resolves the remaining names once type information is available.</p>
+<p>Name resolution is split into three stages throughout the compilation process. The first stage, <em>expansion-time resolution</em>, resolves all <a href="../items/use-declarations.html"><code>use</code> declarations</a> and <a href="../macros.html#宏调用">macro invocations</a>. The second stage, <em>primary resolution</em>, resolves all names that have not yet been resolved and that do not depend on type information to resolve. The last stage, <em>type-relative resolution</em>, resolves the remaining names once type information is available.</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>

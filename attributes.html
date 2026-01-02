@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-be2adbd7.js";
+            window.path_to_searchindex_js = "searchindex-e9a62445.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -509,8 +509,8 @@ must be met.  To assert these have been, the attribute is wrapped in
 <p>Attributes can be classified into the following kinds:</p>
 <ul>
 <li><a href="#built-in-attributes-index">Built-in attributes</a></li>
-<li><a href="procedural-macros.html#the-proc_macro_attribute-attribute">Proc macro attributes</a></li>
-<li><a href="procedural-macros.html#derive-macro-helper-attributes">Derive macro helper attributes</a></li>
+<li><a href="procedural-macros.html#proc_macro_attribute属性">Proc macro attributes</a></li>
+<li><a href="procedural-macros.html#派生宏辅助属性">Derive macro helper attributes</a></li>
 <li><a href="#tool-attributes">Tool attributes</a></li>
 </ul>
 <div class="rule" id="r-attributes.allowed-position"><a class="rule-link" href="#r-attributes.allowed-position" title="attributes.allowed-position"><span>[attributes<wbr>.allowed-position]</span></a>
@@ -1146,7 +1146,7 @@ MetaNameValueStr</text>
 attributes</em> remove themselves from the form they are on while <em>inert attributes</em>
 stay on.</p>
 <p>The <a href="conditional-compilation.html#the-cfg-attribute"><code>cfg</code></a> and <a href="conditional-compilation.html#the-cfg_attr-attribute"><code>cfg_attr</code></a> attributes are active.
-<a href="procedural-macros.html#the-proc_macro_attribute-attribute">Attribute macros</a> are active. All other attributes are inert.</p>
+<a href="procedural-macros.html#proc_macro_attribute属性">Attribute macros</a> are active. All other attributes are inert.</p>
 <div class="rule" id="r-attributes.tool"><a class="rule-link" href="#r-attributes.tool" title="attributes.tool"><span>[attributes<wbr>.tool]</span></a>
 </div>
 
@@ -1220,12 +1220,12 @@ pub fn f() {}
 <li>
 <p>Macros</p>
 <ul>
-<li><a href="macros-by-example.html#the-macro_export-attribute"><code>macro_export</code></a> — Exports a <code>macro_rules</code> macro for cross-crate usage.</li>
-<li><a href="macros-by-example.html#the-macro_use-attribute"><code>macro_use</code></a> — Expands macro visibility, or imports macros from other
+<li><a href="macros-by-example.html#macro_export属性"><code>macro_export</code></a> — Exports a <code>macro_rules</code> macro for cross-crate usage.</li>
+<li><a href="macros-by-example.html#macro_use属性"><code>macro_use</code></a> — Expands macro visibility, or imports macros from other
 crates.</li>
-<li><a href="procedural-macros.html#the-proc_macro-attribute"><code>proc_macro</code></a> — Defines a function-like macro.</li>
+<li><a href="procedural-macros.html#proc_macro属性"><code>proc_macro</code></a> — Defines a function-like macro.</li>
 <li><a href="procedural-macros.html#r-macro.proc.derive"><code>proc_macro_derive</code></a> — Defines a derive macro.</li>
-<li><a href="procedural-macros.html#the-proc_macro_attribute-attribute"><code>proc_macro_attribute</code></a> — Defines an attribute macro.</li>
+<li><a href="procedural-macros.html#proc_macro_attribute属性"><code>proc_macro_attribute</code></a> — Defines an attribute macro.</li>
 </ul>
 </li>
 <li>

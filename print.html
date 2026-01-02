@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-be2adbd7.js";
+            window.path_to_searchindex_js = "searchindex-e9a62445.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -533,8 +533,8 @@ fn main() {
 <li>字段和<a href="#enumerations">变体</a></li>
 <li><a href="#type-parameters">类型参数</a></li>
 <li>生命周期参数或<a href="#loop-labels">循环标签</a></li>
-<li><a href="#macros">宏</a>或<a href="#attributes-1">属性</a></li>
-<li><a href="#macros-by-example">宏占位符</a></li>
+<li><a href="#宏">宏</a>或<a href="#attributes-1">属性</a></li>
+<li><a href="#声明宏">宏占位符</a></li>
 <li><a href="#crates-and-source-files">crate</a></li>
 </ul>
 <div class="rule" id="r-lex.keywords.strict.list"><a class="rule-link" href="#r-lex.keywords.strict.list" title="lex.keywords.strict.list"><span>[lex<wbr>.keywords<wbr>.strict<wbr>.list]</span></a>
@@ -666,7 +666,7 @@ fn main() {
 </div>
 
 <ul>
-<li><code>macro_rules</code>用于创建自定义<a href="#macros">宏</a>。</li>
+<li><code>macro_rules</code>用于创建自定义<a href="#宏">宏</a>。</li>
 </ul>
 <div class="rule" id="r-lex.keywords.weak.union"><a class="rule-link" href="#r-lex.keywords.weak.union" title="lex.keywords.weak.union"><span>[lex<wbr>.keywords<wbr>.weak<wbr>.union]</span></a>
 </div>
@@ -1047,7 +1047,7 @@ super</text>
 
 <h2 id="规范化"><a class="header" href="#规范化">规范化</a></h2>
 <p>标识符使用规范化形式 C (NFC) 进行规范化，如<a href="https://www.unicode.org/reports/tr15/tr15-56.html">Unicode标准附件#15</a>中所定义。两个标识符在它们的 NFC 形式相等时才相等。</p>
-<p><a href="#procedural-macros">过程</a>宏和<a href="#macros-by-example">声明式</a>宏在它们的输入中接收规范化的标识符。</p>
+<p><a href="#过程宏">过程</a>宏和<a href="#声明宏">声明式</a>宏在它们的输入中接收规范化的标识符。</p>
 <div class="rule" id="r-ident.raw"><a class="rule-link" href="#r-ident.raw" title="ident.raw"><span>[ident<wbr>.raw]</span></a>
 </div>
 
@@ -6254,7 +6254,7 @@ $</text>
 </div>
 
 <h2 id="分隔符"><a class="header" href="#分隔符">分隔符</a></h2>
-<p>括号标点符号用于语法格式的各个部分。开括号必须始终与闭括号配对。括号及其内部的词法单元在<a href="#macros-by-example">宏</a>中被称为“词法单元树”。括号有三种类型：</p>
+<p>括号标点符号用于语法格式的各个部分。开括号必须始终与闭括号配对。括号及其内部的词法单元在<a href="#声明宏">宏</a>中被称为“词法单元树”。括号有三种类型：</p>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -6759,23 +6759,20 @@ RESERVED_POUNDS</text>
 <div class="rule" id="r-macro"><a class="rule-link" href="#r-macro" title="macro"><span>[macro]</span></a>
 </div>
 
-<h1 id="macros"><a class="header" href="#macros">Macros</a></h1>
+<h1 id="宏"><a class="header" href="#宏">宏</a></h1>
 <div class="rule" id="r-macro.intro"><a class="rule-link" href="#r-macro.intro" title="macro.intro"><span>[macro<wbr>.intro]</span></a>
 </div>
 
-<p>The functionality and syntax of Rust can be extended with custom definitions
-called macros. They are given names, and invoked through a consistent
-syntax: <code>some_extension!(...)</code>.</p>
-<p>There are two ways to define new macros:</p>
+<p>Rust的功能和语法可以通过称为宏的自定义定义进行扩展。它们被赋予名称，并通过一致的语法<code>some_extension!(...)</code>来调用。</p>
+<p>有两种方法可以定义新宏：</p>
 <ul>
-<li><a href="#macros-by-example">Macros by Example</a> define new syntax in a higher-level, declarative way.</li>
-<li><a href="#procedural-macros">Procedural Macros</a> define function-like macros, custom derives, and custom
-attributes using functions that operate on input tokens.</li>
+<li><a href="#声明宏">声明宏</a> 以更高级的声明性方式定义新语法。</li>
+<li><a href="#过程宏">过程宏</a> 使用操作输入词法单元的函数来定义函数式宏、自定义派生和自定义属性。</li>
 </ul>
 <div class="rule" id="r-macro.invocation"><a class="rule-link" href="#r-macro.invocation" title="macro.invocation"><span>[macro<wbr>.invocation]</span></a>
 </div>
 
-<h2 id="macro-invocation"><a class="header" href="#macro-invocation">Macro invocation</a></h2>
+<h2 id="宏调用"><a class="header" href="#宏调用">宏调用</a></h2>
 <div class="rule" id="r-macro.invocation.syntax"><a class="rule-link" href="#r-macro.invocation.syntax" title="macro.invocation.syntax"><span>[macro<wbr>.invocation<wbr>.syntax]</span></a>
 </div>
 
@@ -7149,61 +7146,56 @@ TokenTree</text>
 <div class="rule" id="r-macro.invocation.intro"><a class="rule-link" href="#r-macro.invocation.intro" title="macro.invocation.intro"><span>[macro<wbr>.invocation<wbr>.intro]</span></a>
 </div>
 
-<p>A macro invocation expands a macro at compile time and replaces the
-invocation with the result of the macro. Macros may be invoked in the
-following situations:</p>
+<p>宏调用在编译时展开宏，并用宏的结果替换该调用。宏可以在以下情况中调用：</p>
 <div class="rule" id="r-macro.invocation.expr"><a class="rule-link" href="#r-macro.invocation.expr" title="macro.invocation.expr"><span>[macro<wbr>.invocation<wbr>.expr]</span></a>
 </div>
 
 <ul>
-<li><a href="#expressions">Expressions</a> and <a href="#statements">statements</a></li>
+<li><a href="#expressions">表达式</a>和<a href="#statements">语句</a></li>
 </ul>
 <div class="rule" id="r-macro.invocation.pattern"><a class="rule-link" href="#r-macro.invocation.pattern" title="macro.invocation.pattern"><span>[macro<wbr>.invocation<wbr>.pattern]</span></a>
 </div>
 
 <ul>
-<li><a href="#patterns">Patterns</a></li>
+<li><a href="#patterns">模式</a></li>
 </ul>
 <div class="rule" id="r-macro.invocation.type"><a class="rule-link" href="#r-macro.invocation.type" title="macro.invocation.type"><span>[macro<wbr>.invocation<wbr>.type]</span></a>
 </div>
 
 <ul>
-<li><a href="#types">Types</a></li>
+<li><a href="#types">类型</a></li>
 </ul>
 <div class="rule" id="r-macro.invocation.item"><a class="rule-link" href="#r-macro.invocation.item" title="macro.invocation.item"><span>[macro<wbr>.invocation<wbr>.item]</span></a>
 </div>
 
 <ul>
-<li><a href="#items">Items</a> including <a href="#associated-items">associated items</a></li>
+<li><a href="#items">项</a>包括<a href="#associated-items">关联项</a></li>
 </ul>
 <div class="rule" id="r-macro.invocation.nested"><a class="rule-link" href="#r-macro.invocation.nested" title="macro.invocation.nested"><span>[macro<wbr>.invocation<wbr>.nested]</span></a>
 </div>
 
 <ul>
-<li><a href="#macros-by-example"><code>macro_rules</code></a> transcribers</li>
+<li><a href="#声明宏"><code>macro_rules</code></a>转录器</li>
 </ul>
 <div class="rule" id="r-macro.invocation.extern"><a class="rule-link" href="#r-macro.invocation.extern" title="macro.invocation.extern"><span>[macro<wbr>.invocation<wbr>.extern]</span></a>
 </div>
 
 <ul>
-<li><a href="#external-blocks">External blocks</a></li>
+<li><a href="#external-blocks">外部块</a></li>
 </ul>
 <div class="rule" id="r-macro.invocation.item-statement"><a class="rule-link" href="#r-macro.invocation.item-statement" title="macro.invocation.item-statement"><span>[macro<wbr>.invocation<wbr>.item-statement]</span></a>
 </div>
 
-<p>When used as an item or a statement, the <a href="#grammar-MacroInvocationSemi">MacroInvocationSemi</a> form is used
-where a semicolon is required at the end when not using curly braces.
-<a href="#visibility-and-privacy">Visibility qualifiers</a> are never allowed before a macro invocation or
-<a href="#macros-by-example"><code>macro_rules</code></a> definition.</p>
+<p>当用作项或语句时，使用<a href="#grammar-MacroInvocationSemi">MacroInvocationSemi</a>形式，如果未使用大括号，则末尾需要分号。<a href="#visibility-and-privacy">可见性限定符</a>绝不允许出现在宏调用或<a href="#声明宏"><code>macro_rules</code></a>定义之前。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Used as an expression.
+</span>// 用作表达式。
 let x = vec![1,2,3];
 
-// Used as a statement.
+// 用作语句。
 println!("Hello!");
 
-// Used in a pattern.
+// 用在模式中。
 macro_rules! pat {
     ($i:ident) =&gt; (Some($i))
 }
@@ -7212,18 +7204,18 @@ if let pat!(x) = Some(1) {
     assert_eq!(x, 1);
 }
 
-// Used in a type.
+// 用在类型中。
 macro_rules! Tuple {
     { $A:ty, $B:ty } =&gt; { ($A, $B) };
 }
 
 type N2 = Tuple!(i32, i32);
 
-// Used as an item.
+// 用作项。
 <span class="boring">use std::cell::RefCell;
 </span>thread_local!(static FOO: RefCell&lt;u32&gt; = RefCell::new(1));
 
-// Used as an associated item.
+// 用作关联项。
 macro_rules! const_maker {
     ($t:ty, $v:tt) =&gt; { const CONST: $t = $v; };
 }
@@ -7231,27 +7223,27 @@ trait T {
     const_maker!{i32, 7}
 }
 
-// Macro calls within macros.
+// 宏内的宏调用。
 macro_rules! example {
     () =&gt; { println!("Macro call in a macro!") };
 }
-// Outer macro `example` is expanded, then inner macro `println` is expanded.
+// 外部宏`example`展开后，内部宏`println`也会展开。
 example!();
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-macro.invocation.name-resolution"><a class="rule-link" href="#r-macro.invocation.name-resolution" title="macro.invocation.name-resolution"><span>[macro<wbr>.invocation<wbr>.name-resolution]</span></a>
 </div>
 
-<p>Macros invocations can be resolved via two kinds of scopes:</p>
+<p>宏调用可以通过两种作用域进行解析：</p>
 <ul>
-<li>Textual Scope
+<li>文本作用域
 <ul>
-<li><a href="#r-macro.decl.scope.textual">Textual scope <code>macro_rules</code></a></li>
+<li><a href="#r-macro.decl.scope.textual">文本作用域<code>macro_rules</code></a></li>
 </ul>
 </li>
-<li>Path-based scope
+<li>基于路径的作用域
 <ul>
-<li><a href="#r-macro.decl.scope.path-based">Path-based scope <code>macro_rules</code></a></li>
-<li><a href="#procedural-macros">Procedural macros</a></li>
+<li><a href="#r-macro.decl.scope.path-based">基于路径的作用域<code>macro_rules</code></a></li>
+<li><a href="#过程宏">过程宏</a></li>
 </ul>
 </li>
 </ul>
@@ -7259,7 +7251,7 @@ example!();
 <div class="rule" id="r-macro.decl"><a class="rule-link" href="#r-macro.decl" title="macro.decl"><span>[macro<wbr>.decl]</span></a>
 </div>
 
-<h1 id="macros-by-example"><a class="header" href="#macros-by-example">Macros by example</a></h1>
+<h1 id="声明宏"><a class="header" href="#声明宏">声明宏</a></h1>
 <div class="rule" id="r-macro.decl.syntax"><a class="rule-link" href="#r-macro.decl.syntax" title="macro.decl.syntax"><span>[macro<wbr>.decl<wbr>.syntax]</span></a>
 </div>
 
@@ -8003,65 +7995,42 @@ DelimTokenTree</text>
 <div class="rule" id="r-macro.decl.intro"><a class="rule-link" href="#r-macro.decl.intro" title="macro.decl.intro"><span>[macro<wbr>.decl<wbr>.intro]</span></a>
 </div>
 
-<p><code>macro_rules</code> allows users to define syntax extension in a declarative way.  We
-call such extensions “macros by example” or simply “macros”.</p>
-<p>Each macro by example has a name, and one or more <em>rules</em>. Each rule has two
-parts: a <em>matcher</em>, describing the syntax that it matches, and a <em>transcriber</em>,
-describing the syntax that will replace a successfully matched invocation. Both
-the matcher and the transcriber must be surrounded by delimiters. Macros can
-expand to expressions, statements, items (including traits, impls, and foreign
-items), types, or patterns.</p>
+<p><code>macro_rules</code> 允许用户以声明式的方式定义语法扩展。我们称这种扩展为“声明宏”或简称“宏”。</p>
+<p>每个声明宏都有一个名称和一条或多条 <em>规则</em> 。每条规则包含两部分：一个 <em>匹配器</em> ，描述它匹配的语法；一个 <em>转录器</em> ，描述成功匹配的调用将替换成的语法。匹配器和转录器都必须由分隔符包围。宏可以展开为表达式、语句、项（包括特型、impl 和外部项）、类型或模式。</p>
 <div class="rule" id="r-macro.decl.transcription"><a class="rule-link" href="#r-macro.decl.transcription" title="macro.decl.transcription"><span>[macro<wbr>.decl<wbr>.transcription]</span></a>
 </div>
 
-<h2 id="transcribing"><a class="header" href="#transcribing">Transcribing</a></h2>
+<h2 id="转录"><a class="header" href="#转录">转录</a></h2>
 <div class="rule" id="r-macro.decl.transcription.intro"><a class="rule-link" href="#r-macro.decl.transcription.intro" title="macro.decl.transcription.intro"><span>[macro<wbr>.decl<wbr>.transcription<wbr>.intro]</span></a>
 </div>
 
-<p>When a macro is invoked, the macro expander looks up macro invocations by name,
-and tries each macro rule in turn. It transcribes the first successful match; if
-this results in an error, then future matches are not tried.</p>
+<p>当宏被调用时，宏扩展器会按名称查找宏调用，并依次尝试每条宏规则。它转录第一个成功匹配的规则；如果此操作导致错误，则不会尝试后续匹配。</p>
 <div class="rule" id="r-macro.decl.transcription.lookahead"><a class="rule-link" href="#r-macro.decl.transcription.lookahead" title="macro.decl.transcription.lookahead"><span>[macro<wbr>.decl<wbr>.transcription<wbr>.lookahead]</span></a>
 </div>
 
-<p>When matching, no lookahead is performed; if the compiler cannot unambiguously determine how to
-parse the macro invocation one token at a time, then it is an error. In the
-following example, the compiler does not look ahead past the identifier to see
-if the following token is a <code>)</code>, even though that would allow it to parse the
-invocation unambiguously:</p>
+<p>匹配时，不执行前瞻(lookahead)；如果编译器无法逐个词法单元明确地确定如何解析宏调用，则会报错。在下面的示例中，编译器不会在前瞻到标识符之后，去检查后面的词法单元是否是 <code>)</code>，即使那样可以使其明确地解析调用：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! ambiguity {
     ($($i:ident)* $j:ident) =&gt; { };
 }
 
-ambiguity!(error); // Error: local ambiguity
+ambiguity!(error); // 错误：局部歧义
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-macro.decl.transcription.syntax"><a class="rule-link" href="#r-macro.decl.transcription.syntax" title="macro.decl.transcription.syntax"><span>[macro<wbr>.decl<wbr>.transcription<wbr>.syntax]</span></a>
 </div>
 
-<p>In both the matcher and the transcriber, the <code>$</code> token is used to invoke special
-behaviours from the macro engine (described below in <a href="#metavariables">Metavariables</a> and
-<a href="#repetitions">Repetitions</a>). Tokens that aren’t part of such an invocation are matched and
-transcribed literally, with one exception. The exception is that the outer
-delimiters for the matcher will match any pair of delimiters. Thus, for
-instance, the matcher <code>(())</code> will match <code>{()}</code> but not <code>{{}}</code>. The character
-<code>$</code> cannot be matched or transcribed literally.</p>
+<p>在匹配器和转录器中，<code>$</code> 词法单元用于调用宏引擎的特殊行为（在下面的<a href="#元变量">元变量</a>和<a href="#重复">重复</a>中描述）。不属于此类调用的词法单元会被字面匹配和转录，但有一个例外。这个例外是，匹配器的外部分隔符将匹配任意一对分隔符。因此，例如，匹配器 <code>(())</code> 将匹配 <code>{()}</code> 但不匹配 <code>{{}}</code>。字符 <code>$</code> 不能被字面匹配或转录。</p>
 <div class="rule" id="r-macro.decl.transcription.fragment"><a class="rule-link" href="#r-macro.decl.transcription.fragment" title="macro.decl.transcription.fragment"><span>[macro<wbr>.decl<wbr>.transcription<wbr>.fragment]</span></a>
 </div>
 
-<h3 id="forwarding-a-matched-fragment"><a class="header" href="#forwarding-a-matched-fragment">Forwarding a matched fragment</a></h3>
-<p>When forwarding a matched fragment to another macro-by-example, matchers in
-the second macro will see an opaque AST of the fragment type. The second macro
-can’t use literal tokens to match the fragments in the matcher, only a
-fragment specifier of the same type. The <code>ident</code>, <code>lifetime</code>, and <code>tt</code>
-fragment types are an exception, and <em>can</em> be matched by literal tokens. The
-following illustrates this restriction:</p>
+<h3 id="转发匹配到的片段"><a class="header" href="#转发匹配到的片段">转发匹配到的片段</a></h3>
+<p>当将一个匹配到的片段转发给另一个声明宏时，第二个宏中的匹配器将看到该片段类型的不透明 AST。第二个宏不能使用字面词法单元来匹配匹配器中的片段，只能使用相同类型的片段说明符。<code>ident</code>、<code>lifetime</code> 和 <code>tt</code> 片段类型是一个例外，它们<em>可以</em>通过字面词法单元进行匹配。下面示例说明了此限制：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! foo {
     ($l:expr) =&gt; { bar!($l); }
-// ERROR:               ^^ no rules expected this token in macro call
+// 错误：               ^^ 宏调用中不期望此词法单元
 }
 
 macro_rules! bar {
@@ -8070,11 +8039,10 @@ macro_rules! bar {
 
 foo!(3);
 <span class="boring">}</span></code></pre>
-<p>The following illustrates how tokens can be directly matched after matching a
-<code>tt</code> fragment:</p>
+<p>下面示例说明了在匹配 <code>tt</code> 片段后如何直接匹配词法单元：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// compiles OK
+</span>// 编译通过
 macro_rules! foo {
     ($l:tt) =&gt; { bar!($l); }
 }
@@ -8088,44 +8056,40 @@ foo!(3);
 <div class="rule" id="r-macro.decl.meta"><a class="rule-link" href="#r-macro.decl.meta" title="macro.decl.meta"><span>[macro<wbr>.decl<wbr>.meta]</span></a>
 </div>
 
-<h2 id="metavariables"><a class="header" href="#metavariables">Metavariables</a></h2>
+<h2 id="元变量"><a class="header" href="#元变量">元变量</a></h2>
 <div class="rule" id="r-macro.decl.meta.intro"><a class="rule-link" href="#r-macro.decl.meta.intro" title="macro.decl.meta.intro"><span>[macro<wbr>.decl<wbr>.meta<wbr>.intro]</span></a>
 </div>
 
-<p>In the matcher, <code>$</code> <em>name</em> <code>:</code> <em>fragment-specifier</em> matches a Rust syntax
-fragment of the kind specified and binds it to the metavariable <code>$</code><em>name</em>.</p>
+<p>在匹配器中，<code>$</code> <em>名称</em> <code>:</code> <em>片段说明符</em> 匹配指定种类的Rust语法片段，并将其绑定到元变量 <code>$</code><em>名称</em>。</p>
 <div class="rule" id="r-macro.decl.meta.specifier"><a class="rule-link" href="#r-macro.decl.meta.specifier" title="macro.decl.meta.specifier"><span>[macro<wbr>.decl<wbr>.meta<wbr>.specifier]</span></a>
 </div>
 
-<p>Valid fragment specifiers are:</p>
+<p>有效的片段说明符有：</p>
 <ul>
-<li><code>block</code>: a <a href="#grammar-BlockExpression">BlockExpression</a></li>
-<li><code>expr</code>: an <a href="#grammar-Expression">Expression</a></li>
-<li><code>expr_2021</code>: an <a href="#grammar-Expression">Expression</a> except <a href="#grammar-UnderscoreExpression">UnderscoreExpression</a> and <a href="#grammar-ConstBlockExpression">ConstBlockExpression</a> (see <a href="#r-macro.decl.meta.edition2024">macro.decl.meta.edition2024</a>)</li>
-<li><code>ident</code>: an <a href="#grammar-IDENTIFIER_OR_KEYWORD">IDENTIFIER_OR_KEYWORD</a> except <code>_</code>, <a href="#grammar-RAW_IDENTIFIER">RAW_IDENTIFIER</a>, or <a href="#r-macro.decl.hygiene.crate"><code>$crate</code></a></li>
-<li><code>item</code>: an <a href="#grammar-Item">Item</a></li>
-<li><code>lifetime</code>: a <a href="#grammar-LIFETIME_TOKEN">LIFETIME_TOKEN</a></li>
-<li><code>literal</code>: matches <code>-</code><sup>?</sup><a href="#grammar-LiteralExpression">LiteralExpression</a></li>
-<li><code>meta</code>: an <a href="#grammar-Attr">Attr</a>, the contents of an attribute</li>
-<li><code>pat</code>: a <a href="#grammar-Pattern">Pattern</a> (see <a href="#r-macro.decl.meta.edition2021">macro.decl.meta.edition2021</a>)</li>
-<li><code>pat_param</code>: a <a href="#grammar-PatternNoTopAlt">PatternNoTopAlt</a></li>
-<li><code>path</code>: a <a href="#grammar-TypePath">TypePath</a> style path</li>
-<li><code>stmt</code>: a <a href="#grammar-Statement">Statement</a> without the trailing semicolon (except for item statements that require semicolons)</li>
-<li><code>tt</code>: a <a href="#grammar-TokenTree">TokenTree</a> (a single <a href="#词法单元">token</a> or tokens in matching delimiters <code>()</code>, <code>[]</code>, or <code>{}</code>)</li>
-<li><code>ty</code>: a <a href="#grammar-Type">Type</a></li>
-<li><code>vis</code>: a possibly empty <a href="#grammar-Visibility">Visibility</a> qualifier</li>
+<li><code>block</code>：一个<a href="#grammar-BlockExpression">块表达式</a></li>
+<li><code>expr</code>：一个<a href="#grammar-Expression">表达式</a></li>
+<li><code>expr_2021</code>：一个<a href="#grammar-Expression">表达式</a>，除了<a href="#grammar-UnderscoreExpression">下划线表达式</a>和<a href="#grammar-ConstBlockExpression">常量块表达式</a>（参见<a href="#r-macro.decl.meta.edition2024">macro.decl.meta.edition2024</a>）</li>
+<li><code>ident</code>：一个<a href="#grammar-IDENTIFIER_OR_KEYWORD">IDENTIFIER_OR_KEYWORD</a>，除了 <code>_</code>、<a href="#grammar-RAW_IDENTIFIER">RAW_IDENTIFIER</a>或<a href="#r-macro.decl.hygiene.crate"><code>$crate</code></a></li>
+<li><code>item</code>：一个<a href="#grammar-Item">项</a></li>
+<li><code>lifetime</code>：一个<a href="#grammar-LIFETIME_TOKEN">LIFETIME_TOKEN</a></li>
+<li><code>literal</code>：匹配 <code>-</code><sup>?</sup><a href="#grammar-LiteralExpression">字面量表达式</a></li>
+<li><code>meta</code>：一个<a href="#grammar-Attr">Attr</a>，一个属性的内容</li>
+<li><code>pat</code>：一个<a href="#grammar-Pattern">模式</a>（参见<a href="#r-macro.decl.meta.edition2021">macro.decl.meta.edition2021</a>）</li>
+<li><code>pat_param</code>：一个<a href="#grammar-PatternNoTopAlt">PatternNoTopAlt</a></li>
+<li><code>path</code>：一个<a href="#grammar-TypePath">TypePath</a>样式的路径</li>
+<li><code>stmt</code>：一个<a href="#grammar-Statement">语句</a>，不带末尾分号（需要分号的项语句除外）</li>
+<li><code>tt</code>：一个<a href="#grammar-TokenTree">TokenTree</a> （一个单独的<a href="#词法单元">词法单元</a>或匹配分隔符 <code>()</code>、<code>[]</code> 或 <code>{}</code> 中的词法单元）</li>
+<li><code>ty</code>：一个<a href="#grammar-Type">类型</a></li>
+<li><code>vis</code>：一个可能为空的<a href="#grammar-Visibility">可见性</a>限定符</li>
 </ul>
 <div class="rule" id="r-macro.decl.meta.transcription"><a class="rule-link" href="#r-macro.decl.meta.transcription" title="macro.decl.meta.transcription"><span>[macro<wbr>.decl<wbr>.meta<wbr>.transcription]</span></a>
 </div>
 
-<p>In the transcriber, metavariables are referred to simply by <code>$</code><em>name</em>, since
-the fragment kind is specified in the matcher. Metavariables are replaced with
-the syntax element that matched them.
-Metavariables can be transcribed more than once or not at all.</p>
+<p>在转录器中，元变量仅通过 <code>$</code><em>名称</em> 引用，因为片段种类已在匹配器中指定。元变量会被替换为匹配它们的语法元素。元变量可以被转录多次或根本不转录。</p>
 <div class="rule" id="r-macro.decl.meta.dollar-crate"><a class="rule-link" href="#r-macro.decl.meta.dollar-crate" title="macro.decl.meta.dollar-crate"><span>[macro<wbr>.decl<wbr>.meta<wbr>.dollar-crate]</span></a>
 </div>
 
-<p>The keyword metavariable <a href="#r-macro.decl.hygiene.crate"><code>$crate</code></a> can be used to refer to the current crate.</p>
+<p>关键字元变量 <a href="#r-macro.decl.hygiene.crate"><code>$crate</code></a> 可用于指代当前 crate。</p>
 <div class="rule" id="r-macro.decl.meta.edition2021"><a class="rule-link" href="#r-macro.decl.meta.edition2021" title="macro.decl.meta.edition2021"><span>[macro<wbr>.decl<wbr>.meta<wbr>.edition2021]</span></a>
 </div>
 
@@ -8133,9 +8097,9 @@ Metavariables can be transcribed more than once or not at all.</p>
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2021</span> 版次差异</p>
 
-<p>Starting with the 2021 edition, <code>pat</code> fragment-specifiers match top-level or-patterns (that is, they accept <a href="#grammar-Pattern">Pattern</a>).</p>
-<p>Before the 2021 edition, they match exactly the same fragments as <code>pat_param</code> (that is, they accept <a href="#grammar-PatternNoTopAlt">PatternNoTopAlt</a>).</p>
-<p>The relevant edition is the one in effect for the <code>macro_rules!</code> definition.</p>
+<p>从2021版次开始，<code>pat</code> 片段说明符匹配顶层或模式（即，它们接受<a href="#grammar-Pattern">模式</a>）。</p>
+<p>在2021版次之前，它们匹配的片段与 <code>pat_param</code> 完全相同（即，它们接受<a href="#grammar-PatternNoTopAlt">PatternNoTopAlt</a>）。</p>
+<p>相关的版次是 <code>macro_rules!</code> 定义生效的版次。</p>
 </blockquote>
 </div>
 
@@ -8146,133 +8110,96 @@ Metavariables can be transcribed more than once or not at all.</p>
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2024</span> 版次差异</p>
 
-<p>Before the 2024 edition, <code>expr</code> fragment specifiers do not match <a href="#grammar-UnderscoreExpression">UnderscoreExpression</a> or <a href="#grammar-ConstBlockExpression">ConstBlockExpression</a> at the top level. They are allowed within subexpressions.</p>
-<p>The <code>expr_2021</code> fragment specifier exists to maintain backwards compatibility with editions before 2024.</p>
+<p>在2024版次之前，<code>expr</code>片段说明符不匹配顶层的<a href="#grammar-UnderscoreExpression">下划线表达式</a>或<a href="#grammar-ConstBlockExpression">常量块表达式</a>。它们在子表达式中是允许的。</p>
+<p>存在<code>expr_2021</code>片段说明符是为了保持与2024之前的版次的向后兼容性。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-macro.decl.repetition"><a class="rule-link" href="#r-macro.decl.repetition" title="macro.decl.repetition"><span>[macro<wbr>.decl<wbr>.repetition]</span></a>
 </div>
 
-<h2 id="repetitions"><a class="header" href="#repetitions">Repetitions</a></h2>
+<h2 id="重复"><a class="header" href="#重复">重复</a></h2>
 <div class="rule" id="r-macro.decl.repetition.intro"><a class="rule-link" href="#r-macro.decl.repetition.intro" title="macro.decl.repetition.intro"><span>[macro<wbr>.decl<wbr>.repetition<wbr>.intro]</span></a>
 </div>
 
-<p>In both the matcher and transcriber, repetitions are indicated by placing the
-tokens to be repeated inside <code>$(</code>…<code>)</code>, followed by a repetition operator,
-optionally with a separator token between.</p>
+<p>在匹配器和转录器中，重复是通过将要重复的词法单元放在 <code>$(</code>…<code>)</code> 内部，然后跟随一个重复操作符来表示的，可选地在两者之间放置一个分隔词法单元。</p>
 <div class="rule" id="r-macro.decl.repetition.separator"><a class="rule-link" href="#r-macro.decl.repetition.separator" title="macro.decl.repetition.separator"><span>[macro<wbr>.decl<wbr>.repetition<wbr>.separator]</span></a>
 </div>
 
-<p>The separator token can be any token
-other than a delimiter or one of the repetition operators, but <code>;</code> and <code>,</code> are
-the most common. For instance, <code>$( $i:ident ),*</code> represents any number of
-identifiers separated by commas. Nested repetitions are permitted.</p>
+<p>分隔词法单元可以是除分隔符或重复操作符之外的任何词法单元，但 <code>;</code> 和 <code>,</code> 最为常见。例如，<code>$( $i:ident ),*</code> 表示任意数量的用逗号分隔的标识符。允许嵌套重复。</p>
 <div class="rule" id="r-macro.decl.repetition.operators"><a class="rule-link" href="#r-macro.decl.repetition.operators" title="macro.decl.repetition.operators"><span>[macro<wbr>.decl<wbr>.repetition<wbr>.operators]</span></a>
 </div>
 
-<p>The repetition operators are:</p>
+<p>重复操作符有：</p>
 <ul>
-<li><code>*</code> — indicates any number of repetitions.</li>
-<li><code>+</code> — indicates any number but at least one.</li>
-<li><code>?</code> — indicates an optional fragment with zero or one occurrence.</li>
+<li><code>*</code> — 表示任意数量的重复。</li>
+<li><code>+</code> — 表示任意数量，但至少一个。</li>
+<li><code>?</code> — 表示一个可选片段，出现零次或一次。</li>
 </ul>
 <div class="rule" id="r-macro.decl.repetition.optional-restriction"><a class="rule-link" href="#r-macro.decl.repetition.optional-restriction" title="macro.decl.repetition.optional-restriction"><span>[macro<wbr>.decl<wbr>.repetition<wbr>.optional-restriction]</span></a>
 </div>
 
-<p>Since <code>?</code> represents at most one occurrence, it cannot be used with a
-separator.</p>
+<p>由于 <code>?</code> 最多表示一次出现，它不能与分隔符一起使用。</p>
 <div class="rule" id="r-macro.decl.repetition.fragment"><a class="rule-link" href="#r-macro.decl.repetition.fragment" title="macro.decl.repetition.fragment"><span>[macro<wbr>.decl<wbr>.repetition<wbr>.fragment]</span></a>
 </div>
 
-<p>The repeated fragment both matches and transcribes to the specified number of
-the fragment, separated by the separator token. Metavariables are matched to
-every repetition of their corresponding fragment. For instance, the <code>$( $i:ident ),*</code> example above matches <code>$i</code> to all of the identifiers in the list.</p>
-<p>During transcription, additional restrictions apply to repetitions so that the
-compiler knows how to expand them properly:</p>
+<p>重复片段既匹配又转录为指定数量的片段，并由分隔词法单元分隔。元变量匹配其相应片段的每次重复。例如，上面 <code>$( $i:ident ),*</code> 示例将 <code>$i</code> 匹配到列表中的所有标识符。</p>
+<p>在转录期间，对重复施加了额外的限制，以便编译器知道如何正确地展开它们：</p>
 <ol>
-<li>A metavariable must appear in exactly the same number, kind, and nesting
-order of repetitions in the transcriber as it did in the matcher. So for the
-matcher <code>$( $i:ident ),*</code>, the transcribers <code>=&gt; { $i }</code>,
-<code>=&gt; { $( $( $i )* )* }</code>, and <code>=&gt; { $( $i )+ }</code> are all illegal, but
-<code>=&gt; { $( $i );* }</code> is correct and replaces a comma-separated list of
-identifiers with a semicolon-separated list.</li>
-<li>Each repetition in the transcriber must contain at least one metavariable to
-decide how many times to expand it. If multiple metavariables appear in the
-same repetition, they must be bound to the same number of fragments. For
-instance, <code>( $( $i:ident ),* ; $( $j:ident ),* ) =&gt; (( $( ($i,$j) ),* ))</code> must
-bind the same number of <code>$i</code> fragments as <code>$j</code> fragments. This means that
-invoking the macro with <code>(a, b, c; d, e, f)</code> is legal and expands to
-<code>((a,d), (b,e), (c,f))</code>, but <code>(a, b, c; d, e)</code> is illegal because it does
-not have the same number. This requirement applies to every layer of nested
-repetitions.</li>
+<li>元变量在转录器中出现的重复次数、种类和嵌套顺序必须与在匹配器中完全相同。因此，对于匹配器 <code>$( $i:ident ),*</code>，转录器 <code>=&gt; { $i }</code>、<code>=&gt; { $( $( $i )* )* }</code> 和 <code>=&gt; { $( $i )+ }</code> 都是非法的，但 <code>=&gt; { $( $i );* }</code> 是正确的，它将逗号分隔的标识符列表替换为分号分隔的列表。</li>
+<li>转录器中的每个重复必须至少包含一个元变量，以决定要展开多少次。如果在同一个重复中出现多个元变量，它们必须绑定到相同数量的片段。例如，<code>( $( $i:ident ),* ; $( $j:ident ),* ) =&gt; (( $( ($i,$j) ),* ))</code> 必须绑定与 <code>$j</code> 片段相同数量的 <code>$i</code> 片段。这意味着用 <code>(a, b, c; d, e, f)</code> 调用宏是合法的，并展开为 <code>((a,d), (b,e), (c,f))</code>，但 <code>(a, b, c; d, e)</code> 是非法的，因为它没有相同数量的片段。此要求适用于每个嵌套重复层。</li>
 </ol>
 <div class="rule" id="r-macro.decl.scope"><a class="rule-link" href="#r-macro.decl.scope" title="macro.decl.scope"><span>[macro<wbr>.decl<wbr>.scope]</span></a>
 </div>
 
-<h2 id="scoping-exporting-and-importing"><a class="header" href="#scoping-exporting-and-importing">Scoping, exporting, and importing</a></h2>
+<h2 id="作用域导出和导入"><a class="header" href="#作用域导出和导入">作用域、导出和导入</a></h2>
 <div class="rule" id="r-macro.decl.scope.intro"><a class="rule-link" href="#r-macro.decl.scope.intro" title="macro.decl.scope.intro"><span>[macro<wbr>.decl<wbr>.scope<wbr>.intro]</span></a>
 </div>
 
-<p>For historical reasons, the scoping of macros by example does not work entirely
-like items. Macros have two forms of scope: textual scope, and path-based scope.
-Textual scope is based on the order that things appear in source files, or even
-across multiple files, and is the default scoping. It is explained further below.
-Path-based scope works exactly the same way that item scoping does. The scoping,
-exporting, and importing of macros is controlled largely by attributes.</p>
+<p>由于历史原因，声明宏的作用域不完全像项那样工作。宏有两种形式的作用域：文本作用域和基于路径的作用域。文本作用域基于事物在源文件中出现的顺序，甚至可以跨多个文件，它是默认的作用域。这将在下面进一步解释。基于路径的作用域与项作用域的工作方式完全相同。宏的作用域、导出和导入主要由属性控制。</p>
 <div class="rule" id="r-macro.decl.scope.unqualified"><a class="rule-link" href="#r-macro.decl.scope.unqualified" title="macro.decl.scope.unqualified"><span>[macro<wbr>.decl<wbr>.scope<wbr>.unqualified]</span></a>
 </div>
 
-<p>When a macro is invoked by an unqualified identifier (not part of a multi-part
-path), it is first looked up in textual scoping. If this does not yield any
-results, then it is looked up in path-based scoping. If the macro’s name is
-qualified with a path, then it is only looked up in path-based scoping.</p>
+<p>当宏通过非限定标识符（不属于多部分路径）调用时，它首先在文本作用域中查找。如果没有结果，则在基于路径的作用域中查找。如果宏的名称使用路径进行限定，则它只在基于路径的作用域中查找。</p>
 <!-- ignore: requires external crates -->
-<pre><code class="language-rust ignore">use lazy_static::lazy_static; // Path-based import.
+<pre><code class="language-rust ignore">use lazy_static::lazy_static; // 基于路径的导入。
 
-macro_rules! lazy_static { // Textual definition.
+macro_rules! lazy_static { // 文本定义。
     (lazy) =&gt; {};
 }
 
-lazy_static!{lazy} // Textual lookup finds our macro first.
-self::lazy_static!{} // Path-based lookup ignores our macro, finds imported one.</code></pre>
+lazy_static!{lazy} // 文本查找首先找到我们的宏。
+self::lazy_static!{} // 基于路径的查找忽略我们的宏，找到导入的宏。</code></pre>
 <div class="rule" id="r-macro.decl.scope.textual"><a class="rule-link" href="#r-macro.decl.scope.textual" title="macro.decl.scope.textual"><span>[macro<wbr>.decl<wbr>.scope<wbr>.textual]</span></a>
 </div>
 
-<h3 id="textual-scope"><a class="header" href="#textual-scope">Textual scope</a></h3>
+<h3 id="文本作用域"><a class="header" href="#文本作用域">文本作用域</a></h3>
 <div class="rule" id="r-macro.decl.scope.textual.intro"><a class="rule-link" href="#r-macro.decl.scope.textual.intro" title="macro.decl.scope.textual.intro"><span>[macro<wbr>.decl<wbr>.scope<wbr>.textual<wbr>.intro]</span></a>
 </div>
 
-<p>Textual scope is based largely on the order that things appear in source files,
-and works similarly to the scope of local variables declared with <code>let</code> except
-it also applies at the module level. When <code>macro_rules!</code> is used to define a
-macro, the macro enters the scope after the definition (note that it can still
-be used recursively, since names are looked up from the invocation site), up
-until its surrounding scope, typically a module, is closed. This can enter child
-modules and even span across multiple files:</p>
+<p>文本作用域主要基于事物在源文件中出现的顺序，其工作方式类似于用 <code>let</code> 声明的局部变量的作用域，只不过它也适用于模块级别。当使用 <code>macro_rules!</code> 定义宏时，宏在定义之后（请注意，它仍然可以递归使用，因为名称是从调用站点查找的）进入作用域，直到其周围的作用域（通常是模块）关闭。这可以进入子模块，甚至跨越多个文件：</p>
 <!-- ignore: requires external modules -->
 <pre><code class="language-rust ignore">//// src/lib.rs
 mod has_macro {
-    // m!{} // Error: m is not in scope.
+    // m!{} // 错误：m 不在作用域中。
 
     macro_rules! m {
         () =&gt; {};
     }
-    m!{} // OK: appears after declaration of m.
+    m!{} // 正常：出现在 m 的声明之后。
 
     mod uses_macro;
 }
 
-// m!{} // Error: m is not in scope.
+// m!{} // 错误：m 不在作用域中。
 
 //// src/has_macro/uses_macro.rs
 
-m!{} // OK: appears after declaration of m in src/lib.rs</code></pre>
+m!{} // 正常：出现在 src/lib.rs 中 m 的声明之后。</code></pre>
 <div class="rule" id="r-macro.decl.scope.textual.shadow"><a class="rule-link" href="#r-macro.decl.scope.textual.shadow" title="macro.decl.scope.textual.shadow"><span>[macro<wbr>.decl<wbr>.scope<wbr>.textual<wbr>.shadow]</span></a>
 </div>
 
-<p>It is not an error to define a macro multiple times; the most recent declaration
-will shadow the previous one unless it has gone out of scope.</p>
+<p>多次定义宏不是错误；除非前一个声明已超出作用域，否则最近的声明将遮蔽前一个。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! m {
@@ -8287,7 +8214,7 @@ mod inner {
     macro_rules! m {
         (2) =&gt; {};
     }
-    // m!(1); // Error: no rule matches '1'
+    // m!(1); // 错误：没有规则匹配 '1'
     m!(2);
 
     macro_rules! m {
@@ -8298,24 +8225,23 @@ mod inner {
 
 m!(1);
 <span class="boring">}</span></code></pre>
-<p>Macros can be declared and used locally inside functions as well, and work
-similarly:</p>
+<p>宏也可以在函数内部局部声明和使用，工作方式类似：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn foo() {
-    // m!(); // Error: m is not in scope.
+    // m!(); // 错误：m 不在作用域中。
     macro_rules! m {
         () =&gt; {};
     }
     m!();
 }
 
-// m!(); // Error: m is not in scope.
+// m!(); // 错误：m 不在作用域中。
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-macro.decl.scope.textual.shadow.path-based"><a class="rule-link" href="#r-macro.decl.scope.textual.shadow.path-based" title="macro.decl.scope.textual.shadow.path-based"><span>[macro<wbr>.decl<wbr>.scope<wbr>.textual<wbr>.shadow<wbr>.path-based]</span></a>
 </div>
 
-<p>Textual scope name bindings for macros shadow path-based scope bindings to macros.</p>
+<p>宏的文本作用域名称绑定会遮蔽宏的基于路径的作用域绑定。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! m2 {
@@ -8324,115 +8250,112 @@ similarly:</p>
     };
 }
 
-// Resolves to path-based candidate from use declaration below.
-m!(); // prints "m2\n"
+// 解析为下方 use 声明中的基于路径的候选。
+m!(); // 打印 "m2\n"
 
-// Introduce second candidate for `m` with textual scope.
+// 引入第二个具有文本作用域的 `m` 候选。
 //
-// This shadows path-based candidate from below for the rest of this
-// example.
+// 这将遮蔽本示例其余部分中来自下方的基于路径的候选。
 macro_rules! m {
     () =&gt; {
         println!("m");
     };
 }
 
-// Introduce `m2` macro as path-based candidate.
+// 引入 `m2` 宏作为基于路径的候选。
 //
-// This item is in scope for this entire example, not just below the
-// use declaration.
+// 此项在此整个示例中均在作用域内，而不仅仅在 use 声明下方。
 use m2 as m;
 
-// Resolves to the textual macro candidate from above the use
-// declaration.
-m!(); // prints "m\n"
+// 解析为 use 声明上方具有文本作用域的宏候选。
+m!(); // 打印 "m\n"
 <span class="boring">}</span></code></pre>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>For areas where shadowing is not allowed, see <a href="#r-names.resolution.expansion.imports.ambiguity">name resolution ambiguities</a>.</p>
+<p>有关不允许遮蔽的区域，请参见<a href="#r-names.resolution.expansion.imports.ambiguity">名称解析歧义</a>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-macro.decl.scope.path-based"><a class="rule-link" href="#r-macro.decl.scope.path-based" title="macro.decl.scope.path-based"><span>[macro<wbr>.decl<wbr>.scope<wbr>.path-based]</span></a>
 </div>
 
-<h3 id="path-based-scope"><a class="header" href="#path-based-scope">Path-based scope</a></h3>
+<h3 id="基于路径的作用域"><a class="header" href="#基于路径的作用域">基于路径的作用域</a></h3>
 <div class="rule" id="r-macro.decl.scope.path-based.intro"><a class="rule-link" href="#r-macro.decl.scope.path-based.intro" title="macro.decl.scope.path-based.intro"><span>[macro<wbr>.decl<wbr>.scope<wbr>.path-based<wbr>.intro]</span></a>
 </div>
 
-<p>By default, a macro has no path-based scope. Macros can gain path-based scope in two ways:</p>
+<p>默认情况下，宏没有基于路径的作用域。宏可以通过两种方式获得基于路径的作用域：</p>
 <ul>
-<li><a href="#use可见性">Use declaration re-export</a></li>
-<li><a href="#the-macro_export-attribute"><code>macro_export</code></a></li>
+<li><a href="#use可见性">use声明重导出</a></li>
+<li><a href="#r-macro.decl.scope.macro_export"><code>macro_export</code></a></li>
 </ul>
 <div class="rule" id="r-macro.decl.scope.path.reexport"><a class="rule-link" href="#r-macro.decl.scope.path.reexport" title="macro.decl.scope.path.reexport"><span>[macro<wbr>.decl<wbr>.scope<wbr>.path<wbr>.reexport]</span></a>
 </div>
 
-<p>Macros can be re-exported to give them path-based scope from a module other than the crate root.</p>
+<p>宏可以被重导出，以使其获得来自除 crate 根模块之外的模块的基于路径的作用域。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>mac::m!(); // OK: Path-based lookup finds `m` in the mac module.
+</span>mac::m!(); // 正常：基于路径的查找在 mac 模块中找到 `m`。
 
 mod mac {
-    // Introduce macro `m` with textual scope.
+    // 引入具有文本作用域的宏 `m`。
     macro_rules! m {
         () =&gt; {};
     }
 
-    // Reexport with path-based scope from within `m`'s textual scope.
+    // 从 `m` 的文本作用域内重导出具有基于路径的作用域。
     pub(crate) use m;
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-macro.decl.scope.path-based.visibility"><a class="rule-link" href="#r-macro.decl.scope.path-based.visibility" title="macro.decl.scope.path-based.visibility"><span>[macro<wbr>.decl<wbr>.scope<wbr>.path-based<wbr>.visibility]</span></a>
 </div>
 
-<p>Macros have an implicit visibility of <code>pub(crate)</code>. <code>#[macro_export]</code> changes the implicit visibility to <code>pub</code>.</p>
+<p>宏具有隐式的 <code>pub(crate)</code> 可见性。<code>#[macro_export]</code> 将隐式可见性更改为 <code>pub</code>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Implicit visibility is `pub(crate)`.
+</span>// 隐式可见性为 `pub(crate)`。
 macro_rules! private_m {
     () =&gt; {};
 }
 
-// Implicit visibility is `pub`.
+// 隐式可见性为 `pub`。
 #[macro_export]
 macro_rules! pub_m {
     () =&gt; {};
 }
 
-pub(crate) use private_m as private_macro; // OK.
-pub use pub_m as pub_macro; // OK.
+pub(crate) use private_m as private_macro; // 正常。
+pub use pub_m as pub_macro; // 正常。
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0364 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span><span class="boring">// Implicit visibility is `pub(crate)`.
+</span><span class="boring">// 隐式可见性为 `pub(crate)`。
 </span><span class="boring">macro_rules! private_m {
 </span><span class="boring">    () =&gt; {};
 </span><span class="boring">}
 </span><span class="boring">
-</span><span class="boring">// Implicit visibility is `pub`.
+</span><span class="boring">// 隐式可见性为 `pub`。
 </span><span class="boring">#[macro_export]
 </span><span class="boring">macro_rules! pub_m {
 </span><span class="boring">    () =&gt; {};
 </span><span class="boring">}
 </span><span class="boring">
-</span><span class="boring">pub(crate) use private_m as private_macro; // OK.
-</span><span class="boring">pub use pub_m as pub_macro; // OK.
+</span><span class="boring">pub(crate) use private_m as private_macro; // 正常。
+</span><span class="boring">pub use pub_m as pub_macro; // 正常。
 </span><span class="boring">
-</span>pub use private_m; // ERROR: `private_m` is only public within
-                   // the crate and cannot be re-exported outside.
+</span>pub use private_m; // 错误：`private_m` 仅在该 crate 内可见
+                   // 且不能在外部重导出。
 <span class="boring">}</span></code></pre>
 <!-- template:attributes -->
 <div class="rule" id="r-macro.decl.scope.macro_use"><a class="rule-link" href="#r-macro.decl.scope.macro_use" title="macro.decl.scope.macro_use"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_use]</span></a>
 </div>
 
-<h3 id="the-macro_use-attribute"><a class="header" href="#the-macro_use-attribute">The <code>macro_use</code> attribute</a></h3>
+<h3 id="macro_use属性"><a class="header" href="#macro_use属性"><code>macro_use</code>属性</a></h3>
 <div class="rule" id="r-macro.decl.scope.macro_use.intro"><a class="rule-link" href="#r-macro.decl.scope.macro_use.intro" title="macro.decl.scope.macro_use.intro"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_use<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>macro_use</code> <a href="#r-attributes">attribute</a></em> has two purposes: it may be used on modules to extend the scope of macros defined within them, and it may be used on <a href="#r-items.extern-crate"><code>extern crate</code></a> to import macros from another crate into the <a href="#macro_use-prelude"><code>macro_use</code> prelude</a>.</p>
+<p><em><code>macro_use</code> <a href="#r-attributes">属性</a></em> 有两个目的：它可以用于模块，以扩展其中定义的宏的作用域；它也可以用于 <a href="#r-items.extern-crate"><code>extern crate</code></a>，将其他 crate 中的宏导入到<a href="#macro_use-prelude"><code>macro_use</code>预导入</a>中。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -8445,7 +8368,7 @@ mod inner {
         () =&gt; {};
     }
 }
-m!();
+m!(); // 正常
 <span class="boring">}</span></code></pre>
 <pre><code class="language-rust ignore">#[macro_use]
 extern crate log;</code></pre>
@@ -8455,42 +8378,42 @@ extern crate log;</code></pre>
 <div class="rule" id="r-macro.decl.scope.macro_use.syntax"><a class="rule-link" href="#r-macro.decl.scope.macro_use.syntax" title="macro.decl.scope.macro_use.syntax"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_use<wbr>.syntax]</span></a>
 </div>
 
-<p>When used on modules, the <code>macro_use</code> attribute uses the <a href="#grammar-MetaWord">MetaWord</a> syntax.</p>
-<p>When used on <code>extern crate</code>, it uses the <a href="#grammar-MetaWord">MetaWord</a> and <a href="#grammar-MetaListIdents">MetaListIdents</a> syntaxes. For more on how these syntaxes may be used, see <a href="#r-macro.decl.scope.macro_use.prelude">macro.decl.scope.macro_use.prelude</a>.</p>
+<p>当用于模块时，<code>macro_use</code> 属性使用 <a href="#grammar-MetaWord">MetaWord</a> 语法。</p>
+<p>当用于 <code>extern crate</code> 时，它使用 <a href="#grammar-MetaWord">MetaWord</a> 和 <a href="#grammar-MetaListIdents">MetaListIdents</a> 语法。有关这些语法如何使用的更多信息，请参见<a href="#r-macro.decl.scope.macro_use.prelude">macro.decl.scope.macro_use.prelude</a>。</p>
 <div class="rule" id="r-macro.decl.scope.macro_use.allowed-positions"><a class="rule-link" href="#r-macro.decl.scope.macro_use.allowed-positions" title="macro.decl.scope.macro_use.allowed-positions"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_use<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>macro_use</code> attribute may be applied to modules or <code>extern crate</code>.</p>
+<p><code>macro_use</code> 属性可以应用于模块或 <code>extern crate</code>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> ignores use in other positions but lints against it. This may become an error in the future.</p>
+<p><code>rustc</code> 会忽略在其他位置的使用，但会对其进行 lint。这在将来可能会成为错误。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-macro.decl.scope.macro_use.extern-crate-self"><a class="rule-link" href="#r-macro.decl.scope.macro_use.extern-crate-self" title="macro.decl.scope.macro_use.extern-crate-self"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_use<wbr>.extern-crate-self]</span></a>
 </div>
 
-<p>The <code>macro_use</code> attribute may not be used on <a href="#r-items.extern-crate.self"><code>extern crate self</code></a>.</p>
+<p><code>macro_use</code> 属性不能用于<a href="#r-items.extern-crate.self"><code>extern crate self</code></a>。</p>
 <div class="rule" id="r-macro.decl.scope.macro_use.duplicates"><a class="rule-link" href="#r-macro.decl.scope.macro_use.duplicates" title="macro.decl.scope.macro_use.duplicates"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_use<wbr>.duplicates]</span></a>
 </div>
 
-<p>The <code>macro_use</code> attribute may be used any number of times on a form.</p>
-<p>Multiple instances of <code>macro_use</code> in the <a href="#grammar-MetaListIdents">MetaListIdents</a> syntax may be specified. The union of all specified macros will be imported.</p>
+<p><code>macro_use</code> 属性可以在一个形式上使用任意次数。</p>
+<p>可以指定 <a href="#grammar-MetaListIdents">MetaListIdents</a> 语法中的 <code>macro_use</code> 多个实例。所有指定的宏的并集将被导入。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>On modules, <code>rustc</code> lints against any <a href="#grammar-MetaWord">MetaWord</a> <code>macro_use</code> attributes following the first.</p>
-<p>On <code>extern crate</code>, <code>rustc</code> lints against any <code>macro_use</code> attributes that have no effect due to not importing any macros not already imported by another <code>macro_use</code> attribute. If two or more <a href="#grammar-MetaListIdents">MetaListIdents</a> <code>macro_use</code> attributes import the same macro, the first is linted against. If any <a href="#grammar-MetaWord">MetaWord</a> <code>macro_use</code> attributes are present, all <a href="#grammar-MetaListIdents">MetaListIdents</a> <code>macro_use</code> attributes are linted against. If two or more <a href="#grammar-MetaWord">MetaWord</a> <code>macro_use</code> attributes are present, the ones following the first are linted against.</p>
+<p>在模块上，<code>rustc</code> 会对第一个 <a href="#grammar-MetaWord">MetaWord</a> <code>macro_use</code> 属性之后的任何 <code>macro_use</code> 属性进行 lint。</p>
+<p>在 <code>extern crate</code> 上，<code>rustc</code> 会对任何由于未导入已被另一个 <code>macro_use</code> 属性导入的宏而没有效果的 <code>macro_use</code> 属性进行 lint。如果两个或更多 <a href="#grammar-MetaListIdents">MetaListIdents</a> <code>macro_use</code> 属性导入相同的宏，则会对第一个进行 lint。如果存在任何 <a href="#grammar-MetaWord">MetaWord</a> <code>macro_use</code> 属性，则会对所有 <a href="#grammar-MetaListIdents">MetaListIdents</a> <code>macro_use</code> 属性进行 lint。如果存在两个或更多 <a href="#grammar-MetaWord">MetaWord</a> <code>macro_use</code> 属性，则会对第一个之后的属性进行 lint。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-macro.decl.scope.macro_use.mod-decl"><a class="rule-link" href="#r-macro.decl.scope.macro_use.mod-decl" title="macro.decl.scope.macro_use.mod-decl"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_use<wbr>.mod-decl]</span></a>
 </div>
 
-<p>When <code>macro_use</code> is used on a module, the module’s macro scope extends beyond the module’s lexical scope.</p>
+<p>当 <code>macro_use</code> 用于模块时，模块的宏作用域会超出模块的词法作用域。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -8503,7 +8426,7 @@ mod inner {
         () =&gt; {};
     }
 }
-m!(); // OK
+m!(); // 正常
 <span class="boring">}</span></code></pre>
 </blockquote>
 </div>
@@ -8511,44 +8434,44 @@ m!(); // OK
 <div class="rule" id="r-macro.decl.scope.macro_use.prelude"><a class="rule-link" href="#r-macro.decl.scope.macro_use.prelude" title="macro.decl.scope.macro_use.prelude"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_use<wbr>.prelude]</span></a>
 </div>
 
-<p>Specifying <code>macro_use</code> on an <code>extern crate</code> declaration in the crate root imports exported macros from that crate.</p>
-<p>Macros imported this way are imported into the <a href="#macro_use-prelude"><code>macro_use</code> prelude</a>, not textually, which means that they can be shadowed by any other name. Macros imported by <code>macro_use</code> can be used before the import statement.</p>
+<p>在 crate 根目录中的 <code>extern crate</code> 声明上指定 <code>macro_use</code> 会从该 crate 导入导出的宏。</p>
+<p>以这种方式导入的宏被导入到<a href="#macro_use-prelude"><code>macro_use</code>预导入</a>中，而不是文本式地，这意味着它们可以被任何其他名称遮蔽。<code>macro_use</code> 导入的宏可以在 import 语句之前使用。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> currently prefers the last macro imported in case of conflict. Don’t rely on this. This behavior is unusual, as imports in Rust are generally order-independent. This behavior of <code>macro_use</code> may change in the future.</p>
-<p>For details, see <a href="https://github.com/rust-lang/rust/issues/148025">Rust issue #148025</a>.</p>
+<p><code>rustc</code> 目前在冲突时会优先选择最后导入的宏。请不要依赖此行为。这种行为很不寻常，因为 Rust 中的导入通常与顺序无关。<code>macro_use</code> 的这种行为在将来可能会改变。</p>
+<p>有关详细信息，请参见 <a href="https://github.com/rust-lang/rust/issues/148025">Rust问题单#148025</a>。</p>
 </blockquote>
 </div>
 
-<p>When using the <a href="#grammar-MetaWord">MetaWord</a> syntax, all exported macros are imported. When using the <a href="#grammar-MetaListIdents">MetaListIdents</a> syntax, only the specified macros are imported.</p>
+<p>当使用 <a href="#grammar-MetaWord">MetaWord</a> 语法时，所有导出的宏都会被导入。当使用 <a href="#grammar-MetaListIdents">MetaListIdents</a> 语法时，只有指定的宏会被导入。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
 <!-- ignore: requires external crates -->
-<pre><code class="language-rust ignore">#[macro_use(lazy_static)] // Or `#[macro_use]` to import all macros.
+<pre><code class="language-rust ignore">#[macro_use(lazy_static)] // 或者 `#[macro_use]` 导入所有宏。
 extern crate lazy_static;
 
 lazy_static!{}
-// self::lazy_static!{} // ERROR: lazy_static is not defined in `self`.</code></pre>
+// self::lazy_static!{} // 错误：`lazy_static` 未在 `self` 中定义。</code></pre>
 </blockquote>
 </div>
 
 <div class="rule" id="r-macro.decl.scope.macro_use.export"><a class="rule-link" href="#r-macro.decl.scope.macro_use.export" title="macro.decl.scope.macro_use.export"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_use<wbr>.export]</span></a>
 </div>
 
-<p>Macros to be imported with <code>macro_use</code> must be exported with <a href="#r-macro.decl.scope.macro_export"><code>macro_export</code></a>.</p>
+<p>要使用 <code>macro_use</code> 导入的宏必须使用 <a href="#r-macro.decl.scope.macro_export"><code>macro_export</code></a> 导出。</p>
 <!-- template:attributes -->
 <div class="rule" id="r-macro.decl.scope.macro_export"><a class="rule-link" href="#r-macro.decl.scope.macro_export" title="macro.decl.scope.macro_export"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_export]</span></a>
 </div>
 
-<h3 id="the-macro_export-attribute"><a class="header" href="#the-macro_export-attribute">The <code>macro_export</code> attribute</a></h3>
+<h3 id="macro_export属性"><a class="header" href="#macro_export属性"><code>macro_export</code>属性</a></h3>
 <div class="rule" id="r-macro.decl.scope.macro_export.intro"><a class="rule-link" href="#r-macro.decl.scope.macro_export.intro" title="macro.decl.scope.macro_export.intro"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_export<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>macro_export</code> <a href="#r-attributes">attribute</a></em> exports the macro from the crate and makes it available in the root of the crate for path-based resolution.</p>
+<p><em><code>macro_export</code> <a href="#r-attributes">属性</a></em> 将宏从 crate 导出，并使其在 crate 根目录中可用，以进行基于路径的解析。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -8556,8 +8479,8 @@ lazy_static!{}
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>self::m!();
-//  ^^^^ OK: Path-based lookup finds `m` in the current module.
-m!(); // As above.
+//  ^^^^ 正常：基于路径的查找在当前模块中找到 `m`。
+m!(); // 同上。
 
 mod inner {
     super::m!();
@@ -8577,53 +8500,53 @@ mod mac {
 <div class="rule" id="r-macro.decl.scope.macro_export.syntax"><a class="rule-link" href="#r-macro.decl.scope.macro_export.syntax" title="macro.decl.scope.macro_export.syntax"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_export<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>macro_export</code> attribute uses the <a href="#grammar-MetaWord">MetaWord</a> and <a href="#grammar-MetaListIdents">MetaListIdents</a> syntaxes. With the <a href="#grammar-MetaListIdents">MetaListIdents</a> syntax, it accepts a single <a href="#r-macro.decl.scope.macro_export.local_inner_macros"><code>local_inner_macros</code></a> value.</p>
+<p><code>macro_export</code> 属性使用 <a href="#grammar-MetaWord">MetaWord</a> 和 <a href="#grammar-MetaListIdents">MetaListIdents</a> 语法。使用 <a href="#grammar-MetaListIdents">MetaListIdents</a> 语法时，它接受单个 <a href="#r-macro.decl.scope.macro_export.local_inner_macros"><code>local_inner_macros</code></a> 值。</p>
 <div class="rule" id="r-macro.decl.scope.macro_export.allowed-positions"><a class="rule-link" href="#r-macro.decl.scope.macro_export.allowed-positions" title="macro.decl.scope.macro_export.allowed-positions"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_export<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>macro_export</code> attribute may be applied to <code>macro_rules</code> definitions.</p>
+<p><code>macro_export</code> 属性可以应用于 <code>macro_rules</code> 定义。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> ignores use in other positions but lints against it. This may become an error in the future.</p>
+<p><code>rustc</code> 会忽略在其他位置的使用，但会对其进行 lint。这在将来可能会成为错误。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-macro.decl.scope.macro_export.duplicates"><a class="rule-link" href="#r-macro.decl.scope.macro_export.duplicates" title="macro.decl.scope.macro_export.duplicates"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_export<wbr>.duplicates]</span></a>
 </div>
 
-<p>Only the first use of <code>macro_export</code> on a macro has effect.</p>
+<p>宏上只有第一次使用 <code>macro_export</code> 有效。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> lints against any use following the first.</p>
+<p><code>rustc</code> 会对第一次使用之后的任何使用进行 lint。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-macro.decl.scope.macro_export.path-based"><a class="rule-link" href="#r-macro.decl.scope.macro_export.path-based" title="macro.decl.scope.macro_export.path-based"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_export<wbr>.path-based]</span></a>
 </div>
 
-<p>By default, macros only have <a href="#r-macro.decl.scope.textual">textual scope</a> and cannot be resolved by path. When the <code>macro_export</code> attribute is used, the macro is made available in the crate root and can be referred to by its path.</p>
+<p>默认情况下，宏只有<a href="#r-macro.decl.scope.textual">文本作用域</a>，不能通过路径解析。当使用 <code>macro_export</code> 属性时，该宏会在 crate 根目录中可用，并可以通过其路径引用。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
-<p>Without <code>macro_export</code>, macros only have textual scope, so path-based resolution of the macro fails.</p>
+<p>没有 <code>macro_export</code> 时，宏只有文本作用域，因此宏的基于路径的解析会失败。</p>
 <pre class="playground"><code class="language-rust compile_fail E0433 edition2024">macro_rules! m {
     () =&gt; {};
 }
-self::m!(); // ERROR
-crate::m!(); // ERROR
+self::m!(); // 错误
+crate::m!(); // 错误
 <span class="boring">fn main() {}</span></code></pre>
-<p>With <code>macro_export</code>, path-based resolution works.</p>
+<p>有了 <code>macro_export</code>，基于路径的解析就有效了。</p>
 <pre class="playground"><code class="language-rust edition2024">#[macro_export]
 macro_rules! m {
     () =&gt; {};
 }
-self::m!(); // OK
-crate::m!(); // OK
+self::m!(); // 正常
+crate::m!(); // 正常
 <span class="boring">fn main() {}</span></code></pre>
 </blockquote>
 </div>
@@ -8631,12 +8554,12 @@ crate::m!(); // OK
 <div class="rule" id="r-macro.decl.scope.macro_export.export"><a class="rule-link" href="#r-macro.decl.scope.macro_export.export" title="macro.decl.scope.macro_export.export"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_export<wbr>.export]</span></a>
 </div>
 
-<p>The <code>macro_export</code> attribute causes a macro to be exported from the crate root so that it can be referred to in other crates by path.</p>
+<p><code>macro_export</code> 属性导致宏从 crate 根目录导出，以便其他 crate 可以通过路径引用它。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
-<p>Given the following in a <code>log</code> crate:</p>
+<p>给定 <code>log</code> crate 中的以下内容：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[macro_export]
@@ -8644,7 +8567,7 @@ macro_rules! warn {
     ($message:expr) =&gt; { eprintln!("WARN: {}", $message) };
 }
 <span class="boring">}</span></code></pre>
-<p>From another crate, you can refer to the macro by path:</p>
+<p>从另一个crate中，你可以通过路径引用宏：</p>
 <!-- ignore: requires external crates -->
 <pre><code class="language-rust ignore">fn main() {
     log::warn!("example warning");
@@ -8655,12 +8578,12 @@ macro_rules! warn {
 <div class="rule" id="r-macro.decl.scope.macro_export.macro_use"><a class="rule-link" href="#r-macro.decl.scope.macro_export.macro_use" title="macro.decl.scope.macro_export.macro_use"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_export<wbr>.macro_use]</span></a>
 </div>
 
-<p><code>macro_export</code> allows the use of <a href="#r-macro.decl.scope.macro_use"><code>macro_use</code></a> on an <code>extern crate</code> to import the macro into the <a href="#macro_use-prelude"><code>macro_use</code> prelude</a>.</p>
+<p><code>macro_export</code> 允许在 <code>extern crate</code> 上使用 <a href="#r-macro.decl.scope.macro_use"><code>macro_use</code></a>，将宏导入到 <a href="#macro_use-prelude"><code>macro_use</code>预导入</a>中。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
-<p>Given the following in a <code>log</code> crate:</p>
+<p>给定 <code>log</code> crate 中的以下内容：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[macro_export]
@@ -8668,14 +8591,14 @@ macro_rules! warn {
     ($message:expr) =&gt; { eprintln!("WARN: {}", $message) };
 }
 <span class="boring">}</span></code></pre>
-<p>Using <code>macro_use</code> in a dependent crate allows you to use the macro from the prelude:</p>
+<p>在依赖 crate 中使用 <code>macro_use</code> 允许你从预导入中使用宏：</p>
 <!-- ignore: requires external crates -->
 <pre><code class="language-rust ignore">#[macro_use]
 extern crate log;
 
 pub mod util {
     pub fn do_thing() {
-        // Resolved via macro prelude.
+        // 通过宏预导入解析。
         warn!("example warning");
     }
 }</code></pre>
@@ -8685,12 +8608,12 @@ pub mod util {
 <div class="rule" id="r-macro.decl.scope.macro_export.local_inner_macros"><a class="rule-link" href="#r-macro.decl.scope.macro_export.local_inner_macros" title="macro.decl.scope.macro_export.local_inner_macros"><span>[macro<wbr>.decl<wbr>.scope<wbr>.macro_export<wbr>.local_inner_macros]</span></a>
 </div>
 
-<p>Adding <code>local_inner_macros</code> to the <code>macro_export</code> attribute causes all single-segment macro invocations in the macro definition to have an implicit <code>$crate::</code> prefix.</p>
+<p>将 <code>local_inner_macros</code> 添加到 <code>macro_export</code> 属性会使宏定义中的所有单段宏调用具有隐式的 <code>$crate::</code> 前缀。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This is intended primarily as a tool to migrate code written before <a href="#r-macro.decl.hygiene.crate"><code>$crate</code></a> was added to the language to work with Rust 2018’s path-based imports of macros. Its use is discouraged in new code.</p>
+<p>这主要旨在作为一种工具，用于迁移在语言中添加 <a href="#r-macro.decl.hygiene.crate"><code>$crate</code></a> 之前编写的代码，以使其与 Rust 2018 基于路径的宏导入协同工作。不建议在新代码中使用它。</p>
 </blockquote>
 </div>
 
@@ -8702,7 +8625,7 @@ pub mod util {
 </span><span class="boring">fn main() {
 </span>#[macro_export(local_inner_macros)]
 macro_rules! helped {
-    () =&gt; { helper!() } // Automatically converted to $crate::helper!().
+    () =&gt; { helper!() } // 自动转换为 $crate::helper!()。
 }
 
 #[macro_export]
@@ -8716,11 +8639,11 @@ macro_rules! helper {
 <div class="rule" id="r-macro.decl.hygiene"><a class="rule-link" href="#r-macro.decl.hygiene" title="macro.decl.hygiene"><span>[macro<wbr>.decl<wbr>.hygiene]</span></a>
 </div>
 
-<h2 id="hygiene"><a class="header" href="#hygiene">Hygiene</a></h2>
+<h2 id="卫生"><a class="header" href="#卫生">卫生</a></h2>
 <div class="rule" id="r-macro.decl.hygiene.intro"><a class="rule-link" href="#r-macro.decl.hygiene.intro" title="macro.decl.hygiene.intro"><span>[macro<wbr>.decl<wbr>.hygiene<wbr>.intro]</span></a>
 </div>
 
-<p>Macros by example have <em>mixed-site hygiene</em>. This means that <a href="#loop-labels">loop labels</a>, <a href="#r-expr.loop.block-labels">block labels</a>, and local variables are looked up at the macro definition site while other symbols are looked up at the macro invocation site. For example:</p>
+<p>声明宏具有 <em>混合站点卫生</em> 。这意味着<a href="#loop-labels">循环标签</a>、<a href="#r-expr.loop.block-labels">块标签</a>和局部变量在宏定义站点查找，而其他符号在宏调用站点查找。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = 1;
@@ -8730,18 +8653,18 @@ fn func() {
 
 macro_rules! check {
     () =&gt; {
-        assert_eq!(x, 1); // Uses `x` from the definition site.
-        func();           // Uses `func` from the invocation site.
+        assert_eq!(x, 1); // 使用定义站点的 `x`。
+        func();           // 使用调用站点的 `func`。
     };
 }
 
 {
     let x = 2;
-    fn func() { /* does not panic */ }
+    fn func() { /* 不会恐慌 */ }
     check!();
 }
 <span class="boring">}</span></code></pre>
-<p>Labels and local variables defined in macro expansion are not shared between invocations, so this code doesn’t compile:</p>
+<p>在宏展开中定义的标签和局部变量不共享于不同的调用之间，因此此代码无法编译：</p>
 <pre class="playground"><code class="language-rust compile_fail E0425 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! m {
@@ -8759,12 +8682,12 @@ m!(refer);
 <div class="rule" id="r-macro.decl.hygiene.crate"><a class="rule-link" href="#r-macro.decl.hygiene.crate" title="macro.decl.hygiene.crate"><span>[macro<wbr>.decl<wbr>.hygiene<wbr>.crate]</span></a>
 </div>
 
-<p>A special case is the <code>$crate</code> metavariable. It refers to the crate defining the macro, and can be used at the start of the path to look up items or macros which are not in scope at the invocation site.</p>
+<p>一个特殊情况是 <code>$crate</code> 元变量。它指代定义宏的 crate，可以用于路径的开头，以查找在调用站点不在作用域内的项或宏。</p>
 <!-- ignore: requires external crates -->
-<pre><code class="language-rust ignore">//// Definitions in the `helper_macro` crate.
+<pre><code class="language-rust ignore">//// `helper_macro` crate 中的定义。
 #[macro_export]
 macro_rules! helped {
-    // () =&gt; { helper!() } // This might lead to an error due to 'helper' not being in scope.
+    // () =&gt; { helper!() } // 这可能会因 'helper' 不在作用域中而导致错误。
     () =&gt; { $crate::helper!() }
 }
 
@@ -8773,15 +8696,14 @@ macro_rules! helper {
     () =&gt; { () }
 }
 
-//// Usage in another crate.
-// Note that `helper_macro::helper` is not imported!
+//// 在另一个 crate 中的使用。
+// 请注意，`helper_macro::helper` 并未导入！
 use helper_macro::helped;
 
 fn unit() {
     helped!();
 }</code></pre>
-<p>Note that, because <code>$crate</code> refers to the current crate, it must be used with a
-fully qualified module path when referring to non-macro items:</p>
+<p>请注意，由于 <code>$crate</code> 指代当前 crate，因此在引用非宏项时必须与完全限定的模块路径一起使用：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub mod inner {
@@ -8796,11 +8718,7 @@ fully qualified module path when referring to non-macro items:</p>
 <div class="rule" id="r-macro.decl.hygiene.vis"><a class="rule-link" href="#r-macro.decl.hygiene.vis" title="macro.decl.hygiene.vis"><span>[macro<wbr>.decl<wbr>.hygiene<wbr>.vis]</span></a>
 </div>
 
-<p>Additionally, even though <code>$crate</code> allows a macro to refer to items within its
-own crate when expanding, its use has no effect on visibility. An item or macro
-referred to must still be visible from the invocation site. In the following
-example, any attempt to invoke <code>call_foo!()</code> from outside its crate will fail
-because <code>foo()</code> is not public.</p>
+<p>此外，即使 <code>$crate</code> 允许宏在展开时引用其自身 crate 内的项，其使用对可见性也没有影响。被引用的项或宏仍必须从调用站点可见。在下面的示例中，任何尝试从其 crate 外部调用 <code>call_foo!()</code> 的操作都会失败，因为 <code>foo()</code> 不是公共的。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[macro_export]
@@ -8814,72 +8732,55 @@ fn foo() {}
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Prior to Rust 1.30, <code>$crate</code> and <a href="#r-macro.decl.scope.macro_export.local_inner_macros"><code>local_inner_macros</code></a> were unsupported. They were added alongside <a href="#r-macro.decl.scope.macro_export">path-based imports of macros</a>, to ensure that helper macros did not need to be manually imported by users of a macro-exporting crate. Crates written for earlier versions of Rust that use helper macros need to be modified to use <code>$crate</code> or <code>local_inner_macros</code> to work well with path-based imports.</p>
+<p>在 Rust 1.30 之前，不支持 <code>$crate</code> 和 <a href="#r-macro.decl.scope.macro_export.local_inner_macros"><code>local_inner_macros</code></a>。它们是与<a href="#r-macro.decl.scope.macro_export">基于路径的宏导入</a>一起添加的，以确保辅助宏不需要由导出宏的 crate 用户手动导入。为早期 Rust 版本编写的、使用辅助宏的 crate 需要修改以使用 <code>$crate</code> 或 <code>local_inner_macros</code>，才能与基于路径的导入良好协作。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-macro.decl.follow-set"><a class="rule-link" href="#r-macro.decl.follow-set" title="macro.decl.follow-set"><span>[macro<wbr>.decl<wbr>.follow-set]</span></a>
 </div>
 
-<h2 id="follow-set-ambiguity-restrictions"><a class="header" href="#follow-set-ambiguity-restrictions">Follow-set ambiguity restrictions</a></h2>
+<h2 id="后续集歧义限制"><a class="header" href="#后续集歧义限制">后续集歧义限制</a></h2>
 <div class="rule" id="r-macro.decl.follow-set.intro"><a class="rule-link" href="#r-macro.decl.follow-set.intro" title="macro.decl.follow-set.intro"><span>[macro<wbr>.decl<wbr>.follow-set<wbr>.intro]</span></a>
 </div>
 
-<p>The parser used by the macro system is reasonably powerful, but it is limited in
-order to prevent ambiguity in current or future versions of the language.</p>
-<div class="rule" id="r-macro.decl.follow-set.token-restriction"><a class="rule-link" href="#r-macro.decl.follow-set.token-restriction" title="macro.decl.follow-set.token-restriction"><span>[macro<wbr>.decl<wbr>.follow-set<wbr>.token-restriction]</span></a>
-</div>
-
-<p>In particular, in addition to the rule about ambiguous expansions, a nonterminal
-matched by a metavariable must be followed by a token which has been decided can
-be safely used after that kind of match.</p>
-<p>As an example, a macro matcher like <code>$i:expr [ , ]</code> could in theory be accepted
-in Rust today, since <code>[,]</code> cannot be part of a legal expression and therefore
-the parse would always be unambiguous. However, because <code>[</code> can start trailing
-expressions, <code>[</code> is not a character which can safely be ruled out as coming
-after an expression. If <code>[,]</code> were accepted in a later version of Rust, this
-matcher would become ambiguous or would misparse, breaking working code.
-Matchers like <code>$i:expr,</code> or <code>$i:expr;</code> would be legal, however, because <code>,</code> and
-<code>;</code> are legal expression separators. The specific rules are:</p>
+<p>宏系统使用的解析器功能相当强大，但它受到限制，以防止在语言的当前或未来版本中出现歧义。</p>
+<p>具体来说，除了关于歧义展开的规则之外，元变量匹配的非终结符之后必须跟随一个已被确定可以安全地用于该类匹配的词法单元。</p>
+<p>例如，像 <code>$i:expr [ , ]</code> 这样的宏匹配器理论上今天可以在 Rust 中接受，因为 <code>[,]</code> 不能是合法表达式的一部分，因此解析将始终是明确的。然而，由于 <code>[</code> 可以开始尾随表达式，<code>[</code> 不是一个可以安全地排除在表达式之后出现的字符。如果在后续的 Rust 版本中接受 <code>[,]</code>，这个匹配器将变得模糊或解析错误，从而破坏现有代码。然而，像 <code>$i:expr,</code> 或 <code>$i:expr;</code> 这样的匹配器是合法的，因为 <code>,</code> 和 <code>;</code> 是合法的表达式分隔符。具体规则是：</p>
 <div class="rule" id="r-macro.decl.follow-set.token-expr-stmt"><a class="rule-link" href="#r-macro.decl.follow-set.token-expr-stmt" title="macro.decl.follow-set.token-expr-stmt"><span>[macro<wbr>.decl<wbr>.follow-set<wbr>.token-expr-stmt]</span></a>
 </div>
 
 <ul>
-<li><code>expr</code> and <code>stmt</code> may only be followed by one of: <code>=&gt;</code>, <code>,</code>, or <code>;</code>.</li>
+<li><code>expr</code> 和 <code>stmt</code> 只能跟随以下之一：<code>=&gt;</code>、<code>,</code> 或 <code>;</code>。</li>
 </ul>
 <div class="rule" id="r-macro.decl.follow-set.token-pat_param"><a class="rule-link" href="#r-macro.decl.follow-set.token-pat_param" title="macro.decl.follow-set.token-pat_param"><span>[macro<wbr>.decl<wbr>.follow-set<wbr>.token-pat_param]</span></a>
 </div>
 
 <ul>
-<li><code>pat_param</code> may only be followed by one of: <code>=&gt;</code>, <code>,</code>, <code>=</code>, <code>|</code>, <code>if</code>, or <code>in</code>.</li>
+<li><code>pat_param</code> 只能跟随以下之一：<code>=&gt;</code>、<code>,</code>、<code>=</code>、<code>|</code>、<code>if</code> 或 <code>in</code>。</li>
 </ul>
 <div class="rule" id="r-macro.decl.follow-set.token-pat"><a class="rule-link" href="#r-macro.decl.follow-set.token-pat" title="macro.decl.follow-set.token-pat"><span>[macro<wbr>.decl<wbr>.follow-set<wbr>.token-pat]</span></a>
 </div>
 
 <ul>
-<li><code>pat</code> may only be followed by one of: <code>=&gt;</code>, <code>,</code>, <code>=</code>, <code>if</code>, or <code>in</code>.</li>
+<li><code>pat</code> 只能跟随以下之一：<code>=&gt;</code>、<code>,</code>、<code>=</code>、<code>if</code> 或 <code>in</code>。</li>
 </ul>
 <div class="rule" id="r-macro.decl.follow-set.token-path-ty"><a class="rule-link" href="#r-macro.decl.follow-set.token-path-ty" title="macro.decl.follow-set.token-path-ty"><span>[macro<wbr>.decl<wbr>.follow-set<wbr>.token-path-ty]</span></a>
 </div>
 
 <ul>
-<li><code>path</code> and <code>ty</code> may only be followed by one of: <code>=&gt;</code>, <code>,</code>, <code>=</code>, <code>|</code>, <code>;</code>,
-<code>:</code>, <code>&gt;</code>, <code>&gt;&gt;</code>, <code>[</code>, <code>{</code>, <code>as</code>, <code>where</code>, or a macro variable of <code>block</code>
-fragment specifier.</li>
+<li><code>path</code> 和 <code>ty</code> 只能跟随以下之一：<code>=&gt;</code>、<code>,</code>、<code>=</code>、<code>|</code>、<code>;</code>、<code>:</code>、<code>&gt;</code>、<code>&gt;&gt;</code>、<code>[</code>、<code>{</code>、<code>as</code>、<code>where</code> 或 <code>block</code> 片段说明符的宏变量。</li>
 </ul>
 <div class="rule" id="r-macro.decl.follow-set.token-vis"><a class="rule-link" href="#r-macro.decl.follow-set.token-vis" title="macro.decl.follow-set.token-vis"><span>[macro<wbr>.decl<wbr>.follow-set<wbr>.token-vis]</span></a>
 </div>
 
 <ul>
-<li><code>vis</code> may only be followed by one of: <code>,</code>, an identifier other than a
-non-raw <code>priv</code>, any token that can begin a type, or a metavariable with a
-<code>ident</code>, <code>ty</code>, or <code>path</code> fragment specifier.</li>
+<li><code>vis</code> 只能跟随以下之一：<code>,</code>，非原始 <code>priv</code> 之外的标识符，任何可以开始类型的词法单元，或具有 <code>ident</code>、<code>ty</code> 或 <code>path</code> 片段说明符的元变量。</li>
 </ul>
 <div class="rule" id="r-macro.decl.follow-set.token-other"><a class="rule-link" href="#r-macro.decl.follow-set.token-other" title="macro.decl.follow-set.token-other"><span>[macro<wbr>.decl<wbr>.follow-set<wbr>.token-other]</span></a>
 </div>
 
 <ul>
-<li>All other fragment specifiers have no restrictions.</li>
+<li>所有其他片段说明符都没有限制。</li>
 </ul>
 <div class="rule" id="r-macro.decl.follow-set.edition2021"><a class="rule-link" href="#r-macro.decl.follow-set.edition2021" title="macro.decl.follow-set.edition2021"><span>[macro<wbr>.decl<wbr>.follow-set<wbr>.edition2021]</span></a>
 </div>
@@ -8888,56 +8789,47 @@ non-raw <code>priv</code>, any token that can begin a type, or a metavariable wi
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2021</span> 版次差异</p>
 
-<p>Before the 2021 edition, <code>pat</code> may also be followed by <code>|</code>.</p>
+<p>在 2021 版次之前，<code>pat</code> 后面也可以跟随 <code>|</code>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-macro.decl.follow-set.repetition"><a class="rule-link" href="#r-macro.decl.follow-set.repetition" title="macro.decl.follow-set.repetition"><span>[macro<wbr>.decl<wbr>.follow-set<wbr>.repetition]</span></a>
 </div>
 
-<p>When repetitions are involved, then the rules apply to every possible number of
-expansions, taking separators into account. This means:</p>
+<p>当涉及重复时，规则适用于所有可能的展开次数，并考虑分隔符。这意味着：</p>
 <ul>
-<li>If the repetition includes a separator, that separator must be able to
-follow the contents of the repetition.</li>
-<li>If the repetition can repeat multiple times (<code>*</code> or <code>+</code>), then the contents
-must be able to follow themselves.</li>
-<li>The contents of the repetition must be able to follow whatever comes
-before, and whatever comes after must be able to follow the contents of the
-repetition.</li>
-<li>If the repetition can match zero times (<code>*</code> or <code>?</code>), then whatever comes
-after must be able to follow whatever comes before.</li>
+<li>如果重复包含分隔符，则该分隔符必须能够跟随重复的内容。</li>
+<li>如果重复可以多次重复（<code>*</code> 或 <code>+</code>），则内容必须能够跟随自身。</li>
+<li>重复的内容必须能够跟随其之前的内容，并且其之后的内容必须能够跟随重复的内容。</li>
+<li>如果重复可以匹配零次（<code>*</code> 或 <code>?</code>），则其之后的内容必须能够跟随其之前的内容。</li>
 </ul>
-<p>For more detail, see the <a href="#appendix-macro-follow-set-ambiguity-formal-specification">formal specification</a>.</p>
+<p>有关更多详细信息，请参见<a href="#appendix-macro-follow-set-ambiguity-formal-specification">形式化规范</a>。</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <div class="rule" id="r-macro.proc"><a class="rule-link" href="#r-macro.proc" title="macro.proc"><span>[macro<wbr>.proc]</span></a>
 </div>
 
-<h1 id="procedural-macros"><a class="header" href="#procedural-macros">Procedural macros</a></h1>
+<h1 id="过程宏"><a class="header" href="#过程宏">过程宏</a></h1>
 <div class="rule" id="r-macro.proc.intro"><a class="rule-link" href="#r-macro.proc.intro" title="macro.proc.intro"><span>[macro<wbr>.proc<wbr>.intro]</span></a>
 </div>
 
-<p><em>Procedural macros</em> allow creating syntax extensions as execution of a function.
-Procedural macros come in one of three flavors:</p>
+<p><em>过程宏</em>允许通过执行函数来创建语法扩展。
+过程宏分为三种类型：</p>
 <ul>
-<li><a href="#the-proc_macro-attribute">Function-like macros</a> - <code>custom!(...)</code></li>
-<li><a href="#r-macro.proc.derive">Derive macros</a> - <code>#[derive(CustomDerive)]</code></li>
-<li><a href="#the-proc_macro_attribute-attribute">Attribute macros</a> - <code>#[CustomAttribute]</code></li>
+<li><a href="#proc_macro属性">函数式宏</a> - <code>custom!(...)</code></li>
+<li><a href="#r-macro.proc.derive">派生宏</a> - <code>#[derive(CustomDerive)]</code></li>
+<li><a href="#proc_macro_attribute属性">属性宏</a> - <code>#[CustomAttribute]</code></li>
 </ul>
-<p>Procedural macros allow you to run code at compile time that operates over Rust
-syntax, both consuming and producing Rust syntax. You can sort of think of
-procedural macros as functions from an AST to another AST.</p>
+<p>过程宏允许你在编译时运行操作Rust语法的代码，既可以消费Rust语法，也可以生成Rust语法。你可以将过程宏视为从一个AST到另一个AST的函数。</p>
 <div class="rule" id="r-macro.proc.def"><a class="rule-link" href="#r-macro.proc.def" title="macro.proc.def"><span>[macro<wbr>.proc<wbr>.def]</span></a>
 </div>
 
-<p>Procedural macros must be defined in the root of a crate with the <a href="#linkage">crate type</a> of
-<code>proc-macro</code>.
-The macros may not be used from the crate where they are defined, and can only be used when imported in another crate.</p>
+<p>过程宏必须定义在<a href="#linkage">crate类型</a>为<code>proc-macro</code>的crate根目录中。
+宏不能在其定义的crate中使用，只能在另一个crate中导入后才能使用。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>When using Cargo, Procedural macro crates are defined with the <code>proc-macro</code> key in your manifest:</p>
+<p>当使用Cargo时，过程宏crate通过清单中的<code>proc-macro</code>键定义：</p>
 <pre><code class="language-toml">[lib]
 proc-macro = true
 </code></pre>
@@ -8947,75 +8839,49 @@ proc-macro = true
 <div class="rule" id="r-macro.proc.result"><a class="rule-link" href="#r-macro.proc.result" title="macro.proc.result"><span>[macro<wbr>.proc<wbr>.result]</span></a>
 </div>
 
-<p>As functions, they must either return syntax, panic, or loop endlessly. Returned
-syntax either replaces or adds the syntax depending on the kind of procedural
-macro. Panics are caught by the compiler and are turned into a compiler error.
-Endless loops are not caught by the compiler which hangs the compiler.</p>
-<p>Procedural macros run during compilation, and thus have the same resources that
-the compiler has. For example, standard input, error, and output are the same
-that the compiler has access to. Similarly, file access is the same. Because
-of this, procedural macros have the same security concerns that <a href="../cargo/reference/build-scripts.html">Cargo’s
-build scripts</a> have.</p>
+<p>作为函数，它们必须返回语法、<a href="#r-panic">恐慌</a>，或无限循环。返回的语法会根据过程宏的种类替换或添加语法。编译器会捕获<a href="#r-panic">恐慌</a>，并将其转换为编译器错误。无限循环不会被编译器捕获，这会导致编译器挂起。</p>
+<p>过程宏在编译期间运行，因此拥有与编译器相同的资源。例如，标准输入、错误和输出与编译器可访问的相同。同样，文件访问也相同。因此，过程宏具有与<a href="../cargo/reference/build-scripts.html">Cargo的构建脚本</a>相同的安全问题。</p>
 <div class="rule" id="r-macro.proc.error"><a class="rule-link" href="#r-macro.proc.error" title="macro.proc.error"><span>[macro<wbr>.proc<wbr>.error]</span></a>
 </div>
 
-<p>Procedural macros have two ways of reporting errors. The first is to panic. The
-second is to emit a <a href="../core/macro.compile_error.html"><code>compile_error</code></a> macro invocation.</p>
+<p>过程宏有两种报告错误的方式。第一种是<a href="#r-panic">恐慌</a>。第二种是发出一个<a href="../core/macro.compile_error.html"><code>compile_error</code></a>宏调用。</p>
 <div class="rule" id="r-macro.proc.proc_macro-crate"><a class="rule-link" href="#r-macro.proc.proc_macro-crate" title="macro.proc.proc_macro-crate"><span>[macro<wbr>.proc<wbr>.proc_macro-crate]</span></a>
 </div>
 
-<h2 id="the-proc_macro-crate"><a class="header" href="#the-proc_macro-crate">The <code>proc_macro</code> crate</a></h2>
+<h2 id="proc_macro-crate"><a class="header" href="#proc_macro-crate"><code>proc_macro</code> crate</a></h2>
 <div class="rule" id="r-macro.proc.proc_macro-crate.intro"><a class="rule-link" href="#r-macro.proc.proc_macro-crate.intro" title="macro.proc.proc_macro-crate.intro"><span>[macro<wbr>.proc<wbr>.proc_macro-crate<wbr>.intro]</span></a>
 </div>
 
-<p>Procedural macro crates almost always will link to the compiler-provided
-<a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>. The <code>proc_macro</code> crate provides types required for
-writing procedural macros and facilities to make it easier.</p>
+<p>过程宏crate几乎总是会链接到编译器提供的<a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>。<a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>提供了编写过程宏所需的类型和使其更方便的工具。</p>
 <div class="rule" id="r-macro.proc.proc_macro-crate.token-stream"><a class="rule-link" href="#r-macro.proc.proc_macro-crate.token-stream" title="macro.proc.proc_macro-crate.token-stream"><span>[macro<wbr>.proc<wbr>.proc_macro-crate<wbr>.token-stream]</span></a>
 </div>
 
-<p>This crate primarily contains a <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> type. Procedural macros operate
-over <em>token streams</em> instead of AST nodes, which is a far more stable interface
-over time for both the compiler and for procedural macros to target. A
-<em>token stream</em> is roughly equivalent to <code>Vec&lt;TokenTree&gt;</code> where a <code>TokenTree</code>
-can roughly be thought of as lexical token. For example <code>foo</code> is an <code>Ident</code>
-token, <code>.</code> is a <code>Punct</code> token, and <code>1.2</code> is a <code>Literal</code> token. The <code>TokenStream</code>
-type, unlike <code>Vec&lt;TokenTree&gt;</code>, is cheap to clone.</p>
+<p>这个crate主要包含<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>类型。过程宏操作<em>词法单元流</em>而不是AST节点，这对于编译器和过程宏来说都是一个更稳定的长期接口。<em>词法单元流</em>大致等同于<code>Vec&lt;TokenTree&gt;</code>，其中<code>TokenTree</code>大致可以被认为是词法单元。例如，<code>foo</code>是一个<code>Ident</code>词法单元，<code>.</code>是一个<code>Punct</code>词法单元，<code>1.2</code>是一个<code>Literal</code>词法单元。<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>类型与<code>Vec&lt;TokenTree&gt;</code>不同，克隆开销很小。</p>
 <div class="rule" id="r-macro.proc.proc_macro-crate.span"><a class="rule-link" href="#r-macro.proc.proc_macro-crate.span" title="macro.proc.proc_macro-crate.span"><span>[macro<wbr>.proc<wbr>.proc_macro-crate<wbr>.span]</span></a>
 </div>
 
-<p>All tokens have an associated <code>Span</code>. A <code>Span</code> is an opaque value that cannot
-be modified but can be manufactured. <code>Span</code>s represent an extent of source
-code within a program and are primarily used for error reporting. While you
-cannot modify a <code>Span</code> itself, you can always change the <code>Span</code> <em>associated</em>
-with any token, such as through getting a <code>Span</code> from another token.</p>
+<p>所有词法单元都带有一个关联的<code>Span</code>。<code>Span</code>是一个不透明的值，不能被修改但可以被创建。<code>Span</code>代表程序中源代码的范围，主要用于错误报告。虽然你不能修改<code>Span</code>本身，但你总是可以更改与任何词法单元<em>关联的</em><code>Span</code>，例如通过从另一个词法单元获取<code>Span</code>。</p>
 <div class="rule" id="r-macro.proc.hygiene"><a class="rule-link" href="#r-macro.proc.hygiene" title="macro.proc.hygiene"><span>[macro<wbr>.proc<wbr>.hygiene]</span></a>
 </div>
 
-<h2 id="procedural-macro-hygiene"><a class="header" href="#procedural-macro-hygiene">Procedural macro hygiene</a></h2>
-<p>Procedural macros are <em>unhygienic</em>. This means they behave as if the output
-token stream was simply written inline to the code it’s next to. This means that
-it’s affected by external items and also affects external imports.</p>
-<p>Macro authors need to be careful to ensure their macros work in as many contexts
-as possible given this limitation. This often includes using absolute paths to
-items in libraries (for example, <code>::std::option::Option</code> instead of <code>Option</code>) or
-by ensuring that generated functions have names that are unlikely to clash with
-other functions (like <code>__internal_foo</code> instead of <code>foo</code>).</p>
+<h2 id="过程宏卫生"><a class="header" href="#过程宏卫生">过程宏卫生</a></h2>
+<p>过程宏是<em>不卫生</em>的。这意味着它们的行为就如同输出词法单元流被直接内联写入其旁边的代码一样。这意味着它受外部项影响，也影响外部导入。</p>
+<p>宏作者需要小心，以确保他们的宏在给定此限制的情况下，尽可能在更多上下文中工作。这通常包括使用库中项的绝对路径（例如，<code>::std::option::Option</code>而不是<code>Option</code>），或者通过确保生成的函数具有不太可能与其他函数冲突的名称（如<code>__internal_foo</code>而不是<code>foo</code>）。</p>
 <!-- TODO: rule name needs improvement -->
 <!-- template:attributes -->
 <div class="rule" id="r-macro.proc.proc_macro"><a class="rule-link" href="#r-macro.proc.proc_macro" title="macro.proc.proc_macro"><span>[macro<wbr>.proc<wbr>.proc_macro]</span></a>
 </div>
 
-<h2 id="the-proc_macro-attribute"><a class="header" href="#the-proc_macro-attribute">The <code>proc_macro</code> attribute</a></h2>
+<h2 id="proc_macro属性"><a class="header" href="#proc_macro属性"><code>proc_macro</code>属性</a></h2>
 <div class="rule" id="r-macro.proc.proc_macro.intro"><a class="rule-link" href="#r-macro.proc.proc_macro.intro" title="macro.proc.proc_macro.intro"><span>[macro<wbr>.proc<wbr>.proc_macro<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>proc_macro</code> <a href="#attributes-1">attribute</a></em> defines a <a href="#r-macro.invocation">function-like</a> procedural macro.</p>
+<p><em><code>proc_macro</code><a href="#attributes-1">属性</a></em> 定义一个<a href="#r-macro.invocation">函数式</a>过程宏。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
-<p>This macro definition ignores its input and emits a function <code>answer</code> into its scope.</p>
+<p>此宏定义忽略其输入，并在其作用域中发出一个<code>answer</code><a href="#functions">函数</a>。</p>
 <!-- ignore: test doesn't support proc-macro -->
 <pre><code class="language-rust ignore"><span class="boring">#![crate_type = "proc-macro"]
 </span>extern crate proc_macro;
@@ -9025,7 +8891,7 @@ use proc_macro::TokenStream;
 pub fn make_answer(_item: TokenStream) -&gt; TokenStream {
     "fn answer() -&gt; u32 { 42 }".parse().unwrap()
 }</code></pre>
-<p>We can use it in a binary crate to print “42” to standard output.</p>
+<p>我们可以在一个二进制crate中使用它来打印“42”到标准输出。</p>
 <!-- ignore: requires external crates -->
 <pre><code class="language-rust ignore">extern crate proc_macro_examples;
 use proc_macro_examples::make_answer;
@@ -9041,50 +8907,50 @@ fn main() {
 <div class="rule" id="r-macro.proc.proc_macro.syntax"><a class="rule-link" href="#r-macro.proc.proc_macro.syntax" title="macro.proc.proc_macro.syntax"><span>[macro<wbr>.proc<wbr>.proc_macro<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>proc_macro</code> attribute uses the <a href="#grammar-MetaWord">MetaWord</a> syntax.</p>
+<p><code>proc_macro</code>属性使用<a href="#grammar-MetaWord">MetaWord</a>语法。</p>
 <div class="rule" id="r-macro.proc.proc_macro.allowed-positions"><a class="rule-link" href="#r-macro.proc.proc_macro.allowed-positions" title="macro.proc.proc_macro.allowed-positions"><span>[macro<wbr>.proc<wbr>.proc_macro<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>proc_macro</code> attribute may only be applied to a <code>pub</code> function of type <code>fn(TokenStream) -&gt; TokenStream</code> where <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> comes from the <a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>. It must have the <a href="#r-items.fn.extern">“Rust” ABI</a>. No other function qualifiers are allowed. It must be located in the root of the crate.</p>
+<p><code>proc_macro</code>属性只能应用于<code>fn(TokenStream) -&gt; TokenStream</code>类型的<code>pub</code><a href="#functions">函数</a>，其中<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>来自<a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>。它必须具有 <a href="#r-items.fn.extern">“Rust” ABI</a>。不允许使用其他函数限定符。它必须位于crate的根目录中。</p>
 <div class="rule" id="r-macro.proc.proc_macro.duplicates"><a class="rule-link" href="#r-macro.proc.proc_macro.duplicates" title="macro.proc.proc_macro.duplicates"><span>[macro<wbr>.proc<wbr>.proc_macro<wbr>.duplicates]</span></a>
 </div>
 
-<p>The <code>proc_macro</code> attribute may only be specified once on a function.</p>
+<p><code>proc_macro</code>属性在一个函数上只能指定一次。</p>
 <div class="rule" id="r-macro.proc.proc_macro.namespace"><a class="rule-link" href="#r-macro.proc.proc_macro.namespace" title="macro.proc.proc_macro.namespace"><span>[macro<wbr>.proc<wbr>.proc_macro<wbr>.namespace]</span></a>
 </div>
 
-<p>The <code>proc_macro</code> attribute publicly defines the macro in the <a href="#namespaces">macro namespace</a> in the root of the crate with the same name as the function.</p>
+<p><code>proc_macro</code>属性在crate根目录中的<a href="#namespaces">宏命名空间</a>中公开定义宏，其名称与函数同名。</p>
 <div class="rule" id="r-macro.proc.proc_macro.behavior"><a class="rule-link" href="#r-macro.proc.proc_macro.behavior" title="macro.proc.proc_macro.behavior"><span>[macro<wbr>.proc<wbr>.proc_macro<wbr>.behavior]</span></a>
 </div>
 
-<p>A function-like macro invocation of a function-like procedural macro will pass what is inside the delimiters of the macro invocation as the input <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> argument and replace the entire macro invocation with the output <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> of the function.</p>
+<p>一个函数式过程宏的函数式宏调用会将宏调用分隔符内的内容作为输入<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>参数传递，并用函数的输出<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>替换整个宏调用。</p>
 <div class="rule" id="r-macro.proc.proc_macro.invocation"><a class="rule-link" href="#r-macro.proc.proc_macro.invocation" title="macro.proc.proc_macro.invocation"><span>[macro<wbr>.proc<wbr>.proc_macro<wbr>.invocation]</span></a>
 </div>
 
-<p>Function-like procedural macros may be invoked in any macro invocation position, which includes:</p>
+<p>函数式过程宏可以在任何宏调用位置被调用，包括：</p>
 <ul>
-<li><a href="#statements">Statements</a></li>
-<li><a href="#expressions">Expressions</a></li>
-<li><a href="#patterns">Patterns</a></li>
-<li><a href="#type-expressions">Type expressions</a></li>
-<li><a href="#items">Item</a> positions, including items in <a href="#external-blocks"><code>extern</code> blocks</a></li>
-<li>Inherent and trait <a href="#implementations">implementations</a></li>
-<li><a href="#traits">Trait definitions</a></li>
+<li><a href="#statements">语句</a></li>
+<li><a href="#expressions">表达式</a></li>
+<li><a href="#patterns">模式</a></li>
+<li><a href="#type-expressions">类型表达式</a></li>
+<li><a href="#items">项</a>位置，包括<a href="#external-blocks"><code>extern</code>块</a>中的项</li>
+<li>固有和特型<a href="#implementations">实现</a></li>
+<li><a href="#traits">特型定义</a></li>
 </ul>
 <!-- template:attributes -->
 <div class="rule" id="r-macro.proc.derive"><a class="rule-link" href="#r-macro.proc.derive" title="macro.proc.derive"><span>[macro<wbr>.proc<wbr>.derive]</span></a>
 </div>
 
-<h2 id="the-proc_macro_derive-attribute"><a class="header" href="#the-proc_macro_derive-attribute">The <code>proc_macro_derive</code> attribute</a></h2>
+<h2 id="proc_macro_derive属性"><a class="header" href="#proc_macro_derive属性"><code>proc_macro_derive</code>属性</a></h2>
 <div class="rule" id="r-macro.proc.derive.intro"><a class="rule-link" href="#r-macro.proc.derive.intro" title="macro.proc.derive.intro"><span>[macro<wbr>.proc<wbr>.derive<wbr>.intro]</span></a>
 </div>
 
-<p>Applying the <em><code>proc_macro_derive</code> <a href="#attributes-1">attribute</a></em> to a function defines a <em>derive macro</em> that can be invoked by the <a href="#derive"><code>derive</code> attribute</a>. These macros are given the token stream of a <a href="#structs">struct</a>, <a href="#enumerations">enum</a>, or <a href="#unions">union</a> definition and can emit new <a href="#items">items</a> after it. They can also declare and use <a href="#derive-macro-helper-attributes">derive macro helper attributes</a>.</p>
+<p>将 <em><code>proc_macro_derive</code><a href="#attributes-1">属性</a></em> 应用于<a href="#functions">函数</a>定义一个 <em>派生宏</em> ，它可以通过 <a href="#derive"><code>derive</code>属性</a> 调用。这些宏会获得一个<a href="#structs">结构体</a>、<a href="#enumerations">枚举</a>或<a href="#unions">联合体</a>定义的词法单元流，并可以在其后发出新的<a href="#items">项</a>。它们还可以声明和使用<a href="#派生宏辅助属性">派生宏辅助属性</a>。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
-<p>This derive macro ignores its input and appends tokens that define a function.</p>
+<p>这个派生宏忽略其输入，并添加定义一个函数的词法单元。</p>
 <!-- ignore: test doesn't support proc-macro -->
 <pre><code class="language-rust ignore"><span class="boring">#![crate_type = "proc-macro"]
 </span>extern crate proc_macro;
@@ -9094,7 +8960,7 @@ use proc_macro::TokenStream;
 pub fn derive_answer_fn(_item: TokenStream) -&gt; TokenStream {
     "fn answer() -&gt; u32 { 42 }".parse().unwrap()
 }</code></pre>
-<p>To use it, we might write:</p>
+<p>要使用它，我们可以这样写：</p>
 <!-- ignore: requires external crates -->
 <pre><code class="language-rust ignore">extern crate proc_macro_examples;
 use proc_macro_examples::AnswerFn;
@@ -9111,7 +8977,7 @@ fn main() {
 <div class="rule" id="r-macro.proc.derive.syntax"><a class="rule-link" href="#r-macro.proc.derive.syntax" title="macro.proc.derive.syntax"><span>[macro<wbr>.proc<wbr>.derive<wbr>.syntax]</span></a>
 </div>
 
-<p>The syntax for the <code>proc_macro_derive</code> attribute is:</p>
+<p><code>proc_macro_derive</code>属性的语法格式是：</p>
 <div class="grammar-container">
 <p><strong><sup>Syntax</sup></strong>
 <br>
@@ -9301,40 +9167,40 @@ IDENTIFIER</text>
 
 </div>
 
-<p>The name of the derive macro is given by <a href="#grammar-DeriveMacroName">DeriveMacroName</a>. The optional <code>attributes</code> argument is described in <a href="#r-macro.proc.derive.attributes">macro.proc.derive.attributes</a>.</p>
+<p>派生宏的名称由<a href="#grammar-DeriveMacroName">DeriveMacroName</a>给出。可选的<code>attributes</code>参数在<a href="#r-macro.proc.derive.attributes">macro.proc.derive.attributes</a>中描述。</p>
 <div class="rule" id="r-macro.proc.derive.allowed-positions"><a class="rule-link" href="#r-macro.proc.derive.allowed-positions" title="macro.proc.derive.allowed-positions"><span>[macro<wbr>.proc<wbr>.derive<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>proc_macro_derive</code> attribute may only be applied to a <code>pub</code> function with the <a href="#r-items.fn.extern">Rust ABI</a> defined in the root of the crate with a type of <code>fn(TokenStream) -&gt; TokenStream</code>  where <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> comes from the <a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>. The function may be <code>const</code> and may use <code>extern</code> to explicitly specify the Rust ABI, but it may not use any other <a href="#grammar-FunctionQualifiers">qualifiers</a> (e.g. it may not be <code>async</code> or <code>unsafe</code>).</p>
+<p><code>proc_macro_derive</code>属性只能应用于定义在crate根目录中，并带有<a href="#r-items.fn.extern">Rust ABI</a>的<code>pub</code><a href="#functions">函数</a>，其<a href="#types">类型</a>为<code>fn(TokenStream) -&gt; TokenStream</code>，其中<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>来自<a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>。该函数可以是<code>const</code>，并且可以使用<code>extern</code>显式指定 Rust ABI，但不能使用任何其他<a href="#grammar-FunctionQualifiers">限定符</a>（例如，它不能是<code>async</code>或<code>unsafe</code>）。</p>
 <div class="rule" id="r-macro.proc.derive.duplicates"><a class="rule-link" href="#r-macro.proc.derive.duplicates" title="macro.proc.derive.duplicates"><span>[macro<wbr>.proc<wbr>.derive<wbr>.duplicates]</span></a>
 </div>
 
-<p>The <code>proc_macro_derive</code> attribute may be used only once on a function.</p>
+<p><code>proc_macro_derive</code>属性在一个函数上只能使用一次。</p>
 <div class="rule" id="r-macro.proc.derive.namespace"><a class="rule-link" href="#r-macro.proc.derive.namespace" title="macro.proc.derive.namespace"><span>[macro<wbr>.proc<wbr>.derive<wbr>.namespace]</span></a>
 </div>
 
-<p>The <code>proc_macro_derive</code> attribute publicly defines the derive macro in the <a href="#namespaces">macro namespace</a> in the root of the crate.</p>
+<p><code>proc_macro_derive</code>属性在crate的根目录中的<a href="#namespaces">宏命名空间</a>中公开定义派生宏。</p>
 <div class="rule" id="r-macro.proc.derive.output"><a class="rule-link" href="#r-macro.proc.derive.output" title="macro.proc.derive.output"><span>[macro<wbr>.proc<wbr>.derive<wbr>.output]</span></a>
 </div>
 
-<p>The input <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> is the token stream of the item to which the <code>derive</code> attribute is applied. The output <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> must be a (possibly empty) set of items. These items are appended following the input item within the same <a href="#modules">module</a> or <a href="#block-expressions">block</a>.</p>
+<p>输入<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>是应用<code>derive</code>属性的<a href="#items">项</a>的词法单元流。输出<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>必须是（可能为空的）一组<a href="#items">项</a>。这些<a href="#items">项</a>会在输入<a href="#items">项</a>之后，在同一<a href="#modules">模块</a>或<a href="#block-expressions">块</a>内被追加。</p>
 <div class="rule" id="r-macro.proc.derive.attributes"><a class="rule-link" href="#r-macro.proc.derive.attributes" title="macro.proc.derive.attributes"><span>[macro<wbr>.proc<wbr>.derive<wbr>.attributes]</span></a>
 </div>
 
-<h3 id="derive-macro-helper-attributes"><a class="header" href="#derive-macro-helper-attributes">Derive macro helper attributes</a></h3>
+<h3 id="派生宏辅助属性"><a class="header" href="#派生宏辅助属性">派生宏辅助属性</a></h3>
 <div class="rule" id="r-macro.proc.derive.attributes.intro"><a class="rule-link" href="#r-macro.proc.derive.attributes.intro" title="macro.proc.derive.attributes.intro"><span>[macro<wbr>.proc<wbr>.derive<wbr>.attributes<wbr>.intro]</span></a>
 </div>
 
-<p>Derive macros can declare <em>derive macro helper attributes</em> to be used within the scope of the <a href="#items">item</a> to which the derive macro is applied. These <a href="#attributes-1">attributes</a> are <a href="#active-and-inert-attributes">inert</a>. While their purpose is to be used by the macro that declared them, they can be seen by any macro.</p>
+<p>派生宏可以声明 <em>派生宏辅助属性</em> ，用于派生宏所应用的<a href="#items">项</a>的作用域内。这些<a href="#attributes-1">属性</a>是<a href="#active-and-inert-attributes">惰性的</a>。虽然它们的目的被声明它们的宏使用，但它们可以被任何宏看到。</p>
 <div class="rule" id="r-macro.proc.derive.attributes.decl"><a class="rule-link" href="#r-macro.proc.derive.attributes.decl" title="macro.proc.derive.attributes.decl"><span>[macro<wbr>.proc<wbr>.derive<wbr>.attributes<wbr>.decl]</span></a>
 </div>
 
-<p>A helper attribute for a derive macro is declared by adding its identifier to the <code>attributes</code> list in the <code>proc_macro_derive</code> attribute.</p>
+<p>派生宏的辅助属性通过将其标识符添加到<code>proc_macro_derive</code>属性的<code>attributes</code>列表中来声明。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
-<p>This declares a helper attribute and then ignores it.</p>
+<p>这声明了一个辅助属性然后忽略了它。</p>
 <!-- ignore: test doesn't support proc-macro -->
 <pre><code class="language-rust ignore"><span class="boring">#![crate_type="proc-macro"]
 </span><span class="boring">extern crate proc_macro;
@@ -9344,9 +9210,12 @@ IDENTIFIER</text>
 pub fn derive_with_helper_attr(_item: TokenStream) -&gt; TokenStream {
     TokenStream::new()
 }</code></pre>
-<p>To use it, we might write:</p>
+<p>要使用它，我们可以这样写：</p>
 <!-- ignore: requires external crates -->
-<pre><code class="language-rust ignore">#[derive(WithHelperAttr)]
+<pre><code class="language-rust ignore">extern crate proc_macro_examples;
+use proc_macro_examples::WithHelperAttr;
+
+#[derive(WithHelperAttr)]
 struct Struct {
     #[helper] field: (),
 }</code></pre>
@@ -9356,19 +9225,19 @@ struct Struct {
 <div class="rule" id="r-macro.proc.derive.attributes.scope"><a class="rule-link" href="#r-macro.proc.derive.attributes.scope" title="macro.proc.derive.attributes.scope"><span>[macro<wbr>.proc<wbr>.derive<wbr>.attributes<wbr>.scope]</span></a>
 </div>
 
-<p>When a derive macro invocation is applied to an item, the helper attributes introduced by that derive macro become in scope 1) for attributes that are applied to that item and are applied lexically after the derive macro invocation and 2) for attributes that are applied to fields and variants inside of the item.</p>
+<p>当一个派生宏调用应用于一个<a href="#items">项</a>时，该派生宏引入的辅助属性会在以下情况下生效：1) 用于应用于该<a href="#items">项</a>并在派生宏调用后词法应用的<a href="#attributes-1">属性</a>，以及 2) 用于应用于<a href="#items">项</a>内部的字段和变体的<a href="#attributes-1">属性</a>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>rustc currently allows derive helpers to be used before the macro that introduces them. Such derive helpers used out of order may not shadow other attribute macros. This behavior is deprecated and slated for removal.</p>
+<p>rustc目前允许在引入它们的宏之前使用派生辅助。这种乱序使用的派生辅助可能不会遮蔽其他属性宏。此行为已被弃用，并计划移除。</p>
 <!-- ignore: requires external crates -->
-<pre><code class="language-rust ignore">#[helper] // Deprecated, hard error in the future.
+<pre><code class="language-rust ignore">#[helper] // 已弃用，未来将成为硬错误。
 #[derive(WithHelperAttr)]
 struct Struct {
     field: (),
 }</code></pre>
-<p>For more details, see <a href="https://github.com/rust-lang/rust/issues/79202">Rust issue #79202</a>.</p>
+<p>更多详情，请参见<a href="https://github.com/rust-lang/rust/issues/79202">Rust问题单#79202</a>。</p>
 </blockquote>
 </div>
 
@@ -9376,16 +9245,16 @@ struct Struct {
 <div class="rule" id="r-macro.proc.attribute"><a class="rule-link" href="#r-macro.proc.attribute" title="macro.proc.attribute"><span>[macro<wbr>.proc<wbr>.attribute]</span></a>
 </div>
 
-<h2 id="the-proc_macro_attribute-attribute"><a class="header" href="#the-proc_macro_attribute-attribute">The <code>proc_macro_attribute</code> attribute</a></h2>
+<h2 id="proc_macro_attribute属性"><a class="header" href="#proc_macro_attribute属性"><code>proc_macro_attribute</code>属性</a></h2>
 <div class="rule" id="r-macro.proc.attribute.intro"><a class="rule-link" href="#r-macro.proc.attribute.intro" title="macro.proc.attribute.intro"><span>[macro<wbr>.proc<wbr>.attribute<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>proc_macro_attribute</code> <a href="#attributes-1">attribute</a></em> defines an <em>attribute macro</em> which can be used as an <a href="#attributes-1">outer attribute</a>.</p>
+<p><em><code>proc_macro_attribute</code><a href="#attributes-1">属性</a></em> 定义一个 <em>属性宏</em> ，它可以作为<a href="#attributes-1">外部属性</a>使用。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
-<p>This attribute macro takes the input stream and emits it as-is, effectively being a no-op attribute.</p>
+<p>此属性宏接受输入流并原样发出，实际上是一个空操作属性。</p>
 <!-- ignore: test doesn't support proc-macro -->
 <pre><code class="language-rust ignore"><span class="boring">#![crate_type = "proc-macro"]
 </span><span class="boring">extern crate proc_macro;
@@ -9402,7 +9271,7 @@ pub fn return_as_is(_attr: TokenStream, item: TokenStream) -&gt; TokenStream {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
-<p>This shows, in the output of the compiler, the stringified <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code>s</a> that attribute macros see.</p>
+<p>这显示了在编译器输出中，属性宏所看到的字符串化<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>。</p>
 <!-- ignore: test doesn't support proc-macro -->
 <pre><code class="language-rust ignore">// my-macro/src/lib.rs
 <span class="boring">extern crate proc_macro;
@@ -9419,158 +9288,139 @@ extern crate my_macro;
 
 use my_macro::show_streams;
 
-// Example: Basic function.
+// 示例：基本函数。
 #[show_streams]
 fn invoke1() {}
-// out: attr: ""
-// out: item: "fn invoke1() {}"
+// 输出：attr: ""
+// 输出：item: "fn invoke1() {}"
 
-// Example: Attribute with input.
+// 示例：带输入的属性。
 #[show_streams(bar)]
 fn invoke2() {}
-// out: attr: "bar"
-// out: item: "fn invoke2() {}"
+// 输出：attr: "bar"
+// 输出：item: "fn invoke2() {}"
 
-// Example: Multiple tokens in the input.
+// 示例：输入中有多个词法单元。
 #[show_streams(multiple =&gt; tokens)]
 fn invoke3() {}
-// out: attr: "multiple =&gt; tokens"
-// out: item: "fn invoke3() {}"
+// 输出：attr: "multiple =&gt; tokens"
+// 输出：item: "fn invoke3() {}"
 
-// Example: Delimiters in the input.
+// 示例：输入中有分隔符。
 #[show_streams { delimiters }]
 fn invoke4() {}
-// out: attr: "delimiters"
-// out: item: "fn invoke4() {}"</code></pre>
+// 输出：attr: "delimiters"
+// 输出：item: "fn invoke4() {}"</code></pre>
 </blockquote>
 </div>
 
 <div class="rule" id="r-macro.proc.attribute.syntax"><a class="rule-link" href="#r-macro.proc.attribute.syntax" title="macro.proc.attribute.syntax"><span>[macro<wbr>.proc<wbr>.attribute<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>proc_macro_attribute</code> attribute uses the <a href="#grammar-MetaWord">MetaWord</a> syntax.</p>
+<p><code>proc_macro_attribute</code>属性使用<a href="#grammar-MetaWord">MetaWord</a>语法。</p>
 <div class="rule" id="r-macro.proc.attribute.allowed-positions"><a class="rule-link" href="#r-macro.proc.attribute.allowed-positions" title="macro.proc.attribute.allowed-positions"><span>[macro<wbr>.proc<wbr>.attribute<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>proc_macro_attribute</code> attribute may only be applied to a <code>pub</code> function of type <code>fn(TokenStream, TokenStream) -&gt; TokenStream</code> where <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> comes from the <a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>. It must have the <a href="#r-items.fn.extern">“Rust” ABI</a>. No other function qualifiers are allowed. It must be located in the root of the crate.</p>
+<p><code>proc_macro_attribute</code>属性只能应用于<code>fn(TokenStream, TokenStream) -&gt; TokenStream</code>类型的<code>pub</code><a href="#functions">函数</a>，其中<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>来自 <a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>。它必须具有 <a href="#r-items.fn.extern">“Rust” ABI</a>。不允许使用其他函数限定符。它必须位于crate的根目录中。</p>
 <div class="rule" id="r-macro.proc.attribute.duplicates"><a class="rule-link" href="#r-macro.proc.attribute.duplicates" title="macro.proc.attribute.duplicates"><span>[macro<wbr>.proc<wbr>.attribute<wbr>.duplicates]</span></a>
 </div>
 
-<p>The <code>proc_macro_attribute</code> attribute may only be specified once on a function.</p>
+<p><code>proc_macro_attribute</code>属性在一个函数上只能指定一次。</p>
 <div class="rule" id="r-macro.proc.attribute.namespace"><a class="rule-link" href="#r-macro.proc.attribute.namespace" title="macro.proc.attribute.namespace"><span>[macro<wbr>.proc<wbr>.attribute<wbr>.namespace]</span></a>
 </div>
 
-<p>The <code>proc_macro_attribute</code> attribute defines the attribute in the <a href="#namespaces">macro namespace</a> in the root of the crate with the same name as the function.</p>
+<p><code>proc_macro_attribute</code>属性在crate的根目录中的<a href="#namespaces">宏命名空间</a>中定义属性，其名称与函数同名。</p>
 <div class="rule" id="r-macro.proc.attribute.use-positions"><a class="rule-link" href="#r-macro.proc.attribute.use-positions" title="macro.proc.attribute.use-positions"><span>[macro<wbr>.proc<wbr>.attribute<wbr>.use-positions]</span></a>
 </div>
 
-<p>Attribute macros can only be used on:</p>
+<p>属性宏只能用于：</p>
 <ul>
-<li><a href="#items">Items</a></li>
-<li>Items in <a href="#external-blocks"><code>extern</code> blocks</a></li>
-<li>Inherent and trait <a href="#implementations">implementations</a></li>
-<li><a href="#traits">Trait definitions</a></li>
+<li><a href="#items">项</a></li>
+<li><a href="#external-blocks"><code>extern</code>块</a> 中的项</li>
+<li>固有和特型 <a href="#implementations">实现</a></li>
+<li><a href="#traits">特型定义</a></li>
 </ul>
 <div class="rule" id="r-macro.proc.attribute.behavior"><a class="rule-link" href="#r-macro.proc.attribute.behavior" title="macro.proc.attribute.behavior"><span>[macro<wbr>.proc<wbr>.attribute<wbr>.behavior]</span></a>
 </div>
 
-<p>The first <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> parameter is the delimited token tree following the attribute’s name but not including the outer delimiters. If the applied attribute contains only the attribute name or the attribute name followed by empty delimiters, the <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> is empty.</p>
-<p>The second <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a> is the rest of the <a href="#items">item</a>, including other <a href="#attributes-1">attributes</a> on the <a href="#items">item</a>.</p>
-<p>The item to which the attribute is applied is replaced by the zero or more items in the returned <a href="../proc_macro/struct.TokenStream.html"><code>TokenStream</code></a>.</p>
+<p>第一个<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>参数是属性名称后的带分隔符词法单元树，但不包括外部分隔符。如果应用的属性只包含属性名称，或属性名称后跟空分隔符，则<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>为空。</p>
+<p>第二个<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>是<a href="#items">项</a>的其余部分，包括<a href="#items">项</a>上的其他<a href="#attributes-1">属性</a>。</p>
+<p>应用属性的<a href="#items">项</a>会被返回的<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>中的零个或多个<a href="#items">项</a>替换。</p>
 <div class="rule" id="r-macro.proc.token"><a class="rule-link" href="#r-macro.proc.token" title="macro.proc.token"><span>[macro<wbr>.proc<wbr>.token]</span></a>
 </div>
 
-<h2 id="declarative-macro-tokens-and-procedural-macro-tokens"><a class="header" href="#declarative-macro-tokens-and-procedural-macro-tokens">Declarative macro tokens and procedural macro tokens</a></h2>
+<h2 id="声明宏词法单元和过程宏词法单元"><a class="header" href="#声明宏词法单元和过程宏词法单元">声明宏词法单元和过程宏词法单元</a></h2>
 <div class="rule" id="r-macro.proc.token.intro"><a class="rule-link" href="#r-macro.proc.token.intro" title="macro.proc.token.intro"><span>[macro<wbr>.proc<wbr>.token<wbr>.intro]</span></a>
 </div>
 
-<p>Declarative <code>macro_rules</code> macros and procedural macros use similar, but
-different definitions for tokens (or rather <a href="../proc_macro/enum.TokenTree.html"><code>TokenTree</code>s</a>.)</p>
+<p>声明式<a href="#声明宏"><code>macro_rules</code></a>宏和过程宏对词法单元（或更确切地说，<a href="../proc_macro/enum.TokenTree.html"><code>TokenTree</code>s</a>）使用相似但不同的定义。</p>
 <div class="rule" id="r-macro.proc.token.macro_rules"><a class="rule-link" href="#r-macro.proc.token.macro_rules" title="macro.proc.token.macro_rules"><span>[macro<wbr>.proc<wbr>.token<wbr>.macro_rules]</span></a>
 </div>
 
-<p>Token trees in <code>macro_rules</code> (corresponding to <code>tt</code> matchers) are defined as</p>
+<p><a href="#声明宏"><code>macro_rules</code></a> 中的词法单元树（对应<code>tt</code>匹配器）定义如下：</p>
 <ul>
-<li>Delimited groups (<code>(...)</code>, <code>{...}</code>, etc)</li>
-<li>All operators supported by the language, both single-character and
-multi-character ones (<code>+</code>, <code>+=</code>).
+<li>带分隔符的组（<code>(...)</code>、<code>{...}</code>等）</li>
+<li>语言支持的所有运算符，包括单字符和多字符的（<code>+</code>、<code>+=</code>）。
 <ul>
-<li>Note that this set doesn’t include the single quote <code>'</code>.</li>
+<li>请注意，此集合不包括单引号<code>'</code>。</li>
 </ul>
 </li>
-<li>Literals (<code>"string"</code>, <code>1</code>, etc)
+<li>字面量（<code>"string"</code>、<code>1</code>等）
 <ul>
-<li>Note that negation (e.g. <code>-1</code>) is never a part of such literal tokens,
-but a separate operator token.</li>
+<li>请注意，负号（例如<code>-1</code>）永远不会是此类字面量词法单元的一部分，而是一个单独的运算符词法单元。</li>
 </ul>
 </li>
-<li>Identifiers, including keywords (<code>ident</code>, <code>r#ident</code>, <code>fn</code>)</li>
-<li>Lifetimes (<code>'ident</code>)</li>
-<li>Metavariable substitutions in <code>macro_rules</code> (e.g. <code>$my_expr</code> in
-<code>macro_rules! mac { ($my_expr: expr) =&gt; { $my_expr } }</code> after the <code>mac</code>’s
-expansion, which will be considered a single token tree regardless of the
-passed expression)</li>
+<li>标识符，包括关键字（<code>ident</code>、<code>r#ident</code>、<code>fn</code>）</li>
+<li>生命周期（<code>'ident</code>）</li>
+<li><a href="#声明宏"><code>macro_rules</code></a> 中的元变量替换（例如<code>macro_rules! mac { ($my_expr: expr) =&gt; { $my_expr } }</code>在<code>mac</code>展开后的<code>$my_expr</code>，无论传递的表达式如何，都将被视为单个词法单元树）</li>
 </ul>
 <div class="rule" id="r-macro.proc.token.tree"><a class="rule-link" href="#r-macro.proc.token.tree" title="macro.proc.token.tree"><span>[macro<wbr>.proc<wbr>.token<wbr>.tree]</span></a>
 </div>
 
-<p>Token trees in procedural macros are defined as</p>
+<p>过程宏中的词法单元树定义如下：</p>
 <ul>
-<li>Delimited groups (<code>(...)</code>, <code>{...}</code>, etc)</li>
-<li>All punctuation characters used in operators supported by the language (<code>+</code>,
-but not <code>+=</code>), and also the single quote <code>'</code> character (typically used in
-lifetimes, see below for lifetime splitting and joining behavior)</li>
-<li>Literals (<code>"string"</code>, <code>1</code>, etc)
+<li>带分隔符的组（<code>(...)</code>、<code>{...}</code>等）</li>
+<li>语言支持的运算符中使用的所有标点符号（<code>+</code>，但不包括<code>+=</code>），以及单引号<code>'</code>字符（通常用于生命周期，有关生命周期拆分和合并行为，请参见下文）</li>
+<li>字面量（<code>"string"</code>、<code>1</code>等）
 <ul>
-<li>Negation (e.g. <code>-1</code>) is supported as a part of integer
-and floating point literals.</li>
+<li>负号（例如<code>-1</code>）作为整数和浮点字面量的一部分受支持。</li>
 </ul>
 </li>
-<li>Identifiers, including keywords (<code>ident</code>, <code>r#ident</code>, <code>fn</code>)</li>
+<li>标识符，包括关键字（<code>ident</code>、<code>r#ident</code>、<code>fn</code>）</li>
 </ul>
 <div class="rule" id="r-macro.proc.token.conversion.intro"><a class="rule-link" href="#r-macro.proc.token.conversion.intro" title="macro.proc.token.conversion.intro"><span>[macro<wbr>.proc<wbr>.token<wbr>.conversion<wbr>.intro]</span></a>
 </div>
 
-<p>Mismatches between these two definitions are accounted for when token streams
-are passed to and from procedural macros. <br>Note that the conversions below may happen lazily, so they might not happen if
-the tokens are not actually inspected.</p>
+<p>当词法单元流在过程宏之间传递时，会考虑这两种定义之间的不匹配。
+请注意，下面的转换可能以惰性方式发生，因此如果词法单元未被实际检查，则可能不会发生转换。</p>
 <div class="rule" id="r-macro.proc.token.conversion.to-proc_macro"><a class="rule-link" href="#r-macro.proc.token.conversion.to-proc_macro" title="macro.proc.token.conversion.to-proc_macro"><span>[macro<wbr>.proc<wbr>.token<wbr>.conversion<wbr>.to-proc_macro]</span></a>
 </div>
 
-<p>When passed to a proc-macro</p>
+<p>当传递给过程宏时</p>
 <ul>
-<li>All multi-character operators are broken into single characters.</li>
-<li>Lifetimes are broken into a <code>'</code> character and an identifier.</li>
-<li>The keyword metavariable <a href="#r-macro.decl.hygiene.crate"><code>$crate</code></a> is passed as a single identifier.</li>
-<li>All other metavariable substitutions are represented as their underlying
-token streams.
+<li>所有多字符运算符都会被拆分为单字符。</li>
+<li>生命周期会被拆分为一个<code>'</code>字符和一个标识符。</li>
+<li>关键字元变量 <a href="#r-macro.decl.hygiene.crate"><code>$crate</code></a> 作为单个标识符传递。</li>
+<li>所有其他元变量替换都表示为其底层词法单元流。
 <ul>
-<li>Such token streams may be wrapped into delimited groups (<a href="../proc_macro/struct.Group.html"><code>Group</code></a>) with
-implicit delimiters (<a href="../proc_macro/enum.Delimiter.html#variant.None"><code>Delimiter::None</code></a>) when it’s necessary for
-preserving parsing priorities.</li>
-<li><code>tt</code> and <code>ident</code> substitutions are never wrapped into such groups and
-always represented as their underlying token trees.</li>
+<li>此类词法单元流可能被包装到带分隔符的组（<a href="../proc_macro/struct.Group.html"><code>Group</code></a>）中，使用隐式分隔符（<a href="../proc_macro/enum.Delimiter.html#variant.None"><code>Delimiter::None</code></a>），当需要保留解析优先级时。</li>
+<li><code>tt</code>和<code>ident</code>替换永远不会被包装到此类组中，并且始终表示为其底层词法单元树。</li>
 </ul>
 </li>
 </ul>
 <div class="rule" id="r-macro.proc.token.conversion.from-proc_macro"><a class="rule-link" href="#r-macro.proc.token.conversion.from-proc_macro" title="macro.proc.token.conversion.from-proc_macro"><span>[macro<wbr>.proc<wbr>.token<wbr>.conversion<wbr>.from-proc_macro]</span></a>
 </div>
 
-<p>When emitted from a proc macro</p>
+<p>当从过程宏发出时</p>
 <ul>
-<li>Punctuation characters are glued into multi-character operators
-when applicable.</li>
-<li>Single quotes <code>'</code> joined with identifiers are glued into lifetimes.</li>
-<li>Negative literals are converted into two tokens (the <code>-</code> and the literal)
-possibly wrapped into a delimited group (<a href="../proc_macro/struct.Group.html"><code>Group</code></a>) with implicit delimiters
-(<a href="../proc_macro/enum.Delimiter.html#variant.None"><code>Delimiter::None</code></a>) when it’s necessary for preserving parsing priorities.</li>
+<li>标点符号在适用时会被组合成多字符运算符。</li>
+<li>与标识符连接的单引号<code>'</code>会被组合成生命周期。</li>
+<li>负字面量会被转换为两个词法单元（<code>-</code>和字面量），可能被包装到带分隔符的组（<a href="../proc_macro/struct.Group.html"><code>Group</code></a>）中，使用隐式分隔符（<a href="../proc_macro/enum.Delimiter.html#variant.None"><code>Delimiter::None</code></a>），当需要保留解析优先级时。</li>
 </ul>
 <div class="rule" id="r-macro.proc.token.doc-comment"><a class="rule-link" href="#r-macro.proc.token.doc-comment" title="macro.proc.token.doc-comment"><span>[macro<wbr>.proc<wbr>.token<wbr>.doc-comment]</span></a>
 </div>
 
-<p>Note that neither declarative nor procedural macros support doc comment tokens
-(e.g. <code>/// Doc</code>), so they are always converted to token streams representing
-their equivalent <code>#[doc = r"str"]</code> attributes when passed to macros.</p>
+<p>请注意，声明宏和过程宏都不支持文档注释词法单元（例如<code>/// Doc</code>），因此当它们被传递给宏时，总是会被转换为表示其等效<code>#[doc = r"str"]</code>属性的词法单元流。</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <div class="rule" id="r-crate"><a class="rule-link" href="#r-crate" title="crate"><span>[crate]</span></a>
 </div>
@@ -11227,7 +11077,7 @@ execution, and may reside in read-only memory.</p>
 <div class="rule" id="r-items.decl-order"><a class="rule-link" href="#r-items.decl-order" title="items.decl-order"><span>[items<wbr>.decl-order]</span></a>
 </div>
 
-<p>Items may be defined in any order, with the exception of <a href="#macros-by-example"><code>macro_rules</code></a> which has its own scoping behavior.</p>
+<p>Items may be defined in any order, with the exception of <a href="#声明宏"><code>macro_rules</code></a> which has its own scoping behavior.</p>
 <div class="rule" id="r-items.name-resolution"><a class="rule-link" href="#r-items.name-resolution" title="items.name-resolution"><span>[items<wbr>.name-resolution]</span></a>
 </div>
 
@@ -11760,7 +11610,7 @@ will avoid being reported as unused.</p>
 <div class="rule" id="r-items.extern-crate.underscore.macro_use"><a class="rule-link" href="#r-items.extern-crate.underscore.macro_use" title="items.extern-crate.underscore.macro_use"><span>[items<wbr>.extern-crate<wbr>.underscore<wbr>.macro_use]</span></a>
 </div>
 
-<p>The <a href="#the-macro_use-attribute"><code>macro_use</code> attribute</a> works as usual and imports the macro names
+<p>The <a href="#macro_use属性"><code>macro_use</code> attribute</a> works as usual and imports the macro names
 into the <a href="#macro_use-prelude"><code>macro_use</code> prelude</a>.</p>
 <!-- template:attributes -->
 <div class="rule" id="r-items.extern-crate.no_link"><a class="rule-link" href="#r-items.extern-crate.no_link" title="items.extern-crate.no_link"><span>[items<wbr>.extern-crate<wbr>.no_link]</span></a>
@@ -12147,7 +11997,7 @@ fn main() {
 <li><a href="#types">内置类型</a></li>
 <li><a href="#attributes-1">属性</a></li>
 <li><a href="#r-macro.proc.derive">派生宏</a></li>
-<li><a href="#macros-by-example"><code>macro_rules</code></a></li>
+<li><a href="#声明宏"><code>macro_rules</code></a></li>
 </ul>
 <div class="rule" id="r-items.use.path.disallowed"><a class="rule-link" href="#r-items.use.path.disallowed" title="items.use.path.disallowed"><span>[items<wbr>.use<wbr>.path<wbr>.disallowed]</span></a>
 </div>
@@ -12446,7 +12296,7 @@ m!(use std as _;);
 </div>
 
 <ul>
-<li>包含<code>$crate</code>的<code>use</code>路径不允许在<a href="#macros-by-example"><code>macro_rules</code></a>展开中使用。</li>
+<li>包含<code>$crate</code>的<code>use</code>路径不允许在<a href="#声明宏"><code>macro_rules</code></a>展开中使用。</li>
 </ul>
 <div class="rule" id="r-items.use.restrictions.variant"><a class="rule-link" href="#r-items.use.restrictions.variant" title="items.use.restrictions.variant"><span>[items<wbr>.use<wbr>.restrictions<wbr>.variant]</span></a>
 </div>
@@ -19939,8 +19789,8 @@ must be met.  To assert these have been, the attribute is wrapped in
 <p>Attributes can be classified into the following kinds:</p>
 <ul>
 <li><a href="#built-in-attributes-index">Built-in attributes</a></li>
-<li><a href="#the-proc_macro_attribute-attribute">Proc macro attributes</a></li>
-<li><a href="#derive-macro-helper-attributes">Derive macro helper attributes</a></li>
+<li><a href="#proc_macro_attribute属性">Proc macro attributes</a></li>
+<li><a href="#派生宏辅助属性">Derive macro helper attributes</a></li>
 <li><a href="#tool-attributes">Tool attributes</a></li>
 </ul>
 <div class="rule" id="r-attributes.allowed-position"><a class="rule-link" href="#r-attributes.allowed-position" title="attributes.allowed-position"><span>[attributes<wbr>.allowed-position]</span></a>
@@ -20576,7 +20426,7 @@ MetaNameValueStr</text>
 attributes</em> remove themselves from the form they are on while <em>inert attributes</em>
 stay on.</p>
 <p>The <a href="#the-cfg-attribute"><code>cfg</code></a> and <a href="#the-cfg_attr-attribute"><code>cfg_attr</code></a> attributes are active.
-<a href="#the-proc_macro_attribute-attribute">Attribute macros</a> are active. All other attributes are inert.</p>
+<a href="#proc_macro_attribute属性">Attribute macros</a> are active. All other attributes are inert.</p>
 <div class="rule" id="r-attributes.tool"><a class="rule-link" href="#r-attributes.tool" title="attributes.tool"><span>[attributes<wbr>.tool]</span></a>
 </div>
 
@@ -20650,12 +20500,12 @@ pub fn f() {}
 <li>
 <p>Macros</p>
 <ul>
-<li><a href="#the-macro_export-attribute"><code>macro_export</code></a> — Exports a <code>macro_rules</code> macro for cross-crate usage.</li>
-<li><a href="#the-macro_use-attribute"><code>macro_use</code></a> — Expands macro visibility, or imports macros from other
+<li><a href="#macro_export属性"><code>macro_export</code></a> — Exports a <code>macro_rules</code> macro for cross-crate usage.</li>
+<li><a href="#macro_use属性"><code>macro_use</code></a> — Expands macro visibility, or imports macros from other
 crates.</li>
-<li><a href="#the-proc_macro-attribute"><code>proc_macro</code></a> — Defines a function-like macro.</li>
+<li><a href="#proc_macro属性"><code>proc_macro</code></a> — Defines a function-like macro.</li>
 <li><a href="#r-macro.proc.derive"><code>proc_macro_derive</code></a> — Defines a derive macro.</li>
-<li><a href="#the-proc_macro_attribute-attribute"><code>proc_macro_attribute</code></a> — Defines an attribute macro.</li>
+<li><a href="#proc_macro_attribute属性"><code>proc_macro_attribute</code></a> — Defines an attribute macro.</li>
 </ul>
 </li>
 <li>
@@ -21576,7 +21426,7 @@ deprecation and preferred alternatives.</li>
 </div>
 
 <p>The <code>deprecated</code> attribute may be applied to any <a href="#items">item</a>, <a href="#traits">trait item</a>, <a href="#enumerations">enum
-variant</a>, <a href="#structs">struct field</a>, <a href="#external-blocks">external block item</a>, or <a href="#macros-by-example">macro definition</a>. It
+variant</a>, <a href="#structs">struct field</a>, <a href="#external-blocks">external block item</a>, or <a href="#声明宏">macro definition</a>. It
 cannot be applied to <a href="#trait-implementations">trait implementation items</a>. When applied to an item
 containing other items, such as a <a href="#modules">module</a> or <a href="#implementations">implementation</a>, all child
 items inherit the deprecation attribute.</p>
@@ -23525,7 +23375,7 @@ external</text>
 <div class="rule" id="r-attributes.debugger.collapse_debuginfo.allowed-positions"><a class="rule-link" href="#r-attributes.debugger.collapse_debuginfo.allowed-positions" title="attributes.debugger.collapse_debuginfo.allowed-positions"><span>[attributes<wbr>.debugger<wbr>.collapse_debuginfo<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>collapse_debuginfo</code> attribute may only be applied to a <a href="#macros-by-example"><code>macro_rules</code> definition</a>.</p>
+<p>The <code>collapse_debuginfo</code> attribute may only be applied to a <a href="#声明宏"><code>macro_rules</code> definition</a>.</p>
 <div class="rule" id="r-attributes.debugger.collapse_debuginfo.duplicates"><a class="rule-link" href="#r-attributes.debugger.collapse_debuginfo.duplicates" title="attributes.debugger.collapse_debuginfo.duplicates"><span>[attributes<wbr>.debugger<wbr>.collapse_debuginfo<wbr>.duplicates]</span></a>
 </div>
 
@@ -36655,7 +36505,7 @@ for referring to a type. It may refer to:</p>
 </div>
 
 <ul>
-<li><a href="#macros">Macros</a> which expand to a type expression.</li>
+<li><a href="#宏">Macros</a> which expand to a type expression.</li>
 </ul>
 <div class="rule" id="r-type.name.parenthesized"><a class="rule-link" href="#r-type.name.parenthesized" title="type.name.parenthesized"><span>[type<wbr>.name<wbr>.parenthesized]</span></a>
 </div>
@@ -43426,7 +43276,7 @@ fields</li>
 <li><a href="#static-items">Static item declarations</a></li>
 <li><a href="#traits">Trait item declarations</a> and their <a href="#associated-items">associated items</a></li>
 <li><a href="#external-blocks">External block items</a></li>
-<li><a href="#macros-by-example"><code>macro_rules</code> declarations</a> and <a href="#metavariables">matcher metavariables</a></li>
+<li><a href="#声明宏"><code>macro_rules</code> declarations</a> and <a href="#元变量">matcher metavariables</a></li>
 <li><a href="#implementations">Implementation</a> associated items</li>
 </ul>
 </li>
@@ -43468,18 +43318,18 @@ fields</li>
 </div>
 
 <ul>
-<li>The <a href="#the-macro_use-attribute"><code>macro_use</code> attribute</a> can introduce macro names from another crate</li>
+<li>The <a href="#macro_use属性"><code>macro_use</code> attribute</a> can introduce macro names from another crate</li>
 </ul>
 <div class="rule" id="r-names.explicit.macro_export"><a class="rule-link" href="#r-names.explicit.macro_export" title="names.explicit.macro_export"><span>[names<wbr>.explicit<wbr>.macro_export]</span></a>
 </div>
 
 <ul>
-<li>The <a href="#the-macro_export-attribute"><code>macro_export</code> attribute</a> can introduce an alias for the macro into the crate root</li>
+<li>The <a href="#macro_export属性"><code>macro_export</code> attribute</a> can introduce an alias for the macro into the crate root</li>
 </ul>
 <div class="rule" id="r-names.explicit.macro-invocation"><a class="rule-link" href="#r-names.explicit.macro-invocation" title="names.explicit.macro-invocation"><span>[names<wbr>.explicit<wbr>.macro-invocation]</span></a>
 </div>
 
-<p>Additionally, <a href="#macro-invocation">macro invocations</a> and <a href="#attributes-1">attributes</a> can introduce names by
+<p>Additionally, <a href="#宏调用">macro invocations</a> and <a href="#attributes-1">attributes</a> can introduce names by
 expanding to one of the above items.</p>
 <div class="rule" id="r-names.implicit"><a class="rule-link" href="#r-names.implicit" title="names.implicit"><span>[names<wbr>.implicit]</span></a>
 </div>
@@ -43544,7 +43394,7 @@ introduced by compiler options and extensions:</p>
 </div>
 
 <ul>
-<li><a href="#derive-macro-helper-attributes">Derive helper attributes</a> are valid within an item without being explicitly imported</li>
+<li><a href="#派生宏辅助属性">Derive helper attributes</a> are valid within an item without being explicitly imported</li>
 </ul>
 <div class="rule" id="r-names.implicit.lifetime-static"><a class="rule-link" href="#r-names.implicit.lifetime-static" title="names.implicit.lifetime-static"><span>[names<wbr>.implicit<wbr>.lifetime-static]</span></a>
 </div>
@@ -43611,13 +43461,13 @@ arms, <a href="#function-parameters">function parameters</a>, <a href="#closure-
 </li>
 <li>Macro Namespace
 <ul>
-<li><a href="#macros-by-example"><code>macro_rules</code> declarations</a></li>
+<li><a href="#声明宏"><code>macro_rules</code> declarations</a></li>
 <li><a href="#built-in-attributes-index">Built-in attributes</a></li>
 <li><a href="#tool-attributes">Tool attributes</a></li>
-<li><a href="#the-proc_macro-attribute">Function-like procedural macros</a></li>
+<li><a href="#proc_macro属性">Function-like procedural macros</a></li>
 <li><a href="#r-macro.proc.derive">Derive macros</a></li>
-<li><a href="#derive-macro-helper-attributes">Derive macro helpers</a></li>
-<li><a href="#the-proc_macro_attribute-attribute">Attribute macros</a></li>
+<li><a href="#派生宏辅助属性">Derive macro helpers</a></li>
+<li><a href="#proc_macro_attribute属性">Attribute macros</a></li>
 </ul>
 </li>
 <li>Lifetime Namespace
@@ -43690,7 +43540,7 @@ imported.</p>
 <div class="rule" id="r-names.namespaces.sub-namespaces.intro"><a class="rule-link" href="#r-names.namespaces.sub-namespaces.intro" title="names.namespaces.sub-namespaces.intro"><span>[names<wbr>.namespaces<wbr>.sub-namespaces<wbr>.intro]</span></a>
 </div>
 
-<p>The macro namespace is split into two sub-namespaces: one for <a href="#macros">bang-style macros</a> and one for <a href="#attributes-1">attributes</a>.
+<p>The macro namespace is split into two sub-namespaces: one for <a href="#宏">bang-style macros</a> and one for <a href="#attributes-1">attributes</a>.
 When an attribute is resolved, any bang-style macros in scope will be ignored.
 And conversely resolving a bang-style macro will ignore attribute macros in scope.
 This prevents one style from shadowing another.</p>
@@ -44058,16 +43908,16 @@ The order that preludes may shadow other preludes is the following where earlier
 </div>
 
 <h2 id="macro_rules-scopes"><a class="header" href="#macro_rules-scopes"><code>macro_rules</code> scopes</a></h2>
-<p>The scope of <code>macro_rules</code> macros is described in the <a href="#macros-by-example">Macros By Example</a> chapter.
-The behavior depends on the use of the <a href="#the-macro_use-attribute"><code>macro_use</code></a> and <a href="#the-macro_export-attribute"><code>macro_export</code></a> attributes.</p>
+<p>The scope of <code>macro_rules</code> macros is described in the <a href="#声明宏">Macros By Example</a> chapter.
+The behavior depends on the use of the <a href="#macro_use属性"><code>macro_use</code></a> and <a href="#macro_export属性"><code>macro_export</code></a> attributes.</p>
 <div class="rule" id="r-names.scopes.derive"><a class="rule-link" href="#r-names.scopes.derive" title="names.scopes.derive"><span>[names<wbr>.scopes<wbr>.derive]</span></a>
 </div>
 
-<h2 id="derive-macro-helper-attributes-1"><a class="header" href="#derive-macro-helper-attributes-1">Derive macro helper attributes</a></h2>
+<h2 id="derive-macro-helper-attributes"><a class="header" href="#derive-macro-helper-attributes">Derive macro helper attributes</a></h2>
 <div class="rule" id="r-names.scopes.derive.scope"><a class="rule-link" href="#r-names.scopes.derive.scope" title="names.scopes.derive.scope"><span>[names<wbr>.scopes<wbr>.derive<wbr>.scope]</span></a>
 </div>
 
-<p><a href="#derive-macro-helper-attributes">Derive macro helper attributes</a> are in scope in the item where their corresponding <a href="#derive"><code>derive</code> attribute</a> is specified.
+<p><a href="#派生宏辅助属性">Derive macro helper attributes</a> are in scope in the item where their corresponding <a href="#derive"><code>derive</code> attribute</a> is specified.
 The scope extends from just after the <code>derive</code> attribute to the end of the item. <!-- Note: Not strictly true, see https://github.com/rust-lang/rust/issues/79202, but this is the intention. --></p>
 <div class="rule" id="r-names.scopes.derive.shadow"><a class="rule-link" href="#r-names.scopes.derive.shadow" title="names.scopes.derive.shadow"><span>[names<wbr>.scopes<wbr>.derive<wbr>.shadow]</span></a>
 </div>
@@ -44325,7 +44175,7 @@ to the language. The language prelude is always in scope.</p>
 </div>
 
 <p>The <code>macro_use</code> prelude includes macros from external crates that were
-imported by the <a href="#the-macro_use-attribute"><code>macro_use</code> attribute</a> applied to an <a href="#extern-crate-declarations"><code>extern crate</code></a>.</p>
+imported by the <a href="#macro_use属性"><code>macro_use</code> attribute</a> applied to an <a href="#extern-crate-declarations"><code>extern crate</code></a>.</p>
 <div class="rule" id="r-names.preludes.tool"><a class="rule-link" href="#r-names.preludes.tool" title="names.preludes.tool"><span>[names<wbr>.preludes<wbr>.tool]</span></a>
 </div>
 
@@ -44420,7 +44270,7 @@ mod example {
 </div>
 
 <p>A <em>path</em> is a sequence of one or more path segments separated by <code>::</code> tokens.
-Paths are used to refer to <a href="#items">items</a>, values, <a href="#types">types</a>, <a href="#macros">macros</a>, and <a href="#attributes-1">attributes</a>.</p>
+Paths are used to refer to <a href="#items">items</a>, values, <a href="#types">types</a>, <a href="#宏">macros</a>, and <a href="#attributes-1">attributes</a>.</p>
 <p>Two examples of simple paths consisting of only identifier segments:</p>
 <!-- ignore: syntax fragment -->
 <pre><code class="language-rust ignore">x;
@@ -44562,7 +44412,7 @@ $crate</text>
 <div class="rule" id="r-paths.simple.intro"><a class="rule-link" href="#r-paths.simple.intro" title="paths.simple.intro"><span>[paths<wbr>.simple<wbr>.intro]</span></a>
 </div>
 
-<p>Simple paths are used in <a href="#visibility-and-privacy">visibility</a> markers, <a href="#attributes-1">attributes</a>, <a href="#macros-by-example">macros</a>, and <a href="#use声明"><code>use</code></a> items.
+<p>Simple paths are used in <a href="#visibility-and-privacy">visibility</a> markers, <a href="#attributes-1">attributes</a>, <a href="#声明宏">macros</a>, and <a href="#use声明"><code>use</code></a> items.
 For example:</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -45833,7 +45683,7 @@ mod a {
 <div class="rule" id="r-paths.qualifiers.macro-crate.allowed-positions"><a class="rule-link" href="#r-paths.qualifiers.macro-crate.allowed-positions" title="paths.qualifiers.macro-crate.allowed-positions"><span>[paths<wbr>.qualifiers<wbr>.macro-crate<wbr>.allowed-positions]</span></a>
 </div>
 
-<p><a href="#r-macro.decl.hygiene.crate"><code>$crate</code></a> is only used within <a href="#macros-by-example">macro transcribers</a>, and can only be used as the first
+<p><a href="#r-macro.decl.hygiene.crate"><code>$crate</code></a> is only used within <a href="#声明宏">macro transcribers</a>, and can only be used as the first
 segment, without a preceding <code>::</code>.</p>
 <div class="rule" id="r-paths.qualifiers.macro-crate.hygiene"><a class="rule-link" href="#r-paths.qualifiers.macro-crate.hygiene" title="paths.qualifiers.macro-crate.hygiene"><span>[paths<wbr>.qualifiers<wbr>.macro-crate<wbr>.hygiene]</span></a>
 </div>
@@ -45949,7 +45799,7 @@ mod without { // crate::without
 </div>
 
 <p><em>Name resolution</em> is the process of tying paths and other identifiers to the declarations of those entities. Names are segregated into different <a href="#namespaces">namespaces</a>, allowing entities in different namespaces to share the same name without conflict. Each name is valid within a <a href="#scopes">scope</a>, or a region of source text where that name may be referenced. Access to a name may be restricted based on its <a href="#visibility-and-privacy">visibility</a>.</p>
-<p>Name resolution is split into three stages throughout the compilation process. The first stage, <em>expansion-time resolution</em>, resolves all <a href="#use声明"><code>use</code> declarations</a> and <a href="#macro-invocation">macro invocations</a>. The second stage, <em>primary resolution</em>, resolves all names that have not yet been resolved and that do not depend on type information to resolve. The last stage, <em>type-relative resolution</em>, resolves the remaining names once type information is available.</p>
+<p>Name resolution is split into three stages throughout the compilation process. The first stage, <em>expansion-time resolution</em>, resolves all <a href="#use声明"><code>use</code> declarations</a> and <a href="#宏调用">macro invocations</a>. The second stage, <em>primary resolution</em>, resolves all names that have not yet been resolved and that do not depend on type information to resolve. The last stage, <em>type-relative resolution</em>, resolves the remaining names once type information is available.</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
@@ -46307,7 +46157,7 @@ this behavior. This ambiguity error may be removed in the future.</p>
 <div class="rule" id="r-names.resolution.expansion.macros"><a class="rule-link" href="#r-names.resolution.expansion.macros" title="names.resolution.expansion.macros"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.macros]</span></a>
 </div>
 
-<h3 id="macros-1"><a class="header" href="#macros-1">Macros</a></h3>
+<h3 id="macros"><a class="header" href="#macros">Macros</a></h3>
 <div class="rule" id="r-names.resolution.expansion.macros.intro"><a class="rule-link" href="#r-names.resolution.expansion.macros.intro" title="names.resolution.expansion.macros.intro"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.macros<wbr>.intro]</span></a>
 </div>
 
@@ -47433,7 +47283,7 @@ executables as well as <code>staticlib</code> outputs.</li>
 produced is not specified, but if a <code>-L</code> path is provided to it then the
 compiler will recognize the output artifacts as a macro and it can be loaded
 for a program. Crates compiled with this crate type  must only export
-<a href="#procedural-macros">procedural macros</a>. The compiler will automatically set the <code>proc_macro</code>
+<a href="#过程宏">procedural macros</a>. The compiler will automatically set the <code>proc_macro</code>
 <a href="#conditional-compilation">configuration option</a>. The crates are always compiled with the same target
 that the compiler itself was built with. For example, if you are executing
 the compiler from Linux with an <code>x86_64</code> CPU, the target will be
@@ -52139,7 +51989,7 @@ static GLOBAL: MyAllocator = MyAllocator;
 </tbody>
 </table>
 </div>
-<h2 id="macros-2"><a class="header" href="#macros-2">Macros</a></h2>
+<h2 id="macros-1"><a class="header" href="#macros-1">Macros</a></h2>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -52295,7 +52145,7 @@ static GLOBAL: MyAllocator = MyAllocator;
 </div>
 
 <h1 id="appendix-macro-follow-set-ambiguity-formal-specification"><a class="header" href="#appendix-macro-follow-set-ambiguity-formal-specification">Appendix: Macro follow-set ambiguity formal specification</a></h1>
-<p>This page documents the formal specification of the follow rules for <a href="#macros-by-example">Macros
+<p>This page documents the formal specification of the follow rules for <a href="#声明宏">Macros
 By Example</a>. They were originally specified in <a href="https://github.com/rust-lang/rfcs/blob/master/text/0550-macro-future-proofing.md">RFC 550</a>, from which the bulk
 of this text is copied, and expanded upon in subsequent RFCs.</p>
 <div class="rule" id="r-macro.ambiguity.convention"><a class="rule-link" href="#r-macro.ambiguity.convention" title="macro.ambiguity.convention"><span>[macro<wbr>.ambiguity<wbr>.convention]</span></a>

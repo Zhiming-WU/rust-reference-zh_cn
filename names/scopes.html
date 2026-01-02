@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-be2adbd7.js";
+            window.path_to_searchindex_js = "../searchindex-e9a62445.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -529,7 +529,7 @@ The order that preludes may shadow other preludes is the following where earlier
 
 <h2 id="macro_rules-scopes"><a class="header" href="#macro_rules-scopes"><code>macro_rules</code> scopes</a></h2>
 <p>The scope of <code>macro_rules</code> macros is described in the <a href="../macros-by-example.html">Macros By Example</a> chapter.
-The behavior depends on the use of the <a href="../macros-by-example.html#the-macro_use-attribute"><code>macro_use</code></a> and <a href="../macros-by-example.html#the-macro_export-attribute"><code>macro_export</code></a> attributes.</p>
+The behavior depends on the use of the <a href="../macros-by-example.html#macro_use属性"><code>macro_use</code></a> and <a href="../macros-by-example.html#macro_export属性"><code>macro_export</code></a> attributes.</p>
 <div class="rule" id="r-names.scopes.derive"><a class="rule-link" href="#r-names.scopes.derive" title="names.scopes.derive"><span>[names<wbr>.scopes<wbr>.derive]</span></a>
 </div>
 
@@ -537,7 +537,7 @@ The behavior depends on the use of the <a href="../macros-by-example.html#the-ma
 <div class="rule" id="r-names.scopes.derive.scope"><a class="rule-link" href="#r-names.scopes.derive.scope" title="names.scopes.derive.scope"><span>[names<wbr>.scopes<wbr>.derive<wbr>.scope]</span></a>
 </div>
 
-<p><a href="../procedural-macros.html#derive-macro-helper-attributes">Derive macro helper attributes</a> are in scope in the item where their corresponding <a href="../attributes/derive.html"><code>derive</code> attribute</a> is specified.
+<p><a href="../procedural-macros.html#派生宏辅助属性">Derive macro helper attributes</a> are in scope in the item where their corresponding <a href="../attributes/derive.html"><code>derive</code> attribute</a> is specified.
 The scope extends from just after the <code>derive</code> attribute to the end of the item. <!-- Note: Not strictly true, see https://github.com/rust-lang/rust/issues/79202, but this is the intention. --></p>
 <div class="rule" id="r-names.scopes.derive.shadow"><a class="rule-link" href="#r-names.scopes.derive.shadow" title="names.scopes.derive.shadow"><span>[names<wbr>.scopes<wbr>.derive<wbr>.shadow]</span></a>
 </div>
