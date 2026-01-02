@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-59569cd7.js";
+            window.path_to_searchindex_js = "../searchindex-be2adbd7.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -353,7 +353,7 @@ false</text>
 <div class="rule" id="r-expr.literal.literal-token"><a class="rule-link" href="#r-expr.literal.literal-token" title="expr.literal.literal-token"><span>[expr<wbr>.literal<wbr>.literal-token]</span></a>
 </div>
 
-<p>Each of the lexical <a href="../tokens.html#literals">literal</a> forms described earlier can make up a literal expression, as can the keywords <code>true</code> and <code>false</code>.</p>
+<p>Each of the lexical <a href="../tokens.html#字面量">literal</a> forms described earlier can make up a literal expression, as can the keywords <code>true</code> and <code>false</code>.</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>"hello";   // string type
@@ -821,7 +821,7 @@ c"\u{00E6}".to_bytes();              // [195, 166]
 <div class="rule" id="r-expr.literal.int.suffix"><a class="rule-link" href="#r-expr.literal.int.suffix" title="expr.literal.int.suffix"><span>[expr<wbr>.literal<wbr>.int<wbr>.suffix]</span></a>
 </div>
 
-<p>If the token has a <a href="../tokens.html#suffixes">suffix</a>, the suffix must be the name of one of the <a href="../types/numeric.html">primitive integer types</a>: <code>u8</code>, <code>i8</code>, <code>u16</code>, <code>i16</code>, <code>u32</code>, <code>i32</code>, <code>u64</code>, <code>i64</code>, <code>u128</code>, <code>i128</code>, <code>usize</code>, or <code>isize</code>, and the expression has that type.</p>
+<p>If the token has a <a href="../tokens.html#后缀">suffix</a>, the suffix must be the name of one of the <a href="../types/numeric.html">primitive integer types</a>: <code>u8</code>, <code>i8</code>, <code>u16</code>, <code>i16</code>, <code>u32</code>, <code>i32</code>, <code>u64</code>, <code>i64</code>, <code>u128</code>, <code>i128</code>, <code>usize</code>, or <code>isize</code>, and the expression has that type.</p>
 <div class="rule" id="r-expr.literal.int.infer"><a class="rule-link" href="#r-expr.literal.int.infer" title="expr.literal.int.infer"><span>[expr<wbr>.literal<wbr>.int<wbr>.infer]</span></a>
 </div>
 
@@ -944,7 +944,7 @@ If the value does not fit in <code>u128</code>, it is a compiler error.</li>
 <div class="rule" id="r-expr.literal.float.suffix"><a class="rule-link" href="#r-expr.literal.float.suffix" title="expr.literal.float.suffix"><span>[expr<wbr>.literal<wbr>.float<wbr>.suffix]</span></a>
 </div>
 
-<p>If the token has a <a href="../tokens.html#suffixes">suffix</a>, the suffix must be the name of one of the <a href="../types/numeric.html#floating-point-types">primitive floating-point types</a>: <code>f32</code> or <code>f64</code>, and the expression has that type.</p>
+<p>If the token has a <a href="../tokens.html#后缀">suffix</a>, the suffix must be the name of one of the <a href="../types/numeric.html#floating-point-types">primitive floating-point types</a>: <code>f32</code> or <code>f64</code>, and the expression has that type.</p>
 <div class="rule" id="r-expr.literal.float.infer"><a class="rule-link" href="#r-expr.literal.float.infer" title="expr.literal.float.infer"><span>[expr<wbr>.literal<wbr>.float<wbr>.infer]</span></a>
 </div>
 

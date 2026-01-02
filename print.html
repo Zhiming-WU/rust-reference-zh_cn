@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-59569cd7.js";
+            window.path_to_searchindex_js = "searchindex-be2adbd7.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -372,21 +372,23 @@ Cargo 有一本 <a href="https://doc.rust-lang.org/cargo/index.html">书籍</a>�
 </div>
 
 <h3 id="字符串表产生式"><a class="header" href="#字符串表产生式">字符串表产生式</a></h3>
-<p>语法中的某些规则 —— 特别是<a href="#borrow-operators">一元运算符</a>、<a href="#arithmetic-and-logical-binary-operators">二元运算符</a>和<a href="#keywords">关键字</a> —— 以简化形式给出：作为可打印字符串的列表。这些情况构成了关于<a href="#tokens">词法单元</a>规则的一个子集，并被认为是词法分析阶段的结果，该阶段由一个<abbr title="确定性有限自动机">DFA</abbr>驱动，作用于所有此类字符串表条目的析取，从而为解析器提供输入。</p>
-<p>当语法中出现<code>等宽字体</code>的字符串时，它隐式引用了此类字符串表产生式的一个成员。有关更多信息，请参阅<a href="#tokens">词法单元</a>。</p>
+<p>语法中的某些规则 —— 特别是<a href="#borrow-operators">一元运算符</a>、<a href="#arithmetic-and-logical-binary-operators">二元运算符</a>和<a href="#关键字">关键字</a> —— 以简化形式给出：作为可打印字符串的列表。这些情况构成了关于<a href="#词法单元">词法单元</a>规则的一个子集，并被认为是词法分析阶段的结果，该阶段由一个<abbr title="确定性有限自动机">DFA</abbr>驱动，作用于所有此类字符串表条目的析取，从而为解析器提供输入。</p>
+<p>当语法中出现<code>等宽字体</code>的字符串时，它隐式引用了此类字符串表产生式的一个成员。有关更多信息，请参阅<a href="#词法单元">词法单元</a>。</p>
 <div class="rule" id="r-notation.grammar.visualizations"><a class="rule-link" href="#r-notation.grammar.visualizations" title="notation.grammar.visualizations"><span>[notation<wbr>.grammar<wbr>.visualizations]</span></a>
 </div>
 
 <h3 id="语法可视化"><a class="header" href="#语法可视化">语法可视化</a></h3>
 <p>在每个语法块下方都有一个按钮，用于切换<a href="https://en.wikipedia.org/wiki/Syntax_diagram">语法格式图</a>的显示。一个方形元素是一个非终结规则，一个圆角矩形是一个终结符。</p>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="lexical-structure"><a class="header" href="#lexical-structure">Lexical structure</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><!-- https://github.com/rust-lang/reference/blob/master/src/lexical-structure.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<h1 id="词法结构"><a class="header" href="#词法结构">词法结构</a></h1>
 <!-- Editor Note: Oh, there's nothing here -->
-<div style="break-before: page; page-break-before: always;"></div>
+<div style="break-before: page; page-break-before: always;"></div><!-- https://github.com/rust-lang/reference/blob/master/src/input-format.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
 <div class="rule" id="r-input"><a class="rule-link" href="#r-input" title="input"><span>[input]</span></a>
 </div>
 
-<h1 id="input-format"><a class="header" href="#input-format">Input format</a></h1>
+<h1 id="输入格式"><a class="header" href="#输入格式">输入格式</a></h1>
 <div class="rule" id="r-input.syntax"><a class="rule-link" href="#r-input.syntax" title="input.syntax"><span>[input<wbr>.syntax]</span></a>
 </div>
 
@@ -448,40 +450,40 @@ U+0000</text>
 <div class="rule" id="r-input.intro"><a class="rule-link" href="#r-input.intro" title="input.intro"><span>[input<wbr>.intro]</span></a>
 </div>
 
-<p>This chapter describes how a source file is interpreted as a sequence of tokens.</p>
-<p>See <a href="#crates-and-source-files">Crates and source files</a> for a description of how programs are organised into files.</p>
+<p>本章描述了源文件如何被解释为词法单元序列。</p>
+<p>有关程序如何组织成文件的描述，请参阅<a href="#crates-and-source-files">crate和源文件</a>。</p>
 <div class="rule" id="r-input.encoding"><a class="rule-link" href="#r-input.encoding" title="input.encoding"><span>[input<wbr>.encoding]</span></a>
 </div>
 
-<h2 id="source-encoding"><a class="header" href="#source-encoding">Source encoding</a></h2>
+<h2 id="源文件编码"><a class="header" href="#源文件编码">源文件编码</a></h2>
 <div class="rule" id="r-input.encoding.utf8"><a class="rule-link" href="#r-input.encoding.utf8" title="input.encoding.utf8"><span>[input<wbr>.encoding<wbr>.utf8]</span></a>
 </div>
 
-<p>Each source file is interpreted as a sequence of Unicode characters encoded in UTF-8.</p>
+<p>每个源文件都被解释为以UTF-8编码的Unicode字符序列。</p>
 <div class="rule" id="r-input.encoding.invalid"><a class="rule-link" href="#r-input.encoding.invalid" title="input.encoding.invalid"><span>[input<wbr>.encoding<wbr>.invalid]</span></a>
 </div>
 
-<p>It is an error if the file is not valid UTF-8.</p>
+<p>如果文件不是有效的UTF-8，则会报错。</p>
 <div class="rule" id="r-input.byte-order-mark"><a class="rule-link" href="#r-input.byte-order-mark" title="input.byte-order-mark"><span>[input<wbr>.byte-order-mark]</span></a>
 </div>
 
-<h2 id="byte-order-mark-removal"><a class="header" href="#byte-order-mark-removal">Byte order mark removal</a></h2>
-<p>If the first character in the sequence is <code>U+FEFF</code> (<a href="https://en.wikipedia.org/wiki/Byte_order_mark#UTF-8">BYTE ORDER MARK</a>), it is removed.</p>
+<h2 id="字节序标记移除"><a class="header" href="#字节序标记移除">字节序标记移除</a></h2>
+<p>如果序列中的第一个字符是<code>U+FEFF</code>（<a href="https://en.wikipedia.org/wiki/Byte_order_mark#UTF-8">字节序标记</a>），则将其移除。</p>
 <div class="rule" id="r-input.crlf"><a class="rule-link" href="#r-input.crlf" title="input.crlf"><span>[input<wbr>.crlf]</span></a>
 </div>
 
-<h2 id="crlf-normalization"><a class="header" href="#crlf-normalization">CRLF normalization</a></h2>
-<p>Each pair of characters <code>U+000D</code> (CR) immediately followed by <code>U+000A</code> (LF) is replaced by a single <code>U+000A</code> (LF). This happens once, not repeatedly, so after the normalization, there can still exist <code>U+000D</code> (CR) immediately followed by <code>U+000A</code> (LF) in the input (e.g. if the raw input contained “CR CR LF LF”).</p>
-<p>Other occurrences of the character <code>U+000D</code> (CR) are left in place (they are treated as <a href="#whitespace">whitespace</a>).</p>
+<h2 id="crlf规范化"><a class="header" href="#crlf规范化">CRLF规范化</a></h2>
+<p>每对紧跟着<code>U+000A</code> (LF) 的<code>U+000D</code> (CR) 字符会被单个<code>U+000A</code> (LF) 替换。此操作只执行一次，不会重复，因此在规范化之后，输入中仍然可能存在紧跟着<code>U+000A</code> (LF) 的<code>U+000D</code> (CR)（例如，如果原始输入包含 “CR CR LF LF”）。</p>
+<p>字符<code>U+000D</code> (CR) 的其他出现位置则保留不变（它们被视为<a href="#空白字符">空白符</a>）。</p>
 <div class="rule" id="r-input.shebang"><a class="rule-link" href="#r-input.shebang" title="input.shebang"><span>[input<wbr>.shebang]</span></a>
 </div>
 
-<h2 id="shebang-removal"><a class="header" href="#shebang-removal">Shebang removal</a></h2>
+<h2 id="shebang移除"><a class="header" href="#shebang移除">Shebang移除</a></h2>
 <div class="rule" id="r-input.shebang.intro"><a class="rule-link" href="#r-input.shebang.intro" title="input.shebang.intro"><span>[input<wbr>.shebang<wbr>.intro]</span></a>
 </div>
 
-<p>If the remaining sequence begins with the characters <code>#!</code>, the characters up to and including the first <code>U+000A</code> (LF) are removed from the sequence.</p>
-<p>For example, the first line of the following file would be ignored:</p>
+<p>如果剩余序列以字符<code>#!</code>开头，则从序列中移除直到（并包括）第一个<code>U+000A</code> (LF) 的所有字符。</p>
+<p>例如，以下文件的第一行将被忽略：</p>
 <!-- ignore: tests don't like shebang -->
 <pre><code class="language-rust ignore">#!/usr/bin/env rustx
 
@@ -491,53 +493,54 @@ fn main() {
 <div class="rule" id="r-input.shebang.inner-attribute"><a class="rule-link" href="#r-input.shebang.inner-attribute" title="input.shebang.inner-attribute"><span>[input<wbr>.shebang<wbr>.inner-attribute]</span></a>
 </div>
 
-<p>As an exception, if the <code>#!</code> characters are followed (ignoring intervening <a href="#comments">comments</a> or <a href="#whitespace">whitespace</a>) by a <code>[</code> token, nothing is removed. This prevents an <a href="#attributes-1">inner attribute</a> at the start of a source file being removed.</p>
+<p>作为例外，如果<code>#!</code>字符后面紧跟着（忽略中间的<a href="#注释">注释</a>或<a href="#空白字符">空白符</a>）一个<code>[</code>词法单元，则不进行任何移除。这可以防止源文件开头的<a href="#attributes-1">内部属性</a>被移除。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The standard library <a href="../core/macro.include.html"><code>include!</code></a> macro applies byte order mark removal, CRLF normalization, and shebang removal to the file it reads. The <a href="../core/macro.include_str.html"><code>include_str!</code></a> and <a href="../core/macro.include_bytes.html"><code>include_bytes!</code></a> macros do not.</p>
+<p>标准库的<a href="../core/macro.include.html"><code>include!</code></a>宏会对其读取的文件进行字节序标记移除、CRLF规范化和Shebang移除。<a href="../core/macro.include_str.html"><code>include_str!</code></a>和<a href="../core/macro.include_bytes.html"><code>include_bytes!</code></a>宏则不会。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-input.tokenization"><a class="rule-link" href="#r-input.tokenization" title="input.tokenization"><span>[input<wbr>.tokenization]</span></a>
 </div>
 
-<h2 id="tokenization"><a class="header" href="#tokenization">Tokenization</a></h2>
-<p>The resulting sequence of characters is then converted into tokens as described in the remainder of this chapter.</p>
-<div style="break-before: page; page-break-before: always;"></div>
+<h2 id="词法单元化"><a class="header" href="#词法单元化">词法单元化</a></h2>
+<p>然后，所得的字符序列将转换为词法单元，具体描述见本章的其余部分。</p>
+<div style="break-before: page; page-break-before: always;"></div><!-- https://github.com/rust-lang/reference/blob/master/src/keywords.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
 <div class="rule" id="r-lex.keywords"><a class="rule-link" href="#r-lex.keywords" title="lex.keywords"><span>[lex<wbr>.keywords]</span></a>
 </div>
 
-<h1 id="keywords"><a class="header" href="#keywords">Keywords</a></h1>
-<p>Rust divides keywords into three categories:</p>
+<h1 id="关键字"><a class="header" href="#关键字">关键字</a></h1>
+<p>Rust 将关键字分为三类：</p>
 <ul>
-<li><a href="#strict-keywords">strict</a></li>
-<li><a href="#reserved-keywords">reserved</a></li>
-<li><a href="#weak-keywords">weak</a></li>
+<li><a href="#严格关键字">严格关键字</a></li>
+<li><a href="#保留关键字">保留关键字</a></li>
+<li><a href="#弱关键字">弱关键字</a></li>
 </ul>
 <div class="rule" id="r-lex.keywords.strict"><a class="rule-link" href="#r-lex.keywords.strict" title="lex.keywords.strict"><span>[lex<wbr>.keywords<wbr>.strict]</span></a>
 </div>
 
-<h2 id="strict-keywords"><a class="header" href="#strict-keywords">Strict keywords</a></h2>
+<h2 id="严格关键字"><a class="header" href="#严格关键字">严格关键字</a></h2>
 <div class="rule" id="r-lex.keywords.strict.intro"><a class="rule-link" href="#r-lex.keywords.strict.intro" title="lex.keywords.strict.intro"><span>[lex<wbr>.keywords<wbr>.strict<wbr>.intro]</span></a>
 </div>
 
-<p>These keywords can only be used in their correct contexts. They cannot be used as the names of:</p>
+<p>这些关键字只能在其正确的上下文中使用。它们不能用作以下内容的名称：</p>
 <ul>
-<li><a href="#items">Items</a></li>
-<li><a href="#variables">Variables</a> and function parameters</li>
-<li>Fields and <a href="#enumerations">variants</a></li>
-<li><a href="#type-parameters">Type parameters</a></li>
-<li>Lifetime parameters or <a href="#loop-labels">loop labels</a></li>
-<li><a href="#macros">Macros</a> or <a href="#attributes-1">attributes</a></li>
-<li><a href="#macros-by-example">Macro placeholders</a></li>
-<li><a href="#crates-and-source-files">Crates</a></li>
+<li><a href="#items">项</a></li>
+<li><a href="#variables">变量</a>和函数参数</li>
+<li>字段和<a href="#enumerations">变体</a></li>
+<li><a href="#type-parameters">类型参数</a></li>
+<li>生命周期参数或<a href="#loop-labels">循环标签</a></li>
+<li><a href="#macros">宏</a>或<a href="#attributes-1">属性</a></li>
+<li><a href="#macros-by-example">宏占位符</a></li>
+<li><a href="#crates-and-source-files">crate</a></li>
 </ul>
 <div class="rule" id="r-lex.keywords.strict.list"><a class="rule-link" href="#r-lex.keywords.strict.list" title="lex.keywords.strict.list"><span>[lex<wbr>.keywords<wbr>.strict<wbr>.list]</span></a>
 </div>
 
-<p>The following keywords are in all editions:</p>
+<p>以下关键字在所有版次中都存在：</p>
 <ul>
 <li><code>_</code></li>
 <li><code>as</code></li>
@@ -586,7 +589,7 @@ fn main() {
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>The following keywords were added in the 2018 edition:</p>
+<p>以下关键字在 2018 版次中添加：</p>
 <ul>
 <li><code>async</code></li>
 <li><code>await</code></li>
@@ -598,11 +601,11 @@ fn main() {
 <div class="rule" id="r-lex.keywords.reserved"><a class="rule-link" href="#r-lex.keywords.reserved" title="lex.keywords.reserved"><span>[lex<wbr>.keywords<wbr>.reserved]</span></a>
 </div>
 
-<h2 id="reserved-keywords"><a class="header" href="#reserved-keywords">Reserved keywords</a></h2>
+<h2 id="保留关键字"><a class="header" href="#保留关键字">保留关键字</a></h2>
 <div class="rule" id="r-lex.keywords.reserved.intro"><a class="rule-link" href="#r-lex.keywords.reserved.intro" title="lex.keywords.reserved.intro"><span>[lex<wbr>.keywords<wbr>.reserved<wbr>.intro]</span></a>
 </div>
 
-<p>These keywords aren’t used yet, but they are reserved for future use. They have the same restrictions as strict keywords. The reasoning behind this is to make current programs forward compatible with future versions of Rust by forbidding them to use these keywords.</p>
+<p>这些关键字尚未投入使用，但已为将来保留。它们与严格关键字具有相同的限制。这样做的理由是通过禁止当前程序使用这些关键字，使其与 Rust 的未来版本向前兼容。</p>
 <div class="rule" id="r-lex.keywords.reserved.list"><a class="rule-link" href="#r-lex.keywords.reserved.list" title="lex.keywords.reserved.list"><span>[lex<wbr>.keywords<wbr>.reserved<wbr>.list]</span></a>
 </div>
 
@@ -629,7 +632,7 @@ fn main() {
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>The <code>try</code> keyword was added as a reserved keyword in the 2018 edition.</p>
+<p><code>try</code>关键字在 2018 版次中作为保留关键字添加。</p>
 </blockquote>
 </div>
 
@@ -640,18 +643,18 @@ fn main() {
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2024</span> 版次差异</p>
 
-<p>The <code>gen</code> keyword was added as a reserved keyword in the 2024 edition.</p>
+<p><code>gen</code>关键字在 2024 版次中作为保留关键字添加。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-lex.keywords.weak"><a class="rule-link" href="#r-lex.keywords.weak" title="lex.keywords.weak"><span>[lex<wbr>.keywords<wbr>.weak]</span></a>
 </div>
 
-<h2 id="weak-keywords"><a class="header" href="#weak-keywords">Weak keywords</a></h2>
+<h2 id="弱关键字"><a class="header" href="#弱关键字">弱关键字</a></h2>
 <div class="rule" id="r-lex.keywords.weak.intro"><a class="rule-link" href="#r-lex.keywords.weak.intro" title="lex.keywords.weak.intro"><span>[lex<wbr>.keywords<wbr>.weak<wbr>.intro]</span></a>
 </div>
 
-<p>These keywords have special meaning only in certain contexts. For example, it is possible to declare a variable or method with the name <code>union</code>.</p>
+<p>这些关键字仅在特定上下文中有特殊含义。例如，可以使用<code>union</code>这个名字声明一个变量或方法。</p>
 <ul>
 <li><code>'static</code></li>
 <li><code>macro_rules</code></li>
@@ -663,20 +666,20 @@ fn main() {
 </div>
 
 <ul>
-<li><code>macro_rules</code> is used to create custom <a href="#macros">macros</a>.</li>
+<li><code>macro_rules</code>用于创建自定义<a href="#macros">宏</a>。</li>
 </ul>
 <div class="rule" id="r-lex.keywords.weak.union"><a class="rule-link" href="#r-lex.keywords.weak.union" title="lex.keywords.weak.union"><span>[lex<wbr>.keywords<wbr>.weak<wbr>.union]</span></a>
 </div>
 
 <ul>
-<li><code>union</code> is used to declare a <a href="#unions">union</a> and is only a keyword when used in a union declaration.</li>
+<li><code>union</code>用于声明一个<a href="#unions">联合体</a>，并且仅在联合体声明中使用时才作为关键字。</li>
 </ul>
 <div class="rule" id="r-lex.keywords.weak.lifetime-static"><a class="rule-link" href="#r-lex.keywords.weak.lifetime-static" title="lex.keywords.weak.lifetime-static"><span>[lex<wbr>.keywords<wbr>.weak<wbr>.lifetime-static]</span></a>
 </div>
 
 <ul>
 <li>
-<p><code>'static</code> is used for the static lifetime and cannot be used as a <a href="#generic-parameters">generic lifetime parameter</a> or <a href="#loop-labels">loop label</a></p>
+<p><code>'static</code>用于静态生命周期，不能用作<a href="#generic-parameters">泛型生命周期参数</a>或<a href="#loop-labels">循环标签</a></p>
 <pre><code class="language-compile_fail">// error[E0262]: invalid lifetime parameter name: `'static`
 fn invalid_lifetime_parameter&lt;'static&gt;(s: &amp;'static str) -&gt; &amp;'static str { s }
 </code></pre>
@@ -686,13 +689,13 @@ fn invalid_lifetime_parameter&lt;'static&gt;(s: &amp;'static str) -&gt; &amp;'st
 </div>
 
 <ul>
-<li><code>safe</code> is used for functions and statics, which has meaning in <a href="#external-blocks">external blocks</a>.</li>
+<li><code>safe</code>用于函数和静态量，在<a href="#external-blocks">外部块</a>中有特殊含义。</li>
 </ul>
 <div class="rule" id="r-lex.keywords.weak.raw"><a class="rule-link" href="#r-lex.keywords.weak.raw" title="lex.keywords.weak.raw"><span>[lex<wbr>.keywords<wbr>.weak<wbr>.raw]</span></a>
 </div>
 
 <ul>
-<li><code>raw</code> is used for <a href="#raw-borrow-operators">raw borrow operators</a>, and is only a keyword when matching a raw borrow operator form (such as <code>&amp;raw const expr</code> or <code>&amp;raw mut expr</code>).</li>
+<li><code>raw</code>用于<a href="#raw-borrow-operators">原始借用运算符</a>，并且仅在匹配原始借用运算符形式（例如<code>&amp;raw const expr</code>或<code>&amp;raw mut expr</code>）时才作为关键字。</li>
 </ul>
 <div class="rule" id="r-lex.keywords.weak.dyn.edition2018"><a class="rule-link" href="#r-lex.keywords.weak.dyn.edition2018" title="lex.keywords.weak.dyn.edition2018"><span>[lex<wbr>.keywords<wbr>.weak<wbr>.dyn<wbr>.edition2018]</span></a>
 </div>
@@ -701,16 +704,17 @@ fn invalid_lifetime_parameter&lt;'static&gt;(s: &amp;'static str) -&gt; &amp;'st
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>In the 2015 edition, <a href="#trait-objects"><code>dyn</code></a> is a keyword when used in a type position followed by a path that does not start with <code>::</code> or <code>&lt;</code>, a lifetime, a question mark, a <code>for</code> keyword or an opening parenthesis.</p>
-<p>Beginning in the 2018 edition, <code>dyn</code> has been promoted to a strict keyword.</p>
+<p>在 2015 版次中，<a href="#trait-objects"><code>dyn</code></a>在类型位置后跟不以<code>::</code>或<code>&lt;</code>开头的路径、生命周期、问号、<code>for</code>关键字或左括号时是一个关键字。</p>
+<p>从 2018 版次开始，<code>dyn</code>已被提升为严格关键字。</p>
 </blockquote>
 </div>
 
-<div style="break-before: page; page-break-before: always;"></div>
+<div style="break-before: page; page-break-before: always;"></div><!-- https://github.com/rust-lang/reference/blob/master/src/identifiers.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
 <div class="rule" id="r-ident"><a class="rule-link" href="#r-ident" title="ident"><span>[ident]</span></a>
 </div>
 
-<h1 id="identifiers"><a class="header" href="#identifiers">Identifiers</a></h1>
+<h1 id="标识符"><a class="header" href="#标识符">标识符</a></h1>
 <div class="rule" id="r-ident.syntax"><a class="rule-link" href="#r-ident.syntax" title="ident.syntax"><span>[ident<wbr>.syntax]</span></a>
 </div>
 
@@ -994,7 +998,7 @@ super</text>
 <div class="rule" id="r-ident.unicode"><a class="rule-link" href="#r-ident.unicode" title="ident.unicode"><span>[ident<wbr>.unicode]</span></a>
 </div>
 
-<p>Identifiers follow the specification in <a href="https://www.unicode.org/reports/tr31/tr31-41.html">Unicode Standard Annex #31</a> for Unicode version 16.0, with the additions described below. Some examples of identifiers:</p>
+<p>标识符遵循<a href="https://www.unicode.org/reports/tr31/tr31-41.html">Unicode标准附件#31</a>中针对Unicode 16.0版的规范，并增加了下述内容。一些标识符的例子：</p>
 <ul>
 <li><code>foo</code></li>
 <li><code>_identifier</code></li>
@@ -1005,66 +1009,67 @@ super</text>
 <div class="rule" id="r-ident.profile"><a class="rule-link" href="#r-ident.profile" title="ident.profile"><span>[ident<wbr>.profile]</span></a>
 </div>
 
-<p>The profile used from UAX #31 is:</p>
+<p>UAX #31中使用的概要是：</p>
 <ul>
-<li>Start := <a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Start%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Start</code></a>, plus the underscore character (U+005F)</li>
+<li>Start := <a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Start%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Start</code></a>，加上下划线字符(U+005F)</li>
 <li>Continue := <a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Continue%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Continue</code></a></li>
-<li>Medial := empty</li>
+<li>Medial := 空</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Identifiers starting with an underscore are typically used to indicate an identifier that is intentionally unused, and will silence the unused warning in <code>rustc</code>.</p>
+<p>以<code>_</code>开头的标识符通常用于表明一个有意不使用的标识符，并且会消除<code>rustc</code>中的未使用警告。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-ident.keyword"><a class="rule-link" href="#r-ident.keyword" title="ident.keyword"><span>[ident<wbr>.keyword]</span></a>
 </div>
 
-<p>Identifiers may not be a <a href="#strict-keywords">strict</a> or <a href="#reserved-keywords">reserved</a> keyword without the <code>r#</code> prefix described below in <a href="#raw-identifiers">raw identifiers</a>.</p>
+<p>标识符不能是<a href="#严格关键字">严格</a>或<a href="#保留关键字">保留</a>关键字，除非带上下述<a href="#raw-identifiers">原始标识符</a>中描述的<code>r#</code>前缀。</p>
 <div class="rule" id="r-ident.zero-width-chars"><a class="rule-link" href="#r-ident.zero-width-chars" title="ident.zero-width-chars"><span>[ident<wbr>.zero-width-chars]</span></a>
 </div>
 
-<p>Zero width non-joiner (ZWNJ U+200C) and zero width joiner (ZWJ U+200D) characters are not allowed in identifiers.</p>
+<p>零宽不连接符(ZWNJ U+200C)和零宽连接符(ZWJ U+200D)字符不允许出现在标识符中。</p>
 <div class="rule" id="r-ident.ascii-limitations"><a class="rule-link" href="#r-ident.ascii-limitations" title="ident.ascii-limitations"><span>[ident<wbr>.ascii-limitations]</span></a>
 </div>
 
-<p>Identifiers are restricted to the ASCII subset of <a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Start%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Start</code></a> and <a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Continue%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Continue</code></a> in the following situations:</p>
+<p>在以下情况，标识符被限制为<a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Start%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Start</code></a>和<a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Continue%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Continue</code></a>的ASCII子集：</p>
 <ul>
-<li><a href="#extern-crate-declarations"><code>extern crate</code></a> declarations (except the <a href="#grammar-AsClause">AsClause</a> identifier)</li>
-<li>External crate names referenced in a <a href="#paths">path</a></li>
-<li><a href="#modules">Module</a> names loaded from the filesystem without a <a href="#the-path-attribute"><code>path</code> attribute</a></li>
-<li><a href="#the-no_mangle-attribute"><code>no_mangle</code></a> attributed items</li>
-<li>Item names in <a href="#external-blocks">external blocks</a></li>
+<li><a href="#extern-crate-declarations"><code>extern crate</code></a>声明（除了<a href="#grammar-AsClause">AsClause</a>标识符）</li>
+<li>在<a href="#paths">路径</a>中引用的外部crate名</li>
+<li>从文件系统加载而不带<a href="#the-path-attribute"><code>path</code>属性</a>的<a href="#modules">模块</a>名</li>
+<li>带有<a href="#the-no_mangle-attribute"><code>no_mangle</code></a>属性的项</li>
+<li><a href="#external-blocks">外部块</a>中的项名</li>
 </ul>
 <div class="rule" id="r-ident.normalization"><a class="rule-link" href="#r-ident.normalization" title="ident.normalization"><span>[ident<wbr>.normalization]</span></a>
 </div>
 
-<h2 id="normalization"><a class="header" href="#normalization">Normalization</a></h2>
-<p>Identifiers are normalized using Normalization Form C (NFC) as defined in <a href="https://www.unicode.org/reports/tr15/tr15-56.html">Unicode Standard Annex #15</a>. Two identifiers are equal if their NFC forms are equal.</p>
-<p><a href="#procedural-macros">Procedural</a> and <a href="#macros-by-example">declarative</a> macros receive normalized identifiers in their input.</p>
+<h2 id="规范化"><a class="header" href="#规范化">规范化</a></h2>
+<p>标识符使用规范化形式 C (NFC) 进行规范化，如<a href="https://www.unicode.org/reports/tr15/tr15-56.html">Unicode标准附件#15</a>中所定义。两个标识符在它们的 NFC 形式相等时才相等。</p>
+<p><a href="#procedural-macros">过程</a>宏和<a href="#macros-by-example">声明式</a>宏在它们的输入中接收规范化的标识符。</p>
 <div class="rule" id="r-ident.raw"><a class="rule-link" href="#r-ident.raw" title="ident.raw"><span>[ident<wbr>.raw]</span></a>
 </div>
 
-<h2 id="raw-identifiers"><a class="header" href="#raw-identifiers">Raw identifiers</a></h2>
+<h2 id="原始标识符"><a class="header" href="#原始标识符">原始标识符</a></h2>
 <div class="rule" id="r-ident.raw.intro"><a class="rule-link" href="#r-ident.raw.intro" title="ident.raw.intro"><span>[ident<wbr>.raw<wbr>.intro]</span></a>
 </div>
 
-<p>A raw identifier is like a normal identifier, but prefixed by <code>r#</code>. (Note that the <code>r#</code> prefix is not included as part of the actual identifier.)</p>
+<p>原始标识符类似于普通标识符，但带有<code>r#</code>前缀。（请注意，<code>r#</code>前缀不作为实际标识符的一部分。）</p>
 <div class="rule" id="r-ident.raw.allowed"><a class="rule-link" href="#r-ident.raw.allowed" title="ident.raw.allowed"><span>[ident<wbr>.raw<wbr>.allowed]</span></a>
 </div>
 
-<p>Unlike a normal identifier, a raw identifier may be any strict or reserved keyword except the ones listed above for <code>RAW_IDENTIFIER</code>.</p>
+<p>与普通标识符不同，原始标识符可以是任何<a href="#严格关键字">严格</a>或<a href="#保留关键字">保留</a>关键字，除了上面为<code>RAW_IDENTIFIER</code>列出的那些。</p>
 <div class="rule" id="r-ident.raw.reserved"><a class="rule-link" href="#r-ident.raw.reserved" title="ident.raw.reserved"><span>[ident<wbr>.raw<wbr>.reserved]</span></a>
 </div>
 
-<p>It is an error to use the <a href="#grammar-RESERVED_RAW_IDENTIFIER">RESERVED_RAW_IDENTIFIER</a> token.</p>
-<div style="break-before: page; page-break-before: always;"></div>
+<p>使用<a href="#grammar-RESERVED_RAW_IDENTIFIER">RESERVED_RAW_IDENTIFIER</a>词法单元是错误的。</p>
+<div style="break-before: page; page-break-before: always;"></div><!-- https://github.com/rust-lang/reference/blob/master/src/comments.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
 <div class="rule" id="r-comments"><a class="rule-link" href="#r-comments" title="comments"><span>[comments]</span></a>
 </div>
 
-<h1 id="comments"><a class="header" href="#comments">Comments</a></h1>
+<h1 id="注释"><a class="header" href="#注释">注释</a></h1>
 <div class="rule" id="r-comments.syntax"><a class="rule-link" href="#r-comments.syntax" title="comments.syntax"><span>[comments<wbr>.syntax]</span></a>
 </div>
 
@@ -1744,41 +1749,41 @@ INNER_BLOCK_DOC</text>
 <div class="rule" id="r-comments.normal"><a class="rule-link" href="#r-comments.normal" title="comments.normal"><span>[comments<wbr>.normal]</span></a>
 </div>
 
-<h2 id="non-doc-comments"><a class="header" href="#non-doc-comments">Non-doc comments</a></h2>
-<p>Comments follow the general C++ style of line (<code>//</code>) and block (<code>/* ... */</code>) comment forms. Nested block comments are supported.</p>
+<h2 id="非文档注释"><a class="header" href="#非文档注释">非文档注释</a></h2>
+<p>注释遵循C++风格的单行注释（<code>//</code>）和块注释（<code>/* ... */</code>）形式。支持嵌套的块注释。</p>
 <div class="rule" id="r-comments.normal.tokenization"><a class="rule-link" href="#r-comments.normal.tokenization" title="comments.normal.tokenization"><span>[comments<wbr>.normal<wbr>.tokenization]</span></a>
 </div>
 
-<p>Non-doc comments are interpreted as a form of whitespace.</p>
+<p>非文档注释被解释为一种空白字符。</p>
 <div class="rule" id="r-comments.doc"><a class="rule-link" href="#r-comments.doc" title="comments.doc"><span>[comments<wbr>.doc]</span></a>
 </div>
 
-<h2 id="doc-comments"><a class="header" href="#doc-comments">Doc comments</a></h2>
+<h2 id="文档注释"><a class="header" href="#文档注释">文档注释</a></h2>
 <div class="rule" id="r-comments.doc.syntax"><a class="rule-link" href="#r-comments.doc.syntax" title="comments.doc.syntax"><span>[comments<wbr>.doc<wbr>.syntax]</span></a>
 </div>
 
-<p>Line doc comments beginning with exactly <em>three</em> slashes (<code>///</code>), and block doc comments (<code>/** ... */</code>), both outer doc comments, are interpreted as a special syntax for <a href="../rustdoc/the-doc-attribute.html"><code>doc</code> attributes</a>.</p>
+<p>以恰好_三_个斜杠（<code>///</code>）开头的行文档注释，以及块文档注释（<code>/** ... */</code>），这两种都是外部文档注释，被解释为<a href="https://doc.rust-lang.org/rustdoc/the-doc-attribute.html"><code>doc</code>属性</a>的一种特殊语法格式。</p>
 <div class="rule" id="r-comments.doc.attributes"><a class="rule-link" href="#r-comments.doc.attributes" title="comments.doc.attributes"><span>[comments<wbr>.doc<wbr>.attributes]</span></a>
 </div>
 
-<p>That is, they are equivalent to writing <code>#[doc="..."]</code> around the body of the comment, i.e., <code>/// Foo</code> turns into <code>#[doc="Foo"]</code> and <code>/** Bar */</code> turns into <code>#[doc="Bar"]</code>. They must therefore appear before something that accepts an outer attribute.</p>
+<p>也就是说，它们等价于在注释主体周围编写<code>#[doc="..."]</code>，例如，<code>/// Foo</code> 变为<code>#[doc="Foo"]</code>，<code>/** Bar */</code> 变为<code>#[doc="Bar"]</code>。因此，它们必须出现在接受外部属性的项之前。</p>
 <div class="rule" id="r-comments.doc.inner-syntax"><a class="rule-link" href="#r-comments.doc.inner-syntax" title="comments.doc.inner-syntax"><span>[comments<wbr>.doc<wbr>.inner-syntax]</span></a>
 </div>
 
-<p>Line comments beginning with <code>//!</code> and block comments <code>/*! ... */</code> are doc comments that apply to the parent of the comment, rather than the item that follows.</p>
+<p>以<code>//!</code>开头的行注释和<code>/*! ... */</code>块注释是文档注释，它们应用于注释的父级，而不是紧随其后的项。</p>
 <div class="rule" id="r-comments.doc.inner-attributes"><a class="rule-link" href="#r-comments.doc.inner-attributes" title="comments.doc.inner-attributes"><span>[comments<wbr>.doc<wbr>.inner-attributes]</span></a>
 </div>
 
-<p>That is, they are equivalent to writing <code>#![doc="..."]</code> around the body of the comment. <code>//!</code> comments are usually used to document modules that occupy a source file.</p>
+<p>也就是说，它们等价于在注释主体周围编写<code>#![doc="..."]</code>。<code>//!</code>注释通常用于文档化占据一个源文件的模块。</p>
 <div class="rule" id="r-comments.doc.bare-crs"><a class="rule-link" href="#r-comments.doc.bare-crs" title="comments.doc.bare-crs"><span>[comments<wbr>.doc<wbr>.bare-crs]</span></a>
 </div>
 
-<p>The character <code>U+000D</code> (CR) is not allowed in doc comments.</p>
+<p>字符<code>U+000D</code>(CR)不允许出现在文档注释中。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>It is conventional for doc comments to contain Markdown, as expected by <code>rustdoc</code>. However, the comment syntax does not respect any internal Markdown. <code>/** `glob = "*/*.rs";` */</code> terminates the comment at the first <code>*/</code>, and the remaining code would cause a syntax error. This slightly limits the content of block doc comments compared to line doc comments.</p>
+<p>按照惯例，文档注释包含Markdown，这是<code>rustdoc</code>所期望的。然而，注释语法格式不识别任何内部Markdown。<code>/** \</code>glob = “<em>/</em>.rs”;` <em>/<code> 会在第一个</code></em>/`处终止注释，其余代码将导致语法格式错误。与行文档注释相比，这稍微限制了块文档注释的内容。</p>
 </blockquote>
 </div>
 
@@ -1786,38 +1791,38 @@ INNER_BLOCK_DOC</text>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The sequence <code>U+000D</code> (CR) immediately followed by <code>U+000A</code> (LF) would have been previously transformed into a single <code>U+000A</code> (LF).</p>
+<p>序列<code>U+000D</code>(CR)紧跟<code>U+000A</code>(LF)在之前会被转换为单个<code>U+000A</code>(LF)。</p>
 </blockquote>
 </div>
 
-<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<h2 id="示例"><a class="header" href="#示例">示例</a></h2>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>//! A doc comment that applies to the implicit anonymous module of this crate
+</span>//! 适用于此crate的隐式匿名模块的文档注释
 
 pub mod outer_module {
 
-    //!  - Inner line doc
-    //!! - Still an inner line doc (but with a bang at the beginning)
+    //!  - 内部行级文档注释
+    //!! - 仍然是内部行级文档注释（但开头带感叹号）
 
-    /*!  - Inner block doc */
-    /*!! - Still an inner block doc (but with a bang at the beginning) */
+    /*!  - 内部块级文档注释 */
+    /*!! - 仍然是内部块级文档注释（但开头带感叹号） */
 
-    //   - Only a comment
-    ///  - Outer line doc (exactly 3 slashes)
-    //// - Only a comment
+    //   - 仅是普通注释
+    ///  - 外部行级文档注释（恰好三个斜杠）
+    //// - 仅是普通注释
 
-    /*   - Only a comment */
-    /**  - Outer block doc (exactly) 2 asterisks */
-    /*** - Only a comment */
+    /*   - 仅是普通注释 */
+    /**  - 外部块级文档注释（恰好两个星号） */
+    /*** - 仅是普通注释 */
 
     pub mod inner_module {}
 
     pub mod nested_comments {
-        /* In Rust /* we can /* nest comments */ */ */
+        /* 在 Rust 中 /* 我们可以 /* 嵌套注释 */ */ */
 
-        // All three types of block comments can contain or be nested inside
-        // any other type:
+        // 所有三种块级注释都可以包含或嵌套在
+        // 任何其他类型的注释中：
 
         /*   /* */  /** */  /*! */  */
         /*!  /* */  /** */  /*! */  */
@@ -1826,50 +1831,51 @@ pub mod outer_module {
     }
 
     pub mod degenerate_cases {
-        // empty inner line doc
+        // 空的内部行级文档注释
         //!
 
-        // empty inner block doc
+        // 空的内部块级文档注释
         /*!*/
 
-        // empty line comment
+        // 空的行级注释
         //
 
-        // empty outer line doc
+        // 空的外部行级文档注释
         ///
 
-        // empty block comment
+        // 空的块级注释
         /**/
 
         pub mod dummy_item {}
 
-        // empty 2-asterisk block isn't a doc block, it is a block comment
+        // 空的两个星号的块注释不是文档块，它是普通的块注释
         /***/
 
     }
 
-    /* The next one isn't allowed because outer doc comments
-       require an item that will receive the doc */
+    /* 下一个是不允许的，因为外部文档注释
+       需要一个接收文档的条目 */
 
-    /// Where is my item?
+    /// 我的条目在哪里？
 <span class="boring">  mod boo {}
 </span>}
 <span class="boring">}</span></code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
+<div style="break-before: page; page-break-before: always;"></div><!-- https://github.com/rust-lang/reference/blob/master/src/whitespace.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
 <div class="rule" id="r-lex.whitespace"><a class="rule-link" href="#r-lex.whitespace" title="lex.whitespace"><span>[lex<wbr>.whitespace]</span></a>
 </div>
 
-<h1 id="whitespace"><a class="header" href="#whitespace">Whitespace</a></h1>
+<h1 id="空白字符"><a class="header" href="#空白字符">空白字符</a></h1>
 <div class="rule" id="r-whitespace.syntax"><a class="rule-link" href="#r-whitespace.syntax" title="whitespace.syntax"><span>[whitespace<wbr>.syntax]</span></a>
 </div>
 
 <div class="grammar-container">
 <p><strong><sup>Lexer</sup></strong>
 <br>
-<span class="grammar-text grammar-production" id="grammar-WHITESPACE" onclick="show_railroad()"><a href="#railroad-WHITESPACE">WHITESPACE</a></span> → <br>      U+0009 <span class="grammar-comment">//  Horizontal tab, <code>'\t'</code></span> <br>    | U+000A <span class="grammar-comment">//  Line feed, <code>'\n'</code></span> <br>    | U+000B <span class="grammar-comment">//  Vertical tab</span> <br>    | U+000C <span class="grammar-comment">//  Form feed</span> <br>    | U+000D <span class="grammar-comment">//  Carriage return, <code>'\r'</code></span> <br>    | U+0020 <span class="grammar-comment">//  Space, <code>' '</code></span> <br>    | U+0085 <span class="grammar-comment">//  Next line</span> <br>    | U+200E <span class="grammar-comment">//  Left-to-right mark</span> <br>    | U+200F <span class="grammar-comment">//  Right-to-left mark</span> <br>    | U+2028 <span class="grammar-comment">//  Line separator</span> <br>    | U+2029 <span class="grammar-comment">//  Paragraph separator</span></p>
-<p><span class="grammar-text grammar-production" id="grammar-TAB" onclick="show_railroad()"><a href="#railroad-TAB">TAB</a></span> → U+0009 <span class="grammar-comment">//  Horizontal tab, <code>'\t'</code></span></p>
-<p><span class="grammar-text grammar-production" id="grammar-LF" onclick="show_railroad()"><a href="#railroad-LF">LF</a></span> → U+000A <span class="grammar-comment">//  Line feed, <code>'\n'</code></span></p>
-<p><span class="grammar-text grammar-production" id="grammar-CR" onclick="show_railroad()"><a href="#railroad-CR">CR</a></span> → U+000D <span class="grammar-comment">//  Carriage return, <code>'\r'</code></span></p>
+<span class="grammar-text grammar-production" id="grammar-WHITESPACE" onclick="show_railroad()"><a href="#railroad-WHITESPACE">WHITESPACE</a></span> → <br>      U+0009 <span class="grammar-comment">//  水平制表符，<code>'\t'</code></span> <br>    | U+000A <span class="grammar-comment">//  换行符，<code>'\n'</code></span> <br>    | U+000B <span class="grammar-comment">//  垂直制表符</span> <br>    | U+000C <span class="grammar-comment">//  换页符</span> <br>    | U+000D <span class="grammar-comment">//  回车符，<code>'\r'</code></span> <br>    | U+0020 <span class="grammar-comment">//  空格，<code>' '</code></span> <br>    | U+0085 <span class="grammar-comment">//  下一行</span> <br>    | U+200E <span class="grammar-comment">//  从左到右标记</span> <br>    | U+200F <span class="grammar-comment">//  从右到左标记</span> <br>    | U+2028 <span class="grammar-comment">//  行分隔符</span> <br>    | U+2029 <span class="grammar-comment">//  段落分隔符</span></p>
+<p><span class="grammar-text grammar-production" id="grammar-TAB" onclick="show_railroad()"><a href="#railroad-TAB">TAB</a></span> → U+0009 <span class="grammar-comment">//  水平制表符，<code>'\t'</code></span></p>
+<p><span class="grammar-text grammar-production" id="grammar-LF" onclick="show_railroad()"><a href="#railroad-LF">LF</a></span> → U+000A <span class="grammar-comment">//  换行符，<code>'\n'</code></span></p>
+<p><span class="grammar-text grammar-production" id="grammar-CR" onclick="show_railroad()"><a href="#railroad-CR">CR</a></span> → U+000D <span class="grammar-comment">//  回车符，<code>'\r'</code></span></p>
 <p><button class="grammar-toggle-railroad" type="button" title="Toggle railroad display" onclick="toggle_railroad()">Show Railroad</button></p>
 </div>
 
@@ -2068,20 +2074,20 @@ U+000D</text>
 <div class="rule" id="r-lex.whitespace.intro"><a class="rule-link" href="#r-lex.whitespace.intro" title="lex.whitespace.intro"><span>[lex<wbr>.whitespace<wbr>.intro]</span></a>
 </div>
 
-<p>Whitespace is any non-empty string containing only characters that have the <a href="https://www.unicode.org/reports/tr31/"><code>Pattern_White_Space</code></a> Unicode property.</p>
+<p>空白字符是指任何非空字符串，它只包含具有<a href="https://www.unicode.org/reports/tr31/"><code>Pattern_White_Space</code></a> Unicode属性的字符。</p>
 <div class="rule" id="r-lex.whitespace.token-sep"><a class="rule-link" href="#r-lex.whitespace.token-sep" title="lex.whitespace.token-sep"><span>[lex<wbr>.whitespace<wbr>.token-sep]</span></a>
 </div>
 
-<p>Rust is a “free-form” language, meaning that all forms of whitespace serve only to separate <em>tokens</em> in the grammar, and have no semantic significance.</p>
+<p>Rust是一种自由格式语言，这意味着所有形式的空白字符仅用于在语法格式中分隔_词法单元_，并且没有语义上的意义。</p>
 <div class="rule" id="r-lex.whitespace.replacement"><a class="rule-link" href="#r-lex.whitespace.replacement" title="lex.whitespace.replacement"><span>[lex<wbr>.whitespace<wbr>.replacement]</span></a>
 </div>
 
-<p>A Rust program has identical meaning if each whitespace element is replaced with any other legal whitespace element, such as a single space character.</p>
+<p>如果Rust程序中的每个空白字符元素被任何其他合法的空白字符元素（例如一个空格字符）替换，其含义保持不变。</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <div class="rule" id="r-lex.token"><a class="rule-link" href="#r-lex.token" title="lex.token"><span>[lex<wbr>.token]</span></a>
 </div>
 
-<h1 id="tokens"><a class="header" href="#tokens">Tokens</a></h1>
+<h1 id="词法单元"><a class="header" href="#词法单元">词法单元</a></h1>
 <div class="rule" id="r-lex.token.syntax"><a class="rule-link" href="#r-lex.token.syntax" title="lex.token.syntax"><span>[lex<wbr>.token<wbr>.syntax]</span></a>
 </div>
 
@@ -2279,118 +2285,118 @@ IDENTIFIER_OR_KEYWORD</text>
 <div class="rule" id="r-lex.token.intro"><a class="rule-link" href="#r-lex.token.intro" title="lex.token.intro"><span>[lex<wbr>.token<wbr>.intro]</span></a>
 </div>
 
-<p>Tokens are primitive productions in the grammar defined by regular (non-recursive) languages.  Rust source input can be broken down into the following kinds of tokens:</p>
+<p>词法单元是语法格式中由正则（非递归）语言定义的原始生成式。Rust源输入可以分解为以下几种词法单元：</p>
 <ul>
-<li><a href="#keywords">Keywords</a></li>
-<li><a href="#identifiers">Identifiers</a></li>
-<li><a href="#literals">Literals</a></li>
-<li><a href="#lifetimes-and-loop-labels">Lifetimes</a></li>
-<li><a href="#punctuation">Punctuation</a></li>
-<li><a href="#delimiters">Delimiters</a></li>
+<li><a href="#关键字">关键字</a></li>
+<li><a href="#标识符">标识符</a></li>
+<li><a href="#字面量">字面量</a></li>
+<li><a href="#生命周期和循环标签">生命周期和循环标签</a></li>
+<li><a href="#标点符号">标点符号</a></li>
+<li><a href="#分隔符">分隔符</a></li>
 </ul>
-<p>Within this documentation’s grammar, “simple” tokens are given in <a href="#string-table-productions">string table production</a> form, and appear in <code>monospace</code> font.</p>
+<p>在此文档的语法中，“简单”词法单元以<a href="#字符串表产生式">字符串表生成式</a>形式给出，并以<code>等宽字体</code>显示。</p>
 <div class="rule" id="r-lex.token.literal"><a class="rule-link" href="#r-lex.token.literal" title="lex.token.literal"><span>[lex<wbr>.token<wbr>.literal]</span></a>
 </div>
 
-<h2 id="literals"><a class="header" href="#literals">Literals</a></h2>
-<p>Literals are tokens used in <a href="#literal-expressions">literal expressions</a>.</p>
-<h3 id="examples-1"><a class="header" href="#examples-1">Examples</a></h3>
-<h4 id="characters-and-strings"><a class="header" href="#characters-and-strings">Characters and strings</a></h4>
+<h2 id="字面量"><a class="header" href="#字面量">字面量</a></h2>
+<p>字面量是<a href="#literal-expressions">字面量表达式</a>中使用的词法单元。</p>
+<h3 id="示例-1"><a class="header" href="#示例-1">示例</a></h3>
+<h4 id="字符和字符串"><a class="header" href="#字符和字符串">字符和字符串</a></h4>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th></th><th>Example</th><th><code>#</code> sets<sup class="footnote-reference" id="fr-nsets-1"><a href="#footnote-nsets">1</a></sup></th><th>Characters</th><th>Escapes</th></tr>
+<tr><th></th><th>示例</th><th><code>#</code> 数量<sup class="footnote-reference" id="fr-nsets-1"><a href="#footnote-nsets">1</a></sup></th><th>字符</th><th>转义</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="#character-literals">Character</a></td><td><code>'H'</code></td><td>0</td><td>All Unicode</td><td><a href="#quote-escapes">Quote</a> &amp; <a href="#ascii-escapes">ASCII</a> &amp; <a href="#unicode-escapes">Unicode</a></td></tr>
-<tr><td><a href="#string-literals">String</a></td><td><code>"hello"</code></td><td>0</td><td>All Unicode</td><td><a href="#quote-escapes">Quote</a> &amp; <a href="#ascii-escapes">ASCII</a> &amp; <a href="#unicode-escapes">Unicode</a></td></tr>
-<tr><td><a href="#raw-string-literals">Raw string</a></td><td><code>r#"hello"#</code></td><td>&lt;256</td><td>All Unicode</td><td><code>N/A</code></td></tr>
-<tr><td><a href="#byte-literals">Byte</a></td><td><code>b'H'</code></td><td>0</td><td>All ASCII</td><td><a href="#quote-escapes">Quote</a> &amp; <a href="#byte-escapes">Byte</a></td></tr>
-<tr><td><a href="#byte-string-literals">Byte string</a></td><td><code>b"hello"</code></td><td>0</td><td>All ASCII</td><td><a href="#quote-escapes">Quote</a> &amp; <a href="#byte-escapes">Byte</a></td></tr>
-<tr><td><a href="#raw-byte-string-literals">Raw byte string</a></td><td><code>br#"hello"#</code></td><td>&lt;256</td><td>All ASCII</td><td><code>N/A</code></td></tr>
-<tr><td><a href="#c-string-literals">C string</a></td><td><code>c"hello"</code></td><td>0</td><td>All Unicode</td><td><a href="#quote-escapes">Quote</a> &amp; <a href="#byte-escapes">Byte</a> &amp; <a href="#unicode-escapes">Unicode</a></td></tr>
-<tr><td><a href="#raw-c-string-literals">Raw C string</a></td><td><code>cr#"hello"#</code></td><td>&lt;256</td><td>All Unicode</td><td><code>N/A</code></td></tr>
+<tr><td><a href="#字符字面量">字符字面量</a></td><td><code>'H'</code></td><td>0</td><td>所有 Unicode</td><td><a href="#引号转义">引号</a> &amp; <a href="#ascii转义">ASCII</a> &amp; <a href="#unicode转义">Unicode</a></td></tr>
+<tr><td><a href="#字符串字面量">字符串字面量</a></td><td><code>"hello"</code></td><td>0</td><td>所有 Unicode</td><td><a href="#引号转义">引号</a> &amp; <a href="#ascii转义">ASCII</a> &amp; <a href="#unicode转义">Unicode</a></td></tr>
+<tr><td><a href="#原始字符串字面量">原始字符串字面量</a></td><td><code>r#"hello"#</code></td><td>&lt;256</td><td>所有Unicode</td><td><code>N/A</code></td></tr>
+<tr><td><a href="#字节字面量">字节字面量</a></td><td><code>b'H'</code></td><td>0</td><td>所有 ASCII</td><td><a href="#引号转义">引号</a> &amp; <a href="#字节转义">字节</a></td></tr>
+<tr><td><a href="#字节字符串字面量">字节字符串字面量</a></td><td><code>b"hello"</code></td><td>0</td><td>所有 ASCII</td><td><a href="#引号转义">引号</a> &amp; <a href="#字节转义">字节</a></td></tr>
+<tr><td><a href="#原始字节字符串字面量">原始字节字符串字面量</a></td><td><code>br#"hello"#</code></td><td>&lt;256</td><td>所有 ASCII</td><td><code>N/A</code></td></tr>
+<tr><td><a href="#c字符串字面量">C字符串字面量</a></td><td><code>c"hello"</code></td><td>0</td><td>所有 Unicode</td><td><a href="#引号转义">引号</a> &amp; <a href="#字节转义">字节</a> &amp; <a href="#unicode转义">Unicode</a></td></tr>
+<tr><td><a href="#原始c字符串字面量">原始C字符串字面量</a></td><td><code>cr#"hello"#</code></td><td>&lt;256</td><td>所有 Unicode</td><td><code>N/A</code></td></tr>
 </tbody>
 </table>
 </div>
-<h4 id="ascii-escapes"><a class="header" href="#ascii-escapes">ASCII escapes</a></h4>
+<h4 id="ascii转义"><a class="header" href="#ascii转义">ASCII转义</a></h4>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th></th><th>Name</th></tr>
+<tr><th></th><th>名称</th></tr>
 </thead>
 <tbody>
-<tr><td><code>\x41</code></td><td>7-bit character code (exactly 2 hex digits, up to 0x7F)</td></tr>
-<tr><td><code>\n</code></td><td>Newline</td></tr>
-<tr><td><code>\r</code></td><td>Carriage return</td></tr>
-<tr><td><code>\t</code></td><td>Tab</td></tr>
-<tr><td><code>\\</code></td><td>Backslash</td></tr>
-<tr><td><code>\0</code></td><td>Null</td></tr>
+<tr><td><code>\x41</code></td><td>7位字符码（恰好2个十六进制数字，最大0x7F）</td></tr>
+<tr><td><code>\n</code></td><td>换行</td></tr>
+<tr><td><code>\r</code></td><td>回车</td></tr>
+<tr><td><code>\t</code></td><td>Tab键</td></tr>
+<tr><td><code>\\</code></td><td>反斜杠</td></tr>
+<tr><td><code>\0</code></td><td>空字符</td></tr>
 </tbody>
 </table>
 </div>
-<h4 id="byte-escapes"><a class="header" href="#byte-escapes">Byte escapes</a></h4>
+<h4 id="字节转义"><a class="header" href="#字节转义">字节转义</a></h4>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th></th><th>Name</th></tr>
+<tr><th></th><th>名称</th></tr>
 </thead>
 <tbody>
-<tr><td><code>\x7F</code></td><td>8-bit character code (exactly 2 hex digits)</td></tr>
-<tr><td><code>\n</code></td><td>Newline</td></tr>
-<tr><td><code>\r</code></td><td>Carriage return</td></tr>
-<tr><td><code>\t</code></td><td>Tab</td></tr>
-<tr><td><code>\\</code></td><td>Backslash</td></tr>
-<tr><td><code>\0</code></td><td>Null</td></tr>
+<tr><td><code>\x7F</code></td><td>8位字符码（恰好2个十六进制数字）</td></tr>
+<tr><td><code>\n</code></td><td>换行</td></tr>
+<tr><td><code>\r</code></td><td>回车</td></tr>
+<tr><td><code>\t</code></td><td>Tab键</td></tr>
+<tr><td><code>\\</code></td><td>反斜杠</td></tr>
+<tr><td><code>\0</code></td><td>空字符</td></tr>
 </tbody>
 </table>
 </div>
-<h4 id="unicode-escapes"><a class="header" href="#unicode-escapes">Unicode escapes</a></h4>
+<h4 id="unicode转义"><a class="header" href="#unicode转义">Unicode转义</a></h4>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th></th><th>Name</th></tr>
+<tr><th></th><th>名称</th></tr>
 </thead>
 <tbody>
-<tr><td><code>\u{7FFF}</code></td><td>24-bit Unicode character code (up to 6 hex digits)</td></tr>
+<tr><td><code>\u{7FFF}</code></td><td>24位Unicode字符码（最多6个十六进制数字）</td></tr>
 </tbody>
 </table>
 </div>
-<h4 id="quote-escapes"><a class="header" href="#quote-escapes">Quote escapes</a></h4>
+<h4 id="引号转义"><a class="header" href="#引号转义">引号转义</a></h4>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th></th><th>Name</th></tr>
+<tr><th></th><th>名称</th></tr>
 </thead>
 <tbody>
-<tr><td><code>\'</code></td><td>Single quote</td></tr>
-<tr><td><code>\"</code></td><td>Double quote</td></tr>
+<tr><td><code>\'</code></td><td>单引号</td></tr>
+<tr><td><code>\"</code></td><td>双引号</td></tr>
 </tbody>
 </table>
 </div>
-<h4 id="numbers"><a class="header" href="#numbers">Numbers</a></h4>
+<h4 id="数字"><a class="header" href="#数字">数字</a></h4>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th><a href="#number-literals">Number literals</a><sup class="footnote-reference" id="fr-nl-1"><a href="#footnote-nl">2</a></sup></th><th>Example</th><th>Exponentiation</th></tr>
+<tr><th><a href="#数字字面量">数字字面量</a><sup class="footnote-reference" id="fr-nl-1"><a href="#footnote-nl">2</a></sup></th><th>示例</th><th>幂运算</th></tr>
 </thead>
 <tbody>
-<tr><td>Decimal integer</td><td><code>98_222</code></td><td><code>N/A</code></td></tr>
-<tr><td>Hex integer</td><td><code>0xff</code></td><td><code>N/A</code></td></tr>
-<tr><td>Octal integer</td><td><code>0o77</code></td><td><code>N/A</code></td></tr>
-<tr><td>Binary integer</td><td><code>0b1111_0000</code></td><td><code>N/A</code></td></tr>
-<tr><td>Floating-point</td><td><code>123.0E+77</code></td><td><code>Optional</code></td></tr>
+<tr><td>十进制整数</td><td><code>98_222</code></td><td><code>N/A</code></td></tr>
+<tr><td>十六进制整数</td><td><code>0xff</code></td><td><code>N/A</code></td></tr>
+<tr><td>八进制整数</td><td><code>0o77</code></td><td><code>N/A</code></td></tr>
+<tr><td>二进制整数</td><td><code>0b1111_0000</code></td><td><code>N/A</code></td></tr>
+<tr><td>浮点数</td><td><code>123.0E+77</code></td><td><code>可选</code></td></tr>
 </tbody>
 </table>
 </div>
 <div class="rule" id="r-lex.token.literal.suffix"><a class="rule-link" href="#r-lex.token.literal.suffix" title="lex.token.literal.suffix"><span>[lex<wbr>.token<wbr>.literal<wbr>.suffix]</span></a>
 </div>
 
-<h4 id="suffixes"><a class="header" href="#suffixes">Suffixes</a></h4>
+<h4 id="后缀"><a class="header" href="#后缀">后缀</a></h4>
 <div class="rule" id="r-lex.token.literal.literal.suffix.intro"><a class="rule-link" href="#r-lex.token.literal.literal.suffix.intro" title="lex.token.literal.literal.suffix.intro"><span>[lex<wbr>.token<wbr>.literal<wbr>.literal<wbr>.suffix<wbr>.intro]</span></a>
 </div>
 
-<p>A suffix is a sequence of characters following the primary part of a literal (without intervening whitespace), of the same form as a non-raw identifier or keyword.</p>
+<p>后缀是紧跟在字面量主要部分（无中间空白）后面的一串字符，其形式与非原始<a href="#标识符">标识符</a>或<a href="#关键字">关键字</a>相同。</p>
 <div class="rule" id="r-lex.token.literal.suffix.syntax"><a class="rule-link" href="#r-lex.token.literal.suffix.syntax" title="lex.token.literal.suffix.syntax"><span>[lex<wbr>.token<wbr>.literal<wbr>.suffix<wbr>.syntax]</span></a>
 </div>
 
@@ -2468,8 +2474,8 @@ SUFFIX</text>
 <div class="rule" id="r-lex.token.literal.suffix.validity"><a class="rule-link" href="#r-lex.token.literal.suffix.validity" title="lex.token.literal.suffix.validity"><span>[lex<wbr>.token<wbr>.literal<wbr>.suffix<wbr>.validity]</span></a>
 </div>
 
-<p>Any kind of literal (string, integer, etc) with any suffix is valid as a token.</p>
-<p>A literal token with any suffix can be passed to a macro without producing an error. The macro itself will decide how to interpret such a token and whether to produce an error or not. In particular, the <code>literal</code> fragment specifier for by-example macros matches literal tokens with arbitrary suffixes.</p>
+<p>任何类型的字面量（字符串、整数等）与任何后缀组合，都可作为有效的词法单元。</p>
+<p>带有任何后缀的字面量词法单元可以传递给宏而不会产生错误。宏本身将决定如何解释此类词法单元以及是否产生错误。特别是，声明宏的<code>literal</code> fragment specifier匹配带有任意后缀的字面量词法单元。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! blackhole { ($tt:tt) =&gt; () }
@@ -2481,22 +2487,22 @@ blackhole_lit!(1suffix); // OK
 <div class="rule" id="r-lex.token.literal.suffix.parse"><a class="rule-link" href="#r-lex.token.literal.suffix.parse" title="lex.token.literal.suffix.parse"><span>[lex<wbr>.token<wbr>.literal<wbr>.suffix<wbr>.parse]</span></a>
 </div>
 
-<p>However, suffixes on literal tokens which are interpreted as literal expressions or patterns are restricted. Any suffixes are rejected on non-numeric literal tokens, and numeric literal tokens are accepted only with suffixes from the list below.</p>
+<p>然而，在被解释为字面量表达式或模式的字面量词法单元上，后缀是受限制的。非数字字面量词法单元的任何后缀都会被拒绝，而数字字面量词法单元只接受以下列表中的后缀。</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Integer</th><th>Floating-point</th></tr>
+<tr><th>整数</th><th>浮点数</th></tr>
 </thead>
 <tbody>
 <tr><td><code>u8</code>, <code>i8</code>, <code>u16</code>, <code>i16</code>, <code>u32</code>, <code>i32</code>, <code>u64</code>, <code>i64</code>, <code>u128</code>, <code>i128</code>, <code>usize</code>, <code>isize</code></td><td><code>f32</code>, <code>f64</code></td></tr>
 </tbody>
 </table>
 </div>
-<h3 id="character-and-string-literals"><a class="header" href="#character-and-string-literals">Character and string literals</a></h3>
+<h3 id="字符和字符串字面量"><a class="header" href="#字符和字符串字面量">字符和字符串字面量</a></h3>
 <div class="rule" id="r-lex.token.literal.char"><a class="rule-link" href="#r-lex.token.literal.char" title="lex.token.literal.char"><span>[lex<wbr>.token<wbr>.literal<wbr>.char]</span></a>
 </div>
 
-<h4 id="character-literals"><a class="header" href="#character-literals">Character literals</a></h4>
+<h4 id="字符字面量"><a class="header" href="#字符字面量">字符字面量</a></h4>
 <div class="rule" id="r-lex.token.literal.char.syntax"><a class="rule-link" href="#r-lex.token.literal.char.syntax" title="lex.token.literal.char.syntax"><span>[lex<wbr>.token<wbr>.literal<wbr>.char<wbr>.syntax]</span></a>
 </div>
 
@@ -2819,11 +2825,11 @@ _</text>
 <div class="rule" id="r-lex.token.literal.char.intro"><a class="rule-link" href="#r-lex.token.literal.char.intro" title="lex.token.literal.char.intro"><span>[lex<wbr>.token<wbr>.literal<wbr>.char<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>character literal</em> is a single Unicode character enclosed within two <code>U+0027</code> (single-quote) characters, with the exception of <code>U+0027</code> itself, which must be <em>escaped</em> by a preceding <code>U+005C</code> character (<code>\</code>).</p>
+<p>字符字面量是单个Unicode字符，用两个<code>U+0027</code>（单引号）字符括起来，但<code>U+0027</code>本身除外，它必须通过前面加一个<code>U+005C</code>字符（<code>\</code>）进行转义。</p>
 <div class="rule" id="r-lex.token.literal.str"><a class="rule-link" href="#r-lex.token.literal.str" title="lex.token.literal.str"><span>[lex<wbr>.token<wbr>.literal<wbr>.str]</span></a>
 </div>
 
-<h4 id="string-literals"><a class="header" href="#string-literals">String literals</a></h4>
+<h4 id="字符串字面量"><a class="header" href="#字符串字面量">字符串字面量</a></h4>
 <div class="rule" id="r-lex.token.literal.str.syntax"><a class="rule-link" href="#r-lex.token.literal.str.syntax" title="lex.token.literal.str.syntax"><span>[lex<wbr>.token<wbr>.literal<wbr>.str<wbr>.syntax]</span></a>
 </div>
 
@@ -3010,53 +3016,53 @@ LF</text>
 <div class="rule" id="r-lex.token.literal.str.intro"><a class="rule-link" href="#r-lex.token.literal.str.intro" title="lex.token.literal.str.intro"><span>[lex<wbr>.token<wbr>.literal<wbr>.str<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>string literal</em> is a sequence of any Unicode characters enclosed within two <code>U+0022</code> (double-quote) characters, with the exception of <code>U+0022</code> itself, which must be <em>escaped</em> by a preceding <code>U+005C</code> character (<code>\</code>).</p>
+<p>字符串字面量是任何Unicode字符序列，用两个<code>U+0022</code>（双引号）字符括起来，但<code>U+0022</code>本身除外，它必须通过前面加一个<code>U+005C</code>字符（<code>\</code>）进行转义。</p>
 <div class="rule" id="r-lex.token.literal.str.linefeed"><a class="rule-link" href="#r-lex.token.literal.str.linefeed" title="lex.token.literal.str.linefeed"><span>[lex<wbr>.token<wbr>.literal<wbr>.str<wbr>.linefeed]</span></a>
 </div>
 
-<p>Line-breaks, represented by the  character <code>U+000A</code> (LF), are allowed in string literals. The character <code>U+000D</code> (CR) may not appear in a string literal. When an unescaped <code>U+005C</code> character (<code>\</code>) occurs immediately before a line break, the line break does not appear in the string represented by the token. See <a href="#string-continuation-escapes">String continuation escapes</a> for details.</p>
+<p>换行符（由字符<code>U+000A</code> (LF)表示）在字符串字面量中是允许的。字符<code>U+000D</code> (CR)不得出现在字符串字面量中。当未转义的<code>U+005C</code>字符（<code>\</code>）紧接在换行符之前时，换行符不会出现在词法单元所表示的字符串中。有关详细信息，请参阅<a href="#string-continuation-escapes">字符串续行转义</a>。</p>
 <div class="rule" id="r-lex.token.literal.char-escape"><a class="rule-link" href="#r-lex.token.literal.char-escape" title="lex.token.literal.char-escape"><span>[lex<wbr>.token<wbr>.literal<wbr>.char-escape]</span></a>
 </div>
 
-<h4 id="character-escapes"><a class="header" href="#character-escapes">Character escapes</a></h4>
+<h4 id="字符转义"><a class="header" href="#字符转义">字符转义</a></h4>
 <div class="rule" id="r-lex.token.literal.char-escape.intro"><a class="rule-link" href="#r-lex.token.literal.char-escape.intro" title="lex.token.literal.char-escape.intro"><span>[lex<wbr>.token<wbr>.literal<wbr>.char-escape<wbr>.intro]</span></a>
 </div>
 
-<p>Some additional <em>escapes</em> are available in either character or non-raw string literals. An escape starts with a <code>U+005C</code> (<code>\</code>) and continues with one of the following forms:</p>
+<p>在字符或非原始字符串字面量中，还有一些额外的_转义_可用。转义以<code>U+005C</code>（<code>\</code>）开头，并接以下形式之一：</p>
 <div class="rule" id="r-lex.token.literal.char-escape.ascii"><a class="rule-link" href="#r-lex.token.literal.char-escape.ascii" title="lex.token.literal.char-escape.ascii"><span>[lex<wbr>.token<wbr>.literal<wbr>.char-escape<wbr>.ascii]</span></a>
 </div>
 
 <ul>
-<li>A <em>7-bit code point escape</em> starts with <code>U+0078</code> (<code>x</code>) and is followed by exactly two <em>hex digits</em> with value up to <code>0x7F</code>. It denotes the ASCII character with value equal to the provided hex value. Higher values are not permitted because it is ambiguous whether they mean Unicode code points or byte values.</li>
+<li>7位码点转义以<code>U+0078</code>（<code>x</code>）开头，后跟恰好两个十六进制数字，值最大为<code>0x7F</code>。它表示ASCII字符，其值等于提供的十六进制值。不允许更高的值，因为它们是Unicode码点还是字节值存在歧义。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.char-escape.unicode"><a class="rule-link" href="#r-lex.token.literal.char-escape.unicode" title="lex.token.literal.char-escape.unicode"><span>[lex<wbr>.token<wbr>.literal<wbr>.char-escape<wbr>.unicode]</span></a>
 </div>
 
 <ul>
-<li>A <em>24-bit code point escape</em> starts with <code>U+0075</code> (<code>u</code>) and is followed by up to six <em>hex digits</em> surrounded by braces <code>U+007B</code> (<code>{</code>) and <code>U+007D</code> (<code>}</code>). It denotes the Unicode code point equal to the provided hex value. The value must be a valid Unicode scalar value.</li>
+<li>24位码点转义以<code>U+0075</code>（<code>u</code>）开头，后跟最多六个十六进制数字，并用花括号<code>U+007B</code>（<code>{</code>）和<code>U+007D</code>（<code>}</code>）括起来。它表示等于所提供十六进制值的Unicode码点。该值必须是有效的Unicode标量值。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.char-escape.whitespace"><a class="rule-link" href="#r-lex.token.literal.char-escape.whitespace" title="lex.token.literal.char-escape.whitespace"><span>[lex<wbr>.token<wbr>.literal<wbr>.char-escape<wbr>.whitespace]</span></a>
 </div>
 
 <ul>
-<li>A <em>whitespace escape</em> is one of the characters <code>U+006E</code> (<code>n</code>), <code>U+0072</code> (<code>r</code>), or <code>U+0074</code> (<code>t</code>), denoting the Unicode values <code>U+000A</code> (LF), <code>U+000D</code> (CR) or <code>U+0009</code> (HT) respectively.</li>
+<li>空白转义是字符<code>U+006E</code>（<code>n</code>）、<code>U+0072</code>（<code>r</code>）或<code>U+0074</code>（<code>t</code>）之一，分别表示Unicode值<code>U+000A</code> (LF)、<code>U+000D</code> (CR)或<code>U+0009</code> (HT)。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.char-escape.null"><a class="rule-link" href="#r-lex.token.literal.char-escape.null" title="lex.token.literal.char-escape.null"><span>[lex<wbr>.token<wbr>.literal<wbr>.char-escape<wbr>.null]</span></a>
 </div>
 
 <ul>
-<li>The <em>null escape</em> is the character <code>U+0030</code> (<code>0</code>) and denotes the Unicode value <code>U+0000</code> (NUL).</li>
+<li>空转义是字符<code>U+0030</code>（<code>0</code>），表示Unicode值<code>U+0000</code> (NUL)。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.char-escape.slash"><a class="rule-link" href="#r-lex.token.literal.char-escape.slash" title="lex.token.literal.char-escape.slash"><span>[lex<wbr>.token<wbr>.literal<wbr>.char-escape<wbr>.slash]</span></a>
 </div>
 
 <ul>
-<li>The <em>backslash escape</em> is the character <code>U+005C</code> (<code>\</code>) which must be escaped in order to denote itself.</li>
+<li>反斜杠转义是字符<code>U+005C</code>（<code>\</code>），它必须被转义才能表示自身。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.str-raw"><a class="rule-link" href="#r-lex.token.literal.str-raw" title="lex.token.literal.str-raw"><span>[lex<wbr>.token<wbr>.literal<wbr>.str-raw]</span></a>
 </div>
 
-<h4 id="raw-string-literals"><a class="header" href="#raw-string-literals">Raw string literals</a></h4>
+<h4 id="原始字符串字面量"><a class="header" href="#原始字符串字面量">原始字符串字面量</a></h4>
 <div class="rule" id="r-lex.token.literal.str-raw.syntax"><a class="rule-link" href="#r-lex.token.literal.str-raw.syntax" title="lex.token.literal.str-raw.syntax"><span>[lex<wbr>.token<wbr>.literal<wbr>.str-raw<wbr>.syntax]</span></a>
 </div>
 
@@ -3209,16 +3215,16 @@ RAW_STRING_CONTENT</text>
 <div class="rule" id="r-lex.token.literal.str-raw.intro"><a class="rule-link" href="#r-lex.token.literal.str-raw.intro" title="lex.token.literal.str-raw.intro"><span>[lex<wbr>.token<wbr>.literal<wbr>.str-raw<wbr>.intro]</span></a>
 </div>
 
-<p>Raw string literals do not process any escapes. They start with the character <code>U+0072</code> (<code>r</code>), followed by fewer than 256 of the character <code>U+0023</code> (<code>#</code>) and a <code>U+0022</code> (double-quote) character.</p>
+<p>原始字符串字面量不处理任何转义。它们以字符<code>U+0072</code>（<code>r</code>）开头，后跟少于256个<code>U+0023</code>（<code>#</code>）字符和一个<code>U+0022</code>（双引号）字符。</p>
 <div class="rule" id="r-lex.token.literal.str-raw.body"><a class="rule-link" href="#r-lex.token.literal.str-raw.body" title="lex.token.literal.str-raw.body"><span>[lex<wbr>.token<wbr>.literal<wbr>.str-raw<wbr>.body]</span></a>
 </div>
 
-<p>The <em>raw string body</em> can contain any sequence of Unicode characters other than <code>U+000D</code> (CR). It is terminated only by another <code>U+0022</code> (double-quote) character, followed by the same number of <code>U+0023</code> (<code>#</code>) characters that preceded the opening <code>U+0022</code> (double-quote) character.</p>
+<p>原始字符串体可以包含除<code>U+000D</code> (CR)以外的任何Unicode字符序列。它只由另一个<code>U+0022</code>（双引号）字符终止，后跟与起始<code>U+0022</code>（双引号）字符前相同数量的<code>U+0023</code>（<code>#</code>）字符。</p>
 <div class="rule" id="r-lex.token.literal.str-raw.content"><a class="rule-link" href="#r-lex.token.literal.str-raw.content" title="lex.token.literal.str-raw.content"><span>[lex<wbr>.token<wbr>.literal<wbr>.str-raw<wbr>.content]</span></a>
 </div>
 
-<p>All Unicode characters contained in the raw string body represent themselves, the characters <code>U+0022</code> (double-quote) (except when followed by at least as many <code>U+0023</code> (<code>#</code>) characters as were used to start the raw string literal) or <code>U+005C</code> (<code>\</code>) do not have any special meaning.</p>
-<p>Examples for string literals:</p>
+<p>原始字符串体中包含的所有Unicode字符都表示其本身，字符<code>U+0022</code>（双引号）（除非后面紧跟的<code>U+0023</code>（<code>#</code>）字符数量与用于开始原始字符串字面量的字符数量相同或更多）或<code>U+005C</code>（<code>\</code>）不具有任何特殊含义。</p>
+<p>字符串字面量示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>"foo"; r"foo";                     // foo
@@ -3230,11 +3236,11 @@ r##"foo #"# bar"##;                // foo #"# bar
 "\x52"; "R"; r"R";                 // R
 "\\x52"; r"\x52";                  // \x52
 <span class="boring">}</span></code></pre>
-<h3 id="byte-and-byte-string-literals"><a class="header" href="#byte-and-byte-string-literals">Byte and byte string literals</a></h3>
+<h3 id="字节和字节字符串字面量"><a class="header" href="#字节和字节字符串字面量">字节和字节字符串字面量</a></h3>
 <div class="rule" id="r-lex.token.byte"><a class="rule-link" href="#r-lex.token.byte" title="lex.token.byte"><span>[lex<wbr>.token<wbr>.byte]</span></a>
 </div>
 
-<h4 id="byte-literals"><a class="header" href="#byte-literals">Byte literals</a></h4>
+<h4 id="字节字面量"><a class="header" href="#字节字面量">字节字面量</a></h4>
 <div class="rule" id="r-lex.token.byte.syntax"><a class="rule-link" href="#r-lex.token.byte.syntax" title="lex.token.byte.syntax"><span>[lex<wbr>.token<wbr>.byte<wbr>.syntax]</span></a>
 </div>
 
@@ -3430,11 +3436,11 @@ HEX_DIGIT</text>
 <div class="rule" id="r-lex.token.byte.intro"><a class="rule-link" href="#r-lex.token.byte.intro" title="lex.token.byte.intro"><span>[lex<wbr>.token<wbr>.byte<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>byte literal</em> is a single ASCII character (in the <code>U+0000</code> to <code>U+007F</code> range) or a single <em>escape</em> preceded by the characters <code>U+0062</code> (<code>b</code>) and <code>U+0027</code> (single-quote), and followed by the character <code>U+0027</code>. If the character <code>U+0027</code> is present within the literal, it must be <em>escaped</em> by a preceding <code>U+005C</code> (<code>\</code>) character. It is equivalent to a <code>u8</code> unsigned 8-bit integer <em>number literal</em>.</p>
+<p>字节字面量是一个单个ASCII字符（在<code>U+0000</code>到<code>U+007F</code>范围内）或一个单个_转义_字符，前面带有字符<code>U+0062</code>（<code>b</code>）和<code>U+0027</code>（单引号），后面带有字符<code>U+0027</code>。如果<code>U+0027</code>字符出现在字面量中，它必须通过前面加一个<code>U+005C</code>（<code>\</code>）字符进行转义。它等同于一个<code>u8</code>无符号8位整数数字字面量。</p>
 <div class="rule" id="r-lex.token.str-byte"><a class="rule-link" href="#r-lex.token.str-byte" title="lex.token.str-byte"><span>[lex<wbr>.token<wbr>.str-byte]</span></a>
 </div>
 
-<h4 id="byte-string-literals"><a class="header" href="#byte-string-literals">Byte string literals</a></h4>
+<h4 id="字节字符串字面量"><a class="header" href="#字节字符串字面量">字节字符串字面量</a></h4>
 <div class="rule" id="r-lex.token.str-byte.syntax"><a class="rule-link" href="#r-lex.token.str-byte.syntax" title="lex.token.str-byte.syntax"><span>[lex<wbr>.token<wbr>.str-byte<wbr>.syntax]</span></a>
 </div>
 
@@ -3553,43 +3559,43 @@ any ASCII (i.e 0x00 to 0x7F) except `"`, `\`, or CR</text>
 <div class="rule" id="r-lex.token.str-byte.intro"><a class="rule-link" href="#r-lex.token.str-byte.intro" title="lex.token.str-byte.intro"><span>[lex<wbr>.token<wbr>.str-byte<wbr>.intro]</span></a>
 </div>
 
-<p>A non-raw <em>byte string literal</em> is a sequence of ASCII characters and <em>escapes</em>, preceded by the characters <code>U+0062</code> (<code>b</code>) and <code>U+0022</code> (double-quote), and followed by the character <code>U+0022</code>. If the character <code>U+0022</code> is present within the literal, it must be <em>escaped</em> by a preceding <code>U+005C</code> (<code>\</code>) character. Alternatively, a byte string literal can be a <em>raw byte string literal</em>, defined below.</p>
+<p>非原始字节字符串字面量是一个ASCII字符和_转义_序列，前面带有字符<code>U+0062</code>（<code>b</code>）和<code>U+0022</code>（双引号），后面带有字符<code>U+0022</code>。如果<code>U+0022</code>字符出现在字面量中，它必须通过前面加一个<code>U+005C</code>（<code>\</code>）字符进行转义。另外，字节字符串字面量可以是下面定义的原始字节字符串字面量。</p>
 <div class="rule" id="r-lex.token.str-byte.linefeed"><a class="rule-link" href="#r-lex.token.str-byte.linefeed" title="lex.token.str-byte.linefeed"><span>[lex<wbr>.token<wbr>.str-byte<wbr>.linefeed]</span></a>
 </div>
 
-<p>Line-breaks, represented by the  character <code>U+000A</code> (LF), are allowed in byte string literals. The character <code>U+000D</code> (CR) may not appear in a byte string literal. When an unescaped <code>U+005C</code> character (<code>\</code>) occurs immediately before a line break, the line break does not appear in the string represented by the token. See <a href="#string-continuation-escapes">String continuation escapes</a> for details.</p>
+<p>换行符（由字符<code>U+000A</code> (LF)表示）在字节字符串字面量中是允许的。字符<code>U+000D</code> (CR)不得出现在字节字符串字面量中。当未转义的<code>U+005C</code>字符（<code>\</code>）紧接在换行符之前时，换行符不会出现在词法单元所表示的字符串中。有关详细信息，请参阅<a href="#string-continuation-escapes">字符串续行转义</a>。</p>
 <div class="rule" id="r-lex.token.str-byte.escape"><a class="rule-link" href="#r-lex.token.str-byte.escape" title="lex.token.str-byte.escape"><span>[lex<wbr>.token<wbr>.str-byte<wbr>.escape]</span></a>
 </div>
 
-<p>Some additional <em>escapes</em> are available in either byte or non-raw byte string literals. An escape starts with a <code>U+005C</code> (<code>\</code>) and continues with one of the following forms:</p>
+<p>在字节或非原始字节字符串字面量中，还有一些额外的_转义_可用。转义以<code>U+005C</code>（<code>\</code>）开头，并接以下形式之一：</p>
 <div class="rule" id="r-lex.token.str-byte.escape-byte"><a class="rule-link" href="#r-lex.token.str-byte.escape-byte" title="lex.token.str-byte.escape-byte"><span>[lex<wbr>.token<wbr>.str-byte<wbr>.escape-byte]</span></a>
 </div>
 
 <ul>
-<li>A <em>byte escape</em> escape starts with <code>U+0078</code> (<code>x</code>) and is followed by exactly two <em>hex digits</em>. It denotes the byte equal to the provided hex value.</li>
+<li>字节转义以<code>U+0078</code>（<code>x</code>）开头，后跟恰好两个十六进制数字。它表示等于所提供十六进制值的字节。</li>
 </ul>
 <div class="rule" id="r-lex.token.str-byte.escape-whitespace"><a class="rule-link" href="#r-lex.token.str-byte.escape-whitespace" title="lex.token.str-byte.escape-whitespace"><span>[lex<wbr>.token<wbr>.str-byte<wbr>.escape-whitespace]</span></a>
 </div>
 
 <ul>
-<li>A <em>whitespace escape</em> is one of the characters <code>U+006E</code> (<code>n</code>), <code>U+0072</code> (<code>r</code>), or <code>U+0074</code> (<code>t</code>), denoting the bytes values <code>0x0A</code> (ASCII LF), <code>0x0D</code> (ASCII CR) or <code>0x09</code> (ASCII HT) respectively.</li>
+<li>空白转义是字符<code>U+006E</code>（<code>n</code>）、<code>U+0072</code>（<code>r</code>）或<code>U+0074</code>（<code>t</code>）之一，分别表示字节值<code>0x0A</code> (ASCII LF)、<code>0x0D</code> (ASCII CR)或<code>0x09</code> (ASCII HT)。</li>
 </ul>
 <div class="rule" id="r-lex.token.str-byte.escape-null"><a class="rule-link" href="#r-lex.token.str-byte.escape-null" title="lex.token.str-byte.escape-null"><span>[lex<wbr>.token<wbr>.str-byte<wbr>.escape-null]</span></a>
 </div>
 
 <ul>
-<li>The <em>null escape</em> is the character <code>U+0030</code> (<code>0</code>) and denotes the byte value <code>0x00</code> (ASCII NUL).</li>
+<li>空转义是字符<code>U+0030</code>（<code>0</code>），表示字节值<code>0x00</code> (ASCII NUL)。</li>
 </ul>
 <div class="rule" id="r-lex.token.str-byte.escape-slash"><a class="rule-link" href="#r-lex.token.str-byte.escape-slash" title="lex.token.str-byte.escape-slash"><span>[lex<wbr>.token<wbr>.str-byte<wbr>.escape-slash]</span></a>
 </div>
 
 <ul>
-<li>The <em>backslash escape</em> is the character <code>U+005C</code> (<code>\</code>) which must be escaped in order to denote its ASCII encoding <code>0x5C</code>.</li>
+<li>反斜杠转义是字符<code>U+005C</code>（<code>\</code>），它必须被转义才能表示其ASCII编码<code>0x5C</code>。</li>
 </ul>
 <div class="rule" id="r-lex.token.str-byte-raw"><a class="rule-link" href="#r-lex.token.str-byte-raw" title="lex.token.str-byte-raw"><span>[lex<wbr>.token<wbr>.str-byte-raw]</span></a>
 </div>
 
-<h4 id="raw-byte-string-literals"><a class="header" href="#raw-byte-string-literals">Raw byte string literals</a></h4>
+<h4 id="原始字节字符串字面量"><a class="header" href="#原始字节字符串字面量">原始字节字符串字面量</a></h4>
 <div class="rule" id="r-lex.token.str-byte-raw.syntax"><a class="rule-link" href="#r-lex.token.str-byte-raw.syntax" title="lex.token.str-byte-raw.syntax"><span>[lex<wbr>.token<wbr>.str-byte-raw<wbr>.syntax]</span></a>
 </div>
 
@@ -3752,16 +3758,16 @@ any ASCII (i.e. 0x00 to 0x7F) except CR</text>
 <div class="rule" id="r-lex.token.str-byte-raw.intro"><a class="rule-link" href="#r-lex.token.str-byte-raw.intro" title="lex.token.str-byte-raw.intro"><span>[lex<wbr>.token<wbr>.str-byte-raw<wbr>.intro]</span></a>
 </div>
 
-<p>Raw byte string literals do not process any escapes. They start with the character <code>U+0062</code> (<code>b</code>), followed by <code>U+0072</code> (<code>r</code>), followed by fewer than 256 of the character <code>U+0023</code> (<code>#</code>), and a <code>U+0022</code> (double-quote) character.</p>
+<p>原始字节字符串字面量不处理任何转义。它们以字符<code>U+0062</code>（<code>b</code>）开头，后跟<code>U+0072</code>（<code>r</code>），再后跟少于256个<code>U+0023</code>（<code>#</code>）字符和一个<code>U+0022</code>（双引号）字符。</p>
 <div class="rule" id="r-lex.token.str-byte-raw.body"><a class="rule-link" href="#r-lex.token.str-byte-raw.body" title="lex.token.str-byte-raw.body"><span>[lex<wbr>.token<wbr>.str-byte-raw<wbr>.body]</span></a>
 </div>
 
-<p>The <em>raw string body</em> can contain any sequence of ASCII characters other than <code>U+000D</code> (CR). It is terminated only by another <code>U+0022</code> (double-quote) character, followed by the same number of <code>U+0023</code> (<code>#</code>) characters that preceded the opening <code>U+0022</code> (double-quote) character. A raw byte string literal can not contain any non-ASCII byte.</p>
+<p>原始字符串体可以包含除<code>U+000D</code> (CR)以外的任何ASCII字符序列。它只由另一个<code>U+0022</code>（双引号）字符终止，后跟与起始<code>U+0022</code>（双引号）字符前相同数量的<code>U+0023</code>（<code>#</code>）字符。原始字节字符串字面量不能包含任何非ASCII字节。</p>
 <div class="rule" id="r-lex.token.literal.str-byte-raw.content"><a class="rule-link" href="#r-lex.token.literal.str-byte-raw.content" title="lex.token.literal.str-byte-raw.content"><span>[lex<wbr>.token<wbr>.literal<wbr>.str-byte-raw<wbr>.content]</span></a>
 </div>
 
-<p>All characters contained in the raw string body represent their ASCII encoding, the characters <code>U+0022</code> (double-quote) (except when followed by at least as many <code>U+0023</code> (<code>#</code>) characters as were used to start the raw string literal) or <code>U+005C</code> (<code>\</code>) do not have any special meaning.</p>
-<p>Examples for byte string literals:</p>
+<p>原始字符串体中包含的所有字符都表示其ASCII编码，字符<code>U+0022</code>（双引号）（除非后面紧跟的<code>U+0023</code>（<code>#</code>）字符数量与用于开始原始字符串字面量的字符数量相同或更多）或<code>U+005C</code>（<code>\</code>）不具有任何特殊含义。</p>
+<p>字节字符串字面量示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>b"foo"; br"foo";                     // foo
@@ -3773,11 +3779,11 @@ br##"foo #"# bar"##;                 // foo #"# bar
 b"\x52"; b"R"; br"R";                // R
 b"\\x52"; br"\x52";                  // \x52
 <span class="boring">}</span></code></pre>
-<h3 id="c-string-and-raw-c-string-literals"><a class="header" href="#c-string-and-raw-c-string-literals">C string and raw C string literals</a></h3>
+<h3 id="c字符串和原始c字符串字面量"><a class="header" href="#c字符串和原始c字符串字面量">C字符串和原始C字符串字面量</a></h3>
 <div class="rule" id="r-lex.token.str-c"><a class="rule-link" href="#r-lex.token.str-c" title="lex.token.str-c"><span>[lex<wbr>.token<wbr>.str-c]</span></a>
 </div>
 
-<h4 id="c-string-literals"><a class="header" href="#c-string-literals">C string literals</a></h4>
+<h4 id="c字符串字面量"><a class="header" href="#c字符串字面量">C字符串字面量</a></h4>
 <div class="rule" id="r-lex.token.str-c.syntax"><a class="rule-link" href="#r-lex.token.str-c.syntax" title="lex.token.str-c.syntax"><span>[lex<wbr>.token<wbr>.str-c<wbr>.syntax]</span></a>
 </div>
 
@@ -3941,48 +3947,48 @@ SUFFIX</text>
 <div class="rule" id="r-lex.token.str-c.intro"><a class="rule-link" href="#r-lex.token.str-c.intro" title="lex.token.str-c.intro"><span>[lex<wbr>.token<wbr>.str-c<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>C string literal</em> is a sequence of Unicode characters and <em>escapes</em>, preceded by the characters <code>U+0063</code> (<code>c</code>) and <code>U+0022</code> (double-quote), and followed by the character <code>U+0022</code>. If the character <code>U+0022</code> is present within the literal, it must be <em>escaped</em> by a preceding <code>U+005C</code> (<code>\</code>) character. Alternatively, a C string literal can be a <em>raw C string literal</em>, defined below.</p>
+<p>C字符串字面量是一个Unicode字符和_转义_序列，前面带有字符<code>U+0063</code>（<code>c</code>）和<code>U+0022</code>（双引号），后面带有字符<code>U+0022</code>。如果<code>U+0022</code>字符出现在字面量中，它必须通过前面加一个<code>U+005C</code>（<code>\</code>）字符进行转义。另外，C字符串字面量可以是下面定义的原始C字符串字面量。</p>
 <div class="rule" id="r-lex.token.str-c.null"><a class="rule-link" href="#r-lex.token.str-c.null" title="lex.token.str-c.null"><span>[lex<wbr>.token<wbr>.str-c<wbr>.null]</span></a>
 </div>
 
-<p>C strings are implicitly terminated by byte <code>0x00</code>, so the C string literal <code>c""</code> is equivalent to manually constructing a <code>&amp;CStr</code> from the byte string literal <code>b"\x00"</code>. Other than the implicit terminator, byte <code>0x00</code> is not permitted within a C string.</p>
+<p>C字符串隐式以字节<code>0x00</code>终止，因此C字符串字面量<code>c""</code>等同于手动从字节字符串字面量<code>b"\x00"</code>构造一个<code>&amp;CStr</code>。除了隐式终止符，字节<code>0x00</code>不允许出现在C字符串中。</p>
 <div class="rule" id="r-lex.token.str-c.linefeed"><a class="rule-link" href="#r-lex.token.str-c.linefeed" title="lex.token.str-c.linefeed"><span>[lex<wbr>.token<wbr>.str-c<wbr>.linefeed]</span></a>
 </div>
 
-<p>Line-breaks, represented by the  character <code>U+000A</code> (LF), are allowed in C string literals. The character <code>U+000D</code> (CR) may not appear in a C string literal. When an unescaped <code>U+005C</code> character (<code>\</code>) occurs immediately before a line break, the line break does not appear in the string represented by the token. See <a href="#string-continuation-escapes">String continuation escapes</a> for details.</p>
+<p>换行符（由字符<code>U+000A</code> (LF)表示）在C字符串字面量中是允许的。字符<code>U+000D</code> (CR)不得出现在C字符串字面量中。当未转义的<code>U+005C</code>字符（<code>\</code>）紧接在换行符之前时，换行符不会出现在词法单元所表示的字符串中。有关详细信息，请参阅<a href="#string-continuation-escapes">字符串续行转义</a>。</p>
 <div class="rule" id="r-lex.token.str-c.escape"><a class="rule-link" href="#r-lex.token.str-c.escape" title="lex.token.str-c.escape"><span>[lex<wbr>.token<wbr>.str-c<wbr>.escape]</span></a>
 </div>
 
-<p>Some additional <em>escapes</em> are available in non-raw C string literals. An escape starts with a <code>U+005C</code> (<code>\</code>) and continues with one of the following forms:</p>
+<p>在非原始C字符串字面量中，还有一些额外的_转义_可用。转义以<code>U+005C</code>（<code>\</code>）开头，并接以下形式之一：</p>
 <div class="rule" id="r-lex.token.str-c.escape-byte"><a class="rule-link" href="#r-lex.token.str-c.escape-byte" title="lex.token.str-c.escape-byte"><span>[lex<wbr>.token<wbr>.str-c<wbr>.escape-byte]</span></a>
 </div>
 
 <ul>
-<li>A <em>byte escape</em> escape starts with <code>U+0078</code> (<code>x</code>) and is followed by exactly two <em>hex digits</em>. It denotes the byte equal to the provided hex value.</li>
+<li>字节转义以<code>U+0078</code>（<code>x</code>）开头，后跟恰好两个十六进制数字。它表示等于所提供十六进制值的字节。</li>
 </ul>
 <div class="rule" id="r-lex.token.str-c.escape-unicode"><a class="rule-link" href="#r-lex.token.str-c.escape-unicode" title="lex.token.str-c.escape-unicode"><span>[lex<wbr>.token<wbr>.str-c<wbr>.escape-unicode]</span></a>
 </div>
 
 <ul>
-<li>A <em>24-bit code point escape</em> starts with <code>U+0075</code> (<code>u</code>) and is followed by up to six <em>hex digits</em> surrounded by braces <code>U+007B</code> (<code>{</code>) and <code>U+007D</code> (<code>}</code>). It denotes the Unicode code point equal to the provided hex value, encoded as UTF-8.</li>
+<li>24位码点转义以<code>U+0075</code>（<code>u</code>）开头，后跟最多六个十六进制数字，并用花括号<code>U+007B</code>（<code>{</code>）和<code>U+007D</code>（<code>}</code>）括起来。它表示等于所提供十六进制值的Unicode码点，以UTF-8编码。</li>
 </ul>
 <div class="rule" id="r-lex.token.str-c.escape-whitespace"><a class="rule-link" href="#r-lex.token.str-c.escape-whitespace" title="lex.token.str-c.escape-whitespace"><span>[lex<wbr>.token<wbr>.str-c<wbr>.escape-whitespace]</span></a>
 </div>
 
 <ul>
-<li>A <em>whitespace escape</em> is one of the characters <code>U+006E</code> (<code>n</code>), <code>U+0072</code> (<code>r</code>), or <code>U+0074</code> (<code>t</code>), denoting the bytes values <code>0x0A</code> (ASCII LF), <code>0x0D</code> (ASCII CR) or <code>0x09</code> (ASCII HT) respectively.</li>
+<li>空白转义是字符<code>U+006E</code>（<code>n</code>）、<code>U+0072</code>（<code>r</code>）或<code>U+0074</code>（<code>t</code>）之一，分别表示字节值<code>0x0A</code> (ASCII LF)、<code>0x0D</code> (ASCII CR)或<code>0x09</code> (ASCII HT)。</li>
 </ul>
 <div class="rule" id="r-lex.token.str-c.escape-slash"><a class="rule-link" href="#r-lex.token.str-c.escape-slash" title="lex.token.str-c.escape-slash"><span>[lex<wbr>.token<wbr>.str-c<wbr>.escape-slash]</span></a>
 </div>
 
 <ul>
-<li>The <em>backslash escape</em> is the character <code>U+005C</code> (<code>\</code>) which must be escaped in order to denote its ASCII encoding <code>0x5C</code>.</li>
+<li>反斜杠转义是字符<code>U+005C</code>（<code>\</code>），它必须被转义才能表示其ASCII编码<code>0x5C</code>。</li>
 </ul>
 <div class="rule" id="r-lex.token.str-c.char-unicode"><a class="rule-link" href="#r-lex.token.str-c.char-unicode" title="lex.token.str-c.char-unicode"><span>[lex<wbr>.token<wbr>.str-c<wbr>.char-unicode]</span></a>
 </div>
 
-<p>A C string represents bytes with no defined encoding, but a C string literal may contain Unicode characters above <code>U+007F</code>. Such characters will be replaced with the bytes of that character’s UTF-8 representation.</p>
-<p>The following C string literals are equivalent:</p>
+<p>C字符串表示没有定义编码的字节，但C字符串字面量可以包含高于<code>U+007F</code>的Unicode字符。这些字符将被替换为该字符的UTF-8表示字节。</p>
+<p>以下C字符串字面量是等效的：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>c"æ";        // LATIN SMALL LETTER AE (U+00E6)
@@ -3996,14 +4002,14 @@ c"\xC3\xA6";
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2021</span> 版次差异</p>
 
-<p>C string literals are accepted in the 2021 edition or later. In earlier editions the token <code>c""</code> is lexed as <code>c ""</code>.</p>
+<p>C字符串字面量在2021或更高版次中被接受。在更早的版次中，词法单元<code>c""</code>被解析为<code>c ""</code>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-lex.token.str-c-raw"><a class="rule-link" href="#r-lex.token.str-c-raw" title="lex.token.str-c-raw"><span>[lex<wbr>.token<wbr>.str-c-raw]</span></a>
 </div>
 
-<h4 id="raw-c-string-literals"><a class="header" href="#raw-c-string-literals">Raw C string literals</a></h4>
+<h4 id="原始c字符串字面量"><a class="header" href="#原始c字符串字面量">原始C字符串字面量</a></h4>
 <div class="rule" id="r-lex.token.str-c-raw.syntax"><a class="rule-link" href="#r-lex.token.str-c-raw.syntax" title="lex.token.str-c-raw.syntax"><span>[lex<wbr>.token<wbr>.str-c-raw<wbr>.syntax]</span></a>
 </div>
 
@@ -4168,15 +4174,15 @@ RAW_C_STRING_CONTENT</text>
 <div class="rule" id="r-lex.token.str-c-raw.intro"><a class="rule-link" href="#r-lex.token.str-c-raw.intro" title="lex.token.str-c-raw.intro"><span>[lex<wbr>.token<wbr>.str-c-raw<wbr>.intro]</span></a>
 </div>
 
-<p>Raw C string literals do not process any escapes. They start with the character <code>U+0063</code> (<code>c</code>), followed by <code>U+0072</code> (<code>r</code>), followed by fewer than 256 of the character <code>U+0023</code> (<code>#</code>), and a <code>U+0022</code> (double-quote) character.</p>
+<p>原始C字符串字面量不处理任何转义。它们以字符<code>U+0063</code>（<code>c</code>）开头，后跟<code>U+0072</code>（<code>r</code>），再后跟少于256个<code>U+0023</code>（<code>#</code>）字符和一个<code>U+0022</code>（双引号）字符。</p>
 <div class="rule" id="r-lex.token.str-c-raw.body"><a class="rule-link" href="#r-lex.token.str-c-raw.body" title="lex.token.str-c-raw.body"><span>[lex<wbr>.token<wbr>.str-c-raw<wbr>.body]</span></a>
 </div>
 
-<p>The <em>raw C string body</em> can contain any sequence of Unicode characters other than <code>U+0000</code> (NUL) and <code>U+000D</code> (CR). It is terminated only by another <code>U+0022</code> (double-quote) character, followed by the same number of <code>U+0023</code> (<code>#</code>) characters that preceded the opening <code>U+0022</code> (double-quote) character.</p>
+<p>原始C字符串体可以包含除<code>U+0000</code> (NUL)和<code>U+000D</code> (CR)以外的任何Unicode字符序列。它只由另一个<code>U+0022</code>（双引号）字符终止，后跟与起始<code>U+0022</code>（双引号）字符前相同数量的<code>U+0023</code>（<code>#</code>）字符。</p>
 <div class="rule" id="r-lex.token.str-c-raw.content"><a class="rule-link" href="#r-lex.token.str-c-raw.content" title="lex.token.str-c-raw.content"><span>[lex<wbr>.token<wbr>.str-c-raw<wbr>.content]</span></a>
 </div>
 
-<p>All characters contained in the raw C string body represent themselves in UTF-8 encoding. The characters <code>U+0022</code> (double-quote) (except when followed by at least as many <code>U+0023</code> (<code>#</code>) characters as were used to start the raw C string literal) or <code>U+005C</code> (<code>\</code>) do not have any special meaning.</p>
+<p>原始C字符串体中包含的所有字符都以UTF-8编码表示其本身。字符<code>U+0022</code>（双引号）（除非后面紧跟的<code>U+0023</code>（<code>#</code>）字符数量与用于开始原始C字符串字面量的字符数量相同或更多）或<code>U+005C</code>（<code>\</code>）不具有任何特殊含义。</p>
 <div class="rule" id="r-lex.token.str-c-raw.edition2021"><a class="rule-link" href="#r-lex.token.str-c-raw.edition2021" title="lex.token.str-c-raw.edition2021"><span>[lex<wbr>.token<wbr>.str-c-raw<wbr>.edition2021]</span></a>
 </div>
 
@@ -4184,11 +4190,11 @@ RAW_C_STRING_CONTENT</text>
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2021</span> 版次差异</p>
 
-<p>Raw C string literals are accepted in the 2021 edition or later. In earlier editions the token <code>cr""</code> is lexed as <code>cr ""</code>, and <code>cr#""#</code> is lexed as <code>cr #""#</code> (which is non-grammatical).</p>
+<p>原始C字符串字面量在2021或更高版次中被接受。在更早的版次中，词法单元<code>cr""</code>被解析为<code>cr ""</code>，而<code>cr#""#</code>被解析为<code>cr #""#</code>（这不符合语法格式）。</p>
 </blockquote>
 </div>
 
-<h4 id="examples-for-c-string-and-raw-c-string-literals"><a class="header" href="#examples-for-c-string-and-raw-c-string-literals">Examples for C string and raw C string literals</a></h4>
+<h4 id="c字符串和原始c字符串字面量示例"><a class="header" href="#c字符串和原始c字符串字面量示例">C字符串和原始C字符串字面量示例</a></h4>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>c"foo"; cr"foo";                     // foo
@@ -4203,12 +4209,12 @@ c"\\x52"; cr"\x52";                  // \x52
 <div class="rule" id="r-lex.token.literal.num"><a class="rule-link" href="#r-lex.token.literal.num" title="lex.token.literal.num"><span>[lex<wbr>.token<wbr>.literal<wbr>.num]</span></a>
 </div>
 
-<h3 id="number-literals"><a class="header" href="#number-literals">Number literals</a></h3>
-<p>A <em>number literal</em> is either an <em>integer literal</em> or a <em>floating-point literal</em>. The grammar for recognizing the two kinds of literals is mixed.</p>
+<h3 id="数字字面量"><a class="header" href="#数字字面量">数字字面量</a></h3>
+<p>数字字面量可以是整数字面量，也可以是浮点数字面量。识别这两种字面量的语法格式是混合的。</p>
 <div class="rule" id="r-lex.token.literal.int"><a class="rule-link" href="#r-lex.token.literal.int" title="lex.token.literal.int"><span>[lex<wbr>.token<wbr>.literal<wbr>.int]</span></a>
 </div>
 
-<h4 id="integer-literals"><a class="header" href="#integer-literals">Integer literals</a></h4>
+<h4 id="整数字面量"><a class="header" href="#整数字面量">整数字面量</a></h4>
 <div class="rule" id="r-lex.token.literal.int.syntax"><a class="rule-link" href="#r-lex.token.literal.int.syntax" title="lex.token.literal.int.syntax"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.syntax]</span></a>
 </div>
 
@@ -4675,36 +4681,36 @@ A-F</text>
 <div class="rule" id="r-lex.token.literal.int.kind"><a class="rule-link" href="#r-lex.token.literal.int.kind" title="lex.token.literal.int.kind"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.kind]</span></a>
 </div>
 
-<p>An <em>integer literal</em> has one of four forms:</p>
+<p>整数字面量有以下四种形式：</p>
 <div class="rule" id="r-lex.token.literal.int.kind-dec"><a class="rule-link" href="#r-lex.token.literal.int.kind-dec" title="lex.token.literal.int.kind-dec"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.kind-dec]</span></a>
 </div>
 
 <ul>
-<li>A <em>decimal literal</em> starts with a <em>decimal digit</em> and continues with any mixture of <em>decimal digits</em> and <em>underscores</em>.</li>
+<li>十进制字面量以十进制数字开头，并可包含十进制数字和下划线的任意组合。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.int.kind-hex"><a class="rule-link" href="#r-lex.token.literal.int.kind-hex" title="lex.token.literal.int.kind-hex"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.kind-hex]</span></a>
 </div>
 
 <ul>
-<li>A <em>hex literal</em> starts with the character sequence <code>U+0030</code> <code>U+0078</code> (<code>0x</code>) and continues as any mixture (with at least one digit) of hex digits and underscores.</li>
+<li>十六进制字面量以字符序列<code>U+0030</code> <code>U+0078</code>（<code>0x</code>）开头，并可包含十六进制数字和下划线的任意组合（至少包含一个数字）。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.int.kind-oct"><a class="rule-link" href="#r-lex.token.literal.int.kind-oct" title="lex.token.literal.int.kind-oct"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.kind-oct]</span></a>
 </div>
 
 <ul>
-<li>An <em>octal literal</em> starts with the character sequence <code>U+0030</code> <code>U+006F</code> (<code>0o</code>) and continues as any mixture (with at least one digit) of octal digits and underscores.</li>
+<li>八进制字面量以字符序列<code>U+0030</code> <code>U+006F</code>（<code>0o</code>）开头，并可包含八进制数字和下划线的任意组合（至少包含一个数字）。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.int.kind-bin"><a class="rule-link" href="#r-lex.token.literal.int.kind-bin" title="lex.token.literal.int.kind-bin"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.kind-bin]</span></a>
 </div>
 
 <ul>
-<li>A <em>binary literal</em> starts with the character sequence <code>U+0030</code> <code>U+0062</code> (<code>0b</code>) and continues as any mixture (with at least one digit) of binary digits and underscores.</li>
+<li>二进制字面量以字符序列<code>U+0030</code> <code>U+0062</code>（<code>0b</code>）开头，并可包含二进制数字和下划线的任意组合（至少包含一个数字）。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.int.restriction"><a class="rule-link" href="#r-lex.token.literal.int.restriction" title="lex.token.literal.int.restriction"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.restriction]</span></a>
 </div>
 
-<p>Like any literal, an integer literal may be followed (immediately, without any spaces) by a suffix as described above. The suffix may not begin with <code>e</code> or <code>E</code>, as that would be interpreted as the exponent of a floating-point literal. See <a href="#integer-literal-expressions">Integer literal expressions</a> for the effect of these suffixes.</p>
-<p>Examples of integer literals which are accepted as literal expressions:</p>
+<p>像任何字面量一样，整数字面量可以紧跟（不带任何空格）一个如上所述的后缀。后缀不能以<code>e</code>或<code>E</code>开头，因为这将被解释为浮点字面量的指数。有关这些后缀的效果，请参阅<a href="#integer-literal-expressions">整数字面量表达式</a>。</p>
+<p>被接受为字面量表达式的整数字面量示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">#![allow(overflowing_literals)]
@@ -4734,8 +4740,8 @@ A-F</text>
 // This is an integer literal, accepted as a floating-point literal expression.
 5f32;
 <span class="boring">}</span></code></pre>
-<p>Note that <code>-1i8</code>, for example, is analyzed as two tokens: <code>-</code> followed by <code>1i8</code>.</p>
-<p>Examples of integer literals which are not accepted as literal expressions:</p>
+<p>请注意，例如<code>-1i8</code>被解析为两个词法单元：<code>-</code>后跟<code>1i8</code>。</p>
+<p>不被接受为字面量表达式的整数字面量示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">#[cfg(false)] {
@@ -4749,7 +4755,7 @@ A-F</text>
 <div class="rule" id="r-lex.token.literal.int.tuple-field"><a class="rule-link" href="#r-lex.token.literal.int.tuple-field" title="lex.token.literal.int.tuple-field"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.tuple-field]</span></a>
 </div>
 
-<h4 id="tuple-index"><a class="header" href="#tuple-index">Tuple index</a></h4>
+<h4 id="元组项索引"><a class="header" href="#元组项索引">元组<a href="#grammar-Item">项</a>索引</a></h4>
 <div class="rule" id="r-lex.token.literal.int.tuple-field.syntax"><a class="rule-link" href="#r-lex.token.literal.int.tuple-field.syntax" title="lex.token.literal.int.tuple-field.syntax"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.tuple-field<wbr>.syntax]</span></a>
 </div>
 
@@ -4820,12 +4826,12 @@ HEX_LITERAL</text>
 <div class="rule" id="r-lex.token.literal.int.tuple-field.intro"><a class="rule-link" href="#r-lex.token.literal.int.tuple-field.intro" title="lex.token.literal.int.tuple-field.intro"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.tuple-field<wbr>.intro]</span></a>
 </div>
 
-<p>A tuple index is used to refer to the fields of <a href="#tuple-types">tuples</a>, <a href="#structs">tuple structs</a>, and <a href="#enumerations">tuple enum variants</a>.</p>
+<p>元组<a href="#grammar-Item">项</a>索引用于引用<a href="#tuple-types">元组</a>、<a href="#structs">元组结构体</a>和<a href="#enumerations">元组枚举变体</a>的字段。</p>
 <div class="rule" id="r-lex.token.literal.int.tuple-field.eq"><a class="rule-link" href="#r-lex.token.literal.int.tuple-field.eq" title="lex.token.literal.int.tuple-field.eq"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.tuple-field<wbr>.eq]</span></a>
 </div>
 
-<p>Tuple indices are compared with the literal token directly. Tuple indices start with <code>0</code> and each successive index increments the value by <code>1</code> as a decimal value. Thus, only decimal values will match, and the value must not have any extra <code>0</code> prefix characters.</p>
-<p>Tuple indices may not include any suffixes (such as <code>usize</code>).</p>
+<p>元组<a href="#grammar-Item">项</a>索引与字面量词法单元直接比较。元组<a href="#grammar-Item">项</a>索引从<code>0</code>开始，每个后续索引的十进制值递增<code>1</code>。因此，只有十进制值会匹配，并且该值不能有任何额外的<code>0</code>前缀字符。</p>
+<p>元组<a href="#grammar-Item">项</a>索引不能包含任何后缀（例如<code>usize</code>）。</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let example = ("dog", "cat", "horse");
@@ -4840,7 +4846,7 @@ let underscore = example.0_0; // ERROR no field `0_0` on type `(&amp;str, &amp;s
 <div class="rule" id="r-lex.token.literal.float"><a class="rule-link" href="#r-lex.token.literal.float" title="lex.token.literal.float"><span>[lex<wbr>.token<wbr>.literal<wbr>.float]</span></a>
 </div>
 
-<h4 id="floating-point-literals"><a class="header" href="#floating-point-literals">Floating-point literals</a></h4>
+<h4 id="浮点数字面量"><a class="header" href="#浮点数字面量">浮点数字面量</a></h4>
 <div class="rule" id="r-lex.token.literal.float.syntax"><a class="rule-link" href="#r-lex.token.literal.float.syntax" title="lex.token.literal.float.syntax"><span>[lex<wbr>.token<wbr>.literal<wbr>.float<wbr>.syntax]</span></a>
 </div>
 
@@ -5083,16 +5089,16 @@ _</text>
 <div class="rule" id="r-lex.token.literal.float.form"><a class="rule-link" href="#r-lex.token.literal.float.form" title="lex.token.literal.float.form"><span>[lex<wbr>.token<wbr>.literal<wbr>.float<wbr>.form]</span></a>
 </div>
 
-<p>A <em>floating-point literal</em> has one of two forms:</p>
+<p>浮点数字面量有两种形式：</p>
 <ul>
-<li>A <em>decimal literal</em> followed by a period character <code>U+002E</code> (<code>.</code>). This is optionally followed by another decimal literal, with an optional <em>exponent</em>.</li>
-<li>A single <em>decimal literal</em> followed by an <em>exponent</em>.</li>
+<li>十进制字面量，后跟句点字符<code>U+002E</code>（<code>.</code>）。这后面可选地跟另一个十进制字面量，带有可选的指数。</li>
+<li>单个十进制字面量，后跟指数。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.float.suffix"><a class="rule-link" href="#r-lex.token.literal.float.suffix" title="lex.token.literal.float.suffix"><span>[lex<wbr>.token<wbr>.literal<wbr>.float<wbr>.suffix]</span></a>
 </div>
 
-<p>Like integer literals, a floating-point literal may be followed by a suffix, so long as the pre-suffix part does not end with <code>U+002E</code> (<code>.</code>). The suffix may not begin with <code>e</code> or <code>E</code> if the literal does not include an exponent. See <a href="#floating-point-literal-expressions">Floating-point literal expressions</a> for the effect of these suffixes.</p>
-<p>Examples of floating-point literals which are accepted as literal expressions:</p>
+<p>像整数字面量一样，浮点数字面量可以后跟一个后缀，只要后缀前的部分不以<code>U+002E</code>（<code>.</code>）结尾。如果字面量不包含指数，则后缀不能以<code>e</code>或<code>E</code>开头。有关这些后缀的效果，请参阅<a href="#floating-point-literal-expressions">浮点数字面量表达式</a>。</p>
+<p>被接受为字面量表达式的浮点数字面量示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>123.0f64;
@@ -5101,9 +5107,9 @@ _</text>
 12E+99_f64;
 let x: f64 = 2.;
 <span class="boring">}</span></code></pre>
-<p>This last example is different because it is not possible to use the suffix syntax with a floating point literal ending in a period. <code>2.f64</code> would attempt to call a method named <code>f64</code> on <code>2</code>.</p>
-<p>Note that <code>-1.0</code>, for example, is analyzed as two tokens: <code>-</code> followed by <code>1.0</code>.</p>
-<p>Examples of floating-point literals which are not accepted as literal expressions:</p>
+<p>最后一个示例有所不同，因为浮点数字面量以句点结尾时，无法使用后缀语法格式。<code>2.f64</code>会尝试在<code>2</code>上调用名为<code>f64</code>的方法。</p>
+<p>请注意，例如<code>-1.0</code>被解析为两个词法单元：<code>-</code>后跟<code>1.0</code>。</p>
+<p>不被接受为字面量表达式的浮点数字面量示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">#[cfg(false)] {
@@ -5117,7 +5123,7 @@ let x: f64 = 2.;
 <div class="rule" id="r-lex.token.literal.reserved"><a class="rule-link" href="#r-lex.token.literal.reserved" title="lex.token.literal.reserved"><span>[lex<wbr>.token<wbr>.literal<wbr>.reserved]</span></a>
 </div>
 
-<h4 id="reserved-forms-similar-to-number-literals"><a class="header" href="#reserved-forms-similar-to-number-literals">Reserved forms similar to number literals</a></h4>
+<h4 id="类似于数字字面量的保留形式"><a class="header" href="#类似于数字字面量的保留形式">类似于数字字面量的保留形式</a></h4>
 <div class="rule" id="r-lex.token.literal.reserved.syntax"><a class="rule-link" href="#r-lex.token.literal.reserved.syntax" title="lex.token.literal.reserved.syntax"><span>[lex<wbr>.token<wbr>.literal<wbr>.reserved<wbr>.syntax]</span></a>
 </div>
 
@@ -5430,55 +5436,55 @@ end of input or not DEC_DIGIT</text>
 <div class="rule" id="r-lex.token.literal.reserved.intro"><a class="rule-link" href="#r-lex.token.literal.reserved.intro" title="lex.token.literal.reserved.intro"><span>[lex<wbr>.token<wbr>.literal<wbr>.reserved<wbr>.intro]</span></a>
 </div>
 
-<p>The following lexical forms similar to number literals are <em>reserved forms</em>. Due to the possible ambiguity these raise, they are rejected by the tokenizer instead of being interpreted as separate tokens.</p>
+<p>以下类似于数字字面量的词法形式是_保留形式_。由于可能存在的歧义，词法分析器会拒绝这些形式，而不是将其解释为单独的词法单元。</p>
 <div class="rule" id="r-lex.token.literal.reserved.out-of-range"><a class="rule-link" href="#r-lex.token.literal.reserved.out-of-range" title="lex.token.literal.reserved.out-of-range"><span>[lex<wbr>.token<wbr>.literal<wbr>.reserved<wbr>.out-of-range]</span></a>
 </div>
 
 <ul>
-<li>An unsuffixed binary or octal literal followed, without intervening whitespace, by a decimal digit out of the range for its radix.</li>
+<li>未加后缀的二进制或八进制字面量，紧接着（无中间空白）一个超出其基数范围的十进制数字。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.reserved.period"><a class="rule-link" href="#r-lex.token.literal.reserved.period" title="lex.token.literal.reserved.period"><span>[lex<wbr>.token<wbr>.literal<wbr>.reserved<wbr>.period]</span></a>
 </div>
 
 <ul>
-<li>An unsuffixed binary, octal, or hexadecimal literal followed, without intervening whitespace, by a period character (with the same restrictions on what follows the period as for floating-point literals).</li>
+<li>未加后缀的二进制、八进制或十六进制字面量，紧接着（无中间空白）一个句点字符（对句点后面的内容有与浮点数字面量相同的限制）。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.reserved.exp"><a class="rule-link" href="#r-lex.token.literal.reserved.exp" title="lex.token.literal.reserved.exp"><span>[lex<wbr>.token<wbr>.literal<wbr>.reserved<wbr>.exp]</span></a>
 </div>
 
 <ul>
-<li>An unsuffixed binary or octal literal followed, without intervening whitespace, by the character <code>e</code> or <code>E</code>.</li>
+<li>未加后缀的二进制或八进制字面量，紧接着（无中间空白）字符<code>e</code>或<code>E</code>。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.reserved.empty-with-radix"><a class="rule-link" href="#r-lex.token.literal.reserved.empty-with-radix" title="lex.token.literal.reserved.empty-with-radix"><span>[lex<wbr>.token<wbr>.literal<wbr>.reserved<wbr>.empty-with-radix]</span></a>
 </div>
 
 <ul>
-<li>Input which begins with one of the radix prefixes but is not a valid binary, octal, or hexadecimal literal (because it contains no digits).</li>
+<li>以基数前缀之一开头但不是有效的二进制、八进制或十六进制字面量（因为它不包含任何数字）的输入。</li>
 </ul>
 <div class="rule" id="r-lex.token.literal.reserved.empty-exp"><a class="rule-link" href="#r-lex.token.literal.reserved.empty-exp" title="lex.token.literal.reserved.empty-exp"><span>[lex<wbr>.token<wbr>.literal<wbr>.reserved<wbr>.empty-exp]</span></a>
 </div>
 
 <ul>
-<li>Input which has the form of a floating-point literal with no digits in the exponent.</li>
+<li>具有浮点数字面量形式，但指数中没有数字的输入。</li>
 </ul>
-<p>Examples of reserved forms:</p>
+<p>保留形式的示例：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>0b0102;  // this is not `0b010` followed by `2`
-0o1279;  // this is not `0o127` followed by `9`
-0x80.0;  // this is not `0x80` followed by `.` and `0`
-0b101e;  // this is not a suffixed literal, or `0b101` followed by `e`
-0b;      // this is not an integer literal, or `0` followed by `b`
-0b_;     // this is not an integer literal, or `0` followed by `b_`
-2e;      // this is not a floating-point literal, or `2` followed by `e`
-2.0e;    // this is not a floating-point literal, or `2.0` followed by `e`
-2em;     // this is not a suffixed literal, or `2` followed by `em`
-2.0em;   // this is not a suffixed literal, or `2.0` followed by `em`
+</span>0b0102;  // 这不是`0b010`后跟`2`
+0o1279;  // 这不是`0o127`后跟`9`
+0x80.0;  // 这不是`0x80`后跟`.`和`0`
+0b101e;  // 这不是一个带后缀的字面量，也不是`0b101`后跟`e`
+0b;      // 这不是一个整数字面量，也不是`0`后跟`b`
+0b_;     // 这不是一个整数字面量，也不是`0`后跟`b_`
+2e;      // 这不是一个浮点数字面量，也不是`2`后跟`e`
+2.0e;    // 这不是一个浮点数字面量，也不是`2.0`后跟`e`
+2em;     // 这不是一个带后缀的字面量，也不是`2`后跟`em`
+2.0em;   // 这不是一个带后缀的字面量，也不是`2.0`后跟`em`
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-lex.token.life"><a class="rule-link" href="#r-lex.token.life" title="lex.token.life"><span>[lex<wbr>.token<wbr>.life]</span></a>
 </div>
 
-<h2 id="lifetimes-and-loop-labels"><a class="header" href="#lifetimes-and-loop-labels">Lifetimes and loop labels</a></h2>
+<h2 id="生命周期和循环标签"><a class="header" href="#生命周期和循环标签">生命周期和循环标签</a></h2>
 <div class="rule" id="r-lex.token.life.syntax"><a class="rule-link" href="#r-lex.token.life.syntax" title="lex.token.life.syntax"><span>[lex<wbr>.token<wbr>.life<wbr>.syntax]</span></a>
 </div>
 
@@ -5707,19 +5713,19 @@ super</text>
 <div class="rule" id="r-lex.token.life.intro"><a class="rule-link" href="#r-lex.token.life.intro" title="lex.token.life.intro"><span>[lex<wbr>.token<wbr>.life<wbr>.intro]</span></a>
 </div>
 
-<p>Lifetime parameters and <a href="#loops-and-other-breakable-expressions">loop labels</a> use LIFETIME_OR_LABEL tokens. Any LIFETIME_TOKEN will be accepted by the lexer, and for example, can be used in macros.</p>
+<p>生命周期参数和<a href="#loops-and-other-breakable-expressions">循环标签</a>使用LIFETIME_OR_LABEL词法单元。任何LIFETIME_TOKEN都会被词法分析器接受，例如，可以在宏中使用。</p>
 <div class="rule" id="r-lex.token.life.raw.intro"><a class="rule-link" href="#r-lex.token.life.raw.intro" title="lex.token.life.raw.intro"><span>[lex<wbr>.token<wbr>.life<wbr>.raw<wbr>.intro]</span></a>
 </div>
 
-<p>A raw lifetime is like a normal lifetime, but its identifier is prefixed by <code>r#</code>. (Note that the <code>r#</code> prefix is not included as part of the actual lifetime.)</p>
+<p>原始生命周期类似于普通生命周期，但其<a href="#标识符">标识符</a>带有<code>r#</code>前缀。（请注意，<code>r#</code>前缀不作为实际生命周期的一部分。）</p>
 <div class="rule" id="r-lex.token.life.raw.allowed"><a class="rule-link" href="#r-lex.token.life.raw.allowed" title="lex.token.life.raw.allowed"><span>[lex<wbr>.token<wbr>.life<wbr>.raw<wbr>.allowed]</span></a>
 </div>
 
-<p>Unlike a normal lifetime, a raw lifetime may be any strict or reserved keyword except the ones listed above for <code>RAW_LIFETIME</code>.</p>
+<p>与普通生命周期不同，原始生命周期可以是除上述<code>RAW_LIFETIME</code>列出的<a href="#关键字">关键字</a>之外的任何严格或保留<a href="#关键字">关键字</a>。</p>
 <div class="rule" id="r-lex.token.life.raw.reserved"><a class="rule-link" href="#r-lex.token.life.raw.reserved" title="lex.token.life.raw.reserved"><span>[lex<wbr>.token<wbr>.life<wbr>.raw<wbr>.reserved]</span></a>
 </div>
 
-<p>It is an error to use the <a href="#grammar-RESERVED_RAW_LIFETIME">RESERVED_RAW_LIFETIME</a> token.</p>
+<p>使用<a href="#grammar-RESERVED_RAW_LIFETIME">RESERVED_RAW_LIFETIME</a>词法单元是错误的。</p>
 <div class="rule" id="r-lex.token.life.raw.edition2021"><a class="rule-link" href="#r-lex.token.life.raw.edition2021" title="lex.token.life.raw.edition2021"><span>[lex<wbr>.token<wbr>.life<wbr>.raw<wbr>.edition2021]</span></a>
 </div>
 
@@ -5727,18 +5733,18 @@ super</text>
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2021</span> 版次差异</p>
 
-<p>Raw lifetimes are accepted in the 2021 edition or later. In earlier editions the token <code>'r#lt</code> is lexed as <code>'r # lt</code>.</p>
+<p>原始生命周期在2021或更高版次中被接受。在更早的版次中，词法单元<code>'r#lt</code>被解析为<code>'r # lt</code>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-lex.token.punct"><a class="rule-link" href="#r-lex.token.punct" title="lex.token.punct"><span>[lex<wbr>.token<wbr>.punct]</span></a>
 </div>
 
-<h2 id="punctuation"><a class="header" href="#punctuation">Punctuation</a></h2>
+<h2 id="标点符号"><a class="header" href="#标点符号">标点符号</a></h2>
 <div class="rule" id="r-lex.token.punct.intro"><a class="rule-link" href="#r-lex.token.punct.intro" title="lex.token.punct.intro"><span>[lex<wbr>.token<wbr>.punct<wbr>.intro]</span></a>
 </div>
 
-<p>Punctuation tokens are used as operators, separators, and other parts of the grammar.</p>
+<p>标点符号词法单元用作运算符、分隔符和语法格式的其他部分。</p>
 <div class="rule" id="r-lex.token.punct.syntax"><a class="rule-link" href="#r-lex.token.punct.syntax" title="lex.token.punct.syntax"><span>[lex<wbr>.token<wbr>.punct<wbr>.syntax]</span></a>
 </div>
 
@@ -6240,35 +6246,35 @@ $</text>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>See the <a href="#operators-and-punctuation">syntax index</a> for links to how punctuation characters are used.</p>
+<p>有关标点符号字符如何使用的链接，请参阅<a href="#operators-and-punctuation">语法格式索引</a>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-lex.token.delim"><a class="rule-link" href="#r-lex.token.delim" title="lex.token.delim"><span>[lex<wbr>.token<wbr>.delim]</span></a>
 </div>
 
-<h2 id="delimiters"><a class="header" href="#delimiters">Delimiters</a></h2>
-<p>Bracket punctuation is used in various parts of the grammar. An open bracket must always be paired with a close bracket. Brackets and the tokens within them are referred to as “token trees” in <a href="#macros-by-example">macros</a>.  The three types of brackets are:</p>
+<h2 id="分隔符"><a class="header" href="#分隔符">分隔符</a></h2>
+<p>括号标点符号用于语法格式的各个部分。开括号必须始终与闭括号配对。括号及其内部的词法单元在<a href="#macros-by-example">宏</a>中被称为“词法单元树”。括号有三种类型：</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Bracket</th><th>Type</th></tr>
+<tr><th>括号</th><th>类型</th></tr>
 </thead>
 <tbody>
-<tr><td><code>{</code> <code>}</code></td><td>Curly braces</td></tr>
-<tr><td><code>[</code> <code>]</code></td><td>Square brackets</td></tr>
-<tr><td><code>(</code> <code>)</code></td><td>Parentheses</td></tr>
+<tr><td><code>{</code> <code>}</code></td><td>花括号</td></tr>
+<tr><td><code>[</code> <code>]</code></td><td>方括号</td></tr>
+<tr><td><code>(</code> <code>)</code></td><td>小括号</td></tr>
 </tbody>
 </table>
 </div>
 <div class="rule" id="r-lex.token.reserved"><a class="rule-link" href="#r-lex.token.reserved" title="lex.token.reserved"><span>[lex<wbr>.token<wbr>.reserved]</span></a>
 </div>
 
-<h2 id="reserved-tokens"><a class="header" href="#reserved-tokens">Reserved tokens</a></h2>
+<h2 id="保留词法单元"><a class="header" href="#保留词法单元">保留词法单元</a></h2>
 <div class="rule" id="r-lex.token.reserved.intro"><a class="rule-link" href="#r-lex.token.reserved.intro" title="lex.token.reserved.intro"><span>[lex<wbr>.token<wbr>.reserved<wbr>.intro]</span></a>
 </div>
 
-<p>Several token forms are reserved for future use or to avoid confusion. It is an error for the source input to match one of these forms.</p>
+<p>几种词法单元形式被保留以备将来使用或避免混淆。源输入匹配其中一种形式是错误的。</p>
 <div class="rule" id="r-lex.token.reserved.syntax"><a class="rule-link" href="#r-lex.token.reserved.syntax" title="lex.token.reserved.syntax"><span>[lex<wbr>.token<wbr>.reserved<wbr>.syntax]</span></a>
 </div>
 
@@ -6400,7 +6406,7 @@ RESERVED_TOKEN_SINGLE_QUOTE</text>
 <div class="rule" id="r-lex.token.reserved-prefix"><a class="rule-link" href="#r-lex.token.reserved-prefix" title="lex.token.reserved-prefix"><span>[lex<wbr>.token<wbr>.reserved-prefix]</span></a>
 </div>
 
-<h2 id="reserved-prefixes"><a class="header" href="#reserved-prefixes">Reserved prefixes</a></h2>
+<h2 id="保留前缀"><a class="header" href="#保留前缀">保留前缀</a></h2>
 <div class="rule" id="r-lex.token.reserved-prefix.syntax"><a class="rule-link" href="#r-lex.token.reserved-prefix.syntax" title="lex.token.reserved-prefix.syntax"><span>[lex<wbr>.token<wbr>.reserved-prefix<wbr>.syntax]</span></a>
 </div>
 
@@ -6578,23 +6584,23 @@ IDENTIFIER_OR_KEYWORD</text>
 <div class="rule" id="r-lex.token.reserved-prefix.intro"><a class="rule-link" href="#r-lex.token.reserved-prefix.intro" title="lex.token.reserved-prefix.intro"><span>[lex<wbr>.token<wbr>.reserved-prefix<wbr>.intro]</span></a>
 </div>
 
-<p>Some lexical forms known as <em>reserved prefixes</em> are reserved for future use.</p>
+<p>一些被称为_保留前缀_的词法形式被保留以备将来使用。</p>
 <div class="rule" id="r-lex.token.reserved-prefix.id"><a class="rule-link" href="#r-lex.token.reserved-prefix.id" title="lex.token.reserved-prefix.id"><span>[lex<wbr>.token<wbr>.reserved-prefix<wbr>.id]</span></a>
 </div>
 
-<p>Source input which would otherwise be lexically interpreted as a non-raw identifier (or a keyword) which is immediately followed by a <code>#</code>, <code>'</code>, or <code>"</code> character (without intervening whitespace) is identified as a reserved prefix.</p>
+<p>源输入如果被词法解释为非原始<a href="#标识符">标识符</a>（或<a href="#关键字">关键字</a>），且紧跟<code>#</code>、<code>'</code>或<code>"</code>字符（无中间空白），则被识别为保留前缀。</p>
 <div class="rule" id="r-lex.token.reserved-prefix.raw-token"><a class="rule-link" href="#r-lex.token.reserved-prefix.raw-token" title="lex.token.reserved-prefix.raw-token"><span>[lex<wbr>.token<wbr>.reserved-prefix<wbr>.raw-token]</span></a>
 </div>
 
-<p>Note that raw identifiers, raw string literals, and raw byte string literals may contain a <code>#</code> character but are not interpreted as containing a reserved prefix.</p>
+<p>请注意，原始<a href="#标识符">标识符</a>、原始字符串字面量和原始字节字符串字面量可能包含<code>#</code>字符，但不会被解释为包含保留前缀。</p>
 <div class="rule" id="r-lex.token.reserved-prefix.strings"><a class="rule-link" href="#r-lex.token.reserved-prefix.strings" title="lex.token.reserved-prefix.strings"><span>[lex<wbr>.token<wbr>.reserved-prefix<wbr>.strings]</span></a>
 </div>
 
-<p>Similarly the <code>r</code>, <code>b</code>, <code>br</code>, <code>c</code>, and <code>cr</code> prefixes used in raw string literals, byte literals, byte string literals, raw byte string literals, C string literals, and raw C string literals are not interpreted as reserved prefixes.</p>
+<p>同样，用于原始字符串字面量、字节字面量、字节字符串字面量、原始字节字符串字面量、C字符串字面量和原始C字符串字面量的<code>r</code>、<code>b</code>、<code>br</code>、<code>c</code>和<code>cr</code>前缀不被解释为保留前缀。</p>
 <div class="rule" id="r-lex.token.reserved-prefix.life"><a class="rule-link" href="#r-lex.token.reserved-prefix.life" title="lex.token.reserved-prefix.life"><span>[lex<wbr>.token<wbr>.reserved-prefix<wbr>.life]</span></a>
 </div>
 
-<p>Source input which would otherwise be lexically interpreted as a non-raw lifetime (or a keyword) which is immediately followed by a <code>#</code> character (without intervening whitespace) is identified as a reserved lifetime prefix.</p>
+<p>源输入如果被词法解释为非原始生命周期（或<a href="#关键字">关键字</a>），且紧跟<code>#</code>字符（无中间空白），则被识别为保留生命周期前缀。</p>
 <div class="rule" id="r-lex.token.reserved-prefix.edition2021"><a class="rule-link" href="#r-lex.token.reserved-prefix.edition2021" title="lex.token.reserved-prefix.edition2021"><span>[lex<wbr>.token<wbr>.reserved-prefix<wbr>.edition2021]</span></a>
 </div>
 
@@ -6602,19 +6608,19 @@ IDENTIFIER_OR_KEYWORD</text>
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2021</span> 版次差异</p>
 
-<p>Starting with the 2021 edition, reserved prefixes are reported as an error by the lexer (in particular, they cannot be passed to macros).</p>
-<p>Before the 2021 edition, reserved prefixes are accepted by the lexer and interpreted as multiple tokens (for example, one token for the identifier or keyword, followed by a <code>#</code> token).</p>
-<p>Examples accepted in all editions:</p>
+<p>从2021版次开始，词法分析器会将保留前缀报告为错误（特别是，它们不能传递给宏）。</p>
+<p>在2021版次之前，词法分析器会接受保留前缀，并将其解释为多个词法单元（例如，<a href="#标识符">标识符</a>或<a href="#关键字">关键字</a>的一个词法单元，后跟一个<code>#</code>词法单元）。</p>
+<p>所有版次都接受的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! lexes {($($_:tt)*) =&gt; {}}
 lexes!{a #foo}
 lexes!{continue 'foo}
 lexes!{match "..." {}}
-lexes!{r#let#foo}         // three tokens: r#let # foo
+lexes!{r#let#foo}         // 三个词法单元: r#let # foo
 lexes!{'prefix #lt}
 <span class="boring">}</span></code></pre>
-<p>Examples accepted before the 2021 edition but rejected later:</p>
+<p>在2021版次之前接受但之后被拒绝的示例：</p>
 <pre class="playground"><code class="language-rust edition2018"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! lexes {($($_:tt)*) =&gt; {}}
@@ -6629,7 +6635,7 @@ lexes!{'prefix#lt}
 <div class="rule" id="r-lex.token.reserved-guards"><a class="rule-link" href="#r-lex.token.reserved-guards" title="lex.token.reserved-guards"><span>[lex<wbr>.token<wbr>.reserved-guards]</span></a>
 </div>
 
-<h2 id="reserved-guards"><a class="header" href="#reserved-guards">Reserved guards</a></h2>
+<h2 id="保留的守卫"><a class="header" href="#保留的守卫">保留的守卫</a></h2>
 <div class="rule" id="r-lex.token.reserved-guards.syntax"><a class="rule-link" href="#r-lex.token.reserved-guards.syntax" title="lex.token.reserved-guards.syntax"><span>[lex<wbr>.token<wbr>.reserved-guards<wbr>.syntax]</span></a>
 </div>
 
@@ -6717,15 +6723,15 @@ RESERVED_POUNDS</text>
 <div class="rule" id="r-lex.token.reserved-guards.intro"><a class="rule-link" href="#r-lex.token.reserved-guards.intro" title="lex.token.reserved-guards.intro"><span>[lex<wbr>.token<wbr>.reserved-guards<wbr>.intro]</span></a>
 </div>
 
-<p>The reserved guards are syntax reserved for future use, and will generate a compile error if used.</p>
+<p>保留的守卫是为将来使用而保留的语法格式，如果使用，将生成编译错误。</p>
 <div class="rule" id="r-lex.token.reserved-guards.string-literal"><a class="rule-link" href="#r-lex.token.reserved-guards.string-literal" title="lex.token.reserved-guards.string-literal"><span>[lex<wbr>.token<wbr>.reserved-guards<wbr>.string-literal]</span></a>
 </div>
 
-<p>The <em>reserved guarded string literal</em> is a token of one or more <code>U+0023</code> (<code>#</code>) immediately followed by a <a href="#grammar-STRING_LITERAL">STRING_LITERAL</a>.</p>
+<p><em>保留的带守卫字符串字面量</em>是一个词法单元，由一个或多个<code>U+0023</code>（<code>#</code>）紧接着一个<a href="#grammar-STRING_LITERAL">STRING_LITERAL</a>组成。</p>
 <div class="rule" id="r-lex.token.reserved-guards.pounds"><a class="rule-link" href="#r-lex.token.reserved-guards.pounds" title="lex.token.reserved-guards.pounds"><span>[lex<wbr>.token<wbr>.reserved-guards<wbr>.pounds]</span></a>
 </div>
 
-<p>The <em>reserved pounds</em> is a token of two or more <code>U+0023</code> (<code>#</code>).</p>
+<p><em>保留的井号</em>是一个由两个或更多<code>U+0023</code>（<code>#</code>）组成的词法单元。</p>
 <div class="rule" id="r-lex.token.reserved-guards.edition2024"><a class="rule-link" href="#r-lex.token.reserved-guards.edition2024" title="lex.token.reserved-guards.edition2024"><span>[lex<wbr>.token<wbr>.reserved-guards<wbr>.edition2024]</span></a>
 </div>
 
@@ -6733,20 +6739,20 @@ RESERVED_POUNDS</text>
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2024</span> 版次差异</p>
 
-<p>Before the 2024 edition, reserved guards are accepted by the lexer and interpreted as multiple tokens. For example, the <code>#"foo"#</code> form is interpreted as three tokens. <code>##</code> is interpreted as two tokens.</p>
+<p>在2024版次之前，词法分析器会接受保留的守卫，并将其解释为多个词法单元。例如，<code>#"foo"#</code>形式被解释为三个词法单元。<code>##</code>被解释为两个词法单元。</p>
 </blockquote>
 </div>
 
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-nsets">
-<p>The number of <code>#</code>s on each side of the same literal must be equivalent. <a href="#fr-nsets-1">↩</a></p>
+<p>相同字面量两侧<code>#</code>的数量必须相等。 <a href="#fr-nsets-1">↩</a></p>
 </li>
 <li id="footnote-nl">
-<p>All number literals allow <code>_</code> as a visual separator: <code>1_234.0E+18f64</code> <a href="#fr-nl-1">↩</a></p>
+<p>所有数字字面量都允许使用<code>_</code>作为视觉分隔符：<code>1_234.0E+18f64</code> <a href="#fr-nl-1">↩</a></p>
 </li>
 <li id="footnote-valid-hex-char">
-<p>See <a href="#r-lex.token.literal.char-escape.unicode">lex.token.literal.char-escape.unicode</a>. <a href="#fr-valid-hex-char-1">↩</a></p>
+<p>参阅<a href="#r-lex.token.literal.char-escape.unicode">lex.token.literal.char-escape.unicode</a>。 <a href="#fr-valid-hex-char-1">↩</a></p>
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -8105,7 +8111,7 @@ fragment of the kind specified and binds it to the metavariable <code>$</code><e
 <li><code>pat_param</code>: a <a href="#grammar-PatternNoTopAlt">PatternNoTopAlt</a></li>
 <li><code>path</code>: a <a href="#grammar-TypePath">TypePath</a> style path</li>
 <li><code>stmt</code>: a <a href="#grammar-Statement">Statement</a> without the trailing semicolon (except for item statements that require semicolons)</li>
-<li><code>tt</code>: a <a href="#grammar-TokenTree">TokenTree</a> (a single <a href="#tokens">token</a> or tokens in matching delimiters <code>()</code>, <code>[]</code>, or <code>{}</code>)</li>
+<li><code>tt</code>: a <a href="#grammar-TokenTree">TokenTree</a> (a single <a href="#词法单元">token</a> or tokens in matching delimiters <code>()</code>, <code>[]</code>, or <code>{}</code>)</li>
 <li><code>ty</code>: a <a href="#grammar-Type">Type</a></li>
 <li><code>vis</code>: a possibly empty <a href="#grammar-Visibility">Visibility</a> qualifier</li>
 </ul>
@@ -8358,7 +8364,7 @@ m!(); // prints "m\n"
 
 <p>By default, a macro has no path-based scope. Macros can gain path-based scope in two ways:</p>
 <ul>
-<li><a href="#use-visibility">Use declaration re-export</a></li>
+<li><a href="#use可见性">Use declaration re-export</a></li>
 <li><a href="#the-macro_export-attribute"><code>macro_export</code></a></li>
 </ul>
 <div class="rule" id="r-macro.decl.scope.path.reexport"><a class="rule-link" href="#r-macro.decl.scope.path.reexport" title="macro.decl.scope.path.reexport"><span>[macro<wbr>.decl<wbr>.scope<wbr>.path<wbr>.reexport]</span></a>
@@ -9699,7 +9705,7 @@ apply to the crate as a whole.</p>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The file’s contents may be preceded by a <a href="#shebang-removal">shebang</a>.</p>
+<p>The file’s contents may be preceded by a <a href="#shebang移除">shebang</a>.</p>
 </blockquote>
 </div>
 
@@ -11698,7 +11704,7 @@ _</text>
 <div class="rule" id="r-items.extern-crate.namespace"><a class="rule-link" href="#r-items.extern-crate.namespace" title="items.extern-crate.namespace"><span>[items<wbr>.extern-crate<wbr>.namespace]</span></a>
 </div>
 
-<p>The external crate is then bound into the declaring scope as the given <a href="#identifiers">identifier</a> in the <a href="#namespaces">type namespace</a>.</p>
+<p>The external crate is then bound into the declaring scope as the given <a href="#标识符">identifier</a> in the <a href="#namespaces">type namespace</a>.</p>
 <div class="rule" id="r-items.extern-crate.extern-prelude"><a class="rule-link" href="#r-items.extern-crate.extern-prelude" title="items.extern-crate.extern-prelude"><span>[items<wbr>.extern-crate<wbr>.extern-prelude]</span></a>
 </div>
 
@@ -11716,7 +11722,7 @@ loading at runtime. The <code>soname</code> is resolved at compile time by scann
 compiler’s library path and matching the optional <code>crate_name</code> provided against
 the <a href="#the-crate_name-attribute"><code>crate_name</code> attributes</a> that were declared on the external crate when it was
 compiled. If no <code>crate_name</code> is provided, a default <code>name</code> attribute is assumed,
-equal to the <a href="#identifiers">identifier</a> given in the <code>extern crate</code> declaration.</p>
+equal to the <a href="#标识符">identifier</a> given in the <code>extern crate</code> declaration.</p>
 <div class="rule" id="r-items.extern-crate.self"><a class="rule-link" href="#r-items.extern-crate.self" title="items.extern-crate.self"><span>[items<wbr>.extern-crate<wbr>.self]</span></a>
 </div>
 
@@ -11825,8 +11831,8 @@ other_crate::some_macro!();</code></pre>
 <div class="grammar-container">
 <p><strong><sup>Syntax</sup></strong>
 <br>
-<span class="grammar-text grammar-production" id="grammar-UseDeclaration" onclick="show_railroad()"><a href="#railroad-UseDeclaration">UseDeclaration</a></span> → <span class="grammar-literal">use</span> <span class="grammar-text"><a href="items/use-declarations.orig.html#grammar-UseTree">UseTree</a></span> <span class="grammar-literal">;</span></p>
-<p><span class="grammar-text grammar-production" id="grammar-UseTree" onclick="show_railroad()"><a href="items/use-declarations.orig.html#railroad-UseTree">UseTree</a></span> → <br>      ( <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span><sup>?</sup> <span class="grammar-literal">::</span> )<sup>?</sup> <span class="grammar-literal">*</span> <br>    | ( <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span><sup>?</sup> <span class="grammar-literal">::</span> )<sup>?</sup> <span class="grammar-literal">{</span> ( <span class="grammar-text"><a href="items/use-declarations.orig.html#grammar-UseTree">UseTree</a></span> ( <span class="grammar-literal">,</span> <span class="grammar-text"><a href="items/use-declarations.orig.html#grammar-UseTree">UseTree</a></span> )<sup>*</sup> <span class="grammar-literal">,</span><sup>?</sup> )<sup>?</sup> <span class="grammar-literal">}</span> <br>    | <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span> ( <span class="grammar-literal">as</span> ( <span class="grammar-text"><a href="#grammar-IDENTIFIER">IDENTIFIER</a></span> | <span class="grammar-literal">_</span> ) )<sup>?</sup></p>
+<span class="grammar-text grammar-production" id="grammar-UseDeclaration" onclick="show_railroad()"><a href="#railroad-UseDeclaration">UseDeclaration</a></span> → <span class="grammar-literal">use</span> <span class="grammar-text"><a href="#grammar-UseTree">UseTree</a></span> <span class="grammar-literal">;</span></p>
+<p><span class="grammar-text grammar-production" id="grammar-UseTree" onclick="show_railroad()"><a href="#railroad-UseTree">UseTree</a></span> → <br>      ( <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span><sup>?</sup> <span class="grammar-literal">::</span> )<sup>?</sup> <span class="grammar-literal">*</span> <br>    | ( <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span><sup>?</sup> <span class="grammar-literal">::</span> )<sup>?</sup> <span class="grammar-literal">{</span> ( <span class="grammar-text"><a href="#grammar-UseTree">UseTree</a></span> ( <span class="grammar-literal">,</span> <span class="grammar-text"><a href="#grammar-UseTree">UseTree</a></span> )<sup>*</sup> <span class="grammar-literal">,</span><sup>?</sup> )<sup>?</sup> <span class="grammar-literal">}</span> <br>    | <span class="grammar-text"><a href="#grammar-SimplePath">SimplePath</a></span> ( <span class="grammar-literal">as</span> ( <span class="grammar-text"><a href="#grammar-IDENTIFIER">IDENTIFIER</a></span> | <span class="grammar-literal">_</span> ) )<sup>?</sup></p>
 <p><button class="grammar-toggle-railroad" type="button" title="Toggle railroad display" onclick="toggle_railroad()">Show Railroad</button></p>
 </div>
 
@@ -11846,7 +11852,7 @@ UseDeclaration</text>
 <text x="57" y="58">
 use</text>
 </g>
-<a class="link" xlink:href="items/use-declarations.orig.html#railroad-UseTree">
+<a class="link" xlink:href="#railroad-UseTree">
 <g class="nonterminal">
 <rect height="22" width="76" x="89" y="42" />
 <text x="127" y="58">
@@ -11872,7 +11878,7 @@ UseTree</text>
 <div style="width: 852px; height: auto; max-width: 100%; max-height: 100%" class="railroad-production" id="railroad-UseTree"><svg class="railroad" viewbox="0 0 852 247" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect class="railroad_canvas" height="100%" width="100%" />
 <g class="verticalgrid">
-<a class="link" xlink:href="items/use-declarations.orig.html#grammar-UseTree">
+<a class="link" xlink:href="#grammar-UseTree">
 <text class="comment" x="39" y="25">
 UseTree</text>
 </a>
@@ -11942,7 +11948,7 @@ SimplePath</text>
 <g class="optional">
 <path d=" M 349 135 h 24 m -24 0 a 12 12 0 0 0 12 -12 v -12 a 12 12 0 0 1 12 -12 h 358 m -176 0 l -5 -5 m 0 10 l 5 -5 m 176 0 a 12 12 0 0 1 12 12 v 12 a 12 12 0 0 0 12 12 h -24" />
 <g class="sequence">
-<a class="link" xlink:href="items/use-declarations.orig.html#railroad-UseTree">
+<a class="link" xlink:href="#railroad-UseTree">
 <g class="nonterminal">
 <rect height="22" width="76" x="373" y="124" />
 <text x="411" y="140">
@@ -11960,7 +11966,7 @@ UseTree</text>
 <text x="509" y="140">
 ,</text>
 </g>
-<a class="link" xlink:href="items/use-declarations.orig.html#railroad-UseTree">
+<a class="link" xlink:href="#railroad-UseTree">
 <g class="nonterminal">
 <rect height="22" width="76" x="533" y="124" />
 <text x="571" y="140">
@@ -15574,7 +15580,7 @@ const _: () =  { struct _SameNameTwice; };
 <div class="rule" id="r-items.const.unnamed.repetition"><a class="rule-link" href="#r-items.const.unnamed.repetition" title="items.const.unnamed.repetition"><span>[items<wbr>.const<wbr>.unnamed<wbr>.repetition]</span></a>
 </div>
 
-<p>As with <a href="#underscore-imports">underscore imports</a>, macros may safely emit the same unnamed constant in
+<p>As with <a href="#下划线导入">underscore imports</a>, macros may safely emit the same unnamed constant in
 the same scope more than once. For example, the following should not produce an error:</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -20701,7 +20707,7 @@ object file.</li>
 <p>Documentation</p>
 <ul>
 <li><code>doc</code> — Specifies documentation. See <a href="../rustdoc/the-doc-attribute.html">The Rustdoc Book</a> for more
-information. <a href="#doc-comments">Doc comments</a> are transformed into <code>doc</code> attributes.</li>
+information. <a href="#文档注释">Doc comments</a> are transformed into <code>doc</code> attributes.</li>
 </ul>
 </li>
 <li>
@@ -22737,7 +22743,7 @@ fn f() {
 </blockquote>
 </div>
 
-<h4 id="examples-2"><a class="header" href="#examples-2">Examples</a></h4>
+<h4 id="examples"><a class="header" href="#examples">Examples</a></h4>
 <p>When <code>f</code> is called directly by <code>calls_f</code>, code in <code>f</code> observes its callsite within <code>calls_f</code>:</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -25045,7 +25051,7 @@ false</text>
 <div class="rule" id="r-expr.literal.literal-token"><a class="rule-link" href="#r-expr.literal.literal-token" title="expr.literal.literal-token"><span>[expr<wbr>.literal<wbr>.literal-token]</span></a>
 </div>
 
-<p>Each of the lexical <a href="#literals">literal</a> forms described earlier can make up a literal expression, as can the keywords <code>true</code> and <code>false</code>.</p>
+<p>Each of the lexical <a href="#字面量">literal</a> forms described earlier can make up a literal expression, as can the keywords <code>true</code> and <code>false</code>.</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>"hello";   // string type
@@ -25130,7 +25136,7 @@ false</text>
 <div class="rule" id="r-expr.literal.escape.unicode"><a class="rule-link" href="#r-expr.literal.escape.unicode" title="expr.literal.escape.unicode"><span>[expr<wbr>.literal<wbr>.escape<wbr>.unicode]</span></a>
 </div>
 
-<h3 id="unicode-escapes-1"><a class="header" href="#unicode-escapes-1">Unicode escapes</a></h3>
+<h3 id="unicode-escapes"><a class="header" href="#unicode-escapes">Unicode escapes</a></h3>
 <p>The escape sequence consists of <code>\u{</code>, followed by a sequence of characters each of which is a hexadecimal digit or <code>_</code>, followed by <code>}</code>.</p>
 <p>The escaped value is the character whose <a href="http://www.unicode.org/glossary/#unicode_scalar_value">Unicode scalar value</a> is the result of interpreting the hexadecimal digits contained in the escape sequence as a hexadecimal integer, as if by <a href="../std/primitive.u32.html#method.from_str_radix"><code>u32::from_str_radix</code></a> with radix 16.</p>
 <div class="alert alert-note">
@@ -25201,7 +25207,7 @@ assert_eq!(b, c);
 <ul>
 <li><a href="#simple-escapes">Simple escapes</a></li>
 <li><a href="#7-bit-escapes">7-bit escapes</a></li>
-<li><a href="#unicode-escapes-1">Unicode escapes</a></li>
+<li><a href="#unicode-escapes">Unicode escapes</a></li>
 </ul>
 </li>
 </ul>
@@ -25265,7 +25271,7 @@ That is, the type is <code>&amp;'static str</code>.</p>
 <ul>
 <li><a href="#simple-escapes">Simple escapes</a></li>
 <li><a href="#7-bit-escapes">7-bit escapes</a></li>
-<li><a href="#unicode-escapes-1">Unicode escapes</a></li>
+<li><a href="#unicode-escapes">Unicode escapes</a></li>
 <li><a href="#string-continuation-escapes">String continuation escapes</a></li>
 </ul>
 <p>These replacements take place in left-to-right order.
@@ -25460,7 +25466,7 @@ The sequence of items is converted to a sequence of bytes as follows:
 <li>Each single Unicode character contributes its UTF-8 representation.</li>
 <li>Each <a href="#simple-escapes">simple escape</a> contributes the <a href="http://www.unicode.org/glossary/#unicode_scalar_value">Unicode scalar value</a> of its escaped value.</li>
 <li>Each <a href="#8-bit-escapes">8-bit escape</a> contributes a single byte containing the <a href="http://www.unicode.org/glossary/#unicode_scalar_value">Unicode scalar value</a> of its escaped value.</li>
-<li>Each <a href="#unicode-escapes-1">unicode escape</a> contributes the UTF-8 representation of its escaped value.</li>
+<li>Each <a href="#unicode-escapes">unicode escape</a> contributes the UTF-8 representation of its escaped value.</li>
 <li>Each <a href="#string-continuation-escapes">string continuation escape</a> contributes no bytes.</li>
 </ul>
 </li>
@@ -25513,7 +25519,7 @@ c"\u{00E6}".to_bytes();              // [195, 166]
 <div class="rule" id="r-expr.literal.int.suffix"><a class="rule-link" href="#r-expr.literal.int.suffix" title="expr.literal.int.suffix"><span>[expr<wbr>.literal<wbr>.int<wbr>.suffix]</span></a>
 </div>
 
-<p>If the token has a <a href="#suffixes">suffix</a>, the suffix must be the name of one of the <a href="#numeric-types">primitive integer types</a>: <code>u8</code>, <code>i8</code>, <code>u16</code>, <code>i16</code>, <code>u32</code>, <code>i32</code>, <code>u64</code>, <code>i64</code>, <code>u128</code>, <code>i128</code>, <code>usize</code>, or <code>isize</code>, and the expression has that type.</p>
+<p>If the token has a <a href="#后缀">suffix</a>, the suffix must be the name of one of the <a href="#numeric-types">primitive integer types</a>: <code>u8</code>, <code>i8</code>, <code>u16</code>, <code>i16</code>, <code>u32</code>, <code>i32</code>, <code>u64</code>, <code>i64</code>, <code>u128</code>, <code>i128</code>, <code>usize</code>, or <code>isize</code>, and the expression has that type.</p>
 <div class="rule" id="r-expr.literal.int.infer"><a class="rule-link" href="#r-expr.literal.int.infer" title="expr.literal.int.infer"><span>[expr<wbr>.literal<wbr>.int<wbr>.infer]</span></a>
 </div>
 
@@ -25636,7 +25642,7 @@ If the value does not fit in <code>u128</code>, it is a compiler error.</li>
 <div class="rule" id="r-expr.literal.float.suffix"><a class="rule-link" href="#r-expr.literal.float.suffix" title="expr.literal.float.suffix"><span>[expr<wbr>.literal<wbr>.float<wbr>.suffix]</span></a>
 </div>
 
-<p>If the token has a <a href="#suffixes">suffix</a>, the suffix must be the name of one of the <a href="#floating-point-types">primitive floating-point types</a>: <code>f32</code> or <code>f64</code>, and the expression has that type.</p>
+<p>If the token has a <a href="#后缀">suffix</a>, the suffix must be the name of one of the <a href="#floating-point-types">primitive floating-point types</a>: <code>f32</code> or <code>f64</code>, and the expression has that type.</p>
 <div class="rule" id="r-expr.literal.float.infer"><a class="rule-link" href="#r-expr.literal.float.infer" title="expr.literal.float.infer"><span>[expr<wbr>.literal<wbr>.float<wbr>.infer]</span></a>
 </div>
 
@@ -29263,7 +29269,7 @@ Array expressions come in two forms.</p>
 <div class="rule" id="r-expr.array.length-restriction"><a class="rule-link" href="#r-expr.array.length-restriction" title="expr.array.length-restriction"><span>[expr<wbr>.array<wbr>.length-restriction]</span></a>
 </div>
 
-<p>The length operand must either be an <a href="#r-items.generics.const.inferred">inferred const</a> or be a <a href="#constant-expressions">constant expression</a> of type <code>usize</code> (e.g. a <a href="#literals">literal</a> or a <a href="#constant-items">constant item</a>).</p>
+<p>The length operand must either be an <a href="#r-items.generics.const.inferred">inferred const</a> or be a <a href="#constant-expressions">constant expression</a> of type <code>usize</code> (e.g. a <a href="#字面量">literal</a> or a <a href="#constant-items">constant item</a>).</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>const C: usize = 1;
@@ -29633,7 +29639,7 @@ TUPLE_INDEX</text>
 <div class="rule" id="r-expr.tuple-index.index-syntax"><a class="rule-link" href="#r-expr.tuple-index.index-syntax" title="expr.tuple-index.index-syntax"><span>[expr<wbr>.tuple-index<wbr>.index-syntax]</span></a>
 </div>
 
-<p>The syntax for the <em>tuple index</em> is a <a href="#integer-literals">decimal literal</a> with no leading zeros, underscores, or suffix.
+<p>The syntax for the <em>tuple index</em> is a <a href="#整数字面量">decimal literal</a> with no leading zeros, underscores, or suffix.
 For example <code>0</code> and <code>2</code> are valid tuple indices but not <code>01</code>, <code>0_</code>, nor <code>0i32</code>.</p>
 <div class="rule" id="r-expr.tuple-index.required-type"><a class="rule-link" href="#r-expr.tuple-index.required-type" title="expr.tuple-index.required-type"><span>[expr<wbr>.tuple-index<wbr>.required-type]</span></a>
 </div>
@@ -30578,7 +30584,7 @@ IDENTIFIER</text>
 <div class="rule" id="r-expr.field.form"><a class="rule-link" href="#r-expr.field.form" title="expr.field.form"><span>[expr<wbr>.field<wbr>.form]</span></a>
 </div>
 
-<p>The syntax for a field expression is an expression, called the <em>container operand</em>, then a <code>.</code>, and finally an <a href="#identifiers">identifier</a>.</p>
+<p>The syntax for a field expression is an expression, called the <em>container operand</em>, then a <code>.</code>, and finally an <a href="#标识符">identifier</a>.</p>
 <div class="rule" id="r-expr.field.not-method-call"><a class="rule-link" href="#r-expr.field.not-method-call" title="expr.field.not-method-call"><span>[expr<wbr>.field<wbr>.not-method-call]</span></a>
 </div>
 
@@ -41995,7 +42001,7 @@ expressions considered thus far have implicit coercions.)</li>
 <ul>
 <li>If not, try to compute a mutual supertype of <code>T_t</code> and <code>Ti</code>, which will become the new target type.</li>
 </ul>
-<h3 id="examples-3"><a class="header" href="#examples-3">Examples:</a></h3>
+<h3 id="examples-1"><a class="header" href="#examples-1">Examples:</a></h3>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let (a, b, c) = (0, 1, 2);
@@ -42664,7 +42670,7 @@ are all extending expressions. The borrows in <code>&amp;0 + &amp;1</code> and <
 </blockquote>
 </div>
 
-<h4 id="examples-4"><a class="header" href="#examples-4">Examples</a></h4>
+<h4 id="examples-2"><a class="header" href="#examples-2">Examples</a></h4>
 <p>Here are some examples where expressions have extended temporary scopes:</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -43379,7 +43385,7 @@ though normally only one trait is allowed. For instance, <code>Box&lt;dyn Debug 
 
 <p>An <em>entity</em> is a language construct that can be referred to in some way within
 the source program, usually via a <a href="#paths">path</a>. Entities include <a href="#types">types</a>, <a href="#items">items</a>,
-<a href="#generic-parameters">generic parameters</a>, <a href="#patterns">variable bindings</a>, <a href="#loop-labels">loop labels</a>, <a href="#lifetimes-and-loop-labels">lifetimes</a>,
+<a href="#generic-parameters">generic parameters</a>, <a href="#patterns">variable bindings</a>, <a href="#loop-labels">loop labels</a>, <a href="#生命周期和循环标签">lifetimes</a>,
 <a href="#field-access-expressions">fields</a>, <a href="#attributes-1">attributes</a>, and <a href="#lint-check-attributes">lints</a>.</p>
 <p>A <em>declaration</em> is a syntactical construct that can introduce a <em>name</em> to
 refer to an entity. Entity names are valid within a <a href="#scopes"><em>scope</em></a> — a region of
@@ -43388,7 +43394,7 @@ source text where that name may be referenced.</p>
 source code, and some are <a href="#implicitly-declared-entities">implicitly declared</a>
 as part of the language or compiler extensions.</p>
 <p><a href="#paths"><em>Paths</em></a> are used to refer to an entity, possibly in another module or type.</p>
-<p>Lifetimes and loop labels use a <a href="#lifetimes-and-loop-labels">dedicated syntax</a> using a
+<p>Lifetimes and loop labels use a <a href="#生命周期和循环标签">dedicated syntax</a> using a
 leading quote.</p>
 <p>Names are segregated into different <a href="#namespaces"><em>namespaces</em></a>, allowing entities in
 different namespaces to share the same name without conflict.</p>
@@ -43544,7 +43550,7 @@ introduced by compiler options and extensions:</p>
 </div>
 
 <ul>
-<li>The <a href="#weak-keywords"><code>'static</code></a> lifetime</li>
+<li>The <a href="#弱关键字"><code>'static</code></a> lifetime</li>
 </ul>
 <div class="rule" id="r-names.implicit.root"><a class="rule-link" href="#r-names.implicit.root" title="names.implicit.root"><span>[names<wbr>.implicit<wbr>.root]</span></a>
 </div>
@@ -51971,7 +51977,7 @@ static GLOBAL: MyAllocator = MyAllocator;
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="syntax-index"><a class="header" href="#syntax-index">Syntax index</a></h1>
 <p>This appendix provides an index of tokens and common forms with links to where those elements are defined.</p>
-<h2 id="keywords-1"><a class="header" href="#keywords-1">Keywords</a></h2>
+<h2 id="keywords"><a class="header" href="#keywords">Keywords</a></h2>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -52094,7 +52100,7 @@ static GLOBAL: MyAllocator = MyAllocator;
 </tbody>
 </table>
 </div>
-<h2 id="comments-1"><a class="header" href="#comments-1">Comments</a></h2>
+<h2 id="comments"><a class="header" href="#comments">Comments</a></h2>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -52893,8 +52899,8 @@ root, including through <a href="#paths">paths</a> of public modules.
 <h3 id="entity"><a class="header" href="#entity">Entity</a></h3>
 <p>An <a href="#names"><em>entity</em></a> is a language construct that can be referred to in some way
 within the source program, usually via a <a href="#paths">path</a>. Entities include
-<a href="#types">types</a>, <a href="#items">items</a>, <a href="#generic-parameters">generic parameters</a>, <a href="#patterns">variable bindings</a>, <a href="#lifetimes-and-loop-labels">loop labels</a>,
-<a href="#lifetimes-and-loop-labels">lifetimes</a>, <a href="#field-access-expressions">fields</a>, <a href="#attributes-1">attributes</a>, and <a href="#lint-check-attributes">lints</a>.</p>
+<a href="#types">types</a>, <a href="#items">items</a>, <a href="#generic-parameters">generic parameters</a>, <a href="#patterns">variable bindings</a>, <a href="#生命周期和循环标签">loop labels</a>,
+<a href="#生命周期和循环标签">lifetimes</a>, <a href="#field-access-expressions">fields</a>, <a href="#attributes-1">attributes</a>, and <a href="#lint-check-attributes">lints</a>.</p>
 <h3 id="expression"><a class="header" href="#expression">Expression</a></h3>
 <p>An expression is a combination of values, constants, variables, operators
 and functions that evaluate to a single value, with or without side-effects.</p>
@@ -52942,13 +52948,13 @@ root module. <a href="#paths">Paths</a> may be used to refer to items from other
 may be restricted by <a href="#visibility-and-privacy">visibility rules</a>.
 <a href="#modules">More</a></p>
 <h3 id="name"><a class="header" href="#name">Name</a></h3>
-<p>A <a href="#names"><em>name</em></a> is an <a href="#identifiers">identifier</a> or <a href="#lifetimes-and-loop-labels">lifetime or loop label</a> that refers to an
+<p>A <a href="#names"><em>name</em></a> is an <a href="#标识符">identifier</a> or <a href="#生命周期和循环标签">lifetime or loop label</a> that refers to an
 <a href="#entity">entity</a>. A <em>name binding</em> is when an entity declaration introduces
 an identifier or label associated with that entity. <a href="#paths">Paths</a>,
 identifiers, and labels are used to refer to an entity.</p>
 <h3 id="name-resolution-1"><a class="header" href="#name-resolution-1">Name resolution</a></h3>
 <p><a href="#name-resolution"><em>Name resolution</em></a> is the compile-time process of tying <a href="#paths">paths</a>,
-<a href="#identifiers">identifiers</a>, and <a href="#lifetimes-and-loop-labels">labels</a> to <a href="#entity">entity</a> declarations.</p>
+<a href="#标识符">identifiers</a>, and <a href="#生命周期和循环标签">labels</a> to <a href="#entity">entity</a> declarations.</p>
 <h3 id="namespace"><a class="header" href="#namespace">Namespace</a></h3>
 <p>A <em>namespace</em> is a logical grouping of declared <a href="#name">names</a> based on the
 kind of <a href="#entity">entity</a> the name refers to. Namespaces allow the occurrence

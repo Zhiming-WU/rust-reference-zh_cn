@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-59569cd7.js";
+            window.path_to_searchindex_js = "searchindex-be2adbd7.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -181,10 +181,12 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-ident"><a class="rule-link" href="#r-ident" title="ident"><span>[ident]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/identifiers.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-ident"><a class="rule-link" href="#r-ident" title="ident"><span>[ident]</span></a>
 </div>
 
-<h1 id="identifiers"><a class="header" href="#identifiers">Identifiers</a></h1>
+<h1 id="标识符"><a class="header" href="#标识符">标识符</a></h1>
 <div class="rule" id="r-ident.syntax"><a class="rule-link" href="#r-ident.syntax" title="ident.syntax"><span>[ident<wbr>.syntax]</span></a>
 </div>
 
@@ -468,7 +470,7 @@ super</text>
 <div class="rule" id="r-ident.unicode"><a class="rule-link" href="#r-ident.unicode" title="ident.unicode"><span>[ident<wbr>.unicode]</span></a>
 </div>
 
-<p>Identifiers follow the specification in <a href="https://www.unicode.org/reports/tr31/tr31-41.html">Unicode Standard Annex #31</a> for Unicode version 16.0, with the additions described below. Some examples of identifiers:</p>
+<p>标识符遵循<a href="https://www.unicode.org/reports/tr31/tr31-41.html">Unicode标准附件#31</a>中针对Unicode 16.0版的规范，并增加了下述内容。一些标识符的例子：</p>
 <ul>
 <li><code>foo</code></li>
 <li><code>_identifier</code></li>
@@ -479,61 +481,61 @@ super</text>
 <div class="rule" id="r-ident.profile"><a class="rule-link" href="#r-ident.profile" title="ident.profile"><span>[ident<wbr>.profile]</span></a>
 </div>
 
-<p>The profile used from UAX #31 is:</p>
+<p>UAX #31中使用的概要是：</p>
 <ul>
-<li>Start := <a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Start%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Start</code></a>, plus the underscore character (U+005F)</li>
+<li>Start := <a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Start%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Start</code></a>，加上下划线字符(U+005F)</li>
 <li>Continue := <a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Continue%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Continue</code></a></li>
-<li>Medial := empty</li>
+<li>Medial := 空</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Identifiers starting with an underscore are typically used to indicate an identifier that is intentionally unused, and will silence the unused warning in <code>rustc</code>.</p>
+<p>以<code>_</code>开头的标识符通常用于表明一个有意不使用的标识符，并且会消除<code>rustc</code>中的未使用警告。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-ident.keyword"><a class="rule-link" href="#r-ident.keyword" title="ident.keyword"><span>[ident<wbr>.keyword]</span></a>
 </div>
 
-<p>Identifiers may not be a <a href="keywords.html#strict-keywords">strict</a> or <a href="keywords.html#reserved-keywords">reserved</a> keyword without the <code>r#</code> prefix described below in <a href="#raw-identifiers">raw identifiers</a>.</p>
+<p>标识符不能是<a href="keywords.html#严格关键字">严格</a>或<a href="keywords.html#保留关键字">保留</a>关键字，除非带上下述<a href="#raw-identifiers">原始标识符</a>中描述的<code>r#</code>前缀。</p>
 <div class="rule" id="r-ident.zero-width-chars"><a class="rule-link" href="#r-ident.zero-width-chars" title="ident.zero-width-chars"><span>[ident<wbr>.zero-width-chars]</span></a>
 </div>
 
-<p>Zero width non-joiner (ZWNJ U+200C) and zero width joiner (ZWJ U+200D) characters are not allowed in identifiers.</p>
+<p>零宽不连接符(ZWNJ U+200C)和零宽连接符(ZWJ U+200D)字符不允许出现在标识符中。</p>
 <div class="rule" id="r-ident.ascii-limitations"><a class="rule-link" href="#r-ident.ascii-limitations" title="ident.ascii-limitations"><span>[ident<wbr>.ascii-limitations]</span></a>
 </div>
 
-<p>Identifiers are restricted to the ASCII subset of <a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Start%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Start</code></a> and <a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Continue%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Continue</code></a> in the following situations:</p>
+<p>在以下情况，标识符被限制为<a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Start%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Start</code></a>和<a href="http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Continue%3A%5D&amp;abb=on&amp;g=&amp;i="><code>XID_Continue</code></a>的ASCII子集：</p>
 <ul>
-<li><a href="items/extern-crates.html"><code>extern crate</code></a> declarations (except the <a href="items/extern-crates.html#grammar-AsClause">AsClause</a> identifier)</li>
-<li>External crate names referenced in a <a href="paths.html">path</a></li>
-<li><a href="items/modules.html">Module</a> names loaded from the filesystem without a <a href="items/modules.html#the-path-attribute"><code>path</code> attribute</a></li>
-<li><a href="abi.html#the-no_mangle-attribute"><code>no_mangle</code></a> attributed items</li>
-<li>Item names in <a href="items/external-blocks.html">external blocks</a></li>
+<li><a href="items/extern-crates.html"><code>extern crate</code></a>声明（除了<a href="items/extern-crates.html#grammar-AsClause">AsClause</a>标识符）</li>
+<li>在<a href="paths.html">路径</a>中引用的外部crate名</li>
+<li>从文件系统加载而不带<a href="items/modules.html#the-path-attribute"><code>path</code>属性</a>的<a href="items/modules.html">模块</a>名</li>
+<li>带有<a href="abi.html#the-no_mangle-attribute"><code>no_mangle</code></a>属性的项</li>
+<li><a href="items/external-blocks.html">外部块</a>中的项名</li>
 </ul>
 <div class="rule" id="r-ident.normalization"><a class="rule-link" href="#r-ident.normalization" title="ident.normalization"><span>[ident<wbr>.normalization]</span></a>
 </div>
 
-<h2 id="normalization"><a class="header" href="#normalization">Normalization</a></h2>
-<p>Identifiers are normalized using Normalization Form C (NFC) as defined in <a href="https://www.unicode.org/reports/tr15/tr15-56.html">Unicode Standard Annex #15</a>. Two identifiers are equal if their NFC forms are equal.</p>
-<p><a href="procedural-macros.html">Procedural</a> and <a href="macros-by-example.html">declarative</a> macros receive normalized identifiers in their input.</p>
+<h2 id="规范化"><a class="header" href="#规范化">规范化</a></h2>
+<p>标识符使用规范化形式 C (NFC) 进行规范化，如<a href="https://www.unicode.org/reports/tr15/tr15-56.html">Unicode标准附件#15</a>中所定义。两个标识符在它们的 NFC 形式相等时才相等。</p>
+<p><a href="procedural-macros.html">过程</a>宏和<a href="macros-by-example.html">声明式</a>宏在它们的输入中接收规范化的标识符。</p>
 <div class="rule" id="r-ident.raw"><a class="rule-link" href="#r-ident.raw" title="ident.raw"><span>[ident<wbr>.raw]</span></a>
 </div>
 
-<h2 id="raw-identifiers"><a class="header" href="#raw-identifiers">Raw identifiers</a></h2>
+<h2 id="原始标识符"><a class="header" href="#原始标识符">原始标识符</a></h2>
 <div class="rule" id="r-ident.raw.intro"><a class="rule-link" href="#r-ident.raw.intro" title="ident.raw.intro"><span>[ident<wbr>.raw<wbr>.intro]</span></a>
 </div>
 
-<p>A raw identifier is like a normal identifier, but prefixed by <code>r#</code>. (Note that the <code>r#</code> prefix is not included as part of the actual identifier.)</p>
+<p>原始标识符类似于普通标识符，但带有<code>r#</code>前缀。（请注意，<code>r#</code>前缀不作为实际标识符的一部分。）</p>
 <div class="rule" id="r-ident.raw.allowed"><a class="rule-link" href="#r-ident.raw.allowed" title="ident.raw.allowed"><span>[ident<wbr>.raw<wbr>.allowed]</span></a>
 </div>
 
-<p>Unlike a normal identifier, a raw identifier may be any strict or reserved keyword except the ones listed above for <code>RAW_IDENTIFIER</code>.</p>
+<p>与普通标识符不同，原始标识符可以是任何<a href="keywords.html#严格关键字">严格</a>或<a href="keywords.html#保留关键字">保留</a>关键字，除了上面为<code>RAW_IDENTIFIER</code>列出的那些。</p>
 <div class="rule" id="r-ident.raw.reserved"><a class="rule-link" href="#r-ident.raw.reserved" title="ident.raw.reserved"><span>[ident<wbr>.raw<wbr>.reserved]</span></a>
 </div>
 
-<p>It is an error to use the <a href="identifiers.html#grammar-RESERVED_RAW_IDENTIFIER">RESERVED_RAW_IDENTIFIER</a> token.</p>
+<p>使用<a href="identifiers.html#grammar-RESERVED_RAW_IDENTIFIER">RESERVED_RAW_IDENTIFIER</a>词法单元是错误的。</p>
 
                     </main>
 

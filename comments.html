@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-59569cd7.js";
+            window.path_to_searchindex_js = "searchindex-be2adbd7.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -181,10 +181,12 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-comments"><a class="rule-link" href="#r-comments" title="comments"><span>[comments]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/comments.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-comments"><a class="rule-link" href="#r-comments" title="comments"><span>[comments]</span></a>
 </div>
 
-<h1 id="comments"><a class="header" href="#comments">Comments</a></h1>
+<h1 id="注释"><a class="header" href="#注释">注释</a></h1>
 <div class="rule" id="r-comments.syntax"><a class="rule-link" href="#r-comments.syntax" title="comments.syntax"><span>[comments<wbr>.syntax]</span></a>
 </div>
 
@@ -864,41 +866,41 @@ INNER_BLOCK_DOC</text>
 <div class="rule" id="r-comments.normal"><a class="rule-link" href="#r-comments.normal" title="comments.normal"><span>[comments<wbr>.normal]</span></a>
 </div>
 
-<h2 id="non-doc-comments"><a class="header" href="#non-doc-comments">Non-doc comments</a></h2>
-<p>Comments follow the general C++ style of line (<code>//</code>) and block (<code>/* ... */</code>) comment forms. Nested block comments are supported.</p>
+<h2 id="非文档注释"><a class="header" href="#非文档注释">非文档注释</a></h2>
+<p>注释遵循C++风格的单行注释（<code>//</code>）和块注释（<code>/* ... */</code>）形式。支持嵌套的块注释。</p>
 <div class="rule" id="r-comments.normal.tokenization"><a class="rule-link" href="#r-comments.normal.tokenization" title="comments.normal.tokenization"><span>[comments<wbr>.normal<wbr>.tokenization]</span></a>
 </div>
 
-<p>Non-doc comments are interpreted as a form of whitespace.</p>
+<p>非文档注释被解释为一种空白字符。</p>
 <div class="rule" id="r-comments.doc"><a class="rule-link" href="#r-comments.doc" title="comments.doc"><span>[comments<wbr>.doc]</span></a>
 </div>
 
-<h2 id="doc-comments"><a class="header" href="#doc-comments">Doc comments</a></h2>
+<h2 id="文档注释"><a class="header" href="#文档注释">文档注释</a></h2>
 <div class="rule" id="r-comments.doc.syntax"><a class="rule-link" href="#r-comments.doc.syntax" title="comments.doc.syntax"><span>[comments<wbr>.doc<wbr>.syntax]</span></a>
 </div>
 
-<p>Line doc comments beginning with exactly <em>three</em> slashes (<code>///</code>), and block doc comments (<code>/** ... */</code>), both outer doc comments, are interpreted as a special syntax for <a href="../rustdoc/the-doc-attribute.html"><code>doc</code> attributes</a>.</p>
+<p>以恰好_三_个斜杠（<code>///</code>）开头的行文档注释，以及块文档注释（<code>/** ... */</code>），这两种都是外部文档注释，被解释为<a href="https://doc.rust-lang.org/rustdoc/the-doc-attribute.html"><code>doc</code>属性</a>的一种特殊语法格式。</p>
 <div class="rule" id="r-comments.doc.attributes"><a class="rule-link" href="#r-comments.doc.attributes" title="comments.doc.attributes"><span>[comments<wbr>.doc<wbr>.attributes]</span></a>
 </div>
 
-<p>That is, they are equivalent to writing <code>#[doc="..."]</code> around the body of the comment, i.e., <code>/// Foo</code> turns into <code>#[doc="Foo"]</code> and <code>/** Bar */</code> turns into <code>#[doc="Bar"]</code>. They must therefore appear before something that accepts an outer attribute.</p>
+<p>也就是说，它们等价于在注释主体周围编写<code>#[doc="..."]</code>，例如，<code>/// Foo</code> 变为<code>#[doc="Foo"]</code>，<code>/** Bar */</code> 变为<code>#[doc="Bar"]</code>。因此，它们必须出现在接受外部属性的项之前。</p>
 <div class="rule" id="r-comments.doc.inner-syntax"><a class="rule-link" href="#r-comments.doc.inner-syntax" title="comments.doc.inner-syntax"><span>[comments<wbr>.doc<wbr>.inner-syntax]</span></a>
 </div>
 
-<p>Line comments beginning with <code>//!</code> and block comments <code>/*! ... */</code> are doc comments that apply to the parent of the comment, rather than the item that follows.</p>
+<p>以<code>//!</code>开头的行注释和<code>/*! ... */</code>块注释是文档注释，它们应用于注释的父级，而不是紧随其后的项。</p>
 <div class="rule" id="r-comments.doc.inner-attributes"><a class="rule-link" href="#r-comments.doc.inner-attributes" title="comments.doc.inner-attributes"><span>[comments<wbr>.doc<wbr>.inner-attributes]</span></a>
 </div>
 
-<p>That is, they are equivalent to writing <code>#![doc="..."]</code> around the body of the comment. <code>//!</code> comments are usually used to document modules that occupy a source file.</p>
+<p>也就是说，它们等价于在注释主体周围编写<code>#![doc="..."]</code>。<code>//!</code>注释通常用于文档化占据一个源文件的模块。</p>
 <div class="rule" id="r-comments.doc.bare-crs"><a class="rule-link" href="#r-comments.doc.bare-crs" title="comments.doc.bare-crs"><span>[comments<wbr>.doc<wbr>.bare-crs]</span></a>
 </div>
 
-<p>The character <code>U+000D</code> (CR) is not allowed in doc comments.</p>
+<p>字符<code>U+000D</code>(CR)不允许出现在文档注释中。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>It is conventional for doc comments to contain Markdown, as expected by <code>rustdoc</code>. However, the comment syntax does not respect any internal Markdown. <code>/** `glob = "*/*.rs";` */</code> terminates the comment at the first <code>*/</code>, and the remaining code would cause a syntax error. This slightly limits the content of block doc comments compared to line doc comments.</p>
+<p>按照惯例，文档注释包含Markdown，这是<code>rustdoc</code>所期望的。然而，注释语法格式不识别任何内部Markdown。<code>/** \</code>glob = “<em>/</em>.rs”;` <em>/<code> 会在第一个</code></em>/`处终止注释，其余代码将导致语法格式错误。与行文档注释相比，这稍微限制了块文档注释的内容。</p>
 </blockquote>
 </div>
 
@@ -906,38 +908,38 @@ INNER_BLOCK_DOC</text>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The sequence <code>U+000D</code> (CR) immediately followed by <code>U+000A</code> (LF) would have been previously transformed into a single <code>U+000A</code> (LF).</p>
+<p>序列<code>U+000D</code>(CR)紧跟<code>U+000A</code>(LF)在之前会被转换为单个<code>U+000A</code>(LF)。</p>
 </blockquote>
 </div>
 
-<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<h2 id="示例"><a class="header" href="#示例">示例</a></h2>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>//! A doc comment that applies to the implicit anonymous module of this crate
+</span>//! 适用于此crate的隐式匿名模块的文档注释
 
 pub mod outer_module {
 
-    //!  - Inner line doc
-    //!! - Still an inner line doc (but with a bang at the beginning)
+    //!  - 内部行级文档注释
+    //!! - 仍然是内部行级文档注释（但开头带感叹号）
 
-    /*!  - Inner block doc */
-    /*!! - Still an inner block doc (but with a bang at the beginning) */
+    /*!  - 内部块级文档注释 */
+    /*!! - 仍然是内部块级文档注释（但开头带感叹号） */
 
-    //   - Only a comment
-    ///  - Outer line doc (exactly 3 slashes)
-    //// - Only a comment
+    //   - 仅是普通注释
+    ///  - 外部行级文档注释（恰好三个斜杠）
+    //// - 仅是普通注释
 
-    /*   - Only a comment */
-    /**  - Outer block doc (exactly) 2 asterisks */
-    /*** - Only a comment */
+    /*   - 仅是普通注释 */
+    /**  - 外部块级文档注释（恰好两个星号） */
+    /*** - 仅是普通注释 */
 
     pub mod inner_module {}
 
     pub mod nested_comments {
-        /* In Rust /* we can /* nest comments */ */ */
+        /* 在 Rust 中 /* 我们可以 /* 嵌套注释 */ */ */
 
-        // All three types of block comments can contain or be nested inside
-        // any other type:
+        // 所有三种块级注释都可以包含或嵌套在
+        // 任何其他类型的注释中：
 
         /*   /* */  /** */  /*! */  */
         /*!  /* */  /** */  /*! */  */
@@ -946,32 +948,32 @@ pub mod outer_module {
     }
 
     pub mod degenerate_cases {
-        // empty inner line doc
+        // 空的内部行级文档注释
         //!
 
-        // empty inner block doc
+        // 空的内部块级文档注释
         /*!*/
 
-        // empty line comment
+        // 空的行级注释
         //
 
-        // empty outer line doc
+        // 空的外部行级文档注释
         ///
 
-        // empty block comment
+        // 空的块级注释
         /**/
 
         pub mod dummy_item {}
 
-        // empty 2-asterisk block isn't a doc block, it is a block comment
+        // 空的两个星号的块注释不是文档块，它是普通的块注释
         /***/
 
     }
 
-    /* The next one isn't allowed because outer doc comments
-       require an item that will receive the doc */
+    /* 下一个是不允许的，因为外部文档注释
+       需要一个接收文档的条目 */
 
-    /// Where is my item?
+    /// 我的条目在哪里？
 <span class="boring">  mod boo {}
 </span>}
 <span class="boring">}</span></code></pre>

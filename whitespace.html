@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-59569cd7.js";
+            window.path_to_searchindex_js = "searchindex-be2adbd7.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -181,20 +181,22 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-lex.whitespace"><a class="rule-link" href="#r-lex.whitespace" title="lex.whitespace"><span>[lex<wbr>.whitespace]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/whitespace.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-lex.whitespace"><a class="rule-link" href="#r-lex.whitespace" title="lex.whitespace"><span>[lex<wbr>.whitespace]</span></a>
 </div>
 
-<h1 id="whitespace"><a class="header" href="#whitespace">Whitespace</a></h1>
+<h1 id="空白字符"><a class="header" href="#空白字符">空白字符</a></h1>
 <div class="rule" id="r-whitespace.syntax"><a class="rule-link" href="#r-whitespace.syntax" title="whitespace.syntax"><span>[whitespace<wbr>.syntax]</span></a>
 </div>
 
 <div class="grammar-container">
 <p><strong><sup>Lexer</sup></strong>
 <br>
-<span class="grammar-text grammar-production" id="grammar-WHITESPACE" onclick="show_railroad()"><a href="whitespace.html#railroad-WHITESPACE">WHITESPACE</a></span> → <br>      U+0009 <span class="grammar-comment">//  Horizontal tab, <code>'\t'</code></span> <br>    | U+000A <span class="grammar-comment">//  Line feed, <code>'\n'</code></span> <br>    | U+000B <span class="grammar-comment">//  Vertical tab</span> <br>    | U+000C <span class="grammar-comment">//  Form feed</span> <br>    | U+000D <span class="grammar-comment">//  Carriage return, <code>'\r'</code></span> <br>    | U+0020 <span class="grammar-comment">//  Space, <code>' '</code></span> <br>    | U+0085 <span class="grammar-comment">//  Next line</span> <br>    | U+200E <span class="grammar-comment">//  Left-to-right mark</span> <br>    | U+200F <span class="grammar-comment">//  Right-to-left mark</span> <br>    | U+2028 <span class="grammar-comment">//  Line separator</span> <br>    | U+2029 <span class="grammar-comment">//  Paragraph separator</span></p>
-<p><span class="grammar-text grammar-production" id="grammar-TAB" onclick="show_railroad()"><a href="whitespace.html#railroad-TAB">TAB</a></span> → U+0009 <span class="grammar-comment">//  Horizontal tab, <code>'\t'</code></span></p>
-<p><span class="grammar-text grammar-production" id="grammar-LF" onclick="show_railroad()"><a href="whitespace.html#railroad-LF">LF</a></span> → U+000A <span class="grammar-comment">//  Line feed, <code>'\n'</code></span></p>
-<p><span class="grammar-text grammar-production" id="grammar-CR" onclick="show_railroad()"><a href="whitespace.html#railroad-CR">CR</a></span> → U+000D <span class="grammar-comment">//  Carriage return, <code>'\r'</code></span></p>
+<span class="grammar-text grammar-production" id="grammar-WHITESPACE" onclick="show_railroad()"><a href="whitespace.html#railroad-WHITESPACE">WHITESPACE</a></span> → <br>      U+0009 <span class="grammar-comment">//  水平制表符，<code>'\t'</code></span> <br>    | U+000A <span class="grammar-comment">//  换行符，<code>'\n'</code></span> <br>    | U+000B <span class="grammar-comment">//  垂直制表符</span> <br>    | U+000C <span class="grammar-comment">//  换页符</span> <br>    | U+000D <span class="grammar-comment">//  回车符，<code>'\r'</code></span> <br>    | U+0020 <span class="grammar-comment">//  空格，<code>' '</code></span> <br>    | U+0085 <span class="grammar-comment">//  下一行</span> <br>    | U+200E <span class="grammar-comment">//  从左到右标记</span> <br>    | U+200F <span class="grammar-comment">//  从右到左标记</span> <br>    | U+2028 <span class="grammar-comment">//  行分隔符</span> <br>    | U+2029 <span class="grammar-comment">//  段落分隔符</span></p>
+<p><span class="grammar-text grammar-production" id="grammar-TAB" onclick="show_railroad()"><a href="whitespace.html#railroad-TAB">TAB</a></span> → U+0009 <span class="grammar-comment">//  水平制表符，<code>'\t'</code></span></p>
+<p><span class="grammar-text grammar-production" id="grammar-LF" onclick="show_railroad()"><a href="whitespace.html#railroad-LF">LF</a></span> → U+000A <span class="grammar-comment">//  换行符，<code>'\n'</code></span></p>
+<p><span class="grammar-text grammar-production" id="grammar-CR" onclick="show_railroad()"><a href="whitespace.html#railroad-CR">CR</a></span> → U+000D <span class="grammar-comment">//  回车符，<code>'\r'</code></span></p>
 <p><button class="grammar-toggle-railroad" type="button" title="Toggle railroad display" onclick="toggle_railroad()">Show Railroad</button></p>
 </div>
 
@@ -393,15 +395,15 @@ U+000D</text>
 <div class="rule" id="r-lex.whitespace.intro"><a class="rule-link" href="#r-lex.whitespace.intro" title="lex.whitespace.intro"><span>[lex<wbr>.whitespace<wbr>.intro]</span></a>
 </div>
 
-<p>Whitespace is any non-empty string containing only characters that have the <a href="https://www.unicode.org/reports/tr31/"><code>Pattern_White_Space</code></a> Unicode property.</p>
+<p>空白字符是指任何非空字符串，它只包含具有<a href="https://www.unicode.org/reports/tr31/"><code>Pattern_White_Space</code></a> Unicode属性的字符。</p>
 <div class="rule" id="r-lex.whitespace.token-sep"><a class="rule-link" href="#r-lex.whitespace.token-sep" title="lex.whitespace.token-sep"><span>[lex<wbr>.whitespace<wbr>.token-sep]</span></a>
 </div>
 
-<p>Rust is a “free-form” language, meaning that all forms of whitespace serve only to separate <em>tokens</em> in the grammar, and have no semantic significance.</p>
+<p>Rust是一种自由格式语言，这意味着所有形式的空白字符仅用于在语法格式中分隔_词法单元_，并且没有语义上的意义。</p>
 <div class="rule" id="r-lex.whitespace.replacement"><a class="rule-link" href="#r-lex.whitespace.replacement" title="lex.whitespace.replacement"><span>[lex<wbr>.whitespace<wbr>.replacement]</span></a>
 </div>
 
-<p>A Rust program has identical meaning if each whitespace element is replaced with any other legal whitespace element, such as a single space character.</p>
+<p>如果Rust程序中的每个空白字符元素被任何其他合法的空白字符元素（例如一个空格字符）替换，其含义保持不变。</p>
 
                     </main>
 
