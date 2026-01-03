@@ -130,8 +130,8 @@ For example, the [`cfg` attribute] and the [`cfg` macro] are two different entit
 > use myattr::mymac; // error[E0252]: the name `mymac` is defined multiple times.
 > ```
 
-[`cfg` attribute]: ../conditional-compilation.md#the-cfg-attribute
-[`cfg` macro]: ../conditional-compilation.md#the-cfg-macro
+[`cfg` attribute]: ../conditional-compilation.md#cfg属性
+[`cfg` macro]: ../conditional-compilation.md#cfg宏
 [`for`]: ../expressions/loop-expr.md#iterator-loops
 [`if let`]: ../expressions/if-expr.md#if-let-patterns
 [`let`]: ../statements.md#let-statements

@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/macros.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[macro]
 # 宏
 

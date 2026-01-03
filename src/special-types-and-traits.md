@@ -236,7 +236,7 @@ These implicit `Sized` bounds may be relaxed by using the special `?Sized` bound
 [implementation items]: items/implementations.md
 [indexing expressions]: expressions/array-expr.md#array-and-slice-indexing-expressions
 [interior mutability]: interior-mutability.md
-[main function]: crates-and-source-files.md#main-functions
+[main function]: crates-and-source-files.md#main函数
 [Methods]: items/associated-items.md#associated-functions-and-methods
 [method resolution]: expressions/method-call-expr.md
 [operators]: expressions/operator-expr.md

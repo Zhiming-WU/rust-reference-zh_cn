@@ -341,11 +341,11 @@ The following is an index of all built-in attributes.
 [The Unstable Book]: ../unstable-book/index.html
 [`allow`]: attributes/diagnostics.md#lint-check-attributes
 [`automatically_derived`]: attributes/derive.md#the-automatically_derived-attribute
-[`cfg_attr`]: conditional-compilation.md#the-cfg_attr-attribute
-[`cfg`]: conditional-compilation.md#the-cfg-attribute
+[`cfg_attr`]: conditional-compilation.md#cfg_attr属性
+[`cfg`]: conditional-compilation.md#cfg属性
 [`cold`]: attributes/codegen.md#the-cold-attribute
 [`collapse_debuginfo`]: attributes/debugger.md#the-collapse_debuginfo-attribute
-[`crate_name`]: crates-and-source-files.md#the-crate_name-attribute
+[`crate_name`]: crates-and-source-files.md#crate_name属性
 [`crate_type`]: linkage.md
 [`debugger_visualizer`]: attributes/debugger.md#the-debugger_visualizer-attribute
 [`deny`]: attributes/diagnostics.md#lint-check-attributes
@@ -369,7 +369,7 @@ The following is an index of all built-in attributes.
 [`no_builtins`]: attributes/codegen.md#the-no_builtins-attribute
 [`no_implicit_prelude`]: names/preludes.md#the-no_implicit_prelude-attribute
 [`no_link`]: items/extern-crates.md#the-no_link-attribute
-[`no_main`]: crates-and-source-files.md#the-no_main-attribute
+[`no_main`]: crates-and-source-files.md#no_main属性
 [`no_mangle`]: abi.md#the-no_mangle-attribute
 [`no_std`]: names/preludes.md#the-no_std-attribute
 [`non_exhaustive`]: attributes/type_system.md#the-non_exhaustive-attribute

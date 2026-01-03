@@ -112,5 +112,5 @@ Only the first use of `no_link` on an `extern crate` declaration has effect.
 [`macro_use` attribute]: ../macros-by-example.md#macro_use属性
 [extern prelude]: ../names/preludes.md#extern-prelude
 [`macro_use` prelude]: ../names/preludes.md#macro_use-prelude
-[`crate_name` attributes]: ../crates-and-source-files.md#the-crate_name-attribute
+[`crate_name` attributes]: ../crates-and-source-files.md#crate_name属性
 [type namespace]: ../names/namespaces.md

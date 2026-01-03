@@ -305,8 +305,8 @@ core::arch::asm!(
 );
 ```
 
-[`cfg`]: conditional-compilation.md#the-cfg-attribute
-[`cfg_attr`]: conditional-compilation.md#the-cfg_attr-attribute
+[`cfg`]: conditional-compilation.md#cfg属性
+[`cfg_attr`]: conditional-compilation.md#cfg_attr属性
 
 r[asm.operand-type]
 ## Operand type

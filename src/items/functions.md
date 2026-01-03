@@ -469,8 +469,8 @@ fn foo_oof(#[some_inert_attribute] arg: u8) {
 [*function item type*]: ../types/function-item.md
 [Trait]: traits.md
 [attributes]: ../attributes.md
-[`cfg`]: ../conditional-compilation.md#the-cfg-attribute
-[`cfg_attr`]: ../conditional-compilation.md#the-cfg_attr-attribute
+[`cfg`]: ../conditional-compilation.md#cfg属性
+[`cfg_attr`]: ../conditional-compilation.md#cfg_attr属性
 [lint check attributes]: ../attributes/diagnostics.md#lint-check-attributes
 [procedural macro attributes]: macro.proc.attribute
 [testing attributes]: ../attributes/testing.md

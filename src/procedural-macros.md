@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/procedural-macros.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[macro.proc]
 # 过程宏
 
@@ -335,7 +338,7 @@ r[macro.proc.token.intro]
 声明式[`macro_rules`]宏和过程宏对词法单元（或更确切地说，[`TokenTree`s][`TokenTree`s]）使用相似但不同的定义。
 
 r[macro.proc.token.macro_rules]
-[`macro_rules`] 中的词法单元树（对应`tt`匹配器）定义如下：
+[`macro_rules`]中的词法单元树（对应`tt`匹配器）定义如下：
 *   带分隔符的组（`(...)`、`{...}`等）
 *   语言支持的所有运算符，包括单字符和多字符的（`+`、`+=`）。
     *   请注意，此集合不包括单引号`'`。
@@ -343,7 +346,7 @@ r[macro.proc.token.macro_rules]
     *   请注意，负号（例如`-1`）永远不会是此类字面量词法单元的一部分，而是一个单独的运算符词法单元。
 *   标识符，包括关键字（`ident`、`r#ident`、`fn`）
 *   生命周期（`'ident`）
-*   [`macro_rules`] 中的元变量替换（例如`macro_rules! mac { ($my_expr: expr) => { $my_expr } }`在`mac`展开后的`$my_expr`，无论传递的表达式如何，都将被视为单个词法单元树）
+*   [`macro_rules`]中的元变量替换（例如`macro_rules! mac { ($my_expr: expr) => { $my_expr } }`在`mac`展开后的`$my_expr`，无论传递的表达式如何，都将被视为单个词法单元树）
 
 r[macro.proc.token.tree]
 过程宏中的词法单元树定义如下：
