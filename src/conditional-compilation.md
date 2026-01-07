@@ -31,7 +31,7 @@ ConfigurationPredicateList ->
 ```
 
 r[cfg.general]
-*条件编译的源代码*是指仅在特定条件下才会被编译的源代码。
+*条件编译的源代码* 是指仅在特定条件下才会被编译的源代码。
 
 r[cfg.attributes-macro]
 可以使用[`cfg`]和[`cfg_attr`] [属性][attributes]以及内置的[`cfg!宏`][`cfg` macro]来使源代码条件编译。
@@ -73,7 +73,7 @@ r[cfg.option-key-uniqueness]
 键不需要是唯一的。例如，`feature = "std"`和`feature = "serde"`可以同时设置。
 
 r[cfg.options.set]
-## 配置选项设置
+## 已设置的配置选项
 
 r[cfg.options.general]
 哪些配置选项被设置是在crate编译期间静态确定的。
@@ -89,7 +89,8 @@ r[cfg.options.crate]
 
 > [!NOTE]
 > 对于`rustc`，任意设置的配置选项使用[`--cfg`]标志设置。指定目标的配置值可以使用`rustc --print cfg --target $TARGET`显示。
->
+
+> [!NOTE]
 > 键为`feature`的配置选项是[Cargo][cargo-feature]用于指定编译时选项和可选依赖项的约定。
 
 r[cfg.target_arch]

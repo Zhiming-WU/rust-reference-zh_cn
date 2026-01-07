@@ -1,5 +1,5 @@
 r[items.fn]
-# Functions
+# 函数
 
 r[items.fn.syntax]
 ```grammar,items
@@ -32,36 +32,30 @@ FunctionParamPattern -> PatternNoTopAlt `:` ( Type | `...` )
 FunctionReturnType -> `->` Type
 ```
 
-[^async-edition]: The `async` qualifier is not allowed in the 2015 edition.
+[^async-edition]: `async` 限定符在 2015 版次中是不允许的。
 
-[^extern-safe]: The `safe` function qualifier is only allowed semantically within
-  `extern` blocks.
+[^extern-safe]: `safe` 函数限定符在语义上仅允许在 `extern` 块内部。
 
-[^extern-qualifiers]: *Relevant to editions earlier than Rust 2024*: Within
-  `extern` blocks, the `safe` or `unsafe` function qualifier is only allowed
-  when the `extern` is qualified as `unsafe`.
+[^extern-qualifiers]: *与 Rust 2024 之前的版次相关* ：在 `extern` 块内部，仅当 `extern` 被限定为 `unsafe` 时，才允许使用 `safe` 或 `unsafe` 函数限定符。
 
-[^fn-param-2015]: Function parameters with only a type are only allowed
-  in an associated function of a [trait item] in the 2015 edition.
+[^fn-param-2015]: 在 2015 版次中，仅包含类型的函数参数仅允许出现在 [特型项][trait item] 的关联函数中。
 
 r[items.fn.intro]
-A _function_ consists of a [block] (that's the _body_ of the function),
-along with a name, a set of parameters, and an output type.
-Other than a name, all these are optional.
+一个 _函数 (function)_ 由一个 [块][block]（即函数的 _主体 (body)_ ）、一个名称、一组参数以及一个输出类型组成。除了名称以外，这些都是可选的。
 
 r[items.fn.namespace]
-Functions are declared with the keyword `fn` which defines the given name in the [value namespace] of the module or block where it is located.
+函数使用关键字 `fn` 声明，它在所在的模块或块的 [值命名空间][value namespace] 中定义给定的名称。
 
 r[items.fn.signature]
-Functions may declare a set of *input* [*variables*][variables] as parameters, through which the caller passes arguments into the function, and the *output* [*type*][type] of the value the function will return to its caller on completion.
+函数可以通过参数声明一组 *输入* [*变量*][variables]，调用者通过这些参数将实参传递给函数；函数还可以声明在完成后返回给调用者的值的 *输出* [*类型*][type]。
 
 r[items.fn.implicit-return]
-If the output type is not explicitly stated, it is the [unit type].
+如果未显式说明输出类型，则默认为 [单元类型][unit type]。
 
 r[items.fn.fn-item-type]
-When referred to, a _function_ yields a first-class *value* of the corresponding zero-sized [*function item type*], which when called evaluates to a direct call to the function.
+当被引用时，一个 _函数_ 会产生一个对应的零大小的 [*函数项类型*][*function item type*] 的一等 *值* ，当它被调用时，会执行对该函数的直接调用。
 
-For example, this is a simple function:
+例如，这是一个简单的函数：
 ```rust
 fn answer_to_life_the_universe_and_everything() -> i32 {
     return 42;
@@ -69,47 +63,38 @@ fn answer_to_life_the_universe_and_everything() -> i32 {
 ```
 
 r[items.fn.safety-qualifiers]
-The `safe` function is semantically only allowed when used in an [`extern` block].
+`safe` 函数在语义上仅允许在 [`extern` 块][`extern` block] 中使用。
 
 r[items.fn.params]
-## Function parameters
+## 函数参数
 
 r[items.fn.params.intro]
-Function parameters are irrefutable [patterns], so any pattern that is valid in
-an else-less `let` binding is also valid as a parameter:
+函数参数是不可反驳的 [模式][patterns]，因此任何在没有 else 的 `let` 绑定中有效的模式作为参数也同样有效：
 
 ```rust
 fn first((value, _): (i32, i32)) -> i32 { value }
 ```
 
 r[items.fn.params.self-pat]
-If the first parameter is a [SelfParam], this indicates that the function is a
-[method].
+如果第一个参数是一个 [SelfParam]，这表明该函数是一个 [方法][method]。
 
 r[items.fn.params.self-restriction]
-Functions with a self parameter may only appear as an [associated
-function] in a [trait] or [implementation].
+带有 self 参数的函数只能作为 [特型][trait] 或 [实现][implementation] 中的 [关联函数][associated function] 出现。
 
 r[items.fn.params.varargs]
-A parameter with the `...` token indicates a [variadic function], and may only
-be used as the last parameter of an [external block] function. The variadic
-parameter may have an optional identifier, such as `args: ...`.
+带有 `...` 词法单元 的参数表示 [变参函数][variadic function]，且只能用作 [外部块][external block] 函数的最后一个参数。变参参数可以有一个可选的标识符，例如 `args: ...`。
 
 r[items.fn.body]
-## Function body
+## 函数主体
 
 r[items.fn.body.intro]
-The body block of a function is conceptually wrapped in another block that first binds the
-argument patterns and then `return`s the value of the function's body. This
-means that the tail expression of the block, if evaluated, ends up being
-returned to the caller. As usual, an explicit return expression within
-the body of the function will short-cut that implicit return, if reached.
+函数的主体块在概念上被包装在另一个块中，该块首先绑定参数模式，然后 `return` 函数主体的值。这意味着如果块的尾随表达式被求值，它最终会返回给调用者。像往常一样，函数主体内显式的返回表达式如果被执行，将短路该隐式返回。
 
-For example, the function above behaves as if it was written as:
+例如，上述函数的行为就像它被写成：
 
 <!-- ignore: example expansion -->
 ```rust,ignore
-// argument_0 is the actual first argument passed from the caller
+// argument_0 是从调用者传递的实际第一个参数
 let (value, _) = argument_0;
 return {
     value
@@ -117,32 +102,26 @@ return {
 ```
 
 r[items.fn.body.bodyless]
-Functions without a body block are terminated with a semicolon. This form
-may only appear in a [trait] or [external block].
+没有主体块的函数以分号结尾。这种形式只能出现在 [特型][trait] 或 [外部块][external block] 中。
 
 r[items.fn.generics]
-## Generic functions
+## 泛型函数
 
 r[items.fn.generics.intro]
-A _generic function_ allows one or more _parameterized types_ to appear in its
-signature. Each type parameter must be explicitly declared in an
-angle-bracket-enclosed and comma-separated list, following the function name.
+一个 _泛型函数_ 允许在其签名中出现一个或多个 _参数化类型_ 。每个类型参数必须在函数名之后、由尖括号包围且以逗号分隔的列表中显式声明。
 
 ```rust
-// foo is generic over A and B
+// foo 对 A 和 B 是泛型的
 
 fn foo<A, B>(x: A, y: B) {
 # }
 ```
 
 r[items.fn.generics.param-names]
-Inside the function signature and body, the name of the type parameter can be
-used as a type name.
+在函数签名和主体内部，类型参数的名称可以用作类型名称。
 
 r[items.fn.generics.param-bounds]
-[Trait] bounds can be specified for type
-parameters to allow methods with that trait to be called on values of that
-type. This is specified using the `where` syntax:
+可以为类型参数指定 [特型][Trait] 绑定，以允许在该类型的值上调用具有该 特型 的方法。这是使用 `where` 语法指定的：
 
 ```rust
 # use std::fmt::Debug;
@@ -151,33 +130,28 @@ fn foo<T>(x: T) where T: Debug {
 ```
 
 r[items.fn.generics.mono]
-When a generic function is referenced, its type is instantiated based on the
-context of the reference. For example, calling the `foo` function here:
+当引用泛型函数时，其类型会根据引用的上下文进行实例化。例如，在这里调用 `foo` 函数：
 
 ```rust
 use std::fmt::Debug;
 
 fn foo<T>(x: &[T]) where T: Debug {
-    // details elided
+    // 细节已省略
 }
 
 foo(&[1, 2]);
 ```
 
-will instantiate type parameter `T` with `i32`.
+将使用 `i32` 实例化类型参数 `T`。
 
 r[items.fn.generics.explicit-arguments]
-The type parameters can also be explicitly supplied in a trailing [path]
-component after the function name. This might be necessary if there is not
-sufficient context to determine the type parameters. For example,
-`mem::size_of::<u32>() == 4`.
+类型参数也可以在函数名之后的尾随 [路径][path] 组件中显式提供。如果没有足够的上下文来确定类型参数，这可能是必要的。例如，`mem::size_of::<u32>() == 4`。
 
 r[items.fn.extern]
-## Extern function qualifier
+## Extern函数限定符
 
 r[items.fn.extern.intro]
-The `extern` function qualifier allows providing function _definitions_ that can
-be called with a particular ABI:
+`extern` 函数限定符允许提供可以使用特定 ABI 调用的函数 _定义_ ：
 
 <!-- ignore: fake ABI -->
 ```rust,ignore
@@ -185,58 +159,52 @@ extern "ABI" fn foo() { /* ... */ }
 ```
 
 r[items.fn.extern.def]
-These are often used in combination with [external block] items which provide
-function _declarations_ that can be used to call functions without providing
-their _definition_:
+这些通常与 [外部块][external block] 项结合使用，后者提供函数 _声明_ ，可用于调用函数而无需提供其 _定义_ ：
 
 <!-- ignore: fake ABI -->
 ```rust,ignore
 unsafe extern "ABI" {
-  unsafe fn foo(); /* no body */
-  safe fn bar(); /* no body */
+  unsafe fn foo(); /* 没有主体 */
+  safe fn bar(); /* 没有主体 */
 }
 unsafe { foo() };
 bar();
 ```
 
 r[items.fn.extern.default-abi]
-When `"extern" Abi?*` is omitted from `FunctionQualifiers` in function items,
-the ABI `"Rust"` is assigned. For example:
+当函数 项 的 `FunctionQualifiers` 中省略了 `"extern" Abi?*` 时，将分配 ABI `"Rust"`。例如：
 
 ```rust
 fn foo() {}
 ```
 
-is equivalent to:
+等同于：
 
 ```rust
 extern "Rust" fn foo() {}
 ```
 
 r[items.fn.extern.foreign-call]
-Functions can be called by foreign code, and using an ABI that
-differs from Rust allows, for example, to provide functions that can be
-called from other programming languages like C:
+函数可以被外部代码调用，并且使用与 Rust 不同的 ABI 允许提供可以从其他编程语言（如 C）调用的函数：
 
 ```rust
-// Declares a function with the "C" ABI
+// 声明一个具有 "C" ABI 的函数
 extern "C" fn new_i32() -> i32 { 0 }
 
-// Declares a function with the "stdcall" ABI
+// 声明一个具有 "stdcall" ABI 的函数
 # #[cfg(any(windows, target_arch = "x86"))]
 extern "stdcall" fn new_i32_stdcall() -> i32 { 0 }
 ```
 
 r[items.fn.extern.default-extern]
-Just as with [external block], when the `extern` keyword is used and the `"ABI"`
-is omitted, the ABI used defaults to `"C"`. That is, this:
+就像 [外部块][external block] 一样，当使用 `extern` 关键字并省略 `"ABI"` 时，使用的 ABI 默认为 `"C"`。也就是说，这段代码：
 
 ```rust
 extern fn new_i32() -> i32 { 0 }
 let fptr: extern fn() -> i32 = new_i32;
 ```
 
-is equivalent to:
+等同于：
 
 ```rust
 extern "C" fn new_i32() -> i32 { 0 }
@@ -244,31 +212,31 @@ let fptr: extern "C" fn() -> i32 = new_i32;
 ```
 
 r[items.fn.extern.unwind]
-### Unwinding
+### 展开(Unwinding)
 
 r[items.fn.extern.unwind.intro]
-Most ABI strings come in two variants, one with an `-unwind` suffix and one without. The `Rust` ABI always permits unwinding, so there is no `Rust-unwind` ABI. The choice of ABI, together with the runtime [panic handler], determines the behavior when unwinding out of a function.
+大多数 ABI 字符串有两种变体，一种带有 `-unwind` 后缀，另一种没有。`Rust` ABI 总是允许展开，因此没有 `Rust-unwind` ABI。ABI 的选择与运行时的 [恐慌处理器][panic handler] 一起决定了从函数中展开时的行为。
 
 r[items.fn.extern.unwind.behavior]
-The table below indicates the behavior of an unwinding operation reaching each type of ABI boundary (function declaration or definition using the corresponding ABI string). Note that the Rust runtime is not affected by, and cannot have an effect on, any unwinding that occurs entirely within another language's runtime, that is, unwinds that are thrown and caught without reaching a Rust ABI boundary.
+下表说明了展开操作到达每种类型的 ABI 边界（使用相应 ABI 字符串的函数声明或定义）时的行为。请注意，Rust 运行时不受完全发生在另一种语言运行时内部的任何展开的影响，也无法对其产生影响，即在未到达 Rust ABI 边界的情况下抛出和捕获的展开。
 
-The `panic`-unwind column refers to [panicking] via the `panic!` macro and similar standard library mechanisms, as well as to any other Rust operations that cause a panic, such as out-of-bounds array indexing or integer overflow.
+`panic`-unwind 列是指通过 `panic!` 宏和类似的标准库机制进行的 [恐慌][panicking]，以及任何其他导致恐慌的 Rust 操作，例如数组索引越界或整数溢出。
 
-The "unwinding" ABI category refers to `"Rust"` (the implicit ABI of Rust functions not marked `extern`), `"C-unwind"`, and any other ABI with `-unwind` in its name. The "non-unwinding" ABI category refers to all other ABI strings, including `"C"` and `"stdcall"`.
+“展开” ABI 类别是指 `"Rust"`（未标记为 `extern` 的 Rust 函数的隐式 ABI）、`"C-unwind"` 以及任何名称中带有 `-unwind` 的 ABI。“非展开” ABI 类别是指所有其他 ABI 字符串，包括 `"C"` 和 `"stdcall"`。
 
-Native unwinding is defined per-target. On targets that support throwing and catching C++ exceptions, it refers to the mechanism used to implement this feature. Some platforms implement a form of unwinding referred to as ["forced unwinding"][forced-unwinding]; `longjmp` on Windows and `pthread_exit` in `glibc` are implemented this way. Forced unwinding is explicitly excluded from the "Native unwind" column in the table.
+原生展开是针对每个目标定义的。在支持抛出和捕获 C++ 异常的目标上，它指的是用于实现此功能的机制。某些平台实现了一种被称为 [“强制展开”][forced-unwinding] 的展开形式；Windows 上的 `longjmp` 和 `glibc` 中的 `pthread_exit` 就是这样实现的。强制展开被明确排除在表中的“原生展开”列之外。
 
-| panic runtime  | ABI           | `panic`-unwind                        | Native unwind (unforced) |
+| 恐慌运行时 | ABI | `panic`-unwind | 原生展开 (非强制) |
 | -------------- | ------------  | ------------------------------------- | -----------------------  |
-| `panic=unwind` | unwinding     | unwind                                | unwind                   |
-| `panic=unwind` | non-unwinding | abort (see notes below)               | [undefined behavior]     |
-| `panic=abort`  | unwinding     | `panic` aborts without unwinding      | abort                    |
-| `panic=abort`  | non-unwinding | `panic` aborts without unwinding      | [undefined behavior]     |
+| `panic=unwind` | 展开型 | 展开 | 展开 |
+| `panic=unwind` | 非展开型 | 中止 (见下文注释) | [未定义行为][undefined behavior] |
+| `panic=abort`  | 展开型 | `panic` 在不展开的情况下中止 | 中止 |
+| `panic=abort`  | 非展开型 | `panic` 在不展开的情况下中止 | [未定义行为][undefined behavior] |
 
 r[items.fn.extern.abort]
-With `panic=unwind`, when a `panic` is turned into an abort by a non-unwinding ABI boundary, either no destructors (`Drop` calls) will run, or all destructors up until the ABI boundary will run. It is unspecified which of those two behaviors will happen.
+在 `panic=unwind` 的情况下，当 恐慌 被非展开 ABI 边界转变为中止时，要么不运行任何析构函数 (`Drop` 调用)，要么运行直到 ABI 边界为止的所有析构函数。具体发生这两种行为中的哪一种是未指定的。
 
-For other considerations and limitations regarding unwinding across FFI boundaries, see the [relevant section in the Panic documentation][panic-ffi].
+有关跨 FFI 边界展开的其他注意事项和限制，请参阅 [恐慌文档中的相关部分][panic-ffi]。
 
 [forced-unwinding]: https://rust-lang.github.io/rfcs/2945-c-unwind-abi.html#forced-unwinding
 [panic handler]: ../panic.md#the-panic_handler-attribute
@@ -277,16 +245,15 @@ For other considerations and limitations regarding unwinding across FFI boundari
 [undefined behavior]: ../behavior-considered-undefined.md
 
 r[items.fn.const]
-## Const functions
+## Const函数
 
-See [const functions] for the definition of const functions.
+有关 const 函数的定义，请参阅 [const 函数][const functions]。
 
 r[items.fn.async]
-## Async functions
+## Async函数
 
 r[items.fn.async.intro]
-Functions may be qualified as async, and this can also be combined with the
-`unsafe` qualifier:
+函数可以被限定为 async，这也可以与 `unsafe` 限定符结合使用：
 
 ```rust
 async fn regular_example() { }
@@ -294,111 +261,82 @@ async unsafe fn unsafe_example() { }
 ```
 
 r[items.fn.async.future]
-Async functions do no work when called: instead, they
-capture their arguments into a future. When polled, that future will
-execute the function's body.
+Async 函数在调用时不执行任何操作：相反，它们将参数捕获到一个 future 中。当被轮询时，该 future 将执行函数的主体。
 
 r[items.fn.async.desugar-brief]
-An async function is roughly equivalent to a function
-that returns [`impl Future`] and with an [`async move` block][async-blocks] as
-its body:
+一个 async 函数大致相当于一个返回 [`impl Future`][`impl Future`] 并且以 [`async move` 块][async-blocks] 作为其主体的函数：
 
 ```rust
-// Source
+// 源码
 async fn example(x: &str) -> usize {
     x.len()
 }
 ```
 
-is roughly equivalent to:
+大致相当于：
 
 ```rust
 # use std::future::Future;
-// Desugared
+// 脱糖后
 fn example<'a>(x: &'a str) -> impl Future<Output = usize> + 'a {
     async move { x.len() }
 }
 ```
 
 r[items.fn.async.desugar]
-The actual desugaring is more complex:
+实际的脱糖过程更为复杂：
 
 r[items.fn.async.lifetime-capture]
-- The return type in the desugaring is assumed to capture all lifetime
-  parameters from the `async fn` declaration. This can be seen in the
-  desugared example above, which explicitly outlives, and hence
-  captures, `'a`.
+- 脱糖中的返回类型被假定为捕获了 `async fn` 声明中的所有生命周期参数。这可以在上面的脱糖示例中看到，它显式地超过了 `'a` 的生命周期，因此捕获了 `'a`。
 
 r[items.fn.async.param-capture]
-- The [`async move` block][async-blocks] in the body captures all function
-  parameters, including those that are unused or bound to a `_`
-  pattern. This ensures that function parameters are dropped in the
-  same order as they would be if the function were not async, except
-  that the drop occurs when the returned future has been fully
-  awaited.
-
-For more information on the effect of async, see [`async` blocks][async-blocks].
+- 主体中的 [`async move` 块][async-blocks] 捕获了所有函数参数，包括那些未使用或绑定到 `_` 模式的参数。这确保了函数参数的销毁顺序与函数非 async 时相同，不同之处在于销毁发生在返回的 future 被完全 await 之后。
 
 [async-blocks]: ../expressions/block-expr.md#async-blocks
 [`impl Future`]: ../types/impl-trait.md
 
+[`impl Future`]: ../types/impl-trait.md
+
 r[items.fn.async.edition2018]
 > [!EDITION-2018]
-> Async functions are only available beginning with Rust 2018.
+> Async 函数仅从 Rust 2018 开始可用。
 
 r[items.fn.async.safety]
-### Combining `async` and `unsafe`
+### 结合`async`和`unsafe`
 
 r[items.fn.async.safety.intro]
-It is legal to declare a function that is both async and unsafe. The
-resulting function is unsafe to call and (like any async function)
-returns a future. This future is just an ordinary future and thus an
-`unsafe` context is not required to "await" it:
+声明一个既是 async 又是 unsafe 的函数是合法的。生成的函数调用时是不安全的，并且（像任何 async 函数一样）返回一个 future。这个 future 只是一个普通的 future，因此 “await” 它不需要 `unsafe` 上下文：
 
 ```rust
-// Returns a future that, when awaited, dereferences `x`.
+// 返回一个在 await 时解引用 `x` 的 future。
 //
-// Soundness condition: `x` must be safe to dereference until
-// the resulting future is complete.
+// 健全性条件：在生成的 future 完成之前，`x` 必须可以安全地解引用。
 async unsafe fn unsafe_example(x: *const i32) -> i32 {
   *x
 }
 
 async fn safe_example() {
-    // An `unsafe` block is required to invoke the function initially:
+    // 最初调用该函数需要 `unsafe` 块：
     let p = 22;
     let future = unsafe { unsafe_example(&p) };
 
-    // But no `unsafe` block required here. This will
-    // read the value of `p`:
+    // 但这里不需要 `unsafe` 块。这将
+    // 读取 `p` 的值：
     let q = future.await;
 }
 ```
 
-Note that this behavior is a consequence of the desugaring to a
-function that returns an `impl Future` -- in this case, the function
-we desugar to is an `unsafe` function, but the return value remains
-the same.
+请注意，这种行为是脱糖为返回 `impl Future` 的函数的结果 —— 在这种情况下，我们脱糖到的函数是一个 `unsafe` 函数，但返回值保持不变。
 
-Unsafe is used on an async function in precisely the same way that it
-is used on other functions: it indicates that the function imposes
-some additional obligations on its caller to ensure soundness. As in any
-other unsafe function, these conditions may extend beyond the initial
-call itself -- in the snippet above, for example, the `unsafe_example`
-function took a pointer `x` as argument, and then (when awaited)
-dereferenced that pointer. This implies that `x` would have to be
-valid until the future is finished executing, and it is the caller's
-responsibility to ensure that.
+Unsafe 在 async 函数上的使用方式与在其他函数上的使用方式完全相同：它表明该函数对调用者施加了一些额外的义务以确保健全性。与任何其他 unsafe 函数一样，这些条件可能会延伸到初始调用本身之外 —— 例如，在上面的代码片段中，`unsafe_example` 函数接受一个指针 `x` 作为参数，然后 (在被 await 时) 解引用该指针。这意味着 `x` 必须在 future 完成执行之前保持有效，而确保这一点是调用者的责任。
 
 r[items.fn.attributes]
-## Attributes on functions
+## 函数上的属性
 
 r[items.fn.attributes.intro]
-[Outer attributes][attributes] are allowed on functions. [Inner
-attributes][attributes] are allowed directly after the `{` inside its body [block].
+函数允许使用 [外部属性][attributes]。[内部属性][attributes] 允许直接在函数主体 [块][block] 内部的 `{` 之后使用。
 
-This example shows an inner attribute on a function. The function is documented
-with just the word "Example".
+这个例子展示了函数上的内部属性。该函数仅使用单词 “Example” 进行文档说明。
 
 ```rust
 fn documented() {
@@ -407,10 +345,10 @@ fn documented() {
 ```
 
 > [!NOTE]
-> Except for lints, it is idiomatic to only use outer attributes on function items.
+> 除了 lint 之外，在函数 项 上仅使用外部属性是符合习惯的。
 
 r[items.fn.attributes.builtin-attributes]
-The attributes that have meaning on a function are:
+对函数有意义的属性有：
 
 - [`cfg_attr`]
 - [`cfg`]
@@ -422,17 +360,15 @@ The attributes that have meaning on a function are:
 - [`link_section`]
 - [`must_use`]
 - [`no_mangle`]
-- [Lint check attributes]
-- [Procedural macro attributes]
-- [Testing attributes]
+- [Lint 检查属性][Lint check attributes]
+- [过程宏属性][Procedural macro attributes]
+- [测试属性][Testing attributes]
 
 r[items.fn.param-attributes]
-## Attributes on function parameters
+## 函数参数上的属性
 
 r[items.fn.param-attributes.intro]
-[Outer attributes][attributes] are allowed on function parameters and the
-permitted [built-in attributes] are restricted to `cfg`, `cfg_attr`, `allow`,
-`warn`, `deny`, and `forbid`.
+函数参数允许使用 [外部属性][attributes]，允许的 [内置属性][built-in attributes] 限于 `cfg`、`cfg_attr`、`allow`、`warn`、`deny` 和 `forbid`。
 
 ```rust
 fn len(
@@ -444,12 +380,9 @@ fn len(
 ```
 
 r[items.fn.param-attributes.parsed-attributes]
-Inert helper attributes used by procedural macro attributes applied to items are also
-allowed but be careful to not include these inert attributes in your final `TokenStream`.
+应用于 项 的 过程宏 属性所使用的惰性辅助属性也是允许的，但要注意不要在最终的 `TokenStream` 中包含这些惰性属性。
 
-For example, the following code defines an inert `some_inert_attribute` attribute that
-is not formally defined anywhere and the `some_proc_macro_attribute` procedural macro is
-responsible for detecting its presence and removing it from the output token stream.
+例如，以下代码定义了一个在任何地方都没有正式定义的惰性 `some_inert_attribute` 属性，而 `some_proc_macro_attribute` 过程宏 负责检测它的存在并将其从输出词法单元流中移除。
 
 <!-- ignore: requires proc macro -->
 ```rust,ignore

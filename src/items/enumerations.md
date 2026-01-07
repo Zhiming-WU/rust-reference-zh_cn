@@ -1,5 +1,5 @@
 r[items.enum]
-# Enumerations
+# 枚举
 
 r[items.enum.syntax]
 ```grammar,items
@@ -20,17 +20,15 @@ EnumVariantDiscriminant -> `=` Expression
 ```
 
 r[items.enum.intro]
-An *enumeration*, also referred to as an *enum*, is a simultaneous definition of a
-nominal [enumerated type] as well as a set of *constructors*, that can be used
-to create or pattern-match values of the corresponding enumerated type.
+ *枚举* （也称为  *enum* ）是对名义  [枚举类型][enumerated type]  以及一组  *构造函数*  的同步定义，这些构造函数可用于创建或模式匹配相应枚举类型的值。
 
 r[items.enum.decl]
-Enumerations are declared with the keyword `enum`.
+枚举使用关键字 `enum` 声明。
 
 r[items.enum.namespace]
-The `enum` declaration defines the enumeration type in the [type namespace] of the module or block where it is located.
+`enum` 声明在其所在的模块或代码块的  [类型命名空间][type namespace]  中定义枚举类型。
 
-An example of an `enum` item and its use:
+一个 `enum` 项及其用法的示例：
 
 ```rust
 enum Animal {
@@ -43,7 +41,7 @@ a = Animal::Cat;
 ```
 
 r[items.enum.constructor]
-Enum constructors can have either named or unnamed fields:
+枚举构造函数可以具有命名或未命名字段：
 
 ```rust
 enum Animal {
@@ -55,12 +53,10 @@ let mut a: Animal = Animal::Dog("Cocoa".to_string(), 37.2);
 a = Animal::Cat { name: "Spotty".to_string(), weight: 2.7 };
 ```
 
-In this example, `Cat` is a _struct-like enum variant_, whereas `Dog` is simply
-called an enum variant.
+在此示例中，`Cat` 是  *类结构体枚举变体* ，而 `Dog` 仅被称为枚举变体。
 
 r[items.enum.fieldless]
-An enum where no constructors contain fields is called a
-*<span id="field-less-enum">field-less enum</span>*. For example, this is a fieldless enum:
+不包含字段的构造函数的枚举称为 *<span id="field-less-enum">无字段枚举</span>* 。例如，这是一个无字段枚举：
 
 ```rust
 enum Fieldless {
@@ -71,8 +67,7 @@ enum Fieldless {
 ```
 
 r[items.enum.unit-only]
-If a field-less enum only contains unit variants, the enum is called an
-*<span id="unit-only-enum">unit-only enum</span>*. For example:
+如果无字段枚举仅包含单元变体，则该枚举称为  *<span id="unit-only-enum">仅单元枚举</span>* 。例如：
 
 ```rust
 enum Enum {
@@ -83,21 +78,21 @@ enum Enum {
 ```
 
 r[items.enum.constructor-names]
-Variant constructors are similar to [struct] definitions, and can be referenced by a path from the enumeration name, including in [use declarations].
+变体构造函数类似于  [结构体][struct]  定义，并且可以通过枚举名称的路径进行引用，包括在  [use 声明][use declarations]  中。
 
 r[items.enum.constructor-namespace]
-Each variant defines its type in the [type namespace], though that type cannot be used as a type specifier.
-Tuple-like and unit-like variants also define a constructor in the [value namespace].
+每个变体都在  [类型命名空间][type namespace]  中定义其类型，尽管该类型不能用作类型说明符。
+类元组和类单元变体还在  [值命名空间][value namespace]  中定义了一个构造函数。
 
 r[items.enum.struct-expr]
-A struct-like variant can be instantiated with a [struct expression].
+类结构体变体可以使用  [结构体表达式][struct expression]  实例化。
 
 r[items.enum.tuple-expr]
-A tuple-like variant can be instantiated with a [call expression] or a [struct expression].
+类元组变体可以使用  [调用表达式][call expression]  或  [结构体表达式][struct expression]  实例化。
 
 r[items.enum.path-expr]
-A unit-like variant can be instantiated with a [path expression] or a [struct expression].
-For example:
+类单元变体可以使用  [路径表达式][path expression]  或  [结构体表达式][struct expression]  实例化。
+例如：
 
 ```rust
 enum Examples {
@@ -106,41 +101,37 @@ enum Examples {
     StructLike { value: i32 },
 }
 
-use Examples::*; // Creates aliases to all variants.
-let x = UnitLike; // Path expression of the const item.
-let x = UnitLike {}; // Struct expression.
-let y = TupleLike(123); // Call expression.
-let y = TupleLike { 0: 123 }; // Struct expression using integer field names.
-let z = StructLike { value: 123 }; // Struct expression.
+use Examples::*; // 为所有变体创建别名。
+let x = UnitLike; // 常量项的路径表达式。
+let x = UnitLike {}; // 结构体表达式。
+let y = TupleLike(123); // 调用表达式。
+let y = TupleLike { 0: 123 }; // 使用整数字段名称的结构体表达式。
+let z = StructLike { value: 123 }; // 结构体表达式。
 ```
 
 <span id="custom-discriminant-values-for-fieldless-enumerations"></span>
 r[items.enum.discriminant]
-## Discriminants
+## 判别值
 
 r[items.enum.discriminant.intro]
-Each enum instance has a _discriminant_: an integer logically associated to it
-that is used to determine which variant it holds.
+每个枚举实例都有一个  *判别值* ：逻辑上与之关联的整数，用于确定它持有哪个变体。
 
 r[items.enum.discriminant.repr-rust]
-Under the [`Rust` representation], the discriminant is interpreted as
-an `isize` value. However, the compiler is allowed to use a smaller type (or
-another means of distinguishing variants) in its actual memory layout.
+在  [`Rust` 表示][`Rust` representation]  下，判别值被解释为一个 `isize` 值。但是，编译器允许在其实际内存布局中使用更小的类型（或其他区分变体的方法）。
 
-### Assigning discriminant values
+### 分配判别值
 
 r[items.enum.discriminant.explicit]
-#### Explicit discriminants
+#### 显式判别值
 
 r[items.enum.discriminant.explicit.intro]
-In two circumstances, the discriminant of a variant may be explicitly set by
-following the variant name with `=` and a [constant expression]:
+在两种情况下，变体的判别值可以通过在变体名称后跟 `=` 和一个  [常量表达式][constant expression]  来显式设置：
 
 r[items.enum.discriminant.explicit.unit-only]
-1. if the enumeration is "[unit-only]".
+1. 如果该枚举是  “[仅单元][unit-only]”  的。
 
 r[items.enum.discriminant.explicit.primitive-repr]
-2. if a [primitive representation] is used. For example:
+2. 如果使用了  [原生表示][primitive representation] 。例如：
 
    ```rust
    #[repr(u8)]
@@ -155,12 +146,9 @@ r[items.enum.discriminant.explicit.primitive-repr]
    ```
 
 r[items.enum.discriminant.implicit]
-#### Implicit discriminants
+#### 隐式判别值
 
-If a discriminant for a variant is not specified, then it is set to one higher
-than the discriminant of the previous variant in the declaration. If the
-discriminant of the first variant in the declaration is unspecified, then
-it is set to zero.
+如果未指定变体的判别值，则将其设置为比声明中前一个变体的判别值高 1。如果声明中第一个变体的判别值未指定，则将其设置为零。
 
 ```rust
 enum Foo {
@@ -174,10 +162,10 @@ assert_eq!(baz_discriminant, 123);
 ```
 
 r[items.enum.discriminant.restrictions]
-#### Restrictions
+#### 限制
 
 r[items.enum.discriminant.restrictions.same-discriminant]
-It is an error when two variants share the same discriminant.
+当两个变体共享同一个判别值时，这是一个错误。
 
 ```rust,compile_fail
 enum SharedDiscriminantError {
@@ -188,45 +176,41 @@ enum SharedDiscriminantError {
 enum SharedDiscriminantError2 {
     Zero,       // 0
     One,        // 1
-    OneToo = 1  // 1 (collision with previous!)
+    OneToo = 1  // 1 (与前一个冲突！)
 }
 ```
 
 r[items.enum.discriminant.restrictions.above-max-discriminant]
-It is also an error to have an unspecified discriminant where the previous
-discriminant is the maximum value for the size of the discriminant.
+如果前一个判别值是判别值大小的最大值，而在其后紧跟一个未指定的判别值，这也是一个错误。
 
 ```rust,compile_fail
 #[repr(u8)]
 enum OverflowingDiscriminantError {
     Max = 255,
-    MaxPlusOne // Would be 256, but that overflows the enum.
+    MaxPlusOne // 本该是 256，但那会导致枚举溢出。
 }
 
 #[repr(u8)]
 enum OverflowingDiscriminantError2 {
     MaxMinusOne = 254, // 254
     Max,               // 255
-    MaxPlusOne         // Would be 256, but that overflows the enum.
+    MaxPlusOne         // 本该是 256，但那会导致枚举溢出。
 }
 ```
 
-### Accessing discriminant
+### 访问判别值
 
-#### Via `mem::discriminant`
+#### 通过 `mem::discriminant`
 
 r[items.enum.discriminant.access-opaque]
 
-[`std::mem::discriminant`] returns an opaque reference to the discriminant of
-an enum value which can be compared. This cannot be used to get the value
-of the discriminant.
+[`std::mem::discriminant`] 返回对枚举值判别值的不透明引用，该引用可以进行比较。这不能用于获取判别值的值。
 
 r[items.enum.discriminant.coercion]
-#### Casting
+#### 转换
 
 r[items.enum.discriminant.coercion.intro]
-If an enumeration is [unit-only] (with no tuple and struct variants), then its
-discriminant can be directly accessed with a [numeric cast]; e.g.:
+如果枚举是  [仅单元][unit-only]  的（没有元组和结构体变体），则可以使用  [数值转换][numeric cast]  直接访问其判别值；例如：
 
 ```rust
 enum Enum {
@@ -241,7 +225,7 @@ assert_eq!(2, Enum::Baz as isize);
 ```
 
 r[items.enum.discriminant.coercion.fieldless]
-[Field-less enums] can be cast if they do not have explicit discriminants, or where only unit variants are explicit.
+ [无字段枚举][Field-less enums]  在没有显式判别值，或者只有单元变体是显式的情况下，可以进行转换。
 
 ```rust
 enum Fieldless {
@@ -270,12 +254,11 @@ assert_eq!(21, FieldlessWithDiscriminants::Struct{} as u8);
 assert_eq!(22, FieldlessWithDiscriminants::Unit as u8);
 ```
 
-#### Pointer casting
+#### 指针转换
 
 r[items.enum.discriminant.access-memory]
 
-If the enumeration specifies a [primitive representation], then the
-discriminant may be reliably accessed via unsafe pointer casting:
+如果枚举指定了  [原生表示][primitive representation] ，则可以通过不安全的指针转换可靠地访问判别值：
 
 ```rust
 #[repr(u8)]
@@ -301,32 +284,28 @@ assert_eq!(2, struct_like.discriminant());
 ```
 
 r[items.enum.empty]
-## Zero-variant enums
+## 零变体枚举
 
 r[items.enum.empty.intro]
-Enums with zero variants are known as *zero-variant enums*. As they have
-no valid values, they cannot be instantiated.
+没有变体的枚举被称为  *零变体枚举* 。因为它们没有有效值，所以无法被实例化。
 
 ```rust
 enum ZeroVariants {}
 ```
 
 r[items.enum.empty.uninhabited]
-Zero-variant enums are equivalent to the [never type], but they cannot be
-coerced into other types.
+零变体枚举等价于  [never 类型][never type] ，但它们不能被强制转换为其他类型。
 
 ```rust,compile_fail
 # enum ZeroVariants {}
 let x: ZeroVariants = panic!();
-let y: u32 = x; // mismatched type error
+let y: u32 = x; // 类型不匹配错误
 ```
 
 r[items.enum.variant-visibility]
-## Variant visibility
+## 变体可见性
 
-Enum variants syntactically allow a [Visibility] annotation, but this is
-rejected when the enum is validated. This allows items to be parsed with a
-unified syntax across different contexts where they are used.
+枚举变体在语法上允许使用  [可见性][Visibility]  注解，但在验证枚举时会被拒绝。这允许项在使用的不同上下文中以统一的语法进行解析。
 
 ```rust
 macro_rules! mac_variant {
@@ -341,10 +320,10 @@ macro_rules! mac_variant {
     }
 }
 
-// Empty `vis` is allowed.
+// 允许空的 vis。
 mac_variant! { E }
 
-// This is allowed, since it is removed before being validated.
+// 这是允许的，因为它在通过验证之前已被删除。
 #[cfg(false)]
 enum E {
     pub U,

@@ -1,5 +1,5 @@
 r[items]
-# Items
+# 项
 
 r[items.syntax]
 ```grammar,items
@@ -30,48 +30,44 @@ MacroItem ->
 ```
 
 r[items.intro]
-An _item_ is a component of a crate. Items are organized within a crate by a
-nested set of [modules]. Every crate has a single "outermost" anonymous module;
-all further items within the crate have [paths] within the module tree of the
-crate.
+一个 _项_ 是 crate 的一个组件。 项 在 crate 中通过一组嵌套的 [模块][modules] 来组织。每个 crate 都有一个唯一的“最外层”匿名模块；crate 内的所有后续 项 在 crate 的模块树中都有 [路径][paths]。
 
 r[items.static-def]
-Items are entirely determined at compile-time, generally remain fixed during
-execution, and may reside in read-only memory.
+项 完全在编译时确定，通常在执行期间保持固定，并可能驻留在只读内存中。
 
 r[items.kinds]
-There are several kinds of items:
+有几种类型的 项 ：
 
-* [modules]
-* [`extern crate` declarations]
-* [`use` declarations]
-* [function definitions]
-* [type alias definitions]
-* [struct definitions]
-* [enumeration definitions]
-* [union definitions]
-* [constant items]
-* [static items]
-* [trait definitions]
-* [implementations]
-* [`extern` blocks]
+* [模块][modules]
+* [`extern crate` 声明][`extern crate` declarations]
+* [`use` 声明][`use` declarations]
+* [函数定义][function definitions]
+* [类型别名定义][type alias definitions]
+* [结构体定义][struct definitions]
+* [枚举定义][enumeration definitions]
+* [联合体定义][union definitions]
+* [常量项][constant items]
+* [静态项][static items]
+* [特型定义][trait definitions]
+* [实现][implementations]
+* [`extern` 块][`extern` blocks]
 
 r[items.locations]
-Items may be declared in the [root of the crate], a [module][modules], or a [block expression].
+项 可以在 [crate 根部][root of the crate]、[模块][modules] 或 [块表达式][block expression] 中声明。
 
 r[items.associated-locations]
-A subset of items, called [associated items], may be declared in [traits] and [implementations].
+项 的一个子集，称为 [关联项][associated items]，可以在 [特型][traits] 和 [实现][implementations] 中声明。
 
 r[items.extern-locations]
-A subset of items, called external items, may be declared in [`extern` blocks].
+项 的一个子集，称为外部项，可以在 [`extern` 块][`extern` blocks] 中声明。
 
 r[items.decl-order]
-Items may be defined in any order, with the exception of [`macro_rules`] which has its own scoping behavior.
+项 可以按任何顺序定义，唯一的例外是 [`macro_rules`]，它有自己的作用域行为。
 
 r[items.name-resolution]
-[Name resolution] of item names allows items to be defined before or after where the item is referred to in the module or block.
+项 名称的 [名称解析][Name resolution] 允许在模块或块中引用该 项 的位置之前或之后定义它。
 
-See [item scopes] for information on the scoping rules of items.
+有关 项 的作用域规则，请参见 [项作用域][item scopes]。
 
 [`extern crate` declarations]: items/extern-crates.md
 [`extern` blocks]: items/external-blocks.md

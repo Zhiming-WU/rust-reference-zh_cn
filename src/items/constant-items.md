@@ -1,5 +1,5 @@
 r[items.const]
-# Constant items
+# 常量项
 
 r[items.const.syntax]
 ```grammar,items
@@ -8,27 +8,19 @@ ConstantItem ->
 ```
 
 r[items.const.intro]
-A *constant item* is an optionally named _[constant value]_ which is not associated
-with a specific memory location in the program.
+ *常量项*  是一个可选命名的  [常量值][constant value] ，它不与程序中特定的内存位置相关联。
 
 r[items.const.behavior]
-Constants are essentially inlined wherever they are used, meaning that they are copied directly into the relevant
-context when used. This includes usage of constants from external crates, and
-non-[`Copy`] types. References to the same constant are not necessarily
-guaranteed to refer to the same memory address.
+常量在本质上是在其被使用的地方内联的，这意味着在使用时它们被直接复制到相关的上下文中。这包括使用来自外部 crate 的常量，以及非 [`Copy`] 类型。指向同一常量的引用不一定保证指向相同的内存地址。
 
 r[items.const.namespace]
-The constant declaration defines the constant value in the [value namespace] of the module or block where it is located.
+常量声明在其所在的模块或代码块的  [值命名空间][value namespace]  中定义常量值。
 
 r[items.const.static]
-Constants must be explicitly typed. The type must have a `'static` lifetime: any
-references in the initializer must have `'static` lifetimes. References
-in the type of a constant default to `'static` lifetime; see [static lifetime
-elision].
+常量必须显式指定类型。该类型必须具有 `'static` 生命周期：初始化程序中的任何引用都必须具有 `'static` 生命周期。常量类型中的引用默认为 `'static` 生命周期；请参见  [静态生命周期省略][static lifetime elision] 。
 
 r[items.const.static-temporary]
-A reference to a constant will have `'static` lifetime if the constant value is eligible for
-[promotion]; otherwise, a temporary will be created.
+如果常量值符合  [提升][promotion]  条件，则指向该常量的引用将具有 `'static` 生命周期；否则，将创建一个临时变量。
 
 ```rust
 const BIT1: u32 = 1 << 0;
@@ -49,13 +41,12 @@ const BITS_N_STRINGS: BitsNStrings<'static> = BitsNStrings {
 ```
 
 r[items.const.expr-omission]
-The constant expression may only be omitted in a [trait definition].
+常量表达式仅在  [特型定义][trait definition]  中可以省略。
 
 r[items.const.destructor]
-## Constants with destructors
+## 带有析构函数的常量
 
-Constants can contain destructors. Destructors are run when the value goes out
-of scope.
+常量可以包含析构函数。当值超出作用域时，析构函数将运行。
 
 ```rust
 struct TypeWithDestructor(i32);
@@ -70,28 +61,26 @@ const ZERO_WITH_DESTRUCTOR: TypeWithDestructor = TypeWithDestructor(0);
 
 fn create_and_drop_zero_with_destructor() {
     let x = ZERO_WITH_DESTRUCTOR;
-    // x gets dropped at end of function, calling drop.
-    // prints "Dropped. Held 0.".
+    // x 在函数结束时被 drop，调用 drop。
+    // 打印 "Dropped. Held 0."。
 }
 ```
 
 r[items.const.unnamed]
-## Unnamed constant
+## 匿名常量
 
 r[items.const.unnamed.intro]
-Unlike an [associated constant], a [free] constant may be unnamed by using
-an underscore instead of the name. For example:
+与  [关联常量][associated constant]  不同， [自由][free]  常量可以通过使用下划线代替名称来保持匿名。例如：
 
 ```rust
 const _: () =  { struct _SameNameTwice; };
 
-// OK although it is the same name as above:
+// 尽管名称与上面相同，但是 OK 的：
 const _: () =  { struct _SameNameTwice; };
 ```
 
 r[items.const.unnamed.repetition]
-As with [underscore imports], macros may safely emit the same unnamed constant in
-the same scope more than once. For example, the following should not produce an error:
+与  [下划线导入][underscore imports]  一样，宏可以在同一作用域内安全地多次生成同一个匿名常量。例如，以下代码不应产生错误：
 
 ```rust
 macro_rules! m {
@@ -99,23 +88,22 @@ macro_rules! m {
 }
 
 m!(const _: () = (););
-// This expands to:
+// 这将展开为：
 // const _: () = ();
 // const _: () = ();
 ```
 
 r[items.const.eval]
-## Evaluation
+## 求值
 
-[Free][free] constants are always [evaluated][const_eval] at compile-time to surface
-panics. This happens even within an unused function:
+ [自由][free]  常量始终在编译时  [求值][const_eval]  以暴露 恐慌。即使在未使用的函数中也会发生这种情况：
 
 ```rust,compile_fail
-// Compile-time panic
+// 编译时恐慌
 const PANIC: () = std::unimplemented!();
 
 fn unused_generic_function<T>() {
-    // A failing compile-time assertion
+    // 失败的编译时断言
     const _: () = assert!(usize::BITS == 0);
 }
 ```
