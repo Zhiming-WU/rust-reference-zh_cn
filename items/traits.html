@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-723fd274.js";
+            window.path_to_searchindex_js = "../searchindex-1458537c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-items.traits"><a class="rule-link" href="#r-items.traits" title="items.traits"><span>[items<wbr>.traits]</span></a>
 </div>
 
-<h1 id="traits"><a class="header" href="#traits">Traits</a></h1>
+<h1 id="特型"><a class="header" href="#特型">特型</a></h1>
 <div class="rule" id="r-items.traits.syntax"><a class="rule-link" href="#r-items.traits.syntax" title="items.traits.syntax"><span>[items<wbr>.traits<wbr>.syntax]</span></a>
 </div>
 
@@ -337,45 +337,35 @@ AssociatedItem</text>
 <div class="rule" id="r-items.traits.intro"><a class="rule-link" href="#r-items.traits.intro" title="items.traits.intro"><span>[items<wbr>.traits<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>trait</em> describes an abstract interface that types can implement. This
-interface consists of <a href="associated-items.html">associated items</a>, which come in three varieties:</p>
+<p>一个 <em>特型</em> 描述了一个类型可以实现的抽象接口。此接口由 <a href="associated-items.html">关联项</a> 组成，共有三种：</p>
 <ul>
-<li><a href="associated-items.html#associated-functions-and-methods">functions</a></li>
-<li><a href="associated-items.html#associated-types">types</a></li>
-<li><a href="associated-items.html#associated-constants">constants</a></li>
+<li><a href="associated-items.html#associated-functions-and-methods">函数</a></li>
+<li><a href="associated-items.html#associated-types">类型</a></li>
+<li><a href="associated-items.html#associated-constants">常量</a></li>
 </ul>
 <div class="rule" id="r-items.traits.namespace"><a class="rule-link" href="#r-items.traits.namespace" title="items.traits.namespace"><span>[items<wbr>.traits<wbr>.namespace]</span></a>
 </div>
 
-<p>The trait declaration defines a trait in the <a href="../names/namespaces.html">type namespace</a> of the module or block where it is located.</p>
+<p>特型 声明在它所在的模块或块的 <a href="../names/namespaces.html">类型命名空间</a> 中定义了一个 特型。</p>
 <div class="rule" id="r-items.traits.associated-item-namespaces"><a class="rule-link" href="#r-items.traits.associated-item-namespaces" title="items.traits.associated-item-namespaces"><span>[items<wbr>.traits<wbr>.associated-item-namespaces]</span></a>
 </div>
 
-<p>Associated items are defined as members of the trait within their respective namespaces. Associated types are defined in the type namespace. Associated constants and associated functions are defined in the value namespace.</p>
+<p>关联项 在其各自的命名空间中被定义为 特型 的成员。关联类型 定义在 类型命名空间 中。关联常量 和 关联函数 定义在 值命名空间 中。</p>
 <div class="rule" id="r-items.traits.self-param"><a class="rule-link" href="#r-items.traits.self-param" title="items.traits.self-param"><span>[items<wbr>.traits<wbr>.self-param]</span></a>
 </div>
 
-<p>All traits define an implicit type parameter <code>Self</code> that refers to “the type
-that is implementing this interface”. Traits may also contain additional type
-parameters. These type parameters, including <code>Self</code>, may be constrained by
-other traits and so forth <a href="generics.html">as usual</a>.</p>
+<p>所有 特型 都定义了一个隐式的 类型参数 <code>Self</code>，它指向 “实现此接口的类型” 。 特型 还可以包含额外的 类型参数。这些 类型参数（包括 <code>Self</code>）可以像 <a href="generics.html">往常一样</a> 受到其他 特型 等的约束。</p>
 <div class="rule" id="r-items.traits.impls"><a class="rule-link" href="#r-items.traits.impls" title="items.traits.impls"><span>[items<wbr>.traits<wbr>.impls]</span></a>
 </div>
 
-<p>Traits are implemented for specific types through separate <a href="implementations.html">implementations</a>.</p>
+<p>特型 通过单独的 <a href="implementations.html">实现</a> 为特定类型实现。</p>
 <div class="rule" id="r-items.traits.associated-item-decls"><a class="rule-link" href="#r-items.traits.associated-item-decls" title="items.traits.associated-item-decls"><span>[items<wbr>.traits<wbr>.associated-item-decls]</span></a>
 </div>
 
-<p>Trait functions may omit the function body by replacing it with a semicolon.
-This indicates that the implementation must define the function. If the trait
-function defines a body, this definition acts as a default for any
-implementation which does not override it. Similarly, associated constants may
-omit the equals sign and expression to indicate implementations must define
-the constant value. Associated types must never define the type, the type may
-only be specified in an implementation.</p>
+<p>特型 函数可以通过用分号替换函数体来省略它。这表示 实现 必须定义该函数。如果 特型 函数定义了函数体，则该定义对于任何未覆盖它的 实现 都充当默认值。类似地，关联常量 可以省略等号和表达式，以表示 实现 必须定义常量值。 关联类型 绝不能定义类型，类型只能在 实现 中指定。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Examples of associated trait items with and without definitions.
+</span>// 具有定义和不具有定义的特型关联项示例。
 trait Example {
     const CONST_NO_DEFAULT: i32;
     const CONST_WITH_DEFAULT: i32 = 99;
@@ -387,18 +377,17 @@ trait Example {
 <div class="rule" id="r-items.traits.const-fn"><a class="rule-link" href="#r-items.traits.const-fn" title="items.traits.const-fn"><span>[items<wbr>.traits<wbr>.const-fn]</span></a>
 </div>
 
-<p>Trait functions are not allowed to be <a href="functions.html#const-functions"><code>const</code></a>.</p>
+<p>特型 函数不允许是 <a href="functions.html#const-functions"><code>const</code></a>。</p>
 <div class="rule" id="r-items.traits.bounds"><a class="rule-link" href="#r-items.traits.bounds" title="items.traits.bounds"><span>[items<wbr>.traits<wbr>.bounds]</span></a>
 </div>
 
-<h2 id="trait-bounds"><a class="header" href="#trait-bounds">Trait bounds</a></h2>
-<p>Generic items may use traits as <a href="../trait-bounds.html">bounds</a> on their type parameters.</p>
+<h2 id="特型绑定"><a class="header" href="#特型绑定">特型绑定</a></h2>
+<p>泛型 项 可以使用 特型 作为其 类型参数 的 <a href="../trait-bounds.html">绑定</a>。</p>
 <div class="rule" id="r-items.traits.generic"><a class="rule-link" href="#r-items.traits.generic" title="items.traits.generic"><span>[items<wbr>.traits<wbr>.generic]</span></a>
 </div>
 
-<h2 id="generic-traits"><a class="header" href="#generic-traits">Generic traits</a></h2>
-<p>Type parameters can be specified for a trait to make it generic. These appear
-after the trait name, using the same syntax used in <a href="functions.html#generic-functions">generic functions</a>.</p>
+<h2 id="泛型特型"><a class="header" href="#泛型特型">泛型特型</a></h2>
+<p>可以为 特型 指定 类型参数 以使其成为 泛型。这些出现在 特型 名称之后，使用与 <a href="functions.html#generic-functions">泛型函数</a> 相同的语法。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Seq&lt;T&gt; {
@@ -411,68 +400,67 @@ after the trait name, using the same syntax used in <a href="functions.html#gene
 <div class="rule" id="r-items.traits.dyn-compatible"><a class="rule-link" href="#r-items.traits.dyn-compatible" title="items.traits.dyn-compatible"><span>[items<wbr>.traits<wbr>.dyn-compatible]</span></a>
 </div>
 
-<h2 id="dyn-compatibility"><a class="header" href="#dyn-compatibility">Dyn compatibility</a></h2>
+<h2 id="dyn兼容性"><a class="header" href="#dyn兼容性">Dyn兼容性</a></h2>
 <div class="rule" id="r-items.traits.dyn-compatible.intro"><a class="rule-link" href="#r-items.traits.dyn-compatible.intro" title="items.traits.dyn-compatible.intro"><span>[items<wbr>.traits<wbr>.dyn-compatible<wbr>.intro]</span></a>
 </div>
 
-<p>A dyn-compatible trait can be the base trait of a <a href="../types/trait-object.html">trait object</a>. A trait is
-<em>dyn compatible</em> if it has the following qualities:</p>
+<p>一个 dyn 兼容的 特型 可以作为 <a href="../types/trait-object.html">特型对象</a> 的基础 特型。如果一个 特型 具备以下特质，则它是 <em>dyn 兼容的 (dyn compatible)</em> ：</p>
 <div class="rule" id="r-items.traits.dyn-compatible.supertraits"><a class="rule-link" href="#r-items.traits.dyn-compatible.supertraits" title="items.traits.dyn-compatible.supertraits"><span>[items<wbr>.traits<wbr>.dyn-compatible<wbr>.supertraits]</span></a>
 </div>
 
 <ul>
-<li>All <a href="#supertraits">supertraits</a> must also be dyn compatible.</li>
+<li>所有 <a href="#父特型">父特型</a> 也必须是 dyn 兼容的。</li>
 </ul>
 <div class="rule" id="r-items.traits.dyn-compatible.sized"><a class="rule-link" href="#r-items.traits.dyn-compatible.sized" title="items.traits.dyn-compatible.sized"><span>[items<wbr>.traits<wbr>.dyn-compatible<wbr>.sized]</span></a>
 </div>
 
 <ul>
-<li><code>Sized</code> must not be a <a href="#supertraits">supertrait</a>. In other words, it must not require <code>Self: Sized</code>.</li>
+<li><code>Sized</code> 不能是一个 <a href="#父特型">父特型</a>。换句话说，它不能要求 <code>Self: Sized</code>。</li>
 </ul>
 <div class="rule" id="r-items.traits.dyn-compatible.associated-consts"><a class="rule-link" href="#r-items.traits.dyn-compatible.associated-consts" title="items.traits.dyn-compatible.associated-consts"><span>[items<wbr>.traits<wbr>.dyn-compatible<wbr>.associated-consts]</span></a>
 </div>
 
 <ul>
-<li>It must not have any associated constants.</li>
+<li>它不能有任何 关联常量。</li>
 </ul>
 <div class="rule" id="r-items.traits.dyn-compatible.associated-types"><a class="rule-link" href="#r-items.traits.dyn-compatible.associated-types" title="items.traits.dyn-compatible.associated-types"><span>[items<wbr>.traits<wbr>.dyn-compatible<wbr>.associated-types]</span></a>
 </div>
 
 <ul>
-<li>It must not have any associated types with generics.</li>
+<li>它不能有任何带有 泛型 的 关联类型。</li>
 </ul>
 <div class="rule" id="r-items.traits.dyn-compatible.associated-functions"><a class="rule-link" href="#r-items.traits.dyn-compatible.associated-functions" title="items.traits.dyn-compatible.associated-functions"><span>[items<wbr>.traits<wbr>.dyn-compatible<wbr>.associated-functions]</span></a>
 </div>
 
 <ul>
-<li>All associated functions must either be dispatchable from a trait object or be explicitly non-dispatchable:
+<li>所有 关联函数 必须要么可以从 特型对象 分派，要么是明确的不可分派：
 <ul>
-<li>Dispatchable functions must:
+<li>可分派函数必须：
 <ul>
-<li>Not have any type parameters (although lifetime parameters are allowed).</li>
-<li>Be a <a href="associated-items.html#methods">method</a> that does not use <code>Self</code> except in the type of the receiver.</li>
-<li>Have a receiver with one of the following types:
+<li>不具有任何 类型参数（尽管允许生命周期参数）。</li>
+<li>是一个除了在 接收者 类型中之外不使用 <code>Self</code> 的 <a href="associated-items.html#methods">方法</a>。</li>
+<li>拥有以下类型之一的 接收者：
 <ul>
-<li><code>&amp;Self</code> (i.e. <code>&amp;self</code>)</li>
-<li><code>&amp;mut Self</code> (i.e <code>&amp;mut self</code>)</li>
+<li><code>&amp;Self</code> (即 <code>&amp;self</code>)</li>
+<li><code>&amp;mut Self</code> (即 <code>&amp;mut self</code>)</li>
 <li><a href="../special-types-and-traits.html#boxt"><code>Box&lt;Self&gt;</code></a></li>
 <li><a href="../special-types-and-traits.html#rct"><code>Rc&lt;Self&gt;</code></a></li>
 <li><a href="../special-types-and-traits.html#arct"><code>Arc&lt;Self&gt;</code></a></li>
-<li><a href="../special-types-and-traits.html#pinp"><code>Pin&lt;P&gt;</code></a> where <code>P</code> is one of the types above</li>
+<li><a href="../special-types-and-traits.html#pinp"><code>Pin&lt;P&gt;</code></a> 其中 <code>P</code> 是上述类型之一</li>
 </ul>
 </li>
-<li>Not have an opaque return type; that is,
+<li>不具有 不透明返回类型；即，
 <ul>
-<li>Not be an <code>async fn</code> (which has a hidden <code>Future</code> type).</li>
-<li>Not have a return position <code>impl Trait</code> type (<code>fn example(&amp;self) -&gt; impl Trait</code>).</li>
+<li>不是 <code>async fn</code>（它具有隐藏的 <code>Future</code> 类型）。</li>
+<li>不具有 返回位置 <code>impl Trait</code> 类型 (<code>fn example(&amp;self) -&gt; impl Trait</code>)。</li>
 </ul>
 </li>
-<li>Not have a <code>where Self: Sized</code> bound (receiver type of <code>Self</code> (i.e. <code>self</code>) implies this).</li>
+<li>不具有 <code>where Self: Sized</code> 绑定（<code>Self</code> 的 接收者 类型 (即 <code>self</code>) 隐含了这一点）。</li>
 </ul>
 </li>
-<li>Explicitly non-dispatchable functions require:
+<li>明确的不可分派函数要求：
 <ul>
-<li>Have a <code>where Self: Sized</code> bound (receiver type of <code>Self</code> (i.e. <code>self</code>) implies this).</li>
+<li>具有 <code>where Self: Sized</code> 绑定（<code>Self</code> 的 接收者 类型 (即 <code>self</code>) 隐含了这一点）。</li>
 </ul>
 </li>
 </ul>
@@ -482,13 +470,13 @@ after the trait name, using the same syntax used in <a href="functions.html#gene
 </div>
 
 <ul>
-<li>The <a href="../../core/ops/async_function/trait.AsyncFn.html"><code>AsyncFn</code></a>, <a href="../../core/ops/async_function/trait.AsyncFnMut.html"><code>AsyncFnMut</code></a>, and <a href="../../core/ops/async_function/trait.AsyncFnOnce.html"><code>AsyncFnOnce</code></a> traits are not dyn-compatible.</li>
+<li><a href="https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFn.html"><code>AsyncFn</code></a>、<a href="https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFnMut.html"><code>AsyncFnMut</code></a> 和 <a href="https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFnOnce.html"><code>AsyncFnOnce</code></a> 特型 不是 dyn 兼容的。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This concept was formerly known as <em>object safety</em>.</p>
+<p>这个概念以前被称为 <em>对象安全 (object safety)</em> 。</p>
 </blockquote>
 </div>
 
@@ -497,7 +485,7 @@ after the trait name, using the same syntax used in <a href="functions.html#gene
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">use std::sync::Arc;
 </span><span class="boring">use std::pin::Pin;
-</span>// Examples of dyn compatible methods.
+</span>// dyn 兼容方法的示例。
 trait TraitMethods {
     fn by_ref(self: &amp;Self) {}
     fn by_ref_mut(self: &amp;mut Self) {}
@@ -514,15 +502,15 @@ trait TraitMethods {
 </span><span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// This trait is dyn compatible, but these methods cannot be dispatched on a trait object.
+</span>// 此特型是 dyn 兼容的，但这些方法不能在特型对象上分派。
 trait NonDispatchable {
-    // Non-methods cannot be dispatched.
+    // 非方法不能被分派。
     fn foo() where Self: Sized {}
-    // Self type isn't known until runtime.
+    // Self 类型在运行时才已知。
     fn returns(&amp;self) -&gt; Self where Self: Sized;
-    // `other` may be a different concrete type of the receiver.
+    // `other` 可能是接收者的不同具体类型。
     fn param(&amp;self, other: Self) where Self: Sized {}
-    // Generics are not compatible with vtables.
+    // 泛型与虚表 (vtable) 不兼容。
     fn typed&lt;T&gt;(&amp;self, x: T) where Self: Sized {}
 }
 
@@ -531,107 +519,102 @@ impl NonDispatchable for S {
     fn returns(&amp;self) -&gt; Self where Self: Sized { S }
 }
 let obj: Box&lt;dyn NonDispatchable&gt; = Box::new(S);
-obj.returns(); // ERROR: cannot call with Self return
-obj.param(S);  // ERROR: cannot call with Self parameter
-obj.typed(1);  // ERROR: cannot call with generic type
+obj.returns(); // 错误：不能通过 Self 返回值调用
+obj.param(S);  // 错误：不能通过 Self 参数调用
+obj.typed(1);  // 错误：不能通过泛型类型调用
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use std::rc::Rc;
-</span>// Examples of dyn-incompatible traits.
+</span>// dyn 不兼容特型的示例。
 trait DynIncompatible {
-    const CONST: i32 = 1;  // ERROR: cannot have associated const
+    const CONST: i32 = 1;  // 错误：不能拥有关联常量
 
-    fn foo() {}  // ERROR: associated function without Sized
-    fn returns(&amp;self) -&gt; Self; // ERROR: Self in return type
-    fn typed&lt;T&gt;(&amp;self, x: T) {} // ERROR: has generic type parameters
-    fn nested(self: Rc&lt;Box&lt;Self&gt;&gt;) {} // ERROR: nested receiver cannot be dispatched on
+    fn foo() {}  // 错误：没有 Sized 的关联函数
+    fn returns(&amp;self) -&gt; Self; // 错误：返回类型中存在 Self
+    fn typed&lt;T&gt;(&amp;self, x: T) {} // 错误：具有泛型类型参数
+    fn nested(self: Rc&lt;Box&lt;Self&gt;&gt;) {} // 错误：嵌套接收者不能被分派
 }
 
 struct S;
 impl DynIncompatible for S {
     fn returns(&amp;self) -&gt; Self { S }
 }
-let obj: Box&lt;dyn DynIncompatible&gt; = Box::new(S); // ERROR
+let obj: Box&lt;dyn DynIncompatible&gt; = Box::new(S); // 错误
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// `Self: Sized` traits are dyn-incompatible.
+</span>// `Self: Sized` 特型是 dyn 不兼容的。
 trait TraitWithSize where Self: Sized {}
 
 struct S;
 impl TraitWithSize for S {}
-let obj: Box&lt;dyn TraitWithSize&gt; = Box::new(S); // ERROR
+let obj: Box&lt;dyn TraitWithSize&gt; = Box::new(S); // 错误
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Dyn-incompatible if `Self` is a type argument.
+</span>// 如果 `Self` 是一个类型参数，则 dyn 不兼容。
 trait Super&lt;A&gt; {}
 trait WithSelf: Super&lt;Self&gt; where Self: Sized {}
 
 struct S;
 impl&lt;A&gt; Super&lt;A&gt; for S {}
 impl WithSelf for S {}
-let obj: Box&lt;dyn WithSelf&gt; = Box::new(S); // ERROR: cannot use `Self` type parameter
+let obj: Box&lt;dyn WithSelf&gt; = Box::new(S); // 错误：不能使用 `Self` 类型参数
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.traits.supertraits"><a class="rule-link" href="#r-items.traits.supertraits" title="items.traits.supertraits"><span>[items<wbr>.traits<wbr>.supertraits]</span></a>
 </div>
 
-<h2 id="supertraits"><a class="header" href="#supertraits">Supertraits</a></h2>
+<h2 id="父特型"><a class="header" href="#父特型">父特型</a></h2>
 <div class="rule" id="r-items.traits.supertraits.intro"><a class="rule-link" href="#r-items.traits.supertraits.intro" title="items.traits.supertraits.intro"><span>[items<wbr>.traits<wbr>.supertraits<wbr>.intro]</span></a>
 </div>
 
-<p><strong>Supertraits</strong> are traits that are required to be implemented for a type to
-implement a specific trait. Furthermore, anywhere a <a href="generics.html">generic</a> or <a href="../types/trait-object.html">trait object</a>
-is bounded by a trait, it has access to the associated items of its supertraits.</p>
+<p><strong>父特型 (Supertraits)</strong> 是指为了让某个类型实现特定 特型 而必须先为该类型实现的 特型。此外，任何被 特型 绑定的 <a href="generics.html">泛型</a> 或 <a href="../types/trait-object.html">特型对象</a> 都可以访问其 父特型 的 关联项。</p>
 <div class="rule" id="r-items.traits.supertraits.decl"><a class="rule-link" href="#r-items.traits.supertraits.decl" title="items.traits.supertraits.decl"><span>[items<wbr>.traits<wbr>.supertraits<wbr>.decl]</span></a>
 </div>
 
-<p>Supertraits are declared by trait bounds on the <code>Self</code> type of a trait and
-transitively the supertraits of the traits declared in those trait bounds. It is
-an error for a trait to be its own supertrait.</p>
+<p>父特型 通过 特型 的 <code>Self</code> 类型上的 特型绑定 来声明，并以此类推，包括那些 特型绑定 中声明的 特型 的 父特型。 特型 成为其自身的 父特型 是一个错误。</p>
 <div class="rule" id="r-items.traits.supertraits.subtrait"><a class="rule-link" href="#r-items.traits.supertraits.subtrait" title="items.traits.supertraits.subtrait"><span>[items<wbr>.traits<wbr>.supertraits<wbr>.subtrait]</span></a>
 </div>
 
-<p>The trait with a supertrait is called a <strong>subtrait</strong> of its supertrait.</p>
-<p>The following is an example of declaring <code>Shape</code> to be a supertrait of <code>Circle</code>.</p>
+<p>拥有 父特型 的 特型 被称为其 父特型 的 <strong>子特型 (subtrait)</strong> 。</p>
+<p>以下是声明 <code>Shape</code> 为 <code>Circle</code> 的 父特型 的示例。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Shape { fn area(&amp;self) -&gt; f64; }
 trait Circle: Shape { fn radius(&amp;self) -&gt; f64; }
 <span class="boring">}</span></code></pre>
-<p>And the following is the same example, except using <a href="generics.html#where-clauses">where clauses</a>.</p>
+<p>以下是相同的示例，只是使用了 <a href="generics.html#where-clauses">where 子句</a>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Shape { fn area(&amp;self) -&gt; f64; }
 trait Circle where Self: Shape { fn radius(&amp;self) -&gt; f64; }
 <span class="boring">}</span></code></pre>
-<p>This next example gives <code>radius</code> a default implementation using the <code>area</code>
-function from <code>Shape</code>.</p>
+<p>下一个示例使用来自 <code>Shape</code> 的 <code>area</code> 函数为 <code>radius</code> 提供默认实现。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">trait Shape { fn area(&amp;self) -&gt; f64; }
 </span>trait Circle where Self: Shape {
     fn radius(&amp;self) -&gt; f64 {
         // A = pi * r^2
-        // so algebraically,
+        // 所以在代数上，
         // r = sqrt(A / pi)
         (self.area() / std::f64::consts::PI).sqrt()
     }
 }
 <span class="boring">}</span></code></pre>
-<p>This next example calls a supertrait method on a generic parameter.</p>
+<p>下一个示例在 泛型 参数上调用 父特型 方法。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">trait Shape { fn area(&amp;self) -&gt; f64; }
 </span><span class="boring">trait Circle: Shape { fn radius(&amp;self) -&gt; f64; }
 </span>fn print_area_and_radius&lt;C: Circle&gt;(c: C) {
-    // Here we call the area method from the supertrait `Shape` of `Circle`.
+    // 这里我们调用来自 `Circle` 的父特型 `Shape` 的 area 方法。
     println!("Area: {}", c.area());
     println!("Radius: {}", c.radius());
 }
 <span class="boring">}</span></code></pre>
-<p>Similarly, here is an example of calling supertrait methods on trait objects.</p>
+<p>类似地，这里是一个在 特型对象 上调用 父特型 方法的示例。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">trait Shape { fn area(&amp;self) -&gt; f64; }
@@ -646,22 +629,20 @@ let nonsense = circle.radius() * circle.area();
 <div class="rule" id="r-items.traits.safety"><a class="rule-link" href="#r-items.traits.safety" title="items.traits.safety"><span>[items<wbr>.traits<wbr>.safety]</span></a>
 </div>
 
-<h2 id="unsafe-traits"><a class="header" href="#unsafe-traits">Unsafe traits</a></h2>
+<h2 id="不安全特型"><a class="header" href="#不安全特型">不安全特型</a></h2>
 <div class="rule" id="r-items.traits.safety.intro"><a class="rule-link" href="#r-items.traits.safety.intro" title="items.traits.safety.intro"><span>[items<wbr>.traits<wbr>.safety<wbr>.intro]</span></a>
 </div>
 
-<p>Traits items that begin with the <code>unsafe</code> keyword indicate that <em>implementing</em> the
-trait may be <a href="../unsafety.html">unsafe</a>. It is safe to use a correctly implemented unsafe trait.
-The <a href="implementations.html#trait-implementations">trait implementation</a> must also begin with the <code>unsafe</code> keyword.</p>
-<p><a href="../special-types-and-traits.html#sync"><code>Sync</code></a> and <a href="../special-types-and-traits.html#send"><code>Send</code></a> are examples of unsafe traits.</p>
+<p>以 <code>unsafe</code> 关键字开头的 特型 项 表示 <em>实现</em> 该 特型 可能是 <a href="../unsafety.html">不安全</a> 的。使用正确实现的 不安全特型 是安全的。 <a href="implementations.html#trait-implementations">特型实现</a> 也必须以 <code>unsafe</code> 关键字开头。</p>
+<p><a href="../special-types-and-traits.html#sync"><code>Sync</code></a> 和 <a href="../special-types-and-traits.html#send"><code>Send</code></a> 是 不安全特型 的示例。</p>
 <div class="rule" id="r-items.traits.params"><a class="rule-link" href="#r-items.traits.params" title="items.traits.params"><span>[items<wbr>.traits<wbr>.params]</span></a>
 </div>
 
-<h2 id="parameter-patterns"><a class="header" href="#parameter-patterns">Parameter patterns</a></h2>
+<h2 id="参数模式"><a class="header" href="#参数模式">参数模式</a></h2>
 <div class="rule" id="r-items.traits.params.patterns-no-body"><a class="rule-link" href="#r-items.traits.params.patterns-no-body" title="items.traits.params.patterns-no-body"><span>[items<wbr>.traits<wbr>.params<wbr>.patterns-no-body]</span></a>
 </div>
 
-<p>Parameters in associated functions without a body only allow <a href="../identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a> or <code>_</code> <a href="../patterns.html#wildcard-pattern">wild card</a> patterns, as well as the form allowed by <a href="functions.html#grammar-SelfParam">SelfParam</a>. <code>mut</code> <a href="../identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a> is currently allowed, but it is deprecated and will become a hard error in the future.</p>
+<p>在没有函数体的 关联函数 中，参数仅允许 <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a> 或 <code>_</code> <a href="../patterns.html#wildcard-pattern">通配符模式</a>，以及 <a href="functions.html#grammar-SelfParam">Self 参数</a> 允许的形式。 <code>mut</code> <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a> 目前是允许的，但它已被弃用，将来会变成一个硬错误。</p>
 <!-- https://github.com/rust-lang/rust/issues/35203 -->
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -673,24 +654,24 @@ The <a href="implementations.html#trait-implementations">trait implementation</a
 <pre class="playground"><code class="language-rust compile_fail E0642 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait T {
-    fn f2(&amp;x: &amp;i32); // ERROR: patterns aren't allowed in functions without bodies
+    fn f2(&amp;x: &amp;i32); // 错误：在没有函数体的函数中不允许使用模式
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.traits.params.patterns-with-body"><a class="rule-link" href="#r-items.traits.params.patterns-with-body" title="items.traits.params.patterns-with-body"><span>[items<wbr>.traits<wbr>.params<wbr>.patterns-with-body]</span></a>
 </div>
 
-<p>Parameters in associated functions with a body only allow irrefutable patterns.</p>
+<p>带有函数体的 关联函数 中的参数仅允许 不可驳模式。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait T {
-    fn f1((a, b): (i32, i32)) {} // OK: is irrefutable
+    fn f1((a, b): (i32, i32)) {} // OK：是不可驳模式
 }
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0005 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait T {
-    fn f1(123: i32) {} // ERROR: pattern is refutable
-    fn f2(Some(x): Option&lt;i32&gt;) {} // ERROR: pattern is refutable
+    fn f1(123: i32) {} // 错误：模式是可驳的
+    fn f2(Some(x): Option&lt;i32&gt;) {} // 错误：模式是可驳的
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.traits.params.pattern-required.edition2018"><a class="rule-link" href="#r-items.traits.params.pattern-required.edition2018" title="items.traits.params.pattern-required.edition2018"><span>[items<wbr>.traits<wbr>.params<wbr>.pattern-required<wbr>.edition2018]</span></a>
@@ -700,15 +681,15 @@ The <a href="implementations.html#trait-implementations">trait implementation</a
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>Prior to the 2018 edition, the pattern for an associated function parameter is optional:</p>
+<p>在 2018 版次 之前，关联函数参数的模式是可选的：</p>
 <pre class="playground"><code class="language-rust edition2015"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// 2015 Edition
+</span>// 2015 版次
 trait T {
-    fn f(i32); // OK: parameter identifiers are not required
+    fn f(i32); // OK：参数标识符不是必需的
 }
 <span class="boring">}</span></code></pre>
-<p>Beginning in the 2018 edition, patterns are no longer optional.</p>
+<p>从 2018 版次 开始，模式不再是可选的。</p>
 </blockquote>
 </div>
 
@@ -719,37 +700,33 @@ trait T {
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>Prior to the 2018 edition, parameters in associated functions with a body are limited to the following kinds of patterns:</p>
+<p>在 2018 版次 之前，带有函数体的 关联函数 中的参数仅限于以下几种 模式：</p>
 <ul>
-<li><a href="../identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a></li>
-<li><code>mut</code> <a href="../identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a></li>
+<li><a href="../identifiers.html#grammar-IDENTIFIER">标识符</a></li>
+<li><code>mut</code> <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a></li>
 <li><a href="../patterns.html#wildcard-pattern"><code>_</code></a></li>
-<li><code>&amp;</code> <a href="../identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a></li>
-<li><code>&amp;&amp;</code> <a href="../identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a></li>
+<li><code>&amp;</code> <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a></li>
+<li><code>&amp;&amp;</code> <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a></li>
 </ul>
 <pre class="playground"><code class="language-rust edition2015 compile_fail E0642"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// 2015 Edition
+</span>// 2015 版次
 trait T {
-    fn f1((a, b): (i32, i32)) {} // ERROR: pattern not allowed
+    fn f1((a, b): (i32, i32)) {} // 错误：不允许使用该模式
 }
 <span class="boring">}</span></code></pre>
-<p>Beginning in 2018, all irrefutable patterns are allowed as described in <a href="traits.html#r-items.traits.params.patterns-with-body">items.traits.params.patterns-with-body</a>.</p>
+<p>从 2018 开始，所有不可驳模式都是允许的，如 <a href="traits.html#r-items.traits.params.patterns-with-body">items.traits.params.patterns-with-body</a> 中所述。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.traits.associated-visibility"><a class="rule-link" href="#r-items.traits.associated-visibility" title="items.traits.associated-visibility"><span>[items<wbr>.traits<wbr>.associated-visibility]</span></a>
 </div>
 
-<h2 id="item-visibility"><a class="header" href="#item-visibility">Item visibility</a></h2>
+<h2 id="项可见性"><a class="header" href="#项可见性">项可见性</a></h2>
 <div class="rule" id="r-items.traits.associated-visibility.intro"><a class="rule-link" href="#r-items.traits.associated-visibility.intro" title="items.traits.associated-visibility.intro"><span>[items<wbr>.traits<wbr>.associated-visibility<wbr>.intro]</span></a>
 </div>
 
-<p>Trait items syntactically allow a <a href="../visibility-and-privacy.html#grammar-Visibility">Visibility</a> annotation, but this is
-rejected when the trait is validated. This allows items to be parsed with a
-unified syntax across different contexts where they are used. As an example,
-an empty <code>vis</code> macro fragment specifier can be used for trait items, where the
-macro rule may be used in other situations where visibility is allowed.</p>
+<p>特型项 在语法格式上允许 <a href="../visibility-and-privacy.html#grammar-Visibility">可见性</a> 注解，但在验证 特型 时会被拒绝。这允许 项 在使用它们的不同上下文中以统一的语法格式进行解析。例如，空的 <code>vis</code> 宏片段说明符可以用于 特型项，其中该宏规则可以用于允许可见性的其他情况。</p>
 <pre class="playground"><code class="language-rust edition2024">macro_rules! create_method {
     ($vis:vis $name:ident) =&gt; {
         $vis fn $name(&amp;self) {}
@@ -757,14 +734,14 @@ macro rule may be used in other situations where visibility is allowed.</p>
 }
 
 trait T1 {
-    // Empty `vis` is allowed.
+    // 允许空的 `vis`。
     create_method! { method_of_t1 }
 }
 
 struct S;
 
 impl S {
-    // Visibility is allowed here.
+    // 这里允许可见性。
     create_method! { pub method_of_s }
 }
 

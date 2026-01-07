@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-723fd274.js";
+            window.path_to_searchindex_js = "../searchindex-1458537c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-items.struct"><a class="rule-link" href="#r-items.struct" title="items.struct"><span>[items<wbr>.struct]</span></a>
 </div>
 
-<h1 id="structs"><a class="header" href="#structs">Structs</a></h1>
+<h1 id="结构体"><a class="header" href="#结构体">结构体</a></h1>
 <div class="rule" id="r-items.struct.syntax"><a class="rule-link" href="#r-items.struct.syntax" title="items.struct.syntax"><span>[items<wbr>.struct<wbr>.syntax]</span></a>
 </div>
 
@@ -648,12 +648,12 @@ Type</text>
 <div class="rule" id="r-items.struct.intro"><a class="rule-link" href="#r-items.struct.intro" title="items.struct.intro"><span>[items<wbr>.struct<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>struct</em> is a nominal <a href="../types/struct.html">struct type</a> defined with the keyword <code>struct</code>.</p>
+<p><em>结构体</em>  是一个名义  <a href="../types/struct.html">结构体类型</a> ，使用关键字 <code>struct</code> 定义。</p>
 <div class="rule" id="r-items.struct.namespace"><a class="rule-link" href="#r-items.struct.namespace" title="items.struct.namespace"><span>[items<wbr>.struct<wbr>.namespace]</span></a>
 </div>
 
-<p>A struct declaration defines the given name in the <a href="../names/namespaces.html">type namespace</a> of the module or block where it is located.</p>
-<p>An example of a <code>struct</code> item and its use:</p>
+<p>结构体声明在其所在的模块或代码块的  <a href="../names/namespaces.html">类型命名空间</a>  中定义给定的名称。</p>
+<p>一个  <code>struct</code>  项  及其用法的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Point {x: i32, y: i32}
@@ -663,10 +663,10 @@ let px: i32 = p.x;
 <div class="rule" id="r-items.struct.tuple"><a class="rule-link" href="#r-items.struct.tuple" title="items.struct.tuple"><span>[items<wbr>.struct<wbr>.tuple]</span></a>
 </div>
 
-<p>A <em>tuple struct</em> is a nominal <a href="../types/tuple.html">tuple type</a>, and is also defined with the keyword <code>struct</code>.
-In addition to defining a type, it also defines a constructor of the same name in the <a href="../names/namespaces.html">value namespace</a>.
-The constructor is a function which can be called to create a new instance of the struct.
-For example:</p>
+<p><em>元组结构体</em>  是一个名义  <a href="../types/tuple.html">元组类型</a> ，也是使用关键字 <code>struct</code> 定义的。
+除了定义类型外，它还在  <a href="../names/namespaces.html">值命名空间</a>  中定义了一个同名的构造函数。
+构造函数是一个可以调用来创建该 结构体 新实例的函数。
+例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Point(i32, i32);
@@ -676,15 +676,13 @@ let px: i32 = match p { Point(x, _) =&gt; x };
 <div class="rule" id="r-items.struct.unit"><a class="rule-link" href="#r-items.struct.unit" title="items.struct.unit"><span>[items<wbr>.struct<wbr>.unit]</span></a>
 </div>
 
-<p>A <em>unit-like struct</em> is a struct without any fields, defined by leaving off the
-list of fields entirely. Such a struct implicitly defines a <a href="constant-items.html">constant</a> of its
-type with the same name. For example:</p>
+<p><em>类单元结构体</em>  是不包含任何字段的 结构体，通过完全省略字段列表来定义。此类 结构体 隐式地定义了一个与其类型同名的  <a href="constant-items.html">常量</a> 。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Cookie;
 let c = [Cookie, Cookie {}, Cookie, Cookie {}];
 <span class="boring">}</span></code></pre>
-<p>is equivalent to</p>
+<p>等价于</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Cookie {}
@@ -694,8 +692,7 @@ let c = [Cookie, Cookie {}, Cookie, Cookie {}];
 <div class="rule" id="r-items.struct.layout"><a class="rule-link" href="#r-items.struct.layout" title="items.struct.layout"><span>[items<wbr>.struct<wbr>.layout]</span></a>
 </div>
 
-<p>The precise memory layout of a struct is not specified. One can specify a
-particular layout using the <a href="../type-layout.html#representations"><code>repr</code> attribute</a>.</p>
+<p>结构体 的精确内存布局并未指定。可以使用  <a href="../type-layout.html#representations"><code>repr</code> 属性</a>  指定特定的布局。</p>
 
                     </main>
 

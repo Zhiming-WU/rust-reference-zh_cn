@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-723fd274.js";
+            window.path_to_searchindex_js = "../searchindex-1458537c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-items.impl"><a class="rule-link" href="#r-items.impl" title="items.impl"><span>[items<wbr>.impl]</span></a>
 </div>
 
-<h1 id="implementations"><a class="header" href="#implementations">Implementations</a></h1>
+<h1 id="实现"><a class="header" href="#实现">实现</a></h1>
 <div class="rule" id="r-items.impl.syntax"><a class="rule-link" href="#r-items.impl.syntax" title="items.impl.syntax"><span>[items<wbr>.impl<wbr>.syntax]</span></a>
 </div>
 
@@ -484,57 +484,47 @@ AssociatedItem</text>
 <div class="rule" id="r-items.impl.intro"><a class="rule-link" href="#r-items.impl.intro" title="items.impl.intro"><span>[items<wbr>.impl<wbr>.intro]</span></a>
 </div>
 
-<p>An <em>implementation</em> is an item that associates items with an <em>implementing type</em>.
-Implementations are defined with the keyword <code>impl</code> and contain functions
-that belong to an instance of the type that is being implemented or to the
-type statically.</p>
+<p>一个  <em>实现 (implementation)</em>  是一个将 项 与一个  <em>实现类型 (implementing type)</em>  相关联的 项。实现 使用关键字 <code>impl</code> 定义，并包含属于正在实现的类型的实例或静态属于该类型的函数。</p>
 <div class="rule" id="r-items.impl.kinds"><a class="rule-link" href="#r-items.impl.kinds" title="items.impl.kinds"><span>[items<wbr>.impl<wbr>.kinds]</span></a>
 </div>
 
-<p>There are two types of implementations:</p>
+<p>实现 有两种类型：</p>
 <ul>
-<li>inherent implementations</li>
-<li><a href="traits.html">trait</a> implementations</li>
+<li>固有实现 (inherent implementations)</li>
+<li><a href="traits.html">特型</a> 实现</li>
 </ul>
 <div class="rule" id="r-items.impl.inherent"><a class="rule-link" href="#r-items.impl.inherent" title="items.impl.inherent"><span>[items<wbr>.impl<wbr>.inherent]</span></a>
 </div>
 
-<h2 id="inherent-implementations"><a class="header" href="#inherent-implementations">Inherent implementations</a></h2>
+<h2 id="固有实现"><a class="header" href="#固有实现">固有实现</a></h2>
 <div class="rule" id="r-items.impl.inherent.intro"><a class="rule-link" href="#r-items.impl.inherent.intro" title="items.impl.inherent.intro"><span>[items<wbr>.impl<wbr>.inherent<wbr>.intro]</span></a>
 </div>
 
-<p>An inherent implementation is defined as the sequence of the <code>impl</code> keyword,
-generic type declarations, a path to a nominal type, a where clause, and a
-bracketed set of associable items.</p>
+<p>固有实现被定义为 <code>impl</code> 关键字、 泛型 类型声明、指向标称类型的路径、where 子句以及一组用大括号括起来的可关联 项 的序列。</p>
 <div class="rule" id="r-items.impl.inherent.implementing-type"><a class="rule-link" href="#r-items.impl.inherent.implementing-type" title="items.impl.inherent.implementing-type"><span>[items<wbr>.impl<wbr>.inherent<wbr>.implementing-type]</span></a>
 </div>
 
-<p>The nominal type is called the <em>implementing type</em> and the associable items are
-the <em>associated items</em> to the implementing type.</p>
+<p>该标称类型被称为  <em>实现类型 (implementing type)</em> ，而可关联 项 是该实现类型的  <em>关联项 (associated items)</em> 。</p>
 <div class="rule" id="r-items.impl.inherent.associated-items"><a class="rule-link" href="#r-items.impl.inherent.associated-items" title="items.impl.inherent.associated-items"><span>[items<wbr>.impl<wbr>.inherent<wbr>.associated-items]</span></a>
 </div>
 
-<p>Inherent implementations associate the contained items to the
-implementing type.</p>
+<p>固有实现将包含的 项 与实现类型相关联。</p>
 <div class="rule" id="r-items.impl.inherent.associated-items.allowed-items"><a class="rule-link" href="#r-items.impl.inherent.associated-items.allowed-items" title="items.impl.inherent.associated-items.allowed-items"><span>[items<wbr>.impl<wbr>.inherent<wbr>.associated-items<wbr>.allowed-items]</span></a>
 </div>
 
-<p>Inherent implementations can contain <a href="associated-items.html#associated-functions-and-methods">associated functions</a> (including <a href="associated-items.html#methods">methods</a>) and <a href="associated-items.html#associated-constants">associated constants</a>.</p>
+<p>固有实现可以包含 <a href="associated-items.html#associated-functions-and-methods">关联函数</a>（包括 <a href="associated-items.html#methods">方法</a>）和 <a href="associated-items.html#associated-constants">关联常量</a>。</p>
 <div class="rule" id="r-items.impl.inherent.type-alias"><a class="rule-link" href="#r-items.impl.inherent.type-alias" title="items.impl.inherent.type-alias"><span>[items<wbr>.impl<wbr>.inherent<wbr>.type-alias]</span></a>
 </div>
 
-<p>They cannot contain associated type aliases.</p>
+<p>它们不能包含关联类型别名。</p>
 <div class="rule" id="r-items.impl.inherent.associated-item-path"><a class="rule-link" href="#r-items.impl.inherent.associated-item-path" title="items.impl.inherent.associated-item-path"><span>[items<wbr>.impl<wbr>.inherent<wbr>.associated-item-path]</span></a>
 </div>
 
-<p>The <a href="../paths.html">path</a> to an associated item is any path to the implementing type,
-followed by the associated item’s identifier as the final path
-component.</p>
+<p>指向关联项的 <a href="../paths.html">路径</a> 是指向实现类型的任何路径，后跟关联项的标识符作为路径的最后一个组件。</p>
 <div class="rule" id="r-items.impl.inherent.coherence"><a class="rule-link" href="#r-items.impl.inherent.coherence" title="items.impl.inherent.coherence"><span>[items<wbr>.impl<wbr>.inherent<wbr>.coherence]</span></a>
 </div>
 
-<p>A type can also have multiple inherent implementations. An implementing type
-must be defined within the same crate as the original type definition.</p>
+<p>一个类型也可以有多个固有实现。实现类型必须定义在与原始类型定义相同的 crate 中。</p>
 <pre class="playground"><code class="language-rust edition2024">pub mod color {
     pub struct Color(pub u8, pub u8, pub u8);
 
@@ -554,51 +544,42 @@ mod values {
 
 pub use self::color::Color;
 fn main() {
-    // Actual path to the implementing type and impl in the same module.
+    // 实现类型和 impl 在同一个模块中的实际路径。
     color::Color::WHITE;
 
-    // Impl blocks in different modules are still accessed through a path to the type.
+    // 不同模块中的 impl 块仍然通过指向该类型的路径进行访问。
     color::Color::red();
 
-    // Re-exported paths to the implementing type also work.
+    // 实现类型的重导出路径也有效。
     Color::red();
 
-    // Does not work, because use in `values` is not pub.
+    // 无效，因为 values 中的 use 不是 pub。
     // values::Color::red();
 }</code></pre>
 <div class="rule" id="r-items.impl.trait"><a class="rule-link" href="#r-items.impl.trait" title="items.impl.trait"><span>[items<wbr>.impl<wbr>.trait]</span></a>
 </div>
 
-<h2 id="trait-implementations"><a class="header" href="#trait-implementations">Trait implementations</a></h2>
+<h2 id="特型实现"><a class="header" href="#特型实现">特型实现</a></h2>
 <div class="rule" id="r-items.impl.trait.intro"><a class="rule-link" href="#r-items.impl.trait.intro" title="items.impl.trait.intro"><span>[items<wbr>.impl<wbr>.trait<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>trait implementation</em> is defined like an inherent implementation except that
-the optional generic type declarations are followed by a <a href="traits.html">trait</a>, followed
-by the keyword <code>for</code>, followed by a path to a nominal type.</p>
-<!-- To understand this, you have to back-reference to the previous section. :( -->
+<p><em>特型实现</em>  的定义类似于固有实现，不同之处在于可选的 泛型 类型声明后面跟着一个 <a href="traits.html">特型</a>，然后是关键字 <code>for</code>，最后是到一个标称类型的路径。</p>
 <div class="rule" id="r-items.impl.trait.implemented-trait"><a class="rule-link" href="#r-items.impl.trait.implemented-trait" title="items.impl.trait.implemented-trait"><span>[items<wbr>.impl<wbr>.trait<wbr>.implemented-trait]</span></a>
 </div>
 
-<p>The trait is known as the <em>implemented trait</em>. The implementing type
-implements the implemented trait.</p>
+<p>该 特型 被称为  <em>实现的特型 (implemented trait)</em> 。实现类型实现该 实现的特型。</p>
 <div class="rule" id="r-items.impl.trait.def-requirement"><a class="rule-link" href="#r-items.impl.trait.def-requirement" title="items.impl.trait.def-requirement"><span>[items<wbr>.impl<wbr>.trait<wbr>.def-requirement]</span></a>
 </div>
 
-<p>A trait implementation must define all non-default associated items declared
-by the implemented trait, may redefine default associated items defined by the
-implemented trait, and cannot define any other items.</p>
+<p>特型实现必须定义由 实现的特型 声明的所有非默认 关联项，可以重新定义由 实现的特型 定义的默认 关联项，并且不能定义任何其他 项。</p>
 <div class="rule" id="r-items.impl.trait.associated-item-path"><a class="rule-link" href="#r-items.impl.trait.associated-item-path" title="items.impl.trait.associated-item-path"><span>[items<wbr>.impl<wbr>.trait<wbr>.associated-item-path]</span></a>
 </div>
 
-<p>The path to the associated items is <code>&lt;</code> followed by a path to the implementing
-type followed by <code>as</code> followed by a path to the trait followed by <code>&gt;</code> as a path
-component followed by the associated item’s path component.</p>
+<p>指向关联项的路径是 <code>&lt;</code> 后跟指向实现类型的路径，后跟 <code>as</code>，后跟指向 特型 的路径，后跟 <code>&gt;</code> 作为路径组件，再后跟关联项的路径组件。</p>
 <div class="rule" id="r-items.impl.trait.safety"><a class="rule-link" href="#r-items.impl.trait.safety" title="items.impl.trait.safety"><span>[items<wbr>.impl<wbr>.trait<wbr>.safety]</span></a>
 </div>
 
-<p><a href="traits.html#unsafe-traits">Unsafe traits</a> require the trait implementation to begin with the <code>unsafe</code>
-keyword.</p>
+<p><a href="traits.html#unsafe-traits">不安全特型</a> 要求特型实现以 <code>unsafe</code> 关键字开头。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">#[derive(Copy, Clone)]
@@ -634,65 +615,54 @@ impl Shape for Circle {
 <div class="rule" id="r-items.impl.trait.coherence"><a class="rule-link" href="#r-items.impl.trait.coherence" title="items.impl.trait.coherence"><span>[items<wbr>.impl<wbr>.trait<wbr>.coherence]</span></a>
 </div>
 
-<h3 id="trait-implementation-coherence"><a class="header" href="#trait-implementation-coherence">Trait implementation coherence</a></h3>
+<h3 id="特型实现一致性"><a class="header" href="#特型实现一致性">特型实现一致性</a></h3>
 <div class="rule" id="r-items.impl.trait.coherence.intro"><a class="rule-link" href="#r-items.impl.trait.coherence.intro" title="items.impl.trait.coherence.intro"><span>[items<wbr>.impl<wbr>.trait<wbr>.coherence<wbr>.intro]</span></a>
 </div>
 
-<p>A trait implementation is considered incoherent if either the orphan rules check fails
-or there are overlapping implementation instances.</p>
+<p>如果孤儿规则检查失败或存在重叠的实现实例，则 特型实现 被认为是不一致的。</p>
 <div class="rule" id="r-items.impl.trait.coherence.overlapping"><a class="rule-link" href="#r-items.impl.trait.coherence.overlapping" title="items.impl.trait.coherence.overlapping"><span>[items<wbr>.impl<wbr>.trait<wbr>.coherence<wbr>.overlapping]</span></a>
 </div>
 
-<p>Two trait implementations overlap when there is a non-empty intersection of the
-traits the implementation is for, the implementations can be instantiated with
-the same type. <!-- This is probably wrong? Source: No two implementations can
-be instantiable with the same set of types for the input type parameters. --></p>
+<p>当两个 特型实现 所针对的 特型 存在非空交集时，即这两个实现可以用相同的类型实例化，则它们发生重叠。</p>
 <div class="rule" id="r-items.impl.trait.orphan-rule"><a class="rule-link" href="#r-items.impl.trait.orphan-rule" title="items.impl.trait.orphan-rule"><span>[items<wbr>.impl<wbr>.trait<wbr>.orphan-rule]</span></a>
 </div>
 
-<h4 id="orphan-rules"><a class="header" href="#orphan-rules">Orphan rules</a></h4>
+<h4 id="孤儿规则"><a class="header" href="#孤儿规则">孤儿规则</a></h4>
 <div class="rule" id="r-items.impl.trait.orphan-rule.intro"><a class="rule-link" href="#r-items.impl.trait.orphan-rule.intro" title="items.impl.trait.orphan-rule.intro"><span>[items<wbr>.impl<wbr>.trait<wbr>.orphan-rule<wbr>.intro]</span></a>
 </div>
 
-<p>The <em>orphan rule</em> states that a trait implementation is only allowed if either the trait or at least one of the types in the implementation is defined in the current crate. It prevents conflicting trait implementations across different crates and is key to ensuring coherence.</p>
-<p>An orphan implementation is one that implements a foreign trait for a foreign type. If these were freely allowed, two crates could implement the same trait for the same type in incompatible ways, creating a situation where adding or updating a dependency could break compilation due to conflicting implementations.</p>
-<p>The orphan rule enables library authors to add new implementations to their traits without fear that they’ll break downstream code. Without these restrictions, a library couldn’t add an implementation like <code>impl&lt;T: Display&gt; MyTrait for T</code> without potentially conflicting with downstream implementations.</p>
+<p><em>孤儿规则 (orphan rule)</em>  规定，只有当 特型 或实现中的至少一个类型定义在当前 crate 中时，才允许进行 特型实现。它防止了不同 crate 之间冲突的 特型实现，并且是确保一致性的关键。</p>
+<p>一个孤儿实现是指为外部类型实现外部 特型。如果允许自由定义这些实现，则两个 crate 可能会以不兼容的方式为相同的类型实现相同的 特型，从而导致添加或更新依赖项可能会因实现冲突而破坏编译。</p>
+<p>孤儿规则 允许库作者为其 特型 添加新的实现，而无需担心会破坏下游代码。如果没有这些限制，库将无法添加像 <code>impl&lt;T: Display&gt; MyTrait for T</code> 这样的实现，因为这可能会与下游实现产生冲突。</p>
 <div class="rule" id="r-items.impl.trait.orphan-rule.general"><a class="rule-link" href="#r-items.impl.trait.orphan-rule.general" title="items.impl.trait.orphan-rule.general"><span>[items<wbr>.impl<wbr>.trait<wbr>.orphan-rule<wbr>.general]</span></a>
 </div>
 
-<p>Given <code>impl&lt;P1..=Pn&gt; Trait&lt;T1..=Tn&gt; for T0</code>, an <code>impl</code> is valid only if at
-least one of the following is true:</p>
+<p>对于 <code>impl&lt;P1..=Pn&gt; Trait&lt;T1..=Tn&gt; for T0</code>，只有当以下至少一项为真时，<code>impl</code> 才是有效的：</p>
 <ul>
-<li><code>Trait</code> is a <a href="../glossary.html#local-trait">local trait</a></li>
-<li>All of
+<li><code>Trait</code> 是一个 <a href="../glossary.html#local-trait">本地特型</a></li>
+<li>以下全部成立：
 <ul>
-<li>At least one of the types <code>T0..=Tn</code> must be a <a href="../glossary.html#local-type">local type</a>. Let <code>Ti</code> be the
-first such type.</li>
-<li>No <a href="../glossary.html#uncovered-type">uncovered type</a> parameters <code>P1..=Pn</code> may appear in <code>T0..Ti</code> (excluding
-<code>Ti</code>)</li>
+<li>类型 <code>T0..=Tn</code> 中必须至少有一个是 <a href="../glossary.html#local-type">本地类型</a>。设 <code>Ti</code> 为第一个此类类型。</li>
+<li>在 <code>T0..Ti</code>（不包括 <code>Ti</code>）中不得出现 <a href="../glossary.html#uncovered-type">未覆盖的类型</a> 参数 <code>P1..=Pn</code></li>
 </ul>
 </li>
 </ul>
 <div class="rule" id="r-items.impl.trait.uncovered-param"><a class="rule-link" href="#r-items.impl.trait.uncovered-param" title="items.impl.trait.uncovered-param"><span>[items<wbr>.impl<wbr>.trait<wbr>.uncovered-param]</span></a>
 </div>
 
-<p>Only the appearance of <em>uncovered</em> type parameters is restricted.</p>
+<p>仅对  <em>未覆盖的 (uncovered)</em>  类型参数的出现进行限制。</p>
 <div class="rule" id="r-items.impl.trait.fundamental"><a class="rule-link" href="#r-items.impl.trait.fundamental" title="items.impl.trait.fundamental"><span>[items<wbr>.impl<wbr>.trait<wbr>.fundamental]</span></a>
 </div>
 
-<p>Note that for the purposes of coherence, <a href="../glossary.html#fundamental-type-constructors">fundamental types</a> are
-special. The <code>T</code> in <code>Box&lt;T&gt;</code> is not considered covered, and <code>Box&lt;LocalType&gt;</code>
-is considered local.</p>
+<p>请注意，为了保持一致性，<a href="../glossary.html#fundamental-type-constructors">基础类型</a> 是特殊的。<code>Box&lt;T&gt;</code> 中的 <code>T</code> 不被视为已覆盖，且 <code>Box&lt;LocalType&gt;</code> 被视为本地的。</p>
 <div class="rule" id="r-items.impl.generics"><a class="rule-link" href="#r-items.impl.generics" title="items.impl.generics"><span>[items<wbr>.impl<wbr>.generics]</span></a>
 </div>
 
-<h2 id="generic-implementations"><a class="header" href="#generic-implementations">Generic implementations</a></h2>
+<h2 id="泛型实现"><a class="header" href="#泛型实现">泛型实现</a></h2>
 <div class="rule" id="r-items.impl.generics.intro"><a class="rule-link" href="#r-items.impl.generics.intro" title="items.impl.generics.intro"><span>[items<wbr>.impl<wbr>.generics<wbr>.intro]</span></a>
 </div>
 
-<p>An implementation can take <a href="generics.html">generic parameters</a>, which can be used in the rest
-of the implementation. Implementation parameters are written directly after the
-<code>impl</code> keyword.</p>
+<p>实现可以接受 <a href="generics.html">泛型参数</a>，这些参数可以用于实现的其余部分。实现参数直接写在 <code>impl</code> 关键字后面。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">trait Seq&lt;T&gt; { fn dummy(&amp;self, _: T) { } }
@@ -700,26 +670,23 @@ of the implementation. Implementation parameters are written directly after the
     /* ... */
 }
 impl Seq&lt;bool&gt; for u32 {
-    /* Treat the integer as a sequence of bits */
+    /* 将整数视为位序列 */
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.impl.generics.usage"><a class="rule-link" href="#r-items.impl.generics.usage" title="items.impl.generics.usage"><span>[items<wbr>.impl<wbr>.generics<wbr>.usage]</span></a>
 </div>
 
-<p>Generic parameters <em>constrain</em> an implementation if the parameter appears at
-least once in one of:</p>
+<p>如果泛型参数在以下位置至少出现一次，则该参数会  <em>约束 (constrain)</em>  实现：</p>
 <ul>
-<li>The implemented trait, if it has one</li>
-<li>The implementing type</li>
-<li>As an <a href="associated-items.html#associated-types">associated type</a> in the <a href="../trait-bounds.html">bounds</a> of a type that contains another
-parameter that constrains the implementation</li>
+<li>实现的 特型（如果存在）</li>
+<li>实现类型</li>
+<li>作为包含另一个约束实现的参数的类型的 <a href="../trait-bounds.html">绑定</a> 中的 <a href="associated-items.html#associated-types">关联类型</a></li>
 </ul>
 <div class="rule" id="r-items.impl.generics.constrain"><a class="rule-link" href="#r-items.impl.generics.constrain" title="items.impl.generics.constrain"><span>[items<wbr>.impl<wbr>.generics<wbr>.constrain]</span></a>
 </div>
 
-<p>Type and const parameters must always constrain the implementation. Lifetimes
-must constrain the implementation if the lifetime is used in an associated type.</p>
-<p>Examples of constraining situations:</p>
+<p>类型参数和常量参数必须始终约束实现。如果生命周期在关联类型中使用，则生命周期必须约束实现。</p>
+<p>产生约束的情况示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">trait Trait{}
@@ -728,53 +695,50 @@ must constrain the implementation if the lifetime is used in an associated type.
 </span><span class="boring">struct Struct;
 </span><span class="boring">struct GenericStruct&lt;T&gt;(T);
 </span><span class="boring">struct ConstGenericStruct&lt;const N: usize&gt;([(); N]);
-</span>// T constrains by being an argument to GenericTrait.
+</span>// T 通过作为 GenericTrait 的参数来产生约束。
 impl&lt;T&gt; GenericTrait&lt;T&gt; for i32 { /* ... */ }
 
-// T constrains by being an argument to GenericStruct
+// T 通过作为 GenericStruct 的参数来产生约束
 impl&lt;T&gt; Trait for GenericStruct&lt;T&gt; { /* ... */ }
 
-// Likewise, N constrains by being an argument to ConstGenericStruct
+// 同样地，N 通过作为 ConstGenericStruct 的参数来产生约束
 impl&lt;const N: usize&gt; Trait for ConstGenericStruct&lt;N&gt; { /* ... */ }
 
-// T constrains by being in an associated type in a bound for type `U` which is
-// itself a generic parameter constraining the trait.
+// T 通过作为类型 U 的绑定中的关联类型来产生约束，而 U 本身是约束该特型的泛型参数。
 impl&lt;T, U&gt; GenericTrait&lt;U&gt; for u32 where U: HasAssocType&lt;Ty = T&gt; { /* ... */ }
 
-// Like previous, except the type is `(U, isize)`. `U` appears inside the type
-// that includes `T`, and is not the type itself.
+// 与前一个类似，除了类型是 (U, isize)。U 出现在包含 T 的类型内部，而不是该类型本身。
 impl&lt;T, U&gt; GenericStruct&lt;U&gt; where (U, isize): HasAssocType&lt;Ty = T&gt; { /* ... */ }
 <span class="boring">}</span></code></pre>
-<p>Examples of non-constraining situations:</p>
+<p>不产生约束的情况示例：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// The rest of these are errors, since they have type or const parameters that
-// do not constrain.
+</span>// 以下其余部分都是错误，因为它们具有不产生约束的类型或常量参数。
 
-// T does not constrain since it does not appear at all.
+// T 不产生约束，因为它根本没有出现。
 impl&lt;T&gt; Struct { /* ... */ }
 
-// N does not constrain for the same reason.
+// N 出因同样的原因不产生约束。
 impl&lt;const N: usize&gt; Struct { /* ... */ }
 
-// Usage of T inside the implementation does not constrain the impl.
+// 在实现内部使用 T 并不约束 impl。
 impl&lt;T&gt; Struct {
     fn uses_t(t: &amp;T) { /* ... */ }
 }
 
-// T is used as an associated type in the bounds for U, but U does not constrain.
+// T 在 U 的绑定中被用作关联类型，但 U 并不产生约束。
 impl&lt;T, U&gt; Struct where U: HasAssocType&lt;Ty = T&gt; { /* ... */ }
 
-// T is used in the bounds, but not as an associated type, so it does not constrain.
+// T 在绑定中使用，但不是作为关联类型使用，因此它不产生约束。
 impl&lt;T, U&gt; GenericTrait&lt;U&gt; for u32 where U: GenericTrait&lt;T&gt; {}
 <span class="boring">}</span></code></pre>
-<p>Example of an allowed unconstraining lifetime parameter:</p>
+<p>允许的不产生约束的生命周期参数示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Struct;
 </span>impl&lt;'a&gt; Struct {}
 <span class="boring">}</span></code></pre>
-<p>Example of a disallowed unconstraining lifetime parameter:</p>
+<p>不允许的不产生约束的生命周期参数示例：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Struct;
@@ -786,12 +750,8 @@ impl&lt;T, U&gt; GenericTrait&lt;U&gt; for u32 where U: GenericTrait&lt;T&gt; {}
 <div class="rule" id="r-items.impl.attributes"><a class="rule-link" href="#r-items.impl.attributes" title="items.impl.attributes"><span>[items<wbr>.impl<wbr>.attributes]</span></a>
 </div>
 
-<h2 id="attributes-on-implementations"><a class="header" href="#attributes-on-implementations">Attributes on implementations</a></h2>
-<p>Implementations may contain outer <a href="../attributes.html">attributes</a> before the <code>impl</code> keyword and
-inner <a href="../attributes.html">attributes</a> inside the brackets that contain the associated items. Inner
-attributes must come before any associated items. The attributes that have
-meaning here are <a href="../conditional-compilation.html"><code>cfg</code></a>, <a href="../attributes/diagnostics.html#the-deprecated-attribute"><code>deprecated</code></a>, <a href="../../rustdoc/the-doc-attribute.html"><code>doc</code></a>, and <a href="../attributes/diagnostics.html#lint-check-attributes">the lint check
-attributes</a>.</p>
+<h2 id="实现上的属性"><a class="header" href="#实现上的属性">实现上的属性</a></h2>
+<p>实现可以在 <code>impl</code> 关键字之前包含外部 <a href="../attributes.html">属性</a>，并在包含关联项的大括号内包含内部 <a href="../attributes.html">属性</a>。内部属性必须位于任何关联项之前。此处有意义的属性是 <a href="../conditional-compilation.html"><code>cfg</code></a>、<a href="../attributes/diagnostics.html#the-deprecated-attribute"><code>deprecated</code></a>、<a href="https://doc.rust-lang.org/rustdoc/the-doc-attribute.html"><code>doc</code></a> 和 <a href="../attributes/diagnostics.html#lint-check-attributes">lint 检查属性</a>。</p>
 
                     </main>
 

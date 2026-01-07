@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-723fd274.js";
+            window.path_to_searchindex_js = "searchindex-1458537c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-items"><a class="rule-link" href="#r-items" title="items"><span>[items]</span></a>
 </div>
 
-<h1 id="items"><a class="header" href="#items">Items</a></h1>
+<h1 id="项"><a class="header" href="#项">项</a></h1>
 <div class="rule" id="r-items.syntax"><a class="rule-link" href="#r-items.syntax" title="items.syntax"><span>[items<wbr>.syntax]</span></a>
 </div>
 
@@ -465,55 +465,51 @@ MacroRulesDefinition</text>
 <div class="rule" id="r-items.intro"><a class="rule-link" href="#r-items.intro" title="items.intro"><span>[items<wbr>.intro]</span></a>
 </div>
 
-<p>An <em>item</em> is a component of a crate. Items are organized within a crate by a
-nested set of <a href="items/modules.html">modules</a>. Every crate has a single “outermost” anonymous module;
-all further items within the crate have <a href="paths.html">paths</a> within the module tree of the
-crate.</p>
+<p>一个 <em>项</em> 是 crate 的一个组件。 项 在 crate 中通过一组嵌套的 <a href="items/modules.html">模块</a> 来组织。每个 crate 都有一个唯一的“最外层”匿名模块；crate 内的所有后续 项 在 crate 的模块树中都有 <a href="paths.html">路径</a>。</p>
 <div class="rule" id="r-items.static-def"><a class="rule-link" href="#r-items.static-def" title="items.static-def"><span>[items<wbr>.static-def]</span></a>
 </div>
 
-<p>Items are entirely determined at compile-time, generally remain fixed during
-execution, and may reside in read-only memory.</p>
+<p>项 完全在编译时确定，通常在执行期间保持固定，并可能驻留在只读内存中。</p>
 <div class="rule" id="r-items.kinds"><a class="rule-link" href="#r-items.kinds" title="items.kinds"><span>[items<wbr>.kinds]</span></a>
 </div>
 
-<p>There are several kinds of items:</p>
+<p>有几种类型的 项 ：</p>
 <ul>
-<li><a href="items/modules.html">modules</a></li>
-<li><a href="items/extern-crates.html"><code>extern crate</code> declarations</a></li>
-<li><a href="items/use-declarations.html"><code>use</code> declarations</a></li>
-<li><a href="items/functions.html">function definitions</a></li>
-<li><a href="items/type-aliases.html">type alias definitions</a></li>
-<li><a href="items/structs.html">struct definitions</a></li>
-<li><a href="items/enumerations.html">enumeration definitions</a></li>
-<li><a href="items/unions.html">union definitions</a></li>
-<li><a href="items/constant-items.html">constant items</a></li>
-<li><a href="items/static-items.html">static items</a></li>
-<li><a href="items/traits.html">trait definitions</a></li>
-<li><a href="items/implementations.html">implementations</a></li>
-<li><a href="items/external-blocks.html"><code>extern</code> blocks</a></li>
+<li><a href="items/modules.html">模块</a></li>
+<li><a href="items/extern-crates.html"><code>extern crate</code> 声明</a></li>
+<li><a href="items/use-declarations.html"><code>use</code> 声明</a></li>
+<li><a href="items/functions.html">函数定义</a></li>
+<li><a href="items/type-aliases.html">类型别名定义</a></li>
+<li><a href="items/structs.html">结构体定义</a></li>
+<li><a href="items/enumerations.html">枚举定义</a></li>
+<li><a href="items/unions.html">联合体定义</a></li>
+<li><a href="items/constant-items.html">常量项</a></li>
+<li><a href="items/static-items.html">静态项</a></li>
+<li><a href="items/traits.html">特型定义</a></li>
+<li><a href="items/implementations.html">实现</a></li>
+<li><a href="items/external-blocks.html"><code>extern</code> 块</a></li>
 </ul>
 <div class="rule" id="r-items.locations"><a class="rule-link" href="#r-items.locations" title="items.locations"><span>[items<wbr>.locations]</span></a>
 </div>
 
-<p>Items may be declared in the <a href="crates-and-source-files.html">root of the crate</a>, a <a href="items/modules.html">module</a>, or a <a href="expressions/block-expr.html">block expression</a>.</p>
+<p>项 可以在 <a href="crates-and-source-files.html">crate 根部</a>、<a href="items/modules.html">模块</a> 或 <a href="expressions/block-expr.html">块表达式</a> 中声明。</p>
 <div class="rule" id="r-items.associated-locations"><a class="rule-link" href="#r-items.associated-locations" title="items.associated-locations"><span>[items<wbr>.associated-locations]</span></a>
 </div>
 
-<p>A subset of items, called <a href="items/associated-items.html">associated items</a>, may be declared in <a href="items/traits.html">traits</a> and <a href="items/implementations.html">implementations</a>.</p>
+<p>项 的一个子集，称为 <a href="items/associated-items.html">关联项</a>，可以在 <a href="items/traits.html">特型</a> 和 <a href="items/implementations.html">实现</a> 中声明。</p>
 <div class="rule" id="r-items.extern-locations"><a class="rule-link" href="#r-items.extern-locations" title="items.extern-locations"><span>[items<wbr>.extern-locations]</span></a>
 </div>
 
-<p>A subset of items, called external items, may be declared in <a href="items/external-blocks.html"><code>extern</code> blocks</a>.</p>
+<p>项 的一个子集，称为外部项，可以在 <a href="items/external-blocks.html"><code>extern</code> 块</a> 中声明。</p>
 <div class="rule" id="r-items.decl-order"><a class="rule-link" href="#r-items.decl-order" title="items.decl-order"><span>[items<wbr>.decl-order]</span></a>
 </div>
 
-<p>Items may be defined in any order, with the exception of <a href="macros-by-example.html"><code>macro_rules</code></a> which has its own scoping behavior.</p>
+<p>项 可以按任何顺序定义，唯一的例外是 <a href="macros-by-example.html"><code>macro_rules</code></a>，它有自己的作用域行为。</p>
 <div class="rule" id="r-items.name-resolution"><a class="rule-link" href="#r-items.name-resolution" title="items.name-resolution"><span>[items<wbr>.name-resolution]</span></a>
 </div>
 
-<p><a href="names/name-resolution.html">Name resolution</a> of item names allows items to be defined before or after where the item is referred to in the module or block.</p>
-<p>See <a href="names/scopes.html#item-scopes">item scopes</a> for information on the scoping rules of items.</p>
+<p>项 名称的 <a href="names/name-resolution.html">名称解析</a> 允许在模块或块中引用该 项 的位置之前或之后定义它。</p>
+<p>有关 项 的作用域规则，请参见 <a href="names/scopes.html#item-scopes">项作用域</a>。</p>
 
                     </main>
 

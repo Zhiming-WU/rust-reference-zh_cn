@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-723fd274.js";
+            window.path_to_searchindex_js = "../searchindex-1458537c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-items.generics"><a class="rule-link" href="#r-items.generics" title="items.generics"><span>[items<wbr>.generics]</span></a>
 </div>
 
-<h1 id="generic-parameters"><a class="header" href="#generic-parameters">Generic parameters</a></h1>
+<h1 id="泛型参数"><a class="header" href="#泛型参数">泛型参数</a></h1>
 <div class="rule" id="r-items.generics.syntax"><a class="rule-link" href="#r-items.generics.syntax" title="items.generics.syntax"><span>[items<wbr>.generics<wbr>.syntax]</span></a>
 </div>
 
@@ -548,20 +548,16 @@ LiteralExpression</text>
 <div class="rule" id="r-items.generics.syntax.intro"><a class="rule-link" href="#r-items.generics.syntax.intro" title="items.generics.syntax.intro"><span>[items<wbr>.generics<wbr>.syntax<wbr>.intro]</span></a>
 </div>
 
-<p><a href="functions.html">Functions</a>, <a href="type-aliases.html">type aliases</a>, <a href="structs.html">structs</a>, <a href="enumerations.html">enumerations</a>, <a href="unions.html">unions</a>, <a href="traits.html">traits</a>, and
-<a href="implementations.html">implementations</a> may be <em>parameterized</em> by types, constants, and lifetimes. These
-parameters are listed in angle <span class="parenthetical">brackets (<code>&lt;...&gt;</code>)</span>,
-usually immediately after the name of the item and before its definition. For
-implementations, which don’t have a name, they come directly after <code>impl</code>.</p>
+<p><a href="functions.html">函数</a>、<a href="type-aliases.html">类型别名</a>、<a href="structs.html">结构体</a>、<a href="enumerations.html">枚举</a>、<a href="unions.html">联合体</a>、<a href="traits.html">特型</a> 和 <a href="implementations.html">实现</a> 可以通过类型、常量和生命周期进行  <em>参数化 (parameterized)</em> 。这些参数列在尖括号 <span class="parenthetical">（<code>&lt;...&gt;</code>）</span>中，通常紧跟在 项 的名称之后、其定义之前。对于没有名称的 实现，它们直接跟在 <code>impl</code> 后面。</p>
 <div class="rule" id="r-items.generics.syntax.decl-order"><a class="rule-link" href="#r-items.generics.syntax.decl-order" title="items.generics.syntax.decl-order"><span>[items<wbr>.generics<wbr>.syntax<wbr>.decl-order]</span></a>
 </div>
 
-<p>The order of generic parameters is restricted to lifetime parameters and then type and const parameters intermixed.</p>
+<p>泛型参数 的顺序受限，必须先是 生命周期参数，然后是混合在一起的 类型参数 和 常量参数。</p>
 <div class="rule" id="r-items.generics.syntax.duplicate-params"><a class="rule-link" href="#r-items.generics.syntax.duplicate-params" title="items.generics.syntax.duplicate-params"><span>[items<wbr>.generics<wbr>.syntax<wbr>.duplicate-params]</span></a>
 </div>
 
-<p>The same parameter name may not be declared more than once in a <a href="generics.html#grammar-GenericParams">GenericParams</a> list.</p>
-<p>Some examples of items with type, const, and lifetime parameters:</p>
+<p>在 <a href="generics.html#grammar-GenericParams">GenericParams</a> 列表中，同一个参数名不得声明多次。</p>
+<p>带类型、常量和生命周期参数的 项 示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn foo&lt;'a, T&gt;() {}
@@ -573,71 +569,59 @@ struct EitherOrderWorks&lt;const N: bool, U&gt;(U);
 <div class="rule" id="r-items.generics.syntax.scope"><a class="rule-link" href="#r-items.generics.syntax.scope" title="items.generics.syntax.scope"><span>[items<wbr>.generics<wbr>.syntax<wbr>.scope]</span></a>
 </div>
 
-<p>Generic parameters are in scope within the item definition where they are
-declared. They are not in scope for items declared within the body of a
-function as described in <a href="../statements.html#item-declarations">item declarations</a>.
-See <a href="../names/scopes.html#generic-parameter-scopes">generic parameter scopes</a> for more details.</p>
+<p>泛型参数 在其声明所在的 项 定义的作用域内。它们不在函数体内部声明的 项 的作用域内，如 <a href="../statements.html#item-declarations">项声明</a> 中所述。有关更多详细信息，请参阅 <a href="../names/scopes.html#generic-parameter-scopes">泛型参数作用域</a>。</p>
 <div class="rule" id="r-items.generics.builtin-generic-types"><a class="rule-link" href="#r-items.generics.builtin-generic-types" title="items.generics.builtin-generic-types"><span>[items<wbr>.generics<wbr>.builtin-generic-types]</span></a>
 </div>
 
-<p><a href="../types/pointer.html#shared-references-">References</a>, <a href="../types/pointer.html#raw-pointers-const-and-mut">raw pointers</a>, <a href="../types/array.html">arrays</a>, <a href="../types/slice.html">slices</a>, <a href="../types/tuple.html">tuples</a>, and
-<a href="../types/function-pointer.html">function pointers</a> have lifetime or type parameters as well, but are not
-referred to with path syntax.</p>
+<p><a href="../types/pointer.html#shared-references-">引用</a>、<a href="../types/pointer.html#raw-pointers-const-and-mut">原始指针</a>、<a href="../types/array.html">数组</a>、<a href="../types/slice.html">切片</a>、<a href="../types/tuple.html">元组</a> 和 <a href="../types/function-pointer.html">函数指针</a> 也有生命周期或类型参数，但不是通过路径语法引用的。</p>
 <div class="rule" id="r-items.generics.invalid-lifetimes"><a class="rule-link" href="#r-items.generics.invalid-lifetimes" title="items.generics.invalid-lifetimes"><span>[items<wbr>.generics<wbr>.invalid-lifetimes]</span></a>
 </div>
 
-<p><code>'_</code> and <code>'static</code> are not valid lifetime parameter names.</p>
+<p><code>'_</code> 和 <code>'static</code> 不是有效的 生命周期参数 名称。</p>
 <div class="rule" id="r-items.generics.const"><a class="rule-link" href="#r-items.generics.const" title="items.generics.const"><span>[items<wbr>.generics<wbr>.const]</span></a>
 </div>
 
-<h3 id="const-generics"><a class="header" href="#const-generics">Const generics</a></h3>
+<h3 id="常量泛型"><a class="header" href="#常量泛型">常量泛型</a></h3>
 <div class="rule" id="r-items.generics.const.intro"><a class="rule-link" href="#r-items.generics.const.intro" title="items.generics.const.intro"><span>[items<wbr>.generics<wbr>.const<wbr>.intro]</span></a>
 </div>
 
-<p><em>Const generic parameters</em> allow items to be generic over constant values.</p>
+<p><em>常量泛型参数 (Const generic parameters)</em>  允许 项 对常量值进行泛型化。</p>
 <div class="rule" id="r-items.generics.const.namespace"><a class="rule-link" href="#r-items.generics.const.namespace" title="items.generics.const.namespace"><span>[items<wbr>.generics<wbr>.const<wbr>.namespace]</span></a>
 </div>
 
-<p>The const identifier introduces a name in the <a href="../names/namespaces.html">value namespace</a> for the constant parameter, and all instances of the item must be instantiated with a value of the given type.</p>
+<p>常量标识符在 <a href="../names/namespaces.html">值命名空间</a> 中为 常量参数 引入一个名称，并且该 项 的所有实例必须使用给定类型的值进行实例化。</p>
 <div class="rule" id="r-items.generics.const.allowed-types"><a class="rule-link" href="#r-items.generics.const.allowed-types" title="items.generics.const.allowed-types"><span>[items<wbr>.generics<wbr>.const<wbr>.allowed-types]</span></a>
 </div>
 
-<p>The only allowed types of const parameters are <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>u128</code>, <code>usize</code>,
-<code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>i128</code>, <code>isize</code>, <code>char</code> and <code>bool</code>.</p>
+<p>常量参数 唯一允许的类型是 <code>u8</code>、<code>u16</code>、<code>u32</code>、<code>u64</code>、<code>u128</code>、<code>usize</code>、<code>i8</code>、<code>i16</code>、<code>i32</code>、<code>i64</code>、<code>i128</code>、<code>isize</code>、<code>char</code> 和 <code>bool</code>。</p>
 <div class="rule" id="r-items.generics.const.usage"><a class="rule-link" href="#r-items.generics.const.usage" title="items.generics.const.usage"><span>[items<wbr>.generics<wbr>.const<wbr>.usage]</span></a>
 </div>
 
-<p>Const parameters can be used anywhere a <a href="constant-items.html">const item</a> can be used, with the
-exception that when used in a <a href="../types.html">type</a> or <a href="../expressions/array-expr.html">array repeat expression</a>, it must be
-standalone (as described below). That is, they are allowed in the following
-places:</p>
+<p>常量参数 可以用在任何可以使用 <a href="constant-items.html">常量项</a> 的地方，但在 <a href="../types.html">类型</a> 或 <a href="../expressions/array-expr.html">数组重复表达式</a> 中使用时，它必须是  <em>独立的 (standalone)</em> （如下所述）。也就是说，它们允许出现在以下位置：</p>
 <ol>
-<li>As an applied const to any type which forms a part of the signature of the
-item in question.</li>
-<li>As part of a const expression used to define an <a href="associated-items.html#associated-constants">associated const</a>, or as a
-parameter to an <a href="associated-items.html#associated-types">associated type</a>.</li>
-<li>As a value in any runtime expression in the body of any functions in the
-item.</li>
-<li>As a parameter to any type used in the body of any functions in the item.</li>
-<li>As a part of the type of any fields in the item.</li>
+<li>作为应用于构成相关 项 签名一部分的任何类型的常量。</li>
+<li>作为用于定义 <a href="associated-items.html#associated-constants">关联常量</a> 的常量表达式的一部分，或作为 <a href="associated-items.html#associated-types">关联类型</a> 的参数。</li>
+<li>作为该 项 中任何函数体内的任何运行时表达式的值。</li>
+<li>作为该 项 中任何函数体内使用的任何类型的参数。</li>
+<li>作为该 项 中任何字段类型的一部分。</li>
 </ol>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Examples where const generic parameters can be used.
+</span>// 常量泛型参数可以使用的示例。
 
-// Used in the signature of the item itself.
+// 在项本身的签名中使用。
 fn foo&lt;const N: usize&gt;(arr: [i32; N]) {
-    // Used as a type within a function body.
+    // 在函数体中作为类型使用。
     let x: [i32; N];
-    // Used as an expression.
+    // 作为表达式使用。
     println!("{}", N * 2);
 }
 
-// Used as a field of a struct.
+// 作为结构体的字段使用。
 struct Foo&lt;const N: usize&gt;([i32; N]);
 
 impl&lt;const N: usize&gt; Foo&lt;N&gt; {
-    // Used as an associated constant.
+    // 作为关联常量使用。
     const CONST: usize = N * 4;
 }
 
@@ -646,15 +630,15 @@ trait Trait {
 }
 
 impl&lt;const N: usize&gt; Trait for Foo&lt;N&gt; {
-    // Used as an associated type.
+    // 作为关联类型使用。
     type Output = [i32; N];
 }
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Examples where const generic parameters cannot be used.
+</span>// 常量泛型参数不能使用的示例。
 fn foo&lt;const N: usize&gt;() {
-    // Cannot use in item definitions within a function body.
+    // 不能在函数体内的项定义中使用。
     const BAD_CONST: [usize; N] = [1; N];
     static BAD_STATIC: [usize; N] = [1; N];
     fn inner(bad_arg: [usize; N]) {
@@ -667,35 +651,31 @@ fn foo&lt;const N: usize&gt;() {
 <div class="rule" id="r-items.generics.const.standalone"><a class="rule-link" href="#r-items.generics.const.standalone" title="items.generics.const.standalone"><span>[items<wbr>.generics<wbr>.const<wbr>.standalone]</span></a>
 </div>
 
-<p>As a further restriction, const parameters may only appear as a standalone
-argument inside of a <a href="../types.html">type</a> or <a href="../expressions/array-expr.html">array repeat expression</a>. In those contexts,
-they may only be used as a single segment <a href="../expressions/path-expr.html">path expression</a>, possibly inside a
-<a href="../expressions/block-expr.html">block</a> (such as <code>N</code> or <code>{N}</code>). That is, they cannot be combined with other
-expressions.</p>
+<p>作为进一步的限制， 常量参数 只能作为 <a href="../types.html">类型</a> 或 <a href="../expressions/array-expr.html">数组重复表达式</a> 内部的独立参数出现。在这些上下文中，它们只能用作单段 <a href="../expressions/path-expr.html">路径表达式</a>，可能位于 <a href="../expressions/block-expr.html">块</a> 内部（例如 <code>N</code> 或 <code>{N}</code>）。也就是说，它们不能与其他表达式结合使用。</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Examples where const parameters may not be used.
+</span>// 不允许使用常量参数的示例。
 
-// Not allowed to combine in other expressions in types, such as the
-// arithmetic expression in the return type here.
+// 不允许在类型的其他表达式中进行组合，例如
+// 这里返回类型中的算术表达式。
 fn bad_function&lt;const N: usize&gt;() -&gt; [u8; {N + 1}] {
-    // Similarly not allowed for array repeat expressions.
+    // 数组重复表达式同样不允许。
     [1; {N + 1}]
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.generics.const.argument"><a class="rule-link" href="#r-items.generics.const.argument" title="items.generics.const.argument"><span>[items<wbr>.generics<wbr>.const<wbr>.argument]</span></a>
 </div>
 
-<p>A const argument in a <a href="../paths.html">path</a> specifies the const value to use for that item.</p>
+<p><a href="../paths.html">路径</a> 中的常量参数指定了用于该 项 的常量值。</p>
 <div class="rule" id="r-items.generics.const.argument.const-expr"><a class="rule-link" href="#r-items.generics.const.argument.const-expr" title="items.generics.const.argument.const-expr"><span>[items<wbr>.generics<wbr>.const<wbr>.argument<wbr>.const-expr]</span></a>
 </div>
 
-<p>The argument must either be an <a href="generics.html#r-items.generics.const.inferred">inferred const</a> or be a <a href="../const_eval.html#constant-expressions">const expression</a> of the type ascribed to the const parameter. The const expression must be a <a href="../expressions/block-expr.html">block expression</a> (surrounded with braces) unless it is a single path segment (an <a href="../identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a>) or a <a href="../expressions/literal-expr.html">literal</a> (with a possibly leading <code>-</code> token).</p>
+<p>该参数必须是 <a href="generics.html#r-items.generics.const.inferred">推断常量</a> 或者是归属于 常量参数 类型的 <a href="../const_eval.html#constant-expressions">常量表达式</a>。常量表达式必须是 <a href="../expressions/block-expr.html">块表达式</a>（用大括号包围），除非它是单个路径段（一个 <a href="../identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a>）或 <a href="../expressions/literal-expr.html">字面量</a>（可能带有前导的 <code>-</code> 词法单元）。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This syntactic restriction is necessary to avoid requiring infinite lookahead when parsing an expression inside of a type.</p>
+<p>这种语法限制是必要的，以避免在解析类型内部的表达式时需要无限前瞻。</p>
 </blockquote>
 </div>
 
@@ -705,45 +685,45 @@ fn bad_function&lt;const N: usize&gt;() -&gt; [u8; {N + 1}] {
 const C: i64 = 1;
 fn f&lt;const N: i64&gt;() -&gt; S&lt;N&gt; { S }
 
-let _ = f::&lt;1&gt;(); // Literal.
-let _ = f::&lt;-1&gt;(); // Negative literal.
-let _ = f::&lt;{ 1 + 2 }&gt;(); // Constant expression.
-let _ = f::&lt;C&gt;(); // Single segment path.
-let _ = f::&lt;{ C + 1 }&gt;(); // Constant expression.
-let _: S&lt;1&gt; = f::&lt;_&gt;(); // Inferred const.
-let _: S&lt;1&gt; = f::&lt;(((_)))&gt;(); // Inferred const.
+let _ = f::&lt;1&gt;(); // 字面量。
+let _ = f::&lt;-1&gt;(); // 负数字面量。
+let _ = f::&lt;{ 1 + 2 }&gt;(); // 常量表达式。
+let _ = f::&lt;C&gt;(); // 单段路径。
+let _ = f::&lt;{ C + 1 }&gt;(); // 常量表达式。
+let _: S&lt;1&gt; = f::&lt;_&gt;(); // 推断常量。
+let _: S&lt;1&gt; = f::&lt;(((_)))&gt;(); // 推断常量。
 <span class="boring">}</span></code></pre>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>In a generic argument list, an <a href="generics.html#r-items.generics.const.inferred">inferred const</a> is parsed as an <a href="../types/inferred.html#grammar-InferredType">inferred type</a> but then semantically treated as a separate kind of <a href="generics.html#r-items.generics.const.argument">const generic argument</a>.</p>
+<p>在泛型参数列表中，<a href="generics.html#r-items.generics.const.inferred">推断常量</a> 被解析为 <a href="../types/inferred.html#grammar-InferredType">推断类型</a>，但在语义上被视为一种单独的 <a href="generics.html#r-items.generics.const.argument">常量泛型参数</a>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.generics.const.inferred"><a class="rule-link" href="#r-items.generics.const.inferred" title="items.generics.const.inferred"><span>[items<wbr>.generics<wbr>.const<wbr>.inferred]</span></a>
 </div>
 
-<p>Where a const argument is expected, an <code>_</code> (optionally surrounded by any number of matching parentheses), called the <em>inferred const</em> (<a href="../paths.html#r-paths.expr.complex-const-params">path rules</a>, <a href="../expressions/array-expr.html#r-expr.array.length-restriction">array expression rules</a>), can be used instead. This asks the compiler to infer the const argument if possible based on surrounding information.</p>
+<p>在需要常量参数的地方，可以使用 <code>_</code>（可选地由任意数量的匹配括号包围），称为  <em>推断常量 (inferred const)</em> （<a href="../paths.html#r-paths.expr.complex-const-params">路径规则</a>，<a href="../expressions/array-expr.html#r-expr.array.length-restriction">数组表达式规则</a>）。这要求编译器在可能的情况下根据周围信息推断常量参数。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn make_buf&lt;const N: usize&gt;() -&gt; [u8; N] {
     [0; _]
-    //  ^ Infers `N`.
+    //  ^ 推断出 `N`。
 }
 let _: [u8; 1024] = make_buf::&lt;_&gt;();
-//                             ^ Infers `1024`.
+//                             ^ 推断出 `1024`。
 <span class="boring">}</span></code></pre>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>An <a href="generics.html#r-items.generics.const.inferred">inferred const</a> is not semantically an <a href="../expressions.html#grammar-Expression">expression</a> and so is not accepted within braces.</p>
+<p><a href="generics.html#r-items.generics.const.inferred">推断常量</a> 在语义上不是一个 <a href="../expressions.html#grammar-Expression">表达式</a>，因此不被大括号接受。</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn f&lt;const N: usize&gt;() -&gt; [u8; N] { [0; _] }
 let _: [_; 1] = f::&lt;{ _ }&gt;();
-//                    ^ ERROR `_` not allowed here
+//                    ^ 错误：这里不允许使用 `_`
 <span class="boring">}</span></code></pre>
 </blockquote>
 </div>
@@ -751,18 +731,16 @@ let _: [_; 1] = f::&lt;{ _ }&gt;();
 <div class="rule" id="r-items.generics.const.inferred.constraint"><a class="rule-link" href="#r-items.generics.const.inferred.constraint" title="items.generics.const.inferred.constraint"><span>[items<wbr>.generics<wbr>.const<wbr>.inferred<wbr>.constraint]</span></a>
 </div>
 
-<p>The inferred const cannot be used in item signatures.</p>
+<p>推断常量 不能在 项 签名中使用。</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn f&lt;const N: usize&gt;(x: [u8; N]) -&gt; [u8; _] { x }
-//                                       ^ ERROR not allowed
+//                                       ^ 错误：不允许
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.generics.const.type-ambiguity"><a class="rule-link" href="#r-items.generics.const.type-ambiguity" title="items.generics.const.type-ambiguity"><span>[items<wbr>.generics<wbr>.const<wbr>.type-ambiguity]</span></a>
 </div>
 
-<p>When there is ambiguity if a generic argument could be resolved as either a
-type or const argument, it is always resolved as a type. Placing the argument
-in a block expression can force it to be interpreted as a const argument.</p>
+<p>当泛型参数是否可以被解析为类型参数或常量参数存在歧义时，它总是被解析为类型。将参数放置在块表达式中可以强制将其解释为常量参数。</p>
 <!-- TODO: Rewrite the paragraph above to be in terms of namespaces, once
     namespaces are introduced, and it is clear which namespace each parameter
     lives in. -->
@@ -770,25 +748,23 @@ in a block expression can force it to be interpreted as a const argument.</p>
 </span><span class="boring">fn main() {
 </span>type N = u32;
 struct Foo&lt;const N: usize&gt;;
-// The following is an error, because `N` is interpreted as the type alias `N`.
-fn foo&lt;const N: usize&gt;() -&gt; Foo&lt;N&gt; { todo!() } // ERROR
-// Can be fixed by wrapping in braces to force it to be interpreted as the `N`
-// const parameter:
+// 以下是一个错误，因为 `N` 被解释为类型别名 `N`。
+fn foo&lt;const N: usize&gt;() -&gt; Foo&lt;N&gt; { todo!() } // 错误
+// 可以通过包裹在大括号中来修复，以强制将其解释为 `N` 
+// 常量参数：
 fn bar&lt;const N: usize&gt;() -&gt; Foo&lt;{ N }&gt; { todo!() } // ok
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.generics.const.variance"><a class="rule-link" href="#r-items.generics.const.variance" title="items.generics.const.variance"><span>[items<wbr>.generics<wbr>.const<wbr>.variance]</span></a>
 </div>
 
-<p>Unlike type and lifetime parameters, const parameters can be declared without
-being used inside of a parameterized item, with the exception of
-implementations as described in <a href="implementations.html#generic-implementations">generic implementations</a>:</p>
+<p>与类型和生命周期参数不同， 常量参数 可以在不在 参数化项 内部使用的情况下声明，但 <a href="implementations.html#generic-implementations">泛型实现</a> 中描述的 实现 除外：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// ok
 struct Foo&lt;const N: usize&gt;;
 enum Bar&lt;const M: usize&gt; { A, B }
 
-// ERROR: unused parameter
+// 错误：未使用的参数
 struct Baz&lt;T&gt;;
 struct Biz&lt;'a&gt;;
 struct Unconstrained;
@@ -797,11 +773,7 @@ impl&lt;const N: usize&gt; Unconstrained {}
 <div class="rule" id="r-items.generics.const.exhaustiveness"><a class="rule-link" href="#r-items.generics.const.exhaustiveness" title="items.generics.const.exhaustiveness"><span>[items<wbr>.generics<wbr>.const<wbr>.exhaustiveness]</span></a>
 </div>
 
-<p>When resolving a trait bound obligation, the exhaustiveness of all
-implementations of const parameters is not considered when determining if the
-bound is satisfied. For example, in the following, even though all possible
-const values for the <code>bool</code> type are implemented, it is still an error that
-the trait bound is not satisfied:</p>
+<p>在解析 特型绑定 义务时，确定绑定是否满足时不考虑 常量参数 所有实现的  <em>完备性 (exhaustiveness)</em> 。例如，在下文中，即使实现了 <code>bool</code> 类型所有可能的常量值，但 特型绑定 未满足仍然是一个错误：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Foo&lt;const B: bool&gt;;
@@ -812,13 +784,13 @@ impl Bar for Foo&lt;false&gt; {}
 fn needs_bar(_: impl Bar) {}
 fn generic&lt;const B: bool&gt;() {
     let v = Foo::&lt;B&gt;;
-    needs_bar(v); // ERROR: trait bound `Foo&lt;B&gt;: Bar` is not satisfied
+    needs_bar(v); // 错误：特型绑定 `Foo&lt;B&gt;: Bar` 未满足
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.generics.where"><a class="rule-link" href="#r-items.generics.where" title="items.generics.where"><span>[items<wbr>.generics<wbr>.where]</span></a>
 </div>
 
-<h2 id="where-clauses"><a class="header" href="#where-clauses">Where clauses</a></h2>
+<h2 id="where子句"><a class="header" href="#where子句">Where子句</a></h2>
 <div class="rule" id="r-items.generics.where.syntax"><a class="rule-link" href="#r-items.generics.where.syntax" title="items.generics.where.syntax"><span>[items<wbr>.generics<wbr>.where<wbr>.syntax]</span></a>
 </div>
 
@@ -1028,22 +1000,19 @@ TypeParamBounds</text>
 <div class="rule" id="r-items.generics.where.intro"><a class="rule-link" href="#r-items.generics.where.intro" title="items.generics.where.intro"><span>[items<wbr>.generics<wbr>.where<wbr>.intro]</span></a>
 </div>
 
-<p><em>Where clauses</em> provide another way to specify bounds on type and lifetime
-parameters as well as a way to specify bounds on types that aren’t type
-parameters.</p>
+<p><em>Where 子句</em>  提供了另一种指定类型和生命周期参数绑定的方法，以及一种为非类型参数的类型指定绑定的方法。</p>
 <div class="rule" id="r-items.generics.where.higher-ranked-lifetimes"><a class="rule-link" href="#r-items.generics.where.higher-ranked-lifetimes" title="items.generics.where.higher-ranked-lifetimes"><span>[items<wbr>.generics<wbr>.where<wbr>.higher-ranked-lifetimes]</span></a>
 </div>
 
-<p>The <code>for</code> keyword can be used to introduce <a href="../trait-bounds.html#higher-ranked-trait-bounds">higher-ranked lifetimes</a>. It only
-allows <a href="generics.html#grammar-LifetimeParam">LifetimeParam</a> parameters.</p>
+<p><code>for</code> 关键字可用于引入 <a href="../trait-bounds.html#higher-ranked-trait-bounds">高阶生命周期</a>。它只允许 <a href="generics.html#grammar-LifetimeParam">LifetimeParam</a> 参数。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct A&lt;T&gt;
 where
-    T: Iterator,            // Could use A&lt;T: Iterator&gt; instead
-    T::Item: Copy,          // Bound on an associated type
-    String: PartialEq&lt;T&gt;,   // Bound on `String`, using the type parameter
-    i32: Default,           // Allowed, but not useful
+    T: Iterator,            // 也可以使用 A&lt;T: Iterator&gt;
+    T::Item: Copy,          // 关联类型上的绑定
+    String: PartialEq&lt;T&gt;,   // 在 `String` 上的绑定，使用类型参数
+    i32: Default,           // 允许，但没什么用
 {
     f: T,
 }
@@ -1051,15 +1020,12 @@ where
 <div class="rule" id="r-items.generics.attributes"><a class="rule-link" href="#r-items.generics.attributes" title="items.generics.attributes"><span>[items<wbr>.generics<wbr>.attributes]</span></a>
 </div>
 
-<h2 id="attributes"><a class="header" href="#attributes">Attributes</a></h2>
-<p>Generic lifetime and type parameters allow <a href="../attributes.html">attributes</a> on them. There are no
-built-in attributes that do anything in this position, although custom derive
-attributes may give meaning to it.</p>
-<p>This example shows using a custom derive attribute to modify the meaning of a
-generic parameter.</p>
+<h2 id="属性"><a class="header" href="#属性">属性</a></h2>
+<p>泛型生命周期和类型参数允许在其上使用 <a href="../attributes.html">属性</a>。虽然自定义派生属性可能会赋予其含义，但目前没有内置属性在此位置执行任何操作。</p>
+<p>此示例显示使用自定义派生属性来修改 泛型参数 的含义。</p>
 <!-- ignore: requires proc macro derive -->
-<pre><code class="language-rust ignore">// Assume that the derive for MyFlexibleClone declared `my_flexible_clone` as
-// an attribute it understands.
+<pre><code class="language-rust ignore">// 假设 MyFlexibleClone 的派生宏将 `my_flexible_clone` 声明为
+// 其理解的属性。
 #[derive(MyFlexibleClone)]
 struct Foo&lt;#[my_flexible_clone(unbounded)] H&gt; {
     a: *const H

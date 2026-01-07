@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-723fd274.js";
+            window.path_to_searchindex_js = "../searchindex-1458537c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-items.mod"><a class="rule-link" href="#r-items.mod" title="items.mod"><span>[items<wbr>.mod]</span></a>
 </div>
 
-<h1 id="modules"><a class="header" href="#modules">Modules</a></h1>
+<h1 id="模块"><a class="header" href="#模块">模块</a></h1>
 <div class="rule" id="r-items.mod.syntax"><a class="rule-link" href="#r-items.mod.syntax" title="items.mod.syntax"><span>[items<wbr>.mod<wbr>.syntax]</span></a>
 </div>
 
@@ -316,18 +316,16 @@ Item</text>
 <div class="rule" id="r-items.mod.intro"><a class="rule-link" href="#r-items.mod.intro" title="items.mod.intro"><span>[items<wbr>.mod<wbr>.intro]</span></a>
 </div>
 
-<p>A module is a container for zero or more <a href="../items.html">items</a>.</p>
+<p>模块是零个或多个 <a href="../items.html">项</a> 的容器。</p>
 <div class="rule" id="r-items.mod.def"><a class="rule-link" href="#r-items.mod.def" title="items.mod.def"><span>[items<wbr>.mod<wbr>.def]</span></a>
 </div>
 
-<p>A <em>module item</em> is a module, surrounded in braces, named, and prefixed with the
-keyword <code>mod</code>. A module item introduces a new, named module into the tree of
-modules making up a crate.</p>
+<p>一个  <em>模块项 (module item)</em>  是一个模块，由大括号包围、命名，并以前缀关键字 <code>mod</code> 开头。 模块项 向构成 crate 的模块树中引入一个新的、具名的模块。</p>
 <div class="rule" id="r-items.mod.nesting"><a class="rule-link" href="#r-items.mod.nesting" title="items.mod.nesting"><span>[items<wbr>.mod<wbr>.nesting]</span></a>
 </div>
 
-<p>Modules can nest arbitrarily.</p>
-<p>An example of a module:</p>
+<p>模块可以任意嵌套。</p>
+<p>一个模块示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod math {
@@ -349,40 +347,31 @@ modules making up a crate.</p>
 <div class="rule" id="r-items.mod.namespace"><a class="rule-link" href="#r-items.mod.namespace" title="items.mod.namespace"><span>[items<wbr>.mod<wbr>.namespace]</span></a>
 </div>
 
-<p>Modules are defined in the <a href="../names/namespaces.html">type namespace</a> of the module or block where they are located.</p>
+<p>模块定义在其所在的模块或块的 <a href="../names/namespaces.html">类型命名空间</a> 中。</p>
 <div class="rule" id="r-items.mod.multiple-items"><a class="rule-link" href="#r-items.mod.multiple-items" title="items.mod.multiple-items"><span>[items<wbr>.mod<wbr>.multiple-items]</span></a>
 </div>
 
-<p>It is an error to define multiple items with the same name in the same namespace within a module.
-See the <a href="../names/scopes.html">scopes chapter</a> for more details on restrictions and shadowing behavior.</p>
+<p>在模块内的同一命名空间中定义多个同名 项 是错误的。有关限制和遮蔽行为的更多细节，请参阅 <a href="../names/scopes.html">作用域章节</a>。</p>
 <div class="rule" id="r-items.mod.unsafe"><a class="rule-link" href="#r-items.mod.unsafe" title="items.mod.unsafe"><span>[items<wbr>.mod<wbr>.unsafe]</span></a>
 </div>
 
-<p>The <code>unsafe</code> keyword is syntactically allowed to appear before the <code>mod</code>
-keyword, but it is rejected at a semantic level. This allows macros to consume
-the syntax and make use of the <code>unsafe</code> keyword, before removing it from the
-token stream.</p>
+<p><code>unsafe</code> 关键字在语法上允许出现在 <code>mod</code> 关键字之前，但在语义层面会被拒绝。这允许宏消费该语法并利用 <code>unsafe</code> 关键字，然后将其从 词法单元 流中移除。</p>
 <div class="rule" id="r-items.mod.outlined"><a class="rule-link" href="#r-items.mod.outlined" title="items.mod.outlined"><span>[items<wbr>.mod<wbr>.outlined]</span></a>
 </div>
 
-<h2 id="module-source-filenames"><a class="header" href="#module-source-filenames">Module source filenames</a></h2>
+<h2 id="外部源文件模块"><a class="header" href="#外部源文件模块">外部源文件模块</a></h2>
 <div class="rule" id="r-items.mod.outlined.intro"><a class="rule-link" href="#r-items.mod.outlined.intro" title="items.mod.outlined.intro"><span>[items<wbr>.mod<wbr>.outlined<wbr>.intro]</span></a>
 </div>
 
-<p>A module without a body is loaded from an external file. When the module does
-not have a <code>path</code> attribute, the path to the file mirrors the logical <a href="../paths.html">module
-path</a>.</p>
+<p>不带主体的模块从外部文件加载。当模块没有 <code>path</code> 属性时，文件的路径反映了逻辑 <a href="../paths.html">模块路径</a>。</p>
 <div class="rule" id="r-items.mod.outlined.search"><a class="rule-link" href="#r-items.mod.outlined.search" title="items.mod.outlined.search"><span>[items<wbr>.mod<wbr>.outlined<wbr>.search]</span></a>
 </div>
 
-<p>Ancestor module path components are directories, and the module’s
-contents are in a file with the name of the module plus the <code>.rs</code> extension.
-For example, the following module structure can have this corresponding
-filesystem structure:</p>
+<p>祖先模块路径组件是目录，而模块的内容位于一个文件名与模块名相同并带有 <code>.rs</code> 扩展名的文件中。例如，以下模块结构可以具有对应如下的文件系统结构：</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Module Path</th><th>Filesystem Path</th><th>File Contents</th></tr>
+<tr><th>模块路径</th><th>文件系统路径</th><th>文件内容</th></tr>
 </thead>
 <tbody>
 <tr><td><code>crate</code></td><td><code>lib.rs</code></td><td><code>mod util;</code></td></tr>
@@ -394,40 +383,34 @@ filesystem structure:</p>
 <div class="rule" id="r-items.mod.outlined.search-mod"><a class="rule-link" href="#r-items.mod.outlined.search-mod" title="items.mod.outlined.search-mod"><span>[items<wbr>.mod<wbr>.outlined<wbr>.search-mod]</span></a>
 </div>
 
-<p>Module filenames may also be the name of the module as a directory with the
-contents in a file named <code>mod.rs</code> within that directory. The above example can
-alternately be expressed with <code>crate::util</code>’s contents in a file named
-<code>util/mod.rs</code>. It is not allowed to have both <code>util.rs</code> and <code>util/mod.rs</code>.</p>
+<p>模块文件名也可以是以模块命名的目录，其内容位于该目录内名为 <code>mod.rs</code> 的文件中。上述示例也可以交替表示为将 <code>crate::util</code> 的内容放在名为 <code>util/mod.rs</code> 的文件中。不允许同时存在 <code>util.rs</code> 和 <code>util/mod.rs</code>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Prior to <code>rustc</code> 1.30, using <code>mod.rs</code> files was the way to load a module with nested children. It is encouraged to use the new naming convention as it is more consistent, and avoids having many files named <code>mod.rs</code> within a project.</p>
+<p>在 <code>rustc</code> 1.30 之前，使用 <code>mod.rs</code> 文件是加载带有嵌套子项模块的唯一方式。鼓励使用新的命名约定，因为它更一致，并能避免在项目中出现许多名为 <code>mod.rs</code> 的文件。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.mod.outlined.path"><a class="rule-link" href="#r-items.mod.outlined.path" title="items.mod.outlined.path"><span>[items<wbr>.mod<wbr>.outlined<wbr>.path]</span></a>
 </div>
 
-<h3 id="the-path-attribute"><a class="header" href="#the-path-attribute">The <code>path</code> attribute</a></h3>
+<h3 id="path属性"><a class="header" href="#path属性"><code>path</code>属性</a></h3>
 <div class="rule" id="r-items.mod.outlined.path.intro"><a class="rule-link" href="#r-items.mod.outlined.path.intro" title="items.mod.outlined.path.intro"><span>[items<wbr>.mod<wbr>.outlined<wbr>.path<wbr>.intro]</span></a>
 </div>
 
-<p>The directories and files used for loading external file modules can be
-influenced with the <code>path</code> attribute.</p>
+<p>用于加载外部文件模块的目录和文件可以通过 <code>path</code> 属性来影响。</p>
 <div class="rule" id="r-items.mod.outlined.path.search"><a class="rule-link" href="#r-items.mod.outlined.path.search" title="items.mod.outlined.path.search"><span>[items<wbr>.mod<wbr>.outlined<wbr>.path<wbr>.search]</span></a>
 </div>
 
-<p>For <code>path</code> attributes on modules not inside inline module blocks, the file
-path is relative to the directory the source file is located. For example, the
-following code snippet would use the paths shown based on where it is located:</p>
+<p>对于不在内联模块块内部的模块上的 <code>path</code> 属性，文件路径相对于源文件所在的目录。例如，以下代码片段将根据其所在位置使用显示的路径：</p>
 <!-- ignore: requires external files -->
 <pre><code class="language-rust ignore">#[path = "foo.rs"]
 mod c;</code></pre>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Source File</th><th><code>c</code>’s File Location</th><th><code>c</code>’s Module Path</th></tr>
+<tr><th>源文件</th><th><code>c</code> 的文件位置</th><th><code>c</code> 的模块路径</th></tr>
 </thead>
 <tbody>
 <tr><td><code>src/a/b.rs</code></td><td><code>src/a/foo.rs</code></td><td><code>crate::a::b::c</code></td></tr>
@@ -438,16 +421,7 @@ mod c;</code></pre>
 <div class="rule" id="r-items.mod.outlined.path.search-nested"><a class="rule-link" href="#r-items.mod.outlined.path.search-nested" title="items.mod.outlined.path.search-nested"><span>[items<wbr>.mod<wbr>.outlined<wbr>.path<wbr>.search-nested]</span></a>
 </div>
 
-<p>For <code>path</code> attributes inside inline module blocks, the relative location of
-the file path depends on the kind of source file the <code>path</code> attribute is
-located in. “mod-rs” source files are root modules (such as <code>lib.rs</code> or
-<code>main.rs</code>) and modules with files named <code>mod.rs</code>. “non-mod-rs” source files
-are all other module files. Paths for <code>path</code> attributes inside inline module
-blocks in a mod-rs file are relative to the directory of the mod-rs file
-including the inline module components as directories. For non-mod-rs files,
-it is the same except the path starts with a directory with the name of the
-non-mod-rs module. For example, the following code snippet would use the paths
-shown based on where it is located:</p>
+<p>对于内联模块块内部的 <code>path</code> 属性，文件路径的相对位置取决于 <code>path</code> 属性所在的源文件类型。“mod-rs” 源文件是根模块（如 <code>lib.rs</code> 或 <code>main.rs</code>）和文件名为 <code>mod.rs</code> 的模块。“non-mod-rs” 源文件是所有其它模块文件。位于 mod-rs 文件中内联模块块内部的 <code>path</code> 属性的路径相对于 mod-rs 文件所在的目录，其中包含作为目录的内联模块组件。对于 non-mod-rs 文件，情况相同，不同之处在于路径起始于一个以 non-mod-rs 模块命名的目录。例如，以下代码片段将根据其所在位置使用显示的路径：</p>
 <!-- ignore: requires external files -->
 <pre><code class="language-rust ignore">mod inline {
     #[path = "other.rs"]
@@ -456,7 +430,7 @@ shown based on where it is located:</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Source File</th><th><code>inner</code>’s File Location</th><th><code>inner</code>’s Module Path</th></tr>
+<tr><th>源文件</th><th><code>inner</code> 的文件位置</th><th><code>inner</code> 的模块路径</th></tr>
 </thead>
 <tbody>
 <tr><td><code>src/a/b.rs</code></td><td><code>src/a/b/inline/other.rs</code></td><td><code>crate::a::b::inline::inner</code></td></tr>
@@ -464,32 +438,26 @@ shown based on where it is located:</p>
 </tbody>
 </table>
 </div>
-<p>An example of combining the above rules of <code>path</code> attributes on inline modules
-and nested modules within (applies to both mod-rs and non-mod-rs files):</p>
+<p>结合上述关于内联模块及其内部嵌套模块的 <code>path</code> 属性规则的示例（适用于 mod-rs 和 non-mod-rs 文件）：</p>
 <!-- ignore: requires external files -->
 <pre><code class="language-rust ignore">#[path = "thread_files"]
 mod thread {
-    // Load the `local_data` module from `thread_files/tls.rs` relative to
-    // this source file's directory.
+    // 相对于此源文件的目录，从 `thread_files/tls.rs` 加载 `local_data` 模块。
     #[path = "tls.rs"]
     mod local_data;
 }</code></pre>
 <div class="rule" id="r-items.mod.attributes"><a class="rule-link" href="#r-items.mod.attributes" title="items.mod.attributes"><span>[items<wbr>.mod<wbr>.attributes]</span></a>
 </div>
 
-<h2 id="attributes-on-modules"><a class="header" href="#attributes-on-modules">Attributes on modules</a></h2>
+<h2 id="模块上的属性"><a class="header" href="#模块上的属性">模块上的属性</a></h2>
 <div class="rule" id="r-items.mod.attributes.intro"><a class="rule-link" href="#r-items.mod.attributes.intro" title="items.mod.attributes.intro"><span>[items<wbr>.mod<wbr>.attributes<wbr>.intro]</span></a>
 </div>
 
-<p>Modules, like all items, accept outer attributes. They also accept inner
-attributes: either after <code>{</code> for a module with a body, or at the beginning of the
-source file, after the optional BOM and shebang.</p>
+<p>模块与所有 项 一样，接受外部属性。它们也接受内部属性：对于带有主体的模块是在 <code>{</code> 之后，或者在源文件的开头，在可选的 BOM 和 shebang 之后。</p>
 <div class="rule" id="r-items.mod.attributes.supported"><a class="rule-link" href="#r-items.mod.attributes.supported" title="items.mod.attributes.supported"><span>[items<wbr>.mod<wbr>.attributes<wbr>.supported]</span></a>
 </div>
 
-<p>The built-in attributes that have meaning on a module are <a href="../conditional-compilation.html"><code>cfg</code></a>,
-<a href="../attributes/diagnostics.html#the-deprecated-attribute"><code>deprecated</code></a>, <a href="../../rustdoc/the-doc-attribute.html"><code>doc</code></a>, <a href="../attributes/diagnostics.html#lint-check-attributes">the lint check attributes</a>, <a href="#the-path-attribute"><code>path</code></a>, and
-<a href="../names/preludes.html#the-no_implicit_prelude-attribute"><code>no_implicit_prelude</code></a>. Modules also accept macro attributes.</p>
+<p>对模块有意义的内置属性有 <a href="../conditional-compilation.html"><code>cfg</code></a>、<a href="../attributes/diagnostics.html#the-deprecated-attribute"><code>deprecated</code></a>、<a href="https://doc.rust-lang.org/rustdoc/the-doc-attribute.html"><code>doc</code></a>、<a href="../attributes/diagnostics.html#lint-check-attributes">lint 检查属性</a>、<a href="#path属性"><code>path</code></a> 以及 <a href="../names/preludes.html#the-no_implicit_prelude-attribute"><code>no_implicit_prelude</code></a>。模块也接受宏属性。</p>
 
                     </main>
 

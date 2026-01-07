@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-723fd274.js";
+            window.path_to_searchindex_js = "../searchindex-1458537c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-items.enum"><a class="rule-link" href="#r-items.enum" title="items.enum"><span>[items<wbr>.enum]</span></a>
 </div>
 
-<h1 id="enumerations"><a class="header" href="#enumerations">Enumerations</a></h1>
+<h1 id="枚举"><a class="header" href="#枚举">枚举</a></h1>
 <div class="rule" id="r-items.enum.syntax"><a class="rule-link" href="#r-items.enum.syntax" title="items.enum.syntax"><span>[items<wbr>.enum<wbr>.syntax]</span></a>
 </div>
 
@@ -544,18 +544,16 @@ Expression</text>
 <div class="rule" id="r-items.enum.intro"><a class="rule-link" href="#r-items.enum.intro" title="items.enum.intro"><span>[items<wbr>.enum<wbr>.intro]</span></a>
 </div>
 
-<p>An <em>enumeration</em>, also referred to as an <em>enum</em>, is a simultaneous definition of a
-nominal <a href="../types/enum.html">enumerated type</a> as well as a set of <em>constructors</em>, that can be used
-to create or pattern-match values of the corresponding enumerated type.</p>
+<p><em>枚举</em> （也称为  <em>enum</em> ）是对名义  <a href="../types/enum.html">枚举类型</a>  以及一组  <em>构造函数</em>  的同步定义，这些构造函数可用于创建或模式匹配相应枚举类型的值。</p>
 <div class="rule" id="r-items.enum.decl"><a class="rule-link" href="#r-items.enum.decl" title="items.enum.decl"><span>[items<wbr>.enum<wbr>.decl]</span></a>
 </div>
 
-<p>Enumerations are declared with the keyword <code>enum</code>.</p>
+<p>枚举使用关键字 <code>enum</code> 声明。</p>
 <div class="rule" id="r-items.enum.namespace"><a class="rule-link" href="#r-items.enum.namespace" title="items.enum.namespace"><span>[items<wbr>.enum<wbr>.namespace]</span></a>
 </div>
 
-<p>The <code>enum</code> declaration defines the enumeration type in the <a href="../names/namespaces.html">type namespace</a> of the module or block where it is located.</p>
-<p>An example of an <code>enum</code> item and its use:</p>
+<p><code>enum</code> 声明在其所在的模块或代码块的  <a href="../names/namespaces.html">类型命名空间</a>  中定义枚举类型。</p>
+<p>一个 <code>enum</code> 项及其用法的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Animal {
@@ -569,7 +567,7 @@ a = Animal::Cat;
 <div class="rule" id="r-items.enum.constructor"><a class="rule-link" href="#r-items.enum.constructor" title="items.enum.constructor"><span>[items<wbr>.enum<wbr>.constructor]</span></a>
 </div>
 
-<p>Enum constructors can have either named or unnamed fields:</p>
+<p>枚举构造函数可以具有命名或未命名字段：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Animal {
@@ -580,13 +578,11 @@ a = Animal::Cat;
 let mut a: Animal = Animal::Dog("Cocoa".to_string(), 37.2);
 a = Animal::Cat { name: "Spotty".to_string(), weight: 2.7 };
 <span class="boring">}</span></code></pre>
-<p>In this example, <code>Cat</code> is a <em>struct-like enum variant</em>, whereas <code>Dog</code> is simply
-called an enum variant.</p>
+<p>在此示例中，<code>Cat</code> 是  <em>类结构体枚举变体</em> ，而 <code>Dog</code> 仅被称为枚举变体。</p>
 <div class="rule" id="r-items.enum.fieldless"><a class="rule-link" href="#r-items.enum.fieldless" title="items.enum.fieldless"><span>[items<wbr>.enum<wbr>.fieldless]</span></a>
 </div>
 
-<p>An enum where no constructors contain fields is called a
-<em><span id="field-less-enum">field-less enum</span></em>. For example, this is a fieldless enum:</p>
+<p>不包含字段的构造函数的枚举称为 <em><span id="field-less-enum">无字段枚举</span></em> 。例如，这是一个无字段枚举：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Fieldless {
@@ -598,8 +594,7 @@ called an enum variant.</p>
 <div class="rule" id="r-items.enum.unit-only"><a class="rule-link" href="#r-items.enum.unit-only" title="items.enum.unit-only"><span>[items<wbr>.enum<wbr>.unit-only]</span></a>
 </div>
 
-<p>If a field-less enum only contains unit variants, the enum is called an
-<em><span id="unit-only-enum">unit-only enum</span></em>. For example:</p>
+<p>如果无字段枚举仅包含单元变体，则该枚举称为  <em><span id="unit-only-enum">仅单元枚举</span></em> 。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Enum {
@@ -611,25 +606,25 @@ called an enum variant.</p>
 <div class="rule" id="r-items.enum.constructor-names"><a class="rule-link" href="#r-items.enum.constructor-names" title="items.enum.constructor-names"><span>[items<wbr>.enum<wbr>.constructor-names]</span></a>
 </div>
 
-<p>Variant constructors are similar to <a href="structs.html">struct</a> definitions, and can be referenced by a path from the enumeration name, including in <a href="use-declarations.html">use declarations</a>.</p>
+<p>变体构造函数类似于  <a href="structs.html">结构体</a>  定义，并且可以通过枚举名称的路径进行引用，包括在  <a href="use-declarations.html">use 声明</a>  中。</p>
 <div class="rule" id="r-items.enum.constructor-namespace"><a class="rule-link" href="#r-items.enum.constructor-namespace" title="items.enum.constructor-namespace"><span>[items<wbr>.enum<wbr>.constructor-namespace]</span></a>
 </div>
 
-<p>Each variant defines its type in the <a href="../names/namespaces.html">type namespace</a>, though that type cannot be used as a type specifier.
-Tuple-like and unit-like variants also define a constructor in the <a href="../names/namespaces.html">value namespace</a>.</p>
+<p>每个变体都在  <a href="../names/namespaces.html">类型命名空间</a>  中定义其类型，尽管该类型不能用作类型说明符。
+类元组和类单元变体还在  <a href="../names/namespaces.html">值命名空间</a>  中定义了一个构造函数。</p>
 <div class="rule" id="r-items.enum.struct-expr"><a class="rule-link" href="#r-items.enum.struct-expr" title="items.enum.struct-expr"><span>[items<wbr>.enum<wbr>.struct-expr]</span></a>
 </div>
 
-<p>A struct-like variant can be instantiated with a <a href="../expressions/struct-expr.html">struct expression</a>.</p>
+<p>类结构体变体可以使用  <a href="../expressions/struct-expr.html">结构体表达式</a>  实例化。</p>
 <div class="rule" id="r-items.enum.tuple-expr"><a class="rule-link" href="#r-items.enum.tuple-expr" title="items.enum.tuple-expr"><span>[items<wbr>.enum<wbr>.tuple-expr]</span></a>
 </div>
 
-<p>A tuple-like variant can be instantiated with a <a href="../expressions/call-expr.html">call expression</a> or a <a href="../expressions/struct-expr.html">struct expression</a>.</p>
+<p>类元组变体可以使用  <a href="../expressions/call-expr.html">调用表达式</a>  或  <a href="../expressions/struct-expr.html">结构体表达式</a>  实例化。</p>
 <div class="rule" id="r-items.enum.path-expr"><a class="rule-link" href="#r-items.enum.path-expr" title="items.enum.path-expr"><span>[items<wbr>.enum<wbr>.path-expr]</span></a>
 </div>
 
-<p>A unit-like variant can be instantiated with a <a href="../expressions/path-expr.html">path expression</a> or a <a href="../expressions/struct-expr.html">struct expression</a>.
-For example:</p>
+<p>类单元变体可以使用  <a href="../expressions/path-expr.html">路径表达式</a>  或  <a href="../expressions/struct-expr.html">结构体表达式</a>  实例化。
+例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Examples {
@@ -638,51 +633,47 @@ For example:</p>
     StructLike { value: i32 },
 }
 
-use Examples::*; // Creates aliases to all variants.
-let x = UnitLike; // Path expression of the const item.
-let x = UnitLike {}; // Struct expression.
-let y = TupleLike(123); // Call expression.
-let y = TupleLike { 0: 123 }; // Struct expression using integer field names.
-let z = StructLike { value: 123 }; // Struct expression.
+use Examples::*; // 为所有变体创建别名。
+let x = UnitLike; // 常量项的路径表达式。
+let x = UnitLike {}; // 结构体表达式。
+let y = TupleLike(123); // 调用表达式。
+let y = TupleLike { 0: 123 }; // 使用整数字段名称的结构体表达式。
+let z = StructLike { value: 123 }; // 结构体表达式。
 <span class="boring">}</span></code></pre>
 <p><span id="custom-discriminant-values-for-fieldless-enumerations"></span></p>
 <div class="rule" id="r-items.enum.discriminant"><a class="rule-link" href="#r-items.enum.discriminant" title="items.enum.discriminant"><span>[items<wbr>.enum<wbr>.discriminant]</span></a>
 </div>
 
-<h2 id="discriminants"><a class="header" href="#discriminants">Discriminants</a></h2>
+<h2 id="判别值"><a class="header" href="#判别值">判别值</a></h2>
 <div class="rule" id="r-items.enum.discriminant.intro"><a class="rule-link" href="#r-items.enum.discriminant.intro" title="items.enum.discriminant.intro"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.intro]</span></a>
 </div>
 
-<p>Each enum instance has a <em>discriminant</em>: an integer logically associated to it
-that is used to determine which variant it holds.</p>
+<p>每个枚举实例都有一个  <em>判别值</em> ：逻辑上与之关联的整数，用于确定它持有哪个变体。</p>
 <div class="rule" id="r-items.enum.discriminant.repr-rust"><a class="rule-link" href="#r-items.enum.discriminant.repr-rust" title="items.enum.discriminant.repr-rust"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.repr-rust]</span></a>
 </div>
 
-<p>Under the <a href="../type-layout.html#the-rust-representation"><code>Rust</code> representation</a>, the discriminant is interpreted as
-an <code>isize</code> value. However, the compiler is allowed to use a smaller type (or
-another means of distinguishing variants) in its actual memory layout.</p>
-<h3 id="assigning-discriminant-values"><a class="header" href="#assigning-discriminant-values">Assigning discriminant values</a></h3>
+<p>在  <a href="../type-layout.html#the-rust-representation"><code>Rust</code> 表示</a>  下，判别值被解释为一个 <code>isize</code> 值。但是，编译器允许在其实际内存布局中使用更小的类型（或其他区分变体的方法）。</p>
+<h3 id="分配判别值"><a class="header" href="#分配判别值">分配判别值</a></h3>
 <div class="rule" id="r-items.enum.discriminant.explicit"><a class="rule-link" href="#r-items.enum.discriminant.explicit" title="items.enum.discriminant.explicit"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.explicit]</span></a>
 </div>
 
-<h4 id="explicit-discriminants"><a class="header" href="#explicit-discriminants">Explicit discriminants</a></h4>
+<h4 id="显式判别值"><a class="header" href="#显式判别值">显式判别值</a></h4>
 <div class="rule" id="r-items.enum.discriminant.explicit.intro"><a class="rule-link" href="#r-items.enum.discriminant.explicit.intro" title="items.enum.discriminant.explicit.intro"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.explicit<wbr>.intro]</span></a>
 </div>
 
-<p>In two circumstances, the discriminant of a variant may be explicitly set by
-following the variant name with <code>=</code> and a <a href="../const_eval.html#constant-expressions">constant expression</a>:</p>
+<p>在两种情况下，变体的判别值可以通过在变体名称后跟 <code>=</code> 和一个  <a href="../const_eval.html#constant-expressions">常量表达式</a>  来显式设置：</p>
 <div class="rule" id="r-items.enum.discriminant.explicit.unit-only"><a class="rule-link" href="#r-items.enum.discriminant.explicit.unit-only" title="items.enum.discriminant.explicit.unit-only"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.explicit<wbr>.unit-only]</span></a>
 </div>
 
 <ol>
-<li>if the enumeration is “<a href="#unit-only-enum">unit-only</a>”.</li>
+<li>如果该枚举是  “<a href="#unit-only-enum">仅单元</a>”  的。</li>
 </ol>
 <div class="rule" id="r-items.enum.discriminant.explicit.primitive-repr"><a class="rule-link" href="#r-items.enum.discriminant.explicit.primitive-repr" title="items.enum.discriminant.explicit.primitive-repr"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.explicit<wbr>.primitive-repr]</span></a>
 </div>
 
 <ol start="2">
 <li>
-<p>if a <a href="../type-layout.html#primitive-representations">primitive representation</a> is used. For example:</p>
+<p>如果使用了  <a href="../type-layout.html#primitive-representations">原生表示</a> 。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[repr(u8)]
@@ -700,11 +691,8 @@ enum Enum {
 <div class="rule" id="r-items.enum.discriminant.implicit"><a class="rule-link" href="#r-items.enum.discriminant.implicit" title="items.enum.discriminant.implicit"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.implicit]</span></a>
 </div>
 
-<h4 id="implicit-discriminants"><a class="header" href="#implicit-discriminants">Implicit discriminants</a></h4>
-<p>If a discriminant for a variant is not specified, then it is set to one higher
-than the discriminant of the previous variant in the declaration. If the
-discriminant of the first variant in the declaration is unspecified, then
-it is set to zero.</p>
+<h4 id="隐式判别值"><a class="header" href="#隐式判别值">隐式判别值</a></h4>
+<p>如果未指定变体的判别值，则将其设置为比声明中前一个变体的判别值高 1。如果声明中第一个变体的判别值未指定，则将其设置为零。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Foo {
@@ -719,11 +707,11 @@ assert_eq!(baz_discriminant, 123);
 <div class="rule" id="r-items.enum.discriminant.restrictions"><a class="rule-link" href="#r-items.enum.discriminant.restrictions" title="items.enum.discriminant.restrictions"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.restrictions]</span></a>
 </div>
 
-<h4 id="restrictions"><a class="header" href="#restrictions">Restrictions</a></h4>
+<h4 id="限制"><a class="header" href="#限制">限制</a></h4>
 <div class="rule" id="r-items.enum.discriminant.restrictions.same-discriminant"><a class="rule-link" href="#r-items.enum.discriminant.restrictions.same-discriminant" title="items.enum.discriminant.restrictions.same-discriminant"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.restrictions<wbr>.same-discriminant]</span></a>
 </div>
 
-<p>It is an error when two variants share the same discriminant.</p>
+<p>当两个变体共享同一个判别值时，这是一个错误。</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum SharedDiscriminantError {
@@ -734,46 +722,42 @@ assert_eq!(baz_discriminant, 123);
 enum SharedDiscriminantError2 {
     Zero,       // 0
     One,        // 1
-    OneToo = 1  // 1 (collision with previous!)
+    OneToo = 1  // 1 (与前一个冲突！)
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.enum.discriminant.restrictions.above-max-discriminant"><a class="rule-link" href="#r-items.enum.discriminant.restrictions.above-max-discriminant" title="items.enum.discriminant.restrictions.above-max-discriminant"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.restrictions<wbr>.above-max-discriminant]</span></a>
 </div>
 
-<p>It is also an error to have an unspecified discriminant where the previous
-discriminant is the maximum value for the size of the discriminant.</p>
+<p>如果前一个判别值是判别值大小的最大值，而在其后紧跟一个未指定的判别值，这也是一个错误。</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[repr(u8)]
 enum OverflowingDiscriminantError {
     Max = 255,
-    MaxPlusOne // Would be 256, but that overflows the enum.
+    MaxPlusOne // 本该是 256，但那会导致枚举溢出。
 }
 
 #[repr(u8)]
 enum OverflowingDiscriminantError2 {
     MaxMinusOne = 254, // 254
     Max,               // 255
-    MaxPlusOne         // Would be 256, but that overflows the enum.
+    MaxPlusOne         // 本该是 256，但那会导致枚举溢出。
 }
 <span class="boring">}</span></code></pre>
-<h3 id="accessing-discriminant"><a class="header" href="#accessing-discriminant">Accessing discriminant</a></h3>
-<h4 id="via-memdiscriminant"><a class="header" href="#via-memdiscriminant">Via <code>mem::discriminant</code></a></h4>
+<h3 id="访问判别值"><a class="header" href="#访问判别值">访问判别值</a></h3>
+<h4 id="通过-memdiscriminant"><a class="header" href="#通过-memdiscriminant">通过 <code>mem::discriminant</code></a></h4>
 <div class="rule" id="r-items.enum.discriminant.access-opaque"><a class="rule-link" href="#r-items.enum.discriminant.access-opaque" title="items.enum.discriminant.access-opaque"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.access-opaque]</span></a>
 </div>
 
-<p><a href="../../core/mem/fn.discriminant.html"><code>std::mem::discriminant</code></a> returns an opaque reference to the discriminant of
-an enum value which can be compared. This cannot be used to get the value
-of the discriminant.</p>
+<p><a href="../../core/mem/fn.discriminant.html"><code>std::mem::discriminant</code></a> 返回对枚举值判别值的不透明引用，该引用可以进行比较。这不能用于获取判别值的值。</p>
 <div class="rule" id="r-items.enum.discriminant.coercion"><a class="rule-link" href="#r-items.enum.discriminant.coercion" title="items.enum.discriminant.coercion"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.coercion]</span></a>
 </div>
 
-<h4 id="casting"><a class="header" href="#casting">Casting</a></h4>
+<h4 id="转换"><a class="header" href="#转换">转换</a></h4>
 <div class="rule" id="r-items.enum.discriminant.coercion.intro"><a class="rule-link" href="#r-items.enum.discriminant.coercion.intro" title="items.enum.discriminant.coercion.intro"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.coercion<wbr>.intro]</span></a>
 </div>
 
-<p>If an enumeration is <a href="#unit-only-enum">unit-only</a> (with no tuple and struct variants), then its
-discriminant can be directly accessed with a <a href="../expressions/operator-expr.html#semantics">numeric cast</a>; e.g.:</p>
+<p>如果枚举是  <a href="#unit-only-enum">仅单元</a>  的（没有元组和结构体变体），则可以使用  <a href="../expressions/operator-expr.html#semantics">数值转换</a>  直接访问其判别值；例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Enum {
@@ -789,7 +773,7 @@ assert_eq!(2, Enum::Baz as isize);
 <div class="rule" id="r-items.enum.discriminant.coercion.fieldless"><a class="rule-link" href="#r-items.enum.discriminant.coercion.fieldless" title="items.enum.discriminant.coercion.fieldless"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.coercion<wbr>.fieldless]</span></a>
 </div>
 
-<p><a href="#field-less-enum">Field-less enums</a> can be cast if they do not have explicit discriminants, or where only unit variants are explicit.</p>
+<p><a href="#field-less-enum">无字段枚举</a>  在没有显式判别值，或者只有单元变体是显式的情况下，可以进行转换。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Fieldless {
@@ -817,12 +801,11 @@ assert_eq!(20, FieldlessWithDiscriminants::Second as u8);
 assert_eq!(21, FieldlessWithDiscriminants::Struct{} as u8);
 assert_eq!(22, FieldlessWithDiscriminants::Unit as u8);
 <span class="boring">}</span></code></pre>
-<h4 id="pointer-casting"><a class="header" href="#pointer-casting">Pointer casting</a></h4>
+<h4 id="指针转换"><a class="header" href="#指针转换">指针转换</a></h4>
 <div class="rule" id="r-items.enum.discriminant.access-memory"><a class="rule-link" href="#r-items.enum.discriminant.access-memory" title="items.enum.discriminant.access-memory"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.access-memory]</span></a>
 </div>
 
-<p>If the enumeration specifies a <a href="../type-layout.html#primitive-representations">primitive representation</a>, then the
-discriminant may be reliably accessed via unsafe pointer casting:</p>
+<p>如果枚举指定了  <a href="../type-layout.html#primitive-representations">原生表示</a> ，则可以通过不安全的指针转换可靠地访问判别值：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[repr(u8)]
@@ -849,12 +832,11 @@ assert_eq!(2, struct_like.discriminant());
 <div class="rule" id="r-items.enum.empty"><a class="rule-link" href="#r-items.enum.empty" title="items.enum.empty"><span>[items<wbr>.enum<wbr>.empty]</span></a>
 </div>
 
-<h2 id="zero-variant-enums"><a class="header" href="#zero-variant-enums">Zero-variant enums</a></h2>
+<h2 id="零变体枚举"><a class="header" href="#零变体枚举">零变体枚举</a></h2>
 <div class="rule" id="r-items.enum.empty.intro"><a class="rule-link" href="#r-items.enum.empty.intro" title="items.enum.empty.intro"><span>[items<wbr>.enum<wbr>.empty<wbr>.intro]</span></a>
 </div>
 
-<p>Enums with zero variants are known as <em>zero-variant enums</em>. As they have
-no valid values, they cannot be instantiated.</p>
+<p>没有变体的枚举被称为  <em>零变体枚举</em> 。因为它们没有有效值，所以无法被实例化。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum ZeroVariants {}
@@ -862,21 +844,18 @@ no valid values, they cannot be instantiated.</p>
 <div class="rule" id="r-items.enum.empty.uninhabited"><a class="rule-link" href="#r-items.enum.empty.uninhabited" title="items.enum.empty.uninhabited"><span>[items<wbr>.enum<wbr>.empty<wbr>.uninhabited]</span></a>
 </div>
 
-<p>Zero-variant enums are equivalent to the <a href="../types/never.html">never type</a>, but they cannot be
-coerced into other types.</p>
+<p>零变体枚举等价于  <a href="../types/never.html">never 类型</a> ，但它们不能被强制转换为其他类型。</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">enum ZeroVariants {}
 </span>let x: ZeroVariants = panic!();
-let y: u32 = x; // mismatched type error
+let y: u32 = x; // 类型不匹配错误
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.enum.variant-visibility"><a class="rule-link" href="#r-items.enum.variant-visibility" title="items.enum.variant-visibility"><span>[items<wbr>.enum<wbr>.variant-visibility]</span></a>
 </div>
 
-<h2 id="variant-visibility"><a class="header" href="#variant-visibility">Variant visibility</a></h2>
-<p>Enum variants syntactically allow a <a href="../visibility-and-privacy.html#grammar-Visibility">Visibility</a> annotation, but this is
-rejected when the enum is validated. This allows items to be parsed with a
-unified syntax across different contexts where they are used.</p>
+<h2 id="变体可见性"><a class="header" href="#变体可见性">变体可见性</a></h2>
+<p>枚举变体在语法上允许使用  <a href="../visibility-and-privacy.html#grammar-Visibility">可见性</a>  注解，但在验证枚举时会被拒绝。这允许项在使用的不同上下文中以统一的语法进行解析。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! mac_variant {
@@ -891,10 +870,10 @@ unified syntax across different contexts where they are used.</p>
     }
 }
 
-// Empty `vis` is allowed.
+// 允许空的 vis。
 mac_variant! { E }
 
-// This is allowed, since it is removed before being validated.
+// 这是允许的，因为它在通过验证之前已被删除。
 #[cfg(false)]
 enum E {
     pub U,

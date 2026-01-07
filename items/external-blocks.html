@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-723fd274.js";
+            window.path_to_searchindex_js = "../searchindex-1458537c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-items.extern"><a class="rule-link" href="#r-items.extern" title="items.extern"><span>[items<wbr>.extern]</span></a>
 </div>
 
-<h1 id="external-blocks"><a class="header" href="#external-blocks">External blocks</a></h1>
+<h1 id="外部块"><a class="header" href="#外部块">外部块</a></h1>
 <div class="rule" id="r-items.extern.syntax"><a class="rule-link" href="#r-items.extern.syntax" title="items.extern.syntax"><span>[items<wbr>.extern<wbr>.syntax]</span></a>
 </div>
 
@@ -375,26 +375,23 @@ Function</text>
 <div class="rule" id="r-items.extern.intro"><a class="rule-link" href="#r-items.extern.intro" title="items.extern.intro"><span>[items<wbr>.extern<wbr>.intro]</span></a>
 </div>
 
-<p>External blocks provide <em>declarations</em> of items that are not <em>defined</em> in the
-current crate and are the basis of Rust’s foreign function interface. These are
-akin to unchecked imports.</p>
+<p>外部块提供在当前 crate 中未  <em>定义</em>  而是  <em>声明</em>  的 项 的声明，是 Rust 外部函数接口 (FFI) 的基础。这些类似于未经检查的导入。</p>
 <div class="rule" id="r-items.extern.allowed-kinds"><a class="rule-link" href="#r-items.extern.allowed-kinds" title="items.extern.allowed-kinds"><span>[items<wbr>.extern<wbr>.allowed-kinds]</span></a>
 </div>
 
-<p>Two kinds of item <em>declarations</em> are allowed in external blocks: <a href="functions.html">functions</a> and
-<a href="static-items.html">statics</a>.</p>
+<p>外部块中允许两种 项  <em>声明</em> ： <a href="functions.html">函数</a> 和 <a href="static-items.html">静态项</a>。</p>
 <div class="rule" id="r-items.extern.safety"><a class="rule-link" href="#r-items.extern.safety" title="items.extern.safety"><span>[items<wbr>.extern<wbr>.safety]</span></a>
 </div>
 
-<p>Calling unsafe functions or accessing unsafe statics that are declared in external blocks is only allowed in an <a href="../unsafe-keyword.html"><code>unsafe</code> context</a>.</p>
+<p>仅允许在 <a href="../unsafe-keyword.html"><code>unsafe</code> 上下文</a> 中调用在外部块中声明的 不安全 函数或访问 不安全 静态项。</p>
 <div class="rule" id="r-items.extern.namespace"><a class="rule-link" href="#r-items.extern.namespace" title="items.extern.namespace"><span>[items<wbr>.extern<wbr>.namespace]</span></a>
 </div>
 
-<p>The external block defines its functions and statics in the <a href="../names/namespaces.html">value namespace</a> of the module or block where it is located.</p>
+<p>外部块在其所在的模块或块的 <a href="../names/namespaces.html">值命名空间</a> 中定义其函数和静态项。</p>
 <div class="rule" id="r-items.extern.unsafe-required"><a class="rule-link" href="#r-items.extern.unsafe-required" title="items.extern.unsafe-required"><span>[items<wbr>.extern<wbr>.unsafe-required]</span></a>
 </div>
 
-<p>The <code>unsafe</code> keyword is semantically required to appear before the <code>extern</code> keyword on external blocks.</p>
+<p>从语义上讲，<code>unsafe</code> 关键字必须出现在外部块的 <code>extern</code> 关键字之前。</p>
 <div class="rule" id="r-items.extern.edition2024"><a class="rule-link" href="#r-items.extern.edition2024" title="items.extern.edition2024"><span>[items<wbr>.extern<wbr>.edition2024]</span></a>
 </div>
 
@@ -402,75 +399,58 @@ akin to unchecked imports.</p>
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2024</span> 版次差异</p>
 
-<p>Prior to the 2024 edition, the <code>unsafe</code> keyword is optional. The <code>safe</code> and <code>unsafe</code> item qualifiers are only allowed if the external block itself is marked as <code>unsafe</code>.</p>
+<p>在 2024 版次 之前，<code>unsafe</code> 关键字是可选的。只有当外部块本身被标记为 <code>unsafe</code> 时，才允许使用 <code>safe</code> 和 <code>unsafe</code> 项限定符。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.extern.fn"><a class="rule-link" href="#r-items.extern.fn" title="items.extern.fn"><span>[items<wbr>.extern<wbr>.fn]</span></a>
 </div>
 
-<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<h2 id="函数"><a class="header" href="#函数">函数</a></h2>
 <div class="rule" id="r-items.extern.fn.body"><a class="rule-link" href="#r-items.extern.fn.body" title="items.extern.fn.body"><span>[items<wbr>.extern<wbr>.fn<wbr>.body]</span></a>
 </div>
 
-<p>Functions within external blocks are declared in the same way as other Rust
-functions, with the exception that they must not have a body and are instead
-terminated by a semicolon.</p>
+<p>外部块中的函数声明方式与其它 Rust 函数相同，不同之处在于它们不能有函数体，而是以分号结尾。</p>
 <div class="rule" id="r-items.extern.fn.param-patterns"><a class="rule-link" href="#r-items.extern.fn.param-patterns" title="items.extern.fn.param-patterns"><span>[items<wbr>.extern<wbr>.fn<wbr>.param-patterns]</span></a>
 </div>
 
-<p>Patterns are not allowed in parameters, only <a href="../identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a> or <code>_</code> may be used.</p>
+<p>参数中不允许使用模式，只能使用 <a href="../identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a> 或 <code>_</code>。</p>
 <div class="rule" id="r-items.extern.fn.qualifiers"><a class="rule-link" href="#r-items.extern.fn.qualifiers" title="items.extern.fn.qualifiers"><span>[items<wbr>.extern<wbr>.fn<wbr>.qualifiers]</span></a>
 </div>
 
-<p>The <code>safe</code> and <code>unsafe</code> function qualifiers are
-allowed, but other function qualifiers (e.g. <code>const</code>, <code>async</code>, <code>extern</code>) are
-not.</p>
+<p>允许使用 <code>safe</code> 和 <code>unsafe</code> 函数限定符，但不允许使用其它函数限定符（例如 <code>const</code>、<code>async</code>、<code>extern</code>）。</p>
 <div class="rule" id="r-items.extern.fn.foreign-abi"><a class="rule-link" href="#r-items.extern.fn.foreign-abi" title="items.extern.fn.foreign-abi"><span>[items<wbr>.extern<wbr>.fn<wbr>.foreign-abi]</span></a>
 </div>
 
-<p>Functions within external blocks may be called by Rust code, just like
-functions defined in Rust. The Rust compiler automatically translates between
-the Rust ABI and the foreign ABI.</p>
+<p>外部块中的函数可以被 Rust 代码调用，就像在 Rust 中定义的函数一样。Rust 编译器会自动在 Rust ABI 和外部 ABI 之间进行转换。</p>
 <div class="rule" id="r-items.extern.fn.safety"><a class="rule-link" href="#r-items.extern.fn.safety" title="items.extern.fn.safety"><span>[items<wbr>.extern<wbr>.fn<wbr>.safety]</span></a>
 </div>
 
-<p>A function declared in an extern block is implicitly <code>unsafe</code> unless the <code>safe</code>
-function qualifier is present.</p>
+<p>在 extern 块中声明的函数隐式地是 <code>unsafe</code> 的，除非存在 <code>safe</code> 函数限定符。</p>
 <div class="rule" id="r-items.extern.fn.fn-ptr"><a class="rule-link" href="#r-items.extern.fn.fn-ptr" title="items.extern.fn.fn-ptr"><span>[items<wbr>.extern<wbr>.fn<wbr>.fn-ptr]</span></a>
 </div>
 
-<p>When coerced to a function pointer, a function declared in an extern block has
-type <code>extern "abi" for&lt;'l1, ..., 'lm&gt; fn(A1, ..., An) -&gt; R</code>, where <code>'l1</code>,
-… <code>'lm</code> are its lifetime parameters, <code>A1</code>, …, <code>An</code> are the declared types of
-its parameters, and <code>R</code> is the declared return type.</p>
+<p>当强制转换为函数指针时，在 extern 块中声明的函数具有类型 <code>extern "abi" for&lt;'l1, ..., 'lm&gt; fn(A1, ..., An) -&gt; R</code>，其中 <code>'l1</code>、… <code>'lm</code> 是其生命周期参数，<code>A1</code>、…、<code>An</code> 是其参数的声明类型，而 <code>R</code> 是声明的返回类型。</p>
 <div class="rule" id="r-items.extern.static"><a class="rule-link" href="#r-items.extern.static" title="items.extern.static"><span>[items<wbr>.extern<wbr>.static]</span></a>
 </div>
 
-<h2 id="statics"><a class="header" href="#statics">Statics</a></h2>
+<h2 id="静态项"><a class="header" href="#静态项">静态项</a></h2>
 <div class="rule" id="r-items.extern.static.intro"><a class="rule-link" href="#r-items.extern.static.intro" title="items.extern.static.intro"><span>[items<wbr>.extern<wbr>.static<wbr>.intro]</span></a>
 </div>
 
-<p>Statics within external blocks are declared in the same way as <a href="static-items.html">statics</a> outside of external blocks,
-except that they do not have an expression initializing their value.</p>
+<p>外部块中的 静态项 的声明方式与外部块之外的 <a href="static-items.html">静态项</a> 相同，不同之处在于它们没有初始化其值的表达式。</p>
 <div class="rule" id="r-items.extern.static.safety"><a class="rule-link" href="#r-items.extern.static.safety" title="items.extern.static.safety"><span>[items<wbr>.extern<wbr>.static<wbr>.safety]</span></a>
 </div>
 
-<p>Unless a static item declared in an extern block is qualified as <code>safe</code>, it is <code>unsafe</code> to access that item, whether or
-not it’s mutable, because there is nothing guaranteeing that the bit pattern at the static’s
-memory is valid for the type it is declared with, since some arbitrary (e.g. C) code is in charge
-of initializing the static.</p>
+<p>除非在 extern 块中声明的 静态项 被限定为 <code>safe</code>，否则访问该 项 是 <code>unsafe</code> 的，无论它是否可变，因为由于某些任意（例如 C）代码负责初始化该 静态项，因此没有任何东西能保证该 静态项 内存处的位模式对于声明它的类型是有效的。</p>
 <div class="rule" id="r-items.extern.static.mut"><a class="rule-link" href="#r-items.extern.static.mut" title="items.extern.static.mut"><span>[items<wbr>.extern<wbr>.static<wbr>.mut]</span></a>
 </div>
 
-<p>Extern statics can be either immutable or mutable just like <a href="static-items.html">statics</a> outside of external blocks.</p>
+<p>外部 静态项 既可以是不可变的，也可以是可变的，就像外部块之外的 <a href="static-items.html">静态项</a> 一样。</p>
 <div class="rule" id="r-items.extern.static.read-only"><a class="rule-link" href="#r-items.extern.static.read-only" title="items.extern.static.read-only"><span>[items<wbr>.extern<wbr>.static<wbr>.read-only]</span></a>
 </div>
 
-<p>An immutable static <em>must</em> be initialized before any Rust code is executed. It is not enough for
-the static to be initialized before Rust code reads from it.
-Once Rust code runs, mutating an immutable static (from inside or outside Rust) is UB,
-except if the mutation happens to bytes inside of an <code>UnsafeCell</code>.</p>
+<p>在执行任何 Rust 代码之前， <em>必须</em>  初始化不可变 静态项。仅在 Rust 代码从中读取之前初始化 静态项 是不够的。一旦 Rust 代码运行，修改不可变 静态项（从 Rust 内部或外部）就是 未定义行为 (UB)，除非修改发生在 <code>UnsafeCell</code> 内部的字节上。</p>
 <div class="rule" id="r-items.extern.abi"><a class="rule-link" href="#r-items.extern.abi" title="items.extern.abi"><span>[items<wbr>.extern<wbr>.abi]</span></a>
 </div>
 
@@ -478,14 +458,14 @@ except if the mutation happens to bytes inside of an <code>UnsafeCell</code>.</p
 <div class="rule" id="r-items.extern.abi.intro"><a class="rule-link" href="#r-items.extern.abi.intro" title="items.extern.abi.intro"><span>[items<wbr>.extern<wbr>.abi<wbr>.intro]</span></a>
 </div>
 
-<p>The <code>extern</code> keyword can be followed by an optional <a href="../glossary.html#r-glossary.abi">ABI</a> string. The ABI specifies the calling convention of the functions in the block. The calling convention defines a low-level interface for functions, such as how arguments are placed in registers or on the stack, how return values are passed, and who is responsible for cleaning up the stack.</p>
+<p><code>extern</code> 关键字后面可以跟一个可选的 <a href="../glossary.html#r-glossary.abi">ABI</a> 字符串。ABI 指定了块中函数的调用约定。调用约定定义了函数的低级接口，例如参数如何放置在寄存器或栈中，返回值如何传递，以及谁负责清理栈。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Interface to the Windows API.
+</span>// Windows API 接口。
 unsafe extern "system" { /* ... */ }
 <span class="boring">}</span></code></pre>
 </blockquote>
@@ -494,43 +474,43 @@ unsafe extern "system" { /* ... */ }
 <div class="rule" id="r-items.extern.abi.default"><a class="rule-link" href="#r-items.extern.abi.default" title="items.extern.abi.default"><span>[items<wbr>.extern<wbr>.abi<wbr>.default]</span></a>
 </div>
 
-<p>If the ABI string is not specified, it defaults to <code>"C"</code>.</p>
+<p>如果未指定 ABI 字符串，则默认为 <code>"C"</code>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The <code>extern</code> syntax without an explicit ABI is being phased out, so it’s better to always write the ABI explicitly.</p>
-<p>For more details, see <a href="https://github.com/rust-lang/rust/issues/134986">Rust issue #134986</a>.</p>
+<p>不带显式 ABI 的 <code>extern</code> 语法正在逐步淘汰，因此最好始终显式写入 ABI。</p>
+<p>有关更多详细信息，请参阅 <a href="https://github.com/rust-lang/rust/issues/134986">Rust 问题 #134986</a>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.extern.abi.standard"><a class="rule-link" href="#r-items.extern.abi.standard" title="items.extern.abi.standard"><span>[items<wbr>.extern<wbr>.abi<wbr>.standard]</span></a>
 </div>
 
-<p>The following ABI strings are supported on all platforms:</p>
+<p>所有平台都支持以下 ABI 字符串：</p>
 <div class="rule" id="r-items.extern.abi.rust"><a class="rule-link" href="#r-items.extern.abi.rust" title="items.extern.abi.rust"><span>[items<wbr>.extern<wbr>.abi<wbr>.rust]</span></a>
 </div>
 
 <ul>
-<li><code>unsafe extern "Rust"</code> — The native calling convention for Rust functions and closures. This is the default when a function is declared without using <a href="functions.html#r-items.fn.extern"><code>extern fn</code></a>. The Rust ABI offers no stability guarantees.</li>
+<li><code>unsafe extern "Rust"</code> — Rust 函数和闭包的原生调用约定。当声明函数而不使用 <a href="functions.html#r-items.fn.extern"><code>extern fn</code></a> 时，这是默认值。Rust ABI 不提供稳定性保证。</li>
 </ul>
 <div class="rule" id="r-items.extern.abi.c"><a class="rule-link" href="#r-items.extern.abi.c" title="items.extern.abi.c"><span>[items<wbr>.extern<wbr>.abi<wbr>.c]</span></a>
 </div>
 
 <ul>
-<li><code>unsafe extern "C"</code> — The “C” ABI matches the default ABI chosen by the dominant C compiler for the target.</li>
+<li><code>unsafe extern "C"</code> — “C” ABI 与目标平台的主流 C 编译器选择的默认 ABI 匹配。</li>
 </ul>
 <div class="rule" id="r-items.extern.abi.system"><a class="rule-link" href="#r-items.extern.abi.system" title="items.extern.abi.system"><span>[items<wbr>.extern<wbr>.abi<wbr>.system]</span></a>
 </div>
 
 <ul>
 <li>
-<p><code>unsafe extern "system"</code> — This is equivalent to <code>extern "C"</code> except on Windows x86_32 where it is equivalent to <code>"stdcall"</code> for non-variadic functions, and equivalent to <code>"C"</code> for variadic functions.</p>
+<p><code>unsafe extern "system"</code> — 这等同于 <code>extern "C"</code>，但在 Windows x86_32 上除外，对于非变长参数函数，它等同于 <code>"stdcall"</code>，而对于变长参数函数，它等同于 <code>"C"</code>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>As the correct underlying ABI on Windows is target-specific, it’s best to use <code>extern "system"</code> when attempting to link Windows API functions that don’t use an explicitly defined ABI.</p>
+<p>由于 Windows 上正确的底层 ABI 与目标平台相关，因此在尝试链接不使用显式定义 ABI 的 Windows API 函数时，最好使用 <code>extern "system"</code>。</p>
 </blockquote>
 </div>
 
@@ -540,27 +520,27 @@ unsafe extern "system" { /* ... */ }
 </div>
 
 <ul>
-<li><code>extern "C-unwind"</code> and <code>extern "system-unwind"</code> — Identical to <code>"C"</code> and <code>"system"</code>, respectively, but with <a href="functions.html#unwinding">different behavior</a> when the callee unwinds (by panicking or throwing a C++ style exception).</li>
+<li><code>extern "C-unwind"</code> 和 <code>extern "system-unwind"</code> — 分别与 <code>"C"</code> 和 <code>"system"</code> 相同，但在被调用者展开（通过 恐慌 或抛出 C++ 风格异常）时具有 <a href="functions.html#unwinding">不同的行为</a>。</li>
 </ul>
 <div class="rule" id="r-items.extern.abi.platform"><a class="rule-link" href="#r-items.extern.abi.platform" title="items.extern.abi.platform"><span>[items<wbr>.extern<wbr>.abi<wbr>.platform]</span></a>
 </div>
 
-<p>There are also some platform-specific ABI strings:</p>
+<p>还有一些平台特定的 ABI 字符串：</p>
 <div class="rule" id="r-items.extern.abi.cdecl"><a class="rule-link" href="#r-items.extern.abi.cdecl" title="items.extern.abi.cdecl"><span>[items<wbr>.extern<wbr>.abi<wbr>.cdecl]</span></a>
 </div>
 
 <ul>
 <li>
-<p><code>unsafe extern "cdecl"</code> — The calling convention typically used with x86_32 C code.</p>
+<p><code>unsafe extern "cdecl"</code> — 通常用于 x86_32 C 代码的调用约定。</p>
 <ul>
-<li>Only available on x86_32 targets.</li>
-<li>Corresponds to MSVC’s <code>__cdecl</code> and GCC and clang’s <code>__attribute__((cdecl))</code>.</li>
+<li>仅适用于 x86_32 目标。</li>
+<li>对应于 MSVC 的 <code>__cdecl</code> 以及 GCC 和 clang 的 <code>__attribute__((cdecl))</code>。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>For details, see:</p>
+<p>有关详细信息，请参阅：</p>
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/cpp/cpp/cdecl">https://learn.microsoft.com/en-us/cpp/cpp/cdecl</a></li>
 <li><a href="https://en.wikipedia.org/wiki/X86_calling_conventions#cdecl">https://en.wikipedia.org/wiki/X86_calling_conventions#cdecl</a></li>
@@ -575,16 +555,16 @@ unsafe extern "system" { /* ... */ }
 
 <ul>
 <li>
-<p><code>unsafe extern "stdcall"</code> — The calling convention typically used by the <a href="https://learn.microsoft.com/en-us/windows/win32/api/">Win32 API</a> on x86_32.</p>
+<p><code>unsafe extern "stdcall"</code> — 通常由 x86_32 上的 <a href="https://learn.microsoft.com/en-us/windows/win32/api/">Win32 API</a> 使用的调用约定。</p>
 <ul>
-<li>Only available on x86_32 targets.</li>
-<li>Corresponds to MSVC’s <code>__stdcall</code> and GCC and clang’s <code>__attribute__((stdcall))</code>.</li>
+<li>仅适用于 x86_32 目标。</li>
+<li>对应于 MSVC 的 <code>__stdcall</code> 以及 GCC 和 clang 的 <code>__attribute__((stdcall))</code>。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>For details, see:</p>
+<p>有关详细信息，请参阅：</p>
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/cpp/cpp/stdcall">https://learn.microsoft.com/en-us/cpp/cpp/stdcall</a></li>
 <li><a href="https://en.wikipedia.org/wiki/X86_calling_conventions#stdcall">https://en.wikipedia.org/wiki/X86_calling_conventions#stdcall</a></li>
@@ -599,17 +579,17 @@ unsafe extern "system" { /* ... */ }
 
 <ul>
 <li>
-<p><code>unsafe extern "win64"</code> — The Windows x64 ABI.</p>
+<p><code>unsafe extern "win64"</code> — Windows x64 ABI。</p>
 <ul>
-<li>Only available on x86_64 targets.</li>
-<li>“win64” is the same as the “C” ABI on Windows x86_64 targets.</li>
-<li>Corresponds to GCC and clang’s <code>__attribute__((ms_abi))</code>.</li>
+<li>仅适用于 x86_64 目标。</li>
+<li>“win64” 与 Windows x86_64 目标上的 “C” ABI 相同。</li>
+<li>对应于 GCC 和 clang 的 <code>__attribute__((ms_abi))</code>。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>For details, see:</p>
+<p>有关详细信息，请参阅：</p>
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/cpp/build/x64-software-conventions">https://learn.microsoft.com/en-us/cpp/build/x64-software-conventions</a></li>
 <li><a href="https://en.wikipedia.org/wiki/X86_calling_conventions#Microsoft_x64_calling_convention">https://en.wikipedia.org/wiki/X86_calling_conventions#Microsoft_x64_calling_convention</a></li>
@@ -624,17 +604,17 @@ unsafe extern "system" { /* ... */ }
 
 <ul>
 <li>
-<p><code>unsafe extern "sysv64"</code> — The System V ABI.</p>
+<p><code>unsafe extern "sysv64"</code> — System V ABI。</p>
 <ul>
-<li>Only available on x86_64 targets.</li>
-<li>“sysv64” is the same as the “C” ABI on non-Windows x86_64 targets.</li>
-<li>Corresponds to GCC and clang’s <code>__attribute__((sysv_abi))</code>.</li>
+<li>仅适用于 x86_64 目标。</li>
+<li>“sysv64” 与非 Windows x86_64 目标上的 “C” ABI 相同。</li>
+<li>对应于 GCC 和 clang 的 <code>__attribute__((sysv_abi))</code>。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>For details, see:</p>
+<p>有关详细信息，请参阅：</p>
 <ul>
 <li><a href="https://wiki.osdev.org/System_V_ABI">https://wiki.osdev.org/System_V_ABI</a></li>
 <li><a href="https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI">https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI</a></li>
@@ -649,19 +629,19 @@ unsafe extern "system" { /* ... */ }
 
 <ul>
 <li>
-<p><code>unsafe extern "aapcs"</code> — The soft-float ABI for ARM.</p>
+<p><code>unsafe extern "aapcs"</code> — ARM 的软浮点 ABI。</p>
 <ul>
-<li>Only available on ARM32 targets.</li>
-<li>“aapcs” is the same as the “C” ABI on soft-float ARM32.</li>
-<li>Corresponds to clang’s <code>__attribute__((pcs("aapcs")))</code>.</li>
+<li>仅适用于 ARM32 目标。</li>
+<li>“aapcs” 与软浮点 ARM32 上的 “C” ABI 相同。</li>
+<li>对应于 clang 的 <code>__attribute__((pcs("aapcs")))</code>。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>For details, see:</p>
+<p>有关详细信息，请参阅：</p>
 <ul>
-<li><a href="https://developer.arm.com/documentation/107656/0101/Getting-started-with-Armv8-M-based-systems/Procedure-Call-Standard-for-Arm-Architecture--AAPCS-">Arm Procedure Call Standard</a></li>
+<li><a href="https://developer.arm.com/documentation/107656/0101/Getting-started-with-Armv8-M-based-systems/Procedure-Call-Standard-for-Arm-Architecture--AAPCS-">Arm 过程调用标准</a></li>
 </ul>
 </blockquote>
 </div>
@@ -673,16 +653,16 @@ unsafe extern "system" { /* ... */ }
 
 <ul>
 <li>
-<p><code>unsafe extern "fastcall"</code> — A “fast” variant of stdcall that passes some arguments in registers.</p>
+<p><code>unsafe extern "fastcall"</code> — stdcall 的 “快速” 变体，通过寄存器传递某些参数。</p>
 <ul>
-<li>Only available on x86_32 targets.</li>
-<li>Corresponds to MSVC’s <code>__fastcall</code> and GCC and clang’s <code>__attribute__((fastcall))</code>.</li>
+<li>仅适用于 x86_32 目标。</li>
+<li>对应于 MSVC 的 <code>__fastcall</code> 以及 GCC 和 clang 的 <code>__attribute__((fastcall))</code>。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>For details, see:</p>
+<p>有关详细信息，请参阅：</p>
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/cpp/cpp/fastcall">https://learn.microsoft.com/en-us/cpp/cpp/fastcall</a></li>
 <li><a href="https://en.wikipedia.org/wiki/X86_calling_conventions#Microsoft_fastcall">https://en.wikipedia.org/wiki/X86_calling_conventions#Microsoft_fastcall</a></li>
@@ -697,16 +677,16 @@ unsafe extern "system" { /* ... */ }
 
 <ul>
 <li>
-<p><code>unsafe extern "thiscall"</code> — The calling convention typically used on C++ class member functions on x86_32 MSVC.</p>
+<p><code>unsafe extern "thiscall"</code> — 通常在 x86_32 MSVC 上用于 C++ 类成员函数的调用约定。</p>
 <ul>
-<li>Only available on x86_32 targets.</li>
-<li>Corresponds to MSVC’s <code>__thiscall</code> and GCC and clang’s <code>__attribute__((thiscall))</code>.</li>
+<li>仅适用于 x86_32 目标。</li>
+<li>对应于 MSVC 的 <code>__thiscall</code> 以及 GCC 和 clang 的 <code>__attribute__((thiscall))</code>。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>For details, see:</p>
+<p>有关详细信息，请参阅：</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/X86_calling_conventions#thiscall">https://en.wikipedia.org/wiki/X86_calling_conventions#thiscall</a></li>
 <li><a href="https://learn.microsoft.com/en-us/cpp/cpp/thiscall">https://learn.microsoft.com/en-us/cpp/cpp/thiscall</a></li>
@@ -720,16 +700,16 @@ unsafe extern "system" { /* ... */ }
 </div>
 
 <ul>
-<li><code>unsafe extern "efiapi"</code> — The ABI used for <a href="https://uefi.org/specifications">UEFI</a> functions.
+<li><code>unsafe extern "efiapi"</code> — 用于 <a href="https://uefi.org/specifications">UEFI</a> 函数的 ABI。
 <ul>
-<li>Only available on x86 and ARM targets (32bit and 64bit).</li>
+<li>仅适用于 x86 和 ARM 目标（32 位和 64 位）。</li>
 </ul>
 </li>
 </ul>
 <div class="rule" id="r-items.extern.abi.platform-unwind-variants"><a class="rule-link" href="#r-items.extern.abi.platform-unwind-variants" title="items.extern.abi.platform-unwind-variants"><span>[items<wbr>.extern<wbr>.abi<wbr>.platform-unwind-variants]</span></a>
 </div>
 
-<p>Like <code>"C"</code> and <code>"system"</code>, most platform-specific ABI strings also have a <a href="functions.html#unwinding">corresponding <code>-unwind</code> variant</a>; specifically, these are:</p>
+<p>与 <code>"C"</code> 和 <code>"system"</code> 类似，大多数平台特定的 ABI 字符串也具有 <a href="functions.html#unwinding">对应的 <code>-unwind</code> 变体</a>；具体而言，它们是：</p>
 <ul>
 <li><code>"aapcs-unwind"</code></li>
 <li><code>"cdecl-unwind"</code></li>
@@ -742,18 +722,15 @@ unsafe extern "system" { /* ... */ }
 <div class="rule" id="r-items.extern.variadic"><a class="rule-link" href="#r-items.extern.variadic" title="items.extern.variadic"><span>[items<wbr>.extern<wbr>.variadic]</span></a>
 </div>
 
-<h2 id="variadic-functions"><a class="header" href="#variadic-functions">Variadic functions</a></h2>
-<p>Functions within external blocks may be variadic by specifying <code>...</code> as the
-last argument. The variadic parameter may optionally be specified with an
-identifier.</p>
+<h2 id="变长参数函数"><a class="header" href="#变长参数函数">变长参数函数</a></h2>
+<p>外部块中的函数可以通过指定 <code>...</code> 作为最后一个参数来成为变长的。变长参数可以可选地指定一个标识符。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>unsafe extern "C" {
     unsafe fn foo(...);
     unsafe fn bar(x: i32, ...);
     unsafe fn with_name(format: *const u8, args: ...);
-    // SAFETY: This function guarantees it will not access
-    // variadic arguments.
+    // 安全性：此函数保证它根本不会访问变长参数。
     safe fn ignores_variadic_arguments(x: i32, ...);
 }
 <span class="boring">}</span></code></pre>
@@ -761,14 +738,14 @@ identifier.</p>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>警告</p>
 
-<p>The <code>safe</code> qualifier should not be used on a function in an <code>extern</code> block unless that function guarantees that it will not access the variadic arguments at all. Passing an unexpected number of arguments or arguments of unexpected type to a variadic function may lead to <a href="../behavior-considered-undefined.html#r-undefined">undefined behavior</a>.</p>
+<p>不应在 <code>extern</code> 块中的函数上使用 <code>safe</code> 限定符，除非该函数保证它根本不会访问变长参数。向变长参数函数传递非预期数量的参数或非预期类型的参数可能会导致 <a href="../behavior-considered-undefined.html#r-undefined">未定义行为</a>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.extern.variadic.conventions"><a class="rule-link" href="#r-items.extern.variadic.conventions" title="items.extern.variadic.conventions"><span>[items<wbr>.extern<wbr>.variadic<wbr>.conventions]</span></a>
 </div>
 
-<p>Variadic parameters can only be specified within <code>extern</code> blocks with the following ABI strings or their corresponding <a href="functions.html#r-items.fn.extern.unwind"><code>-unwind</code> variants</a>:</p>
+<p>变长参数只能在具有以下 ABI 字符串或其对应 <a href="functions.html#r-items.fn.extern.unwind"><code>-unwind</code> 变体</a> 的 <code>extern</code> 块中指定：</p>
 <ul>
 <li><code>"aapcs"</code></li>
 <li><code>"C"</code></li>
@@ -781,81 +758,67 @@ identifier.</p>
 <div class="rule" id="r-items.extern.attributes"><a class="rule-link" href="#r-items.extern.attributes" title="items.extern.attributes"><span>[items<wbr>.extern<wbr>.attributes]</span></a>
 </div>
 
-<h2 id="attributes-on-extern-blocks"><a class="header" href="#attributes-on-extern-blocks">Attributes on extern blocks</a></h2>
+<h2 id="外部块上的属性"><a class="header" href="#外部块上的属性">外部块上的属性</a></h2>
 <div class="rule" id="r-items.extern.attributes.intro"><a class="rule-link" href="#r-items.extern.attributes.intro" title="items.extern.attributes.intro"><span>[items<wbr>.extern<wbr>.attributes<wbr>.intro]</span></a>
 </div>
 
-<p>The following <a href="../attributes.html">attributes</a> control the behavior of external blocks.</p>
+<p>以下 <a href="../attributes.html">属性</a> 控制外部块的行为。</p>
 <div class="rule" id="r-items.extern.attributes.link"><a class="rule-link" href="#r-items.extern.attributes.link" title="items.extern.attributes.link"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link]</span></a>
 </div>
 
-<h3 id="the-link-attribute"><a class="header" href="#the-link-attribute">The <code>link</code> attribute</a></h3>
+<h3 id="link属性"><a class="header" href="#link属性"><code>link</code>属性</a></h3>
 <div class="rule" id="r-items.extern.attributes.link.intro"><a class="rule-link" href="#r-items.extern.attributes.link.intro" title="items.extern.attributes.link.intro"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>link</code> attribute</em> specifies the name of a native library that the
-compiler should link with for the items within an <code>extern</code> block.</p>
+<p><em><code>link</code> 属性</em>  指定了编译器应针对 <code>extern</code> 块内的 项 进行链接的原生库的名称。</p>
 <div class="rule" id="r-items.extern.attributes.link.syntax"><a class="rule-link" href="#r-items.extern.attributes.link.syntax" title="items.extern.attributes.link.syntax"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.syntax]</span></a>
 </div>
 
-<p>It uses the <a href="../attributes.html#grammar-MetaListNameValueStr">MetaListNameValueStr</a> syntax to specify its inputs. The <code>name</code> key is the
-name of the native library to link. The <code>kind</code> key is an optional value which
-specifies the kind of library with the following possible values:</p>
+<p>它使用 <a href="../attributes.html#grammar-MetaListNameValueStr">MetaListNameValueStr</a> 语法来指定其输入。<code>name</code> 键是要链接的原生库的名称。<code>kind</code> 键是一个可选值，它指定了库的类型，具有以下可能的值：</p>
 <div class="rule" id="r-items.extern.attributes.link.dylib"><a class="rule-link" href="#r-items.extern.attributes.link.dylib" title="items.extern.attributes.link.dylib"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.dylib]</span></a>
 </div>
 
 <ul>
-<li><code>dylib</code> — Indicates a dynamic library. This is the default if <code>kind</code> is not
-specified.</li>
+<li><code>dylib</code> — 表示动态库。如果未指定 <code>kind</code>，则这是默认值。</li>
 </ul>
 <div class="rule" id="r-items.extern.attributes.link.static"><a class="rule-link" href="#r-items.extern.attributes.link.static" title="items.extern.attributes.link.static"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.static]</span></a>
 </div>
 
 <ul>
-<li><code>static</code> — Indicates a static library.</li>
+<li><code>static</code> — 表示静态库。</li>
 </ul>
 <div class="rule" id="r-items.extern.attributes.link.framework"><a class="rule-link" href="#r-items.extern.attributes.link.framework" title="items.extern.attributes.link.framework"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.framework]</span></a>
 </div>
 
 <ul>
-<li><code>framework</code> — Indicates a macOS framework. This is only valid for macOS
-targets.</li>
+<li><code>framework</code> — 表示 macOS 框架。这仅对 macOS 目标有效。</li>
 </ul>
 <div class="rule" id="r-items.extern.attributes.link.raw-dylib"><a class="rule-link" href="#r-items.extern.attributes.link.raw-dylib" title="items.extern.attributes.link.raw-dylib"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.raw-dylib]</span></a>
 </div>
 
 <ul>
-<li><code>raw-dylib</code> — Indicates a dynamic library where the compiler will generate
-an import library to link against (see <a href="#dylib-versus-raw-dylib"><code>dylib</code> versus <code>raw-dylib</code></a> below
-for details). This is only valid for Windows targets.</li>
+<li><code>raw-dylib</code> — 表示一个动态库，编译器将生成一个导入库来与其链接（详见下文的 <a href="#dylib-versus-raw-dylib"><code>dylib</code> 与 <code>raw-dylib</code> 比较</a>）。这仅对 Windows 目标有效。</li>
 </ul>
 <div class="rule" id="r-items.extern.attributes.link.name-requirement"><a class="rule-link" href="#r-items.extern.attributes.link.name-requirement" title="items.extern.attributes.link.name-requirement"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.name-requirement]</span></a>
 </div>
 
-<p>The <code>name</code> key must be included if <code>kind</code> is specified.</p>
+<p>如果指定了 <code>kind</code>，则必须包含 <code>name</code> 键。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers" title="items.extern.attributes.link.modifiers"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers]</span></a>
 </div>
 
-<p>The optional <code>modifiers</code> argument is a way to specify linking modifiers for the
-library to link.</p>
+<p>可选的 <code>modifiers</code> 参数是一种为要链接的库指定链接修饰符的方法。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.syntax"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.syntax" title="items.extern.attributes.link.modifiers.syntax"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.syntax]</span></a>
 </div>
 
-<p>Modifiers are specified as a comma-delimited string with each modifier prefixed
-with either a <code>+</code> or <code>-</code> to indicate that the modifier is enabled or disabled,
-respectively.</p>
+<p>修饰符指定为以逗号分隔的字符串，每个修饰符前缀为 <code>+</code> 或 <code>-</code>，分别表示启用或禁用该修饰符。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.multiple"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.multiple" title="items.extern.attributes.link.modifiers.multiple"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.multiple]</span></a>
 </div>
 
-<p>Specifying multiple <code>modifiers</code> arguments in a single <code>link</code> attribute,
-or multiple identical modifiers in the same <code>modifiers</code> argument is not currently supported. <br>Example: <code>#[link(name = "mylib", kind = "static", modifiers = "+whole-archive")]</code>.</p>
+<p>目前不支持在单个 <code>link</code> 属性中指定多个 <code>modifiers</code> 参数，或者在同一个 <code>modifiers</code> 参数中指定多个相同的修饰符。 <br>示例：<code>#[link(name = "mylib", kind = "static", modifiers = "+whole-archive")]</code>。</p>
 <div class="rule" id="r-items.extern.attributes.link.wasm_import_module"><a class="rule-link" href="#r-items.extern.attributes.link.wasm_import_module" title="items.extern.attributes.link.wasm_import_module"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.wasm_import_module]</span></a>
 </div>
 
-<p>The <code>wasm_import_module</code> key may be used to specify the <a href="https://webassembly.github.io/spec/core/syntax/modules.html">WebAssembly module</a>
-name for the items within an <code>extern</code> block when importing symbols from the
-host environment. The default module name is <code>env</code> if <code>wasm_import_module</code> is
-not specified.</p>
+<p>当从宿主环境导入符号时，<code>wasm_import_module</code> 键可用于为 <code>extern</code> 块中的 项 指定 <a href="https://webassembly.github.io/spec/core/syntax/modules.html">WebAssembly 模块</a> 名称。如果未指定 <code>wasm_import_module</code>，则默认模块名称为 <code>env</code>。</p>
 <!-- ignore: requires extern linking -->
 <pre><code class="language-rust ignore">#[link(name = "crypto")]
 unsafe extern {
@@ -874,164 +837,124 @@ unsafe extern {
 <div class="rule" id="r-items.extern.attributes.link.empty-block"><a class="rule-link" href="#r-items.extern.attributes.link.empty-block" title="items.extern.attributes.link.empty-block"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.empty-block]</span></a>
 </div>
 
-<p>It is valid to add the <code>link</code> attribute on an empty extern block. You can use
-this to satisfy the linking requirements of extern blocks elsewhere in your
-code (including upstream crates) instead of adding the attribute to each extern
-block.</p>
+<p>在空的外部块上添加 <code>link</code> 属性是有效的。您可以使用它来满足代码中其他地方（包括上游 crate）外部块的链接要求，而不是在每个外部块中都添加该属性。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.bundle"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.bundle" title="items.extern.attributes.link.modifiers.bundle"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.bundle]</span></a>
 </div>
 
-<h4 id="linking-modifiers-bundle"><a class="header" href="#linking-modifiers-bundle">Linking modifiers: <code>bundle</code></a></h4>
+<h4 id="链接修饰符bundle"><a class="header" href="#链接修饰符bundle">链接修饰符：<code>bundle</code></a></h4>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.bundle.allowed-kinds"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.bundle.allowed-kinds" title="items.extern.attributes.link.modifiers.bundle.allowed-kinds"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.bundle<wbr>.allowed-kinds]</span></a>
 </div>
 
-<p>This modifier is only compatible with the <code>static</code> linking kind.
-Using any other kind will result in a compiler error.</p>
+<p>此修饰符仅与 <code>static</code> 链接类型兼容。使用任何其他类型都将导致编译器错误。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.bundle.behavior"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.bundle.behavior" title="items.extern.attributes.link.modifiers.bundle.behavior"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.bundle<wbr>.behavior]</span></a>
 </div>
 
-<p>When building a rlib or staticlib <code>+bundle</code> means that the native static library
-will be packed into the rlib or staticlib archive, and then retrieved from there
-during linking of the final binary.</p>
+<p>在构建 rlib 或 staticlib 时，<code>+bundle</code> 意味着原生静态库将被打包到 rlib 或 staticlib 归档中，然后在链接最终二进制文件期间从中检索。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.bundle.behavior-negative"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.bundle.behavior-negative" title="items.extern.attributes.link.modifiers.bundle.behavior-negative"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.bundle<wbr>.behavior-negative]</span></a>
 </div>
 
-<p>When building a rlib <code>-bundle</code> means that the native static library is registered as a dependency
-of that rlib “by name”, and object files from it are included only during linking of the final
-binary, the file search by that name is also performed during final linking. <br>When building a staticlib <code>-bundle</code> means that the native static library is simply not included
-into the archive and some higher level build system will need to add it later during linking of
-the final binary.</p>
+<p>在构建 rlib 时，<code>-bundle</code> 意味着原生静态库被 “按名称” 注册为该 rlib 的依赖项，并且仅在链接最终二进制文件期间才包含其中的目标文件，在最终链接期间也会执行按该名称的文件搜索。 <br>在构建 staticlib 时，<code>-bundle</code> 意味着原生静态库根本不包含在归档中，某些更高级别的构建系统将需要在稍后链接最终二进制文件期间添加它。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.bundle.no-effect"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.bundle.no-effect" title="items.extern.attributes.link.modifiers.bundle.no-effect"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.bundle<wbr>.no-effect]</span></a>
 </div>
 
-<p>This modifier has no effect when building other targets like executables or dynamic libraries.</p>
+<p>在构建可执行文件或动态库等其他目标时，此修饰符没有效果。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.bundle.default"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.bundle.default" title="items.extern.attributes.link.modifiers.bundle.default"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.bundle<wbr>.default]</span></a>
 </div>
 
-<p>The default for this modifier is <code>+bundle</code>.</p>
-<p>More implementation details about this modifier can be found in
-<a href="../../rustc/command-line-arguments.html#linking-modifiers-bundle"><code>bundle</code> documentation for rustc</a>.</p>
+<p>此修饰符的默认值为 <code>+bundle</code>。</p>
+<p>有关此修饰符的更多实现细节，可以在 <a href="../../rustc/command-line-arguments.html#linking-modifiers-bundle">rustc 的 <code>bundle</code> 文档</a> 中找到。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.whole-archive"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.whole-archive" title="items.extern.attributes.link.modifiers.whole-archive"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.whole-archive]</span></a>
 </div>
 
-<h4 id="linking-modifiers-whole-archive"><a class="header" href="#linking-modifiers-whole-archive">Linking modifiers: <code>whole-archive</code></a></h4>
+<h4 id="链接修饰符whole-archive"><a class="header" href="#链接修饰符whole-archive">链接修饰符：<code>whole-archive</code></a></h4>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.whole-archive.allowed-kinds"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.whole-archive.allowed-kinds" title="items.extern.attributes.link.modifiers.whole-archive.allowed-kinds"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.whole-archive<wbr>.allowed-kinds]</span></a>
 </div>
 
-<p>This modifier is only compatible with the <code>static</code> linking kind.
-Using any other kind will result in a compiler error.</p>
+<p>此修饰符仅与 <code>static</code> 链接类型兼容。使用任何其他类型都将导致编译器错误。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.whole-archive.behavior"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.whole-archive.behavior" title="items.extern.attributes.link.modifiers.whole-archive.behavior"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.whole-archive<wbr>.behavior]</span></a>
 </div>
 
-<p><code>+whole-archive</code> means that the static library is linked as a whole archive
-without throwing any object files away.</p>
+<p><code>+whole-archive</code> 意味着静态库作为整个归档进行链接，而不丢弃任何目标文件。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.whole-archive.default"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.whole-archive.default" title="items.extern.attributes.link.modifiers.whole-archive.default"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.whole-archive<wbr>.default]</span></a>
 </div>
 
-<p>The default for this modifier is <code>-whole-archive</code>.</p>
-<p>More implementation details about this modifier can be found in
-<a href="../../rustc/command-line-arguments.html#linking-modifiers-whole-archive"><code>whole-archive</code> documentation for rustc</a>.</p>
+<p>此修饰符的默认值为 <code>-whole-archive</code>。</p>
+<p>有关此修饰符的更多实现细节，可以在 <a href="../../rustc/command-line-arguments.html#linking-modifiers-whole-archive">rustc 的 <code>whole-archive</code> 文档</a> 中找到。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.verbatim"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.verbatim" title="items.extern.attributes.link.modifiers.verbatim"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.verbatim]</span></a>
 </div>
 
-<h3 id="linking-modifiers-verbatim"><a class="header" href="#linking-modifiers-verbatim">Linking modifiers: <code>verbatim</code></a></h3>
+<h3 id="链接修饰符verbatim"><a class="header" href="#链接修饰符verbatim">链接修饰符：<code>verbatim</code></a></h3>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.verbatim.allowed-kinds"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.verbatim.allowed-kinds" title="items.extern.attributes.link.modifiers.verbatim.allowed-kinds"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.verbatim<wbr>.allowed-kinds]</span></a>
 </div>
 
-<p>This modifier is compatible with all linking kinds.</p>
+<p>此修饰符与所有链接类型兼容。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.verbatim.behavior"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.verbatim.behavior" title="items.extern.attributes.link.modifiers.verbatim.behavior"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.verbatim<wbr>.behavior]</span></a>
 </div>
 
-<p><code>+verbatim</code> means that rustc itself won’t add any target-specified library prefixes or suffixes
-(like <code>lib</code> or <code>.a</code>) to the library name, and will try its best to ask for the same thing from the
-linker.</p>
+<p><code>+verbatim</code> 意味着 rustc 本身不会向库名称添加任何目标平台指定的库前缀或后缀（如 <code>lib</code> 或 <code>.a</code>），并将尽力向链接器请求同样的内容。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.verbatim.behavior-negative"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.verbatim.behavior-negative" title="items.extern.attributes.link.modifiers.verbatim.behavior-negative"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.verbatim<wbr>.behavior-negative]</span></a>
 </div>
 
-<p><code>-verbatim</code> means that rustc will either add a target-specific prefix and suffix to the library
-name before passing it to linker, or won’t prevent linker from implicitly adding it.</p>
+<p><code>-verbatim</code> 意味着 rustc 在将库名称传递给链接器之前，会向其添加目标平台特定的前缀和后缀，或者不会阻止链接器隐式添加它。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.verbatim.default"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.verbatim.default" title="items.extern.attributes.link.modifiers.verbatim.default"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.verbatim<wbr>.default]</span></a>
 </div>
 
-<p>The default for this modifier is <code>-verbatim</code>.</p>
-<p>More implementation details about this modifier can be found in
-<a href="../../rustc/command-line-arguments.html#linking-modifiers-verbatim"><code>verbatim</code> documentation for rustc</a>.</p>
+<p>此修饰符的默认值为 <code>-verbatim</code>。</p>
+<p>有关此修饰符的更多实现细节，可以在 <a href="../../rustc/command-line-arguments.html#linking-modifiers-verbatim">rustc 的 <code>verbatim</code> 文档</a> 中找到。</p>
 <div class="rule" id="r-items.extern.attributes.link.kind-raw-dylib"><a class="rule-link" href="#r-items.extern.attributes.link.kind-raw-dylib" title="items.extern.attributes.link.kind-raw-dylib"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.kind-raw-dylib]</span></a>
 </div>
 
-<h4 id="dylib-versus-raw-dylib"><a class="header" href="#dylib-versus-raw-dylib"><code>dylib</code> versus <code>raw-dylib</code></a></h4>
+<h4 id="dylib与-raw-dylib比较"><a class="header" href="#dylib与-raw-dylib比较"><code>dylib</code>与 <code>raw-dylib</code>比较</a></h4>
 <div class="rule" id="r-items.extern.attributes.link.kind-raw-dylib.intro"><a class="rule-link" href="#r-items.extern.attributes.link.kind-raw-dylib.intro" title="items.extern.attributes.link.kind-raw-dylib.intro"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.kind-raw-dylib<wbr>.intro]</span></a>
 </div>
 
-<p>On Windows, linking against a dynamic library requires that an import library
-is provided to the linker: this is a special static library that declares all
-of the symbols exported by the dynamic library in such a way that the linker
-knows that they have to be dynamically loaded at runtime.</p>
+<p>在 Windows 上，与动态库链接要求向链接器提供一个导入库：这是一个特殊的静态库，它声明了动态库导出的所有符号，其方式使链接器知道它们必须在运行时动态加载。</p>
 <div class="rule" id="r-items.extern.attributes.link.kind-raw-dylib.import"><a class="rule-link" href="#r-items.extern.attributes.link.kind-raw-dylib.import" title="items.extern.attributes.link.kind-raw-dylib.import"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.kind-raw-dylib<wbr>.import]</span></a>
 </div>
 
-<p>Specifying <code>kind = "dylib"</code> instructs the Rust compiler to link an import
-library based on the <code>name</code> key. The linker will then use its normal library
-resolution logic to find that import library. Alternatively, specifying
-<code>kind = "raw-dylib"</code> instructs the compiler to generate an import library
-during compilation and provide that to the linker instead.</p>
+<p>指定 <code>kind = "dylib"</code> 会指示 Rust 编译器链接一个基于 <code>name</code> 键的导入库。链接器随后将使用其正常的库解析逻辑来查找该导入库。或者，指定 <code>kind = "raw-dylib"</code> 会指示编译器在编译期间生成一个导入库，并将该导入库提供给链接器。</p>
 <div class="rule" id="r-items.extern.attributes.link.kind-raw-dylib.platform-specific"><a class="rule-link" href="#r-items.extern.attributes.link.kind-raw-dylib.platform-specific" title="items.extern.attributes.link.kind-raw-dylib.platform-specific"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.kind-raw-dylib<wbr>.platform-specific]</span></a>
 </div>
 
-<p><code>raw-dylib</code> is only supported on Windows. Using it when targeting other
-platforms will result in a compiler error.</p>
+<p><code>raw-dylib</code> 仅在 Windows 上受支持。针对其他平台使用它将导致编译器错误。</p>
 <div class="rule" id="r-items.extern.attributes.link.import_name_type"><a class="rule-link" href="#r-items.extern.attributes.link.import_name_type" title="items.extern.attributes.link.import_name_type"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.import_name_type]</span></a>
 </div>
 
-<h4 id="the-import_name_type-key"><a class="header" href="#the-import_name_type-key">The <code>import_name_type</code> key</a></h4>
+<h4 id="import_name_type键"><a class="header" href="#import_name_type键"><code>import_name_type</code>键</a></h4>
 <div class="rule" id="r-items.extern.attributes.link.import_name_type.intro"><a class="rule-link" href="#r-items.extern.attributes.link.import_name_type.intro" title="items.extern.attributes.link.import_name_type.intro"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.import_name_type<wbr>.intro]</span></a>
 </div>
 
-<p>On x86 Windows, names of functions are “decorated” (i.e., have a specific prefix
-and/or suffix added) to indicate their calling convention. For example, a
-<code>stdcall</code> calling convention function with the name <code>fn1</code> that has no arguments
-would be decorated as <code>_fn1@0</code>. However, the <a href="https://learn.microsoft.com/windows/win32/debug/pe-format#import-name-type">PE Format</a> does also permit names
-to have no prefix or be undecorated. Additionally, the MSVC and GNU toolchains
-use different decorations for the same calling conventions which means, by
-default, some Win32 functions cannot be called using the <code>raw-dylib</code> link kind
-via the GNU toolchain.</p>
+<p>在 x86 Windows 上，函数名称会被 “修饰” (decorated)（即添加特定的前缀和/或后缀）以指示其调用约定。例如，一个名为 <code>fn1</code> 且没有参数的 <code>stdcall</code> 调用约定函数将被修饰为 <code>_fn1@0</code>。然而，<a href="https://learn.microsoft.com/windows/win32/debug/pe-format#import-name-type">PE 格式</a> 也确实允许名称没有前缀或不被修饰。此外，MSVC 和 GNU 工具链对相同的调用约定使用不同的修饰，这意味着默认情况下，某些 Win32 函数无法通过 GNU 工具链使用 <code>raw-dylib</code> 链接类型进行调用。</p>
 <div class="rule" id="r-items.extern.attributes.link.import_name_type.values"><a class="rule-link" href="#r-items.extern.attributes.link.import_name_type.values" title="items.extern.attributes.link.import_name_type.values"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.import_name_type<wbr>.values]</span></a>
 </div>
 
-<p>To allow for these differences, when using the <code>raw-dylib</code> link kind you may
-also specify the <code>import_name_type</code> key with one of the following values to
-change how functions are named in the generated import library:</p>
+<p>为了允许这些差异，在使用 <code>raw-dylib</code> 链接类型时，您还可以使用以下值之一指定 <code>import_name_type</code> 键，以更改生成的导入库中函数的命名方式：</p>
 <ul>
-<li><code>decorated</code>: The function name will be fully-decorated using the MSVC
-toolchain format.</li>
-<li><code>noprefix</code>: The function name will be decorated using the MSVC toolchain
-format, but skipping the leading <code>?</code>, <code>@</code>, or optionally <code>_</code>.</li>
-<li><code>undecorated</code>: The function name will not be decorated.</li>
+<li><code>decorated</code>：函数名称将使用 MSVC 工具链格式进行完整修饰。</li>
+<li><code>noprefix</code>：函数名称将使用 MSVC 工具链格式进行修饰，但跳过前导的 <code>?</code>、<code>@</code> 或可选的 <code>_</code>。</li>
+<li><code>undecorated</code>：函数名称将不被修饰。</li>
 </ul>
 <div class="rule" id="r-items.extern.attributes.link.import_name_type.default"><a class="rule-link" href="#r-items.extern.attributes.link.import_name_type.default" title="items.extern.attributes.link.import_name_type.default"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.import_name_type<wbr>.default]</span></a>
 </div>
 
-<p>If the <code>import_name_type</code> key is not specified, then the function name will be
-fully-decorated using the target toolchain’s format.</p>
+<p>如果未指定 <code>import_name_type</code> 键，则函数名称将使用目标工具链的格式进行完整修饰。</p>
 <div class="rule" id="r-items.extern.attributes.link.import_name_type.variables"><a class="rule-link" href="#r-items.extern.attributes.link.import_name_type.variables" title="items.extern.attributes.link.import_name_type.variables"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.import_name_type<wbr>.variables]</span></a>
 </div>
 
-<p>Variables are never decorated and so the <code>import_name_type</code> key has no effect on
-how they are named in the generated import library.</p>
+<p>变量永远不会被修饰，因此 <code>import_name_type</code> 键对它们在生成的导入库中的命名方式没有影响。</p>
 <div class="rule" id="r-items.extern.attributes.link.import_name_type.platform-specific"><a class="rule-link" href="#r-items.extern.attributes.link.import_name_type.platform-specific" title="items.extern.attributes.link.import_name_type.platform-specific"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.import_name_type<wbr>.platform-specific]</span></a>
 </div>
 
-<p>The <code>import_name_type</code> key is only supported on x86 Windows. Using it when
-targeting other platforms will result in a compiler error.</p>
+<p><code>import_name_type</code> 键仅在 x86 Windows 上受支持。针对其他平台使用它将导致编译器错误。</p>
 <!-- template:attributes -->
 <div class="rule" id="r-items.extern.attributes.link_name"><a class="rule-link" href="#r-items.extern.attributes.link_name" title="items.extern.attributes.link_name"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link_name]</span></a>
 </div>
 
-<h3 id="the-link_name-attribute"><a class="header" href="#the-link_name-attribute">The <code>link_name</code> attribute</a></h3>
+<h3 id="link_name属性"><a class="header" href="#link_name属性"><code>link_name</code>属性</a></h3>
 <div class="rule" id="r-items.extern.attributes.link_name.intro"><a class="rule-link" href="#r-items.extern.attributes.link_name.intro" title="items.extern.attributes.link_name.intro"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link_name<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>link_name</code> <a href="../attributes.html">attribute</a></em> may be applied to declarations inside an <code>extern</code> block to specify the symbol to import for the given function or static.</p>
+<p><em><code>link_name</code> <a href="../attributes.html">属性</a></em>  可以应用于外部块内的声明，以指定要为给定函数或静态项导入的符号。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -1049,52 +972,48 @@ targeting other platforms will result in a compiler error.</p>
 <div class="rule" id="r-items.extern.attributes.link_name.syntax"><a class="rule-link" href="#r-items.extern.attributes.link_name.syntax" title="items.extern.attributes.link_name.syntax"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link_name<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>link_name</code> attribute uses the <a href="../attributes.html#grammar-MetaNameValueStr">MetaNameValueStr</a> syntax.</p>
+<p><code>link_name</code> 属性使用 <a href="../attributes.html#grammar-MetaNameValueStr">MetaNameValueStr</a> 语法。</p>
 <div class="rule" id="r-items.extern.attributes.link_name.allowed-positions"><a class="rule-link" href="#r-items.extern.attributes.link_name.allowed-positions" title="items.extern.attributes.link_name.allowed-positions"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link_name<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>link_name</code> attribute may only be applied to a function or static item in an <code>extern</code> block.</p>
+<p><code>link_name</code> 属性只能应用于外部块中的函数或 静态项。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> ignores use in other positions but lints against it. This may become an error in the future.</p>
+<p><code>rustc</code> 忽略在其他位置的使用，但会针对其发出 lint。这在将来可能会变成错误。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.extern.attributes.link_name.duplicates"><a class="rule-link" href="#r-items.extern.attributes.link_name.duplicates" title="items.extern.attributes.link_name.duplicates"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link_name<wbr>.duplicates]</span></a>
 </div>
 
-<p>Only the last use of <code>link_name</code> on an item has effect.</p>
+<p>只有 项 上最后一次使用的 <code>link_name</code> 才会生效。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> lints against any use preceding the last. This may become an error in the future.</p>
+<p><code>rustc</code> 会针对最后一次使用之前的任何使用发出 lint。这在将来可能会变成错误。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.extern.attributes.link_name.link_ordinal"><a class="rule-link" href="#r-items.extern.attributes.link_name.link_ordinal" title="items.extern.attributes.link_name.link_ordinal"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link_name<wbr>.link_ordinal]</span></a>
 </div>
 
-<p>The <code>link_name</code> attribute may not be used with the <a href="external-blocks.html#r-items.extern.attributes.link_ordinal"><code>link_ordinal</code></a> attribute.</p>
+<p><code>link_name</code> 属性不得与 <a href="external-blocks.html#r-items.extern.attributes.link_ordinal"><code>link_ordinal</code></a> 属性一起使用。</p>
 <div class="rule" id="r-items.extern.attributes.link_ordinal"><a class="rule-link" href="#r-items.extern.attributes.link_ordinal" title="items.extern.attributes.link_ordinal"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link_ordinal]</span></a>
 </div>
 
-<h3 id="the-link_ordinal-attribute"><a class="header" href="#the-link_ordinal-attribute">The <code>link_ordinal</code> attribute</a></h3>
+<h3 id="link_ordinal属性"><a class="header" href="#link_ordinal属性"><code>link_ordinal</code>属性</a></h3>
 <div class="rule" id="r-items.extern.attributes.link_ordinal.intro"><a class="rule-link" href="#r-items.extern.attributes.link_ordinal.intro" title="items.extern.attributes.link_ordinal.intro"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link_ordinal<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>link_ordinal</code> attribute</em> can be applied on declarations inside an <code>extern</code>
-block to indicate the numeric ordinal to use when generating the import library
-to link against. An ordinal is a unique number per symbol exported by a dynamic
-library on Windows and can be used when the library is being loaded to find
-that symbol rather than having to look it up by name.</p>
+<p><em><code>link_ordinal</code> 属性</em>  可以应用于外部块内的声明，以指示生成要链接的导入库时要使用的数字序数。序数是 Windows 上动态库导出的每个符号的唯一编号，在加载库以查找该符号时可以使用序数，而不必按名称查找。</p>
 <div class="alert alert-warning">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>警告</p>
 
-<p><code>link_ordinal</code> should only be used in cases where the ordinal of the symbol is known to be stable: if the ordinal of a symbol is not explicitly set when its containing binary is built then one will be automatically assigned to it, and that assigned ordinal may change between builds of the binary.</p>
+<p><code>link_ordinal</code> 仅应在已知符号序数稳定的情况下使用：如果符号的序数在构建其包含的二进制文件时未显式设置，则系统会自动为其分配一个序数，并且分配的序数可能会在二进制文件的不同构建之间发生变化。</p>
 </blockquote>
 </div>
 
@@ -1110,23 +1029,20 @@ unsafe extern "stdcall" {
 <div class="rule" id="r-items.extern.attributes.link_ordinal.allowed-kinds"><a class="rule-link" href="#r-items.extern.attributes.link_ordinal.allowed-kinds" title="items.extern.attributes.link_ordinal.allowed-kinds"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link_ordinal<wbr>.allowed-kinds]</span></a>
 </div>
 
-<p>This attribute is only used with the <code>raw-dylib</code> linking kind.
-Using any other kind will result in a compiler error.</p>
+<p>此属性仅与 <code>raw-dylib</code> 链接类型一起使用。使用任何其他类型都将导致编译器错误。</p>
 <div class="rule" id="r-items.extern.attributes.link_ordinal.exclusive"><a class="rule-link" href="#r-items.extern.attributes.link_ordinal.exclusive" title="items.extern.attributes.link_ordinal.exclusive"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link_ordinal<wbr>.exclusive]</span></a>
 </div>
 
-<p>Using this attribute with the <code>link_name</code> attribute will result in a
-compiler error.</p>
+<p>将此属性与 <code>link_name</code> 属性一起使用将导致编译器错误。</p>
 <div class="rule" id="r-items.extern.attributes.fn-parameters"><a class="rule-link" href="#r-items.extern.attributes.fn-parameters" title="items.extern.attributes.fn-parameters"><span>[items<wbr>.extern<wbr>.attributes<wbr>.fn-parameters]</span></a>
 </div>
 
-<h3 id="attributes-on-function-parameters"><a class="header" href="#attributes-on-function-parameters">Attributes on function parameters</a></h3>
-<p>Attributes on extern function parameters follow the same rules and
-restrictions as <a href="functions.html#attributes-on-function-parameters">regular function parameters</a>.</p>
+<h3 id="函数参数上的属性"><a class="header" href="#函数参数上的属性">函数参数上的属性</a></h3>
+<p>外部函数参数上的属性遵循与 <a href="functions.html#attributes-on-function-parameters">常规函数参数</a> 相同的规则和限制。</p>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-unsafe-2024">
-<p>Starting with the 2024 Edition, the <code>unsafe</code> keyword is required semantically. <a href="#fr-unsafe-2024-1">↩</a></p>
+<p>从 2024 版次 开始，<code>unsafe</code> 关键字在语义上是必需的。 <a href="#fr-unsafe-2024-1">↩</a></p>
 </li>
 </ol>
 

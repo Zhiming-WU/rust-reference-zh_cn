@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-723fd274.js";
+            window.path_to_searchindex_js = "../searchindex-1458537c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-items.fn"><a class="rule-link" href="#r-items.fn" title="items.fn"><span>[items<wbr>.fn]</span></a>
 </div>
 
-<h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<h1 id="函数"><a class="header" href="#函数">函数</a></h1>
 <div class="rule" id="r-items.fn.syntax"><a class="rule-link" href="#r-items.fn.syntax" title="items.fn.syntax"><span>[items<wbr>.fn<wbr>.syntax]</span></a>
 </div>
 
@@ -873,26 +873,24 @@ Type</text>
 <div class="rule" id="r-items.fn.intro"><a class="rule-link" href="#r-items.fn.intro" title="items.fn.intro"><span>[items<wbr>.fn<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>function</em> consists of a <a href="../expressions/block-expr.html">block</a> (that’s the <em>body</em> of the function),
-along with a name, a set of parameters, and an output type.
-Other than a name, all these are optional.</p>
+<p>一个 <em>函数 (function)</em> 由一个 <a href="../expressions/block-expr.html">块</a>（即函数的 <em>主体 (body)</em> ）、一个名称、一组参数以及一个输出类型组成。除了名称以外，这些都是可选的。</p>
 <div class="rule" id="r-items.fn.namespace"><a class="rule-link" href="#r-items.fn.namespace" title="items.fn.namespace"><span>[items<wbr>.fn<wbr>.namespace]</span></a>
 </div>
 
-<p>Functions are declared with the keyword <code>fn</code> which defines the given name in the <a href="../names/namespaces.html">value namespace</a> of the module or block where it is located.</p>
+<p>函数使用关键字 <code>fn</code> 声明，它在所在的模块或块的 <a href="../names/namespaces.html">值命名空间</a> 中定义给定的名称。</p>
 <div class="rule" id="r-items.fn.signature"><a class="rule-link" href="#r-items.fn.signature" title="items.fn.signature"><span>[items<wbr>.fn<wbr>.signature]</span></a>
 </div>
 
-<p>Functions may declare a set of <em>input</em> <a href="../variables.html"><em>variables</em></a> as parameters, through which the caller passes arguments into the function, and the <em>output</em> <a href="../types.html#type-expressions"><em>type</em></a> of the value the function will return to its caller on completion.</p>
+<p>函数可以通过参数声明一组 <em>输入</em> <a href="../variables.html"><em>变量</em></a>，调用者通过这些参数将实参传递给函数；函数还可以声明在完成后返回给调用者的值的 <em>输出</em> <a href="../types.html#type-expressions"><em>类型</em></a>。</p>
 <div class="rule" id="r-items.fn.implicit-return"><a class="rule-link" href="#r-items.fn.implicit-return" title="items.fn.implicit-return"><span>[items<wbr>.fn<wbr>.implicit-return]</span></a>
 </div>
 
-<p>If the output type is not explicitly stated, it is the <a href="../types/tuple.html">unit type</a>.</p>
+<p>如果未显式说明输出类型，则默认为 <a href="../types/tuple.html">单元类型</a>。</p>
 <div class="rule" id="r-items.fn.fn-item-type"><a class="rule-link" href="#r-items.fn.fn-item-type" title="items.fn.fn-item-type"><span>[items<wbr>.fn<wbr>.fn-item-type]</span></a>
 </div>
 
-<p>When referred to, a <em>function</em> yields a first-class <em>value</em> of the corresponding zero-sized <a href="../types/function-item.html"><em>function item type</em></a>, which when called evaluates to a direct call to the function.</p>
-<p>For example, this is a simple function:</p>
+<p>当被引用时，一个 <em>函数</em> 会产生一个对应的零大小的 <a href="../types/function-item.html"><em>函数项类型</em></a> 的一等 <em>值</em> ，当它被调用时，会执行对该函数的直接调用。</p>
+<p>例如，这是一个简单的函数：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn answer_to_life_the_universe_and_everything() -&gt; i32 {
@@ -902,16 +900,15 @@ Other than a name, all these are optional.</p>
 <div class="rule" id="r-items.fn.safety-qualifiers"><a class="rule-link" href="#r-items.fn.safety-qualifiers" title="items.fn.safety-qualifiers"><span>[items<wbr>.fn<wbr>.safety-qualifiers]</span></a>
 </div>
 
-<p>The <code>safe</code> function is semantically only allowed when used in an <a href="external-blocks.html"><code>extern</code> block</a>.</p>
+<p><code>safe</code> 函数在语义上仅允许在 <a href="external-blocks.html"><code>extern</code> 块</a> 中使用。</p>
 <div class="rule" id="r-items.fn.params"><a class="rule-link" href="#r-items.fn.params" title="items.fn.params"><span>[items<wbr>.fn<wbr>.params]</span></a>
 </div>
 
-<h2 id="function-parameters"><a class="header" href="#function-parameters">Function parameters</a></h2>
+<h2 id="函数参数"><a class="header" href="#函数参数">函数参数</a></h2>
 <div class="rule" id="r-items.fn.params.intro"><a class="rule-link" href="#r-items.fn.params.intro" title="items.fn.params.intro"><span>[items<wbr>.fn<wbr>.params<wbr>.intro]</span></a>
 </div>
 
-<p>Function parameters are irrefutable <a href="../patterns.html">patterns</a>, so any pattern that is valid in
-an else-less <code>let</code> binding is also valid as a parameter:</p>
+<p>函数参数是不可反驳的 <a href="../patterns.html">模式</a>，因此任何在没有 else 的 <code>let</code> 绑定中有效的模式作为参数也同样有效：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn first((value, _): (i32, i32)) -&gt; i32 { value }
@@ -919,34 +916,26 @@ an else-less <code>let</code> binding is also valid as a parameter:</p>
 <div class="rule" id="r-items.fn.params.self-pat"><a class="rule-link" href="#r-items.fn.params.self-pat" title="items.fn.params.self-pat"><span>[items<wbr>.fn<wbr>.params<wbr>.self-pat]</span></a>
 </div>
 
-<p>If the first parameter is a <a href="functions.html#grammar-SelfParam">SelfParam</a>, this indicates that the function is a
-<a href="associated-items.html#methods">method</a>.</p>
+<p>如果第一个参数是一个 <a href="functions.html#grammar-SelfParam">SelfParam</a>，这表明该函数是一个 <a href="associated-items.html#methods">方法</a>。</p>
 <div class="rule" id="r-items.fn.params.self-restriction"><a class="rule-link" href="#r-items.fn.params.self-restriction" title="items.fn.params.self-restriction"><span>[items<wbr>.fn<wbr>.params<wbr>.self-restriction]</span></a>
 </div>
 
-<p>Functions with a self parameter may only appear as an <a href="associated-items.html#associated-functions-and-methods">associated
-function</a> in a <a href="traits.html">trait</a> or <a href="implementations.html">implementation</a>.</p>
+<p>带有 self 参数的函数只能作为 <a href="traits.html">特型</a> 或 <a href="implementations.html">实现</a> 中的 <a href="associated-items.html#associated-functions-and-methods">关联函数</a> 出现。</p>
 <div class="rule" id="r-items.fn.params.varargs"><a class="rule-link" href="#r-items.fn.params.varargs" title="items.fn.params.varargs"><span>[items<wbr>.fn<wbr>.params<wbr>.varargs]</span></a>
 </div>
 
-<p>A parameter with the <code>...</code> token indicates a <a href="external-blocks.html#variadic-functions">variadic function</a>, and may only
-be used as the last parameter of an <a href="external-blocks.html">external block</a> function. The variadic
-parameter may have an optional identifier, such as <code>args: ...</code>.</p>
+<p>带有 <code>...</code> 词法单元 的参数表示 <a href="external-blocks.html#variadic-functions">变参函数</a>，且只能用作 <a href="external-blocks.html">外部块</a> 函数的最后一个参数。变参参数可以有一个可选的标识符，例如 <code>args: ...</code>。</p>
 <div class="rule" id="r-items.fn.body"><a class="rule-link" href="#r-items.fn.body" title="items.fn.body"><span>[items<wbr>.fn<wbr>.body]</span></a>
 </div>
 
-<h2 id="function-body"><a class="header" href="#function-body">Function body</a></h2>
+<h2 id="函数主体"><a class="header" href="#函数主体">函数主体</a></h2>
 <div class="rule" id="r-items.fn.body.intro"><a class="rule-link" href="#r-items.fn.body.intro" title="items.fn.body.intro"><span>[items<wbr>.fn<wbr>.body<wbr>.intro]</span></a>
 </div>
 
-<p>The body block of a function is conceptually wrapped in another block that first binds the
-argument patterns and then <code>return</code>s the value of the function’s body. This
-means that the tail expression of the block, if evaluated, ends up being
-returned to the caller. As usual, an explicit return expression within
-the body of the function will short-cut that implicit return, if reached.</p>
-<p>For example, the function above behaves as if it was written as:</p>
+<p>函数的主体块在概念上被包装在另一个块中，该块首先绑定参数模式，然后 <code>return</code> 函数主体的值。这意味着如果块的尾随表达式被求值，它最终会返回给调用者。像往常一样，函数主体内显式的返回表达式如果被执行，将短路该隐式返回。</p>
+<p>例如，上述函数的行为就像它被写成：</p>
 <!-- ignore: example expansion -->
-<pre><code class="language-rust ignore">// argument_0 is the actual first argument passed from the caller
+<pre><code class="language-rust ignore">// argument_0 是从调用者传递的实际第一个参数
 let (value, _) = argument_0;
 return {
     value
@@ -954,21 +943,18 @@ return {
 <div class="rule" id="r-items.fn.body.bodyless"><a class="rule-link" href="#r-items.fn.body.bodyless" title="items.fn.body.bodyless"><span>[items<wbr>.fn<wbr>.body<wbr>.bodyless]</span></a>
 </div>
 
-<p>Functions without a body block are terminated with a semicolon. This form
-may only appear in a <a href="traits.html">trait</a> or <a href="external-blocks.html">external block</a>.</p>
+<p>没有主体块的函数以分号结尾。这种形式只能出现在 <a href="traits.html">特型</a> 或 <a href="external-blocks.html">外部块</a> 中。</p>
 <div class="rule" id="r-items.fn.generics"><a class="rule-link" href="#r-items.fn.generics" title="items.fn.generics"><span>[items<wbr>.fn<wbr>.generics]</span></a>
 </div>
 
-<h2 id="generic-functions"><a class="header" href="#generic-functions">Generic functions</a></h2>
+<h2 id="泛型函数"><a class="header" href="#泛型函数">泛型函数</a></h2>
 <div class="rule" id="r-items.fn.generics.intro"><a class="rule-link" href="#r-items.fn.generics.intro" title="items.fn.generics.intro"><span>[items<wbr>.fn<wbr>.generics<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>generic function</em> allows one or more <em>parameterized types</em> to appear in its
-signature. Each type parameter must be explicitly declared in an
-angle-bracket-enclosed and comma-separated list, following the function name.</p>
+<p>一个 <em>泛型函数</em> 允许在其签名中出现一个或多个 <em>参数化类型</em> 。每个类型参数必须在函数名之后、由尖括号包围且以逗号分隔的列表中显式声明。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// foo is generic over A and B
+</span>// foo 对 A 和 B 是泛型的
 
 fn foo&lt;A, B&gt;(x: A, y: B) {
 <span class="boring">}
@@ -976,14 +962,11 @@ fn foo&lt;A, B&gt;(x: A, y: B) {
 <div class="rule" id="r-items.fn.generics.param-names"><a class="rule-link" href="#r-items.fn.generics.param-names" title="items.fn.generics.param-names"><span>[items<wbr>.fn<wbr>.generics<wbr>.param-names]</span></a>
 </div>
 
-<p>Inside the function signature and body, the name of the type parameter can be
-used as a type name.</p>
+<p>在函数签名和主体内部，类型参数的名称可以用作类型名称。</p>
 <div class="rule" id="r-items.fn.generics.param-bounds"><a class="rule-link" href="#r-items.fn.generics.param-bounds" title="items.fn.generics.param-bounds"><span>[items<wbr>.fn<wbr>.generics<wbr>.param-bounds]</span></a>
 </div>
 
-<p><a href="traits.html">Trait</a> bounds can be specified for type
-parameters to allow methods with that trait to be called on values of that
-type. This is specified using the <code>where</code> syntax:</p>
+<p>可以为类型参数指定 <a href="traits.html">特型</a> 绑定，以允许在该类型的值上调用具有该 特型 的方法。这是使用 <code>where</code> 语法指定的：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use std::fmt::Debug;
@@ -993,60 +976,52 @@ type. This is specified using the <code>where</code> syntax:</p>
 <div class="rule" id="r-items.fn.generics.mono"><a class="rule-link" href="#r-items.fn.generics.mono" title="items.fn.generics.mono"><span>[items<wbr>.fn<wbr>.generics<wbr>.mono]</span></a>
 </div>
 
-<p>When a generic function is referenced, its type is instantiated based on the
-context of the reference. For example, calling the <code>foo</code> function here:</p>
+<p>当引用泛型函数时，其类型会根据引用的上下文进行实例化。例如，在这里调用 <code>foo</code> 函数：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::fmt::Debug;
 
 fn foo&lt;T&gt;(x: &amp;[T]) where T: Debug {
-    // details elided
+    // 细节已省略
 }
 
 foo(&amp;[1, 2]);
 <span class="boring">}</span></code></pre>
-<p>will instantiate type parameter <code>T</code> with <code>i32</code>.</p>
+<p>将使用 <code>i32</code> 实例化类型参数 <code>T</code>。</p>
 <div class="rule" id="r-items.fn.generics.explicit-arguments"><a class="rule-link" href="#r-items.fn.generics.explicit-arguments" title="items.fn.generics.explicit-arguments"><span>[items<wbr>.fn<wbr>.generics<wbr>.explicit-arguments]</span></a>
 </div>
 
-<p>The type parameters can also be explicitly supplied in a trailing <a href="../paths.html">path</a>
-component after the function name. This might be necessary if there is not
-sufficient context to determine the type parameters. For example,
-<code>mem::size_of::&lt;u32&gt;() == 4</code>.</p>
+<p>类型参数也可以在函数名之后的尾随 <a href="../paths.html">路径</a> 组件中显式提供。如果没有足够的上下文来确定类型参数，这可能是必要的。例如，<code>mem::size_of::&lt;u32&gt;() == 4</code>。</p>
 <div class="rule" id="r-items.fn.extern"><a class="rule-link" href="#r-items.fn.extern" title="items.fn.extern"><span>[items<wbr>.fn<wbr>.extern]</span></a>
 </div>
 
-<h2 id="extern-function-qualifier"><a class="header" href="#extern-function-qualifier">Extern function qualifier</a></h2>
+<h2 id="extern函数限定符"><a class="header" href="#extern函数限定符">Extern函数限定符</a></h2>
 <div class="rule" id="r-items.fn.extern.intro"><a class="rule-link" href="#r-items.fn.extern.intro" title="items.fn.extern.intro"><span>[items<wbr>.fn<wbr>.extern<wbr>.intro]</span></a>
 </div>
 
-<p>The <code>extern</code> function qualifier allows providing function <em>definitions</em> that can
-be called with a particular ABI:</p>
+<p><code>extern</code> 函数限定符允许提供可以使用特定 ABI 调用的函数 <em>定义</em> ：</p>
 <!-- ignore: fake ABI -->
 <pre><code class="language-rust ignore">extern "ABI" fn foo() { /* ... */ }</code></pre>
 <div class="rule" id="r-items.fn.extern.def"><a class="rule-link" href="#r-items.fn.extern.def" title="items.fn.extern.def"><span>[items<wbr>.fn<wbr>.extern<wbr>.def]</span></a>
 </div>
 
-<p>These are often used in combination with <a href="external-blocks.html">external block</a> items which provide
-function <em>declarations</em> that can be used to call functions without providing
-their <em>definition</em>:</p>
+<p>这些通常与 <a href="external-blocks.html">外部块</a> 项结合使用，后者提供函数 <em>声明</em> ，可用于调用函数而无需提供其 <em>定义</em> ：</p>
 <!-- ignore: fake ABI -->
 <pre><code class="language-rust ignore">unsafe extern "ABI" {
-  unsafe fn foo(); /* no body */
-  safe fn bar(); /* no body */
+  unsafe fn foo(); /* 没有主体 */
+  safe fn bar(); /* 没有主体 */
 }
 unsafe { foo() };
 bar();</code></pre>
 <div class="rule" id="r-items.fn.extern.default-abi"><a class="rule-link" href="#r-items.fn.extern.default-abi" title="items.fn.extern.default-abi"><span>[items<wbr>.fn<wbr>.extern<wbr>.default-abi]</span></a>
 </div>
 
-<p>When <code>"extern" Abi?*</code> is omitted from <code>FunctionQualifiers</code> in function items,
-the ABI <code>"Rust"</code> is assigned. For example:</p>
+<p>当函数 项 的 <code>FunctionQualifiers</code> 中省略了 <code>"extern" Abi?*</code> 时，将分配 ABI <code>"Rust"</code>。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn foo() {}
 <span class="boring">}</span></code></pre>
-<p>is equivalent to:</p>
+<p>等同于：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>extern "Rust" fn foo() {}
@@ -1054,29 +1029,26 @@ the ABI <code>"Rust"</code> is assigned. For example:</p>
 <div class="rule" id="r-items.fn.extern.foreign-call"><a class="rule-link" href="#r-items.fn.extern.foreign-call" title="items.fn.extern.foreign-call"><span>[items<wbr>.fn<wbr>.extern<wbr>.foreign-call]</span></a>
 </div>
 
-<p>Functions can be called by foreign code, and using an ABI that
-differs from Rust allows, for example, to provide functions that can be
-called from other programming languages like C:</p>
+<p>函数可以被外部代码调用，并且使用与 Rust 不同的 ABI 允许提供可以从其他编程语言（如 C）调用的函数：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Declares a function with the "C" ABI
+</span>// 声明一个具有 "C" ABI 的函数
 extern "C" fn new_i32() -&gt; i32 { 0 }
 
-// Declares a function with the "stdcall" ABI
+// 声明一个具有 "stdcall" ABI 的函数
 <span class="boring">#[cfg(any(windows, target_arch = "x86"))]
 </span>extern "stdcall" fn new_i32_stdcall() -&gt; i32 { 0 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.fn.extern.default-extern"><a class="rule-link" href="#r-items.fn.extern.default-extern" title="items.fn.extern.default-extern"><span>[items<wbr>.fn<wbr>.extern<wbr>.default-extern]</span></a>
 </div>
 
-<p>Just as with <a href="external-blocks.html">external block</a>, when the <code>extern</code> keyword is used and the <code>"ABI"</code>
-is omitted, the ABI used defaults to <code>"C"</code>. That is, this:</p>
+<p>就像 <a href="external-blocks.html">外部块</a> 一样，当使用 <code>extern</code> 关键字并省略 <code>"ABI"</code> 时，使用的 ABI 默认为 <code>"C"</code>。也就是说，这段代码：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>extern fn new_i32() -&gt; i32 { 0 }
 let fptr: extern fn() -&gt; i32 = new_i32;
 <span class="boring">}</span></code></pre>
-<p>is equivalent to:</p>
+<p>等同于：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>extern "C" fn new_i32() -&gt; i32 { 0 }
@@ -1085,50 +1057,49 @@ let fptr: extern "C" fn() -&gt; i32 = new_i32;
 <div class="rule" id="r-items.fn.extern.unwind"><a class="rule-link" href="#r-items.fn.extern.unwind" title="items.fn.extern.unwind"><span>[items<wbr>.fn<wbr>.extern<wbr>.unwind]</span></a>
 </div>
 
-<h3 id="unwinding"><a class="header" href="#unwinding">Unwinding</a></h3>
+<h3 id="展开unwinding"><a class="header" href="#展开unwinding">展开(Unwinding)</a></h3>
 <div class="rule" id="r-items.fn.extern.unwind.intro"><a class="rule-link" href="#r-items.fn.extern.unwind.intro" title="items.fn.extern.unwind.intro"><span>[items<wbr>.fn<wbr>.extern<wbr>.unwind<wbr>.intro]</span></a>
 </div>
 
-<p>Most ABI strings come in two variants, one with an <code>-unwind</code> suffix and one without. The <code>Rust</code> ABI always permits unwinding, so there is no <code>Rust-unwind</code> ABI. The choice of ABI, together with the runtime <a href="../panic.html#the-panic_handler-attribute">panic handler</a>, determines the behavior when unwinding out of a function.</p>
+<p>大多数 ABI 字符串有两种变体，一种带有 <code>-unwind</code> 后缀，另一种没有。<code>Rust</code> ABI 总是允许展开，因此没有 <code>Rust-unwind</code> ABI。ABI 的选择与运行时的 <a href="../panic.html#the-panic_handler-attribute">恐慌处理器</a> 一起决定了从函数中展开时的行为。</p>
 <div class="rule" id="r-items.fn.extern.unwind.behavior"><a class="rule-link" href="#r-items.fn.extern.unwind.behavior" title="items.fn.extern.unwind.behavior"><span>[items<wbr>.fn<wbr>.extern<wbr>.unwind<wbr>.behavior]</span></a>
 </div>
 
-<p>The table below indicates the behavior of an unwinding operation reaching each type of ABI boundary (function declaration or definition using the corresponding ABI string). Note that the Rust runtime is not affected by, and cannot have an effect on, any unwinding that occurs entirely within another language’s runtime, that is, unwinds that are thrown and caught without reaching a Rust ABI boundary.</p>
-<p>The <code>panic</code>-unwind column refers to <a href="../panic.html">panicking</a> via the <code>panic!</code> macro and similar standard library mechanisms, as well as to any other Rust operations that cause a panic, such as out-of-bounds array indexing or integer overflow.</p>
-<p>The “unwinding” ABI category refers to <code>"Rust"</code> (the implicit ABI of Rust functions not marked <code>extern</code>), <code>"C-unwind"</code>, and any other ABI with <code>-unwind</code> in its name. The “non-unwinding” ABI category refers to all other ABI strings, including <code>"C"</code> and <code>"stdcall"</code>.</p>
-<p>Native unwinding is defined per-target. On targets that support throwing and catching C++ exceptions, it refers to the mechanism used to implement this feature. Some platforms implement a form of unwinding referred to as <a href="https://rust-lang.github.io/rfcs/2945-c-unwind-abi.html#forced-unwinding">“forced unwinding”</a>; <code>longjmp</code> on Windows and <code>pthread_exit</code> in <code>glibc</code> are implemented this way. Forced unwinding is explicitly excluded from the “Native unwind” column in the table.</p>
+<p>下表说明了展开操作到达每种类型的 ABI 边界（使用相应 ABI 字符串的函数声明或定义）时的行为。请注意，Rust 运行时不受完全发生在另一种语言运行时内部的任何展开的影响，也无法对其产生影响，即在未到达 Rust ABI 边界的情况下抛出和捕获的展开。</p>
+<p><code>panic</code>-unwind 列是指通过 <code>panic!</code> 宏和类似的标准库机制进行的 <a href="../panic.html">恐慌</a>，以及任何其他导致恐慌的 Rust 操作，例如数组索引越界或整数溢出。</p>
+<p>“展开” ABI 类别是指 <code>"Rust"</code>（未标记为 <code>extern</code> 的 Rust 函数的隐式 ABI）、<code>"C-unwind"</code> 以及任何名称中带有 <code>-unwind</code> 的 ABI。“非展开” ABI 类别是指所有其他 ABI 字符串，包括 <code>"C"</code> 和 <code>"stdcall"</code>。</p>
+<p>原生展开是针对每个目标定义的。在支持抛出和捕获 C++ 异常的目标上，它指的是用于实现此功能的机制。某些平台实现了一种被称为 <a href="https://rust-lang.github.io/rfcs/2945-c-unwind-abi.html#forced-unwinding">“强制展开”</a> 的展开形式；Windows 上的 <code>longjmp</code> 和 <code>glibc</code> 中的 <code>pthread_exit</code> 就是这样实现的。强制展开被明确排除在表中的“原生展开”列之外。</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>panic runtime</th><th>ABI</th><th><code>panic</code>-unwind</th><th>Native unwind (unforced)</th></tr>
+<tr><th>恐慌运行时</th><th>ABI</th><th><code>panic</code>-unwind</th><th>原生展开 (非强制)</th></tr>
 </thead>
 <tbody>
-<tr><td><code>panic=unwind</code></td><td>unwinding</td><td>unwind</td><td>unwind</td></tr>
-<tr><td><code>panic=unwind</code></td><td>non-unwinding</td><td>abort (see notes below)</td><td><a href="../behavior-considered-undefined.html">undefined behavior</a></td></tr>
-<tr><td><code>panic=abort</code></td><td>unwinding</td><td><code>panic</code> aborts without unwinding</td><td>abort</td></tr>
-<tr><td><code>panic=abort</code></td><td>non-unwinding</td><td><code>panic</code> aborts without unwinding</td><td><a href="../behavior-considered-undefined.html">undefined behavior</a></td></tr>
+<tr><td><code>panic=unwind</code></td><td>展开型</td><td>展开</td><td>展开</td></tr>
+<tr><td><code>panic=unwind</code></td><td>非展开型</td><td>中止 (见下文注释)</td><td><a href="../behavior-considered-undefined.html">未定义行为</a></td></tr>
+<tr><td><code>panic=abort</code></td><td>展开型</td><td><code>panic</code> 在不展开的情况下中止</td><td>中止</td></tr>
+<tr><td><code>panic=abort</code></td><td>非展开型</td><td><code>panic</code> 在不展开的情况下中止</td><td><a href="../behavior-considered-undefined.html">未定义行为</a></td></tr>
 </tbody>
 </table>
 </div>
 <div class="rule" id="r-items.fn.extern.abort"><a class="rule-link" href="#r-items.fn.extern.abort" title="items.fn.extern.abort"><span>[items<wbr>.fn<wbr>.extern<wbr>.abort]</span></a>
 </div>
 
-<p>With <code>panic=unwind</code>, when a <code>panic</code> is turned into an abort by a non-unwinding ABI boundary, either no destructors (<code>Drop</code> calls) will run, or all destructors up until the ABI boundary will run. It is unspecified which of those two behaviors will happen.</p>
-<p>For other considerations and limitations regarding unwinding across FFI boundaries, see the <a href="../panic.html#unwinding-across-ffi-boundaries">relevant section in the Panic documentation</a>.</p>
+<p>在 <code>panic=unwind</code> 的情况下，当 恐慌 被非展开 ABI 边界转变为中止时，要么不运行任何析构函数 (<code>Drop</code> 调用)，要么运行直到 ABI 边界为止的所有析构函数。具体发生这两种行为中的哪一种是未指定的。</p>
+<p>有关跨 FFI 边界展开的其他注意事项和限制，请参阅 <a href="../panic.html#unwinding-across-ffi-boundaries">恐慌文档中的相关部分</a>。</p>
 <div class="rule" id="r-items.fn.const"><a class="rule-link" href="#r-items.fn.const" title="items.fn.const"><span>[items<wbr>.fn<wbr>.const]</span></a>
 </div>
 
-<h2 id="const-functions"><a class="header" href="#const-functions">Const functions</a></h2>
-<p>See <a href="../const_eval.html#const-functions">const functions</a> for the definition of const functions.</p>
+<h2 id="const函数"><a class="header" href="#const函数">Const函数</a></h2>
+<p>有关 const 函数的定义，请参阅 <a href="../const_eval.html#const-functions">const 函数</a>。</p>
 <div class="rule" id="r-items.fn.async"><a class="rule-link" href="#r-items.fn.async" title="items.fn.async"><span>[items<wbr>.fn<wbr>.async]</span></a>
 </div>
 
-<h2 id="async-functions"><a class="header" href="#async-functions">Async functions</a></h2>
+<h2 id="async函数"><a class="header" href="#async函数">Async函数</a></h2>
 <div class="rule" id="r-items.fn.async.intro"><a class="rule-link" href="#r-items.fn.async.intro" title="items.fn.async.intro"><span>[items<wbr>.fn<wbr>.async<wbr>.intro]</span></a>
 </div>
 
-<p>Functions may be qualified as async, and this can also be combined with the
-<code>unsafe</code> qualifier:</p>
+<p>函数可以被限定为 async，这也可以与 <code>unsafe</code> 限定符结合使用：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>async fn regular_example() { }
@@ -1137,27 +1108,23 @@ async unsafe fn unsafe_example() { }
 <div class="rule" id="r-items.fn.async.future"><a class="rule-link" href="#r-items.fn.async.future" title="items.fn.async.future"><span>[items<wbr>.fn<wbr>.async<wbr>.future]</span></a>
 </div>
 
-<p>Async functions do no work when called: instead, they
-capture their arguments into a future. When polled, that future will
-execute the function’s body.</p>
+<p>Async 函数在调用时不执行任何操作：相反，它们将参数捕获到一个 future 中。当被轮询时，该 future 将执行函数的主体。</p>
 <div class="rule" id="r-items.fn.async.desugar-brief"><a class="rule-link" href="#r-items.fn.async.desugar-brief" title="items.fn.async.desugar-brief"><span>[items<wbr>.fn<wbr>.async<wbr>.desugar-brief]</span></a>
 </div>
 
-<p>An async function is roughly equivalent to a function
-that returns <a href="../types/impl-trait.html"><code>impl Future</code></a> and with an <a href="../expressions/block-expr.html#async-blocks"><code>async move</code> block</a> as
-its body:</p>
+<p>一个 async 函数大致相当于一个返回 <a href="../types/impl-trait.html"><code>impl Future</code></a> 并且以 <a href="../expressions/block-expr.html#async-blocks"><code>async move</code> 块</a> 作为其主体的函数：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Source
+</span>// 源码
 async fn example(x: &amp;str) -&gt; usize {
     x.len()
 }
 <span class="boring">}</span></code></pre>
-<p>is roughly equivalent to:</p>
+<p>大致相当于：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use std::future::Future;
-</span>// Desugared
+</span>// 脱糖后
 fn example&lt;'a&gt;(x: &amp;'a str) -&gt; impl Future&lt;Output = usize&gt; + 'a {
     async move { x.len() }
 }
@@ -1165,28 +1132,19 @@ fn example&lt;'a&gt;(x: &amp;'a str) -&gt; impl Future&lt;Output = usize&gt; + '
 <div class="rule" id="r-items.fn.async.desugar"><a class="rule-link" href="#r-items.fn.async.desugar" title="items.fn.async.desugar"><span>[items<wbr>.fn<wbr>.async<wbr>.desugar]</span></a>
 </div>
 
-<p>The actual desugaring is more complex:</p>
+<p>实际的脱糖过程更为复杂：</p>
 <div class="rule" id="r-items.fn.async.lifetime-capture"><a class="rule-link" href="#r-items.fn.async.lifetime-capture" title="items.fn.async.lifetime-capture"><span>[items<wbr>.fn<wbr>.async<wbr>.lifetime-capture]</span></a>
 </div>
 
 <ul>
-<li>The return type in the desugaring is assumed to capture all lifetime
-parameters from the <code>async fn</code> declaration. This can be seen in the
-desugared example above, which explicitly outlives, and hence
-captures, <code>'a</code>.</li>
+<li>脱糖中的返回类型被假定为捕获了 <code>async fn</code> 声明中的所有生命周期参数。这可以在上面的脱糖示例中看到，它显式地超过了 <code>'a</code> 的生命周期，因此捕获了 <code>'a</code>。</li>
 </ul>
 <div class="rule" id="r-items.fn.async.param-capture"><a class="rule-link" href="#r-items.fn.async.param-capture" title="items.fn.async.param-capture"><span>[items<wbr>.fn<wbr>.async<wbr>.param-capture]</span></a>
 </div>
 
 <ul>
-<li>The <a href="../expressions/block-expr.html#async-blocks"><code>async move</code> block</a> in the body captures all function
-parameters, including those that are unused or bound to a <code>_</code>
-pattern. This ensures that function parameters are dropped in the
-same order as they would be if the function were not async, except
-that the drop occurs when the returned future has been fully
-awaited.</li>
+<li>主体中的 <a href="../expressions/block-expr.html#async-blocks"><code>async move</code> 块</a> 捕获了所有函数参数，包括那些未使用或绑定到 <code>_</code> 模式的参数。这确保了函数参数的销毁顺序与函数非 async 时相同，不同之处在于销毁发生在返回的 future 被完全 await 之后。</li>
 </ul>
-<p>For more information on the effect of async, see <a href="../expressions/block-expr.html#async-blocks"><code>async</code> blocks</a>.</p>
 <div class="rule" id="r-items.fn.async.edition2018"><a class="rule-link" href="#r-items.fn.async.edition2018" title="items.fn.async.edition2018"><span>[items<wbr>.fn<wbr>.async<wbr>.edition2018]</span></a>
 </div>
 
@@ -1194,65 +1152,48 @@ awaited.</li>
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>Async functions are only available beginning with Rust 2018.</p>
+<p>Async 函数仅从 Rust 2018 开始可用。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.fn.async.safety"><a class="rule-link" href="#r-items.fn.async.safety" title="items.fn.async.safety"><span>[items<wbr>.fn<wbr>.async<wbr>.safety]</span></a>
 </div>
 
-<h3 id="combining-async-and-unsafe"><a class="header" href="#combining-async-and-unsafe">Combining <code>async</code> and <code>unsafe</code></a></h3>
+<h3 id="结合async和unsafe"><a class="header" href="#结合async和unsafe">结合<code>async</code>和<code>unsafe</code></a></h3>
 <div class="rule" id="r-items.fn.async.safety.intro"><a class="rule-link" href="#r-items.fn.async.safety.intro" title="items.fn.async.safety.intro"><span>[items<wbr>.fn<wbr>.async<wbr>.safety<wbr>.intro]</span></a>
 </div>
 
-<p>It is legal to declare a function that is both async and unsafe. The
-resulting function is unsafe to call and (like any async function)
-returns a future. This future is just an ordinary future and thus an
-<code>unsafe</code> context is not required to “await” it:</p>
+<p>声明一个既是 async 又是 unsafe 的函数是合法的。生成的函数调用时是不安全的，并且（像任何 async 函数一样）返回一个 future。这个 future 只是一个普通的 future，因此 “await” 它不需要 <code>unsafe</code> 上下文：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Returns a future that, when awaited, dereferences `x`.
+</span>// 返回一个在 await 时解引用 `x` 的 future。
 //
-// Soundness condition: `x` must be safe to dereference until
-// the resulting future is complete.
+// 健全性条件：在生成的 future 完成之前，`x` 必须可以安全地解引用。
 async unsafe fn unsafe_example(x: *const i32) -&gt; i32 {
   *x
 }
 
 async fn safe_example() {
-    // An `unsafe` block is required to invoke the function initially:
+    // 最初调用该函数需要 `unsafe` 块：
     let p = 22;
     let future = unsafe { unsafe_example(&amp;p) };
 
-    // But no `unsafe` block required here. This will
-    // read the value of `p`:
+    // 但这里不需要 `unsafe` 块。这将
+    // 读取 `p` 的值：
     let q = future.await;
 }
 <span class="boring">}</span></code></pre>
-<p>Note that this behavior is a consequence of the desugaring to a
-function that returns an <code>impl Future</code> – in this case, the function
-we desugar to is an <code>unsafe</code> function, but the return value remains
-the same.</p>
-<p>Unsafe is used on an async function in precisely the same way that it
-is used on other functions: it indicates that the function imposes
-some additional obligations on its caller to ensure soundness. As in any
-other unsafe function, these conditions may extend beyond the initial
-call itself – in the snippet above, for example, the <code>unsafe_example</code>
-function took a pointer <code>x</code> as argument, and then (when awaited)
-dereferenced that pointer. This implies that <code>x</code> would have to be
-valid until the future is finished executing, and it is the caller’s
-responsibility to ensure that.</p>
+<p>请注意，这种行为是脱糖为返回 <code>impl Future</code> 的函数的结果 —— 在这种情况下，我们脱糖到的函数是一个 <code>unsafe</code> 函数，但返回值保持不变。</p>
+<p>Unsafe 在 async 函数上的使用方式与在其他函数上的使用方式完全相同：它表明该函数对调用者施加了一些额外的义务以确保健全性。与任何其他 unsafe 函数一样，这些条件可能会延伸到初始调用本身之外 —— 例如，在上面的代码片段中，<code>unsafe_example</code> 函数接受一个指针 <code>x</code> 作为参数，然后 (在被 await 时) 解引用该指针。这意味着 <code>x</code> 必须在 future 完成执行之前保持有效，而确保这一点是调用者的责任。</p>
 <div class="rule" id="r-items.fn.attributes"><a class="rule-link" href="#r-items.fn.attributes" title="items.fn.attributes"><span>[items<wbr>.fn<wbr>.attributes]</span></a>
 </div>
 
-<h2 id="attributes-on-functions"><a class="header" href="#attributes-on-functions">Attributes on functions</a></h2>
+<h2 id="函数上的属性"><a class="header" href="#函数上的属性">函数上的属性</a></h2>
 <div class="rule" id="r-items.fn.attributes.intro"><a class="rule-link" href="#r-items.fn.attributes.intro" title="items.fn.attributes.intro"><span>[items<wbr>.fn<wbr>.attributes<wbr>.intro]</span></a>
 </div>
 
-<p><a href="../attributes.html">Outer attributes</a> are allowed on functions. <a href="../attributes.html">Inner
-attributes</a> are allowed directly after the <code>{</code> inside its body <a href="../expressions/block-expr.html">block</a>.</p>
-<p>This example shows an inner attribute on a function. The function is documented
-with just the word “Example”.</p>
+<p>函数允许使用 <a href="../attributes.html">外部属性</a>。<a href="../attributes.html">内部属性</a> 允许直接在函数主体 <a href="../expressions/block-expr.html">块</a> 内部的 <code>{</code> 之后使用。</p>
+<p>这个例子展示了函数上的内部属性。该函数仅使用单词 “Example” 进行文档说明。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn documented() {
@@ -1263,14 +1204,14 @@ with just the word “Example”.</p>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Except for lints, it is idiomatic to only use outer attributes on function items.</p>
+<p>除了 lint 之外，在函数 项 上仅使用外部属性是符合习惯的。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.fn.attributes.builtin-attributes"><a class="rule-link" href="#r-items.fn.attributes.builtin-attributes" title="items.fn.attributes.builtin-attributes"><span>[items<wbr>.fn<wbr>.attributes<wbr>.builtin-attributes]</span></a>
 </div>
 
-<p>The attributes that have meaning on a function are:</p>
+<p>对函数有意义的属性有：</p>
 <ul>
 <li><a href="../conditional-compilation.html#cfg_attr属性"><code>cfg_attr</code></a></li>
 <li><a href="../conditional-compilation.html#cfg属性"><code>cfg</code></a></li>
@@ -1282,20 +1223,18 @@ with just the word “Example”.</p>
 <li><a href="../abi.html#the-link_section-attribute"><code>link_section</code></a></li>
 <li><a href="../attributes/diagnostics.html#the-must_use-attribute"><code>must_use</code></a></li>
 <li><a href="../abi.html#the-no_mangle-attribute"><code>no_mangle</code></a></li>
-<li><a href="../attributes/diagnostics.html#lint-check-attributes">Lint check attributes</a></li>
-<li><a href="../procedural-macros.html#r-macro.proc.attribute">Procedural macro attributes</a></li>
-<li><a href="../attributes/testing.html">Testing attributes</a></li>
+<li><a href="../attributes/diagnostics.html#lint-check-attributes">Lint 检查属性</a></li>
+<li><a href="../procedural-macros.html#r-macro.proc.attribute">过程宏属性</a></li>
+<li><a href="../attributes/testing.html">测试属性</a></li>
 </ul>
 <div class="rule" id="r-items.fn.param-attributes"><a class="rule-link" href="#r-items.fn.param-attributes" title="items.fn.param-attributes"><span>[items<wbr>.fn<wbr>.param-attributes]</span></a>
 </div>
 
-<h2 id="attributes-on-function-parameters"><a class="header" href="#attributes-on-function-parameters">Attributes on function parameters</a></h2>
+<h2 id="函数参数上的属性"><a class="header" href="#函数参数上的属性">函数参数上的属性</a></h2>
 <div class="rule" id="r-items.fn.param-attributes.intro"><a class="rule-link" href="#r-items.fn.param-attributes.intro" title="items.fn.param-attributes.intro"><span>[items<wbr>.fn<wbr>.param-attributes<wbr>.intro]</span></a>
 </div>
 
-<p><a href="../attributes.html">Outer attributes</a> are allowed on function parameters and the
-permitted <a href="../attributes.html#built-in-attributes-index">built-in attributes</a> are restricted to <code>cfg</code>, <code>cfg_attr</code>, <code>allow</code>,
-<code>warn</code>, <code>deny</code>, and <code>forbid</code>.</p>
+<p>函数参数允许使用 <a href="../attributes.html">外部属性</a>，允许的 <a href="../attributes.html#built-in-attributes-index">内置属性</a> 限于 <code>cfg</code>、<code>cfg_attr</code>、<code>allow</code>、<code>warn</code>、<code>deny</code> 和 <code>forbid</code>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn len(
@@ -1308,11 +1247,8 @@ permitted <a href="../attributes.html#built-in-attributes-index">built-in attrib
 <div class="rule" id="r-items.fn.param-attributes.parsed-attributes"><a class="rule-link" href="#r-items.fn.param-attributes.parsed-attributes" title="items.fn.param-attributes.parsed-attributes"><span>[items<wbr>.fn<wbr>.param-attributes<wbr>.parsed-attributes]</span></a>
 </div>
 
-<p>Inert helper attributes used by procedural macro attributes applied to items are also
-allowed but be careful to not include these inert attributes in your final <code>TokenStream</code>.</p>
-<p>For example, the following code defines an inert <code>some_inert_attribute</code> attribute that
-is not formally defined anywhere and the <code>some_proc_macro_attribute</code> procedural macro is
-responsible for detecting its presence and removing it from the output token stream.</p>
+<p>应用于 项 的 过程宏 属性所使用的惰性辅助属性也是允许的，但要注意不要在最终的 <code>TokenStream</code> 中包含这些惰性属性。</p>
+<p>例如，以下代码定义了一个在任何地方都没有正式定义的惰性 <code>some_inert_attribute</code> 属性，而 <code>some_proc_macro_attribute</code> 过程宏 负责检测它的存在并将其从输出词法单元流中移除。</p>
 <!-- ignore: requires proc macro -->
 <pre><code class="language-rust ignore">#[some_proc_macro_attribute]
 fn foo_oof(#[some_inert_attribute] arg: u8) {
@@ -1320,20 +1256,16 @@ fn foo_oof(#[some_inert_attribute] arg: u8) {
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-async-edition">
-<p>The <code>async</code> qualifier is not allowed in the 2015 edition. <a href="#fr-async-edition-1">↩</a></p>
+<p><code>async</code> 限定符在 2015 版次中是不允许的。 <a href="#fr-async-edition-1">↩</a></p>
 </li>
 <li id="footnote-extern-qualifiers">
-<p><em>Relevant to editions earlier than Rust 2024</em>: Within
-<code>extern</code> blocks, the <code>safe</code> or <code>unsafe</code> function qualifier is only allowed
-when the <code>extern</code> is qualified as <code>unsafe</code>. <a href="#fr-extern-qualifiers-1">↩</a></p>
+<p><em>与 Rust 2024 之前的版次相关</em> ：在 <code>extern</code> 块内部，仅当 <code>extern</code> 被限定为 <code>unsafe</code> 时，才允许使用 <code>safe</code> 或 <code>unsafe</code> 函数限定符。 <a href="#fr-extern-qualifiers-1">↩</a></p>
 </li>
 <li id="footnote-extern-safe">
-<p>The <code>safe</code> function qualifier is only allowed semantically within
-<code>extern</code> blocks. <a href="#fr-extern-safe-1">↩</a></p>
+<p><code>safe</code> 函数限定符在语义上仅允许在 <code>extern</code> 块内部。 <a href="#fr-extern-safe-1">↩</a></p>
 </li>
 <li id="footnote-fn-param-2015">
-<p>Function parameters with only a type are only allowed
-in an associated function of a <a href="traits.html">trait item</a> in the 2015 edition. <a href="#fr-fn-param-2015-1">↩</a></p>
+<p>在 2015 版次中，仅包含类型的函数参数仅允许出现在 <a href="traits.html">特型项</a> 的关联函数中。 <a href="#fr-fn-param-2015-1">↩</a></p>
 </li>
 </ol>
 

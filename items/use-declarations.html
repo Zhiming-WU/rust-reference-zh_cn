@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-723fd274.js";
+            window.path_to_searchindex_js = "../searchindex-1458537c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -410,12 +410,12 @@ _</text>
 <div class="rule" id="r-items.use.intro"><a class="rule-link" href="#r-items.use.intro" title="items.use.intro"><span>[items<wbr>.use<wbr>.intro]</span></a>
 </div>
 
-<p>一个 <em>use声明</em> 创建一个或多个局部名称绑定，作为某个其他<a href="../paths.html">路径</a>的同义词。通常，<code>use</code>声明用于缩短引用模块项所需的路径。这些声明可以出现在<a href="modules.html">模块</a>和<a href="../expressions/block-expr.html">块</a>中，通常在顶部。
-一个<code>use</code>声明有时也称为 <em>导入</em>，如果它是公共的，则称为 <em>重新导出</em>。</p>
+<p>一个  <em>use 声明</em>  创建一个或多个局部名称绑定，作为某个其他 <a href="../paths.html">路径</a> 的同义词。通常， <code>use</code> 声明用于缩短引用模块 项 所需的路径。这些声明可以出现在 <a href="modules.html">模块</a> 和 <a href="../expressions/block-expr.html">块</a> 中，通常在顶部。
+一个 <code>use</code> 声明有时也称为  <em>导入 (import)</em> ，如果它是公共的，则称为  <em>重新导出 (re-export)</em> 。</p>
 <div class="rule" id="r-items.use.forms"><a class="rule-link" href="#r-items.use.forms" title="items.use.forms"><span>[items<wbr>.use<wbr>.forms]</span></a>
 </div>
 
-<p>use声明支持许多方便的快捷方式：</p>
+<p><code>use</code> 声明支持许多方便的快捷方式：</p>
 <div class="rule" id="r-items.use.forms.multiple"><a class="rule-link" href="#r-items.use.forms.multiple" title="items.use.forms.multiple"><span>[items<wbr>.use<wbr>.forms<wbr>.multiple]</span></a>
 </div>
 
@@ -426,13 +426,13 @@ _</text>
 </div>
 
 <ul>
-<li>使用<code>self</code>关键字同时绑定具有共同前缀的路径列表及其共同的父模块，例如 <code>use a::b::{self, c, d::e};</code>。</li>
+<li>使用 <code>self</code> 关键字同时绑定具有共同前缀的路径列表及其共同的父模块，例如 <code>use a::b::{self, c, d::e};</code>。</li>
 </ul>
 <div class="rule" id="r-items.use.forms.as"><a class="rule-link" href="#r-items.use.forms.as" title="items.use.forms.as"><span>[items<wbr>.use<wbr>.forms<wbr>.as]</span></a>
 </div>
 
 <ul>
-<li>使用<code>use p::q::r as x;</code>语法将目标名称重新绑定为新的局部名称。这也可以与最后两个特性一起使用：<code>use a::b::{self as ab, c as abc}</code>。</li>
+<li>使用 <code>use p::q::r as x;</code> 语法将目标名称重新绑定为新的局部名称。这也可以与最后两个特性一起使用： <code>use a::b::{self as ab, c as abc}</code>。</li>
 </ul>
 <div class="rule" id="r-items.use.forms.glob"><a class="rule-link" href="#r-items.use.forms.glob" title="items.use.forms.glob"><span>[items<wbr>.use<wbr>.forms<wbr>.glob]</span></a>
 </div>
@@ -446,21 +446,21 @@ _</text>
 <ul>
 <li>多次嵌套前述特性的组，例如 <code>use a::b::{self as ab, c, d::{*, e::f}};</code>。</li>
 </ul>
-<p><code>use</code>声明的示例：</p>
+<p><code>use</code> 声明的示例：</p>
 <pre class="playground"><code class="language-rust edition2024">use std::collections::hash_map::{self, HashMap};
 
 fn foo&lt;T&gt;(_: T){}
 fn bar(map1: HashMap&lt;String, usize&gt;, map2: hash_map::HashMap&lt;String, usize&gt;){}
 
 fn main() {
-    // use声明也可以存在于函数内部
+    // use 声明也可以存在于函数内部
     use std::option::Option::{Some, None};
 
-    // 等价于'foo(vec![std::option::Option::Some(1.0f64),
+    // 等价于 'foo(vec![std::option::Option::Some(1.0f64),
     // std::option::Option::None]);'
     foo(vec![Some(1.0f64), None]);
 
-    // `hash_map`和`HashMap`都在作用域内。
+    // `hash_map` 和 `HashMap` 都在作用域内。
     let map1 = HashMap::new();
     let map2 = hash_map::HashMap::new();
     bar(map1, map2);
@@ -472,7 +472,7 @@ fn main() {
 <div class="rule" id="r-items.use.visibility.intro"><a class="rule-link" href="#r-items.use.visibility.intro" title="items.use.visibility.intro"><span>[items<wbr>.use<wbr>.visibility<wbr>.intro]</span></a>
 </div>
 
-<p>默认情况下，与项一样，<code>use</code>声明对其包含的模块是私有的。与项一样，如果用<code>pub</code>关键字限定，<code>use</code>声明也可以是公共的。这样的<code>use</code>声明用于 <em>重新导出</em> 一个名称。因此，公共<code>use</code>声明可以 <em>重定向</em> 某个公共名称到不同的目标定义：即使是位于不同模块内具有私有规范路径的定义。</p>
+<p>默认情况下，与 项 一样， <code>use</code> 声明对其包含的模块是私有的。与 项 一样，如果用 <code>pub</code> 关键字限定， <code>use</code> 声明也可以是公共的。这样的 <code>use</code> 声明用于  <em>重新导出 (re-export)</em>  一个名称。因此，公共 <code>use</code> 声明可以  <em>重定向 (redirect)</em>  某个公共名称到不同的目标定义：即使是位于不同模块内具有私有规范路径的定义。</p>
 <div class="rule" id="r-items.use.visibility.unambiguous"><a class="rule-link" href="#r-items.use.visibility.unambiguous" title="items.use.visibility.unambiguous"><span>[items<wbr>.use<wbr>.visibility<wbr>.unambiguous]</span></a>
 </div>
 
@@ -490,7 +490,7 @@ fn main() {
     quux::bar();
     quux::baz();
 }</code></pre>
-<p>在此示例中，模块<code>quux</code>重新导出了在<code>foo</code>中定义的两个公共名称。</p>
+<p>在此示例中，模块 <code>quux</code> 重新导出了在 <code>foo</code> 中定义的两个公共名称。</p>
 <div class="rule" id="r-items.use.path"><a class="rule-link" href="#r-items.use.path" title="items.use.path"><span>[items<wbr>.use<wbr>.path]</span></a>
 </div>
 
@@ -498,10 +498,10 @@ fn main() {
 <div class="rule" id="r-items.use.path.intro"><a class="rule-link" href="#r-items.use.path.intro" title="items.use.path.intro"><span>[items<wbr>.use<wbr>.path<wbr>.intro]</span></a>
 </div>
 
-<p><code>use</code>项中允许的<a href="../paths.html">路径</a>遵循<a href="../paths.html#grammar-SimplePath">简单路径</a>语法格式，并且与表达式中可用的路径相似。
+<p><code>use</code> 项中允许的 <a href="../paths.html">路径</a> 遵循 <a href="../paths.html#grammar-SimplePath">简单路径</a> 语法格式，并且与表达式中可用的路径相似。
 它们可以为以下内容创建绑定：</p>
 <ul>
-<li>可命名的<a href="../items.html">项</a></li>
+<li>可命名的 <a href="../items.html">项</a></li>
 <li><a href="enumerations.html">枚举变体</a></li>
 <li><a href="../types.html">内置类型</a></li>
 <li><a href="../attributes.html">属性</a></li>
@@ -511,11 +511,11 @@ fn main() {
 <div class="rule" id="r-items.use.path.disallowed"><a class="rule-link" href="#r-items.use.path.disallowed" title="items.use.path.disallowed"><span>[items<wbr>.use<wbr>.path<wbr>.disallowed]</span></a>
 </div>
 
-<p>它们不能导入<a href="associated-items.html">关联项</a>、<a href="generics.html">泛型参数</a>、<a href="../variables.html">局部变量</a>、包含<a href="../paths.html#self"><code>Self</code></a>的路径或<a href="../attributes.html#tool-attributes">工具属性</a>。更多限制如下所述。</p>
+<p>它们不能导入 <a href="associated-items.html">关联项</a>、 <a href="generics.html">泛型参数</a>、 <a href="../variables.html">局部变量</a>、包含 <a href="../paths.html#self"><code>Self</code></a> 的路径或 <a href="../attributes.html#tool-attributes">工具属性</a>。更多限制如下所述。</p>
 <div class="rule" id="r-items.use.path.namespace"><a class="rule-link" href="#r-items.use.path.namespace" title="items.use.path.namespace"><span>[items<wbr>.use<wbr>.path<wbr>.namespace]</span></a>
 </div>
 
-<p><code>use</code>将为所有导入实体的<a href="../names/namespaces.html">命名空间</a>创建绑定，但<code>self</code>导入仅从类型命名空间导入（如下所述）。
+<p><code>use</code> 将为所有导入实体的 <a href="../names/namespaces.html">命名空间</a> 创建绑定，但 <code>self</code> 导入仅从类型命名空间导入（如下所述）。
 例如，以下示例说明了在两个命名空间中为相同名称创建绑定：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -523,12 +523,12 @@ fn main() {
     pub struct Foo(pub i32);
 }
 
-// 导入`Foo`类型和`Foo`构造函数。
+// 同时导入 `Foo` 类型和 `Foo` 构造器。
 use stuff::Foo;
 
 fn example() {
-    let ctor = Foo; // 使用值命名空间中的`Foo`。
-    let x: Foo = ctor(123); // 使用类型命名空间中的`Foo`。
+    let ctor = Foo; // 使用值命名空间中的 `Foo`。
+    let x: Foo = ctor(123); // 使用类型命名空间中的 `Foo`。
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.use.path.edition2018"><a class="rule-link" href="#r-items.use.path.edition2018" title="items.use.path.edition2018"><span>[items<wbr>.use<wbr>.path<wbr>.edition2018]</span></a>
@@ -538,22 +538,22 @@ fn example() {
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>在2015版次中，<code>use</code>路径相对于crate根。例如：</p>
+<p>在 2015 版次中， <code>use</code> 路径相对于 crate 根。例如：</p>
 <pre class="playground"><code class="language-rust edition2015">mod foo {
     pub mod example { pub mod iter {} }
     pub mod baz { pub fn foobaz() {} }
 }
 mod bar {
-    // 从crate根解析`foo`。
+    // 从 crate 根解析 `foo`。
     use foo::example::iter;
-    // `::`前缀显式地从crate根解析`foo`。
+    // `::` 前缀显式地从 crate 根解析 `foo`。
     use ::foo::baz::foobaz;
 }
 
 <span class="boring">fn main() {}</span></code></pre>
-<p>2015版次不允许use声明引用<a href="../names/preludes.html#extern-prelude">外部预导入</a>。
-因此，在2015版次中仍然需要<a href="extern-crates.html"><code>extern crate</code></a>声明才能在use声明中引用外部crate。
-从2018版次开始，<code>use</code>声明可以像<code>extern crate</code>一样指定外部crate依赖项。</p>
+<p>2015 版次不允许 use 声明引用 <a href="../names/preludes.html#extern-prelude">外部预导入</a>。
+因此，在 2015 版次中仍然需要 <a href="extern-crates.html"><code>extern crate</code></a> 声明才能在 use 声明中引用外部 crate。
+从 2018 版次开始， <code>use</code> 声明可以像 <code>extern crate</code> 一样指定外部 crate 依赖项。</p>
 </blockquote>
 </div>
 
@@ -561,11 +561,11 @@ mod bar {
 </div>
 
 <h2 id="as重命名"><a class="header" href="#as重命名"><code>as</code>重命名</a></h2>
-<p><code>as</code>关键字可用于更改导入实体的名称。
+<p><code>as</code> 关键字可用于更改导入实体的名称。
 例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// 为函数`foo`创建一个非公共别名`bar`。
+</span>// 为函数 `foo` 创建一个非公共别名 `bar`。
 use inner::foo as bar;
 
 mod inner {
@@ -593,7 +593,6 @@ use std::collections::{BTreeSet, hash_map::{self, HashMap}};
 </div>
 
 <p>一个空大括号不导入任何内容，尽管会验证其前导路径是否可访问。</p>
-<!-- This is slightly wrong, see: https://github.com/rust-lang/rust/issues/61826 -->
 <div class="rule" id="r-items.use.multiple-syntax.edition2018"><a class="rule-link" href="#r-items.use.multiple-syntax.edition2018" title="items.use.multiple-syntax.edition2018"><span>[items<wbr>.use<wbr>.multiple-syntax<wbr>.edition2018]</span></a>
 </div>
 
@@ -601,7 +600,7 @@ use std::collections::{BTreeSet, hash_map::{self, HashMap}};
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>在2015版次中，路径是相对于crate根的，因此像<code>use {foo, bar};</code>这样的导入会从crate根导入名称<code>foo</code>和<code>bar</code>，而从2018版次开始，这些名称是相对于当前作用域的。</p>
+<p>在 2015 版次中，路径是相对于 crate 根的，因此像 <code>use {foo, bar};</code> 这样的导入会从 crate 根导入名称 <code>foo</code> 和 <code>bar</code>，而从 2018 版次开始，这些名称是相对于当前作用域的。</p>
 </blockquote>
 </div>
 
@@ -612,13 +611,13 @@ use std::collections::{BTreeSet, hash_map::{self, HashMap}};
 <div class="rule" id="r-items.use.self.intro"><a class="rule-link" href="#r-items.use.self.intro" title="items.use.self.intro"><span>[items<wbr>.use<wbr>.self<wbr>.intro]</span></a>
 </div>
 
-<p>关键字<code>self</code>可在<a href="#brace-syntax">大括号语法</a>中使用，以其自身名称创建父实体的绑定。</p>
+<p>关键字 <code>self</code> 可在 <a href="#大括号语法">大括号语法</a> 中使用，以其自身名称创建父实体的绑定。</p>
 <pre class="playground"><code class="language-rust edition2024">mod stuff {
     pub fn foo() {}
     pub fn bar() {}
 }
 mod example {
-    // 为`stuff`和`foo`创建绑定。
+    // 为 `stuff` 和 `foo` 创建绑定。
     use crate::stuff::{self, foo};
     pub fn baz() {
         foo();
@@ -629,25 +628,25 @@ mod example {
 <div class="rule" id="r-items.use.self.namespace"><a class="rule-link" href="#r-items.use.self.namespace" title="items.use.self.namespace"><span>[items<wbr>.use<wbr>.self<wbr>.namespace]</span></a>
 </div>
 
-<p><code>self</code>只从父实体的<a href="../names/namespaces.html">类型命名空间</a>创建绑定。
-例如，在以下代码中，只导入了<code>foo</code>模块：</p>
+<p><code>self</code> 只从父实体的 <a href="../names/namespaces.html">类型命名空间</a> 创建绑定。
+例如，在以下代码中，只导入了 <code>foo</code> 模块：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024">mod bar {
     pub mod foo {}
     pub fn foo() {}
 }
 
-// 这仅导入模块`foo`。函数`foo`存在于
+// 这仅导入模块 `foo`。函数 `foo` 存在于
 // 值命名空间中，且未被导入。
 use bar::foo::{self};
 
 fn main() {
-    foo(); //~ 错误 `foo`是一个模块
+    foo(); //~ 错误 `foo` 是一个模块
 }</code></pre>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>self</code>也可以用作路径的第一个段。<code>self</code>作为第一个段的用法与在<code>use</code>大括号内的用法在逻辑上是相同的；它表示父段的当前模块，或者如果没有父段，则表示当前模块。有关前导<code>self</code>的含义的更多信息，请参见路径章节中的<a href="../paths.html#self"><code>self</code></a>。</p>
+<p><code>self</code> 也可以用作路径的第一个段。 <code>self</code> 作为第一个段的用法与在 <code>use</code> 大括号内的用法在逻辑上是相同的；它表示父段的当前模块，或者如果没有父段，则表示当前模块。有关前导 <code>self</code> 的含义的更多信息，请参见路径章节中的 <a href="../paths.html#self"><code>self</code></a>。</p>
 </blockquote>
 </div>
 
@@ -658,11 +657,11 @@ fn main() {
 <div class="rule" id="r-items.use.glob.intro"><a class="rule-link" href="#r-items.use.glob.intro" title="items.use.glob.intro"><span>[items<wbr>.use<wbr>.glob<wbr>.intro]</span></a>
 </div>
 
-<p><code>*</code>字符可用作<code>use</code>路径的最后一个段，以从前一个段的实体中导入所有可导入的实体。
+<p><code>*</code> 字符可用作 <code>use</code> 路径的最后一个段，以从前一个段的实体中导入所有可导入的实体。
 例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// 为`bar`创建一个非公共别名。
+</span>// 为 `bar` 创建一个非公共别名。
 use foo::*;
 
 mod foo {
@@ -672,7 +671,7 @@ mod foo {
         V2,
     }
     pub fn bar() {
-        // 为`Example`枚举的`V1`和`V2`创建局部别名。
+        // 为 `Example` 枚举的 `V1` 和 `V2` 创建局部别名。
         use Example::*;
         let x = V1;
     }
@@ -681,13 +680,13 @@ mod foo {
 <div class="rule" id="r-items.use.glob.shadowing"><a class="rule-link" href="#r-items.use.glob.shadowing" title="items.use.glob.shadowing"><span>[items<wbr>.use<wbr>.glob<wbr>.shadowing]</span></a>
 </div>
 
-<p>允许项和命名导入遮蔽来自同一<a href="../names/namespaces.html">命名空间</a>中通配符导入的名称。
-也就是说，如果同一命名空间中已由另一个项定义了某个名称，则通配符导入将被遮蔽。
+<p>允许 项 和命名导入遮蔽来自同一 <a href="../names/namespaces.html">命名空间</a> 中通配符导入的名称。
+也就是说，如果同一命名空间中已由另一个 项 定义了某个名称，则通配符导入将被遮蔽。
 例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// 这为`clashing::Foo`元组结构体构造器创建了一个绑定，
-// 但没有导入其类型，因为那会与此处定义的`Foo`结构体冲突。
+</span>// 这为 `clashing::Foo` 元组结构体构造器创建了一个绑定，
+// 但没有导入其类型，因为那会与此处定义的 `Foo` 结构体冲突。
 //
 // 注意，此处的定义顺序并不重要。
 use clashing::*;
@@ -696,11 +695,11 @@ struct Foo {
 }
 
 fn do_stuff() {
-    // 使用`clashing::Foo`的构造器。
+    // 使用 `clashing::Foo` 的构造器。
     let f1 = Foo(123);
-    // 结构体表达式使用上面定义的`Foo`结构体的类型。
+    // 结构体表达式使用上面定义的 `Foo` 结构体的类型。
     let f2 = Foo { field: 1.0 };
-    // 由于通配符导入，`Bar`也在作用域内。
+    // 由于通配符导入， `Bar` 也在作用域内。
     let z = Bar {};
 }
 
@@ -713,18 +712,18 @@ mod clashing {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>对于不允许遮蔽的区域，请参见<a href="../names/name-resolution.html#r-names.resolution.expansion.imports.ambiguity">名称解析歧义</a>。</p>
+<p>对于不允许遮蔽的区域，请参见 <a href="../names/name-resolution.html#r-names.resolution.expansion.imports.ambiguity">名称解析歧义</a>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-items.use.glob.last-segment-only"><a class="rule-link" href="#r-items.use.glob.last-segment-only" title="items.use.glob.last-segment-only"><span>[items<wbr>.use<wbr>.glob<wbr>.last-segment-only]</span></a>
 </div>
 
-<p><code>*</code>不能用作第一个或中间段。</p>
+<p><code>*</code> 不能用作第一个或中间段。</p>
 <div class="rule" id="r-items.use.glob.self-import"><a class="rule-link" href="#r-items.use.glob.self-import" title="items.use.glob.self-import"><span>[items<wbr>.use<wbr>.glob<wbr>.self-import]</span></a>
 </div>
 
-<p><code>*</code>不能用于将模块的内容导入自身（例如 <code>use self::*;</code>）。</p>
+<p><code>*</code> 不能用于将模块的内容导入自身（例如 <code>use self::*;</code> ）。</p>
 <div class="rule" id="r-items.use.glob.edition2018"><a class="rule-link" href="#r-items.use.glob.edition2018" title="items.use.glob.edition2018"><span>[items<wbr>.use<wbr>.glob<wbr>.edition2018]</span></a>
 </div>
 
@@ -732,7 +731,7 @@ mod clashing {
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>在2015版次中，路径是相对于crate根的，因此像<code>use *;</code>这样的导入是有效的，它意味着从crate根导入所有内容。这不能在crate根本身中使用。</p>
+<p>在 2015 版次中，路径是相对于 crate 根的，因此像 <code>use *;</code> 这样的导入是有效的，它意味着从 crate 根导入所有内容。这不能在 crate 根本身中使用。</p>
 </blockquote>
 </div>
 
@@ -743,11 +742,11 @@ mod clashing {
 <div class="rule" id="r-items.use.as-underscore.intro"><a class="rule-link" href="#r-items.use.as-underscore.intro" title="items.use.as-underscore.intro"><span>[items<wbr>.use<wbr>.as-underscore<wbr>.intro]</span></a>
 </div>
 
-<p>可以通过使用下划线形式<code>use path as _</code>导入项而不绑定到名称。这对于导入一个特型特别有用，以便可以使用其方法而无需导入该特型的符号，例如，如果该特型的符号可能与其他符号冲突。另一个例子是链接外部crate而不导入其名称。</p>
+<p>可以通过使用下划线形式 <code>use path as _</code> 导入 项 而不绑定到名称。这对于导入一个 特型 特别有用，以便可以使用其方法而无需导入该 特型 的符号，例如，如果该 特型 的符号可能与其他符号冲突。另一个例子是链接外部 crate 而不导入其名称。</p>
 <div class="rule" id="r-items.use.as-underscore.glob"><a class="rule-link" href="#r-items.use.as-underscore.glob" title="items.use.as-underscore.glob"><span>[items<wbr>.use<wbr>.as-underscore<wbr>.glob]</span></a>
 </div>
 
-<p>星号通配符导入将以不可命名的形式导入带有<code>_</code>的项。</p>
+<p>星号通配符导入将以不可命名的形式导入带有 <code>_</code> 的 项。</p>
 <pre class="playground"><code class="language-rust edition2024">mod foo {
     pub trait Zoo {
         fn zoo(&amp;self) {}
@@ -766,7 +765,7 @@ fn main() {
 <div class="rule" id="r-items.use.as-underscore.macro"><a class="rule-link" href="#r-items.use.as-underscore.macro" title="items.use.as-underscore.macro"><span>[items<wbr>.use<wbr>.as-underscore<wbr>.macro]</span></a>
 </div>
 
-<p>独特的、不可命名的符号在宏展开后创建，这样宏可以安全地发出对<code>_</code>导入的多个引用。例如，以下代码不应产生错误：</p>
+<p>独特的、不可命名的符号在宏展开后创建，这样宏可以安全地发出对 <code>_</code> 导入的多个引用。例如，以下代码不应产生错误：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! m {
@@ -782,36 +781,36 @@ m!(use std as _;);
 </div>
 
 <h2 id="限制"><a class="header" href="#限制">限制</a></h2>
-<p>以下是有效<code>use</code>声明的限制：</p>
+<p>以下是有效 <code>use</code> 声明的限制：</p>
 <div class="rule" id="r-items.use.restrictions.crate"><a class="rule-link" href="#r-items.use.restrictions.crate" title="items.use.restrictions.crate"><span>[items<wbr>.use<wbr>.restrictions<wbr>.crate]</span></a>
 </div>
 
 <ul>
-<li><code>use crate;</code>必须使用<code>as</code>来定义要绑定crate根的名称。</li>
+<li><code>use crate;</code> 必须使用 <code>as</code> 来定义要绑定 crate 根的名称。</li>
 </ul>
 <div class="rule" id="r-items.use.restrictions.self"><a class="rule-link" href="#r-items.use.restrictions.self" title="items.use.restrictions.self"><span>[items<wbr>.use<wbr>.restrictions<wbr>.self]</span></a>
 </div>
 
 <ul>
-<li><code>use {self};</code>是一个错误；使用<code>self</code>时必须有一个前导段。</li>
+<li><code>use {self};</code> 是一个错误；使用 <code>self</code> 时必须有一个前导段。</li>
 </ul>
 <div class="rule" id="r-items.use.restrictions.duplicate-name"><a class="rule-link" href="#r-items.use.restrictions.duplicate-name" title="items.use.restrictions.duplicate-name"><span>[items<wbr>.use<wbr>.restrictions<wbr>.duplicate-name]</span></a>
 </div>
 
 <ul>
-<li>与任何项定义一样，<code>use</code>导入不能在模块或块中的同一命名空间内创建相同名称的重复绑定。</li>
+<li>与任何 项 定义一样， <code>use</code> 导入不能在模块或块中的同一命名空间内创建相同名称的重复绑定。</li>
 </ul>
 <div class="rule" id="r-items.use.restrictions.macro-crate"><a class="rule-link" href="#r-items.use.restrictions.macro-crate" title="items.use.restrictions.macro-crate"><span>[items<wbr>.use<wbr>.restrictions<wbr>.macro-crate]</span></a>
 </div>
 
 <ul>
-<li>包含<code>$crate</code>的<code>use</code>路径不允许在<a href="../macros-by-example.html"><code>macro_rules</code></a>展开中使用。</li>
+<li>包含 <code>$crate</code> 的 <code>use</code> 路径不允许在 <a href="../macros-by-example.html"><code>macro_rules</code></a> 展开中使用。</li>
 </ul>
 <div class="rule" id="r-items.use.restrictions.variant"><a class="rule-link" href="#r-items.use.restrictions.variant" title="items.use.restrictions.variant"><span>[items<wbr>.use<wbr>.restrictions<wbr>.variant]</span></a>
 </div>
 
 <ul>
-<li><code>use</code>路径不能通过<a href="type-aliases.html">类型别名</a>引用枚举变体。例如：
+<li><code>use</code> 路径不能通过 <a href="type-aliases.html">类型别名</a> 引用枚举变体。例如：
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum MyEnum {

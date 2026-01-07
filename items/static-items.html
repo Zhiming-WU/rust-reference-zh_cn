@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-723fd274.js";
+            window.path_to_searchindex_js = "../searchindex-1458537c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-items.static"><a class="rule-link" href="#r-items.static" title="items.static"><span>[items<wbr>.static]</span></a>
 </div>
 
-<h1 id="static-items"><a class="header" href="#static-items">Static items</a></h1>
+<h1 id="静态项"><a class="header" href="#静态项">静态项</a></h1>
 <div class="rule" id="r-items.static.syntax"><a class="rule-link" href="#r-items.static.syntax" title="items.static.syntax"><span>[items<wbr>.static<wbr>.syntax]</span></a>
 </div>
 
@@ -289,65 +289,51 @@ Expression</text>
 <div class="rule" id="r-items.static.intro"><a class="rule-link" href="#r-items.static.intro" title="items.static.intro"><span>[items<wbr>.static<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>static item</em> is similar to a <a href="constant-items.html">constant</a>, except that it represents an allocation in the
-program that is initialized with the initializer expression. All references and raw pointers to the
-static refer to the same allocation.</p>
+<p>一个  <em>静态项</em>  与 <a href="constant-items.html">常量项</a> 类似，不同之处在于它表示程序中由初始化表达式初始化的分配。指向该 静态项 的所有引用和裸指针都指向同一个分配。</p>
 <div class="rule" id="r-items.static.lifetime"><a class="rule-link" href="#r-items.static.lifetime" title="items.static.lifetime"><span>[items<wbr>.static<wbr>.lifetime]</span></a>
 </div>
 
-<p>Static items have the <code>static</code> lifetime, which outlives all other lifetimes in a Rust program.
-Static items do not call <a href="../destructors.html"><code>drop</code></a> at the end of the program.</p>
+<p>静态项 具有 <code>static</code> 生命周期，它比 Rust 程序中的所有其他生命周期都要长。 静态项 在程序结束时不会调用 <a href="../destructors.html"><code>drop</code></a>。</p>
 <div class="rule" id="r-items.static.storage-disjointness"><a class="rule-link" href="#r-items.static.storage-disjointness" title="items.static.storage-disjointness"><span>[items<wbr>.static<wbr>.storage-disjointness]</span></a>
 </div>
 
-<p>If the <code>static</code> has a size of at least 1 byte, this allocation is disjoint from all other such
-<code>static</code> allocations as well as heap allocations and stack-allocated variables. However, the storage of
-immutable <code>static</code> items can overlap with allocations that do not themselves have a unique address, such
-as <a href="../destructors.html#constant-promotion">promoteds</a> and <a href="constant-items.html"><code>const</code> items</a>.</p>
+<p>如果 <code>static</code> 的大小至少为 1 字节，则此分配与所有其他此类 <code>static</code> 分配以及堆分配和栈分配变量是不相交的。然而，不可变  <em>静态项</em>  的存储可以与自身没有唯一地址的分配重叠，例如 <a href="../destructors.html#constant-promotion">提升项</a> 和 <a href="constant-items.html"><code>const</code> 项</a>。</p>
 <div class="rule" id="r-items.static.namespace"><a class="rule-link" href="#r-items.static.namespace" title="items.static.namespace"><span>[items<wbr>.static<wbr>.namespace]</span></a>
 </div>
 
-<p>The static declaration defines a static value in the <a href="../names/namespaces.html">value namespace</a> of the module or block where it is located.</p>
+<p>静态声明在它所在的模块或块的 <a href="../names/namespaces.html">值命名空间</a> 中定义了一个静态值。</p>
 <div class="rule" id="r-items.static.init"><a class="rule-link" href="#r-items.static.init" title="items.static.init"><span>[items<wbr>.static<wbr>.init]</span></a>
 </div>
 
-<p>The static initializer is a <a href="../const_eval.html#constant-expressions">constant expression</a> evaluated at compile time.
-Static initializers may refer to and read from other statics.
-When reading from mutable statics, they read the initial value of that static.</p>
+<p>静态初始化器是一个在编译时求值的 <a href="../const_eval.html#constant-expressions">常量表达式</a>。静态初始化器可以引用并读取其他 静态项。从可变 静态项 读取时，它们读取该 静态项 的初始值。</p>
 <div class="rule" id="r-items.static.read-only"><a class="rule-link" href="#r-items.static.read-only" title="items.static.read-only"><span>[items<wbr>.static<wbr>.read-only]</span></a>
 </div>
 
-<p>Non-<code>mut</code> static items that contain a type that is not <a href="../interior-mutability.html">interior mutable</a> may
-be placed in read-only memory.</p>
+<p>包含非 <a href="../interior-mutability.html">内部可变</a> 类型的非 <code>mut</code> 静态项 可能会被放置在只读内存中。</p>
 <div class="rule" id="r-items.static.safety"><a class="rule-link" href="#r-items.static.safety" title="items.static.safety"><span>[items<wbr>.static<wbr>.safety]</span></a>
 </div>
 
-<p>All access to a static is safe, but there are a number of restrictions on
-statics:</p>
+<p>对 静态项 的所有访问都是安全的，但对 静态项 有一些限制：</p>
 <div class="rule" id="r-items.static.sync"><a class="rule-link" href="#r-items.static.sync" title="items.static.sync"><span>[items<wbr>.static<wbr>.sync]</span></a>
 </div>
 
 <ul>
-<li>The type must have the <a href="../../core/marker/trait.Sync.html"><code>Sync</code></a> trait bound to allow thread-safe access.</li>
+<li>类型必须具有 <a href="https://doc.rust-lang.org/core/marker/trait.Sync.html"><code>Sync</code></a> 特型 绑定以允许线程安全访问。</li>
 </ul>
 <div class="rule" id="r-items.static.init.omission"><a class="rule-link" href="#r-items.static.init.omission" title="items.static.init.omission"><span>[items<wbr>.static<wbr>.init<wbr>.omission]</span></a>
 </div>
 
-<p>The initializer expression must be omitted in an <a href="external-blocks.html">external block</a>, and must be
-provided for free static items.</p>
+<p>初始化表达式在 <a href="external-blocks.html">外部块</a> 中必须省略，而在自由 静态项 中必须提供。</p>
 <div class="rule" id="r-items.static.safety-qualifiers"><a class="rule-link" href="#r-items.static.safety-qualifiers" title="items.static.safety-qualifiers"><span>[items<wbr>.static<wbr>.safety-qualifiers]</span></a>
 </div>
 
-<p>The <code>safe</code> and <code>unsafe</code> qualifiers are semantically only allowed when used in an <a href="external-blocks.html">external block</a>.</p>
+<p>从语义上讲，<code>safe</code> 和 <code>unsafe</code> 限定符仅在 <a href="external-blocks.html">外部块</a> 中使用时才被允许。</p>
 <div class="rule" id="r-items.static.generics"><a class="rule-link" href="#r-items.static.generics" title="items.static.generics"><span>[items<wbr>.static<wbr>.generics]</span></a>
 </div>
 
-<h2 id="statics--generics"><a class="header" href="#statics--generics">Statics &amp; generics</a></h2>
-<p>A static item defined in a generic scope (for example in a blanket or default
-implementation) will result in exactly one static item being defined, as if
-the static definition was pulled out of the current scope into the module.
-There will <em>not</em> be one item per monomorphization.</p>
-<p>This code:</p>
+<h2 id="静态项与泛型"><a class="header" href="#静态项与泛型">静态项与泛型</a></h2>
+<p>在 泛型 作用域（例如在全覆盖实现或默认实现）中定义的 静态项 将导致仅定义一个 静态项，就好像静态定义从当前作用域提取到了模块中一样。每一单态化实例将  <em>不</em>  有一个 项。</p>
+<p>这段代码：</p>
 <pre class="playground"><code class="language-rust edition2024">use std::sync::atomic::{AtomicUsize, Ordering};
 
 trait Tr {
@@ -375,7 +361,7 @@ fn main() {
     &lt;Ty1 as Tr&gt;::blanket_impl();
     &lt;Ty2 as Tr&gt;::blanket_impl();
 }</code></pre>
-<p>prints</p>
+<p>打印：</p>
 <pre><code class="language-text">default_impl: counter was 0
 default_impl: counter was 1
 blanket_impl: counter was 0
@@ -384,34 +370,26 @@ blanket_impl: counter was 1
 <div class="rule" id="r-items.static.mut"><a class="rule-link" href="#r-items.static.mut" title="items.static.mut"><span>[items<wbr>.static<wbr>.mut]</span></a>
 </div>
 
-<h2 id="mutable-statics"><a class="header" href="#mutable-statics">Mutable statics</a></h2>
+<h2 id="可变静态项"><a class="header" href="#可变静态项">可变静态项</a></h2>
 <div class="rule" id="r-items.static.mut.intro"><a class="rule-link" href="#r-items.static.mut.intro" title="items.static.mut.intro"><span>[items<wbr>.static<wbr>.mut<wbr>.intro]</span></a>
 </div>
 
-<p>If a static item is declared with the <code>mut</code> keyword, then it is allowed to be
-modified by the program. One of Rust’s goals is to make concurrency bugs hard
-to run into, and this is obviously a very large source of race conditions or
-other bugs.</p>
+<p>如果 静态项 使用 <code>mut</code> 关键字声明，则允许程序对其进行修改。Rust 的目标之一是使并发错误难以发生，而这显然是竞争条件或其他错误的一个非常大的来源。</p>
 <div class="rule" id="r-items.static.mut.safety"><a class="rule-link" href="#r-items.static.mut.safety" title="items.static.mut.safety"><span>[items<wbr>.static<wbr>.mut<wbr>.safety]</span></a>
 </div>
 
-<p>For this reason, an <code>unsafe</code> block is required when either reading
-or writing a mutable static variable. Care should be taken to ensure that
-modifications to a mutable static are safe with respect to other threads
-running in the same process.</p>
+<p>出于这个原因，在读取或写入可变静态变量时都需要 <code>unsafe</code> 块。应注意确保对可变静态项的修改相对于在同一进程中运行的其他线程是安全的。</p>
 <div class="rule" id="r-items.static.mut.extern"><a class="rule-link" href="#r-items.static.mut.extern" title="items.static.mut.extern"><span>[items<wbr>.static<wbr>.mut<wbr>.extern]</span></a>
 </div>
 
-<p>Mutable statics are still very useful, however. They can be used with C
-libraries and can also be bound from C libraries in an <code>extern</code> block.</p>
+<p>然而，可变静态项仍然非常有用。它们可以与 C 库一起使用，也可以在 <code>extern</code> 块中从 C 库绑定。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn atomic_add(_: *mut u32, _: u32) -&gt; u32 { 2 }
 </span>
 static mut LEVELS: u32 = 0;
 
-// This violates the idea of no shared state, and this doesn't internally
-// protect against races, so this function is `unsafe`
+// 这违反了无共享状态的想法，且这在内部不防御竞争，因此这个函数是 `unsafe` 的
 unsafe fn bump_levels_unsafe() -&gt; u32 {
     unsafe {
         let ret = LEVELS;
@@ -420,12 +398,10 @@ unsafe fn bump_levels_unsafe() -&gt; u32 {
     }
 }
 
-// As an alternative to `bump_levels_unsafe`, this function is safe, assuming
-// that we have an atomic_add function which returns the old value. This
-// function is safe only if no other code accesses the static in a non-atomic
-// fashion. If such accesses are possible (such as in `bump_levels_unsafe`),
-// then this would need to be `unsafe` to indicate to the caller that they
-// must still guard against concurrent access.
+// 作为 `bump_levels_unsafe` 的替代方案，假设我们有一个返回旧值的 atomic_add 函数，那么这个函数就是安全的。
+// 只有在没有其他代码以非原子方式访问该静态项的情况下，此函数才是安全的。
+// 如果此类访问是可能的（例如在 `bump_levels_unsafe` 中），那么这将需要是 `unsafe` 的，
+// 以向调用者指示他们仍必须防范并发访问。
 fn bump_levels_safe() -&gt; u32 {
     unsafe {
         return atomic_add(&amp;raw mut LEVELS, 1);
@@ -435,24 +411,21 @@ fn bump_levels_safe() -&gt; u32 {
 <div class="rule" id="r-items.static.mut.sync"><a class="rule-link" href="#r-items.static.mut.sync" title="items.static.mut.sync"><span>[items<wbr>.static<wbr>.mut<wbr>.sync]</span></a>
 </div>
 
-<p>Mutable statics have the same restrictions as normal statics, except that the
-type does not have to implement the <code>Sync</code> trait.</p>
+<p>可变静态项具有与普通 静态项 相同的限制，但类型不必实现 <code>Sync</code> 特型。</p>
 <div class="rule" id="r-items.static.alternate"><a class="rule-link" href="#r-items.static.alternate" title="items.static.alternate"><span>[items<wbr>.static<wbr>.alternate]</span></a>
 </div>
 
-<h2 id="using-statics-or-consts"><a class="header" href="#using-statics-or-consts">Using statics or consts</a></h2>
-<p>It can be confusing whether or not you should use a constant item or a static
-item. Constants should, in general, be preferred over statics unless one of the
-following are true:</p>
+<h2 id="使用静态项或常量项"><a class="header" href="#使用静态项或常量项">使用静态项或常量项</a></h2>
+<p>使用 常量项 还是 静态项 可能会令人困惑。通常情况下，应优先使用 常量项 而非 静态项，除非满足以下条件之一：</p>
 <ul>
-<li>Large amounts of data are being stored.</li>
-<li>The single-address property of statics is required.</li>
-<li>Interior mutability is required.</li>
+<li>正在存储大量数据。</li>
+<li>需要 静态项 的单地址属性。</li>
+<li>需要内部可变性。</li>
 </ul>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-extern-safety">
-<p>The <code>safe</code> and <code>unsafe</code> function qualifiers are only allowed semantically within <code>extern</code> blocks. <a href="#fr-extern-safety-1">↩</a></p>
+<p><code>safe</code> 和 <code>unsafe</code> 函数限定符在语义上仅允许在 <code>extern</code> 块中使用。 <a href="#fr-extern-safety-1">↩</a></p>
 </li>
 </ol>
 
