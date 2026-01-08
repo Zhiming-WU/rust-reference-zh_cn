@@ -1,34 +1,22 @@
 r[variable]
-# Variables
+# 变量
 
 r[variable.intro]
-A _variable_ is a component of a stack frame, either a named function parameter,
-an anonymous [temporary](expressions.md#temporaries), or a named local
-variable.
+一个 变量 是 栈帧 的一个组成部分，它可以是一个具名函数 参数，一个匿名 [临时量](expressions.md#temporaries)，或者一个具名 局部变量。
 
 r[variable.local]
-A _local variable_ (or *stack-local* allocation) holds a value directly,
-allocated within the stack's memory. The value is a part of the stack frame.
+一个 局部变量 （或 栈-局部 分配）直接持有值，在 栈内存 中分配。该值是 栈帧 的一部分。
 
 r[variable.local-mut]
-Local variables are immutable unless declared otherwise. For example:
-`let mut x = ...`.
+局部变量 默认不可变，除非另行声明。例如：`let mut x = ...`。
 
 r[variable.param-mut]
-Function parameters are immutable unless declared with `mut`. The `mut` keyword
-applies only to the following parameter. For example: `|mut x, y|` and
-`fn f(mut x: Box<i32>, y: Box<i32>)` declare one mutable variable `x` and one
-immutable variable `y`.
+函数 参数 默认不可变，除非用 `mut` 声明。`mut` 关键字仅适用于其后的 参数。例如：`|mut x, y|` 和 `fn f(mut x: Box<i32>, y: Box<i32>)` 声明了一个 可变 变量 `x` 和一个 不可变 变量 `y`。
 
 r[variable.init]
-Local variables are not initialized when allocated. Instead, the entire frame
-worth of local variables are allocated, on frame-entry, in an uninitialized
-state. Subsequent statements within a function may or may not initialize the
-local variables. Local variables can be used only after they have been
-initialized through all reachable control flow paths.
+局部变量 在分配时不会被初始化。相反，整个 栈帧 上的 局部变量 会在 栈帧 进入时以未初始化状态分配。函数内的后续语句可能会或可能不会初始化 局部变量。局部变量 只能在它们通过所有可达的 控制流路径 被初始化后才能使用。
 
-In this next example, `init_after_if` is initialized after the [`if` expression]
-while `uninit_after_if` is not because it is not initialized in the `else` case.
+在下一个示例中，`init_after_if` 在 [`if` 表达式][`if` expression] 之后被初始化，而 `uninit_after_if` 没有，因为它在 `else` 分支中未被初始化。
 
 ```rust
 # fn random_bool() -> bool { true }
@@ -44,7 +32,7 @@ fn initialization_example() {
     }
 
     init_after_if; // ok
-    // uninit_after_if; // err: use of possibly uninitialized `uninit_after_if`
+    // uninit_after_if; // 错误：使用了可能未初始化的 `uninit_after_if`
 }
 ```
 

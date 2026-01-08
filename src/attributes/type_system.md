@@ -1,24 +1,22 @@
 r[attributes.type-system]
-# Type system attributes
+# 类型系统属性
 
-The following [attributes] are used for changing how a type can be used.
+以下 [属性][attributes] 用于更改类型的使用方式。
 
 r[attributes.type-system.non_exhaustive]
-## The `non_exhaustive` attribute
+## `non_exhaustive`属性
 
 r[attributes.type-system.non_exhaustive.intro]
-The *`non_exhaustive` attribute* indicates that a type or variant may have
-more fields or variants added in the future.
+ *non_exhaustive 属性* 表示以后可能会向类型或变体中添加更多字段或变体。
 
 r[attributes.type-system.non_exhaustive.allowed-positions]
-It can be applied to [`struct`s][struct], [`enum`s][enum], and `enum` variants.
+它可以应用于 [结构体][struct]、[枚举][enum] 和 enum 变体。
 
 r[attributes.type-system.non_exhaustive.syntax]
-The `non_exhaustive` attribute uses the [MetaWord] syntax and thus does not
-take any inputs.
+ `non_exhaustive` 属性使用 [MetaWord] 语法格式，因此不接受任何输入。
 
 r[attributes.type-system.non_exhaustive.same-crate]
-Within the defining crate, `non_exhaustive` has no effect.
+在定义它的 crate 内部， `non_exhaustive` 没有效果。
 
 ```rust
 #[non_exhaustive]
@@ -45,12 +43,12 @@ pub enum Message {
     #[non_exhaustive] Quit,
 }
 
-// Non-exhaustive structs can be constructed as normal within the defining crate.
+// 在定义它的 crate 内部，可以像往常一样构造非详尽结构体。
 let config = Config { window_width: 640, window_height: 480 };
 let token = Token;
 let id = Id(4);
 
-// Non-exhaustive structs can be matched on exhaustively within the defining crate.
+// 在定义它的 crate 内部，可以对非详尽结构体进行详尽匹配。
 let Config { window_width, window_height } = config;
 let Token = token;
 let Id(id_number) = id;
@@ -58,14 +56,14 @@ let Id(id_number) = id;
 let error = Error::Other;
 let message = Message::Reaction(3);
 
-// Non-exhaustive enums can be matched on exhaustively within the defining crate.
+// 在定义它的 crate 内部，可以对非详尽枚举进行详尽匹配。
 match error {
     Error::Message(ref s) => { },
     Error::Other => { },
 }
 
 match message {
-    // Non-exhaustive variants can be matched on exhaustively within the defining crate.
+    // 在定义它的 crate 内部，可以对非详尽变体进行详尽匹配。
     Message::Send { from, to, contents } => { },
     Message::Reaction(id) => { },
     Message::Quit => { },
@@ -73,104 +71,94 @@ match message {
 ```
 
 r[attributes.type-system.non_exhaustive.external-crate]
-Outside of the defining crate, types annotated with `non_exhaustive` have limitations that
-preserve backwards compatibility when new fields or variants are added.
+在定义它的 crate 之外，带有 `non_exhaustive` 标注的类型具有一些限制，以便在添加新字段或变体时保持向后兼容性。
 
 r[attributes.type-system.non_exhaustive.construction]
-Non-exhaustive types cannot be constructed outside of the defining crate:
+在定义它的 crate 之外，无法构造非详尽类型：
 
-- Non-exhaustive variants ([`struct`][struct] or [`enum` variant][enum]) cannot be constructed
-  with a [StructExpression] \(including with [functional update syntax]).
-- The implicitly defined same-named constant of a [unit-like struct][struct],
-  or the same-named constructor function of a [tuple struct][struct],
-  has a [visibility] no greater than `pub(crate)`.
-  That is, if the struct’s visibility is `pub`, then the constant or constructor’s visibility
-  is `pub(crate)`, and otherwise the visibility of the two items is the same
-  (as is the case without `#[non_exhaustive]`).
-- [`enum`][enum] instances can be constructed.
+- 非详尽变体（ [结构体][struct] 或 [枚举变体][enum] ）不能使用 [结构体表达式][StructExpression] 构造（包括使用 [功能性更新语法格式][functional update syntax] ）。
+- [单元结构体][struct] 隐式定义的同名常量，或 [元组结构体][struct] 的同名构造函数，其 [可见性][visibility] 不大于 `pub(crate)` 。
+  也就是说，如果结构体的可见性是 `pub` ，那么常量或构造函数的可见性就是 `pub(crate)` ，否则这两个 [项][item] 的可见性相同（就像没有 `#[non_exhaustive]` 的情况一样）。
+- [枚举][enum] 实例可以被构造。
 
-The following examples of construction do not compile when outside the defining crate:
+以下构造示例在定义它的 crate 之外时无法编译：
 
 <!-- ignore: requires external crates -->
 ```rust,ignore
-// These are types defined in an upstream crate that have been annotated as
-// `#[non_exhaustive]`.
+// 这些是在上游 crate 中定义并标注为 `#[non_exhaustive]` 的类型。
 use upstream::{Config, Token, Id, Error, Message};
 
-// Cannot construct an instance of `Config`; if new fields were added in
-// a new version of `upstream` then this would fail to compile, so it is
-// disallowed.
+// 无法构造 Config 的实例；如果在 upstream 的新版本中添加了新字段，
+// 这将导致编译失败，因此是不允许的。
 let config = Config { window_width: 640, window_height: 480 };
 
-// Cannot construct an instance of `Token`; if new fields were added, then
-// it would not be a unit-like struct any more, so the same-named constant
-// created by it being a unit-like struct is not public outside the crate;
-// this code fails to compile.
+// 无法构造 Token 的实例；如果添加了新字段，那么
+// 它将不再是一个单元结构体，因此由其作为单元结构体创建的
+// 同名常量在 crate 外部是不公开的；这段代码无法编译。
 let token = Token;
 
-// Cannot construct an instance of `Id`; if new fields were added, then
-// its constructor function signature would change, so its constructor
-// function is not public outside the crate; this code fails to compile.
+// 无法构造 Id 的实例；如果添加了新字段，那么
+// 其构造函数签名将会改变，因此其构造函数
+// 在 crate 外部是不公开的；这段代码无法编译。
 let id = Id(5);
 
-// Can construct an instance of `Error`; new variants being introduced would
-// not result in this failing to compile.
+// 可以构造 Error 的实例；引入新变体
+// 不会导致编译失败。
 let error = Error::Message("foo".to_string());
 
-// Cannot construct an instance of `Message::Send` or `Message::Reaction`;
-// if new fields were added in a new version of `upstream` then this would
-// fail to compile, so it is disallowed.
+// 无法构造 Message::Send 或 Message::Reaction 的实例；
+// 如果在 upstream 的新版本中添加了新字段，那么这将会
+// 导致编译失败，因此是不允许的。
 let message = Message::Send { from: 0, to: 1, contents: "foo".to_string(), };
 let message = Message::Reaction(0);
 
-// Cannot construct an instance of `Message::Quit`; if this were converted to
-// a tuple enum variant `upstream`, this would fail to compile.
+// 无法构造 Message::Quit 的实例；如果这在 upstream 中被转换为
+// 元组枚举变体，这将导致编译失败。
 let message = Message::Quit;
 ```
 
 r[attributes.type-system.non_exhaustive.match]
-There are limitations when matching on non-exhaustive types outside of the defining crate:
+在定义它的 crate 外部匹配非详尽类型时存在一些限制：
 
-- When pattern matching on a non-exhaustive variant ([`struct`][struct] or [`enum` variant][enum]), a [StructPattern] must be used which must include a `..`. A tuple enum variant's constructor's [visibility] is reduced to be no greater than `pub(crate)`.
-- When pattern matching on a non-exhaustive [`enum`][enum], matching on a variant does not contribute towards the exhaustiveness of the arms. The following examples of matching do not compile when outside the defining crate:
+- 在对非详尽变体（ [结构体][struct] 或 [枚举变体][enum] ）进行模式匹配时，必须使用包含 `..` 的 [结构体模式][StructPattern] 。元组枚举变体的构造函数的 [可见性][visibility] 被降低到不大于 `pub(crate)` 。
+- 在对非详尽 [枚举][enum] 进行模式匹配时，匹配某个变体不会对匹配臂的详尽性做出贡献。当在定义它的 crate 之外时，以下匹配示例无法编译：
 
 <!-- ignore: requires external crates -->
 ```rust, ignore
-// These are types defined in an upstream crate that have been annotated as
-// `#[non_exhaustive]`.
+// 这些是在上游 crate 中定义并标注为 `#[non_exhaustive]` 的类型。
 use upstream::{Config, Token, Id, Error, Message};
 
-// Cannot match on a non-exhaustive enum without including a wildcard arm.
+// 在不包含通配符臂的情况下，无法匹配非详尽枚举。
 match error {
   Error::Message(ref s) => { },
   Error::Other => { },
-  // would compile with: `_ => {},`
+  // 使用 `_ => {},` 可以编译
 }
 
-// Cannot match on a non-exhaustive struct without a wildcard.
+// 在没有通配符的情况下，无法匹配非详尽结构体。
 if let Ok(Config { window_width, window_height }) = config {
-    // would compile with: `..`
+    // 使用 `..` 可以编译
 }
 
-// Cannot match a non-exhaustive unit-like or tuple struct except by using
-// braced struct syntax with a wildcard.
-// This would compile as `let Token { .. } = token;`
+// 除非使用带有通配符的大括号结构体语法，否则
+// 无法匹配非详尽单元结构体或元组结构体。
+// 这将编译为 `let Token { .. } = token;`
 let Token = token;
-// This would compile as `let Id { 0: id_number, .. } = id;`
+// 这将编译为 `let Id { 0: id_number, .. } = id;`
 let Id(id_number) = id;
 
 match message {
-  // Cannot match on a non-exhaustive struct enum variant without including a wildcard.
+  // 在不包含通配符的情况下，无法匹配非详尽结构体枚举变体。
   Message::Send { from, to, contents } => { },
-  // Cannot match on a non-exhaustive tuple or unit enum variant.
+  // 无法匹配非详尽元组或单元枚举变体。
   Message::Reaction(type) => { },
   Message::Quit => { },
 }
 ```
 
-It's also not allowed to use numeric casts (`as`) on enums that contain any non-exhaustive variants.
+也不允许在包含任何非详尽变体的枚举上使用数值转换（ `as` ）。
 
-For example, the following enum can be cast because it doesn't contain any non-exhaustive variants:
+例如，可以转换以下枚举，因为它不包含任何非详尽变体：
 
 ```rust
 #[non_exhaustive]
@@ -180,7 +168,7 @@ pub enum Example {
 }
 ```
 
-However, if the enum contains even a single non-exhaustive variant, casting will result in an error. Consider this modified version of the same enum:
+但是，如果枚举包含哪怕一个非详尽变体，转换也会导致错误。考虑同一枚举的这个修改版本：
 
 ```rust
 #[non_exhaustive]
@@ -195,11 +183,11 @@ pub enum EnumWithNonExhaustiveVariants {
 ```rust,ignore
 use othercrate::EnumWithNonExhaustiveVariants;
 
-// Error: cannot cast an enum with a non-exhaustive variant when it's defined in another crate
+// 错误：无法转换在另一个 crate 中定义且带有非详尽变体的枚举
 let _ = EnumWithNonExhaustiveVariants::First as u8;
 ```
 
-Non-exhaustive types are always considered inhabited in downstream crates.
+在下游 crate 中，非详尽类型始终被视为 inhabited 。
 
 [`match`]: ../expressions/match-expr.md
 [attributes]: ../attributes.md

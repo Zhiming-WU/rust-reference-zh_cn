@@ -1,16 +1,8 @@
 r[alloc]
-# Memory allocation and lifetime
+# 内存分配和生命周期
 
 r[alloc.static]
-The _items_ of a program are those functions, modules, and types that have their
-value calculated at compile-time and stored uniquely in the memory image of the
-rust process. Items are neither dynamically allocated nor freed.
+程序的 项 是那些在编译时计算其值并唯一地存储在 Rust 进程内存映像中的函数、模块和类型。 项 既不动态分配也不释放。
 
 r[alloc.dynamic]
-The _heap_ is a general term that describes boxes.  The lifetime of an
-allocation in the heap depends on the lifetime of the box values pointing to
-it. Since box values may themselves be passed in and out of frames, or stored
-in the heap, heap allocations may outlive the frame they are allocated within.
-An allocation in the heap is guaranteed to reside at a single location in the
-heap for the whole lifetime of the allocation - it will never be relocated as
-a result of moving a box value.
+堆 是描述 盒子的通用术语。 堆中分配的生命周期取决于指向它的 盒子 值的生命周期。 由于 盒子 值本身可以在帧之间传递进出，或者存储在 堆中，因此 堆分配 可能会超出它们被分配的帧的生命周期。 堆中的一个分配 在其整个生命周期内保证驻留在 堆中的一个单一位置——它永远不会因为移动 盒子 值而重新定位。
