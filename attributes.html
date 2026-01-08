@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1458537c.js";
+            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-attributes"><a class="rule-link" href="#r-attributes" title="attributes"><span>[attributes]</span></a>
 </div>
 
-<h1 id="attributes"><a class="header" href="#attributes">Attributes</a></h1>
+<h1 id="属性"><a class="header" href="#属性">属性</a></h1>
 <div class="rule" id="r-attributes.syntax"><a class="rule-link" href="#r-attributes.syntax" title="attributes.syntax"><span>[attributes<wbr>.syntax]</span></a>
 </div>
 
@@ -421,23 +421,21 @@ Expression</text>
 <div class="rule" id="r-attributes.intro"><a class="rule-link" href="#r-attributes.intro" title="attributes.intro"><span>[attributes<wbr>.intro]</span></a>
 </div>
 
-<p>An <em>attribute</em> is a general, free-form metadatum that is interpreted according
-to name, convention, language, and compiler version. Attributes are modeled
-on Attributes in <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-335/">ECMA-335</a>, with the syntax coming from <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-334/">ECMA-334</a> (C#).</p>
+<p>一个 <em>属性</em> 是一个通用的、自由形式的元数据，根据名称、约定、语言和编译器版本进行解释。属性的建模基于 <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-335/">ECMA-335</a> 中的属性，其 语法格式 源自 <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-334/">ECMA-334</a> (C#)。</p>
 <div class="rule" id="r-attributes.inner"><a class="rule-link" href="#r-attributes.inner" title="attributes.inner"><span>[attributes<wbr>.inner]</span></a>
 </div>
 
-<p><em>Inner attributes</em>, written with a bang (<code>!</code>) after the hash (<code>#</code>), apply to the form that the attribute is declared within.</p>
+<p><em>内部属性</em>，写在哈希符号 (<code>#</code>) 后带一个感叹号 (<code>!</code>)，适用于声明该属性的所在形式。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// General metadata applied to the enclosing module or crate.
+</span>// 适用于 enclosing 模块或 crate 的通用元数据。
 #![crate_type = "lib"]
 
-// Inner attribute applies to the entire function.
+// 内部属性适用于整个函数。
 fn some_unused_variables() {
   #![allow(unused_variables)]
 
@@ -452,26 +450,26 @@ fn some_unused_variables() {
 <div class="rule" id="r-attributes.outer"><a class="rule-link" href="#r-attributes.outer" title="attributes.outer"><span>[attributes<wbr>.outer]</span></a>
 </div>
 
-<p><em>Outer attributes</em>, written without the bang after the hash, apply to the form that follows the attribute.</p>
+<p><em>外部属性</em>，写在哈希符号后不带感叹号，适用于属性后面的形式。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// A function marked as a unit test
+</span>// 标记为单元测试的函数
 #[test]
 fn test_foo() {
     /* ... */
 }
 
-// A conditionally-compiled module
+// 有条件编译的模块
 #[cfg(target_os = "linux")]
 mod bar {
     /* ... */
 }
 
-// A lint attribute used to suppress a warning/error
+// 用于抑制警告/错误的 lint 属性
 #[allow(non_camel_case_types)]
 type int8_t = i8;
 <span class="boring">}</span></code></pre>
@@ -481,19 +479,12 @@ type int8_t = i8;
 <div class="rule" id="r-attributes.input"><a class="rule-link" href="#r-attributes.input" title="attributes.input"><span>[attributes<wbr>.input]</span></a>
 </div>
 
-<p>The attribute consists of a path to the attribute, followed by an optional
-delimited token tree whose interpretation is defined by the attribute.
-Attributes other than macro attributes also allow the input to be an equals
-sign (<code>=</code>) followed by an expression. See the <a href="#meta-item-attribute-syntax">meta item
-syntax</a> below for more details.</p>
+<p>属性由属性的路径组成，后跟一个可选的带分隔符的词法单元树，其解释由属性定义。除了宏属性之外，属性还允许输入是一个等号 (<code>=</code>) 后跟一个表达式。有关更多详细信息，请参阅下面的 <a href="#meta-item-attribute-syntax">元项属性语法</a>。</p>
 <div class="rule" id="r-attributes.safety"><a class="rule-link" href="#r-attributes.safety" title="attributes.safety"><span>[attributes<wbr>.safety]</span></a>
 </div>
 
-<p>An attribute may be unsafe to apply. To avoid undefined behavior when using
-these attributes, certain obligations that cannot be checked by the compiler
-must be met.  To assert these have been, the attribute is wrapped in
-<code>unsafe(..)</code>, e.g. <code>#[unsafe(no_mangle)]</code>.</p>
-<p>The following attributes are unsafe:</p>
+<p>属性的应用可能不安全。为避免在使用这些属性时出现未定义行为，必须满足某些编译器无法检查的义务。为了声明这些义务已满足，属性被 <code>unsafe(..)</code> 包裹，例如 <code>#[unsafe(no_mangle)]</code>。</p>
+<p>以下属性是不安全的：</p>
 <ul>
 <li><a href="abi.html#the-export_name-attribute"><code>export_name</code></a></li>
 <li><a href="abi.html#the-link_section-attribute"><code>link_section</code></a></li>
@@ -503,44 +494,36 @@ must be met.  To assert these have been, the attribute is wrapped in
 <div class="rule" id="r-attributes.kind"><a class="rule-link" href="#r-attributes.kind" title="attributes.kind"><span>[attributes<wbr>.kind]</span></a>
 </div>
 
-<p>Attributes can be classified into the following kinds:</p>
+<p>属性可以分为以下几种：</p>
 <ul>
-<li><a href="#built-in-attributes-index">Built-in attributes</a></li>
-<li><a href="procedural-macros.html#proc_macro_attribute属性">Proc macro attributes</a></li>
-<li><a href="procedural-macros.html#派生宏辅助属性">Derive macro helper attributes</a></li>
-<li><a href="#tool-attributes">Tool attributes</a></li>
+<li><a href="#built-in-attributes-index">内置属性</a></li>
+<li><a href="procedural-macros.html#proc_macro_attribute属性">过程宏属性</a></li>
+<li><a href="procedural-macros.html#派生宏辅助属性">派生宏辅助属性</a></li>
+<li><a href="#tool-attributes">工具属性</a></li>
 </ul>
 <div class="rule" id="r-attributes.allowed-position"><a class="rule-link" href="#r-attributes.allowed-position" title="attributes.allowed-position"><span>[attributes<wbr>.allowed-position]</span></a>
 </div>
 
-<p>Attributes may be applied to many forms in the language:</p>
+<p>属性可以应用于语言中的多种形式：</p>
 <ul>
-<li>All <a href="items.html">item declarations</a> accept outer attributes while <a href="items/external-blocks.html">external blocks</a>,
-<a href="items/functions.html">functions</a>, <a href="items/implementations.html">implementations</a>, and <a href="items/modules.html">modules</a> accept inner attributes.</li>
-<li>Most <a href="statements.html">statements</a> accept outer attributes (see <a href="expressions.html#expression-attributes">Expression Attributes</a> for
-limitations on expression statements).</li>
-<li><a href="expressions/block-expr.html">Block expressions</a> accept outer and inner attributes, but only when they are
-the outer expression of an <a href="statements.html#expression-statements">expression statement</a> or the final expression of
-another block expression.</li>
-<li><a href="items/enumerations.html">Enum</a> variants and <a href="items/structs.html">struct</a> and <a href="items/unions.html">union</a> fields accept outer attributes.</li>
-<li><a href="expressions/match-expr.html">Match expression arms</a> accept outer attributes.</li>
-<li><a href="items/generics.html">Generic lifetime or type parameter</a> accept outer attributes.</li>
-<li>Expressions accept outer attributes in limited situations, see <a href="expressions.html#expression-attributes">Expression
-Attributes</a> for details.</li>
-<li><a href="items/functions.html">Function</a>, <a href="expressions/closure-expr.html">closure</a> and <a href="types/function-pointer.html">function pointer</a>
-parameters accept outer attributes. This includes attributes on variadic parameters
-denoted with <code>...</code> in function pointers and <a href="items/external-blocks.html#variadic-functions">external blocks</a>.</li>
-<li><a href="inline-assembly.html">Inline assembly</a> template strings and operands accept outer attributes. Only certain attributes are accepted semantically; for details, see <a href="inline-assembly.html#r-asm.attributes.supported-attributes">asm.attributes.supported-attributes</a>.</li>
+<li>所有 <a href="items.html">项声明</a> 接受外部属性，而 <a href="items/external-blocks.html">外部块</a>、<a href="items/functions.html">函数</a>、<a href="items/implementations.html">实现</a> 和 <a href="items/modules.html">模块</a> 接受内部属性。</li>
+<li>大多数 <a href="statements.html">语句</a> 接受外部属性（有关表达式语句的限制，请参阅 <a href="expressions.html#expression-attributes">表达式属性</a>）。</li>
+<li><a href="expressions/block-expr.html">块表达式</a> 接受外部和内部属性，但仅当它们是 <a href="statements.html#expression-statements">表达式语句</a> 的外部表达式或另一个块表达式的最终表达式时。</li>
+<li><a href="items/enumerations.html">枚举</a> 变体和 <a href="items/structs.html">结构体</a> 及 <a href="items/unions.html">联合体</a> 字段接受外部属性。</li>
+<li><a href="expressions/match-expr.html">匹配表达式分支</a> 接受外部属性。</li>
+<li><a href="items/generics.html">泛型 生命周期或类型参数</a> 接受外部属性。</li>
+<li>表达式在有限情况下接受外部属性，详见 <a href="expressions.html#expression-attributes">表达式属性</a>。</li>
+<li><a href="items/functions.html">函数</a>、<a href="expressions/closure-expr.html">闭包</a> 和 <a href="types/function-pointer.html">函数指针</a> 参数接受外部属性。这包括在函数指针和 <a href="items/external-blocks.html#variadic-functions">外部块</a> 中用 <code>...</code> 表示的可变参数上的属性。</li>
+<li><a href="inline-assembly.html">内联汇编</a> 模板字符串和操作数接受外部属性。语义上只接受某些属性；有关详细信息，请参阅 <a href="inline-assembly.html#r-asm.attributes.supported-attributes">asm.attributes.supported-attributes</a>。</li>
 </ul>
 <div class="rule" id="r-attributes.meta"><a class="rule-link" href="#r-attributes.meta" title="attributes.meta"><span>[attributes<wbr>.meta]</span></a>
 </div>
 
-<h2 id="meta-item-attribute-syntax"><a class="header" href="#meta-item-attribute-syntax">Meta item attribute syntax</a></h2>
+<h2 id="元项属性语法"><a class="header" href="#元项属性语法">元项属性语法</a></h2>
 <div class="rule" id="r-attributes.meta.intro"><a class="rule-link" href="#r-attributes.meta.intro" title="attributes.meta.intro"><span>[attributes<wbr>.meta<wbr>.intro]</span></a>
 </div>
 
-<p>A “meta item” is the syntax used for the <a href="attributes.html#grammar-Attr">Attr</a> rule by most <a href="#built-in-attributes-index">built-in
-attributes</a>. It has the following grammar:</p>
+<p>“元项”是大多数 <a href="#built-in-attributes-index">内置属性</a> 用于 <a href="attributes.html#grammar-Attr">Attr</a> 规则的 语法格式。它具有以下语法：</p>
 <div class="rule" id="r-attributes.meta.syntax"><a class="rule-link" href="#r-attributes.meta.syntax" title="attributes.meta.syntax"><span>[attributes<wbr>.meta<wbr>.syntax]</span></a>
 </div>
 
@@ -743,16 +726,11 @@ Expression</text>
 <div class="rule" id="r-attributes.meta.literal-expr"><a class="rule-link" href="#r-attributes.meta.literal-expr" title="attributes.meta.literal-expr"><span>[attributes<wbr>.meta<wbr>.literal-expr]</span></a>
 </div>
 
-<p>Expressions in meta items must macro-expand to literal expressions, which must not
-include integer or float type suffixes. Expressions which are not literal expressions
-will be syntactically accepted (and can be passed to proc-macros), but will be rejected after parsing.</p>
+<p>元项中的表达式必须宏展开为字面量表达式，其中不得包含整数或浮点类型后缀。非字面量表达式的表达式在语法上会被接受（并可传递给过程宏），但会在解析后被拒绝。</p>
 <div class="rule" id="r-attributes.meta.order"><a class="rule-link" href="#r-attributes.meta.order" title="attributes.meta.order"><span>[attributes<wbr>.meta<wbr>.order]</span></a>
 </div>
 
-<p>Note that if the attribute appears within another macro, it will be expanded
-after that outer macro. For example, the following code will expand the
-<code>Serialize</code> proc-macro first, which must preserve the <code>include_str!</code> call in
-order for it to be expanded:</p>
+<p>请注意，如果属性出现在另一个宏中，它将在该外部宏之后展开。例如，以下代码将首先展开 <code>Serialize</code> 过程宏，该宏必须保留 <code>include_str!</code> 调用才能被展开：</p>
 <pre><code class="language-rust ignore">#[derive(Serialize)]
 struct Foo {
     #[doc = include_str!("x.md")]
@@ -761,18 +739,16 @@ struct Foo {
 <div class="rule" id="r-attributes.meta.order-macro"><a class="rule-link" href="#r-attributes.meta.order-macro" title="attributes.meta.order-macro"><span>[attributes<wbr>.meta<wbr>.order-macro]</span></a>
 </div>
 
-<p>Additionally, macros in attributes will be expanded only after all other attributes applied to the item:</p>
-<pre><code class="language-rust ignore">#[macro_attr1] // expanded first
-#[doc = mac!()] // `mac!` is expanded fourth.
-#[macro_attr2] // expanded second
-#[derive(MacroDerive1, MacroDerive2)] // expanded third
+<p>此外，属性中的宏只会在应用于该 项 的所有其他属性之后展开：</p>
+<pre><code class="language-rust ignore">#[macro_attr1] // 首先展开
+#[doc = mac!()] // `mac!` 第四次展开。
+#[macro_attr2] // 第二次展开
+#[derive(MacroDerive1, MacroDerive2)] // 第三次展开
 fn foo() {}</code></pre>
 <div class="rule" id="r-attributes.meta.builtin"><a class="rule-link" href="#r-attributes.meta.builtin" title="attributes.meta.builtin"><span>[attributes<wbr>.meta<wbr>.builtin]</span></a>
 </div>
 
-<p>Various built-in attributes use different subsets of the meta item syntax to
-specify their inputs. The following grammar rules show some commonly used
-forms:</p>
+<p>各种内置属性使用元项语法的不同子集来指定它们的输入。以下语法规则展示了一些常用形式：</p>
 <div class="rule" id="r-attributes.meta.builtin.syntax"><a class="rule-link" href="#r-attributes.meta.builtin.syntax" title="attributes.meta.builtin.syntax"><span>[attributes<wbr>.meta<wbr>.builtin<wbr>.syntax]</span></a>
 </div>
 
@@ -1117,63 +1093,54 @@ MetaNameValueStr</text>
 
 </div>
 
-<p>Some examples of meta items are:</p>
+<p>一些元项的示例如下：</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Style</th><th>Example</th></tr>
+<tr><th>样式</th><th>示例</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="attributes.html#grammar-MetaWord">MetaWord</a></td><td><code>no_std</code></td></tr>
-<tr><td><a href="attributes.html#grammar-MetaNameValueStr">MetaNameValueStr</a></td><td><code>doc = "example"</code></td></tr>
-<tr><td><a href="attributes.html#grammar-MetaListPaths">MetaListPaths</a></td><td><code>allow(unused, clippy::inline_always)</code></td></tr>
-<tr><td><a href="attributes.html#grammar-MetaListIdents">MetaListIdents</a></td><td><code>macro_use(foo, bar)</code></td></tr>
-<tr><td><a href="attributes.html#grammar-MetaListNameValueStr">MetaListNameValueStr</a></td><td><code>link(name = "CoreFoundation", kind = "framework")</code></td></tr>
+<tr><td><a href="attributes.html#grammar-MetaWord">元字</a></td><td><code>no_std</code></td></tr>
+<tr><td><a href="attributes.html#grammar-MetaNameValueStr">元名称值字符串</a></td><td><code>doc = "example"</code></td></tr>
+<tr><td><a href="attributes.html#grammar-MetaListPaths">元列表路径</a></td><td><code>allow(unused, clippy::inline_always)</code></td></tr>
+<tr><td><a href="attributes.html#grammar-MetaListIdents">元列表标识符</a></td><td><code>macro_use(foo, bar)</code></td></tr>
+<tr><td><a href="attributes.html#grammar-MetaListNameValueStr">元列表名称值字符串</a></td><td><code>link(name = "CoreFoundation", kind = "framework")</code></td></tr>
 </tbody>
 </table>
 </div>
 <div class="rule" id="r-attributes.activity"><a class="rule-link" href="#r-attributes.activity" title="attributes.activity"><span>[attributes<wbr>.activity]</span></a>
 </div>
 
-<h2 id="active-and-inert-attributes"><a class="header" href="#active-and-inert-attributes">Active and inert attributes</a></h2>
+<h2 id="活跃属性和惰性属性"><a class="header" href="#活跃属性和惰性属性">活跃属性和惰性属性</a></h2>
 <div class="rule" id="r-attributes.activity.intro"><a class="rule-link" href="#r-attributes.activity.intro" title="attributes.activity.intro"><span>[attributes<wbr>.activity<wbr>.intro]</span></a>
 </div>
 
-<p>An attribute is either active or inert. During attribute processing, <em>active
-attributes</em> remove themselves from the form they are on while <em>inert attributes</em>
-stay on.</p>
-<p>The <a href="conditional-compilation.html#cfg属性"><code>cfg</code></a> and <a href="conditional-compilation.html#cfg_attr属性"><code>cfg_attr</code></a> attributes are active.
-<a href="procedural-macros.html#proc_macro_attribute属性">Attribute macros</a> are active. All other attributes are inert.</p>
+<p>属性要么是活跃的，要么是惰性的。在属性处理期间，<em>活跃属性</em> 会从它们所在的表单中移除自己，而 <em>惰性属性</em> 则保留在表单上。</p>
+<p><a href="conditional-compilation.html#cfg属性"><code>cfg</code></a> 和 <a href="conditional-compilation.html#cfg_attr属性"><code>cfg_attr</code></a> 属性是活跃的。<a href="procedural-macros.html#proc_macro_attribute属性">属性宏</a> 是活跃的。所有其他属性都是惰性的。</p>
 <div class="rule" id="r-attributes.tool"><a class="rule-link" href="#r-attributes.tool" title="attributes.tool"><span>[attributes<wbr>.tool]</span></a>
 </div>
 
-<h2 id="tool-attributes"><a class="header" href="#tool-attributes">Tool attributes</a></h2>
+<h2 id="工具属性"><a class="header" href="#工具属性">工具属性</a></h2>
 <div class="rule" id="r-attributes.tool.intro"><a class="rule-link" href="#r-attributes.tool.intro" title="attributes.tool.intro"><span>[attributes<wbr>.tool<wbr>.intro]</span></a>
 </div>
 
-<p>The compiler may allow attributes for external tools where each tool resides
-in its own module in the <a href="names/preludes.html#tool-prelude">tool prelude</a>. The first segment of the attribute
-path is the name of the tool, with one or more additional segments whose
-interpretation is up to the tool.</p>
+<p>编译器可能允许外部工具的属性，其中每个工具都位于 <a href="names/preludes.html#tool-prelude">工具预导入</a> 中的自己的模块中。属性路径的第一个段是工具的名称，带有一个或多个额外段，其解释由工具决定。</p>
 <div class="rule" id="r-attributes.tool.ignored"><a class="rule-link" href="#r-attributes.tool.ignored" title="attributes.tool.ignored"><span>[attributes<wbr>.tool<wbr>.ignored]</span></a>
 </div>
 
-<p>When a tool is not in use, the tool’s attributes are accepted without a
-warning. When the tool is in use, the tool is responsible for processing and
-interpretation of its attributes.</p>
+<p>当工具未使用时，工具的属性会被接受，而不会发出警告。当工具在使用时，工具负责处理和解释其属性。</p>
 <div class="rule" id="r-attributes.tool.prelude"><a class="rule-link" href="#r-attributes.tool.prelude" title="attributes.tool.prelude"><span>[attributes<wbr>.tool<wbr>.prelude]</span></a>
 </div>
 
-<p>Tool attributes are not available if the <a href="names/preludes.html#the-no_implicit_prelude-attribute"><code>no_implicit_prelude</code></a> attribute is
-used.</p>
+<p>如果使用了 <a href="names/preludes.html#the-no_implicit_prelude-attribute"><code>no_implicit_prelude</code></a> 属性，则工具属性不可用。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Tells the rustfmt tool to not format the following element.
+</span>// 告诉 rustfmt 工具不要格式化以下元素。
 #[rustfmt::skip]
 struct S {
 }
 
-// Controls the "cyclomatic complexity" threshold for the clippy tool.
+// 控制 clippy 工具的“圈复杂度”阈值。
 #[clippy::cyclomatic_complexity = "100"]
 pub fn f() {}
 <span class="boring">}</span></code></pre>
@@ -1181,150 +1148,138 @@ pub fn f() {}
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> currently recognizes the tools “clippy”, “rustfmt”, “diagnostic”, “miri”, and “rust_analyzer”.</p>
+<p><code>rustc</code> 目前识别的工具包括 “clippy”, “rustfmt”, “diagnostic”, “miri” 和 “rust_analyzer”。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.builtin"><a class="rule-link" href="#r-attributes.builtin" title="attributes.builtin"><span>[attributes<wbr>.builtin]</span></a>
 </div>
 
-<h2 id="built-in-attributes-index"><a class="header" href="#built-in-attributes-index">Built-in attributes index</a></h2>
-<p>The following is an index of all built-in attributes.</p>
+<h2 id="内置属性索引"><a class="header" href="#内置属性索引">内置属性索引</a></h2>
+<p>以下是所有内置属性的索引。</p>
 <ul>
 <li>
-<p>Conditional compilation</p>
+<p>条件编译</p>
 <ul>
-<li><a href="conditional-compilation.html#cfg属性"><code>cfg</code></a> — Controls conditional compilation.</li>
-<li><a href="conditional-compilation.html#cfg_attr属性"><code>cfg_attr</code></a> — Conditionally includes attributes.</li>
+<li><a href="conditional-compilation.html#cfg属性"><code>cfg</code></a> — 控制条件编译。</li>
+<li><a href="conditional-compilation.html#cfg_attr属性"><code>cfg_attr</code></a> — 有条件地包含属性。</li>
 </ul>
 </li>
 <li>
-<p>Testing</p>
+<p>测试</p>
 <ul>
-<li><a href="attributes/testing.html#the-test-attribute"><code>test</code></a> — Marks a function as a test.</li>
-<li><a href="attributes/testing.html#the-ignore-attribute"><code>ignore</code></a> — Disables a test function.</li>
-<li><a href="attributes/testing.html#the-should_panic-attribute"><code>should_panic</code></a> — Indicates a test should generate a panic.</li>
+<li><a href="attributes/testing.html#the-test-attribute"><code>test</code></a> — 将函数标记为测试。</li>
+<li><a href="attributes/testing.html#the-ignore-attribute"><code>ignore</code></a> — 禁用测试函数。</li>
+<li><a href="attributes/testing.html#the-should_panic-attribute"><code>should_panic</code></a> — 表示测试应生成一个 恐慌。</li>
 </ul>
 </li>
 <li>
-<p>Derive</p>
+<p>派生</p>
 <ul>
-<li><a href="attributes/derive.html"><code>derive</code></a> — Automatic trait implementations.</li>
-<li><a href="attributes/derive.html#the-automatically_derived-attribute"><code>automatically_derived</code></a> — Marker for implementations created by
-<code>derive</code>.</li>
+<li><a href="attributes/derive.html"><code>derive</code></a> — 自动 特型 实现。</li>
+<li><a href="attributes/derive.html#the-automatically_derived-attribute"><code>automatically_derived</code></a> — <code>derive</code> 创建的实现的标记。</li>
 </ul>
 </li>
 <li>
-<p>Macros</p>
+<p>宏</p>
 <ul>
-<li><a href="macros-by-example.html#macro_export属性"><code>macro_export</code></a> — Exports a <code>macro_rules</code> macro for cross-crate usage.</li>
-<li><a href="macros-by-example.html#macro_use属性"><code>macro_use</code></a> — Expands macro visibility, or imports macros from other
-crates.</li>
-<li><a href="procedural-macros.html#proc_macro属性"><code>proc_macro</code></a> — Defines a function-like macro.</li>
-<li><a href="procedural-macros.html#r-macro.proc.derive"><code>proc_macro_derive</code></a> — Defines a derive macro.</li>
-<li><a href="procedural-macros.html#proc_macro_attribute属性"><code>proc_macro_attribute</code></a> — Defines an attribute macro.</li>
+<li><a href="macros-by-example.html#macro_export属性"><code>macro_export</code></a> — 导出用于跨 crate 使用的 <code>macro_rules</code> 宏。</li>
+<li><a href="macros-by-example.html#macro_use属性"><code>macro_use</code></a> — 扩展宏可见性，或从其他 crate 导入宏。</li>
+<li><a href="procedural-macros.html#proc_macro属性"><code>proc_macro</code></a> — 定义函数式宏。</li>
+<li><a href="procedural-macros.html#r-macro.proc.derive"><code>proc_macro_derive</code></a> — 定义派生宏。</li>
+<li><a href="procedural-macros.html#proc_macro_attribute属性"><code>proc_macro_attribute</code></a> — 定义属性宏。</li>
 </ul>
 </li>
 <li>
-<p>Diagnostics</p>
+<p>诊断</p>
 <ul>
-<li><a href="attributes/diagnostics.html#lint-check-attributes"><code>allow</code></a>, <a href="attributes/diagnostics.html#lint-check-attributes"><code>expect</code></a>, <a href="attributes/diagnostics.html#lint-check-attributes"><code>warn</code></a>, <a href="attributes/diagnostics.html#lint-check-attributes"><code>deny</code></a>, <a href="attributes/diagnostics.html#lint-check-attributes"><code>forbid</code></a> — Alters the default lint level.</li>
-<li><a href="attributes/diagnostics.html#the-deprecated-attribute"><code>deprecated</code></a> — Generates deprecation notices.</li>
-<li><a href="attributes/diagnostics.html#the-must_use-attribute"><code>must_use</code></a> — Generates a lint for unused values.</li>
-<li><a href="attributes/diagnostics.html#the-diagnosticon_unimplemented-attribute"><code>diagnostic::on_unimplemented</code></a> — Hints the compiler to emit a certain error
-message if a trait is not implemented.</li>
-<li><a href="attributes/diagnostics.html#the-diagnosticdo_not_recommend-attribute"><code>diagnostic::do_not_recommend</code></a> — Hints the compiler to not show a certain trait impl in error messages.</li>
+<li><a href="attributes/diagnostics.html#lint-check-attributes"><code>allow</code></a>、<a href="attributes/diagnostics.html#lint-check-attributes"><code>expect</code></a>、<a href="attributes/diagnostics.html#lint-check-attributes"><code>warn</code></a>、<a href="attributes/diagnostics.html#lint-check-attributes"><code>deny</code></a>、<a href="attributes/diagnostics.html#lint-check-attributes"><code>forbid</code></a> — 更改默认 lint 级别。</li>
+<li><a href="attributes/diagnostics.html#the-deprecated-attribute"><code>deprecated</code></a> — 生成弃用通知。</li>
+<li><a href="attributes/diagnostics.html#the-must_use-attribute"><code>must_use</code></a> — 对未使用的值生成 lint。</li>
+<li><a href="attributes/diagnostics.html#the-diagnosticon_unimplemented-attribute"><code>diagnostic::on_unimplemented</code></a> — 提示编译器在 未实现 特型 时发出特定错误消息。</li>
+<li><a href="attributes/diagnostics.html#the-diagnosticdo_not_recommend-attribute"><code>diagnostic::do_not_recommend</code></a> — 提示编译器不要在错误消息中显示某个 特型 实现。</li>
 </ul>
 </li>
 <li>
-<p>ABI, linking, symbols, and FFI</p>
+<p>ABI、链接、符号和 FFI</p>
 <ul>
-<li><a href="items/external-blocks.html#the-link-attribute"><code>link</code></a> — Specifies a native library to link with an <code>extern</code> block.</li>
-<li><a href="items/external-blocks.html#the-link_name-attribute"><code>link_name</code></a> — Specifies the name of the symbol for functions or statics
-in an <code>extern</code> block.</li>
-<li><a href="items/external-blocks.html#the-link_ordinal-attribute"><code>link_ordinal</code></a> — Specifies the ordinal of the symbol for functions or
-statics in an <code>extern</code> block.</li>
-<li><a href="items/extern-crates.html#the-no_link-attribute"><code>no_link</code></a> — Prevents linking an extern crate.</li>
-<li><a href="type-layout.html#representations"><code>repr</code></a> — Controls type layout.</li>
-<li><a href="linkage.html"><code>crate_type</code></a> — Specifies the type of crate (library, executable, etc.).</li>
-<li><a href="crates-and-source-files.html#no_main属性"><code>no_main</code></a> — Disables emitting the <code>main</code> symbol.</li>
-<li><a href="abi.html#the-export_name-attribute"><code>export_name</code></a> — Specifies the exported symbol name for a function or
-static.</li>
-<li><a href="abi.html#the-link_section-attribute"><code>link_section</code></a> — Specifies the section of an object file to use for a
-function or static.</li>
-<li><a href="abi.html#the-no_mangle-attribute"><code>no_mangle</code></a> — Disables symbol name encoding.</li>
-<li><a href="abi.html#the-used-attribute"><code>used</code></a> — Forces the compiler to keep a static item in the output
-object file.</li>
-<li><a href="crates-and-source-files.html#crate_name属性"><code>crate_name</code></a> — Specifies the crate name.</li>
+<li><a href="items/external-blocks.html#the-link-attribute"><code>link</code></a> — 指定要与 <code>extern</code> 块链接的本地库。</li>
+<li><a href="items/external-blocks.html#the-link_name-attribute"><code>link_name</code></a> — 指定 <code>extern</code> 块中函数或静态变量的符号名称。</li>
+<li><a href="items/external-blocks.html#the-link_ordinal-attribute"><code>link_ordinal</code></a> — 指定 <code>extern</code> 块中函数或静态变量的符号序号。</li>
+<li><a href="items/extern-crates.html#the-no_link-attribute"><code>no_link</code></a> — 阻止链接外部 crate。</li>
+<li><a href="type-layout.html#representations"><code>repr</code></a> — 控制类型布局。</li>
+<li><a href="linkage.html"><code>crate_type</code></a> — 指定 crate 的类型（库、可执行文件等）。</li>
+<li><a href="crates-and-source-files.html#no_main属性"><code>no_main</code></a> — 禁用发出 <code>main</code> 符号。</li>
+<li><a href="abi.html#the-export_name-attribute"><code>export_name</code></a> — 指定函数或静态变量的导出符号名称。</li>
+<li><a href="abi.html#the-link_section-attribute"><code>link_section</code></a> — 指定函数或静态变量要使用的对象文件节。</li>
+<li><a href="abi.html#the-no_mangle-attribute"><code>no_mangle</code></a> — 禁用符号名称编码。</li>
+<li><a href="abi.html#the-used-attribute"><code>used</code></a> — 强制编译器将静态 项 保留在输出对象文件中。</li>
+<li><a href="crates-and-source-files.html#crate_name属性"><code>crate_name</code></a> — 指定 crate 名称。</li>
 </ul>
 </li>
 <li>
-<p>Code generation</p>
+<p>代码生成</p>
 <ul>
-<li><a href="attributes/codegen.html#the-inline-attribute"><code>inline</code></a> — Hint to inline code.</li>
-<li><a href="attributes/codegen.html#the-cold-attribute"><code>cold</code></a> — Hint that a function is unlikely to be called.</li>
-<li><a href="attributes/codegen.html#the-naked-attribute"><code>naked</code></a> — Prevent the compiler from emitting a function prologue and epilogue.</li>
-<li><a href="attributes/codegen.html#the-no_builtins-attribute"><code>no_builtins</code></a> — Disables use of certain built-in functions.</li>
-<li><a href="attributes/codegen.html#the-target_feature-attribute"><code>target_feature</code></a> — Configure platform-specific code generation.</li>
-<li><a href="attributes/codegen.html#the-track_caller-attribute"><code>track_caller</code></a> — Pass the parent call location to <code>std::panic::Location::caller()</code>.</li>
-<li><a href="attributes/codegen.html#the-instruction_set-attribute"><code>instruction_set</code></a> — Specify the instruction set used to generate a function’s code.</li>
+<li><a href="attributes/codegen.html#the-inline-attribute"><code>inline</code></a> — 提示内联代码。</li>
+<li><a href="attributes/codegen.html#the-cold-attribute"><code>cold</code></a> — 提示函数不太可能被调用。</li>
+<li><a href="attributes/codegen.html#the-naked-attribute"><code>naked</code></a> — 阻止编译器发出函数序言和尾声。</li>
+<li><a href="attributes/codegen.html#the-no_builtins-attribute"><code>no_builtins</code></a> — 禁用使用某些内置函数。</li>
+<li><a href="attributes/codegen.html#the-target_feature-attribute"><code>target_feature</code></a> — 配置特定于平台的代码生成。</li>
+<li><a href="attributes/codegen.html#the-track_caller-attribute"><code>track_caller</code></a> — 将父调用位置传递给 <code>std::panic::Location::caller()</code>。</li>
+<li><a href="attributes/codegen.html#the-instruction_set-attribute"><code>instruction_set</code></a> — 指定用于生成函数代码的指令集。</li>
 </ul>
 </li>
 <li>
-<p>Documentation</p>
+<p>文档</p>
 <ul>
-<li><code>doc</code> — Specifies documentation. See <a href="../rustdoc/the-doc-attribute.html">The Rustdoc Book</a> for more
-information. <a href="comments.html#文档注释">Doc comments</a> are transformed into <code>doc</code> attributes.</li>
+<li><code>doc</code> — 指定文档。有关更多信息，请参阅 <a href="../rustdoc/the-doc-attribute.html">The Rustdoc Book</a>。 <a href="comments.html#文档注释">文档注释</a> 会转换为 <code>doc</code> 属性。</li>
 </ul>
 </li>
 <li>
-<p>Preludes</p>
+<p>预导入</p>
 <ul>
-<li><a href="names/preludes.html#the-no_std-attribute"><code>no_std</code></a> — Removes std from the prelude.</li>
-<li><a href="names/preludes.html#the-no_implicit_prelude-attribute"><code>no_implicit_prelude</code></a> — Disables prelude lookups within a module.</li>
+<li><a href="names/preludes.html#the-no_std-attribute"><code>no_std</code></a> — 从 预导入 中移除 std。</li>
+<li><a href="names/preludes.html#the-no_implicit_prelude-attribute"><code>no_implicit_prelude</code></a> — 禁用模块内的 预导入 查找。</li>
 </ul>
 </li>
 <li>
-<p>Modules</p>
+<p>模块</p>
 <ul>
-<li><a href="items/modules.html#the-path-attribute"><code>path</code></a> — Specifies the filename for a module.</li>
+<li><a href="items/modules.html#the-path-attribute"><code>path</code></a> — 指定模块的文件名。</li>
 </ul>
 </li>
 <li>
-<p>Limits</p>
+<p>限制</p>
 <ul>
-<li><a href="attributes/limits.html#the-recursion_limit-attribute"><code>recursion_limit</code></a> — Sets the maximum recursion limit for certain
-compile-time operations.</li>
-<li><a href="attributes/limits.html#the-type_length_limit-attribute"><code>type_length_limit</code></a> — Sets the maximum size of a polymorphic type.</li>
+<li><a href="attributes/limits.html#the-recursion_limit-attribute"><code>recursion_limit</code></a> — 设置某些编译时操作的最大递归限制。</li>
+<li><a href="attributes/limits.html#the-type_length_limit-attribute"><code>type_length_limit</code></a> — 设置多态类型的最大大小。</li>
 </ul>
 </li>
 <li>
-<p>Runtime</p>
+<p>运行时</p>
 <ul>
-<li><a href="panic.html#the-panic_handler-attribute"><code>panic_handler</code></a> — Sets the function to handle panics.</li>
-<li><a href="runtime.html#the-global_allocator-attribute"><code>global_allocator</code></a> — Sets the global memory allocator.</li>
-<li><a href="runtime.html#the-windows_subsystem-attribute"><code>windows_subsystem</code></a> — Specifies the windows subsystem to link with.</li>
+<li><a href="panic.html#the-panic_handler-attribute"><code>panic_handler</code></a> — 设置处理 恐慌 的函数。</li>
+<li><a href="runtime.html#the-global_allocator-attribute"><code>global_allocator</code></a> — 设置全局内存分配器。</li>
+<li><a href="runtime.html#the-windows_subsystem-attribute"><code>windows_subsystem</code></a> — 指定要链接的 Windows 子系统。</li>
 </ul>
 </li>
 <li>
-<p>Features</p>
+<p>特性</p>
 <ul>
-<li><code>feature</code> — Used to enable unstable or experimental compiler features. See
-<a href="../unstable-book/index.html">The Unstable Book</a> for features implemented in <code>rustc</code>.</li>
+<li><code>feature</code> — 用于启用不稳定或实验性编译器 特性。有关 <code>rustc</code> 中实现的 特性，请参阅 <a href="../unstable-book/index.html">The Unstable Book</a>。</li>
 </ul>
 </li>
 <li>
-<p>Type System</p>
+<p>类型系统</p>
 <ul>
-<li><a href="attributes/type_system.html#the-non_exhaustive-attribute"><code>non_exhaustive</code></a> — Indicate that a type will have more fields/variants
-added in future.</li>
+<li><a href="attributes/type_system.html#the-non_exhaustive-attribute"><code>non_exhaustive</code></a> — 指示将来会为类型添加更多字段/变体。</li>
 </ul>
 </li>
 <li>
-<p>Debugger</p>
+<p>调试器</p>
 <ul>
-<li><a href="attributes/debugger.html#the-debugger_visualizer-attribute"><code>debugger_visualizer</code></a> — Embeds a file that specifies debugger output for a type.</li>
-<li><a href="attributes/debugger.html#the-collapse_debuginfo-attribute"><code>collapse_debuginfo</code></a> — Controls how macro invocations are encoded in debuginfo.</li>
+<li><a href="attributes/debugger.html#the-debugger_visualizer-attribute"><code>debugger_visualizer</code></a> — 嵌入一个文件，该文件指定某种类型的调试器输出。</li>
+<li><a href="attributes/debugger.html#the-collapse_debuginfo-attribute"><code>collapse_debuginfo</code></a> — 控制宏调用在调试信息中编码的方式。</li>
 </ul>
 </li>
 </ul>

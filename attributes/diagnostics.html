@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-1458537c.js";
+            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,77 +181,70 @@
                         <div class="rule" id="r-attributes.diagnostics"><a class="rule-link" href="#r-attributes.diagnostics" title="attributes.diagnostics"><span>[attributes<wbr>.diagnostics]</span></a>
 </div>
 
-<h1 id="diagnostic-attributes"><a class="header" href="#diagnostic-attributes">Diagnostic attributes</a></h1>
-<p>The following <a href="../attributes.html">attributes</a> are used for controlling or generating diagnostic
-messages during compilation.</p>
+<h1 id="诊断属性"><a class="header" href="#诊断属性">诊断属性</a></h1>
+<p>以下 <a href="../attributes.html">属性</a> 用于在编译期间控制或生成诊断消息。</p>
 <div class="rule" id="r-attributes.diagnostics.lint"><a class="rule-link" href="#r-attributes.diagnostics.lint" title="attributes.diagnostics.lint"><span>[attributes<wbr>.diagnostics<wbr>.lint]</span></a>
 </div>
 
-<h2 id="lint-check-attributes"><a class="header" href="#lint-check-attributes">Lint check attributes</a></h2>
-<p>A lint check names a potentially undesirable coding pattern, such as
-unreachable code or omitted documentation.</p>
+<h2 id="lint检查属性"><a class="header" href="#lint检查属性">Lint检查属性</a></h2>
+<p>Lint 检查命名了一种可能不理想的编码模式，例如不可达代码或遗漏的文档。</p>
 <div class="rule" id="r-attributes.diagnostics.lint.level"><a class="rule-link" href="#r-attributes.diagnostics.lint.level" title="attributes.diagnostics.lint.level"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.level]</span></a>
 </div>
 
-<p>The lint attributes <code>allow</code>,
-<code>expect</code>, <code>warn</code>, <code>deny</code>, and <code>forbid</code> use the <a href="../attributes.html#grammar-MetaListPaths">MetaListPaths</a> syntax
-to specify a list of lint names to change the lint level for the entity
-to which the attribute applies.</p>
-<p>For any lint check <code>C</code>:</p>
+<p>lint 属性 <code>allow</code>、
+<code>expect</code>、<code>warn</code>、<code>deny</code> 和 <code>forbid</code> 使用 <a href="../attributes.html#grammar-MetaListPaths">MetaListPaths</a> 语法格式
+来指定 lint 名称列表，以更改属性所应用实体的 lint 级别。</p>
+<p>对于任何 lint 检查 <code>C</code>：</p>
 <div class="rule" id="r-attributes.diagnostics.lint.allow"><a class="rule-link" href="#r-attributes.diagnostics.lint.allow" title="attributes.diagnostics.lint.allow"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.allow]</span></a>
 </div>
 
 <ul>
-<li><code>#[allow(C)]</code> overrides the check for <code>C</code> so that violations will go
-unreported.</li>
+<li><code>#[allow(C)]</code> 覆盖对 <code>C</code> 的检查，以便违规行为将不被报告。</li>
 </ul>
 <div class="rule" id="r-attributes.diagnostics.lint.expect"><a class="rule-link" href="#r-attributes.diagnostics.lint.expect" title="attributes.diagnostics.lint.expect"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.expect]</span></a>
 </div>
 
 <ul>
-<li><code>#[expect(C)]</code> indicates that lint <code>C</code> is expected to be emitted. The
-attribute will suppress the emission of <code>C</code> or issue a warning, if the
-expectation is unfulfilled.</li>
+<li><code>#[expect(C)]</code> 表示预期会发出 lint <code>C</code>。如果预期未实现，则该属性将抑制 <code>C</code> 的发出或发出警告。</li>
 </ul>
 <div class="rule" id="r-attributes.diagnostics.lint.warn"><a class="rule-link" href="#r-attributes.diagnostics.lint.warn" title="attributes.diagnostics.lint.warn"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.warn]</span></a>
 </div>
 
 <ul>
-<li><code>#[warn(C)]</code> warns about violations of <code>C</code> but continues compilation.</li>
+<li><code>#[warn(C)]</code> 警告 <code>C</code> 的违规行为，但继续编译。</li>
 </ul>
 <div class="rule" id="r-attributes.diagnostics.lint.deny"><a class="rule-link" href="#r-attributes.diagnostics.lint.deny" title="attributes.diagnostics.lint.deny"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.deny]</span></a>
 </div>
 
 <ul>
-<li><code>#[deny(C)]</code> signals an error after encountering a violation of <code>C</code>,</li>
+<li><code>#[deny(C)]</code> 在遇到 <code>C</code> 的违规行为后发出错误信号，</li>
 </ul>
 <div class="rule" id="r-attributes.diagnostics.lint.forbid"><a class="rule-link" href="#r-attributes.diagnostics.lint.forbid" title="attributes.diagnostics.lint.forbid"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.forbid]</span></a>
 </div>
 
 <ul>
-<li><code>#[forbid(C)]</code> is the same as <code>deny(C)</code>, but also forbids changing the lint
-level afterwards,</li>
+<li><code>#[forbid(C)]</code> 与 <code>deny(C)</code> 相同，但事后也禁止更改 lint 级别，</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The lint checks supported by <code>rustc</code> can be found via <code>rustc -W help</code>, along with their default settings and are documented in the <a href="../../rustc/lints/index.html">rustc book</a>.</p>
+<p>通过 <code>rustc -W help</code> 可以找到 <code>rustc</code> 支持的 lint 检查，以及它们的默认设置，并记录在 <a href="../../rustc/lints/index.html">rustc book</a> 中。</p>
 </blockquote>
 </div>
 
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub mod m1 {
-    // Missing documentation is ignored here
+    // 此处忽略缺少文档
     #[allow(missing_docs)]
     pub fn undocumented_one() -&gt; i32 { 1 }
 
-    // Missing documentation signals a warning here
+    // 此处缺少文档会发出警告
     #[warn(missing_docs)]
     pub fn undocumented_too() -&gt; i32 { 2 }
 
-    // Missing documentation signals an error here
+    // 此处缺少文档会发出错误
     #[deny(missing_docs)]
     pub fn undocumented_end() -&gt; i32 { 3 }
 }
@@ -259,41 +252,37 @@ level afterwards,</li>
 <div class="rule" id="r-attributes.diagnostics.lint.override"><a class="rule-link" href="#r-attributes.diagnostics.lint.override" title="attributes.diagnostics.lint.override"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.override]</span></a>
 </div>
 
-<p>Lint attributes can override the level specified from a previous attribute, as
-long as the level does not attempt to change a forbidden lint
-(except for <code>deny</code>, which is allowed inside a <code>forbid</code> context, but ignored).
-Previous attributes are those from a higher level in the syntax tree, or from a
-previous attribute on the same entity as listed in left-to-right source order.</p>
-<p>This example shows how one can use <code>allow</code> and <code>warn</code> to toggle a particular
-check on and off:</p>
+<p>lint 属性可以覆盖先前属性指定的级别，只要该级别不尝试更改被禁止的 lint
+（除了 <code>deny</code>，它在 <code>forbid</code> 上下文中是允许的，但会被忽略）。
+先前的属性是指在语法树中更高级别的属性，或在同一实体上按从左到右源代码顺序列出的先前属性。</p>
+<p>此示例展示了如何使用 <code>allow</code> 和 <code>warn</code> 来开启和关闭特定检查：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[warn(missing_docs)]
 pub mod m2 {
     #[allow(missing_docs)]
     pub mod nested {
-        // Missing documentation is ignored here
+        // 此处忽略缺少文档
         pub fn undocumented_one() -&gt; i32 { 1 }
 
-        // Missing documentation signals a warning here,
-        // despite the allow above.
+        // 此处缺少文档会发出警告，
+        // 尽管上面有 allow。
         #[warn(missing_docs)]
         pub fn undocumented_two() -&gt; i32 { 2 }
     }
 
-    // Missing documentation signals a warning here
+    // 此处缺少文档会发出警告
     pub fn undocumented_too() -&gt; i32 { 3 }
 }
 <span class="boring">}</span></code></pre>
-<p>This example shows how one can use <code>forbid</code> to disallow uses of <code>allow</code> or
-<code>expect</code> for that lint check:</p>
+<p>此示例展示了如何使用 <code>forbid</code> 来禁止对该 lint 检查使用 <code>allow</code> 或 <code>expect</code>：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[forbid(missing_docs)]
 pub mod m3 {
-    // Attempting to toggle warning signals an error here
+    // 尝试切换警告在此处发出错误
     #[allow(missing_docs)]
-    /// Returns 2.
+    /// 返回 2。
     pub fn undocumented_too() -&gt; i32 { 2 }
 }
 <span class="boring">}</span></code></pre>
@@ -301,37 +290,35 @@ pub mod m3 {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> allows setting lint levels on the <a href="../../rustc/lints/levels.html#via-compiler-flag">command-line</a>, and also supports <a href="../../rustc/lints/levels.html#capping-lints">setting caps</a> on the lints that are reported.</p>
+<p><code>rustc</code> 允许在 <a href="../../rustc/lints/levels.html#via-compiler-flag">命令行</a> 上设置 lint 级别，并且还支持对报告的 lint <a href="../../rustc/lints/levels.html#capping-lints">设置上限</a>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.diagnostics.lint.reason"><a class="rule-link" href="#r-attributes.diagnostics.lint.reason" title="attributes.diagnostics.lint.reason"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.reason]</span></a>
 </div>
 
-<h3 id="lint-reasons"><a class="header" href="#lint-reasons">Lint reasons</a></h3>
-<p>All lint attributes support an additional <code>reason</code> parameter, to give context why
-a certain attribute was added. This reason will be displayed as part of the lint
-message if the lint is emitted at the defined level.</p>
+<h3 id="lint原因"><a class="header" href="#lint原因">Lint原因</a></h3>
+<p>所有 lint 属性都支持一个额外的 <code>reason</code> 参数，以提供添加某个属性的上下文。如果 lint 在定义的级别发出，此原因将作为 lint 消息的一部分显示。</p>
 <pre class="playground"><code class="language-rust edition2015 compile_fail"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// `keyword_idents` is allowed by default. Here we deny it to
-// avoid migration of identifiers when we update the edition.
+</span>// `keyword_idents` 默认是允许的。此处我们禁止它以
+// 避免在更新 版次 时标识符的迁移。
 #![deny(
     keyword_idents,
     reason = "we want to avoid these idents to be future compatible"
 )]
 
-// This name was allowed in Rust's 2015 edition. We still aim to avoid
-// this to be future compatible and not confuse end users.
+// 此名称在 Rust 的 2015 版次 中是允许的。我们仍然旨在避免
+// 这以便未来兼容并且不混淆最终用户。
 fn dyn() {}
 <span class="boring">}</span></code></pre>
-<p>Here is another example, where the lint is allowed with a reason:</p>
+<p>这是另一个示例，其中 lint 被允许并带有原因：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::path::PathBuf;
 
 pub fn get_path() -&gt; PathBuf {
-    // The `reason` parameter on `allow` attributes acts as documentation for the reader.
+    // `allow` 属性上的 `reason` 参数作为读者的文档。
     #[allow(unused_mut, reason = "this is only modified on some platforms")]
     let mut file_name = PathBuf::from("git");
 
@@ -344,58 +331,47 @@ pub fn get_path() -&gt; PathBuf {
 <div class="rule" id="r-attributes.diagnostics.expect"><a class="rule-link" href="#r-attributes.diagnostics.expect" title="attributes.diagnostics.expect"><span>[attributes<wbr>.diagnostics<wbr>.expect]</span></a>
 </div>
 
-<h3 id="the-expect-attribute"><a class="header" href="#the-expect-attribute">The <code>#[expect]</code> attribute</a></h3>
+<h3 id="expect属性"><a class="header" href="#expect属性"><code>#[expect]</code>属性</a></h3>
 <div class="rule" id="r-attributes.diagnostics.expect.intro"><a class="rule-link" href="#r-attributes.diagnostics.expect.intro" title="attributes.diagnostics.expect.intro"><span>[attributes<wbr>.diagnostics<wbr>.expect<wbr>.intro]</span></a>
 </div>
 
-<p>The <code>#[expect(C)]</code> attribute creates a lint expectation for lint <code>C</code>. The
-expectation will be fulfilled, if a <code>#[warn(C)]</code> attribute at the same location
-would result in a lint emission. If the expectation is unfulfilled, because
-lint <code>C</code> would not be emitted, the <code>unfulfilled_lint_expectations</code> lint will
-be emitted at the attribute.</p>
+<p><code>#[expect(C)]</code> 属性为 lint <code>C</code> 创建一个 lint 预期。如果同一位置的 <code>#[warn(C)]</code> 属性会导致 lint 发出，则该预期将被实现。如果预期未实现，因为 lint <code>C</code> 不会发出，则将在该属性处发出 <code>unfulfilled_lint_expectations</code> lint。</p>
 <pre class="playground"><code class="language-rust edition2024">fn main() {
-    // This `#[expect]` attribute creates a lint expectation, that the `unused_variables`
-    // lint would be emitted by the following statement. This expectation is
-    // unfulfilled, since the `question` variable is used by the `println!` macro.
-    // Therefore, the `unfulfilled_lint_expectations` lint will be emitted at the
-    // attribute.
+    // 这个 `#[expect]` 属性创建了一个 lint 预期，即 `unused_variables`
+    // lint 将由以下语句发出。由于 `question` 变量被 `println!` 宏使用，
+    // 因此此预期未实现。
+    // 因此，`unfulfilled_lint_expectations` lint 将在此属性处发出。
     #[expect(unused_variables)]
     let question = "who lives in a pineapple under the sea?";
     println!("{question}");
 
-    // This `#[expect]` attribute creates a lint expectation that will be fulfilled, since
-    // the `answer` variable is never used. The `unused_variables` lint, that would usually
-    // be emitted, is suppressed. No warning will be issued for the statement or attribute.
+    // 这个 `#[expect]` 属性创建了一个 lint 预期，它将被实现，因为
+    // `answer` 变量从未被使用。通常会发出的 `unused_variables` lint 被抑制。
+    // 不会为语句或属性发出警告。
     #[expect(unused_variables)]
     let answer = "SpongeBob SquarePants!";
 }</code></pre>
 <div class="rule" id="r-attributes.diagnostics.expect.fulfillment"><a class="rule-link" href="#r-attributes.diagnostics.expect.fulfillment" title="attributes.diagnostics.expect.fulfillment"><span>[attributes<wbr>.diagnostics<wbr>.expect<wbr>.fulfillment]</span></a>
 </div>
 
-<p>The lint expectation is only fulfilled by lint emissions which have been suppressed by
-the <code>expect</code> attribute. If the lint level is modified in the scope with other level
-attributes like <code>allow</code> or <code>warn</code>, the lint emission will be handled accordingly and the
-expectation will remain unfulfilled.</p>
+<p>lint 预期仅由被 <code>expect</code> 属性抑制的 lint 发出所实现。如果在作用域中使用 <code>allow</code> 或 <code>warn</code> 等其他级别属性修改了 lint 级别，则 lint 发出将相应处理，并且预期将保持未实现状态。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[expect(unused_variables)]
 fn select_song() {
-    // This will emit the `unused_variables` lint at the warn level
-    // as defined by the `warn` attribute. This will not fulfill the
-    // expectation above the function.
+    // 这将按 `warn` 属性定义发出 `unused_variables` lint 的警告级别。
+    // 这不会实现函数上方的预期。
     #[warn(unused_variables)]
     let song_name = "Crab Rave";
 
-    // The `allow` attribute suppresses the lint emission. This will not
-    // fulfill the expectation as it has been suppressed by the `allow`
-    // attribute and not the `expect` attribute above the function.
+    // `allow` 属性抑制了 lint 发出。这不会实现预期，
+    // 因为它已被 `allow` 属性抑制，而不是函数上方的 `expect` 属性。
     #[allow(unused_variables)]
     let song_creator = "Noisestorm";
 
-    // This `expect` attribute will suppress the `unused_variables` lint emission
-    // at the variable. The `expect` attribute above the function will still not
-    // be fulfilled, since this lint emission has been suppressed by the local
-    // expect attribute.
+    // 这个 `expect` 属性将抑制变量处的 `unused_variables` lint 发出。
+    // 函数上方的 `expect` 属性仍然不会被实现，因为此 lint 发出已被本地
+    // expect 属性抑制。
     #[expect(unused_variables)]
     let song_version = "Monstercat Release";
 }
@@ -403,22 +379,20 @@ fn select_song() {
 <div class="rule" id="r-attributes.diagnostics.expect.independent"><a class="rule-link" href="#r-attributes.diagnostics.expect.independent" title="attributes.diagnostics.expect.independent"><span>[attributes<wbr>.diagnostics<wbr>.expect<wbr>.independent]</span></a>
 </div>
 
-<p>If the <code>expect</code> attribute contains several lints, each one is expected separately. For a
-lint group it’s enough if one lint inside the group has been emitted:</p>
+<p>如果 <code>expect</code> 属性包含多个 lint，则每个 lint 都单独预期。对于 lint 组，只要组内有一个 lint 被发出就足够了：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// This expectation will be fulfilled by the unused value inside the function
-// since the emitted `unused_variables` lint is inside the `unused` lint group.
+</span>// 这个预期将被函数内未使用的值实现，
+// 因为发出的 `unused_variables` lint 在 `unused` lint 组内。
 #[expect(unused)]
 pub fn thoughts() {
     let unused = "I'm running out of examples";
 }
 
 pub fn another_example() {
-    // This attribute creates two lint expectations. The `unused_mut` lint will be
-    // suppressed and with that fulfill the first expectation. The `unused_variables`
-    // wouldn't be emitted, since the variable is used. That expectation will therefore
-    // be unsatisfied, and a warning will be emitted.
+    // 此属性创建两个 lint 预期。`unused_mut` lint 将被抑制，
+    // 从而实现第一个预期。`unused_variables` 不会发出，因为变量已被使用。
+    // 因此，该预期将未实现，并会发出警告。
     #[expect(unused_mut, unused_variables)]
     let mut link = "https://www.rust-lang.org/";
 
@@ -429,68 +403,61 @@ pub fn another_example() {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The behavior of <code>#[expect(unfulfilled_lint_expectations)]</code> is currently defined to always generate the <code>unfulfilled_lint_expectations</code> lint.</p>
+<p><code>#[expect(unfulfilled_lint_expectations)]</code> 的行为目前定义为始终生成 <code>unfulfilled_lint_expectations</code> lint。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.diagnostics.lint.group"><a class="rule-link" href="#r-attributes.diagnostics.lint.group" title="attributes.diagnostics.lint.group"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.group]</span></a>
 </div>
 
-<h3 id="lint-groups"><a class="header" href="#lint-groups">Lint groups</a></h3>
-<p>Lints may be organized into named groups so that the level of related lints
-can be adjusted together. Using a named group is equivalent to listing out the
-lints within that group.</p>
+<h3 id="lint组"><a class="header" href="#lint组">Lint组</a></h3>
+<p>Lint 可以组织成命名组，以便可以一起调整相关 lint 的级别。使用命名组等同于列出该组内的 lint。</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// This allows all lints in the "unused" group.
+</span>// 这允许“unused”组中的所有 lint。
 #[allow(unused)]
-// This overrides the "unused_must_use" lint from the "unused"
-// group to deny.
+// 这将“unused”组中的“unused_must_use”lint 覆盖为 deny。
 #[deny(unused_must_use)]
 fn example() {
-    // This does not generate a warning because the "unused_variables"
-    // lint is in the "unused" group.
+    // 这不会生成警告，因为“unused_variables”
+    // lint 在“unused”组中。
     let x = 1;
-    // This generates an error because the result is unused and
-    // "unused_must_use" is marked as "deny".
-    std::fs::remove_file("some_file"); // ERROR: unused `Result` that must be used
+    // 这会生成错误，因为结果未使用，并且
+    // “unused_must_use”被标记为“deny”。
+    std::fs::remove_file("some_file"); // 错误：必须使用的未使用的 `Result`
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-attributes.diagnostics.lint.group.warnings"><a class="rule-link" href="#r-attributes.diagnostics.lint.group.warnings" title="attributes.diagnostics.lint.group.warnings"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.group<wbr>.warnings]</span></a>
 </div>
 
-<p>There is a special group named “warnings” which includes all lints at the
-“warn” level. The “warnings” group ignores attribute order and applies to all
-lints that would otherwise warn within the entity.</p>
+<p>有一个名为“warnings”的特殊组，它包含所有警告级别的 lint。 “warnings”组忽略属性顺序，并应用于实体内所有本应发出警告的 lint。</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">unsafe fn an_unsafe_fn() {}
-</span>// The order of these two attributes does not matter.
+</span>// 这两个属性的顺序无关紧要。
 #[deny(warnings)]
-// The unsafe_code lint is normally "allow" by default.
+// `unsafe_code` lint  normally "allow" by default.
 #[warn(unsafe_code)]
 fn example_err() {
-    // This is an error because the `unsafe_code` warning has
-    // been lifted to "deny".
-    unsafe { an_unsafe_fn() } // ERROR: usage of `unsafe` block
+    // 这是一个错误，因为 `unsafe_code` 警告已
+    // 提升为“deny”。
+    unsafe { an_unsafe_fn() } // 错误：使用了 `unsafe` 块
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-attributes.diagnostics.lint.tool"><a class="rule-link" href="#r-attributes.diagnostics.lint.tool" title="attributes.diagnostics.lint.tool"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.tool]</span></a>
 </div>
 
-<h3 id="tool-lint-attributes"><a class="header" href="#tool-lint-attributes">Tool lint attributes</a></h3>
+<h3 id="工具lint属性"><a class="header" href="#工具lint属性">工具lint属性</a></h3>
 <div class="rule" id="r-attributes.diagnostics.lint.tool.intro"><a class="rule-link" href="#r-attributes.diagnostics.lint.tool.intro" title="attributes.diagnostics.lint.tool.intro"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.tool<wbr>.intro]</span></a>
 </div>
 
-<p>Tool lints allows using scoped lints, to <code>allow</code>, <code>warn</code>, <code>deny</code> or <code>forbid</code>
-lints of certain tools.</p>
+<p>工具 lint 允许使用作用域 lint，以 <code>allow</code>、<code>warn</code>、<code>deny</code> 或 <code>forbid</code>
+某些工具的 lint。</p>
 <div class="rule" id="r-attributes.diagnostics.lint.tool.activation"><a class="rule-link" href="#r-attributes.diagnostics.lint.tool.activation" title="attributes.diagnostics.lint.tool.activation"><span>[attributes<wbr>.diagnostics<wbr>.lint<wbr>.tool<wbr>.activation]</span></a>
 </div>
 
-<p>Tool lints only get checked when the associated tool is active. If a lint
-attribute, such as <code>allow</code>, references a nonexistent tool lint, the compiler
-will not warn about the nonexistent lint until you use the tool.</p>
-<p>Otherwise, they work just like regular lint attributes:</p>
+<p>工具 lint 仅在相关工具处于活动状态时才会被检查。如果像 <code>allow</code> 这样的 lint 属性引用了不存在的工具 lint，编译器在您使用该工具之前不会警告不存在的 lint。</p>
+<p>否则，它们的工作方式与常规 lint 属性相同：</p>
 <pre class="playground"><code class="language-rust edition2024">// set the entire `pedantic` clippy lint group to warn
 #![warn(clippy::pedantic)]
 // silence warnings from the `filter_map` clippy lint
@@ -509,52 +476,37 @@ fn foo() {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> currently recognizes the tool lints for “<a href="https://github.com/rust-lang/rust-clippy">clippy</a>” and “<a href="../../rustdoc/lints.html">rustdoc</a>”.</p>
+<p><code>rustc</code> 目前识别 “<a href="https://github.com/rust-lang/rust-clippy">clippy</a>” 和 “<a href="../../rustdoc/lints.html">rustdoc</a>” 的工具 lint。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.diagnostics.deprecated"><a class="rule-link" href="#r-attributes.diagnostics.deprecated" title="attributes.diagnostics.deprecated"><span>[attributes<wbr>.diagnostics<wbr>.deprecated]</span></a>
 </div>
 
-<h2 id="the-deprecated-attribute"><a class="header" href="#the-deprecated-attribute">The <code>deprecated</code> attribute</a></h2>
+<h2 id="deprecated属性"><a class="header" href="#deprecated属性"><code>deprecated</code>属性</a></h2>
 <div class="rule" id="r-attributes.diagnostics.deprecated.intro"><a class="rule-link" href="#r-attributes.diagnostics.deprecated.intro" title="attributes.diagnostics.deprecated.intro"><span>[attributes<wbr>.diagnostics<wbr>.deprecated<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>deprecated</code> attribute</em> marks an item as deprecated. <code>rustc</code> will issue
-warnings on usage of <code>#[deprecated]</code> items. <code>rustdoc</code> will show item
-deprecation, including the <code>since</code> version and <code>note</code>, if available.</p>
+<p><em><code>deprecated</code> 属性</em> 将一个 项 标记为已弃用。<code>rustc</code> 将在使用 <code>#[deprecated]</code> 项 时发出警告。<code>rustdoc</code> 将显示 项 弃用信息，包括 <code>since</code> 版本和 <code>note</code>（如果可用）。</p>
 <div class="rule" id="r-attributes.diagnostics.deprecated.syntax"><a class="rule-link" href="#r-attributes.diagnostics.deprecated.syntax" title="attributes.diagnostics.deprecated.syntax"><span>[attributes<wbr>.diagnostics<wbr>.deprecated<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>deprecated</code> attribute has several forms:</p>
+<p><code>deprecated</code> 属性有几种形式：</p>
 <ul>
-<li><code>deprecated</code> — Issues a generic message.</li>
-<li><code>deprecated = "message"</code> — Includes the given string in the deprecation
-message.</li>
-<li><a href="../attributes.html#grammar-MetaListNameValueStr">MetaListNameValueStr</a> syntax with two optional fields:
+<li><code>deprecated</code> — 发出通用消息。</li>
+<li><code>deprecated = "message"</code> — 在弃用消息中包含给定的字符串。</li>
+<li><a href="../attributes.html#grammar-MetaListNameValueStr">MetaListNameValueStr</a> 语法格式，带有两个可选字段：
 <ul>
-<li><code>since</code> — Specifies a version number when the item was deprecated. <code>rustc</code>
-does not currently interpret the string, but external tools like <a href="https://github.com/rust-lang/rust-clippy">Clippy</a>
-may check the validity of the value.</li>
-<li><code>note</code> — Specifies a string that should be included in the deprecation
-message. This is typically used to provide an explanation about the
-deprecation and preferred alternatives.</li>
+<li><code>since</code> — 指定 项 被弃用时的版本号。<code>rustc</code> 目前不解释该字符串，但 <a href="https://github.com/rust-lang/rust-clippy">Clippy</a> 等外部工具可能会检查该值的有效性。</li>
+<li><code>note</code> — 指定应包含在弃用消息中的字符串。这通常用于提供有关弃用的解释和首选替代方案。</li>
 </ul>
 </li>
 </ul>
 <div class="rule" id="r-attributes.diagnostic.deprecated.allowed-positions"><a class="rule-link" href="#r-attributes.diagnostic.deprecated.allowed-positions" title="attributes.diagnostic.deprecated.allowed-positions"><span>[attributes<wbr>.diagnostic<wbr>.deprecated<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>deprecated</code> attribute may be applied to any <a href="../items.html">item</a>, <a href="../items/traits.html">trait item</a>, <a href="../items/enumerations.html">enum
-variant</a>, <a href="../items/structs.html">struct field</a>, <a href="../items/external-blocks.html">external block item</a>, or <a href="../macros-by-example.html">macro definition</a>. It
-cannot be applied to <a href="../items/implementations.html#trait-implementations">trait implementation items</a>. When applied to an item
-containing other items, such as a <a href="../items/modules.html">module</a> or <a href="../items/implementations.html">implementation</a>, all child
-items inherit the deprecation attribute.</p>
-<!-- NOTE: It is only rejected for trait impl items
-(AnnotationKind::Prohibited). In all other locations, it is silently ignored.
-Tuple struct fields are ignored.
--->
-<p>Here is an example:</p>
+<p><code>deprecated</code> 属性可以应用于任何 <a href="../items.html">项</a>、<a href="../items/traits.html">特型项</a>、<a href="../items/enumerations.html">枚举变体</a>、<a href="../items/structs.html">结构体字段</a>、<a href="../items/external-blocks.html">外部块项</a> 或 <a href="../macros-by-example.html">宏定义</a>。它不能应用于 <a href="../items/implementations.html#trait-implementations">特型实现项</a>。当应用于包含其他 项 的 项 （例如 <a href="../items/modules.html">模块</a> 或 <a href="../items/implementations.html">实现</a>）时，所有子 项 都继承弃用属性。</p>
+<p>这里有一个例子：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[deprecated(since = "5.2.0", note = "foo was rarely used. Users should instead use bar")]
@@ -562,68 +514,57 @@ pub fn foo() {}
 
 pub fn bar() {}
 <span class="boring">}</span></code></pre>
-<p>The <a href="https://github.com/rust-lang/rfcs/blob/master/text/1270-deprecation.md">RFC</a> contains motivations and more details.</p>
+<p><a href="https://github.com/rust-lang/rfcs/blob/master/text/1270-deprecation.md">RFC</a> 包含了动机和更多细节。</p>
 <div class="rule" id="r-attributes.diagnostics.must_use"><a class="rule-link" href="#r-attributes.diagnostics.must_use" title="attributes.diagnostics.must_use"><span>[attributes<wbr>.diagnostics<wbr>.must_use]</span></a>
 </div>
 
-<h2 id="the-must_use-attribute"><a class="header" href="#the-must_use-attribute">The <code>must_use</code> attribute</a></h2>
+<h2 id="must_use属性"><a class="header" href="#must_use属性"><code>must_use</code>属性</a></h2>
 <div class="rule" id="r-attributes.diagnostics.must_use.intro"><a class="rule-link" href="#r-attributes.diagnostics.must_use.intro" title="attributes.diagnostics.must_use.intro"><span>[attributes<wbr>.diagnostics<wbr>.must_use<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>must_use</code> attribute</em> is used to issue a diagnostic warning when a value
-is not “used”.</p>
+<p><em><code>must_use</code> 属性</em> 用于在值未“使用”时发出诊断警告。</p>
 <div class="rule" id="r-attributes.diagnostics.must_use.allowed-positions"><a class="rule-link" href="#r-attributes.diagnostics.must_use.allowed-positions" title="attributes.diagnostics.must_use.allowed-positions"><span>[attributes<wbr>.diagnostics<wbr>.must_use<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>must_use</code> attribute can be applied to user-defined composite types
-(<a href="../items/structs.html"><code>struct</code>s</a>, <a href="../items/enumerations.html"><code>enum</code>s</a>, and <a href="../items/unions.html"><code>union</code>s</a>), <a href="../items/functions.html">functions</a>,
-and <a href="../items/traits.html">traits</a>.</p>
+<p><code>must_use</code> 属性可以应用于用户定义的复合类型（<a href="../items/structs.html"><code>结构体</code></a>、<a href="../items/enumerations.html"><code>枚举</code></a> 和 <a href="../items/unions.html"><code>联合体</code></a>）、<a href="../items/functions.html">函数</a> 和 <a href="../items/traits.html">特型</a>。</p>
 <div class="rule" id="r-attributes.diagnostics.must_use.message"><a class="rule-link" href="#r-attributes.diagnostics.must_use.message" title="attributes.diagnostics.must_use.message"><span>[attributes<wbr>.diagnostics<wbr>.must_use<wbr>.message]</span></a>
 </div>
 
-<p>The <code>must_use</code> attribute may include a message by using the
-<a href="../attributes.html#grammar-MetaNameValueStr">MetaNameValueStr</a> syntax such as <code>#[must_use = "example message"]</code>. The
-message will be given alongside the warning.</p>
+<p><code>must_use</code> 属性可以使用 <a href="../attributes.html#grammar-MetaNameValueStr">MetaNameValueStr</a> 语法格式 包含一条消息，例如 <code>#[must_use = "example message"]</code>。该消息将与警告一起给出。</p>
 <div class="rule" id="r-attributes.diagnostics.must_use.type"><a class="rule-link" href="#r-attributes.diagnostics.must_use.type" title="attributes.diagnostics.must_use.type"><span>[attributes<wbr>.diagnostics<wbr>.must_use<wbr>.type]</span></a>
 </div>
 
-<p>When used on user-defined composite types, if the <a href="../expressions.html">expression</a> of an
-<a href="../statements.html#expression-statements">expression statement</a> has that type, then the <code>unused_must_use</code> lint is
-violated.</p>
+<p>当用于用户定义的复合类型时，如果 <a href="../statements.html#expression-statements">表达式语句</a> 的 <a href="../expressions.html">表达式</a> 具有该类型，则 <code>unused_must_use</code> lint 被违反。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[must_use]
 struct MustUse {
-    // some fields
+    // 一些字段
 }
 
 <span class="boring">impl MustUse {
 </span><span class="boring">  fn new() -&gt; MustUse { MustUse {} }
 </span><span class="boring">}
 </span><span class="boring">
-</span>// Violates the `unused_must_use` lint.
+</span>// 违反 `unused_must_use` lint。
 MustUse::new();
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-attributes.diagnostics.must_use.fn"><a class="rule-link" href="#r-attributes.diagnostics.must_use.fn" title="attributes.diagnostics.must_use.fn"><span>[attributes<wbr>.diagnostics<wbr>.must_use<wbr>.fn]</span></a>
 </div>
 
-<p>When used on a function, if the <a href="../expressions.html">expression</a> of an <a href="../statements.html#expression-statements">expression statement</a> is a
-<a href="../expressions/call-expr.html">call expression</a> to that function, then the <code>unused_must_use</code> lint is
-violated.</p>
+<p>当用于函数时，如果 <a href="../statements.html#expression-statements">表达式语句</a> 的 <a href="../expressions.html">表达式</a> 是对该函数的 <a href="../expressions/call-expr.html">调用表达式</a>，则 <code>unused_must_use</code> lint 被违反。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[must_use]
 fn five() -&gt; i32 { 5i32 }
 
-// Violates the unused_must_use lint.
+// 违反 `unused_must_use` lint。
 five();
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-attributes.diagnostics.must_use.trait"><a class="rule-link" href="#r-attributes.diagnostics.must_use.trait" title="attributes.diagnostics.must_use.trait"><span>[attributes<wbr>.diagnostics<wbr>.must_use<wbr>.trait]</span></a>
 </div>
 
-<p>When used on a <a href="../items/traits.html">trait declaration</a>, a <a href="../expressions/call-expr.html">call expression</a> of an <a href="../statements.html#expression-statements">expression
-statement</a> to a function that returns an <a href="../types/impl-trait.html">impl trait</a> or a <a href="../types/trait-object.html">dyn trait</a> of that trait violates
-the <code>unused_must_use</code> lint.</p>
+<p>当用于 <a href="../items/traits.html">特型声明</a> 时，如果 <a href="../statements.html#expression-statements">表达式语句</a> 对一个返回该 特型 的 <a href="../types/impl-trait.html">impl trait</a> 或 <a href="../types/trait-object.html">dyn trait</a> 的函数的 <a href="../expressions/call-expr.html">调用表达式</a> 被未使用，则违反 <code>unused_must_use</code> lint。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[must_use]
@@ -634,14 +575,13 @@ fn get_critical() -&gt; impl Critical {
     4i32
 }
 
-// Violates the `unused_must_use` lint.
+// 违反 `unused_must_use` lint。
 get_critical();
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-attributes.diagnostics.must_use.trait-function"><a class="rule-link" href="#r-attributes.diagnostics.must_use.trait-function" title="attributes.diagnostics.must_use.trait-function"><span>[attributes<wbr>.diagnostics<wbr>.must_use<wbr>.trait-function]</span></a>
 </div>
 
-<p>When used on a function in a trait declaration, then the behavior also applies
-when the call expression is a function from an implementation of the trait.</p>
+<p>当用于 特型 声明中的函数时，当调用表达式是 特型 实现中的函数时，该行为也适用。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Trait {
@@ -653,24 +593,24 @@ impl Trait for i32 {
     fn use_me(&amp;self) -&gt; i32 { 0i32 }
 }
 
-// Violates the `unused_must_use` lint.
+// 违反 `unused_must_use` lint。
 5i32.use_me();
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-attributes.diagnostics.must_use.trait-impl-function"><a class="rule-link" href="#r-attributes.diagnostics.must_use.trait-impl-function" title="attributes.diagnostics.must_use.trait-impl-function"><span>[attributes<wbr>.diagnostics<wbr>.must_use<wbr>.trait-impl-function]</span></a>
 </div>
 
-<p>When used on a function in a trait implementation, the attribute does nothing.</p>
+<p>当用于 特型 实现中的函数时，该属性不执行任何操作。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Trivial no-op expressions containing the value will not violate the lint. Examples include wrapping the value in a type that does not implement <a href="../special-types-and-traits.html#drop"><code>Drop</code></a> and then not using that type and being the final expression of a <a href="../expressions/block-expr.html">block expression</a> that is not used.</p>
+<p>包含该值的普通无操作表达式不会违反 lint。示例包括将值包装在一个不实现 <a href="../special-types-and-traits.html#drop"><code>Drop</code></a> 的类型中然后不使用该类型，以及作为未使用的 <a href="../expressions/block-expr.html">块表达式</a> 的最终表达式。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[must_use]
 fn five() -&gt; i32 { 5i32 }
 
-// None of these violate the unused_must_use lint.
+// 这些都不会违反 `unused_must_use` lint。
 (five(),);
 Some(five());
 { five() };
@@ -686,13 +626,13 @@ match true {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>It is idiomatic to use a <a href="../statements.html#let-statements">let statement</a> with a pattern of <code>_</code> when a must-used value is purposely discarded.</p>
+<p>当有意丢弃一个必须使用的值时，习惯上使用带有 <code>_</code> 模式的 <a href="../statements.html#let-statements">let 语句</a>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[must_use]
 fn five() -&gt; i32 { 5i32 }
 
-// Does not violate the unused_must_use lint.
+// 不违反 `unused_must_use` lint。
 let _ = five();
 <span class="boring">}</span></code></pre>
 </blockquote>
@@ -701,77 +641,73 @@ let _ = five();
 <div class="rule" id="r-attributes.diagnostic.namespace"><a class="rule-link" href="#r-attributes.diagnostic.namespace" title="attributes.diagnostic.namespace"><span>[attributes<wbr>.diagnostic<wbr>.namespace]</span></a>
 </div>
 
-<h2 id="the-diagnostic-tool-attribute-namespace"><a class="header" href="#the-diagnostic-tool-attribute-namespace">The <code>diagnostic</code> tool attribute namespace</a></h2>
+<h2 id="diagnostic工具属性命名空间"><a class="header" href="#diagnostic工具属性命名空间"><code>diagnostic</code>工具属性命名空间</a></h2>
 <div class="rule" id="r-attributes.diagnostic.namespace.intro"><a class="rule-link" href="#r-attributes.diagnostic.namespace.intro" title="attributes.diagnostic.namespace.intro"><span>[attributes<wbr>.diagnostic<wbr>.namespace<wbr>.intro]</span></a>
 </div>
 
-<p>The <code>#[diagnostic]</code> attribute namespace is a home for attributes to influence compile-time error messages.
-The hints provided by these attributes are not guaranteed to be used.</p>
+<p><code>#[diagnostic]</code> 属性命名空间是用于影响编译时错误消息的属性的归属。这些属性提供的提示不保证会被使用。</p>
 <div class="rule" id="r-attributes.diagnostic.namespace.unknown-invalid-syntax"><a class="rule-link" href="#r-attributes.diagnostic.namespace.unknown-invalid-syntax" title="attributes.diagnostic.namespace.unknown-invalid-syntax"><span>[attributes<wbr>.diagnostic<wbr>.namespace<wbr>.unknown-invalid-syntax]</span></a>
 </div>
 
-<p>Unknown attributes in this namespace are accepted, though they may emit warnings for unused attributes.
-Additionally, invalid inputs to known attributes will typically be a warning (see the attribute definitions for details).
-This is meant to allow adding or discarding attributes and changing inputs in the future to allow changes without the need to keep the non-meaningful attributes or options working.</p>
+<p>此命名空间中未知的属性会被接受，尽管它们可能会为未使用的属性发出警告。此外，已知属性的无效输入通常会是警告（详见属性定义）。这旨在允许将来添加或丢弃属性和更改输入，从而允许更改而无需保持无意义的属性或选项继续工作。</p>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented" title="attributes.diagnostic.on_unimplemented"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented]</span></a>
 </div>
 
-<h3 id="the-diagnosticon_unimplemented-attribute"><a class="header" href="#the-diagnosticon_unimplemented-attribute">The <code>diagnostic::on_unimplemented</code> attribute</a></h3>
+<h3 id="diagnosticon_unimplemented属性"><a class="header" href="#diagnosticon_unimplemented属性"><code>diagnostic::on_unimplemented</code>属性</a></h3>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.intro"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.intro" title="attributes.diagnostic.on_unimplemented.intro"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.intro]</span></a>
 </div>
 
-<p>The <code>#[diagnostic::on_unimplemented]</code> attribute is a hint to the compiler to supplement the error message that would normally be generated in scenarios where a trait is required but not implemented on a type.</p>
+<p><code>#[diagnostic::on_unimplemented]</code> 属性是给编译器的一个提示，用于补充在需要 特型 但类型上未实现 特型 的情况下通常会生成的错误消息。</p>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.allowed-positions"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.allowed-positions" title="attributes.diagnostic.on_unimplemented.allowed-positions"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The attribute should be placed on a <a href="../items/traits.html">trait declaration</a>, though it is not an error to be located in other positions.</p>
+<p>该属性应放置在 <a href="../items/traits.html">特型声明</a> 上，尽管放置在其他位置不是错误。</p>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.syntax"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.syntax" title="attributes.diagnostic.on_unimplemented.syntax"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.syntax]</span></a>
 </div>
 
-<p>The attribute uses the <a href="../attributes.html#grammar-MetaListNameValueStr">MetaListNameValueStr</a> syntax to specify its inputs, though any malformed input to the attribute is not considered as an error to provide both forwards and backwards compatibility.</p>
+<p>该属性使用 <a href="../attributes.html#grammar-MetaListNameValueStr">MetaListNameValueStr</a> 语法格式 来指定其输入，尽管任何格式错误的属性输入都不被视为错误，以提供向前和向后兼容性。</p>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.keys"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.keys" title="attributes.diagnostic.on_unimplemented.keys"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.keys]</span></a>
 </div>
 
-<p>The following keys have the given meaning:</p>
+<p>以下键具有给定含义：</p>
 <ul>
-<li><code>message</code> — The text for the top level error message.</li>
-<li><code>label</code> — The text for the label shown inline in the broken code in the error message.</li>
-<li><code>note</code> — Provides additional notes.</li>
+<li><code>message</code> — 顶级错误消息的文本。</li>
+<li><code>label</code> — 错误消息中损坏代码内联显示的标签文本。</li>
+<li><code>note</code> — 提供额外备注。</li>
 </ul>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.note-repetition"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.note-repetition" title="attributes.diagnostic.on_unimplemented.note-repetition"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.note-repetition]</span></a>
 </div>
 
-<p>The <code>note</code> option can appear several times, which results in several note messages being emitted.</p>
+<p><code>note</code> 选项可以出现多次，这将导致发出多条备注消息。</p>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.repetition"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.repetition" title="attributes.diagnostic.on_unimplemented.repetition"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.repetition]</span></a>
 </div>
 
-<p>If any of the other options appears several times the first occurrence of the relevant option specifies the actually used value. Subsequent occurrences generates a warning.</p>
+<p>如果其他选项中的任何一个出现多次，则相关选项的第一次出现指定实际使用的值。随后的出现会生成警告。</p>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.unknown-keys"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.unknown-keys" title="attributes.diagnostic.on_unimplemented.unknown-keys"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.unknown-keys]</span></a>
 </div>
 
-<p>A warning is generated for any unknown keys.</p>
+<p>任何未知键都会生成警告。</p>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.format-string"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.format-string" title="attributes.diagnostic.on_unimplemented.format-string"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.format-string]</span></a>
 </div>
 
-<p>All three options accept a string as an argument, interpreted using the same formatting as a <a href="../../alloc/fmt/index.html"><code>std::fmt</code></a> string.</p>
+<p>所有三个选项都接受一个字符串作为参数，使用与 <a href="../../alloc/fmt/index.html"><code>std::fmt</code></a> 字符串相同的格式进行解释。</p>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.format-parameters"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.format-parameters" title="attributes.diagnostic.on_unimplemented.format-parameters"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.format-parameters]</span></a>
 </div>
 
-<p>Format parameters with the given named parameter will be replaced with the following text:</p>
+<p>带有给定命名参数的格式参数将被以下文本替换：</p>
 <ul>
-<li><code>{Self}</code> — The name of the type implementing the trait.</li>
-<li><code>{</code> <em>GenericParameterName</em> <code>}</code> — The name of the generic argument’s type for the given generic parameter.</li>
+<li><code>{Self}</code> — 实现 特型 的类型名称。</li>
+<li><code>{</code> <em>GenericParameterName</em> <code>}</code> — 给定 泛型 参数的 泛型 参数的类型名称。</li>
 </ul>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.invalid-formats"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.invalid-formats" title="attributes.diagnostic.on_unimplemented.invalid-formats"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.invalid-formats]</span></a>
 </div>
 
-<p>Any other format parameter will generate a warning, but will otherwise be included in the string as-is.</p>
+<p>任何其他格式参数都会生成警告，但除此之外，将按原样包含在字符串中。</p>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.invalid-string"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.invalid-string" title="attributes.diagnostic.on_unimplemented.invalid-string"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.invalid-string]</span></a>
 </div>
 
-<p>Invalid format strings may generate a warning, but are otherwise allowed, but may not display as intended.
-Format specifiers may generate a warning, but are otherwise ignored.</p>
-<p>In this example:</p>
+<p>无效格式字符串可能会生成警告，但除此之外是允许的，但可能不会按预期显示。格式说明符可能会生成警告，但除此之外会被忽略。</p>
+<p>在此示例中：</p>
 <pre class="playground"><code class="language-rust compile_fail E0277 edition2024">#[diagnostic::on_unimplemented(
     message = "My Message for `ImportantTrait&lt;{A}&gt;` implemented for `{Self}`",
     label = "My Label",
@@ -785,7 +721,7 @@ fn use_my_trait(_: impl ImportantTrait&lt;i32&gt;) {}
 fn main() {
     use_my_trait(String::new());
 }</code></pre>
-<p>the compiler may generate an error message which looks like this:</p>
+<p>编译器可能会生成一个看起来像这样的错误消息：</p>
 <pre><code class="language-text">error[E0277]: My Message for `ImportantTrait&lt;i32&gt;` implemented for `String`
   --&gt; src/main.rs:14:18
    |
@@ -801,29 +737,29 @@ fn main() {
 <div class="rule" id="r-attributes.diagnostic.do_not_recommend"><a class="rule-link" href="#r-attributes.diagnostic.do_not_recommend" title="attributes.diagnostic.do_not_recommend"><span>[attributes<wbr>.diagnostic<wbr>.do_not_recommend]</span></a>
 </div>
 
-<h3 id="the-diagnosticdo_not_recommend-attribute"><a class="header" href="#the-diagnosticdo_not_recommend-attribute">The <code>diagnostic::do_not_recommend</code> attribute</a></h3>
+<h3 id="diagnosticdo_not_recommend属性"><a class="header" href="#diagnosticdo_not_recommend属性"><code>diagnostic::do_not_recommend</code>属性</a></h3>
 <div class="rule" id="r-attributes.diagnostic.do_not_recommend.intro"><a class="rule-link" href="#r-attributes.diagnostic.do_not_recommend.intro" title="attributes.diagnostic.do_not_recommend.intro"><span>[attributes<wbr>.diagnostic<wbr>.do_not_recommend<wbr>.intro]</span></a>
 </div>
 
-<p>The <code>#[diagnostic::do_not_recommend]</code> attribute is a hint to the compiler to not show the annotated trait implementation as part of a diagnostic message.</p>
+<p><code>#[diagnostic::do_not_recommend]</code> 属性是给编译器的一个提示，指示它不要在诊断消息中显示带注解的 特型 实现。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Suppressing the recommendation can be useful if you know that the recommendation would normally not be useful to the programmer. This often occurs with broad, blanket impls. The recommendation may send the programmer down the wrong path, or the trait implementation may be an internal detail that you don’t want to expose, or the bounds may not be able to be satisfied by the programmer.</p>
-<p>For example, in an error message about a type not implementing a required trait, the compiler may find a trait implementation that would satisfy the requirements if it weren’t for specific bounds in the trait implementation. The compiler may tell the user that there is an impl, but the problem is the bounds in the trait implementation. The <code>#[diagnostic::do_not_recommend]</code> attribute can be used to tell the compiler to <em>not</em> tell the user about the trait implementation, and instead simply tell the user the type doesn’t implement the required trait.</p>
+<p>如果你知道该推荐通常对程序员没有用处，那么抑制该推荐可能会很有用。这种情况经常发生在广泛的、包罗万象的 impl 上。该推荐可能会将程序员引入歧途，或者 特型 实现可能是你不希望公开的内部细节，或者程序员可能无法满足其边界。</p>
+<p>例如，在关于某个类型未实现所需 特型 的错误消息中，编译器可能会找到一个 特型 实现，如果不是因为 特型 实现中的特定边界，该实现将满足要求。编译器可能会告诉用户存在一个 impl，但问题在于 特型 实现中的边界。<code>#[diagnostic::do_not_recommend]</code> 属性可以用来告诉编译器 <em>不要</em> 告诉用户该 特型 实现，而是简单地告诉用户该类型未实现所需的 特型。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.diagnostic.do_not_recommend.allowed-positions"><a class="rule-link" href="#r-attributes.diagnostic.do_not_recommend.allowed-positions" title="attributes.diagnostic.do_not_recommend.allowed-positions"><span>[attributes<wbr>.diagnostic<wbr>.do_not_recommend<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The attribute should be placed on a <a href="../items/implementations.html#trait-implementations">trait implementation item</a>, though it is not an error to be located in other positions.</p>
+<p>该属性应放置在 <a href="../items/implementations.html#trait-implementations">特型实现项</a> 上，尽管放置在其他位置不是错误。</p>
 <div class="rule" id="r-attributes.diagnostic.do_not_recommend.syntax"><a class="rule-link" href="#r-attributes.diagnostic.do_not_recommend.syntax" title="attributes.diagnostic.do_not_recommend.syntax"><span>[attributes<wbr>.diagnostic<wbr>.do_not_recommend<wbr>.syntax]</span></a>
 </div>
 
-<p>The attribute does not accept any arguments, though unexpected arguments are not considered as an error.</p>
-<p>In the following example, there is a trait called <code>AsExpression</code> which is used for casting arbitrary types to the <code>Expression</code> type used in an SQL library. There is a method called <code>check</code> which takes an <code>AsExpression</code>.</p>
+<p>该属性不接受任何参数，尽管意外参数不被视为错误。</p>
+<p>在以下示例中，有一个名为 <code>AsExpression</code> 的 特型，它用于将任意类型转换为 SQL 库中使用的 <code>Expression</code> 类型。有一个名为 <code>check</code> 的方法，它接受一个 <code>AsExpression</code>。</p>
 <pre class="playground"><code class="language-rust compile_fail E0277 edition2024"><span class="boring">pub trait Expression {
 </span><span class="boring">    type SqlType;
 </span><span class="boring">}
@@ -856,7 +792,7 @@ fn main() {
 </span><span class="boring">
 </span><span class="boring">impl&lt;T&gt; Foo for T where T: Expression {}
 </span>
-// Uncomment this line to change the recommendation.
+// 取消注释此行以更改推荐。
 // #[diagnostic::do_not_recommend]
 impl&lt;T, ST&gt; AsExpression&lt;ST&gt; for T
 where
@@ -877,37 +813,37 @@ trait Foo: Expression + Sized {
 fn main() {
     SelectInt.check("bar");
 }</code></pre>
-<p>The <code>SelectInt</code> type’s <code>check</code> method is expecting an <code>Integer</code> type. Calling it with an i32 type works, as it gets converted to an <code>Integer</code> by the <code>AsExpression</code> trait. However, calling it with a string does not, and generates a an error that may look like this:</p>
-<pre><code class="language-text">error[E0277]: the trait bound `&amp;str: Expression` is not satisfied
+<p><code>SelectInt</code> 类型的 <code>check</code> 方法期望 <code>Integer</code> 类型。使用 i32 类型调用它会成功，因为它通过 <code>AsExpression</code> 特型 转换为 <code>Integer</code>。但是，使用字符串调用它则不会成功，并会生成一个可能看起来像这样的错误：</p>
+<pre><code class="language-text">error[E0277]: 特型 边界 `&amp;str: Expression` 未满足
   --&gt; src/main.rs:53:15
    |
 53 |     SelectInt.check("bar");
-   |               ^^^^^ the trait `Expression` is not implemented for `&amp;str`
+   |               ^^^^^ 特型 `Expression` 未为 `&amp;str` 实现
    |
-   = help: the following other types implement trait `Expression`:
+   = help: 以下其他类型实现了 特型 `Expression`：
              Bound&lt;T&gt;
              SelectInt
-note: required for `&amp;str` to implement `AsExpression&lt;Integer&gt;`
+note: `&amp;str` 实现 `AsExpression&lt;Integer&gt;` 所需
   --&gt; src/main.rs:45:13
    |
 45 | impl&lt;T, ST&gt; AsExpression&lt;ST&gt; for T
    |             ^^^^^^^^^^^^^^^^     ^
 46 | where
 47 |     T: Expression&lt;SqlType = ST&gt;,
-   |        ------------------------ unsatisfied trait bound introduced here
+   |        ------------------------ 此处引入的未满足的 特型 边界
 </code></pre>
-<p>By adding the <code>#[diagnostic::do_not_recommend]</code> attribute to the blanket <code>impl</code> for <code>AsExpression</code>, the message changes to:</p>
-<pre><code class="language-text">error[E0277]: the trait bound `&amp;str: AsExpression&lt;Integer&gt;` is not satisfied
+<p>通过将 <code>#[diagnostic::do_not_recommend]</code> 属性添加到 <code>AsExpression</code> 的通用 <code>impl</code> 中，消息更改为：</p>
+<pre><code class="language-text">error[E0277]: 特型 边界 `&amp;str: AsExpression&lt;Integer&gt;` 未满足
   --&gt; src/main.rs:53:15
    |
 53 |     SelectInt.check("bar");
-   |               ^^^^^ the trait `AsExpression&lt;Integer&gt;` is not implemented for `&amp;str`
+   |               ^^^^^ 特型 `AsExpression&lt;Integer&gt;` 未为 `&amp;str` 实现
    |
-   = help: the trait `AsExpression&lt;Integer&gt;` is not implemented for `&amp;str`
-           but trait `AsExpression&lt;Text&gt;` is implemented for it
-   = help: for that trait implementation, expected `Text`, found `Integer`
+   = help: 特型 `AsExpression&lt;Integer&gt;` 未为 `&amp;str` 实现
+           但 特型 `AsExpression&lt;Text&gt;` 已为其实现
+   = help: 对于该 特型 实现，预期为 `Text`，但找到 `Integer`
 </code></pre>
-<p>The first error message includes a somewhat confusing error message about the relationship of <code>&amp;str</code> and <code>Expression</code>, as well as the unsatisfied trait bound in the blanket impl. After adding <code>#[diagnostic::do_not_recommend]</code>, it no longer considers the blanket impl for the recommendation. The message should be a little clearer, with an indication that a string cannot be converted to an <code>Integer</code>.</p>
+<p>第一个错误消息包含了一个关于 <code>&amp;str</code> 和 <code>Expression</code> 关系的有些令人困惑的错误消息，以及通用 impl 中未满足的 特型 边界。添加 <code>#[diagnostic::do_not_recommend]</code> 后，它不再考虑通用 impl 作为推荐。消息应该更清晰一些，表明字符串无法转换为 <code>Integer</code>。</p>
 
                     </main>
 

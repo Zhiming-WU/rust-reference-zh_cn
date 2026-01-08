@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-1458537c.js";
+            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,17 +181,17 @@
                         <div class="rule" id="r-attributes.debugger"><a class="rule-link" href="#r-attributes.debugger" title="attributes.debugger"><span>[attributes<wbr>.debugger]</span></a>
 </div>
 
-<h1 id="debugger-attributes"><a class="header" href="#debugger-attributes">Debugger attributes</a></h1>
-<p>The following <a href="../attributes.html">attributes</a> are used for enhancing the debugging experience when using third-party debuggers like GDB or WinDbg.</p>
+<h1 id="调试器属性"><a class="header" href="#调试器属性">调试器属性</a></h1>
+<p>以下 <a href="../attributes.html">属性</a> 用于在使用 GDB 或 WinDbg 等第三方调试器时增强调试体验。</p>
 <!-- template:attributes -->
 <div class="rule" id="r-attributes.debugger.debugger_visualizer"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer" title="attributes.debugger.debugger_visualizer"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer]</span></a>
 </div>
 
-<h2 id="the-debugger_visualizer-attribute"><a class="header" href="#the-debugger_visualizer-attribute">The <code>debugger_visualizer</code> attribute</a></h2>
+<h2 id="debugger_visualizer属性"><a class="header" href="#debugger_visualizer属性"><code>debugger_visualizer</code>属性</a></h2>
 <div class="rule" id="r-attributes.debugger.debugger_visualizer.intro"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer.intro" title="attributes.debugger.debugger_visualizer.intro"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>debugger_visualizer</code> <a href="../attributes.html">attribute</a></em> can be used to embed a debugger visualizer file into the debug information. This improves the debugger experience when displaying values.</p>
+<p><em><code>debugger_visualizer</code> <a href="../attributes.html">属性</a></em> 可用于将调试器可视化工具文件嵌入到调试信息中。这改进了显示值时的调试器体验。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -205,7 +205,7 @@
 <div class="rule" id="r-attributes.debugger.debugger_visualizer.syntax"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer.syntax" title="attributes.debugger.debugger_visualizer.syntax"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>debugger_visualizer</code> attribute uses the <a href="../attributes.html#grammar-MetaListNameValueStr">MetaListNameValueStr</a> syntax to specify its inputs. One of the following keys must be specified:</p>
+<p><code>debugger_visualizer</code> 属性使用 <a href="../attributes.html#grammar-MetaListNameValueStr">MetaListNameValueStr</a> 语法来指定其输入。必须指定以下键之一：</p>
 <ul>
 <li><a href="debugger.html#r-attributes.debugger.debugger_visualizer.natvis"><code>natvis_file</code></a></li>
 <li><a href="debugger.html#r-attributes.debugger.debugger_visualizer.gdb"><code>gdb_script_file</code></a></li>
@@ -213,27 +213,27 @@
 <div class="rule" id="r-attributes.debugger.debugger_visualizer.allowed-positions"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer.allowed-positions" title="attributes.debugger.debugger_visualizer.allowed-positions"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>debugger_visualizer</code> attribute may only be applied to a <a href="../items/modules.html">module</a> or to the crate root.</p>
+<p><code>debugger_visualizer</code> 属性只能应用于 <a href="../items/modules.html">模块</a> 或 crate 根。</p>
 <div class="rule" id="r-attributes.debugger.debugger_visualizer.duplicates"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer.duplicates" title="attributes.debugger.debugger_visualizer.duplicates"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer<wbr>.duplicates]</span></a>
 </div>
 
-<p>The <code>debugger_visualizer</code> attribute may be used any number of times on a form. All specified visualizer files will be loaded.</p>
+<p><code>debugger_visualizer</code> 属性可以在一个形式上使用任意多次。所有指定的可视化工具文件都将被加载。</p>
 <div class="rule" id="r-attributes.debugger.debugger_visualizer.natvis"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer.natvis" title="attributes.debugger.debugger_visualizer.natvis"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer<wbr>.natvis]</span></a>
 </div>
 
-<h3 id="using-debugger_visualizer-with-natvis"><a class="header" href="#using-debugger_visualizer-with-natvis">Using <code>debugger_visualizer</code> with Natvis</a></h3>
+<h3 id="将debugger_visualizer与natvis结合使用"><a class="header" href="#将debugger_visualizer与natvis结合使用">将<code>debugger_visualizer</code>与Natvis结合使用</a></h3>
 <div class="rule" id="r-attributes.debugger.debugger_visualizer.natvis.intro"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer.natvis.intro" title="attributes.debugger.debugger_visualizer.natvis.intro"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer<wbr>.natvis<wbr>.intro]</span></a>
 </div>
 
-<p>Natvis is an XML-based framework for Microsoft debuggers (such as Visual Studio and WinDbg) that uses declarative rules to customize the display of types. For detailed information on the Natvis format, refer to Microsoft’s <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/create-custom-views-of-native-objects">Natvis documentation</a>.</p>
+<p>Natvis 是一个基于 XML 的框架，适用于 Microsoft 调试器（如 Visual Studio 和 WinDbg），它使用声明性规则来自定义类型的显示。有关 Natvis 格式的详细信息，请参阅 Microsoft 的 <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/create-custom-views-of-native-objects">Natvis 文档</a>。</p>
 <div class="rule" id="r-attributes.debugger.debugger_visualizer.natvis.msvc"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer.natvis.msvc" title="attributes.debugger.debugger_visualizer.natvis.msvc"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer<wbr>.natvis<wbr>.msvc]</span></a>
 </div>
 
-<p>This attribute only supports embedding Natvis files on <code>-windows-msvc</code> targets.</p>
+<p>此属性仅支持在 <code>-windows-msvc</code> 目标上嵌入 Natvis 文件。</p>
 <div class="rule" id="r-attributes.debugger.debugger_visualizer.natvis.path"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer.natvis.path" title="attributes.debugger.debugger_visualizer.natvis.path"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer<wbr>.natvis<wbr>.path]</span></a>
 </div>
 
-<p>The path to the Natvis file is specified with the <code>natvis_file</code> key, which is a path relative to the source file.</p>
+<p>Natvis 文件的路径由 <code>natvis_file</code> 键指定，该路径是相对于源文件的路径。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -250,9 +250,9 @@ struct FancyRect {
 
 fn main() {
     let fancy_rect = FancyRect { x: 10.0, y: 10.0, dx: 5.0, dy: 5.0 };
-    println!("set breakpoint here");
+    println!("在此设置断点");
 }</code></pre>
-<p><code>Rectangle.natvis</code> contains:</p>
+<p><code>Rectangle.natvis</code> 包含：</p>
 <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010"&gt;
     &lt;Type Name="foo::FancyRect"&gt;
@@ -274,7 +274,7 @@ fn main() {
     &lt;/Type&gt;
 &lt;/AutoVisualizer&gt;
 </code></pre>
-<p>When viewed under WinDbg, the <code>fancy_rect</code> variable would be shown as follows:</p>
+<p>在 WinDbg 下查看时，<code>fancy_rect</code> 变量将显示如下：</p>
 <pre><code class="language-text">&gt; Variables:
   &gt; fancy_rect: (10.0, 10.0) + (5.0, 5.0)
     &gt; LowerLeft: (10.0, 10.0)
@@ -288,20 +288,20 @@ fn main() {
 <div class="rule" id="r-attributes.debugger.debugger_visualizer.gdb"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer.gdb" title="attributes.debugger.debugger_visualizer.gdb"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer<wbr>.gdb]</span></a>
 </div>
 
-<h3 id="using-debugger_visualizer-with-gdb"><a class="header" href="#using-debugger_visualizer-with-gdb">Using <code>debugger_visualizer</code> with GDB</a></h3>
+<h3 id="将debugger_visualizer与gdb结合使用"><a class="header" href="#将debugger_visualizer与gdb结合使用">将<code>debugger_visualizer</code>与GDB结合使用</a></h3>
 <div class="rule" id="r-attributes.debugger.debugger_visualizer.gdb.pretty"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer.gdb.pretty" title="attributes.debugger.debugger_visualizer.gdb.pretty"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer<wbr>.gdb<wbr>.pretty]</span></a>
 </div>
 
-<p>GDB supports the use of a structured Python script, called a <em>pretty printer</em>, that describes how a type should be visualized in the debugger view. For detailed information on pretty printers, refer to GDB’s <a href="https://sourceware.org/gdb/onlinedocs/gdb/Pretty-Printing.html">pretty printing documentation</a>.</p>
+<p>GDB 支持使用结构化的 Python 脚本，称为 <em>pretty printer</em>，它描述了类型应如何在调试器视图中可视化。有关 pretty printer 的详细信息，请参阅 GDB 的 <a href="https://sourceware.org/gdb/onlinedocs/gdb/Pretty-Printing.html">pretty printing 文档</a>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Embedded pretty printers are not automatically loaded when debugging a binary under GDB.</p>
-<p>There are two ways to enable auto-loading embedded pretty printers:</p>
+<p>在 GDB 下调试二进制文件时，嵌入式 pretty printer 不会自动加载。</p>
+<p>有两种方法可以启用自动加载嵌入式 pretty printer：</p>
 <ol>
-<li>Launch GDB with extra arguments to explicitly add a directory or binary to the auto-load safe path: <code>gdb -iex "add-auto-load-safe-path safe-path path/to/binary" path/to/binary</code> For more information, see GDB’s <a href="https://sourceware.org/gdb/onlinedocs/gdb/Auto_002dloading-safe-path.html">auto-loading documentation</a>.</li>
-<li>Create a file named <code>gdbinit</code> under <code>$HOME/.config/gdb</code> (you may need to create the directory if it doesn’t already exist). Add the following line to that file: <code>add-auto-load-safe-path path/to/binary</code>.</li>
+<li>启动 GDB 时带上额外参数，以显式添加目录或二进制文件到自动加载安全路径：<code>gdb -iex "add-auto-load-safe-path safe-path path/to/binary" path/to/binary</code>。有关更多信息，请参阅 GDB 的 <a href="https://sourceware.org/gdb/onlinedocs/gdb/Auto_002dloading-safe-path.html">auto-loading 文档</a>。</li>
+<li>在 <code>$HOME/.config/gdb</code> 下创建一个名为 <code>gdbinit</code> 的文件（如果目录不存在，您可能需要创建它）。在该文件中添加以下行：<code>add-auto-load-safe-path path/to/binary</code>。</li>
 </ol>
 </blockquote>
 </div>
@@ -309,7 +309,7 @@ fn main() {
 <div class="rule" id="r-attributes.debugger.debugger_visualizer.gdb.path"><a class="rule-link" href="#r-attributes.debugger.debugger_visualizer.gdb.path" title="attributes.debugger.debugger_visualizer.gdb.path"><span>[attributes<wbr>.debugger<wbr>.debugger_visualizer<wbr>.gdb<wbr>.path]</span></a>
 </div>
 
-<p>These scripts are embedded using the <code>gdb_script_file</code> key, which is a path relative to the source file.</p>
+<p>这些脚本使用 <code>gdb_script_file</code> 键嵌入，该键是相对于源文件的路径。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -324,13 +324,13 @@ struct Person {
 
 fn main() {
     let bob = Person { name: String::from("Bob"), age: 10 };
-    println!("set breakpoint here");
+    println!("在此设置断点");
 }</code></pre>
-<p><code>printer.py</code> contains:</p>
+<p><code>printer.py</code> 包含：</p>
 <pre><code class="language-python">import gdb
 
 class PersonPrinter:
-    "Print a Person"
+    "打印一个 Person"
 
     def __init__(self, val):
         self.val = val
@@ -351,7 +351,7 @@ def lookup(val):
 
 gdb.current_objfile().pretty_printers.append(lookup)
 </code></pre>
-<p>When the crate’s debug executable is passed into GDB<sup class="footnote-reference" id="fr-rust-gdb-1"><a href="#footnote-rust-gdb">1</a></sup>, <code>print bob</code> will display:</p>
+<p>当 crate 的调试可执行文件传递给 GDB<sup class="footnote-reference" id="fr-rust-gdb-1"><a href="#footnote-rust-gdb">1</a></sup> 时，<code>print bob</code> 将显示：</p>
 <pre><code class="language-text">"Bob" is 10 years old.
 </code></pre>
 </blockquote>
@@ -361,11 +361,11 @@ gdb.current_objfile().pretty_printers.append(lookup)
 <div class="rule" id="r-attributes.debugger.collapse_debuginfo"><a class="rule-link" href="#r-attributes.debugger.collapse_debuginfo" title="attributes.debugger.collapse_debuginfo"><span>[attributes<wbr>.debugger<wbr>.collapse_debuginfo]</span></a>
 </div>
 
-<h2 id="the-collapse_debuginfo-attribute"><a class="header" href="#the-collapse_debuginfo-attribute">The <code>collapse_debuginfo</code> attribute</a></h2>
+<h2 id="collapse_debuginfo属性"><a class="header" href="#collapse_debuginfo属性"><code>collapse_debuginfo</code>属性</a></h2>
 <div class="rule" id="r-attributes.debugger.collapse_debuginfo.intro"><a class="rule-link" href="#r-attributes.debugger.collapse_debuginfo.intro" title="attributes.debugger.collapse_debuginfo.intro"><span>[attributes<wbr>.debugger<wbr>.collapse_debuginfo<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>collapse_debuginfo</code> <a href="../attributes.html">attribute</a></em> controls whether code locations from a macro definition are collapsed into a single location associated with the macro’s call site when generating debuginfo for code calling this macro.</p>
+<p><em><code>collapse_debuginfo</code> <a href="../attributes.html">属性</a></em> 控制在为调用此宏的代码生成调试信息时，是否将来自宏定义的代码位置折叠到与宏的调用点关联的单个位置。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -375,11 +375,11 @@ gdb.current_objfile().pretty_printers.append(lookup)
 </span>#[collapse_debuginfo(yes)]
 macro_rules! example {
     () =&gt; {
-        println!("hello!");
+        println!("你好！");
     };
 }
 <span class="boring">}</span></code></pre>
-<p>When using a debugger, invoking the <code>example</code> macro may appear as though it is calling a function. That is, when you step to the invocation site, it may show the macro invocation rather than the expanded code.</p>
+<p>当使用调试器时，调用 <code>example</code> 宏可能看起来像是调用一个函数。也就是说，当您单步执行到调用点时，它可能会显示宏调用而不是展开的代码。</p>
 </blockquote>
 </div>
 
@@ -387,7 +387,7 @@ macro_rules! example {
 <div class="rule" id="r-attributes.debugger.collapse_debuginfo.syntax"><a class="rule-link" href="#r-attributes.debugger.collapse_debuginfo.syntax" title="attributes.debugger.collapse_debuginfo.syntax"><span>[attributes<wbr>.debugger<wbr>.collapse_debuginfo<wbr>.syntax]</span></a>
 </div>
 
-<p>The syntax for the <code>collapse_debuginfo</code> attribute is:</p>
+<p><code>collapse_debuginfo</code> 属性的 语法格式 是：</p>
 <div class="grammar-container">
 <p><strong><sup>Syntax</sup></strong>
 <br>
@@ -489,36 +489,36 @@ external</text>
 <div class="rule" id="r-attributes.debugger.collapse_debuginfo.allowed-positions"><a class="rule-link" href="#r-attributes.debugger.collapse_debuginfo.allowed-positions" title="attributes.debugger.collapse_debuginfo.allowed-positions"><span>[attributes<wbr>.debugger<wbr>.collapse_debuginfo<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>collapse_debuginfo</code> attribute may only be applied to a <a href="../macros-by-example.html"><code>macro_rules</code> definition</a>.</p>
+<p><code>collapse_debuginfo</code> 属性只能应用于 <a href="../macros-by-example.html"><code>macro_rules</code> 定义</a>。</p>
 <div class="rule" id="r-attributes.debugger.collapse_debuginfo.duplicates"><a class="rule-link" href="#r-attributes.debugger.collapse_debuginfo.duplicates" title="attributes.debugger.collapse_debuginfo.duplicates"><span>[attributes<wbr>.debugger<wbr>.collapse_debuginfo<wbr>.duplicates]</span></a>
 </div>
 
-<p>The <code>collapse_debuginfo</code> attribute may used only once on a macro.</p>
+<p><code>collapse_debuginfo</code> 属性在一个宏上只能使用一次。</p>
 <div class="rule" id="r-attributes.debugger.collapse_debuginfo.options"><a class="rule-link" href="#r-attributes.debugger.collapse_debuginfo.options" title="attributes.debugger.collapse_debuginfo.options"><span>[attributes<wbr>.debugger<wbr>.collapse_debuginfo<wbr>.options]</span></a>
 </div>
 
-<p>The <code>collapse_debuginfo</code> attribute accepts these options:</p>
+<p><code>collapse_debuginfo</code> 属性接受以下选项：</p>
 <ul>
-<li><code>#[collapse_debuginfo(yes)]</code> — Code locations in debuginfo are collapsed.</li>
-<li><code>#[collapse_debuginfo(no)]</code> — Code locations in debuginfo are not collapsed.</li>
-<li><code>#[collapse_debuginfo(external)]</code> — Code locations in debuginfo are collapsed only if the macro comes from a different crate.</li>
+<li><code>#[collapse_debuginfo(yes)]</code> — 调试信息中的代码位置被折叠。</li>
+<li><code>#[collapse_debuginfo(no)]</code> — 调试信息中的代码位置不被折叠。</li>
+<li><code>#[collapse_debuginfo(external)]</code> — 仅当宏来自不同的 crate 时，调试信息中的代码位置才被折叠。</li>
 </ul>
 <div class="rule" id="r-attributes.debugger.collapse_debuginfo.default"><a class="rule-link" href="#r-attributes.debugger.collapse_debuginfo.default" title="attributes.debugger.collapse_debuginfo.default"><span>[attributes<wbr>.debugger<wbr>.collapse_debuginfo<wbr>.default]</span></a>
 </div>
 
-<p>The <code>external</code> behavior is the default for macros that don’t have this attribute unless they are built-in macros. For built-in macros the default is <code>yes</code>.</p>
+<p>对于没有此属性的宏，<code>external</code> 行为是默认值，除非它们是内置宏。对于内置宏，默认值是 <code>yes</code>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> has a <a href="../../rustc/codegen-options/index.html#collapse-macro-debuginfo"><code>-C collapse-macro-debuginfo</code></a> CLI option to override both the default behavior and the values of any <code>#[collapse_debuginfo]</code> attributes.</p>
+<p><code>rustc</code> 有一个 <a href="../../rustc/codegen-options/index.html#collapse-macro-debuginfo"><code>-C collapse-macro-debuginfo</code></a> CLI 选项，可以覆盖默认行为以及任何 <code>#[collapse_debuginfo]</code> 属性的值。</p>
 </blockquote>
 </div>
 
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-rust-gdb">
-<p>Note: This assumes you are using the <code>rust-gdb</code> script which configures pretty-printers for standard library types like <code>String</code>. <a href="#fr-rust-gdb-1">↩</a></p>
+<p>注意：这假设您正在使用 <code>rust-gdb</code> 脚本，该脚本为 <code>String</code> 等标准库类型配置了 pretty printer。 <a href="#fr-rust-gdb-1">↩</a></p>
 </li>
 </ol>
 

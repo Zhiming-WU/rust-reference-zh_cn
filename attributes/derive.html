@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-1458537c.js";
+            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -178,20 +178,19 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <!-- template:attributes -->
-<div class="rule" id="r-attributes.derive"><a class="rule-link" href="#r-attributes.derive" title="attributes.derive"><span>[attributes<wbr>.derive]</span></a>
+                        <div class="rule" id="r-attributes.derive"><a class="rule-link" href="#r-attributes.derive" title="attributes.derive"><span>[attributes<wbr>.derive]</span></a>
 </div>
 
-<h1 id="derive"><a class="header" href="#derive">Derive</a></h1>
+<h1 id="派生"><a class="header" href="#派生">派生</a></h1>
 <div class="rule" id="r-attributes.derive.intro"><a class="rule-link" href="#r-attributes.derive.intro" title="attributes.derive.intro"><span>[attributes<wbr>.derive<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>derive</code> <a href="../attributes.html#r-attributes">attribute</a></em> invokes one or more <a href="../procedural-macros.html#r-macro.proc.derive">derive macros</a>, allowing new <a href="../items.html">items</a> to be automatically generated for data structures. You can create <code>derive</code> macros with <a href="../procedural-macros.html#r-macro.proc.derive">procedural macros</a>.</p>
+<p><em><code>derive</code> <a href="../attributes.html#r-attributes">属性</a></em> 调用一个或多个 <a href="../procedural-macros.html#r-macro.proc.derive">派生宏</a>，允许为数据结构自动生成新的 <a href="../items.html">项</a>。你可以使用 <a href="../procedural-macros.html#r-macro.proc.derive">过程宏</a> 创建 <code>derive</code> 宏。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
-<p>The <a href="../../core/cmp/derive.PartialEq.html"><code>PartialEq</code></a> derive macro emits an <a href="../items/implementations.html">implementation</a> of <a href="../../core/cmp/trait.PartialEq.html"><code>PartialEq</code></a> for <code>Foo&lt;T&gt; where T: PartialEq</code>. The <a href="../../core/clone/derive.Clone.html"><code>Clone</code></a> derive macro does likewise for <a href="../../core/clone/trait.Clone.html"><code>Clone</code></a>.</p>
+<p><a href="../../core/cmp/derive.PartialEq.html"><code>PartialEq</code></a> 派生宏 为 <code>Foo&lt;T&gt; where T: PartialEq</code> 发出一个 <a href="../../core/cmp/trait.PartialEq.html"><code>PartialEq</code></a> 的 <a href="../items/implementations.html">实现</a>。<a href="../../core/clone/derive.Clone.html"><code>Clone</code></a> 派生宏 为 <a href="../../core/clone/trait.Clone.html"><code>Clone</code></a> 也做同样的事情。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[derive(PartialEq, Clone)]
@@ -200,7 +199,7 @@ struct Foo&lt;T&gt; {
     b: T,
 }
 <span class="boring">}</span></code></pre>
-<p>The generated <code>impl</code> items are equivalent to:</p>
+<p>生成的 <code>impl</code> 项 等同于：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Foo&lt;T&gt; { a: i32, b: T }
@@ -222,23 +221,23 @@ impl&lt;T: Clone&gt; Clone for Foo&lt;T&gt; {
 <div class="rule" id="r-attributes.derive.syntax"><a class="rule-link" href="#r-attributes.derive.syntax" title="attributes.derive.syntax"><span>[attributes<wbr>.derive<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>derive</code> attribute uses the <a href="../attributes.html#grammar-MetaListPaths">MetaListPaths</a> syntax to specify a list of paths to <a href="../procedural-macros.html#r-macro.proc.derive">derive macros</a> to invoke.</p>
+<p><code>derive</code> 属性使用 <a href="../attributes.html#grammar-MetaListPaths">MetaListPaths</a> 语法格式 来指定要调用的 <a href="../procedural-macros.html#r-macro.proc.derive">派生宏</a> 的路径列表。</p>
 <div class="rule" id="r-attributes.derive.allowed-positions"><a class="rule-link" href="#r-attributes.derive.allowed-positions" title="attributes.derive.allowed-positions"><span>[attributes<wbr>.derive<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>derive</code> attribute may only be applied to <a href="../items/structs.html#r-items.struct">structs</a>, <a href="../items/enumerations.html#r-items.enum">enums</a>, and <a href="../items/unions.html#r-items.union">unions</a>.</p>
+<p><code>derive</code> 属性只能应用于 <a href="../items/structs.html#r-items.struct">结构体</a>、<a href="../items/enumerations.html#r-items.enum">枚举</a> 和 <a href="../items/unions.html#r-items.union">联合体</a>。</p>
 <div class="rule" id="r-attributes.derive.duplicates"><a class="rule-link" href="#r-attributes.derive.duplicates" title="attributes.derive.duplicates"><span>[attributes<wbr>.derive<wbr>.duplicates]</span></a>
 </div>
 
-<p>The <code>derive</code> attribute may be used any number of times on an item. All derive macros listed in all attributes are invoked.</p>
+<p><code>derive</code> 属性可以在一个 项 上使用任意次数。所有属性中列出的所有 派生宏 都会被调用。</p>
 <div class="rule" id="r-attributes.derive.stdlib"><a class="rule-link" href="#r-attributes.derive.stdlib" title="attributes.derive.stdlib"><span>[attributes<wbr>.derive<wbr>.stdlib]</span></a>
 </div>
 
-<p>The <code>derive</code> attribute is exported in the standard library prelude as <a href="../../core/macros/builtin/attr.derive.html"><code>core::prelude::v1::derive</code></a>.</p>
+<p><code>derive</code> 属性在标准库 预导入 中作为 <a href="../../core/macros/builtin/attr.derive.html"><code>core::prelude::v1::derive</code></a> 导出。</p>
 <div class="rule" id="r-attributes.derive.built-in"><a class="rule-link" href="#r-attributes.derive.built-in" title="attributes.derive.built-in"><span>[attributes<wbr>.derive<wbr>.built-in]</span></a>
 </div>
 
-<p>Built-in derives are defined in the <a href="../names/preludes.html#r-names.preludes.lang">language prelude</a>. The list of built-in derives are:</p>
+<p>内置派生在 <a href="../names/preludes.html#r-names.preludes.lang">语言预导入</a> 中定义。内置派生的列表是：</p>
 <ul>
 <li><a href="../../core/clone/trait.Clone.html"><code>Clone</code></a></li>
 <li><a href="../../core/marker/trait.Copy.html"><code>Copy</code></a></li>
@@ -253,25 +252,25 @@ impl&lt;T: Clone&gt; Clone for Foo&lt;T&gt; {
 <div class="rule" id="r-attributes.derive.built-in-automatically_derived"><a class="rule-link" href="#r-attributes.derive.built-in-automatically_derived" title="attributes.derive.built-in-automatically_derived"><span>[attributes<wbr>.derive<wbr>.built-in-automatically_derived]</span></a>
 </div>
 
-<p>The built-in derives include the <a href="derive.html#r-attributes.derive.automatically_derived"><code>automatically_derived</code> attribute</a> on the implementations they generate.</p>
+<p>内置派生在它们生成的 实现 上包含 <a href="derive.html#r-attributes.derive.automatically_derived"><code>automatically_derived</code> 属性</a>。</p>
 <div class="rule" id="r-attributes.derive.behavior"><a class="rule-link" href="#r-attributes.derive.behavior" title="attributes.derive.behavior"><span>[attributes<wbr>.derive<wbr>.behavior]</span></a>
 </div>
 
-<p>During macro expansion, for each element in the list of derives, the corresponding derive macro expands to zero or more <a href="../items.html">items</a>.</p>
+<p>在宏扩展期间，对于派生列表中的每个元素，相应的 派生宏 扩展为零个或多个 <a href="../items.html">项</a>。</p>
 <!-- template:attributes -->
 <div class="rule" id="r-attributes.derive.automatically_derived"><a class="rule-link" href="#r-attributes.derive.automatically_derived" title="attributes.derive.automatically_derived"><span>[attributes<wbr>.derive<wbr>.automatically_derived]</span></a>
 </div>
 
-<h2 id="the-automatically_derived-attribute"><a class="header" href="#the-automatically_derived-attribute">The <code>automatically_derived</code> attribute</a></h2>
+<h2 id="automatically_derived-属性"><a class="header" href="#automatically_derived-属性"><code>automatically_derived</code> 属性</a></h2>
 <div class="rule" id="r-attributes.derive.automatically_derived.intro"><a class="rule-link" href="#r-attributes.derive.automatically_derived.intro" title="attributes.derive.automatically_derived.intro"><span>[attributes<wbr>.derive<wbr>.automatically_derived<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>automatically_derived</code> <a href="../attributes.html#r-attributes">attribute</a></em> is used to annotate an <a href="../items/implementations.html">implementation</a> to indicate that it was automatically created by a <a href="../procedural-macros.html#r-macro.proc.derive">derive macro</a>. It has no direct effect, but it may be used by tools and diagnostic lints to detect these automatically generated implementations.</p>
+<p><em><code>automatically_derived</code> <a href="../attributes.html#r-attributes">属性</a></em> 用于注解一个 <a href="../items/implementations.html">实现</a>，以表明它是由 <a href="../procedural-macros.html#r-macro.proc.derive">派生宏</a> 自动创建的。它没有直接作用，但工具和诊断 lint 可能会用它来检测这些自动生成的 实现。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
-<p>Given <a href="../../core/clone/derive.Clone.html"><code>#[derive(Clone)]</code></a> on <code>struct Example</code>, the <a href="../procedural-macros.html#r-macro.proc.derive">derive macro</a> may produce:</p>
+<p>给定 <code>struct Example</code> 上的 <a href="../../core/clone/derive.Clone.html"><code>#[derive(Clone)]</code></a>，<a href="../procedural-macros.html#r-macro.proc.derive">派生宏</a> 可能会生成：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Example;
@@ -289,35 +288,35 @@ impl ::core::clone::Clone for Example {
 <div class="rule" id="r-attributes.derive.automatically_derived.syntax"><a class="rule-link" href="#r-attributes.derive.automatically_derived.syntax" title="attributes.derive.automatically_derived.syntax"><span>[attributes<wbr>.derive<wbr>.automatically_derived<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>automatically_derived</code> attribute uses the <a href="../attributes.html#grammar-MetaWord">MetaWord</a> syntax.</p>
+<p><code>automatically_derived</code> 属性使用 <a href="../attributes.html#grammar-MetaWord">MetaWord</a> 语法格式。</p>
 <div class="rule" id="r-attributes.derive.automatically_derived.allowed-positions"><a class="rule-link" href="#r-attributes.derive.automatically_derived.allowed-positions" title="attributes.derive.automatically_derived.allowed-positions"><span>[attributes<wbr>.derive<wbr>.automatically_derived<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>automatically_derived</code> attribute may only be applied to an <a href="../items/implementations.html">implementation</a>.</p>
+<p><code>automatically_derived</code> 属性只能应用于 <a href="../items/implementations.html">实现</a>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> ignores use in other positions but lints against it. This may become an error in the future.</p>
+<p><code>rustc</code> 在其他位置的使用会被忽略，但会发出 lint 警告。这在将来可能会变为错误。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.derive.automatically_derived.duplicates"><a class="rule-link" href="#r-attributes.derive.automatically_derived.duplicates" title="attributes.derive.automatically_derived.duplicates"><span>[attributes<wbr>.derive<wbr>.automatically_derived<wbr>.duplicates]</span></a>
 </div>
 
-<p>Using <code>automatically_derived</code> more than once on an implementation has the same effect as using it once.</p>
+<p>在一个 实现 上多次使用 <code>automatically_derived</code> 与使用一次效果相同。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> lints against any use following the first.</p>
+<p><code>rustc</code> 对第一次使用之后的任何使用都会发出 lint 警告。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.derive.automatically_derived.behavior"><a class="rule-link" href="#r-attributes.derive.automatically_derived.behavior" title="attributes.derive.automatically_derived.behavior"><span>[attributes<wbr>.derive<wbr>.automatically_derived<wbr>.behavior]</span></a>
 </div>
 
-<p>The <code>automatically_derived</code> attribute has no behavior.</p>
+<p><code>automatically_derived</code> 属性没有行为。</p>
 
                     </main>
 

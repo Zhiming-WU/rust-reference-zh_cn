@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-1458537c.js";
+            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,20 +181,17 @@
                         <div class="rule" id="r-attributes.testing"><a class="rule-link" href="#r-attributes.testing" title="attributes.testing"><span>[attributes<wbr>.testing]</span></a>
 </div>
 
-<h1 id="testing-attributes"><a class="header" href="#testing-attributes">Testing attributes</a></h1>
-<p>The following <a href="../attributes.html">attributes</a> are used for specifying functions for performing
-tests. Compiling a crate in “test” mode enables building the test functions
-along with a test harness for executing the tests. Enabling the test mode also
-enables the <a href="../conditional-compilation.html#test"><code>test</code> conditional compilation option</a>.</p>
+<h1 id="测试属性"><a class="header" href="#测试属性">测试属性</a></h1>
+<p>以下 <a href="../attributes.html">属性</a> 用于指定执行测试的函数。在“测试”模式下编译 crate 会启用测试函数的构建以及执行测试的测试工具。启用测试模式还会启用 <a href="../conditional-compilation.html#test"><code>test</code> 条件编译选项</a>。</p>
 <!-- template:attributes -->
 <div class="rule" id="r-attributes.testing.test"><a class="rule-link" href="#r-attributes.testing.test" title="attributes.testing.test"><span>[attributes<wbr>.testing<wbr>.test]</span></a>
 </div>
 
-<h2 id="the-test-attribute"><a class="header" href="#the-test-attribute">The <code>test</code> attribute</a></h2>
+<h2 id="test-属性"><a class="header" href="#test-属性"><code>test</code> 属性</a></h2>
 <div class="rule" id="r-attributes.testing.test.intro"><a class="rule-link" href="#r-attributes.testing.test.intro" title="attributes.testing.test.intro"><span>[attributes<wbr>.testing<wbr>.test<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>test</code> <a href="../attributes.html">attribute</a></em> marks a function to be executed as a test.</p>
+<p><em><code>test</code> <a href="../attributes.html">属性</a></em> 将一个函数标记为要作为测试执行。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -214,16 +211,16 @@ fn it_works() {
 <div class="rule" id="r-attributes.testing.test.syntax"><a class="rule-link" href="#r-attributes.testing.test.syntax" title="attributes.testing.test.syntax"><span>[attributes<wbr>.testing<wbr>.test<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>test</code> attribute uses the <a href="../attributes.html#grammar-MetaWord">MetaWord</a> syntax.</p>
+<p><code>test</code> 属性使用 <a href="../attributes.html#grammar-MetaWord">元字</a> 语法格式。</p>
 <div class="rule" id="r-attributes.testing.test.allowed-positions"><a class="rule-link" href="#r-attributes.testing.test.allowed-positions" title="attributes.testing.test.allowed-positions"><span>[attributes<wbr>.testing<wbr>.test<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>test</code> attribute may only be applied to <a href="../glossary.html#free-item">free functions</a> that are monomorphic, that take no arguments, and where the return type implements the <a href="../../std/process/trait.Termination.html"><code>Termination</code></a> trait.</p>
+<p><code>test</code> 属性只能应用于单态的、不带参数且返回类型实现 <a href="../../std/process/trait.Termination.html"><code>Termination</code></a> 特型 的 <a href="../glossary.html#free-item">自由函数</a>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Some of types that implement the <a href="../../std/process/trait.Termination.html"><code>Termination</code></a> trait include:</p>
+<p>实现了 <a href="../../std/process/trait.Termination.html"><code>Termination</code></a> 特型 的一些类型包括：</p>
 <ul>
 <li><code>()</code></li>
 <li><code>Result&lt;T, E&gt; where T: Termination, E: Debug</code></li>
@@ -234,12 +231,12 @@ fn it_works() {
 <div class="rule" id="r-attributes.testing.test.duplicates"><a class="rule-link" href="#r-attributes.testing.test.duplicates" title="attributes.testing.test.duplicates"><span>[attributes<wbr>.testing<wbr>.test<wbr>.duplicates]</span></a>
 </div>
 
-<p>Only the first use of <code>test</code> on a function has effect.</p>
+<p><code>test</code> 在函数上的第一次使用才有效。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> lints against any use following the first. This may become an error in the future.</p>
+<p><code>rustc</code> 对第一次使用之后的任何使用都会发出 lint 警告。这在将来可能会变为错误。</p>
 </blockquote>
 </div>
 
@@ -247,29 +244,29 @@ fn it_works() {
 <div class="rule" id="r-attributes.testing.test.stdlib"><a class="rule-link" href="#r-attributes.testing.test.stdlib" title="attributes.testing.test.stdlib"><span>[attributes<wbr>.testing<wbr>.test<wbr>.stdlib]</span></a>
 </div>
 
-<p>The <code>test</code> attribute is exported from the standard library prelude as <a href="../../core/macros/builtin/attr.test.html"><code>std::prelude::v1::test</code></a>.</p>
+<p><code>test</code> 属性从标准库 预导入 <a href="../../core/macros/builtin/attr.test.html"><code>std::prelude::v1::test</code></a> 中导出。</p>
 <div class="rule" id="r-attributes.testing.test.enabled"><a class="rule-link" href="#r-attributes.testing.test.enabled" title="attributes.testing.test.enabled"><span>[attributes<wbr>.testing<wbr>.test<wbr>.enabled]</span></a>
 </div>
 
-<p>These functions are only compiled when in test mode.</p>
+<p>这些函数只在测试模式下编译。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The test mode is enabled by passing the <code>--test</code> argument to <code>rustc</code> or using <code>cargo test</code>.</p>
+<p>测试模式通过向 <code>rustc</code> 传递 <code>--test</code> 参数或使用 <code>cargo test</code> 启用。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.testing.test.success"><a class="rule-link" href="#r-attributes.testing.test.success" title="attributes.testing.test.success"><span>[attributes<wbr>.testing<wbr>.test<wbr>.success]</span></a>
 </div>
 
-<p>The test harness calls the returned value’s <a href="../../std/process/trait.Termination.html#tymethod.report"><code>report</code></a> method, and classifies the test as passed or failed depending on whether the resulting <a href="../../std/process/struct.ExitCode.html"><code>ExitCode</code></a> represents successful termination.
-In particular:</p>
+<p>测试工具调用返回值的 <a href="../../std/process/trait.Termination.html#tymethod.report"><code>report</code></a> 方法，并根据生成的 <a href="../../std/process/struct.ExitCode.html"><code>ExitCode</code></a> 是否表示成功终止来将测试分类为通过或失败。
+特别是：</p>
 <ul>
-<li>Tests that return <code>()</code> pass as long as they terminate and do not panic.</li>
-<li>Tests that return a <code>Result&lt;(), E&gt;</code> pass as long as they return <code>Ok(())</code>.</li>
-<li>Tests that return <code>ExitCode::SUCCESS</code> pass, and tests that return <code>ExitCode::FAILURE</code> fail.</li>
-<li>Tests that do not terminate neither pass nor fail.</li>
+<li>返回 <code>()</code> 的测试只要终止且不 恐慌 就通过。</li>
+<li>返回 <code>Result&lt;(), E&gt;</code> 的测试只要返回 <code>Ok(())</code> 就通过。</li>
+<li>返回 <code>ExitCode::SUCCESS</code> 的测试通过，返回 <code>ExitCode::FAILURE</code> 的测试失败。</li>
+<li>不终止的测试既不通过也不失败。</li>
 </ul>
 <div class="alert alert-example">
 <blockquote>
@@ -282,8 +279,8 @@ In particular:</p>
 </span><span class="boring">fn do_the_thing(s: &amp;i32) -&gt; io::Result&lt;()&gt; { Ok(()) }
 </span>#[test]
 fn test_the_thing() -&gt; io::Result&lt;()&gt; {
-    let state = setup_the_thing()?; // expected to succeed
-    do_the_thing(&amp;state)?;          // expected to succeed
+    let state = setup_the_thing()?; // 预期成功
+    do_the_thing(&amp;state)?;          // 预期成功
     Ok(())
 }
 <span class="boring">}</span></code></pre>
@@ -294,11 +291,11 @@ fn test_the_thing() -&gt; io::Result&lt;()&gt; {
 <div class="rule" id="r-attributes.testing.ignore"><a class="rule-link" href="#r-attributes.testing.ignore" title="attributes.testing.ignore"><span>[attributes<wbr>.testing<wbr>.ignore]</span></a>
 </div>
 
-<h2 id="the-ignore-attribute"><a class="header" href="#the-ignore-attribute">The <code>ignore</code> attribute</a></h2>
+<h2 id="ignore-属性"><a class="header" href="#ignore-属性"><code>ignore</code> 属性</a></h2>
 <div class="rule" id="r-attributes.testing.ignore.intro"><a class="rule-link" href="#r-attributes.testing.ignore.intro" title="attributes.testing.ignore.intro"><span>[attributes<wbr>.testing<wbr>.ignore<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>ignore</code> <a href="../attributes.html">attribute</a></em> can be used with the <a href="testing.html#r-attributes.testing.test"><code>test</code> attribute</a> to tell the test harness to not execute that function as a test.</p>
+<p><em><code>ignore</code> <a href="../attributes.html">属性</a></em> 可以与 <a href="testing.html#r-attributes.testing.test"><code>test</code> 属性</a> 一起使用，以告知测试工具不要将该函数作为测试执行。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -308,7 +305,7 @@ fn test_the_thing() -&gt; io::Result&lt;()&gt; {
 </span>#[test]
 #[ignore]
 fn check_thing() {
-    // …
+    // ...
 }
 <span class="boring">}</span></code></pre>
 </blockquote>
@@ -318,18 +315,18 @@ fn check_thing() {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The <code>rustc</code> test harness supports the <code>--include-ignored</code> flag to force ignored tests to be run.</p>
+<p><code>rustc</code> 测试工具支持 <code>--include-ignored</code> 标志来强制运行被忽略的测试。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.testing.ignore.syntax"><a class="rule-link" href="#r-attributes.testing.ignore.syntax" title="attributes.testing.ignore.syntax"><span>[attributes<wbr>.testing<wbr>.ignore<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>ignore</code> attribute uses the <a href="../attributes.html#grammar-MetaWord">MetaWord</a> and <a href="../attributes.html#grammar-MetaNameValueStr">MetaNameValueStr</a> syntaxes.</p>
+<p><code>ignore</code> 属性使用 <a href="../attributes.html#grammar-MetaWord">元字</a> 和 <a href="../attributes.html#grammar-MetaNameValueStr">元名称值字符串</a> 语法格式。</p>
 <div class="rule" id="r-attributes.testing.ignore.reason"><a class="rule-link" href="#r-attributes.testing.ignore.reason" title="attributes.testing.ignore.reason"><span>[attributes<wbr>.testing<wbr>.ignore<wbr>.reason]</span></a>
 </div>
 
-<p>The <a href="../attributes.html#grammar-MetaNameValueStr">MetaNameValueStr</a> form of the <code>ignore</code> attribute provides a way to specify a reason why the test is ignored.</p>
+<p><code>ignore</code> 属性的 <a href="../attributes.html#grammar-MetaNameValueStr">元名称值字符串</a> 形式提供了一种方法来指定忽略测试的原因。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -337,9 +334,9 @@ fn check_thing() {
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
-#[ignore = "not yet implemented"]
+#[ignore = "not yet implemented"] // 尚未实现
 fn mytest() {
-    // …
+    // ...
 }
 <span class="boring">}</span></code></pre>
 </blockquote>
@@ -348,40 +345,40 @@ fn mytest() {
 <div class="rule" id="r-attributes.testing.ignore.allowed-positions"><a class="rule-link" href="#r-attributes.testing.ignore.allowed-positions" title="attributes.testing.ignore.allowed-positions"><span>[attributes<wbr>.testing<wbr>.ignore<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>ignore</code> attribute may only be applied to functions annotated with the <code>test</code> attribute.</p>
+<p><code>ignore</code> 属性只能应用于带有 <code>test</code> 属性注解的函数。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> ignores use in other positions but lints against it. This may become an error in the future.</p>
+<p><code>rustc</code> 在其他位置的使用会被忽略，但会发出 lint 警告。这在将来可能会变为错误。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.testing.ignore.duplicates"><a class="rule-link" href="#r-attributes.testing.ignore.duplicates" title="attributes.testing.ignore.duplicates"><span>[attributes<wbr>.testing<wbr>.ignore<wbr>.duplicates]</span></a>
 </div>
 
-<p>Only the first use of <code>ignore</code> on a function has effect.</p>
+<p><code>ignore</code> 在函数上的第一次使用才有效。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> lints against any use following the first. This may become an error in the future.</p>
+<p><code>rustc</code> 对第一次使用之后的任何使用都会发出 lint 警告。这在将来可能会变为错误。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.testing.ignore.behavior"><a class="rule-link" href="#r-attributes.testing.ignore.behavior" title="attributes.testing.ignore.behavior"><span>[attributes<wbr>.testing<wbr>.ignore<wbr>.behavior]</span></a>
 </div>
 
-<p>Ignored tests are still compiled when in test mode, but they are not executed.</p>
+<p>被忽略的测试在测试模式下仍然会被编译，但不会执行。</p>
 <!-- template:attributes -->
 <div class="rule" id="r-attributes.testing.should_panic"><a class="rule-link" href="#r-attributes.testing.should_panic" title="attributes.testing.should_panic"><span>[attributes<wbr>.testing<wbr>.should_panic]</span></a>
 </div>
 
-<h2 id="the-should_panic-attribute"><a class="header" href="#the-should_panic-attribute">The <code>should_panic</code> attribute</a></h2>
+<h2 id="should_panic-属性"><a class="header" href="#should_panic-属性"><code>should_panic</code> 属性</a></h2>
 <div class="rule" id="r-attributes.testing.should_panic.intro"><a class="rule-link" href="#r-attributes.testing.should_panic.intro" title="attributes.testing.should_panic.intro"><span>[attributes<wbr>.testing<wbr>.should_panic<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>should_panic</code> <a href="../attributes.html">attribute</a></em> causes a test to pass only if the <a href="testing.html#r-attributes.testing.test">test function</a> to which the attribute is applied panics.</p>
+<p><em><code>should_panic</code> <a href="../attributes.html">属性</a></em> 会使测试仅在应用该属性的 <a href="testing.html#r-attributes.testing.test">测试函数</a> 发生 恐慌 时才通过。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -389,9 +386,9 @@ fn mytest() {
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
-#[should_panic(expected = "values don't match")]
+#[should_panic(expected = "values don't match")] // 预期为“值不匹配”
 fn mytest() {
-    assert_eq!(1, 2, "values don't match");
+    assert_eq!(1, 2, "values don't match"); // 值不匹配
 }
 <span class="boring">}</span></code></pre>
 </blockquote>
@@ -400,10 +397,10 @@ fn mytest() {
 <div class="rule" id="r-attributes.testing.should_panic.syntax"><a class="rule-link" href="#r-attributes.testing.should_panic.syntax" title="attributes.testing.should_panic.syntax"><span>[attributes<wbr>.testing<wbr>.should_panic<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>should_panic</code> attribute has these forms:</p>
+<p><code>should_panic</code> 属性有以下形式：</p>
 <ul>
 <li>
-<p><a href="../attributes.html#grammar-MetaWord">MetaWord</a></p>
+<p><a href="../attributes.html#grammar-MetaWord">元字</a></p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -412,14 +409,14 @@ fn mytest() {
 </span><span class="boring">fn main() {
 </span>#[test]
 #[should_panic]
-fn mytest() { panic!("error: some message, and more"); }
+fn mytest() { panic!("error: some message, and more"); } // 错误：一些消息，还有更多
 <span class="boring">}</span></code></pre>
 </blockquote>
 </div>
 
 </li>
 <li>
-<p><a href="../attributes.html#grammar-MetaNameValueStr">MetaNameValueStr</a> — The given string must appear within the panic message for the test to pass.</p>
+<p><a href="../attributes.html#grammar-MetaNameValueStr">元名称值字符串</a> — 给定字符串必须出现在 恐慌 消息中，测试才能通过。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -427,15 +424,15 @@ fn mytest() { panic!("error: some message, and more"); }
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
-#[should_panic = "some message"]
-fn mytest() { panic!("error: some message, and more"); }
+#[should_panic = "some message"] // 一些消息
+fn mytest() { panic!("error: some message, and more"); } // 错误：一些消息，还有更多
 <span class="boring">}</span></code></pre>
 </blockquote>
 </div>
 
 </li>
 <li>
-<p><a href="../attributes.html#grammar-MetaListNameValueStr">MetaListNameValueStr</a> — As with the <a href="../attributes.html#grammar-MetaNameValueStr">MetaNameValueStr</a> syntax, the given string must appear within the panic message.</p>
+<p><a href="../attributes.html#grammar-MetaListNameValueStr">元列表名称值字符串</a> — 与 <a href="../attributes.html#grammar-MetaNameValueStr">元名称值字符串</a> 语法格式 一样，给定字符串必须出现在 恐慌 消息中。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -443,8 +440,8 @@ fn mytest() { panic!("error: some message, and more"); }
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
-#[should_panic(expected = "some message")]
-fn mytest() { panic!("error: some message, and more"); }
+#[should_panic(expected = "some message")] // 预期为“一些消息”
+fn mytest() { panic!("error: some message, and more"); } // 错误：一些消息，还有更多
 <span class="boring">}</span></code></pre>
 </blockquote>
 </div>
@@ -454,35 +451,35 @@ fn mytest() { panic!("error: some message, and more"); }
 <div class="rule" id="r-attributes.testing.should_panic.allowed-positions"><a class="rule-link" href="#r-attributes.testing.should_panic.allowed-positions" title="attributes.testing.should_panic.allowed-positions"><span>[attributes<wbr>.testing<wbr>.should_panic<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>should_panic</code> attribute may only be applied to functions annotated with the <code>test</code> attribute.</p>
+<p><code>should_panic</code> 属性只能应用于带有 <code>test</code> 属性注解的函数。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> ignores use in other positions but lints against it. This may become an error in the future.</p>
+<p><code>rustc</code> 在其他位置的使用会被忽略，但会发出 lint 警告。这在将来可能会变为错误。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.testing.should_panic.duplicates"><a class="rule-link" href="#r-attributes.testing.should_panic.duplicates" title="attributes.testing.should_panic.duplicates"><span>[attributes<wbr>.testing<wbr>.should_panic<wbr>.duplicates]</span></a>
 </div>
 
-<p>Only the first use of <code>should_panic</code> on a function has effect.</p>
+<p><code>should_panic</code> 在函数上的第一次使用才有效。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> lints against any use following the first with a future-compatibility warning. This may become an error in the future.</p>
+<p><code>rustc</code> 对第一次使用之后的任何使用都会发出未来兼容性警告。这在将来可能会变为错误。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-attributes.testing.should_panic.expected"><a class="rule-link" href="#r-attributes.testing.should_panic.expected" title="attributes.testing.should_panic.expected"><span>[attributes<wbr>.testing<wbr>.should_panic<wbr>.expected]</span></a>
 </div>
 
-<p>When the <a href="../attributes.html#grammar-MetaNameValueStr">MetaNameValueStr</a> form or the <a href="../attributes.html#grammar-MetaListNameValueStr">MetaListNameValueStr</a> form with the <code>expected</code> key is used, the given string must appear somewhere within the panic message for the test to pass.</p>
+<p>当使用 <a href="../attributes.html#grammar-MetaNameValueStr">元名称值字符串</a> 形式或带有 <code>expected</code> 键的 <a href="../attributes.html#grammar-MetaListNameValueStr">元列表名称值字符串</a> 形式时，给定字符串必须出现在 恐慌 消息中的某个位置，测试才能通过。</p>
 <div class="rule" id="r-attributes.testing.should_panic.return"><a class="rule-link" href="#r-attributes.testing.should_panic.return" title="attributes.testing.should_panic.return"><span>[attributes<wbr>.testing<wbr>.should_panic<wbr>.return]</span></a>
 </div>
 
-<p>The return type of the test function must be <code>()</code>.</p>
+<p>测试函数的返回类型必须是 <code>()</code>。</p>
 
                     </main>
 

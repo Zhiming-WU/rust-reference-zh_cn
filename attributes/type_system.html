@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-1458537c.js";
+            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-be189161.js"></script>
@@ -181,30 +181,28 @@
                         <div class="rule" id="r-attributes.type-system"><a class="rule-link" href="#r-attributes.type-system" title="attributes.type-system"><span>[attributes<wbr>.type-system]</span></a>
 </div>
 
-<h1 id="type-system-attributes"><a class="header" href="#type-system-attributes">Type system attributes</a></h1>
-<p>The following <a href="../attributes.html">attributes</a> are used for changing how a type can be used.</p>
+<h1 id="类型系统属性"><a class="header" href="#类型系统属性">类型系统属性</a></h1>
+<p>以下 <a href="../attributes.html">属性</a> 用于更改类型的使用方式。</p>
 <div class="rule" id="r-attributes.type-system.non_exhaustive"><a class="rule-link" href="#r-attributes.type-system.non_exhaustive" title="attributes.type-system.non_exhaustive"><span>[attributes<wbr>.type-system<wbr>.non_exhaustive]</span></a>
 </div>
 
-<h2 id="the-non_exhaustive-attribute"><a class="header" href="#the-non_exhaustive-attribute">The <code>non_exhaustive</code> attribute</a></h2>
+<h2 id="non_exhaustive属性"><a class="header" href="#non_exhaustive属性"><code>non_exhaustive</code>属性</a></h2>
 <div class="rule" id="r-attributes.type-system.non_exhaustive.intro"><a class="rule-link" href="#r-attributes.type-system.non_exhaustive.intro" title="attributes.type-system.non_exhaustive.intro"><span>[attributes<wbr>.type-system<wbr>.non_exhaustive<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>non_exhaustive</code> attribute</em> indicates that a type or variant may have
-more fields or variants added in the future.</p>
+<p><em>non_exhaustive 属性</em> 表示以后可能会向类型或变体中添加更多字段或变体。</p>
 <div class="rule" id="r-attributes.type-system.non_exhaustive.allowed-positions"><a class="rule-link" href="#r-attributes.type-system.non_exhaustive.allowed-positions" title="attributes.type-system.non_exhaustive.allowed-positions"><span>[attributes<wbr>.type-system<wbr>.non_exhaustive<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>It can be applied to <a href="../items/structs.html"><code>struct</code>s</a>, <a href="../items/enumerations.html"><code>enum</code>s</a>, and <code>enum</code> variants.</p>
+<p>它可以应用于 <a href="../items/structs.html">结构体</a>、<a href="../items/enumerations.html">枚举</a> 和 enum 变体。</p>
 <div class="rule" id="r-attributes.type-system.non_exhaustive.syntax"><a class="rule-link" href="#r-attributes.type-system.non_exhaustive.syntax" title="attributes.type-system.non_exhaustive.syntax"><span>[attributes<wbr>.type-system<wbr>.non_exhaustive<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>non_exhaustive</code> attribute uses the <a href="../attributes.html#grammar-MetaWord">MetaWord</a> syntax and thus does not
-take any inputs.</p>
+<p><code>non_exhaustive</code> 属性使用 <a href="../attributes.html#grammar-MetaWord">MetaWord</a> 语法格式，因此不接受任何输入。</p>
 <div class="rule" id="r-attributes.type-system.non_exhaustive.same-crate"><a class="rule-link" href="#r-attributes.type-system.non_exhaustive.same-crate" title="attributes.type-system.non_exhaustive.same-crate"><span>[attributes<wbr>.type-system<wbr>.non_exhaustive<wbr>.same-crate]</span></a>
 </div>
 
-<p>Within the defining crate, <code>non_exhaustive</code> has no effect.</p>
+<p>在定义它的 crate 内部， <code>non_exhaustive</code> 没有效果。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[non_exhaustive]
@@ -231,12 +229,12 @@ pub enum Message {
     #[non_exhaustive] Quit,
 }
 
-// Non-exhaustive structs can be constructed as normal within the defining crate.
+// 在定义它的 crate 内部，可以像往常一样构造非详尽结构体。
 let config = Config { window_width: 640, window_height: 480 };
 let token = Token;
 let id = Id(4);
 
-// Non-exhaustive structs can be matched on exhaustively within the defining crate.
+// 在定义它的 crate 内部，可以对非详尽结构体进行详尽匹配。
 let Config { window_width, window_height } = config;
 let Token = token;
 let Id(id_number) = id;
@@ -244,14 +242,14 @@ let Id(id_number) = id;
 let error = Error::Other;
 let message = Message::Reaction(3);
 
-// Non-exhaustive enums can be matched on exhaustively within the defining crate.
+// 在定义它的 crate 内部，可以对非详尽枚举进行详尽匹配。
 match error {
     Error::Message(ref s) =&gt; { },
     Error::Other =&gt; { },
 }
 
 match message {
-    // Non-exhaustive variants can be matched on exhaustively within the defining crate.
+    // 在定义它的 crate 内部，可以对非详尽变体进行详尽匹配。
     Message::Send { from, to, contents } =&gt; { },
     Message::Reaction(id) =&gt; { },
     Message::Quit =&gt; { },
@@ -260,99 +258,89 @@ match message {
 <div class="rule" id="r-attributes.type-system.non_exhaustive.external-crate"><a class="rule-link" href="#r-attributes.type-system.non_exhaustive.external-crate" title="attributes.type-system.non_exhaustive.external-crate"><span>[attributes<wbr>.type-system<wbr>.non_exhaustive<wbr>.external-crate]</span></a>
 </div>
 
-<p>Outside of the defining crate, types annotated with <code>non_exhaustive</code> have limitations that
-preserve backwards compatibility when new fields or variants are added.</p>
+<p>在定义它的 crate 之外，带有 <code>non_exhaustive</code> 标注的类型具有一些限制，以便在添加新字段或变体时保持向后兼容性。</p>
 <div class="rule" id="r-attributes.type-system.non_exhaustive.construction"><a class="rule-link" href="#r-attributes.type-system.non_exhaustive.construction" title="attributes.type-system.non_exhaustive.construction"><span>[attributes<wbr>.type-system<wbr>.non_exhaustive<wbr>.construction]</span></a>
 </div>
 
-<p>Non-exhaustive types cannot be constructed outside of the defining crate:</p>
+<p>在定义它的 crate 之外，无法构造非详尽类型：</p>
 <ul>
-<li>Non-exhaustive variants (<a href="../items/structs.html"><code>struct</code></a> or <a href="../items/enumerations.html"><code>enum</code> variant</a>) cannot be constructed
-with a <a href="../expressions/struct-expr.html#grammar-StructExpression">StructExpression</a> (including with <a href="../expressions/struct-expr.html#functional-update-syntax">functional update syntax</a>).</li>
-<li>The implicitly defined same-named constant of a <a href="../items/structs.html">unit-like struct</a>,
-or the same-named constructor function of a <a href="../items/structs.html">tuple struct</a>,
-has a <a href="../visibility-and-privacy.html">visibility</a> no greater than <code>pub(crate)</code>.
-That is, if the struct’s visibility is <code>pub</code>, then the constant or constructor’s visibility
-is <code>pub(crate)</code>, and otherwise the visibility of the two items is the same
-(as is the case without <code>#[non_exhaustive]</code>).</li>
-<li><a href="../items/enumerations.html"><code>enum</code></a> instances can be constructed.</li>
+<li>非详尽变体（ <a href="../items/structs.html">结构体</a> 或 <a href="../items/enumerations.html">枚举变体</a> ）不能使用 <a href="../expressions/struct-expr.html#grammar-StructExpression">结构体表达式</a> 构造（包括使用 <a href="../expressions/struct-expr.html#functional-update-syntax">功能性更新语法格式</a> ）。</li>
+<li><a href="../items/structs.html">单元结构体</a> 隐式定义的同名常量，或 <a href="../items/structs.html">元组结构体</a> 的同名构造函数，其 <a href="../visibility-and-privacy.html">可见性</a> 不大于 <code>pub(crate)</code> 。
+也就是说，如果结构体的可见性是 <code>pub</code> ，那么常量或构造函数的可见性就是 <code>pub(crate)</code> ，否则这两个 <a href="../items.html#grammar-Item">项</a> 的可见性相同（就像没有 <code>#[non_exhaustive]</code> 的情况一样）。</li>
+<li><a href="../items/enumerations.html">枚举</a> 实例可以被构造。</li>
 </ul>
-<p>The following examples of construction do not compile when outside the defining crate:</p>
+<p>以下构造示例在定义它的 crate 之外时无法编译：</p>
 <!-- ignore: requires external crates -->
-<pre><code class="language-rust ignore">// These are types defined in an upstream crate that have been annotated as
-// `#[non_exhaustive]`.
+<pre><code class="language-rust ignore">// 这些是在上游 crate 中定义并标注为 `#[non_exhaustive]` 的类型。
 use upstream::{Config, Token, Id, Error, Message};
 
-// Cannot construct an instance of `Config`; if new fields were added in
-// a new version of `upstream` then this would fail to compile, so it is
-// disallowed.
+// 无法构造 Config 的实例；如果在 upstream 的新版本中添加了新字段，
+// 这将导致编译失败，因此是不允许的。
 let config = Config { window_width: 640, window_height: 480 };
 
-// Cannot construct an instance of `Token`; if new fields were added, then
-// it would not be a unit-like struct any more, so the same-named constant
-// created by it being a unit-like struct is not public outside the crate;
-// this code fails to compile.
+// 无法构造 Token 的实例；如果添加了新字段，那么
+// 它将不再是一个单元结构体，因此由其作为单元结构体创建的
+// 同名常量在 crate 外部是不公开的；这段代码无法编译。
 let token = Token;
 
-// Cannot construct an instance of `Id`; if new fields were added, then
-// its constructor function signature would change, so its constructor
-// function is not public outside the crate; this code fails to compile.
+// 无法构造 Id 的实例；如果添加了新字段，那么
+// 其构造函数签名将会改变，因此其构造函数
+// 在 crate 外部是不公开的；这段代码无法编译。
 let id = Id(5);
 
-// Can construct an instance of `Error`; new variants being introduced would
-// not result in this failing to compile.
+// 可以构造 Error 的实例；引入新变体
+// 不会导致编译失败。
 let error = Error::Message("foo".to_string());
 
-// Cannot construct an instance of `Message::Send` or `Message::Reaction`;
-// if new fields were added in a new version of `upstream` then this would
-// fail to compile, so it is disallowed.
+// 无法构造 Message::Send 或 Message::Reaction 的实例；
+// 如果在 upstream 的新版本中添加了新字段，那么这将会
+// 导致编译失败，因此是不允许的。
 let message = Message::Send { from: 0, to: 1, contents: "foo".to_string(), };
 let message = Message::Reaction(0);
 
-// Cannot construct an instance of `Message::Quit`; if this were converted to
-// a tuple enum variant `upstream`, this would fail to compile.
+// 无法构造 Message::Quit 的实例；如果这在 upstream 中被转换为
+// 元组枚举变体，这将导致编译失败。
 let message = Message::Quit;</code></pre>
 <div class="rule" id="r-attributes.type-system.non_exhaustive.match"><a class="rule-link" href="#r-attributes.type-system.non_exhaustive.match" title="attributes.type-system.non_exhaustive.match"><span>[attributes<wbr>.type-system<wbr>.non_exhaustive<wbr>.match]</span></a>
 </div>
 
-<p>There are limitations when matching on non-exhaustive types outside of the defining crate:</p>
+<p>在定义它的 crate 外部匹配非详尽类型时存在一些限制：</p>
 <ul>
-<li>When pattern matching on a non-exhaustive variant (<a href="../items/structs.html"><code>struct</code></a> or <a href="../items/enumerations.html"><code>enum</code> variant</a>), a <a href="../patterns.html#grammar-StructPattern">StructPattern</a> must be used which must include a <code>..</code>. A tuple enum variant’s constructor’s <a href="../visibility-and-privacy.html">visibility</a> is reduced to be no greater than <code>pub(crate)</code>.</li>
-<li>When pattern matching on a non-exhaustive <a href="../items/enumerations.html"><code>enum</code></a>, matching on a variant does not contribute towards the exhaustiveness of the arms. The following examples of matching do not compile when outside the defining crate:</li>
+<li>在对非详尽变体（ <a href="../items/structs.html">结构体</a> 或 <a href="../items/enumerations.html">枚举变体</a> ）进行模式匹配时，必须使用包含 <code>..</code> 的 <a href="../patterns.html#grammar-StructPattern">结构体模式</a> 。元组枚举变体的构造函数的 <a href="../visibility-and-privacy.html">可见性</a> 被降低到不大于 <code>pub(crate)</code> 。</li>
+<li>在对非详尽 <a href="../items/enumerations.html">枚举</a> 进行模式匹配时，匹配某个变体不会对匹配臂的详尽性做出贡献。当在定义它的 crate 之外时，以下匹配示例无法编译：</li>
 </ul>
 <!-- ignore: requires external crates -->
-<pre><code class="language-rust ignore">// These are types defined in an upstream crate that have been annotated as
-// `#[non_exhaustive]`.
+<pre><code class="language-rust ignore">// 这些是在上游 crate 中定义并标注为 `#[non_exhaustive]` 的类型。
 use upstream::{Config, Token, Id, Error, Message};
 
-// Cannot match on a non-exhaustive enum without including a wildcard arm.
+// 在不包含通配符臂的情况下，无法匹配非详尽枚举。
 match error {
   Error::Message(ref s) =&gt; { },
   Error::Other =&gt; { },
-  // would compile with: `_ =&gt; {},`
+  // 使用 `_ =&gt; {},` 可以编译
 }
 
-// Cannot match on a non-exhaustive struct without a wildcard.
+// 在没有通配符的情况下，无法匹配非详尽结构体。
 if let Ok(Config { window_width, window_height }) = config {
-    // would compile with: `..`
+    // 使用 `..` 可以编译
 }
 
-// Cannot match a non-exhaustive unit-like or tuple struct except by using
-// braced struct syntax with a wildcard.
-// This would compile as `let Token { .. } = token;`
+// 除非使用带有通配符的大括号结构体语法，否则
+// 无法匹配非详尽单元结构体或元组结构体。
+// 这将编译为 `let Token { .. } = token;`
 let Token = token;
-// This would compile as `let Id { 0: id_number, .. } = id;`
+// 这将编译为 `let Id { 0: id_number, .. } = id;`
 let Id(id_number) = id;
 
 match message {
-  // Cannot match on a non-exhaustive struct enum variant without including a wildcard.
+  // 在不包含通配符的情况下，无法匹配非详尽结构体枚举变体。
   Message::Send { from, to, contents } =&gt; { },
-  // Cannot match on a non-exhaustive tuple or unit enum variant.
+  // 无法匹配非详尽元组或单元枚举变体。
   Message::Reaction(type) =&gt; { },
   Message::Quit =&gt; { },
 }</code></pre>
-<p>It’s also not allowed to use numeric casts (<code>as</code>) on enums that contain any non-exhaustive variants.</p>
-<p>For example, the following enum can be cast because it doesn’t contain any non-exhaustive variants:</p>
+<p>也不允许在包含任何非详尽变体的枚举上使用数值转换（ <code>as</code> ）。</p>
+<p>例如，可以转换以下枚举，因为它不包含任何非详尽变体：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[non_exhaustive]
@@ -361,7 +349,7 @@ pub enum Example {
     Second
 }
 <span class="boring">}</span></code></pre>
-<p>However, if the enum contains even a single non-exhaustive variant, casting will result in an error. Consider this modified version of the same enum:</p>
+<p>但是，如果枚举包含哪怕一个非详尽变体，转换也会导致错误。考虑同一枚举的这个修改版本：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[non_exhaustive]
@@ -374,9 +362,9 @@ pub enum EnumWithNonExhaustiveVariants {
 <!-- ignore: needs multiple crates -->
 <pre><code class="language-rust ignore">use othercrate::EnumWithNonExhaustiveVariants;
 
-// Error: cannot cast an enum with a non-exhaustive variant when it's defined in another crate
+// 错误：无法转换在另一个 crate 中定义且带有非详尽变体的枚举
 let _ = EnumWithNonExhaustiveVariants::First as u8;</code></pre>
-<p>Non-exhaustive types are always considered inhabited in downstream crates.</p>
+<p>在下游 crate 中，非详尽类型始终被视为 inhabited 。</p>
 
                     </main>
 

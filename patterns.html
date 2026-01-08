@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1458537c.js";
+            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-patterns"><a class="rule-link" href="#r-patterns" title="patterns"><span>[patterns]</span></a>
 </div>
 
-<h1 id="patterns"><a class="header" href="#patterns">Patterns</a></h1>
+<h1 id="模式"><a class="header" href="#模式">模式</a></h1>
 <div class="rule" id="r-patterns.syntax"><a class="rule-link" href="#r-patterns.syntax" title="patterns.syntax"><span>[patterns<wbr>.syntax]</span></a>
 </div>
 
@@ -444,15 +444,15 @@ MacroInvocation</text>
 <div class="rule" id="r-patterns.intro"><a class="rule-link" href="#r-patterns.intro" title="patterns.intro"><span>[patterns<wbr>.intro]</span></a>
 </div>
 
-<p>Patterns are used to match values against structures and to, optionally, bind variables to values inside these structures.
-They are also used in variable declarations and parameters for functions and closures.</p>
-<p>The pattern in the following example does four things:</p>
+<p>模式用于根据结构匹配值，并可选地将变量绑定到这些结构内部的值。
+它们也用于变量声明以及函数和闭包的参数。</p>
+<p>下面示例中的模式做了四件事：</p>
 <ul>
-<li>Tests if <code>person</code> has the <code>car</code> field filled with something.</li>
-<li>Tests if the person’s <code>age</code> field is between 13 and 19, and binds its value to the <code>person_age</code> variable.</li>
-<li>Binds a reference to the <code>name</code> field to the variable <code>person_name</code>.</li>
-<li>Ignores the rest of the fields of <code>person</code>.
-The remaining fields can have any value and are not bound to any variables.</li>
+<li>测试 <code>person</code> 是否有名为 <code>car</code> 的字段且填充了内容。</li>
+<li>测试该人的 <code>age</code> 字段是否在 13 到 19 之间，并将其值绑定到 <code>person_age</code> 变量。</li>
+<li>将指向 <code>name</code> 字段的引用绑定到变量 <code>person_name</code>。</li>
+<li>忽略 <code>person</code> 的其余字段。
+其余字段可以具有任何值，且不绑定到任何变量。</li>
 </ul>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -484,61 +484,61 @@ The remaining fields can have any value and are not bound to any variables.</li>
 <div class="rule" id="r-patterns.usage"><a class="rule-link" href="#r-patterns.usage" title="patterns.usage"><span>[patterns<wbr>.usage]</span></a>
 </div>
 
-<p>Patterns are used in:</p>
+<p>模式用于：</p>
 <div class="rule" id="r-patterns.let"><a class="rule-link" href="#r-patterns.let" title="patterns.let"><span>[patterns<wbr>.let]</span></a>
 </div>
 
 <ul>
-<li><a href="statements.html#let-statements"><code>let</code> declarations</a></li>
+<li><a href="statements.html#let-statements"><code>let</code> 声明</a></li>
 </ul>
 <div class="rule" id="r-patterns.param"><a class="rule-link" href="#r-patterns.param" title="patterns.param"><span>[patterns<wbr>.param]</span></a>
 </div>
 
 <ul>
-<li><a href="items/functions.html">Function</a> and <a href="expressions/closure-expr.html">closure</a> parameters</li>
+<li><a href="items/functions.html">函数</a> 和 <a href="expressions/closure-expr.html">闭包</a> 参数</li>
 </ul>
 <div class="rule" id="r-patterns.match"><a class="rule-link" href="#r-patterns.match" title="patterns.match"><span>[patterns<wbr>.match]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/match-expr.html"><code>match</code> expressions</a></li>
+<li><a href="expressions/match-expr.html"><code>match</code> 表达式</a></li>
 </ul>
 <div class="rule" id="r-patterns.if-let"><a class="rule-link" href="#r-patterns.if-let" title="patterns.if-let"><span>[patterns<wbr>.if-let]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/if-expr.html"><code>if let</code> expressions</a></li>
+<li><a href="expressions/if-expr.html"><code>if let</code> 表达式</a></li>
 </ul>
 <div class="rule" id="r-patterns.while-let"><a class="rule-link" href="#r-patterns.while-let" title="patterns.while-let"><span>[patterns<wbr>.while-let]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/loop-expr.html#while-let-patterns"><code>while let</code> expressions</a></li>
+<li><a href="expressions/loop-expr.html#while-let-patterns"><code>while let</code> 表达式</a></li>
 </ul>
 <div class="rule" id="r-patterns.for"><a class="rule-link" href="#r-patterns.for" title="patterns.for"><span>[patterns<wbr>.for]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/loop-expr.html#iterator-loops"><code>for</code> expressions</a></li>
+<li><a href="expressions/loop-expr.html#iterator-loops"><code>for</code> 表达式</a></li>
 </ul>
 <div class="rule" id="r-patterns.destructure"><a class="rule-link" href="#r-patterns.destructure" title="patterns.destructure"><span>[patterns<wbr>.destructure]</span></a>
 </div>
 
-<h2 id="destructuring"><a class="header" href="#destructuring">Destructuring</a></h2>
+<h2 id="解构"><a class="header" href="#解构">解构</a></h2>
 <div class="rule" id="r-patterns.destructure.intro"><a class="rule-link" href="#r-patterns.destructure.intro" title="patterns.destructure.intro"><span>[patterns<wbr>.destructure<wbr>.intro]</span></a>
 </div>
 
-<p>Patterns can be used to <em>destructure</em> <a href="items/structs.html">structs</a>, <a href="items/enumerations.html">enums</a>, and <a href="types/tuple.html">tuples</a>.
-Destructuring breaks up a value into its component pieces.
-The syntax used is almost the same as when creating such values.</p>
+<p>模式可以用来 <em>解构</em> <a href="items/structs.html">结构体</a> 、 <a href="items/enumerations.html">枚举</a> 和 <a href="types/tuple.html">元组</a> 。
+解构将一个值分解为其组成部分。
+使用的 语法格式 与创建此类值时几乎相同。</p>
 <div class="rule" id="r-patterns.destructure.wildcard"><a class="rule-link" href="#r-patterns.destructure.wildcard" title="patterns.destructure.wildcard"><span>[patterns<wbr>.destructure<wbr>.wildcard]</span></a>
 </div>
 
-<p>In a pattern whose <a href="glossary.html#scrutinee">scrutinee</a> expression has a <code>struct</code>, <code>enum</code> or <code>tuple</code> type, a <a href="#wildcard-pattern">wildcard pattern</a> (<code>_</code>) stands in for a <em>single</em> data field, whereas an <a href="#grammar-StructPatternEtCetera">et cetera</a> or <a href="patterns.html#r-patterns.rest">rest pattern</a> (<code>..</code>) stands in for <em>all</em> the remaining fields of a particular variant.</p>
+<p>在 <a href="glossary.html#scrutinee">被匹配</a> 表达式具有 结构体 、 枚举 或 元组 类型的模式中， <a href="#wildcard-pattern">通配符模式</a> (<code>_</code>) 代表 <em>单个</em> 数据字段，而 <a href="#grammar-StructPatternEtCetera">等等</a> 或 <a href="patterns.html#r-patterns.rest">剩余模式</a> (<code>..</code>) 代表特定变体的 <em>所有</em> 剩余字段。</p>
 <div class="rule" id="r-patterns.destructure.named-field-shorthand"><a class="rule-link" href="#r-patterns.destructure.named-field-shorthand" title="patterns.destructure.named-field-shorthand"><span>[patterns<wbr>.destructure<wbr>.named-field-shorthand]</span></a>
 </div>
 
-<p>When destructuring a data structure with named (but not numbered) fields, it is allowed to write <code>fieldname</code> as a shorthand for <code>fieldname: fieldname</code>.</p>
+<p>当解构具有命名（但未编号）字段的数据结构时，允许将 <code>fieldname</code> 简写为 <code>fieldname: fieldname</code> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">enum Message {
@@ -561,24 +561,24 @@ The syntax used is almost the same as when creating such values.</p>
 <div class="rule" id="r-patterns.refutable"><a class="rule-link" href="#r-patterns.refutable" title="patterns.refutable"><span>[patterns<wbr>.refutable]</span></a>
 </div>
 
-<h2 id="refutability"><a class="header" href="#refutability">Refutability</a></h2>
-<p>A pattern is said to be <em>refutable</em> when it has the possibility of not being matched by the value it is being matched against.
-<em>Irrefutable</em> patterns, on the other hand, always match the value they are being matched against.
-Examples:</p>
+<h2 id="可反驳性"><a class="header" href="#可反驳性">可反驳性</a></h2>
+<p>当一个模式有可能不与其匹配的值相匹配时，该模式被称为是 <em>可反驳的</em> 。
+另一方面， <em>不可反驳的</em> 模式总是匹配它们所针对的值。
+示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>let (x, y) = (1, 2);               // "(x, y)" is an irrefutable pattern
+</span>let (x, y) = (1, 2);               // "(x, y)" 是一个不可反驳的模式
 
-if let (a, 3) = (1, 2) {           // "(a, 3)" is refutable, and will not match
+if let (a, 3) = (1, 2) {           // "(a, 3)" 是可反驳的，且不会匹配
     panic!("Shouldn't reach here");
-} else if let (a, 4) = (3, 4) {    // "(a, 4)" is refutable, and will match
+} else if let (a, 4) = (3, 4) {    // "(a, 4)" 是可反驳的，且会匹配
     println!("Matched ({}, 4)", a);
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-patterns.literal"><a class="rule-link" href="#r-patterns.literal" title="patterns.literal"><span>[patterns<wbr>.literal]</span></a>
 </div>
 
-<h2 id="literal-patterns"><a class="header" href="#literal-patterns">Literal patterns</a></h2>
+<h2 id="字面量模式"><a class="header" href="#字面量模式">字面量模式</a></h2>
 <div class="rule" id="r-patterns.literal.syntax"><a class="rule-link" href="#r-patterns.literal.syntax" title="patterns.literal.syntax"><span>[patterns<wbr>.literal<wbr>.syntax]</span></a>
 </div>
 
@@ -630,7 +630,7 @@ LiteralExpression</text>
 <div class="rule" id="r-patterns.literal.intro"><a class="rule-link" href="#r-patterns.literal.intro" title="patterns.literal.intro"><span>[patterns<wbr>.literal<wbr>.intro]</span></a>
 </div>
 
-<p><em>Literal patterns</em> match exactly the same value as what is created by the literal. Since negative numbers are not <a href="expressions/literal-expr.html">literals</a>, literals in patterns may be prefixed by an optional minus sign, which acts like the negation operator.</p>
+<p><em>字面量模式</em> 匹配的值与字面量创建的值完全相同。由于负数不是 <a href="expressions/literal-expr.html">字面量</a> ，模式中的字面量可以前缀一个可选的减号，其作用类似于取反运算符。</p>
 <div class="alert alert-warning">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>警告</p>
@@ -642,8 +642,8 @@ LiteralExpression</text>
 <div class="rule" id="r-patterns.literal.refutable"><a class="rule-link" href="#r-patterns.literal.refutable" title="patterns.literal.refutable"><span>[patterns<wbr>.literal<wbr>.refutable]</span></a>
 </div>
 
-<p>Literal patterns are always refutable.</p>
-<p>Examples:</p>
+<p>字面量模式始终是可反驳的。</p>
+<p>示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>for i in -2..5 {
@@ -658,7 +658,7 @@ LiteralExpression</text>
 <div class="rule" id="r-patterns.ident"><a class="rule-link" href="#r-patterns.ident" title="patterns.ident"><span>[patterns<wbr>.ident]</span></a>
 </div>
 
-<h2 id="identifier-patterns"><a class="header" href="#identifier-patterns">Identifier patterns</a></h2>
+<h2 id="标识符模式"><a class="header" href="#标识符模式">标识符模式</a></h2>
 <div class="rule" id="r-patterns.ident.syntax"><a class="rule-link" href="#r-patterns.ident.syntax" title="patterns.ident.syntax"><span>[patterns<wbr>.ident<wbr>.syntax]</span></a>
 </div>
 
@@ -738,21 +738,21 @@ PatternNoTopAlt</text>
 <div class="rule" id="r-patterns.ident.intro"><a class="rule-link" href="#r-patterns.ident.intro" title="patterns.ident.intro"><span>[patterns<wbr>.ident<wbr>.intro]</span></a>
 </div>
 
-<p>Identifier patterns bind the value they match to a variable in the <a href="names/namespaces.html#r-names.namespaces.kinds">value namespace</a>.</p>
+<p>标识符模式将它们匹配的值绑定到 <a href="names/namespaces.html#r-names.namespaces.kinds">值命名空间</a> 中的变量。</p>
 <div class="rule" id="r-patterns.ident.unique"><a class="rule-link" href="#r-patterns.ident.unique" title="patterns.ident.unique"><span>[patterns<wbr>.ident<wbr>.unique]</span></a>
 </div>
 
-<p>The identifier must be unique within the pattern.</p>
+<p>标识符在模式中必须是唯一的。</p>
 <div class="rule" id="r-patterns.ident.scope"><a class="rule-link" href="#r-patterns.ident.scope" title="patterns.ident.scope"><span>[patterns<wbr>.ident<wbr>.scope]</span></a>
 </div>
 
-<p>The variable will shadow any variables of the same name in scope.
-The <a href="names/scopes.html">scope</a> of the new binding depends on the context of where the pattern is used (such as a <code>let</code> binding or a <code>match</code> arm).</p>
+<p>该变量将遮蔽作用域中同名的任何变量。
+新绑定的 <a href="names/scopes.html">作用域</a> 取决于使用模式的上下文（例如 <code>let</code> 绑定或 <code>match</code> 臂）。</p>
 <div class="rule" id="r-patterns.ident.bare"><a class="rule-link" href="#r-patterns.ident.bare" title="patterns.ident.bare"><span>[patterns<wbr>.ident<wbr>.bare]</span></a>
 </div>
 
-<p>Patterns that consist of only an identifier, possibly with a <code>mut</code>, match any value and bind it to that identifier.
-This is the most commonly used pattern in variable declarations and parameters for functions and closures.</p>
+<p>仅由标识符（可能带有 <code>mut</code> ）组成的模式匹配任何值并将其绑定到该标识符。
+这是变量声明以及函数和闭包参数中最常用的模式。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut variable = 10;
@@ -763,8 +763,8 @@ fn sum(x: i32, y: i32) -&gt; i32 {
 <div class="rule" id="r-patterns.ident.scrutinized"><a class="rule-link" href="#r-patterns.ident.scrutinized" title="patterns.ident.scrutinized"><span>[patterns<wbr>.ident<wbr>.scrutinized]</span></a>
 </div>
 
-<p>To bind the matched value of a pattern to a variable, use the syntax <code>variable @ subpattern</code>.
-For example, the following binds the value 2 to <code>e</code> (not the entire range: the range here is a range subpattern).</p>
+<p>要将模式匹配的值绑定到变量，请使用 <code>variable @ subpattern</code> 语法格式。
+例如，下面将值 2 绑定到 <code>e</code> （不是整个范围：这里的范围是一个范围子模式）。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = 2;
@@ -777,11 +777,11 @@ match x {
 <div class="rule" id="r-patterns.ident.move"><a class="rule-link" href="#r-patterns.ident.move" title="patterns.ident.move"><span>[patterns<wbr>.ident<wbr>.move]</span></a>
 </div>
 
-<p>By default, identifier patterns bind a variable to a copy of or move from the matched value depending on whether the matched value implements <a href="special-types-and-traits.html#copy"><code>Copy</code></a>.</p>
+<p>默认情况下，标识符模式根据被匹配值是否实现了 <a href="../core/marker/trait.Copy.html">Copy</a> ，将变量绑定到被匹配值的副本或从中移动。</p>
 <div class="rule" id="r-patterns.ident.ref"><a class="rule-link" href="#r-patterns.ident.ref" title="patterns.ident.ref"><span>[patterns<wbr>.ident<wbr>.ref]</span></a>
 </div>
 
-<p>This can be changed to bind to a reference by using the <code>ref</code> keyword, or to a mutable reference using <code>ref mut</code>. For example:</p>
+<p>这可以通过使用 <code>ref</code> 关键字更改为绑定到引用，或者使用 <code>ref mut</code> 更改为可变引用。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let a = Some(10);
@@ -795,10 +795,10 @@ match a {
     Some(ref value) =&gt; (),
 }
 <span class="boring">}</span></code></pre>
-<p>In the first match expression, the value is copied (or moved).
-In the second match, a reference to the same memory location is bound to the variable value.
-This syntax is needed because in destructuring subpatterns the <code>&amp;</code> operator can’t be applied to the value’s fields.
-For example, the following is not valid:</p>
+<p>在第一个 match 表达式中，值被复制（或移动）。
+在第二个 match 中，指向相同内存位置的引用被绑定到变量值。
+需要此语法格式是因为在解构子模式中， <code>&amp;</code> 运算符不能应用于值的字段。
+例如，以下内容无效：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Person {
@@ -808,7 +808,7 @@ For example, the following is not valid:</p>
 </span><span class="boring">let value = Person { name: String::from("John"), age: 23 };
 </span>if let Person { name: &amp;person_name, age: 18..=150 } = value { }
 <span class="boring">}</span></code></pre>
-<p>To make it valid, write the following:</p>
+<p>为了使其有效，请编写以下内容：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Person {
@@ -821,12 +821,12 @@ For example, the following is not valid:</p>
 <div class="rule" id="r-patterns.ident.ref-ignored"><a class="rule-link" href="#r-patterns.ident.ref-ignored" title="patterns.ident.ref-ignored"><span>[patterns<wbr>.ident<wbr>.ref-ignored]</span></a>
 </div>
 
-<p>Thus, <code>ref</code> is not something that is being matched against.
-Its objective is exclusively to make the matched binding a reference, instead of potentially copying or moving what was matched.</p>
+<p>因此， <code>ref</code> 不是被匹配的对象。
+它的目的完全是为了使匹配的绑定成为引用，而不是潜在地复制或移动匹配的内容。</p>
 <div class="rule" id="r-patterns.ident.precedent"><a class="rule-link" href="#r-patterns.ident.precedent" title="patterns.ident.precedent"><span>[patterns<wbr>.ident<wbr>.precedent]</span></a>
 </div>
 
-<p><a href="#path-patterns">Path patterns</a> take precedence over identifier patterns.</p>
+<p><a href="#path-patterns">路径模式</a> 优先于标识符模式。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
@@ -835,16 +835,16 @@ Its objective is exclusively to make the matched binding a reference, instead of
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>const EXPECTED_VALUE: u8 = 42;
-//    ^^^^^^^^^^^^^^ That this constant is in scope affects how the
+//    ^^^^^^^^^^^^^^ 此常量在作用域内会影响下面模式的处理方式。
 //                   patterns below are treated.
 
 fn check_value(x: u8) -&gt; Result&lt;u8, u8&gt; {
     match x {
         EXPECTED_VALUE =&gt; Ok(x),
-    //  ^^^^^^^^^^^^^^ Parsed as a `PathPattern` that resolves to
+    //  ^^^^^^^^^^^^^^ 被解析为解析为常量 `42` 的 `PathPattern` 。
     //                 the constant `42`.
         other_value =&gt; Err(x),
-    //  ^^^^^^^^^^^ Parsed as an `IdentifierPattern`.
+    //  ^^^^^^^^^^^ 被解析为 `IdentifierPattern` 。
     }
 }
 
@@ -860,64 +860,64 @@ assert_eq!(check_value(43), Err(43));
 <div class="rule" id="r-patterns.ident.constraint"><a class="rule-link" href="#r-patterns.ident.constraint" title="patterns.ident.constraint"><span>[patterns<wbr>.ident<wbr>.constraint]</span></a>
 </div>
 
-<p>It is an error if <code>ref</code> or <code>ref mut</code> is specified and the identifier shadows a constant.</p>
+<p>如果指定了 <code>ref</code> 或 <code>ref mut</code> 且标识符遮蔽了常量，则这是一个错误。</p>
 <div class="rule" id="r-patterns.ident.refutable"><a class="rule-link" href="#r-patterns.ident.refutable" title="patterns.ident.refutable"><span>[patterns<wbr>.ident<wbr>.refutable]</span></a>
 </div>
 
-<p>Identifier patterns are irrefutable if the <code>@</code> subpattern is irrefutable or the subpattern is not specified.</p>
+<p>如果 <code>@</code> 子模式是不可反驳的或者没有指定子模式，则标识符模式是不可反驳的。</p>
 <div class="rule" id="r-patterns.ident.binding"><a class="rule-link" href="#r-patterns.ident.binding" title="patterns.ident.binding"><span>[patterns<wbr>.ident<wbr>.binding]</span></a>
 </div>
 
-<h3 id="binding-modes"><a class="header" href="#binding-modes">Binding modes</a></h3>
+<h3 id="绑定模式"><a class="header" href="#绑定模式">绑定模式</a></h3>
 <div class="rule" id="r-patterns.ident.binding.intro"><a class="rule-link" href="#r-patterns.ident.binding.intro" title="patterns.ident.binding.intro"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.intro]</span></a>
 </div>
 
-<p>To service better ergonomics, patterns operate in different <em>binding modes</em> in order to make it easier to bind references to values.
-When a reference value is matched by a non-reference pattern, it will be automatically treated as a <code>ref</code> or <code>ref mut</code> binding.
-Example:</p>
+<p>为了提供更好的易用性，模式以不同的 <em>绑定模式</em> 运行，以便更轻松地将引用绑定到值。
+当非引用模式匹配引用值时，它将自动被视为 <code>ref</code> 或 <code>ref mut</code> 绑定。
+示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x: &amp;Option&lt;i32&gt; = &amp;Some(3);
 if let Some(y) = x {
-    // y was converted to `ref y` and its type is &amp;i32
+    // y 被转换为 `ref y` 且其类型为 &amp;i32
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-patterns.ident.binding.non-reference"><a class="rule-link" href="#r-patterns.ident.binding.non-reference" title="patterns.ident.binding.non-reference"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.non-reference]</span></a>
 </div>
 
-<p><em>Non-reference patterns</em> include all patterns except bindings, <a href="#wildcard-pattern">wildcard patterns</a> (<code>_</code>), <a href="#path-patterns"><code>const</code> patterns</a> of reference types, and <a href="#reference-patterns">reference patterns</a>.</p>
+<p><em>非引用模式</em> 包括除绑定、 <a href="#wildcard-pattern">通配符模式</a> (<code>_</code>) 、引用类型的 <a href="#path-patterns"><code>const</code> 模式</a> 以及 <a href="#reference-patterns">引用模式</a> 之外的所有模式。</p>
 <div class="rule" id="r-patterns.ident.binding.default-mode"><a class="rule-link" href="#r-patterns.ident.binding.default-mode" title="patterns.ident.binding.default-mode"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.default-mode]</span></a>
 </div>
 
-<p>If a binding pattern does not explicitly have <code>ref</code>, <code>ref mut</code>, or <code>mut</code>, then it uses the <em>default binding mode</em> to determine how the variable is bound.</p>
+<p>如果绑定模式没有显式具有 <code>ref</code> 、 <code>ref mut</code> 或 <code>mut</code> ，那么它使用 <em>默认绑定模式</em> 来确定变量如何绑定。</p>
 <div class="rule" id="r-patterns.ident.binding.move"><a class="rule-link" href="#r-patterns.ident.binding.move" title="patterns.ident.binding.move"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.move]</span></a>
 </div>
 
-<p>The default binding mode starts in “move” mode which uses move semantics.</p>
+<p>默认绑定模式以使用移动语义的 “move” 模式开始。</p>
 <div class="rule" id="r-patterns.ident.binding.top-down"><a class="rule-link" href="#r-patterns.ident.binding.top-down" title="patterns.ident.binding.top-down"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.top-down]</span></a>
 </div>
 
-<p>When matching a pattern, the compiler starts from the outside of the pattern and works inwards.</p>
+<p>匹配模式时，编译器从模式外部开始并向内工作。</p>
 <div class="rule" id="r-patterns.ident.binding.auto-deref"><a class="rule-link" href="#r-patterns.ident.binding.auto-deref" title="patterns.ident.binding.auto-deref"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.auto-deref]</span></a>
 </div>
 
-<p>Each time a reference is matched using a non-reference pattern, it will automatically dereference the value and update the default binding mode.</p>
+<p>每当使用非引用模式匹配引用时，它会自动解引用该值并更新默认绑定模式。</p>
 <div class="rule" id="r-patterns.ident.binding.ref"><a class="rule-link" href="#r-patterns.ident.binding.ref" title="patterns.ident.binding.ref"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.ref]</span></a>
 </div>
 
-<p>References will set the default binding mode to <code>ref</code>.</p>
+<p>引用将默认绑定模式设置为 <code>ref</code> 。</p>
 <div class="rule" id="r-patterns.ident.binding.ref-mut"><a class="rule-link" href="#r-patterns.ident.binding.ref-mut" title="patterns.ident.binding.ref-mut"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.ref-mut]</span></a>
 </div>
 
-<p>Mutable references will set the mode to <code>ref mut</code> unless the mode is already <code>ref</code> in which case it remains <code>ref</code>.</p>
+<p>可变引用将模式设置为 <code>ref mut</code> ，除非模式已经是 <code>ref</code> ，在这种情况下它保持为 <code>ref</code> 。</p>
 <div class="rule" id="r-patterns.ident.binding.nested-references"><a class="rule-link" href="#r-patterns.ident.binding.nested-references" title="patterns.ident.binding.nested-references"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.nested-references]</span></a>
 </div>
 
-<p>If the automatically dereferenced value is still a reference, it is dereferenced and this process repeats.</p>
+<p>如果自动解引用的值仍然是引用，则对其进行解引用并重复此过程。</p>
 <div class="rule" id="r-patterns.ident.binding.mode-limitations-binding"><a class="rule-link" href="#r-patterns.ident.binding.mode-limitations-binding" title="patterns.ident.binding.mode-limitations-binding"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.mode-limitations-binding]</span></a>
 </div>
 
-<p>The binding pattern may only explicitly specify a <code>ref</code> or <code>ref mut</code> binding mode, or specify mutability with <code>mut</code>, when the default binding mode is “move”. For example, these are not accepted:</p>
+<p>只有当默认绑定模式为 “move” 时，绑定模式才可以显式指定 <code>ref</code> 或 <code>ref mut</code> 绑定模式，或者使用 <code>mut</code> 指定可变性。例如，这些是不被接受的：</p>
 <pre class="playground"><code class="language-rust edition2024 compile_fail"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let [mut x] = &amp;[()]; //~ ERROR
@@ -938,7 +938,7 @@ let [ref mut x] = &amp;mut [()]; //~ ERROR
 <div class="rule" id="r-patterns.ident.binding.mode-limitations-reference"><a class="rule-link" href="#r-patterns.ident.binding.mode-limitations-reference" title="patterns.ident.binding.mode-limitations-reference"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.mode-limitations-reference]</span></a>
 </div>
 
-<p>Similarly, a reference pattern may only appear when the default binding mode is “move”. For example, this is not accepted:</p>
+<p>类似地，引用模式仅在默认绑定模式为 “move” 时出现。例如，这是不被接受的：</p>
 <pre class="playground"><code class="language-rust edition2024 compile_fail"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let [&amp;x] = &amp;[&amp;()]; //~ ERROR
@@ -957,12 +957,12 @@ let [ref mut x] = &amp;mut [()]; //~ ERROR
 <div class="rule" id="r-patterns.ident.binding.mixed"><a class="rule-link" href="#r-patterns.ident.binding.mixed" title="patterns.ident.binding.mixed"><span>[patterns<wbr>.ident<wbr>.binding<wbr>.mixed]</span></a>
 </div>
 
-<p>Move bindings and reference bindings can be mixed together in the same pattern.
-Doing so will result in partial move of the object bound to and the object cannot be used afterwards.
-This applies only if the type cannot be copied.</p>
-<p>In the example below, <code>name</code> is moved out of <code>person</code>.
-Trying to use <code>person</code> as a whole or <code>person.name</code> would result in an error because of <em>partial move</em>.</p>
-<p>Example:</p>
+<p>移动绑定和引用绑定可以混合在同一个模式中。
+这样做会导致绑定到的对象发生部分移动，之后该对象将无法使用。
+这仅在类型不可复制时适用。</p>
+<p>在下面的示例中， <code>name</code> 从 <code>person</code> 中移出。
+尝试将 <code>person</code> 作为一个整体使用或使用 <code>person.name</code> 会因为 <em>部分移动</em> 而导致错误。</p>
+<p>示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Person {
@@ -970,13 +970,13 @@ Trying to use <code>person</code> as a whole or <code>person.name</code> would r
 </span><span class="boring">   age: u8,
 </span><span class="boring">}
 </span><span class="boring">let person = Person{ name: String::from("John"), age: 23 };
-</span>// `name` is moved from person and `age` referenced
+</span>// `name` 从 person 中移出且 `age` 被引用
 let Person { name, ref age } = person;
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-patterns.wildcard"><a class="rule-link" href="#r-patterns.wildcard" title="patterns.wildcard"><span>[patterns<wbr>.wildcard]</span></a>
 </div>
 
-<h2 id="wildcard-pattern"><a class="header" href="#wildcard-pattern">Wildcard pattern</a></h2>
+<h2 id="通配符模式"><a class="header" href="#通配符模式">通配符模式</a></h2>
 <div class="rule" id="r-patterns.wildcard.syntax"><a class="rule-link" href="#r-patterns.wildcard.syntax" title="patterns.wildcard.syntax"><span>[patterns<wbr>.wildcard<wbr>.syntax]</span></a>
 </div>
 
@@ -1015,27 +1015,27 @@ _</text>
 <div class="rule" id="r-patterns.wildcard.intro"><a class="rule-link" href="#r-patterns.wildcard.intro" title="patterns.wildcard.intro"><span>[patterns<wbr>.wildcard<wbr>.intro]</span></a>
 </div>
 
-<p>The <em>wildcard pattern</em> (an underscore symbol) matches any value.
-It is used to ignore values when they don’t matter.</p>
+<p><em>通配符模式</em> （下划线符号）匹配任何值。
+它用于在值无关紧要时忽略它们。</p>
 <div class="rule" id="r-patterns.wildcard.struct-matcher"><a class="rule-link" href="#r-patterns.wildcard.struct-matcher" title="patterns.wildcard.struct-matcher"><span>[patterns<wbr>.wildcard<wbr>.struct-matcher]</span></a>
 </div>
 
-<p>Inside other patterns it matches a single data field (as opposed to the <code>..</code> which matches the remaining fields).</p>
+<p>在其他模式内部，它匹配单个数据字段（与匹配剩余字段的 <code>..</code> 相反）。</p>
 <div class="rule" id="r-patterns.wildcard.no-binding"><a class="rule-link" href="#r-patterns.wildcard.no-binding" title="patterns.wildcard.no-binding"><span>[patterns<wbr>.wildcard<wbr>.no-binding]</span></a>
 </div>
 
-<p>Unlike identifier patterns, it does not copy, move or borrow the value it matches.</p>
-<p>Examples:</p>
+<p>与标识符模式不同，它不会复制、移动或借用它匹配的值。</p>
+<p>示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let x = 20;
-</span>let (a, _) = (10, x);   // the x is always matched by _
+</span>let (a, _) = (10, x);   // x 始终被 _ 匹配
 <span class="boring">assert_eq!(a, 10);
 </span>
-// ignore a function/closure param
+// 忽略一个函数/闭包参数
 let real_part = |a: f64, _: f64| { a };
 
-// ignore a field from a struct
+// 忽略 结构体 中的一个字段
 <span class="boring">struct RGBA {
 </span><span class="boring">   r: f32,
 </span><span class="boring">   g: f32,
@@ -1048,18 +1048,18 @@ let real_part = |a: f64, _: f64| { a };
 </span><span class="boring">assert_eq!(color.g, green);
 </span><span class="boring">assert_eq!(color.b, blue);
 </span>
-// accept any Some, with any value
+// 接受任何 Some，无论其值为何
 <span class="boring">let x = Some(10);
 </span>if let Some(_) = x {}
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-patterns.wildcard.refutable"><a class="rule-link" href="#r-patterns.wildcard.refutable" title="patterns.wildcard.refutable"><span>[patterns<wbr>.wildcard<wbr>.refutable]</span></a>
 </div>
 
-<p>The wildcard pattern is always irrefutable.</p>
+<p>通配符模式始终是不可反驳的。</p>
 <div class="rule" id="r-patterns.rest"><a class="rule-link" href="#r-patterns.rest" title="patterns.rest"><span>[patterns<wbr>.rest]</span></a>
 </div>
 
-<h2 id="rest-pattern"><a class="header" href="#rest-pattern">Rest pattern</a></h2>
+<h2 id="剩余模式"><a class="header" href="#剩余模式">剩余模式</a></h2>
 <div class="rule" id="r-patterns.rest.syntax"><a class="rule-link" href="#r-patterns.rest.syntax" title="patterns.rest.syntax"><span>[patterns<wbr>.rest<wbr>.syntax]</span></a>
 </div>
 
@@ -1098,17 +1098,17 @@ RestPattern</text>
 <div class="rule" id="r-patterns.rest.intro"><a class="rule-link" href="#r-patterns.rest.intro" title="patterns.rest.intro"><span>[patterns<wbr>.rest<wbr>.intro]</span></a>
 </div>
 
-<p>The <em>rest pattern</em> (the <code>..</code> token) acts as a variable-length pattern which matches zero or more elements that haven’t been matched already before and after.</p>
+<p><em>剩余模式</em> （ <code>..</code> 词法单元）充当变长模式，匹配前后尚未匹配的零个或多个元素。</p>
 <div class="rule" id="r-patterns.rest.allowed-patterns"><a class="rule-link" href="#r-patterns.rest.allowed-patterns" title="patterns.rest.allowed-patterns"><span>[patterns<wbr>.rest<wbr>.allowed-patterns]</span></a>
 </div>
 
-<p>It may only be used in <a href="#tuple-patterns">tuple</a>, <a href="#tuple-struct-patterns">tuple struct</a>, and <a href="#slice-patterns">slice</a> patterns, and may only appear once as one of the elements in those patterns.
-It is also allowed in an <a href="#identifier-patterns">identifier pattern</a> for <a href="#slice-patterns">slice patterns</a> only.</p>
+<p>它只能用于 <a href="#tuple-patterns">元组</a> 、 <a href="#tuple-struct-patterns">元组结构体</a> 和 <a href="#slice-patterns">切片</a> 模式，并且只能作为这些模式中的元素之一出现一次。
+仅对于 <a href="#slice-patterns">切片模式</a> ，它也允许在 <a href="#identifier-patterns">标识符模式</a> 中使用。</p>
 <div class="rule" id="r-patterns.rest.refutable"><a class="rule-link" href="#r-patterns.rest.refutable" title="patterns.rest.refutable"><span>[patterns<wbr>.rest<wbr>.refutable]</span></a>
 </div>
 
-<p>The rest pattern is always irrefutable.</p>
-<p>Examples:</p>
+<p>剩余模式始终是不可反驳的。</p>
+<p>示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let words = vec!["a", "b", "c"];
@@ -1120,16 +1120,16 @@ It is also allowed in an <a href="#identifier-patterns">identifier pattern</a> f
 }
 
 match slice {
-    // Ignore everything but the last element, which must be "!".
+    // 忽略除最后一个元素（必须是 "!"）之外的所有内容。
     [.., "!"] =&gt; println!("!!!"),
 
-    // `start` is a slice of everything except the last element, which must be "z".
+    // `start` 是除最后一个元素（必须是 "z"）之外的所有内容的切片。
     [start @ .., "z"] =&gt; println!("starts with: {:?}", start),
 
-    // `end` is a slice of everything but the first element, which must be "a".
+    // `end` 是除第一个元素（必须是 "a"）之外的所有内容的切片。
     ["a", end @ ..] =&gt; println!("ends with: {:?}", end),
 
-    // 'whole' is the entire slice and `last` is the final element
+    // 'whole' 是整个切片且 `last` 是最后一个元素
     whole @ [.., last] =&gt; println!("the last element of {:?} is {}", whole, last),
 
     rest =&gt; println!("{:?}", rest),
@@ -1140,8 +1140,8 @@ if let [.., penultimate, _] = slice {
 }
 
 <span class="boring">let tuple = (1, 2, 3, 4, 5);
-</span>// The rest pattern may also be used in tuple and tuple
-// struct patterns.
+</span>// 剩余模式也可用于元组和元组
+// 结构体模式。
 match tuple {
     (1, .., y, z) =&gt; println!("y={} z={}", y, z),
     (.., 5) =&gt; println!("tail must be 5"),
@@ -1151,7 +1151,7 @@ match tuple {
 <div class="rule" id="r-patterns.range"><a class="rule-link" href="#r-patterns.range" title="patterns.range"><span>[patterns<wbr>.range]</span></a>
 </div>
 
-<h2 id="range-patterns"><a class="header" href="#range-patterns">Range patterns</a></h2>
+<h2 id="范围模式"><a class="header" href="#范围模式">范围模式</a></h2>
 <div class="rule" id="r-patterns.range.syntax"><a class="rule-link" href="#r-patterns.range.syntax" title="patterns.range.syntax"><span>[patterns<wbr>.range<wbr>.syntax]</span></a>
 </div>
 
@@ -1511,57 +1511,57 @@ PathExpression</text>
 <div class="rule" id="r-patterns.range.intro"><a class="rule-link" href="#r-patterns.range.intro" title="patterns.range.intro"><span>[patterns<wbr>.range<wbr>.intro]</span></a>
 </div>
 
-<p><em>Range patterns</em> match scalar values within the range defined by their bounds.
-They comprise a <em>sigil</em> (<code>..</code> or <code>..=</code>) and a bound on one or both sides.</p>
-<p>A bound on the left of the sigil is called a <em>lower bound</em>.
-A bound on the right is called an <em>upper bound</em>.</p>
+<p><em>范围模式</em> 匹配由其边界定义的范围内的标量值。
+它们包含一个 <em>符号</em> （ <code>..</code> 或 <code>..=</code> ）和一侧或两侧的边界。</p>
+<p>符号左侧的边界称为 <em>下边界</em> 。
+右侧的边界称为 <em>上边界</em> 。</p>
 <div class="rule" id="r-patterns.range.exclusive"><a class="rule-link" href="#r-patterns.range.exclusive" title="patterns.range.exclusive"><span>[patterns<wbr>.range<wbr>.exclusive]</span></a>
 </div>
 
-<p>The <em>exclusive range pattern</em> matches all values from the lower bound up to, but not including the upper bound.
-It is written as its lower bound, followed by <code>..</code>, followed by the upper bound.</p>
-<p>For example, a pattern <code>'m'..'p'</code> will match only <code>'m'</code>, <code>'n'</code> and <code>'o'</code>, specifically <strong>not</strong> including <code>'p'</code>.</p>
+<p><em>排他性范围模式</em> 匹配从下边界到（但不包括）上边界的所有值。
+它写为下边界，后跟 <code>..</code> ，再后跟上边界。</p>
+<p>例如，模式 <code>'m'..'p'</code> 将仅匹配 <code>'m'</code> 、 <code>'n'</code> 和 <code>'o'</code> ，特别 <strong>不</strong> 包括 <code>'p'</code> 。</p>
 <div class="rule" id="r-patterns.range.inclusive"><a class="rule-link" href="#r-patterns.range.inclusive" title="patterns.range.inclusive"><span>[patterns<wbr>.range<wbr>.inclusive]</span></a>
 </div>
 
-<p>The <em>inclusive range pattern</em> matches all values from the lower bound up to and including the upper bound.
-It is written as its lower bound, followed by <code>..=</code>, followed by the upper bound.</p>
-<p>For example, a pattern <code>'m'..='p'</code> will match only the values <code>'m'</code>, <code>'n'</code>, <code>'o'</code>, and <code>'p'</code>.</p>
+<p><em>包含性范围模式</em> 匹配从下边界到并包括上边界的所有值。
+它写为下边界，后跟 <code>..=</code> ，再后跟上边界。</p>
+<p>例如，模式 <code>'m'..='p'</code> 将仅匹配值 <code>'m'</code> 、 <code>'n'</code> 、 <code>'o'</code> 和 <code>'p'</code> 。</p>
 <div class="rule" id="r-patterns.range.from"><a class="rule-link" href="#r-patterns.range.from" title="patterns.range.from"><span>[patterns<wbr>.range<wbr>.from]</span></a>
 </div>
 
-<p>The <em>from range pattern</em> matches all values greater than or equal to the lower bound.
-It is written as its lower bound followed by <code>..</code>.</p>
-<p>For example, <code>1..</code> will match any integer greater than or equal to 1, such as 1, 9, or 9001, or 9007199254740991 (if it is of an appropriate size), but not 0, and not negative numbers for signed integers.</p>
+<p><em>起点范围模式</em> 匹配大于或等于下边界的所有值。
+它写为下边界，后跟 <code>..</code> 。</p>
+<p>例如， <code>1..</code> 将匹配任何大于或等于 1 的整数，如 1、9 或 9001，或者 9007199254740991（如果它具有适当的大小），但不匹配 0，对于有符号整数也不匹配负数。</p>
 <div class="rule" id="r-patterns.range.to-exclusive"><a class="rule-link" href="#r-patterns.range.to-exclusive" title="patterns.range.to-exclusive"><span>[patterns<wbr>.range<wbr>.to-exclusive]</span></a>
 </div>
 
-<p>The <em>to exclusive range pattern</em> matches all values less than the upper bound.
-It is written as <code>..</code> followed by the upper bound.</p>
-<p>For example, <code>..10</code> will match any integer less than 10, such as 9, 1, 0, and for signed integer types, all negative values.</p>
+<p><em>终点排他性范围模式</em> 匹配所有小于上边界的值。
+它写为 <code>..</code> 后跟上边界。</p>
+<p>例如， <code>..10</code> 将匹配任何小于 10 的整数，如 9、1、0，对于有符号整数类型，还匹配所有负值。</p>
 <div class="rule" id="r-patterns.range.to-inclusive"><a class="rule-link" href="#r-patterns.range.to-inclusive" title="patterns.range.to-inclusive"><span>[patterns<wbr>.range<wbr>.to-inclusive]</span></a>
 </div>
 
-<p>The <em>to inclusive range pattern</em> matches all values less than or equal to the upper bound.
-It is written as <code>..=</code> followed by the upper bound.</p>
-<p>For example, <code>..=10</code> will match any integer less than or equal to 10, such as 10, 1, 0, and for signed integer types, all negative values.</p>
+<p><em>终点包含性范围模式</em> 匹配所有小于或等于上边界的值。
+它写为 <code>..=</code> 后跟上边界。</p>
+<p>例如， <code>..=10</code> 将匹配任何小于或等于 10 的整数，如 10、1、0，对于有符号整数类型，还匹配所有负值。</p>
 <div class="rule" id="r-patterns.range.constraint-nonempty"><a class="rule-link" href="#r-patterns.range.constraint-nonempty" title="patterns.range.constraint-nonempty"><span>[patterns<wbr>.range<wbr>.constraint-nonempty]</span></a>
 </div>
 
-<p>A range pattern must be nonempty; it must span at least one value in the set of possible values for its type. In other words:</p>
+<p>范围模式必须非空；它必须至少跨越其类型可能值集中的一个值。换句话说：</p>
 <ul>
-<li>In <code>a..=b</code>, a ≤ b must be the case. For example, it is an error to have a range pattern <code>10..=0</code>, but <code>10..=10</code> is allowed.</li>
-<li>In <code>a..b</code>, a &lt; b must be the case. For example, it is an error to have a range pattern <code>10..0</code> or <code>10..10</code>.</li>
-<li>In <code>..b</code>, b must not be the smallest value of its type. For example, it is an error to have a range pattern <code>..-128i8</code> or <code>..f64::NEG_INFINITY</code>.</li>
+<li>在 <code>a..=b</code> 中，必须满足 a ≤ b。例如，出现范围模式 <code>10..=0</code> 是一个错误，但允许 <code>10..=10</code> 。</li>
+<li>在 <code>a..b</code> 中，必须满足 a &lt; b。例如，出现范围模式 <code>10..0</code> 或 <code>10..10</code> 是一个错误。</li>
+<li>在 <code>..b</code> 中，b 必须不是其类型的最小值。例如，出现范围模式 <code>..-128i8</code> 或 <code>..f64::NEG_INFINITY</code> 是一个错误。</li>
 </ul>
 <div class="rule" id="r-patterns.range.bound"><a class="rule-link" href="#r-patterns.range.bound" title="patterns.range.bound"><span>[patterns<wbr>.range<wbr>.bound]</span></a>
 </div>
 
-<p>A bound is written as one of:</p>
+<p>边界写为以下之一：</p>
 <ul>
-<li>A character, byte, integer, or float literal.</li>
-<li>A <code>-</code> followed by an integer or float literal.</li>
-<li>A <a href="expressions/path-expr.html">path</a>.</li>
+<li>字符、字节、整数或浮点数字面量。</li>
+<li>一个 <code>-</code> 后跟整数或浮点数字面量。</li>
+<li>一个 <a href="expressions/path-expr.html">路径</a> 。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
@@ -1574,28 +1574,28 @@ It is written as <code>..=</code> followed by the upper bound.</p>
 <div class="rule" id="r-patterns.range.constraint-bound-path"><a class="rule-link" href="#r-patterns.range.constraint-bound-path" title="patterns.range.constraint-bound-path"><span>[patterns<wbr>.range<wbr>.constraint-bound-path]</span></a>
 </div>
 
-<p>If a bound is written as a path, after macro resolution, the path must resolve to a constant item of the type <code>char</code>, an integer type, or a float type.</p>
+<p>如果边界写为路径，则在宏解析后，该路径必须解析为 <code>char</code> 类型、整数类型或浮点类型的常量项。</p>
 <div class="rule" id="r-patterns.range.type"><a class="rule-link" href="#r-patterns.range.type" title="patterns.range.type"><span>[patterns<wbr>.range<wbr>.type]</span></a>
 </div>
 
-<p>The range pattern matches the type of its upper and lower bounds, which must be the same type.</p>
+<p>范围模式匹配其上边界和下边界的类型，这两者必须是同一类型。</p>
 <div class="rule" id="r-patterns.range.path-value"><a class="rule-link" href="#r-patterns.range.path-value" title="patterns.range.path-value"><span>[patterns<wbr>.range<wbr>.path-value]</span></a>
 </div>
 
-<p>If a bound is a <a href="expressions/path-expr.html">path</a>, the bound matches the type and has the value of the <a href="items/constant-items.html">constant</a> the path resolves to.</p>
+<p>如果边界是一个 <a href="expressions/path-expr.html">路径</a> ，则边界匹配该类型，并具有路径解析到的 <a href="items/constant-items.html">常量</a> 的值。</p>
 <div class="rule" id="r-patterns.range.literal-value"><a class="rule-link" href="#r-patterns.range.literal-value" title="patterns.range.literal-value"><span>[patterns<wbr>.range<wbr>.literal-value]</span></a>
 </div>
 
-<p>If a bound is a literal, the bound matches the type and has the value of the corresponding <a href="expressions/literal-expr.html">literal expression</a>.</p>
+<p>如果边界是一个字面量，则边界匹配该类型，并具有相应 <a href="expressions/literal-expr.html">字面量表达式</a> 的值。</p>
 <div class="rule" id="r-patterns.range.negation"><a class="rule-link" href="#r-patterns.range.negation" title="patterns.range.negation"><span>[patterns<wbr>.range<wbr>.negation]</span></a>
 </div>
 
-<p>If a bound is a literal preceded by a <code>-</code>, the bound matches the same type as the corresponding <a href="expressions/literal-expr.html">literal expression</a> and has the value of <a href="expressions/operator-expr.html#negation-operators">negating</a> the value of the corresponding literal expression.</p>
+<p>如果边界是一个前面带有 <code>-</code> 的字面量，则边界匹配与相应 <a href="expressions/literal-expr.html">字面量表达式</a> 相同的类型，并具有对相应字面量表达式的值进行 <a href="expressions/operator-expr.html#negation-operators">取反</a> 后的值。</p>
 <div class="rule" id="r-patterns.range.float-restriction"><a class="rule-link" href="#r-patterns.range.float-restriction" title="patterns.range.float-restriction"><span>[patterns<wbr>.range<wbr>.float-restriction]</span></a>
 </div>
 
-<p>For float range patterns, the constant may not be a <code>NaN</code>.</p>
-<p>Examples:</p>
+<p>对于浮点范围模式，常量不能是 <code>NaN</code> 。</p>
+<p>示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let c = 'f';
@@ -1620,7 +1620,7 @@ It is written as <code>..=</code> followed by the upper bound.</p>
     1.. =&gt; "positive number!",
 };
 
-// using paths to constants:
+// 使用指向常量的路径：
 <span class="boring">const TROPOSPHERE_MIN : u8 = 6;
 </span><span class="boring">const TROPOSPHERE_MAX : u8 = 20;
 </span><span class="boring">
@@ -1661,7 +1661,7 @@ It is written as <code>..=</code> followed by the upper bound.</p>
 </span><span class="boring">impl MaxValue for u32 {
 </span><span class="boring">    const MAX: u64 = (1 &lt;&lt; 32) - 1;
 </span><span class="boring">}
-</span>// using qualified paths:
+</span>// 使用限定路径：
 println!("{}", match 0xfacade {
     0 ..= &lt;u8 as MaxValue&gt;::MAX =&gt; "fits in a u8",
     0 ..= &lt;u16 as MaxValue&gt;::MAX =&gt; "fits in a u16",
@@ -1672,21 +1672,21 @@ println!("{}", match 0xfacade {
 <div class="rule" id="r-patterns.range.refutable"><a class="rule-link" href="#r-patterns.range.refutable" title="patterns.range.refutable"><span>[patterns<wbr>.range<wbr>.refutable]</span></a>
 </div>
 
-<p>Range patterns for fix-width integer and <code>char</code> types are irrefutable when they span the entire set of possible values of a type.
-For example, <code>0u8..=255u8</code> is irrefutable.</p>
+<p>当固定宽度整数和 <code>char</code> 类型的范围模式跨越一个类型的所有可能值集时，它们是不可反驳的。
+例如， <code>0u8..=255u8</code> 是不可反驳的。</p>
 <div class="rule" id="r-patterns.range.refutable-integer"><a class="rule-link" href="#r-patterns.range.refutable-integer" title="patterns.range.refutable-integer"><span>[patterns<wbr>.range<wbr>.refutable-integer]</span></a>
 </div>
 
-<p>The range of values for an integer type is the closed range from its minimum to maximum value.</p>
+<p>整数类型的值范围是从其最小值到最大值的闭区间。</p>
 <div class="rule" id="r-patterns.range.refutable-char"><a class="rule-link" href="#r-patterns.range.refutable-char" title="patterns.range.refutable-char"><span>[patterns<wbr>.range<wbr>.refutable-char]</span></a>
 </div>
 
-<p>The range of values for a <code>char</code> type are precisely those ranges containing all Unicode Scalar Values: <code>'\u{0000}'..='\u{D7FF}'</code> and <code>'\u{E000}'..='\u{10FFFF}'</code>.</p>
+<p><code>char</code> 类型的值范围恰好是那些包含所有 Unicode 标量值的范围： <code>'\u{0000}'..='\u{D7FF}'</code> 和 <code>'\u{E000}'..='\u{10FFFF}'</code> 。</p>
 <div class="rule" id="r-patterns.range.constraint-slice"><a class="rule-link" href="#r-patterns.range.constraint-slice" title="patterns.range.constraint-slice"><span>[patterns<wbr>.range<wbr>.constraint-slice]</span></a>
 </div>
 
-<p><a href="patterns.html#grammar-RangeFromPattern">RangeFromPattern</a> cannot be used as a top-level pattern for subpatterns in <a href="#slice-patterns">slice patterns</a>.
-For example, the pattern <code>[1.., _]</code> is not a valid pattern.</p>
+<p><a href="patterns.html#grammar-RangeFromPattern">RangeFromPattern</a> 不能用作 <a href="#slice-patterns">切片模式</a> 中子模式的顶层模式。
+例如，模式 <code>[1.., _]</code> 不是一个有效的模式。</p>
 <div class="rule" id="r-patterns.range.edition2021"><a class="rule-link" href="#r-patterns.range.edition2021" title="patterns.range.edition2021"><span>[patterns<wbr>.range<wbr>.edition2021]</span></a>
 </div>
 
@@ -1701,7 +1701,7 @@ For example, the pattern <code>[1.., _]</code> is not a valid pattern.</p>
 <div class="rule" id="r-patterns.ref"><a class="rule-link" href="#r-patterns.ref" title="patterns.ref"><span>[patterns<wbr>.ref]</span></a>
 </div>
 
-<h2 id="reference-patterns"><a class="header" href="#reference-patterns">Reference patterns</a></h2>
+<h2 id="引用模式"><a class="header" href="#引用模式">引用模式</a></h2>
 <div class="rule" id="r-patterns.ref.syntax"><a class="rule-link" href="#r-patterns.ref.syntax" title="patterns.ref.syntax"><span>[patterns<wbr>.ref<wbr>.syntax]</span></a>
 </div>
 
@@ -1769,8 +1769,8 @@ PatternWithoutRange</text>
 <div class="rule" id="r-patterns.ref.intro"><a class="rule-link" href="#r-patterns.ref.intro" title="patterns.ref.intro"><span>[patterns<wbr>.ref<wbr>.intro]</span></a>
 </div>
 
-<p>Reference patterns dereference the pointers that are being matched and, thus, borrow them.</p>
-<p>For example, these two matches on <code>x: &amp;i32</code> are equivalent:</p>
+<p>引用模式对正在匹配的指针进行解引用，从而借用它们。</p>
+<p>例如，在 <code>x: &amp;i32</code> 上的这两个 match 是等价的：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let int_reference = &amp;3;
@@ -1783,19 +1783,19 @@ assert_eq!(a, b);
 <div class="rule" id="r-patterns.ref.ref-ref"><a class="rule-link" href="#r-patterns.ref.ref-ref" title="patterns.ref.ref-ref"><span>[patterns<wbr>.ref<wbr>.ref-ref]</span></a>
 </div>
 
-<p>The grammar production for reference patterns has to match the token <code>&amp;&amp;</code> to match a reference to a reference because it is a token by itself, not two <code>&amp;</code> tokens.</p>
+<p>引用模式的语法产生式必须匹配 词法单元 <code>&amp;&amp;</code> 才能匹配引用的引用，因为它本身就是一个 词法单元 ，而不是两个 <code>&amp;</code> 词法单元 。</p>
 <div class="rule" id="r-patterns.ref.mut"><a class="rule-link" href="#r-patterns.ref.mut" title="patterns.ref.mut"><span>[patterns<wbr>.ref<wbr>.mut]</span></a>
 </div>
 
-<p>Adding the <code>mut</code> keyword dereferences a mutable reference. The mutability must match the mutability of the reference.</p>
+<p>添加 <code>mut</code> 关键字会解引用一个可变引用。可变性必须与引用的可变性匹配。</p>
 <div class="rule" id="r-patterns.ref.refutable"><a class="rule-link" href="#r-patterns.ref.refutable" title="patterns.ref.refutable"><span>[patterns<wbr>.ref<wbr>.refutable]</span></a>
 </div>
 
-<p>Reference patterns are always irrefutable.</p>
+<p>引用模式始终是不可反驳的。</p>
 <div class="rule" id="r-patterns.struct"><a class="rule-link" href="#r-patterns.struct" title="patterns.struct"><span>[patterns<wbr>.struct]</span></a>
 </div>
 
-<h2 id="struct-patterns"><a class="header" href="#struct-patterns">Struct patterns</a></h2>
+<h2 id="结构体模式"><a class="header" href="#结构体模式">结构体模式</a></h2>
 <div class="rule" id="r-patterns.struct.syntax"><a class="rule-link" href="#r-patterns.struct.syntax" title="patterns.struct.syntax"><span>[patterns<wbr>.struct<wbr>.syntax]</span></a>
 </div>
 
@@ -2117,12 +2117,12 @@ StructPatternEtCetera</text>
 <div class="rule" id="r-patterns.struct.intro"><a class="rule-link" href="#r-patterns.struct.intro" title="patterns.struct.intro"><span>[patterns<wbr>.struct<wbr>.intro]</span></a>
 </div>
 
-<p>Struct patterns match struct, enum, and union values that match all criteria defined by its subpatterns.
-They are also used to <a href="#destructuring">destructure</a> a struct, enum, or union value.</p>
+<p>结构体模式匹配 结构体 、 枚举 和 联合体 值，这些值需满足其子模式定义的所有准则。
+它们也用于 <a href="#destructuring">解构</a> 一个 结构体 、 枚举 或 联合体 值。</p>
 <div class="rule" id="r-patterns.struct.ignore-rest"><a class="rule-link" href="#r-patterns.struct.ignore-rest" title="patterns.struct.ignore-rest"><span>[patterns<wbr>.struct<wbr>.ignore-rest]</span></a>
 </div>
 
-<p>On a struct pattern, the fields are referenced by name, index (in the case of tuple structs) or ignored by use of <code>..</code>:</p>
+<p>在 结构体 模式中，字段通过名称、索引（在元组结构体的情况下）引用，或者使用 <code>..</code> 忽略：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Point {
@@ -2133,7 +2133,7 @@ They are also used to <a href="#destructuring">destructure</a> a struct, enum, o
 </span><span class="boring">
 </span>match s {
     Point {x: 10, y: 20} =&gt; (),
-    Point {y: 10, x: 20} =&gt; (),    // order doesn't matter
+    Point {y: 10, x: 20} =&gt; (),    // 顺序无关紧要
     Point {x: 10, ..} =&gt; (),
     Point {..} =&gt; (),
 }
@@ -2146,7 +2146,7 @@ They are also used to <a href="#destructuring">destructure</a> a struct, enum, o
 </span><span class="boring">
 </span>match t {
     PointTuple {0: 10, 1: 20} =&gt; (),
-    PointTuple {1: 10, 0: 20} =&gt; (),   // order doesn't matter
+    PointTuple {1: 10, 0: 20} =&gt; (),   // 顺序无关紧要
     PointTuple {0: 10, ..} =&gt; (),
     PointTuple {..} =&gt; (),
 }
@@ -2166,7 +2166,7 @@ They are also used to <a href="#destructuring">destructure</a> a struct, enum, o
 <div class="rule" id="r-patterns.struct.constraint-struct"><a class="rule-link" href="#r-patterns.struct.constraint-struct" title="patterns.struct.constraint-struct"><span>[patterns<wbr>.struct<wbr>.constraint-struct]</span></a>
 </div>
 
-<p>If <code>..</code> is not used, a struct pattern used to match a struct is required to specify all fields:</p>
+<p>如果不使用 <code>..</code> ，则用于匹配 结构体 的 结构体 模式需要指定所有字段：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Struct {
@@ -2187,11 +2187,11 @@ They are also used to <a href="#destructuring">destructure</a> a struct, enum, o
 <div class="rule" id="r-patterns.struct.constraint-union"><a class="rule-link" href="#r-patterns.struct.constraint-union" title="patterns.struct.constraint-union"><span>[patterns<wbr>.struct<wbr>.constraint-union]</span></a>
 </div>
 
-<p>A struct pattern used to match a union must specify exactly one field (see <a href="items/unions.html#pattern-matching-on-unions">Pattern matching on unions</a>).</p>
+<p>用于匹配 联合体 的 结构体 模式必须恰好指定一个字段（参见 <a href="items/unions.html#pattern-matching-on-unions">在联合体上进行模式匹配</a> ）。</p>
 <div class="rule" id="r-patterns.struct.binding-shorthand"><a class="rule-link" href="#r-patterns.struct.binding-shorthand" title="patterns.struct.binding-shorthand"><span>[patterns<wbr>.struct<wbr>.binding-shorthand]</span></a>
 </div>
 
-<p>The <a href="identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a> syntax matches any value and binds it to a variable with the same name as the given field. It is a shorthand for <code>fieldname: fieldname</code>. The <code>ref</code> and <code>mut</code> qualifiers can be included with the behavior as described in <a href="patterns.html#r-patterns.ident.ref">patterns.ident.ref</a>.</p>
+<p><a href="identifiers.html#grammar-IDENTIFIER">IDENTIFIER</a> 语法格式匹配任何值，并将其绑定到与给定字段同名的变量。它是 <code>fieldname: fieldname</code> 的简写。 <code>ref</code> 和 <code>mut</code> 限定符可以包含在内，其行为如 <a href="patterns.html#r-patterns.ident.ref">patterns.ident.ref</a> 中所述。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Struct {
@@ -2206,15 +2206,15 @@ They are also used to <a href="#destructuring">destructure</a> a struct, enum, o
 <div class="rule" id="r-patterns.struct.refutable"><a class="rule-link" href="#r-patterns.struct.refutable" title="patterns.struct.refutable"><span>[patterns<wbr>.struct<wbr>.refutable]</span></a>
 </div>
 
-<p>A struct pattern is refutable if the <a href="paths.html#grammar-PathInExpression">PathInExpression</a> resolves to a constructor of an enum with more than one variant, or one of its subpatterns is refutable.</p>
+<p>如果 <a href="paths.html#grammar-PathInExpression">PathInExpression</a> 解析为具有多个变体的枚举构造函数，或者其子模式之一是可反驳的，则 结构体 模式是可反驳的。</p>
 <div class="rule" id="r-patterns.struct.namespace"><a class="rule-link" href="#r-patterns.struct.namespace" title="patterns.struct.namespace"><span>[patterns<wbr>.struct<wbr>.namespace]</span></a>
 </div>
 
-<p>A struct pattern matches against the struct, union, or enum variant whose constructor is resolved from <a href="paths.html#grammar-PathInExpression">PathInExpression</a> in the <a href="names/namespaces.html#r-names.namespaces.kinds">type namespace</a>. See <a href="patterns.html#r-patterns.tuple-struct.namespace">patterns.tuple-struct.namespace</a> for more details.</p>
+<p>结构体 模式根据从 <a href="names/namespaces.html#r-names.namespaces.kinds">类型命名空间</a> 中的 <a href="paths.html#grammar-PathInExpression">PathInExpression</a> 解析出的 结构体 、 联合体 或枚举变体进行匹配。有关更多详细信息，请参见 <a href="patterns.html#r-patterns.tuple-struct.namespace">patterns.tuple-struct.namespace</a> 。</p>
 <div class="rule" id="r-patterns.tuple-struct"><a class="rule-link" href="#r-patterns.tuple-struct" title="patterns.tuple-struct"><span>[patterns<wbr>.tuple-struct]</span></a>
 </div>
 
-<h2 id="tuple-struct-patterns"><a class="header" href="#tuple-struct-patterns">Tuple struct patterns</a></h2>
+<h2 id="元组结构体模式"><a class="header" href="#元组结构体模式">元组结构体模式</a></h2>
 <div class="rule" id="r-patterns.tuple-struct.syntax"><a class="rule-link" href="#r-patterns.tuple-struct.syntax" title="patterns.tuple-struct.syntax"><span>[patterns<wbr>.tuple-struct<wbr>.syntax]</span></a>
 </div>
 
@@ -2339,16 +2339,16 @@ Pattern</text>
 <div class="rule" id="r-patterns.tuple-struct.intro"><a class="rule-link" href="#r-patterns.tuple-struct.intro" title="patterns.tuple-struct.intro"><span>[patterns<wbr>.tuple-struct<wbr>.intro]</span></a>
 </div>
 
-<p>Tuple struct patterns match tuple struct and enum values that match all criteria defined by its subpatterns.
-They are also used to <a href="#destructuring">destructure</a> a tuple struct or enum value.</p>
+<p>元组结构体模式匹配元组结构体和枚举值，这些值需满足其子模式定义的所有准则。
+它们也用于 <a href="#destructuring">解构</a> 元组结构体或枚举值。</p>
 <div class="rule" id="r-patterns.tuple-struct.refutable"><a class="rule-link" href="#r-patterns.tuple-struct.refutable" title="patterns.tuple-struct.refutable"><span>[patterns<wbr>.tuple-struct<wbr>.refutable]</span></a>
 </div>
 
-<p>A tuple struct pattern is refutable if the <a href="paths.html#grammar-PathInExpression">PathInExpression</a> resolves to a constructor of an enum with more than one variant, or one of its subpatterns is refutable.</p>
+<p>如果 <a href="paths.html#grammar-PathInExpression">PathInExpression</a> 解析为具有多个变体的枚举构造函数，或者其子模式之一是可反驳的，则元组结构体模式是可反驳的。</p>
 <div class="rule" id="r-patterns.tuple-struct.namespace"><a class="rule-link" href="#r-patterns.tuple-struct.namespace" title="patterns.tuple-struct.namespace"><span>[patterns<wbr>.tuple-struct<wbr>.namespace]</span></a>
 </div>
 
-<p>A tuple struct pattern matches against the tuple struct or <a href="items/enumerations.html#r-items.enum.tuple-expr">tuple-like enum variant</a> whose constructor is resolved from <a href="paths.html#grammar-PathInExpression">PathInExpression</a> in the <a href="names/namespaces.html#r-names.namespaces.kinds">value namespace</a>.</p>
+<p>元组结构体模式根据从 <a href="names/namespaces.html#r-names.namespaces.kinds">值命名空间</a> 中的 <a href="paths.html#grammar-PathInExpression">PathInExpression</a> 解析出的元组结构体或 <a href="items/enumerations.html#r-items.enum.tuple-expr">类元组枚举变体</a> 进行匹配。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
@@ -2357,31 +2357,31 @@ They are also used to <a href="#destructuring">destructure</a> a tuple struct or
 <pre class="playground"><code class="language-rust no_run edition2024">enum E1 { V(u16) }
 enum E2 { V(u32) }
 
-// Import `E1::V` from the type namespace only.
+// 只从类型命名空间导入 `E1::V`。
 mod _0 {
-    const V: () = (); // For namespace masking.
+    const V: () = (); // 用于命名空间掩蔽。
     pub(super) use super::E1::*;
 }
 use _0::*;
 
-// Import `E2::V` from the value namespace only.
+// 只从值命名空间导入 `E2::V`。
 mod _1 {
-    struct V {} // For namespace masking.
+    struct V {} // 用于命名空间掩蔽。
     pub(super) use super::E2::*;
 }
 use _1::*;
 
 fn f() {
-    // This struct pattern matches against the tuple-like
-    // enum variant whose constructor was found in the type
-    // namespace.
+    // 此结构体模式根据在类型命名空间中
+    // 找到其构造函数的类元组枚举变体
+    // 进行匹配。
     let V { 0: ..=u16::MAX } = (loop {}) else { loop {} };
-    // This tuple struct pattern matches against the tuple-like
-    // enum variant whose constructor was found in the value
-    // namespace.
+    // 此元组结构体模式根据在值命名空间中
+    // 找到其构造函数的类元组枚举变体
+    // 进行匹配。
     let V(..=u32::MAX) = (loop {}) else { loop {} };
 }
-<span class="boring">// Required due to the odd behavior of `super` within functions.
+<span class="boring">// 在函数中使用 super 的奇怪行为所必需的。
 </span><span class="boring">fn main() {}</span></code></pre>
 <p>The Lang team has made certain decisions, such as in <a href="https://github.com/rust-lang/rust/pull/138458">PR #138458</a>, that raise questions about the desirability of using the value namespace in this way for patterns, as described in <a href="https://github.com/rust-lang/rust/pull/140593#issuecomment-2972338457">PR #140593</a>. It might be prudent to not intentionally rely on this nuance in your code.</p>
 </blockquote>
@@ -2390,7 +2390,7 @@ fn f() {
 <div class="rule" id="r-patterns.tuple"><a class="rule-link" href="#r-patterns.tuple" title="patterns.tuple"><span>[patterns<wbr>.tuple]</span></a>
 </div>
 
-<h2 id="tuple-patterns"><a class="header" href="#tuple-patterns">Tuple patterns</a></h2>
+<h2 id="元组模式"><a class="header" href="#元组模式">元组模式</a></h2>
 <div class="rule" id="r-patterns.tuple.syntax"><a class="rule-link" href="#r-patterns.tuple.syntax" title="patterns.tuple.syntax"><span>[patterns<wbr>.tuple<wbr>.syntax]</span></a>
 </div>
 
@@ -2535,17 +2535,17 @@ Pattern</text>
 <div class="rule" id="r-patterns.tuple.intro"><a class="rule-link" href="#r-patterns.tuple.intro" title="patterns.tuple.intro"><span>[patterns<wbr>.tuple<wbr>.intro]</span></a>
 </div>
 
-<p>Tuple patterns match tuple values that match all criteria defined by its subpatterns.
-They are also used to <a href="#destructuring">destructure</a> a tuple.</p>
+<p>元组模式匹配满足其子模式定义的所有准则的元组值。
+它们也用于 <a href="#destructuring">解构</a> 元组。</p>
 <div class="rule" id="r-patterns.tuple.rest-syntax"><a class="rule-link" href="#r-patterns.tuple.rest-syntax" title="patterns.tuple.rest-syntax"><span>[patterns<wbr>.tuple<wbr>.rest-syntax]</span></a>
 </div>
 
-<p>The form <code>(..)</code> with a single <a href="patterns.html#grammar-RestPattern">RestPattern</a> is a special form that does not require a comma, and matches a tuple of any size.</p>
+<p>带有单个 <a href="patterns.html#grammar-RestPattern">RestPattern</a> 的形式 <code>(..)</code> 是一种特殊形式，不需要逗号，并且匹配任何大小的元组。</p>
 <div class="rule" id="r-patterns.tuple.refutable"><a class="rule-link" href="#r-patterns.tuple.refutable" title="patterns.tuple.refutable"><span>[patterns<wbr>.tuple<wbr>.refutable]</span></a>
 </div>
 
-<p>The tuple pattern is refutable when one of its subpatterns is refutable.</p>
-<p>An example of using tuple patterns:</p>
+<p>当元组模式的一个子模式是可反驳的时，该元组模式是可反驳的。</p>
+<p>使用元组模式的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let pair = (10, "ten");
@@ -2557,7 +2557,7 @@ assert_eq!(b, "ten");
 <div class="rule" id="r-patterns.paren"><a class="rule-link" href="#r-patterns.paren" title="patterns.paren"><span>[patterns<wbr>.paren]</span></a>
 </div>
 
-<h2 id="grouped-patterns"><a class="header" href="#grouped-patterns">Grouped patterns</a></h2>
+<h2 id="分组模式"><a class="header" href="#分组模式">分组模式</a></h2>
 <div class="rule" id="r-patterns.paren.syntax"><a class="rule-link" href="#r-patterns.paren.syntax" title="patterns.paren.syntax"><span>[patterns<wbr>.paren<wbr>.syntax]</span></a>
 </div>
 
@@ -2612,8 +2612,8 @@ Pattern</text>
 <div class="rule" id="r-patterns.paren.intro"><a class="rule-link" href="#r-patterns.paren.intro" title="patterns.paren.intro"><span>[patterns<wbr>.paren<wbr>.intro]</span></a>
 </div>
 
-<p>Enclosing a pattern in parentheses can be used to explicitly control the precedence of compound patterns.
-For example, a reference pattern next to a range pattern such as <code>&amp;0..=5</code> is ambiguous and is not allowed, but can be expressed with parentheses.</p>
+<p>将模式括在括号中可用于显式控制复合模式的优先级。
+例如，紧邻范围模式的引用模式（如 <code>&amp;0..=5</code> ）具有歧义且不被允许，但可以用括号表示。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let int_reference = &amp;3;
@@ -2625,7 +2625,7 @@ match int_reference {
 <div class="rule" id="r-patterns.slice"><a class="rule-link" href="#r-patterns.slice" title="patterns.slice"><span>[patterns<wbr>.slice]</span></a>
 </div>
 
-<h2 id="slice-patterns"><a class="header" href="#slice-patterns">Slice patterns</a></h2>
+<h2 id="切片模式"><a class="header" href="#切片模式">切片模式</a></h2>
 <div class="rule" id="r-patterns.slice.syntax"><a class="rule-link" href="#r-patterns.slice.syntax" title="patterns.slice.syntax"><span>[patterns<wbr>.slice<wbr>.syntax]</span></a>
 </div>
 
@@ -2742,10 +2742,10 @@ Pattern</text>
 <div class="rule" id="r-patterns.slice.intro"><a class="rule-link" href="#r-patterns.slice.intro" title="patterns.slice.intro"><span>[patterns<wbr>.slice<wbr>.intro]</span></a>
 </div>
 
-<p>Slice patterns can match both arrays of fixed size and slices of dynamic size.</p>
+<p>切片模式既可以匹配固定大小的数组，也可以匹配动态大小的切片。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Fixed size
+</span>// 固定大小
 let arr = [1, 2, 3];
 match arr {
     [1, _, _] =&gt; "starts with one",
@@ -2754,31 +2754,31 @@ match arr {
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Dynamic size
+</span>// 动态大小
 let v = vec![1, 2, 3];
 match v[..] {
-    [a, b] =&gt; { /* this arm will not apply because the length doesn't match */ }
-    [a, b, c] =&gt; { /* this arm will apply */ }
-    _ =&gt; { /* this wildcard is required, since the length is not known statically */ }
+    [a, b] =&gt; { /* 此臂不适用，因为长度不匹配 */ }
+    [a, b, c] =&gt; { /* 此臂将适用 */ }
+    _ =&gt; { /* 此通配符是必需的，因为长度在静态时是未知的 */ }
 };
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-patterns.slice.refutable-array"><a class="rule-link" href="#r-patterns.slice.refutable-array" title="patterns.slice.refutable-array"><span>[patterns<wbr>.slice<wbr>.refutable-array]</span></a>
 </div>
 
-<p>Slice patterns are irrefutable when matching an array as long as each element is irrefutable.</p>
+<p>匹配数组时，只要每个元素都是不可反驳的，切片模式就是不可反驳的。</p>
 <div class="rule" id="r-patterns.slice.refutable-slice"><a class="rule-link" href="#r-patterns.slice.refutable-slice" title="patterns.slice.refutable-slice"><span>[patterns<wbr>.slice<wbr>.refutable-slice]</span></a>
 </div>
 
-<p>When matching a slice, it is irrefutable only in the form with a single <code>..</code> <a href="patterns.html#r-patterns.rest">rest pattern</a> or <a href="#identifier-patterns">identifier pattern</a> with the <code>..</code> rest pattern as a subpattern.</p>
+<p>匹配切片时，只有在具有单个 <code>..</code> <a href="patterns.html#r-patterns.rest">剩余模式</a> 或以 <code>..</code> 剩余模式作为子模式的 <a href="#identifier-patterns">标识符模式</a> 的形式下，它才是不可反驳的。</p>
 <div class="rule" id="r-patterns.slice.restriction"><a class="rule-link" href="#r-patterns.slice.restriction" title="patterns.slice.restriction"><span>[patterns<wbr>.slice<wbr>.restriction]</span></a>
 </div>
 
-<p>Within a slice, a range pattern without both lower and upper bound must be enclosed in parentheses, as in <code>(a..)</code>, to clarify it is intended to match against a single slice element.
-A range pattern with both lower and upper bound, like <code>a..=b</code>, is not required to be enclosed in parentheses.</p>
+<p>在切片内，没有下边界和上边界的范围模式必须括在括号中（如 <code>(a..)</code> ），以澄清其目的是匹配单个切片元素。
+具有下边界和上边界的范围模式（如 <code>a..=b</code> ）不需要括在括号中。</p>
 <div class="rule" id="r-patterns.path"><a class="rule-link" href="#r-patterns.path" title="patterns.path"><span>[patterns<wbr>.path]</span></a>
 </div>
 
-<h2 id="path-patterns"><a class="header" href="#path-patterns">Path patterns</a></h2>
+<h2 id="路径模式"><a class="header" href="#路径模式">路径模式</a></h2>
 <div class="rule" id="r-patterns.path.syntax"><a class="rule-link" href="#r-patterns.path.syntax" title="patterns.path.syntax"><span>[patterns<wbr>.path<wbr>.syntax]</span></a>
 </div>
 
@@ -2819,171 +2819,162 @@ PathExpression</text>
 <div class="rule" id="r-patterns.path.intro"><a class="rule-link" href="#r-patterns.path.intro" title="patterns.path.intro"><span>[patterns<wbr>.path<wbr>.intro]</span></a>
 </div>
 
-<p><em>Path patterns</em> are patterns that refer either to constant values or
-to structs or enum variants that have no fields.</p>
+<p><em>路径模式</em> 是指常量值、或者没有字段的 结构体 或枚举变体的模式。</p>
 <div class="rule" id="r-patterns.path.unqualified"><a class="rule-link" href="#r-patterns.path.unqualified" title="patterns.path.unqualified"><span>[patterns<wbr>.path<wbr>.unqualified]</span></a>
 </div>
 
-<p>Unqualified path patterns can refer to:</p>
+<p>未限定路径模式可以引用：</p>
 <ul>
-<li>enum variants</li>
-<li>structs</li>
-<li>constants</li>
-<li>associated constants</li>
+<li>枚举变体</li>
+<li>结构体</li>
+<li>常量</li>
+<li>关联常量</li>
 </ul>
 <div class="rule" id="r-patterns.path.qualified"><a class="rule-link" href="#r-patterns.path.qualified" title="patterns.path.qualified"><span>[patterns<wbr>.path<wbr>.qualified]</span></a>
 </div>
 
-<p>Qualified path patterns can only refer to associated constants.</p>
+<p>限定路径模式只能引用关联常量。</p>
 <div class="rule" id="r-patterns.path.refutable"><a class="rule-link" href="#r-patterns.path.refutable" title="patterns.path.refutable"><span>[patterns<wbr>.path<wbr>.refutable]</span></a>
 </div>
 
-<p>Path patterns are irrefutable when they refer to structs or an enum variant when the enum has only one variant or a constant whose type is irrefutable.
-They are refutable when they refer to refutable constants or enum variants for enums with multiple variants.</p>
+<p>当路径模式引用 结构体 或只有一个变体的枚举变体，或者引用其类型不可反驳的常量时，它们是不可反驳的。
+当它们引用可反驳的常量或具有多个变体的枚举变体时，它们是可反驳的。</p>
 <div class="rule" id="r-patterns.const"><a class="rule-link" href="#r-patterns.const" title="patterns.const"><span>[patterns<wbr>.const]</span></a>
 </div>
 
-<h3 id="constant-patterns"><a class="header" href="#constant-patterns">Constant patterns</a></h3>
+<h3 id="常量模式"><a class="header" href="#常量模式">常量模式</a></h3>
 <div class="rule" id="r-patterns.const.partial-eq"><a class="rule-link" href="#r-patterns.const.partial-eq" title="patterns.const.partial-eq"><span>[patterns<wbr>.const<wbr>.partial-eq]</span></a>
 </div>
 
-<p>When a constant <code>C</code> of type <code>T</code> is used as a pattern, we first check that <code>T: PartialEq</code>.</p>
+<p>当 <code>T</code> 类型的常量 <code>C</code> 用作模式时，我们首先检查 <code>T: PartialEq</code> 。</p>
 <div class="rule" id="r-patterns.const.structural-equality"><a class="rule-link" href="#r-patterns.const.structural-equality" title="patterns.const.structural-equality"><span>[patterns<wbr>.const<wbr>.structural-equality]</span></a>
 </div>
 
-<p>Furthermore we require that the value of <code>C</code> <em>has (recursive) structural equality</em>, which is defined recursively as follows:</p>
+<p>此外，我们要求 <code>C</code> 的值 <em>具有（递归）结构相等性</em> ，其递归定义如下：</p>
 <div class="rule" id="r-patterns.const.primitive"><a class="rule-link" href="#r-patterns.const.primitive" title="patterns.const.primitive"><span>[patterns<wbr>.const<wbr>.primitive]</span></a>
 </div>
 
 <ul>
-<li>Integers as well as <code>str</code>, <code>bool</code> and <code>char</code> values always have structural equality.</li>
+<li>整数以及 <code>str</code> 、 <code>bool</code> 和 <code>char</code> 值始终具有结构相等性。</li>
 </ul>
 <div class="rule" id="r-patterns.const.builtin-aggregate"><a class="rule-link" href="#r-patterns.const.builtin-aggregate" title="patterns.const.builtin-aggregate"><span>[patterns<wbr>.const<wbr>.builtin-aggregate]</span></a>
 </div>
 
 <ul>
-<li>Tuples, arrays, and slices have structural equality if all their fields/elements have structural equality.
-(In particular, <code>()</code> and <code>[]</code> always have structural equality.)</li>
+<li>如果元组、数组和切片的所有字段/元素都具有结构相等性，则它们具有结构相等性。
+（特别是， <code>()</code> 和 <code>[]</code> 始终具有结构相等性。）</li>
 </ul>
 <div class="rule" id="r-patterns.const.ref"><a class="rule-link" href="#r-patterns.const.ref" title="patterns.const.ref"><span>[patterns<wbr>.const<wbr>.ref]</span></a>
 </div>
 
 <ul>
-<li>References have structural equality if the value they point to has structural equality.</li>
+<li>如果引用指向的值具有结构相等性，则该引用具有结构相等性。</li>
 </ul>
 <div class="rule" id="r-patterns.const.aggregate"><a class="rule-link" href="#r-patterns.const.aggregate" title="patterns.const.aggregate"><span>[patterns<wbr>.const<wbr>.aggregate]</span></a>
 </div>
 
 <ul>
-<li>A value of <code>struct</code> or <code>enum</code> type has structural equality if its <code>PartialEq</code> instance is derived via <code>#[derive(PartialEq)]</code>,
-and all fields (for enums: of the active variant) have structural equality.</li>
+<li>如果 结构体 或 枚举 类型的值其 <code>PartialEq</code> 实例是通过 <code>#[derive(PartialEq)]</code> 派生的，并且所有字段（对于枚举：活跃变体的字段）都具有结构相等性，则该值具有结构相等性。</li>
 </ul>
 <div class="rule" id="r-patterns.const.pointer"><a class="rule-link" href="#r-patterns.const.pointer" title="patterns.const.pointer"><span>[patterns<wbr>.const<wbr>.pointer]</span></a>
 </div>
 
 <ul>
-<li>A raw pointer has structural equality if it was defined as a constant integer (and then cast/transmuted).</li>
+<li>如果原始指针被定义为常量整数（然后进行转换/变形），则它具有结构相等性。</li>
 </ul>
 <div class="rule" id="r-patterns.const.float"><a class="rule-link" href="#r-patterns.const.float" title="patterns.const.float"><span>[patterns<wbr>.const<wbr>.float]</span></a>
 </div>
 
 <ul>
-<li>A float value has structural equality if it is not a <code>NaN</code>.</li>
+<li>如果浮点值不是 <code>NaN</code> ，则它具有结构相等性。</li>
 </ul>
 <div class="rule" id="r-patterns.const.exhaustive"><a class="rule-link" href="#r-patterns.const.exhaustive" title="patterns.const.exhaustive"><span>[patterns<wbr>.const<wbr>.exhaustive]</span></a>
 </div>
 
 <ul>
-<li>Nothing else has structural equality.</li>
+<li>其他任何东西都不具有结构相等性。</li>
 </ul>
 <div class="rule" id="r-patterns.const.generic"><a class="rule-link" href="#r-patterns.const.generic" title="patterns.const.generic"><span>[patterns<wbr>.const<wbr>.generic]</span></a>
 </div>
 
-<p>In particular, the value of <code>C</code> must be known at pattern-building time (which is pre-monomorphization).
-This means that associated consts that involve generic parameters cannot be used as patterns.</p>
+<p>特别地， <code>C</code> 的值必须在模式构建时（即预单态化阶段）已知。
+这意味着涉及 泛型 参数的关联常量不能用作模式。</p>
 <div class="rule" id="r-patterns.const.immutable"><a class="rule-link" href="#r-patterns.const.immutable" title="patterns.const.immutable"><span>[patterns<wbr>.const<wbr>.immutable]</span></a>
 </div>
 
-<p>The value of <code>C</code> must not contain any references to mutable statics (<code>static mut</code> items or interior mutable <code>static</code> items) or <code>extern</code> statics.</p>
+<p><code>C</code> 的值不能包含对可变静态变量（ <code>static mut</code> 项 或内部可变 <code>static</code> 项）或 <code>extern</code> 静态变量的任何引用。</p>
 <div class="rule" id="r-patterns.const.translation"><a class="rule-link" href="#r-patterns.const.translation" title="patterns.const.translation"><span>[patterns<wbr>.const<wbr>.translation]</span></a>
 </div>
 
-<p>After ensuring all conditions are met, the constant value is translated into a pattern, and now behaves exactly as-if that pattern had been written directly.
-In particular, it fully participates in exhaustiveness checking.
-(For raw pointers, constants are the only way to write such patterns. Only <code>_</code> is ever considered exhaustive for these types.)</p>
+<p>在确保满足所有条件后，常量值将被转换为模式，其行为现在完全就像直接编写了该模式一样。
+特别是，它完全参与穷尽性检查。
+（对于原始指针，常量是编写此类模式的唯一方法。对于这些类型，只有 <code>_</code> 被认为是穷尽的。）</p>
 <div class="rule" id="r-patterns.or"><a class="rule-link" href="#r-patterns.or" title="patterns.or"><span>[patterns<wbr>.or]</span></a>
 </div>
 
-<h2 id="or-patterns"><a class="header" href="#or-patterns">Or-patterns</a></h2>
-<p><em>Or-patterns</em> are patterns that match on one of two or more sub-patterns (for example <code>A | B | C</code>).
-They can nest arbitrarily.
-Syntactically, or-patterns are allowed in any of the places where other patterns are allowed (represented by the <a href="patterns.html#grammar-Pattern">Pattern</a> production), with the exceptions of <code>let</code>-bindings and function and closure parameters (represented by the <a href="patterns.html#grammar-PatternNoTopAlt">PatternNoTopAlt</a> production).</p>
+<h2 id="或模式"><a class="header" href="#或模式">或模式</a></h2>
+<p><em>或模式</em> 是匹配两个或多个子模式之一的模式（例如 <code>A | B | C</code> ）。
+它们可以任意嵌套。
+从 语法格式 上讲，或模式允许出现在允许其他模式出现的任何地方（由 <a href="patterns.html#grammar-Pattern">Pattern</a> 产生式表示），但 <code>let</code> 绑定以及函数和闭包参数（由 <a href="patterns.html#grammar-PatternNoTopAlt">PatternNoTopAlt</a> 产生式表示）除外。</p>
 <div class="rule" id="r-patterns.constraints"><a class="rule-link" href="#r-patterns.constraints" title="patterns.constraints"><span>[patterns<wbr>.constraints]</span></a>
 </div>
 
-<h3 id="static-semantics"><a class="header" href="#static-semantics">Static semantics</a></h3>
+<h3 id="静态语义"><a class="header" href="#静态语义">静态语义</a></h3>
 <div class="rule" id="r-patterns.constraints.pattern"><a class="rule-link" href="#r-patterns.constraints.pattern" title="patterns.constraints.pattern"><span>[patterns<wbr>.constraints<wbr>.pattern]</span></a>
 </div>
 
 <ol>
 <li>
-<p>Given a pattern <code>p | q</code> at some depth for some arbitrary patterns <code>p</code> and <code>q</code>, the pattern is considered ill-formed if:</p>
+<p>给定某种深度的模式 <code>p | q</code> （对于任意模式 <code>p</code> 和 <code>q</code> ），如果满足以下条件，则认为该模式是格式不良的：</p>
 <ul>
-<li>the type inferred for <code>p</code> does not unify with the type inferred for <code>q</code>, or</li>
-<li>the same set of bindings are not introduced in <code>p</code> and <code>q</code>, or</li>
-<li>the type of any two bindings with the same name in <code>p</code> and <code>q</code> do not unify with respect to types or binding modes.</li>
+<li>为 <code>p</code> 推断出的类型与为 <code>q</code> 推断出的类型不统一，或者</li>
+<li><code>p</code> 和 <code>q</code> 中没有引入相同的绑定集，或者</li>
+<li><code>p</code> 和 <code>q</code> 中具有相同名称的任何两个绑定的类型在类型或绑定模式方面不统一。</li>
 </ul>
-<p>Unification of types is in all instances aforementioned exact and implicit <a href="type-coercions.html">type coercions</a> do not apply.</p>
+<p>在上述所有实例中，类型的统一都是精确的，且隐式 <a href="type-coercions.html">类型强制转换</a> 不适用。</p>
 </li>
 </ol>
 <div class="rule" id="r-patterns.constraints.match-type-check"><a class="rule-link" href="#r-patterns.constraints.match-type-check" title="patterns.constraints.match-type-check"><span>[patterns<wbr>.constraints<wbr>.match-type-check]</span></a>
 </div>
 
 <ol start="2">
-<li>When type checking an expression <code>match e_s { a_1 =&gt; e_1, ... a_n =&gt; e_n }</code>,
-for each match arm <code>a_i</code> which contains a pattern of form <code>p_i | q_i</code>,
-the pattern <code>p_i | q_i</code> is considered ill formed if,
-at the depth <code>d</code> where it exists the fragment of <code>e_s</code> at depth <code>d</code>,
-the type of the expression fragment does not unify with <code>p_i | q_i</code>.</li>
+<li>在对表达式 <code>match e_s { a_1 =&gt; e_1, ... a_n =&gt; e_n }</code> 进行类型检查时，对于包含 <code>p_i | q_i</code> 形式模式的每个 match 臂 <code>a_i</code> ，如果在其存在的深度 <code>d</code> 处， <code>e_s</code> 在深度 <code>d</code> 处的片段类型与 <code>p_i | q_i</code> 不统一，则模式 <code>p_i | q_i</code> 被认为是格式不良的。</li>
 </ol>
 <div class="rule" id="r-patterns.constraints.exhaustiveness-or-pattern"><a class="rule-link" href="#r-patterns.constraints.exhaustiveness-or-pattern" title="patterns.constraints.exhaustiveness-or-pattern"><span>[patterns<wbr>.constraints<wbr>.exhaustiveness-or-pattern]</span></a>
 </div>
 
 <ol start="3">
 <li>
-<p>With respect to exhaustiveness checking, a pattern <code>p | q</code> is considered to cover <code>p</code> as well as <code>q</code>.
-For some constructor <code>c(x, ..)</code> the distributive law applies such that <code>c(p | q, ..rest)</code> covers the same set of value as <code>c(p, ..rest) | c(q, ..rest)</code> does.
-This can be applied recursively until there are no more nested patterns of form <code>p | q</code> other than those that exist at the top level.</p>
-<p>Note that by <em>“constructor”</em> we do not refer to tuple struct patterns, but rather we refer to a pattern for any product type.
-This includes enum variants, tuple structs, structs with named fields, arrays, tuples, and slices.</p>
+<p>关于穷尽性检查，模式 <code>p | q</code> 被视为同时覆盖了 <code>p</code> 和 <code>q</code> 。
+对于某些构造函数 <code>c(x, ..)</code> ，分配律适用，使得 <code>c(p | q, ..rest)</code> 覆盖的值集与 <code>c(p, ..rest) | c(q, ..rest)</code> 覆盖的值集相同。
+这可以递归应用，直到除了存在于顶层的模式之外，不再有 <code>p | q</code> 形式的嵌套模式。</p>
+<p>请注意，这里的 “构造函数” 指的不是元组结构体模式，而是指任何乘积类型的模式。
+这包括枚举变体、元组结构体、具有命名字段的 结构体 、数组、元组和切片。</p>
 </li>
 </ol>
 <div class="rule" id="r-patterns.behavior"><a class="rule-link" href="#r-patterns.behavior" title="patterns.behavior"><span>[patterns<wbr>.behavior]</span></a>
 </div>
 
-<h3 id="dynamic-semantics"><a class="header" href="#dynamic-semantics">Dynamic semantics</a></h3>
+<h3 id="动态语义"><a class="header" href="#动态语义">动态语义</a></h3>
 <div class="rule" id="r-patterns.behavior.nested-or-patterns"><a class="rule-link" href="#r-patterns.behavior.nested-or-patterns" title="patterns.behavior.nested-or-patterns"><span>[patterns<wbr>.behavior<wbr>.nested-or-patterns]</span></a>
 </div>
 
 <ol>
-<li>The dynamic semantics of pattern matching a scrutinee expression <code>e_s</code> against a pattern <code>c(p | q, ..rest)</code> at depth <code>d</code> where <code>c</code> is some constructor,
-<code>p</code> and <code>q</code> are arbitrary patterns,
-and <code>rest</code> is optionally any remaining potential factors in <code>c</code>,
-is defined as being the same as that of <code>c(p, ..rest) | c(q, ..rest)</code>.</li>
+<li>在深度 <code>d</code> 处，将 <a href="glossary.html#scrutinee">被匹配</a> 表达式 <code>e_s</code> 与模式 <code>c(p | q, ..rest)</code> 进行模式匹配的动态语义（其中 <code>c</code> 是某种构造函数， <code>p</code> 和 <code>q</code> 是任意模式， <code>rest</code> 是 <code>c</code> 中可选的任何剩余潜在因子）被定义为与 <code>c(p, ..rest) | c(q, ..rest)</code> 的动态语义相同。</li>
 </ol>
 <div class="rule" id="r-patterns.precedence"><a class="rule-link" href="#r-patterns.precedence" title="patterns.precedence"><span>[patterns<wbr>.precedence]</span></a>
 </div>
 
-<h3 id="precedence-with-other-undelimited-patterns"><a class="header" href="#precedence-with-other-undelimited-patterns">Precedence with other undelimited patterns</a></h3>
-<p>As shown elsewhere in this chapter, there are several types of patterns that are syntactically undelimited, including identifier patterns, reference patterns, and or-patterns.
-Or-patterns always have the lowest-precedence.
-This allows us to reserve syntactic space for a possible future type ascription feature and also to reduce ambiguity.
-For example, <code>x @ A(..) | B(..)</code> will result in an error that <code>x</code> is not bound in all patterns.
-<code>&amp;A(x) | B(x)</code> will result in a type mismatch between <code>x</code> in the different subpatterns.</p>
+<h3 id="与其他无定界模式的优先级"><a class="header" href="#与其他无定界模式的优先级">与其他无定界模式的优先级</a></h3>
+<p>正如本章其他地方所示，有几种类型的模式在 语法格式 上是无定界的，包括标识符模式、引用模式和或模式。
+或模式始终具有最低优先级。
+这允许我们为将来可能出现的类型注记（type ascription）特性预留 语法格式 空间，并减少歧义。
+例如， <code>x @ A(..) | B(..)</code> 将导致错误，即 <code>x</code> 未在所有模式中绑定。
+<code>&amp;A(x) | B(x)</code> 将导致不同子模式中 <code>x</code> 之间的类型不匹配。</p>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-obsolete-range-edition">
-<p>The <a href="patterns.html#grammar-ObsoleteRangePattern">ObsoleteRangePattern</a> syntax has been removed in the 2021 edition. <a href="#fr-obsolete-range-edition-1">↩</a></p>
+<p><a href="patterns.html#grammar-ObsoleteRangePattern">ObsoleteRangePattern</a>  语法格式 在 2021 版次中已被移除。 <a href="#fr-obsolete-range-edition-1">↩</a></p>
 </li>
 </ol>
 

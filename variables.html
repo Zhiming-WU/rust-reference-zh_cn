@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1458537c.js";
+            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-be189161.js"></script>
@@ -181,40 +181,28 @@
                         <div class="rule" id="r-variable"><a class="rule-link" href="#r-variable" title="variable"><span>[variable]</span></a>
 </div>
 
-<h1 id="variables"><a class="header" href="#variables">Variables</a></h1>
+<h1 id="变量"><a class="header" href="#变量">变量</a></h1>
 <div class="rule" id="r-variable.intro"><a class="rule-link" href="#r-variable.intro" title="variable.intro"><span>[variable<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>variable</em> is a component of a stack frame, either a named function parameter,
-an anonymous <a href="expressions.html#temporaries">temporary</a>, or a named local
-variable.</p>
+<p>一个 变量 是 栈帧 的一个组成部分，它可以是一个具名函数 参数，一个匿名 <a href="expressions.html#temporaries">临时量</a>，或者一个具名 局部变量。</p>
 <div class="rule" id="r-variable.local"><a class="rule-link" href="#r-variable.local" title="variable.local"><span>[variable<wbr>.local]</span></a>
 </div>
 
-<p>A <em>local variable</em> (or <em>stack-local</em> allocation) holds a value directly,
-allocated within the stack’s memory. The value is a part of the stack frame.</p>
+<p>一个 局部变量 （或 栈-局部 分配）直接持有值，在 栈内存 中分配。该值是 栈帧 的一部分。</p>
 <div class="rule" id="r-variable.local-mut"><a class="rule-link" href="#r-variable.local-mut" title="variable.local-mut"><span>[variable<wbr>.local-mut]</span></a>
 </div>
 
-<p>Local variables are immutable unless declared otherwise. For example:
-<code>let mut x = ...</code>.</p>
+<p>局部变量 默认不可变，除非另行声明。例如：<code>let mut x = ...</code>。</p>
 <div class="rule" id="r-variable.param-mut"><a class="rule-link" href="#r-variable.param-mut" title="variable.param-mut"><span>[variable<wbr>.param-mut]</span></a>
 </div>
 
-<p>Function parameters are immutable unless declared with <code>mut</code>. The <code>mut</code> keyword
-applies only to the following parameter. For example: <code>|mut x, y|</code> and
-<code>fn f(mut x: Box&lt;i32&gt;, y: Box&lt;i32&gt;)</code> declare one mutable variable <code>x</code> and one
-immutable variable <code>y</code>.</p>
+<p>函数 参数 默认不可变，除非用 <code>mut</code> 声明。<code>mut</code> 关键字仅适用于其后的 参数。例如：<code>|mut x, y|</code> 和 <code>fn f(mut x: Box&lt;i32&gt;, y: Box&lt;i32&gt;)</code> 声明了一个 可变 变量 <code>x</code> 和一个 不可变 变量 <code>y</code>。</p>
 <div class="rule" id="r-variable.init"><a class="rule-link" href="#r-variable.init" title="variable.init"><span>[variable<wbr>.init]</span></a>
 </div>
 
-<p>Local variables are not initialized when allocated. Instead, the entire frame
-worth of local variables are allocated, on frame-entry, in an uninitialized
-state. Subsequent statements within a function may or may not initialize the
-local variables. Local variables can be used only after they have been
-initialized through all reachable control flow paths.</p>
-<p>In this next example, <code>init_after_if</code> is initialized after the <a href="expressions/if-expr.html#if-expressions"><code>if</code> expression</a>
-while <code>uninit_after_if</code> is not because it is not initialized in the <code>else</code> case.</p>
+<p>局部变量 在分配时不会被初始化。相反，整个 栈帧 上的 局部变量 会在 栈帧 进入时以未初始化状态分配。函数内的后续语句可能会或可能不会初始化 局部变量。局部变量 只能在它们通过所有可达的 控制流路径 被初始化后才能使用。</p>
+<p>在下一个示例中，<code>init_after_if</code> 在 <a href="expressions/if-expr.html#if-expressions"><code>if</code> 表达式</a> 之后被初始化，而 <code>uninit_after_if</code> 没有，因为它在 <code>else</code> 分支中未被初始化。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn random_bool() -&gt; bool { true }
@@ -230,7 +218,7 @@ while <code>uninit_after_if</code> is not because it is not initialized in the <
     }
 
     init_after_if; // ok
-    // uninit_after_if; // err: use of possibly uninitialized `uninit_after_if`
+    // uninit_after_if; // 错误：使用了可能未初始化的 `uninit_after_if`
 }
 <span class="boring">}</span></code></pre>
 
