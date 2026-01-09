@@ -1,181 +1,80 @@
 r[link]
-# Linkage
+# 链接
 
 > [!NOTE]
-> This section is described more in terms of the compiler than of the language.
+> 本节更多是从编译器而非语言本身的角度进行描述。
 
 r[link.intro]
-The compiler supports various methods to link crates together both
-statically and dynamically. This section will explore the various methods to
-link crates together, and more information about native libraries can be
-found in the [FFI section of the book][ffi].
+编译器支持静态和动态链接 crate 的多种方法。本节将探讨链接 crate 的各种方法，有关原生库的更多信息可以在 [本书的 FFI 章节][ffi] 中找到。
 
 [ffi]: ../book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code
 
 r[link.type]
-In one session of compilation, the compiler can generate multiple artifacts
-through the usage of either command line flags or the `crate_type` attribute.
-If one or more command line flags are specified, all `crate_type` attributes will
-be ignored in favor of only building the artifacts specified by command line.
+在一次编译会话中，编译器可以通过使用命令行标志或 `crate_type` 属性生成多个产物。如果指定了一个或多个命令行标志，则所有的 `crate_type` 属性都将被忽略，而只构建通过命令行指定的产物。
 
 r[link.bin]
-* `--crate-type=bin`, `#![crate_type = "bin"]` - A runnable executable will be
-  produced. This requires that there is a `main` function in the crate which
-  will be run when the program begins executing. This will link in all Rust and
-  native dependencies, producing a single distributable binary.
-  This is the default crate type.
+* `--crate-type=bin`, `#![crate_type = "bin"]` - 将生成一个可运行的可执行文件。这要求 crate 中有一个 `main` 函数，该函数将在程序开始执行时运行。这将链接所有的 Rust 和原生依赖项，生成一个单一的可分发二进制文件。这是默认的 crate 类型。
 
 r[link.lib]
-* `--crate-type=lib`, `#![crate_type = "lib"]` - A Rust library will be produced.
-  This is an ambiguous concept as to what exactly is produced because a library
-  can manifest itself in several forms. The purpose of this generic `lib` option
-  is to generate the "compiler recommended" style of library. The output library
-  will always be usable by rustc, but the actual type of library may change from
-  time-to-time. The remaining output types are all different flavors of
-  libraries, and the `lib` type can be seen as an alias for one of them (but the
-  actual one is compiler-defined).
+* `--crate-type=lib`, `#![crate_type = "lib"]` - 将生成一个 Rust 库。这是一个模棱两可的概念，因为库可以以多种形式表现。这种通用的 `lib` 选项的目的是生成 "compiler recommended" 风格的库。输出的库始终可以被 rustc 使用，但库的具体类型可能会不时发生变化。其余输出类型都是库的不同变体，`lib` 类型可以看作是其中之一的别名 (but the actual one is compiler-defined)。
 
 r[link.dylib]
-* `--crate-type=dylib`, `#![crate_type = "dylib"]` - A dynamic Rust library will
-  be produced. This is different from the `lib` output type in that this forces
-  dynamic library generation. The resulting dynamic library can be used as a
-  dependency for other libraries and/or executables. This output type will
-  create `*.so` files on Linux, `*.dylib` files on macOS, and `*.dll` files on
-  Windows.
+* `--crate-type=dylib`, `#![crate_type = "dylib"]` - 将生成一个动态 Rust 库。这与 `lib` 输出类型的不同之处在于它强制生成动态库。生成的动态库可以用作其他库和/或可执行文件的依赖项。这种输出类型将在 Linux 上创建 `*.so` 文件，在 macOS 上创建 `*.dylib` 文件，在 Windows 上创建 `*.dll` 文件。
 
 r[link.staticlib]
-* `--crate-type=staticlib`, `#![crate_type = "staticlib"]` - A static system
-  library will be produced. This is different from other library outputs in that
-  the compiler will never attempt to link to `staticlib` outputs. The
-  purpose of this output type is to create a static library containing all of
-  the local crate's code along with all upstream dependencies. This output type
-  will create `*.a` files on Linux, macOS and Windows (MinGW), and `*.lib` files
-  on Windows (MSVC). This format is recommended for use in situations such as
-  linking Rust code into an existing non-Rust application because it will not
-  have dynamic dependencies on other Rust code.
+* `--crate-type=staticlib`, `#![crate_type = "staticlib"]` - 将生成一个静态系统库。这与其他库输出的不同之处在于，编译器永远不会尝试链接到 `staticlib` 输出。这种输出类型的目的是创建一个包含所有本地 crate 代码以及所有上游依赖项的静态库。这种输出类型将在 Linux, macOS 和 Windows (MinGW) 上创建 `*.a` 文件，并在 Windows (MSVC) 上创建 `*.lib` 文件。建议在将 Rust 代码链接到现有的非 Rust 应用程序等情况下使用此格式，因为它不会对其他 Rust 代码产生动态依赖。
 
-  Note that any dynamic dependencies that the static library may have (such as
-  dependencies on system libraries, or dependencies on Rust libraries that are
-  compiled as dynamic libraries) will have to be specified manually when
-  linking that static library from somewhere. The `--print=native-static-libs` flag may help with this.
+  请注意，静态库可能具有的任何动态依赖项 (such as dependencies on system libraries, or dependencies on Rust libraries that are compiled as dynamic libraries) 在从某处链接该静态库时必须手动指定。 `--print=native-static-libs` 标志可能对此有所帮助。
 
-  Note that, because the resulting static library contains the code of all the
-  dependencies, including the standard library, and also exports all public
-  symbols of them, linking the static library into an executable or shared
-  library may need special care. In case of a shared library the list of
-  exported symbols will have to be limited via e.g. a linker or symbol version
-  script, exported symbols list (macOS), or module definition file (Windows).
-  Additionally, unused sections can be removed to remove all code of
-  dependencies that is not actually used (e.g. `--gc-sections` or `-dead_strip`
-  for macOS).
+  请注意，由于生成的静态库包含所有依赖项的代码 (including the standard library) ，并且还导出了它们的所有公共符号，因此将静态库链接到可执行文件或共享库可能需要特别注意。在共享库的情况下，必须通过例如链接器或符号版本脚本、导出符号列表 (macOS) 或模块定义文件 (Windows) 来限制导出符号的列表。此外，可以删除未使用的节，以删除未实际使用的所有依赖项代码 (e.g. `--gc-sections` or `-dead_strip` for macOS)。
 
 r[link.cdylib]
-* `--crate-type=cdylib`, `#![crate_type = "cdylib"]` - A dynamic system
-  library will be produced.  This is used when compiling
-  a dynamic library to be loaded from another language.  This output type will
-  create `*.so` files on Linux, `*.dylib` files on macOS, and `*.dll` files on
-  Windows.
+* `--crate-type=cdylib`, `#![crate_type = "cdylib"]` - 将生成一个动态系统库。这用于在编译要从另一种语言加载的动态库时使用。这种输出类型将在 Linux 上创建 `*.so` 文件，在 macOS 上创建 `*.dylib` 文件，在 Windows 上创建 `*.dll` 文件。
 
 r[link.rlib]
-* `--crate-type=rlib`, `#![crate_type = "rlib"]` - A "Rust library" file will be
-  produced. This is used as an intermediate artifact and can be thought of as a
-  "static Rust library". These `rlib` files, unlike `staticlib` files, are
-  interpreted by the compiler in future linkage. This essentially means
-  that `rustc` will look for metadata in `rlib` files like it looks for metadata
-  in dynamic libraries. This form of output is used to produce statically linked
-  executables as well as `staticlib` outputs.
+* `--crate-type=rlib`, `#![crate_type = "rlib"]` - 将生成一个 "Rust library" 文件。这用作中间产物，可以被认为是 "static Rust library" 。与 `staticlib` 文件不同，这些 `rlib` 文件在未来的链接中由编译器解释。这本质上意味着 `rustc` 将在 `rlib` 文件中寻找元数据，就像在动态库中寻找元数据一样。这种输出形式用于生成静态链接的可执行文件以及 `staticlib` 输出。
 
 r[link.proc-macro]
-* `--crate-type=proc-macro`, `#![crate_type = "proc-macro"]` - The output
-  produced is not specified, but if a `-L` path is provided to it then the
-  compiler will recognize the output artifacts as a macro and it can be loaded
-  for a program. Crates compiled with this crate type  must only export
-  [procedural macros]. The compiler will automatically set the `proc_macro`
-  [configuration option]. The crates are always compiled with the same target
-  that the compiler itself was built with. For example, if you are executing
-  the compiler from Linux with an `x86_64` CPU, the target will be
-  `x86_64-unknown-linux-gnu` even if the crate is a dependency of another crate
-  being built for a different target.
+* `--crate-type=proc-macro`, `#![crate_type = "proc-macro"]` - 生成的输出未指定，但如果为其提供了 `-L` 路径，则编译器会将输出产物识别为宏，并且可以为程序加载它。使用此 crate 类型编译的 crate 只能导出 [过程宏][procedural macros]。编译器将自动设置 `proc_macro` [配置选项][configuration option]。crate 始终使用与编译器本身构建时相同的 target 进行编译。例如，如果您在带有 `x86_64` CPU 的 Linux 上执行编译器，则 target 将是 `x86_64-unknown-linux-gnu`，即使该 crate 是为不同 target 构建的另一个 crate 的依赖项。
 
 r[link.repetition]
-Note that these outputs are stackable in the sense that if multiple are
-specified, then the compiler will produce each form of output without
-having to recompile. However, this only applies for outputs specified by the
-same method. If only `crate_type` attributes are specified, then they will all
-be built, but if one or more `--crate-type` command line flags are specified,
-then only those outputs will be built.
+请注意，这些输出是可堆叠的，即如果指定了多个，则编译器将生成每种形式的输出，而无需重新编译。但是，这仅适用于通过相同方法指定的输出。如果仅指定了 `crate_type` 属性，则它们都将被构建，但如果指定了一个或多个 `--crate-type` 命令行标志，则仅构建那些输出。
 
 r[link.dependency]
-With all these different kinds of outputs, if crate A depends on crate B, then
-the compiler could find B in various different forms throughout the system. The
-only forms looked for by the compiler, however, are the `rlib` format and the
-dynamic library format. With these two options for a dependent library, the
-compiler must at some point make a choice between these two formats. With this
-in mind, the compiler follows these rules when determining what format of
-dependencies will be used:
+对于所有这些不同种类的输出，如果 crate A 依赖于 crate B，则编译器可能会在整个系统中找到各种不同形式的 B。然而，编译器寻找的唯一形式是 `rlib` 格式和动态库格式。对于依赖库的这两个选项，编译器必须在某个时间点在两种格式之间做出选择。考虑到这一点，编译器在确定将使用哪种格式的依赖项时遵循以下规则：
 
 r[link.dependency-staticlib]
-1. If a static library is being produced, all upstream dependencies are
-   required to be available in `rlib` formats. This requirement stems from the
-   reason that a dynamic library cannot be converted into a static format.
+1. 如果正在生成静态库，则要求所有上游依赖项都必须以 `rlib` 格式可用。这一要求源于动态库无法转换为静态格式的原因。
 
-   Note that it is impossible to link in native dynamic dependencies to a static
-   library, and in this case warnings will be printed about all unlinked native
-   dynamic dependencies.
+   请注意，无法将原生动态依赖项链接到静态库，在这种情况下，将打印有关所有未链接的原生动态依赖项的警告。
 
 r[link.dependency-rlib]
 
-2. If an `rlib` file is being produced, then there are no restrictions on what
-   format the upstream dependencies are available in. It is simply required that
-   all upstream dependencies be available for reading metadata from.
+2. 如果正在生成 `rlib` 文件，则对上游依赖项可用的格式没有限制。仅要求所有上游依赖项都可用于读取元数据。
 
-   The reason for this is that `rlib` files do not contain any of their upstream
-   dependencies. It wouldn't be very efficient for all `rlib` files to contain a
-   copy of `libstd.rlib`!
+   这是因为 `rlib` 文件不包含其任何上游依赖项。让所有 `rlib` 文件都包含 `libstd.rlib` 的副本是非常低效的！
 
 r[link.dependency-prefer-dynamic]
 
-3. If an executable is being produced and the `-C prefer-dynamic` flag is not
-   specified, then dependencies are first attempted to be found in the `rlib`
-   format. If some dependencies are not available in an rlib format, then
-   dynamic linking is attempted (see below).
+3. 如果正在生成可执行文件且未指定 `-C prefer-dynamic` 标志，则首先尝试寻找 `rlib` 格式的依赖项。如果某些依赖项在 rlib 格式下不可用，则尝试动态链接 (see below)。
 
 r[link.dependency-dynamic]
 
-4. If a dynamic library or an executable that is being dynamically linked is
-   being produced, then the compiler will attempt to reconcile the available
-   dependencies in either the rlib or dylib format to create a final product.
+4. 如果正在生成动态库或正在动态链接的可执行文件，则编译器将尝试协调以 rlib 或 dylib 格式提供的依赖项，以创建最终产品。
 
-   A major goal of the compiler is to ensure that a library never appears more
-   than once in any artifact. For example, if dynamic libraries B and C were
-   each statically linked to library A, then a crate could not link to B and C
-   together because there would be two copies of A. The compiler allows mixing
-   the rlib and dylib formats, but this restriction must be satisfied.
+   编译器的主要目标是确保一个库在任何产物中都不会出现超过一次。例如，如果动态库 B 和 C 都静态链接到库 A，那么一个 crate 就不能同时链接到 B 和 C，因为那样就会有两个 A 的副本。编译器允许混合 rlib 和 dylib 格式，但必须满足这一限制。
 
-   The compiler currently implements no method of hinting what format a library
-   should be linked with. When dynamically linking, the compiler will attempt to
-   maximize dynamic dependencies while still allowing some dependencies to be
-   linked in via an rlib.
+   编译器目前没有提供暗示库应以何种格式链接的方法。在动态链接时，编译器将尝试最大化动态依赖项，同时仍允许通过 rlib 链接一些依赖项。
 
-   For most situations, having all libraries available as a dylib is recommended
-   if dynamically linking. For other situations, the compiler will emit a
-   warning if it is unable to determine which formats to link each library with.
+   对于大多数情况，如果进行动态链接，建议所有库都以 dylib 形式可用。对于其他情况，如果编译器无法确定每个库应以哪种格式链接，它将发出警告。
 
-In general, `--crate-type=bin` or `--crate-type=lib` should be sufficient for
-all compilation needs, and the other options are just available if more
-fine-grained control is desired over the output format of a crate.
+通常，对于所有编译需求，`--crate-type=bin` 或 `--crate-type=lib` 应该就足够了，其他选项仅在需要对 crate 输出格式进行更精细控制时可用。
 
 r[link.crt]
-## Static and dynamic C runtimes
+## 静态和动态C运行时
 
 r[link.crt.intro]
-The standard library in general strives to support both statically linked and
-dynamically linked C runtimes for targets as appropriate. For example the
-`x86_64-pc-windows-msvc` and `x86_64-unknown-linux-musl` targets typically come
-with both runtimes and the user selects which one they'd like. All targets in
-the compiler have a default mode of linking to the C runtime. Typically targets
-are linked dynamically by default, but there are exceptions which are static by
-default such as:
+标准库通常力求根据需要为 target 支持静态链接和动态链接的 C 运行时。例如 `x86_64-pc-windows-msvc` 和 `x86_64-unknown-linux-musl` target 通常带有两种运行时，用户可以选择他们喜欢的。编译器中的所有 target 都有链接到 C 运行时的默认模式。通常 target 默认是动态链接的，但也有些例外是默认静态链接的，例如：
 
 * `arm-unknown-linux-musleabi`
 * `arm-unknown-linux-musleabihf`
@@ -184,31 +83,23 @@ default such as:
 * `x86_64-unknown-linux-musl`
 
 r[link.crt.crt-static]
-The linkage of the C runtime is configured to respect the `crt-static` target
-feature. These target features are typically configured from the command line
-via flags to the compiler itself. For example to enable a static runtime you
-would execute:
+C 运行时的链接配置为遵循 `crt-static` target 特性。这些 target 特性通常在命令行中通过编译器的标志进行配置。例如，要启用静态运行时，您可以执行：
 
 ```sh
 rustc -C target-feature=+crt-static foo.rs
 ```
 
-whereas to link dynamically to the C runtime you would execute:
+而要动态链接到 C 运行时，您可以执行：
 
 ```sh
 rustc -C target-feature=-crt-static foo.rs
 ```
 
 r[link.crt.ineffective]
-Targets which do not support switching between linkage of the C runtime will
-ignore this flag. It's recommended to inspect the resulting binary to ensure
-that it's linked as you would expect after the compiler succeeds.
+不支持在 C 运行时链接方式之间切换的 target 将忽略此标志。建议在编译器成功后检查生成的二进制文件，以确保它按预期链接。
 
 r[link.crt.target_feature]
-Crates may also learn about how the C runtime is being linked. Code on MSVC, for
-example, needs to be compiled differently (e.g. with `/MT` or `/MD`) depending
-on the runtime being linked. This is exported currently through the
-[`cfg` attribute `target_feature` option]:
+crate 也可以了解 C 运行时是如何被链接的。例如，MSVC 上的代码需要根据链接的运行时进行不同的编译 (e.g. with `/MT` or `/MD`) 。这目前通过 [`cfg` 属性 `target_feature` 选项][`cfg` attribute `target_feature` option] 导出：
 
 ```rust
 #[cfg(target_feature = "crt-static")]
@@ -222,9 +113,7 @@ fn foo() {
 }
 ```
 
-Also note that Cargo build scripts can learn about this feature through
-[environment variables][cargo]. In a build script you can detect the linkage
-via:
+另请注意，Cargo 构建脚本可以通过 [环境变量][cargo] 了解此特性。在构建脚本中，您可以通过以下方式检测链接：
 
 ```rust
 use std::env;
@@ -242,59 +131,49 @@ fn main() {
 
 [cargo]: ../cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-build-scripts
 
-To use this feature locally, you typically will use the `RUSTFLAGS` environment
-variable to specify flags to the compiler through Cargo. For example to compile
-a statically linked binary on MSVC you would execute:
+要在本地使用此特性，您通常会使用 `RUSTFLAGS` 环境变量通过 Cargo 为编译器指定标志。例如，要在 MSVC 上编译静态链接的二进制文件，您可以执行：
 
 ```sh
 RUSTFLAGS='-C target-feature=+crt-static' cargo build --target x86_64-pc-windows-msvc
 ```
 
 r[link.foreign-code]
-## Mixed Rust and foreign codebases
+## 混合Rust和外部代码库
 
 r[link.foreign-code.foreign-linkers]
-If you are mixing Rust with foreign code (e.g. C, C++) and wish to make a single
-binary containing both types of code, you have two approaches for the final
-binary link:
+如果您混合使用 Rust 和外部代码 (e.g. C, C++) 并希望制作包含两种代码类型的单个二进制文件，则最终二进制链接有两种方法：
 
-* Use `rustc`. Pass any non-Rust libraries using `-L <directory>` and `-l<library>`
-  rustc arguments, and/or `#[link]` directives in your Rust code. If you need to
-  link against `.o` files you can use `-Clink-arg=file.o`.
-* Use your foreign linker. In this case, you first need to generate a Rust `staticlib`
-  target and pass that into your foreign linker invocation. If you need to link
-  multiple Rust subsystems, you will need to generate a _single_ `staticlib`
-  perhaps using lots of `extern crate` statements to include multiple Rust `rlib`s.
-  Multiple Rust `staticlib` files are likely to conflict.
+* 使用 `rustc`。使用 `rustc` 参数 `-L <directory>` 和 `-l<library>` 传递任何非 Rust 库，和/或在 Rust 代码中使用 `#[link]` 指令。如果您需要链接 `*.o` 文件，可以使用 `-Clink-arg=file.o`。
+* 使用您的外部链接器。在这种情况下，您首先需要生成一个 Rust `staticlib` target 并将其传递给您的外部链接器调用。如果您需要链接多个 Rust 子系统，您将需要生成一个 *单个* `staticlib`，可能需要使用大量的 `extern crate` 语句来包含多个 Rust `rlib`。多个 Rust `staticlib` 文件很可能会冲突。
 
-Passing `rlib`s directly into your foreign linker is currently unsupported.
+目前不支持将 `rlib` 直接传递到您的外部链接器中。
 
 > [!NOTE]
-> Rust code compiled or linked with a different instance of the Rust runtime counts as "foreign code" for the purpose of this section.
+> 对于本节而言，使用不同的 Rust 运行时实例编译或链接的 Rust 代码也算作 "foreign code" 。
 
 r[link.unwinding]
-### Prohibited linkage and unwinding
+### 禁止的链接和恐慌展开
 
 r[link.unwinding.intro]
-Panic unwinding can only be used if the binary is built consistently according to the following rules.
+仅当二进制文件根据以下规则一致地构建时，才能使用恐慌展开。
 
 r[link.unwinding.potential]
-A Rust artifact is called *potentially unwinding* if any of the following conditions is met:
-- The artifact uses the [`unwind` panic handler][panic.panic_handler].
-- The artifact contains a crate built with the `unwind` [panic strategy] that makes a call to a function using a `-unwind` ABI.
-- The artifact makes a `"Rust"` ABI call to code running in another Rust artifact that has a separate copy of the Rust runtime, and that other artifact is potentially unwinding.
+如果满足以下任何条件，则 Rust 产物被称为 *潜在展开的* ：
+- 该产物使用 [`unwind` 恐慌处理器][panic.panic_handler]。
+- 该产物包含一个使用 `unwind` [恐慌策略][panic strategy] 构建的 crate，该 crate 使用 `-unwind` ABI 调用函数。
+- 该产物对在另一个拥有独立的 Rust 运行时副本的 Rust 产物中运行的代码进行 "Rust" ABI 调用，并且该另一个产物是潜在展开的。
 
 > [!NOTE]
-> This definition captures whether a `"Rust"` ABI call inside a Rust artifact can ever unwind.
+> 此定义涵盖了 Rust 产物内部的 "Rust" ABI 调用是否会发生展开。
 
 r[link.unwinding.prohibited]
-If a Rust artifact is potentially unwinding, then all its crates must be built with the `unwind` [panic strategy]. Otherwise, unwinding can cause undefined behavior.
+如果一个 Rust 产物是潜在展开的，那么它的所有 crate 都必须使用 `unwind` [恐慌策略][panic strategy] 构建。否则，展开可能会导致未定义行为。
 
 > [!NOTE]
-> If you are using `rustc` to link, these rules are enforced automatically. If you are *not* using `rustc` to link, you must take care to ensure that unwinding is handled consistently across the entire binary. Linking without `rustc` includes using `dlopen` or similar facilities where linking is done by the system runtime without `rustc` being involved. This can only happen when mixing code with different [`-C panic`] flags, so most users do not have to be concerned about this.
+> 如果您使用 `rustc` 进行链接，这些规则会自动执行。如果您 *不* 使用 `rustc` 进行链接，则必须注意确保在整个二进制文件中一致地处理展开。不使用 `rustc` 链接包括使用 `dlopen` 或类似设施，其中链接由系统运行时完成，而不涉及 `rustc`。这种情况仅在混合使用具有不同 [`-C panic`] 标志的代码时才会发生，因此大多数用户无需担心这一点。
 
 > [!NOTE]
-> To guarantee that a library will be sound (and linkable with `rustc`) regardless of the panic runtime used at link-time, the [`ffi_unwind_calls` lint] may be used. The lint flags any calls to `-unwind` foreign functions or function pointers.
+> 为了保证无论链接时使用何种恐慌运行时，库都是健全的 (and linkable with `rustc`) ，可以使用 [`ffi_unwind_calls` lint] 。该 lint 会标记对 `-unwind` 外部函数或函数指针的任何调用。
 
 [`cfg` attribute `target_feature` option]: conditional-compilation.md#target_feature
 [`ffi_unwind_calls` lint]: ../rustc/lints/listing/allowed-by-default.html#ffi-unwind-calls

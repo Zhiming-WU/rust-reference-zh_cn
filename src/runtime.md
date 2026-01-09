@@ -1,14 +1,14 @@
 r[runtime]
-# The Rust runtime
+# Rust 运行时
 
-This section documents features that define some aspects of the Rust runtime.
+本节记录了定义 Rust 运行时某些方面的特性。
 
 <!-- template:attributes -->
 r[runtime.global_allocator]
-## The `global_allocator` attribute
+## global_allocator属性
 
 r[runtime.global_allocator.intro]
-The *`global_allocator` [attribute][attributes]* selects a [memory allocator][std::alloc].
+*global_allocator [属性][attributes]* 选择一个 [内存分配器][std::alloc]。
 
 > [!EXAMPLE]
 > ```rust
@@ -31,26 +31,26 @@ The *`global_allocator` [attribute][attributes]* selects a [memory allocator][st
 > ```
 
 r[runtime.global_allocator.syntax]
-The `global_allocator` attribute uses the [MetaWord] syntax.
+global_allocator 属性使用 [MetaWord] 语法格式。
 
 r[runtime.global_allocator.allowed-positions]
-The `global_allocator` attribute may only be applied to a [static item] whose type implements the [`GlobalAlloc`] trait.
+global_allocator 属性只能应用于其类型实现了 [`GlobalAlloc`] 特型 的 [静态项][static item]。
 
 r[runtime.global_allocator.duplicates]
-The `global_allocator` attribute may only be used once on an item.
+global_allocator 属性在项上只能使用一次。
 
 r[runtime.global_allocator.single]
-The `global_allocator` attribute may only be used once in the crate graph.
+global_allocator 属性在 crate 图中只能使用一次。
 
 r[runtime.global_allocator.stdlib]
-The `global_allocator` attribute is exported from the [standard library prelude][core::prelude::v1].
+global_allocator 属性从 [标准库预导入][core::prelude::v1] 中导出。
 
 <!-- template:attributes -->
 r[runtime.windows_subsystem]
-## The `windows_subsystem` attribute
+## windows_subsystem属性
 
 r[runtime.windows_subsystem.intro]
-The *`windows_subsystem` [attribute][attributes]* sets the [subsystem] when linking on a Windows target.
+*windows_subsystem [属性][attributes]* 在 Windows target 上链接时设置 [子系统][subsystem]。
 
 > [!EXAMPLE]
 > ```rust
@@ -58,28 +58,28 @@ The *`windows_subsystem` [attribute][attributes]* sets the [subsystem] when link
 > ```
 
 r[runtime.windows_subsystem.syntax]
-The `windows_subsystem` attribute uses the [MetaNameValueStr] syntax. Accepted values are `"console"` and `"windows"`.
+windows_subsystem 属性使用 [MetaNameValueStr] 语法格式。可接受的值为 `"console"` 和 `"windows"`。
 
 r[runtime.windows_subsystem.allowed-positions]
-The `windows_subsystem` attribute may only be applied to the crate root.
+windows_subsystem 属性只能应用于 crate 根。
 
 r[runtime.windows_subsystem.duplicates]
-Only the first use of `windows_subsystem` has effect.
+只有第一次使用的 windows_subsystem 才会生效。
 
 > [!NOTE]
-> `rustc` lints against any use following the first. This may become an error in the future.
+> `rustc` 会对第一次之后的任何使用发出 lint。这在将来可能会变成一个错误。
 
 r[runtime.windows_subsystem.ignored]
-The `windows_subsystem` attribute is ignored on non-Windows targets and non-`bin` [crate types].
+windows_subsystem 属性在非 Windows target 和非 `bin` [crate 类型][crate types] 上会被忽略。
 
 r[runtime.windows_subsystem.console]
-The `"console"` subsystem is the default. If a console process is run from an existing console then it will be attached to that console; otherwise a new console window will be created.
+`"console"` 子系统是默认值。如果从现有的控制台运行控制台进程，那么它将附加到该控制台；否则将创建一个新的控制台窗口。
 
 r[runtime.windows_subsystem.windows]
-The `"windows"` subsystem will run detached from any existing console.
+`"windows"` 子系统将脱离任何现有的控制台运行。
 
 > [!NOTE]
-> The `"windows"` subsystem is commonly used by GUI applications that do not want to display a console window on startup.
+> `"windows"` 子系统通常由不希望在启动时显示控制台窗口的 GUI 应用程序使用。
 
 [`GlobalAlloc`]: alloc::alloc::GlobalAlloc
 [crate types]: linkage.md

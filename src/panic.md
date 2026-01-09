@@ -1,37 +1,37 @@
 r[panic]
-# Panic
+# 恐慌
 
 r[panic.intro]
-Rust provides a mechanism to prevent a function from returning normally, and instead "panic," which is a response to an error condition that is typically not expected to be recoverable within the context in which the error is encountered.
+Rust 提供了一种机制来防止函数正常返回，而是引发 "恐慌 (panic)"。这是对错误条件的响应，通常在遇到错误的上下文中被认为无法恢复。
 
 r[panic.lang-ops]
-Some language constructs, such as out-of-bounds [array indexing], panic automatically.
+一些语言结构，例如越界的 [数组索引][array indexing]，会自动引发恐慌。
 
 r[panic.control]
-There are also language features that provide a level of control over panic behavior:
+还有一些语言特性提供了一定程度的恐慌行为控制：
 
-* A [_panic handler_][panic handler] defines the behavior of a panic.
-* [FFI ABIs](items/functions.md#unwinding) may alter how panics behave.
+*  [_恐慌处理器 (panic handler)_][panic handler] 定义了恐慌的行为。
+* [FFI ABI](items/functions.md#unwinding) 可能会改变恐慌的行为。
 
 > [!NOTE]
-> The standard library provides the capability to explicitly panic via the [`panic!` macro][panic!].
+> 标准库提供了通过 [panic! 宏][panic!] 显式引发恐慌的能力。
 
 r[panic.panic_handler]
-## The `panic_handler` attribute
+## panic_handler属性
 
 r[panic.panic_handler.intro]
-The *`panic_handler` attribute* can be applied to a function to define the behavior of panics.
+*panic_handler 属性* 可以应用于函数以定义恐慌的行为。
 
 r[panic.panic_handler.allowed-positions]
-The `panic_handler` attribute can only be applied to a function with signature `fn(&PanicInfo) -> !`.
+panic_handler 属性只能应用于具有签名 `fn(&PanicInfo) -> !` 的函数。
 
 > [!NOTE]
-> The [`PanicInfo`] struct contains information about the location of the panic.
+> [PanicInfo 结构体][`PanicInfo`] 包含了有关恐慌发生位置的信息。
 
 r[panic.panic_handler.unique]
-There must be a single `panic_handler` function in the dependency graph.
+在依赖图中必须有且仅有一个 panic_handler 函数。
 
-Below is shown a `panic_handler` function that logs the panic message and then halts the thread.
+下面展示了一个记录恐慌消息然后停止线程的 panic_handler 函数。
 
 <!-- ignore: test infrastructure can't handle no_std -->
 ```rust,ignore
@@ -57,7 +57,7 @@ struct Sink {
 fn panic(info: &PanicInfo) -> ! {
     let mut sink = Sink::new();
 
-    // logs "panicked at '$reason', src/main.rs:27:4" to some `sink`
+    // 将 "panicked at '$reason', src/main.rs:27:4" 记录到某个 `sink`
     let _ = writeln!(sink, "{}", info);
 
     loop {}
@@ -65,79 +65,79 @@ fn panic(info: &PanicInfo) -> ! {
 ```
 
 r[panic.panic_handler.std]
-### Standard behavior
+### 标准行为
 
 r[panic.panic_handler.std.kinds]
-`std` provides two different panic handlers:
+`std` 提供了两种不同的恐慌处理器：
 
-* `unwind` --- unwinds the stack and is potentially recoverable.
-* `abort` ---- aborts the process and is non-recoverable.
+* `unwind` --- 展开栈，并且是潜在可恢复的。
+* `abort` ---- 中止进程，且是不可恢复的。
 
-Not all targets may provide the `unwind` handler.
+并非所有 target 都提供 `unwind` 处理器。
 
 > [!NOTE]
-> The panic handler used when linking with `std` can be set with the [`-C panic`] CLI flag. The default for most targets is `unwind`.
+> 链接 `std` 时使用的恐慌处理器可以通过 [`-C panic`] 命令行标志设置。大多数 target 的默认值是 `unwind`。
 >
-> The standard library's panic behavior can be modified at runtime with the [`std::panic::set_hook`] function.
+> 标准库的恐慌行为可以在运行时使用 [`std::panic::set_hook`] 函数进行修改。
 
 r[panic.panic_handler.std.no_std]
-Linking a [`no_std`] binary, dylib, cdylib, or staticlib will require specifying your own panic handler.
+链接 [`no_std`] 二进制文件、dylib、cdylib 或 staticlib 时，需要指定你自己的恐慌处理器。
 
 r[panic.strategy]
-## Panic strategy
+## 恐慌策略
 
 r[panic.strategy.intro]
-The _panic strategy_ defines the kind of panic behavior that a crate is built to support.
+_恐慌策略 (panic strategy)_ 定义了一个 crate 构建时支持的恐慌行为类型。
 
 > [!NOTE]
-> The panic strategy can be chosen in `rustc` with the [`-C panic`] CLI flag.
+> 恐慌策略可以在 `rustc` 中使用 [`-C panic`] 命令行标志进行选择。
 >
-> When generating a binary, dylib, cdylib, or staticlib and linking with `std`, the `-C panic` CLI flag also influences which [panic handler] is used.
+> 当生成二进制文件、dylib、cdylib 或 staticlib 且链接 `std` 时， `-C panic` 命令行标志也会影响使用哪个 [恐慌处理器][panic handler]。
 
 > [!NOTE]
-> When compiling code with the `abort` panic strategy, the optimizer may assume that unwinding across Rust frames is impossible, which can result in both code-size and runtime speed improvements.
+> 当使用 `abort` 恐慌策略编译代码时，优化器可能会假设跨 Rust 栈帧的展开是不可能的，这可以提高代码大小和运行时速度。
 
 > [!NOTE]
-> See [link.unwinding] for restrictions on linking crates with different panic strategies. An implication is that crates built with the `unwind` strategy can use the `abort` panic handler, but the `abort` strategy cannot use the `unwind` panic handler.
+> 有关链接具有不同恐慌策略的 crate 的限制，请参见 [link.unwinding]。其中一个暗示是，使用 `unwind` 策略构建的 crate 可以使用 `abort` 恐慌处理器，但 `abort` 策略不能使用 `unwind` 恐慌处理器。
 
 r[panic.unwind]
-## Unwinding
+## 展开
 
 r[panic.unwind.intro]
-Panicking may either be recoverable or non-recoverable, though it can be configured (by choosing a non-unwinding panic handler) to always be non-recoverable. (The converse is not true: the `unwind` handler does not guarantee that all panics are recoverable, only that panicking via the `panic!` macro and similar standard library mechanisms is recoverable.)
+引发恐慌可能是可恢复的或不可恢复的，尽管可以配置（通过选择不展开的恐慌处理器）为始终不可恢复。（反之则不然：`unwind` 处理器不保证所有恐慌都是可恢复的，仅保证通过 `panic!` 宏及类似的标准库机制引发的恐慌是可恢复的。）
 
 r[panic.unwind.destruction]
-When a panic occurs, the `unwind` handler "unwinds" Rust frames, just as C++'s `throw` unwinds C++ frames, until the panic reaches the point of recovery (for instance at a thread boundary). This means that as the panic traverses Rust frames, live objects in those frames that [implement `Drop`][destructors] will have their `drop` methods called. Thus, when normal execution resumes, no-longer-accessible objects will have been "cleaned up" just as if they had gone out of scope normally.
+当发生恐慌时，`unwind` 处理器会 "展开 (unwind)" Rust 栈帧，就像 C++ 的 `throw` 展开 C++ 栈帧一样，直到恐慌到达恢复点（例如在线程边界处）。这意味着当恐慌遍历 Rust 栈帧时，这些栈帧中 [实现 Drop][destructors] 的活跃对象将调用其 `drop` 方法。因此，当恢复正常执行时，不再可访问的对象将被 "清理" 掉，就像它们正常超出作用域一样。
 
 > [!NOTE]
-> As long as this guarantee of resource-cleanup is preserved, "unwinding" may be implemented without actually using the mechanism used by C++ for the target platform.
+> 只要保留了这种资源清理的保证， "展开" 的实现可以不实际使用 target 平台 C++ 所使用的机制。
 
 > [!NOTE]
-> The standard library provides two mechanisms for recovering from a panic, [`std::panic::catch_unwind`] (which enables recovery within the panicking thread) and [`std::thread::spawn`] (which automatically sets up panic recovery for the spawned thread so that other threads may continue running).
+> 标准库提供了两种从恐慌中恢复的机制：[`std::panic::catch_unwind`]（允许在发生恐慌的线程内恢复）和 [`std::thread::spawn`]（自动为生成的线程设置恐慌恢复，以便其他线程可以继续运行）。
 
 r[panic.unwind.ffi]
-### Unwinding across FFI boundaries
+### 跨FFI边界展开
 
 r[panic.unwind.ffi.intro]
-It is possible to unwind across FFI boundaries using an [appropriate ABI declaration][unwind-abi]. While useful in certain cases, this creates unique opportunities for undefined behavior, especially when multiple language runtimes are involved.
+可以使用 [适当的 ABI 声明][unwind-abi] 跨 FFI 边界进行展开。虽然在某些情况下很有用，但这为未定义行为创造了独特的机会，特别是在涉及多个语言运行时时。
 
 r[panic.unwind.ffi.undefined]
-Unwinding with the wrong ABI is undefined behavior:
+使用错误的 ABI 进行展开是未定义行为：
 
-* Causing an unwind into Rust code from a foreign function that was called via a function declaration or pointer declared with a non-unwinding ABI, such as `"C"`, `"system"`, etc. (For example, this case occurs when such a function written in C++ throws an exception that is uncaught and propagates to Rust.)
-* Calling a Rust `extern` function that unwinds (with `extern "C-unwind"` or another ABI that permits unwinding) from code that does not support unwinding, such as code compiled with GCC or Clang using `-fno-exceptions`
+* 从通过不带展开的 ABI（如 `"C"`、`"system"` 等）声明的函数声明或指针调用的外部函数，引发指向 Rust 代码的展开。（例如，这种情况发生在用 C++ 编写的此类函数抛出未捕获且传播到 Rust 的异常时。）
+* 在不支持展开的代码（例如使用 GCC 或 Clang 并配合 `-fno-exceptions` 编译的代码）中调用会展开（带有 `extern "C-unwind"` 或其他允许展开的 ABI）的 Rust `extern` 函数。
 
 r[panic.unwind.ffi.catch-foreign]
-Catching a foreign unwinding operation (such as a C++ exception) using [`std::panic::catch_unwind`], [`std::thread::JoinHandle::join`], or by letting it propagate beyond the Rust `main()` function or thread root will have one of two behaviors, and it is unspecified which will occur:
+使用 [`std::panic::catch_unwind`]、[`std::thread::JoinHandle::join`] 或让外部展开操作传播到 Rust `main()` 函数或线程根部之外来捕获它（例如 C++ 异常），将产生以下两种行为之一，且未指定具体会发生哪种：
 
-* The process aborts.
-* The function returns a [`Result::Err`] containing an opaque type.
+* 进程中止。
+* 函数返回一个包含不透明类型的 [`Result::Err`]。
 
 > [!NOTE]
-> Rust code compiled or linked with a different instance of the Rust standard library counts as a "foreign exception" for the purpose of this guarantee. Thus, a library that uses `panic!` and is linked against one version of the Rust standard library, invoked from an application that uses a different version of the standard library, may cause the entire application to abort even if the library is only used within a child thread.
+> 就此项保证而言，使用不同的 Rust 标准库实例编译或链接的 Rust 代码算作 "外部异常" 。因此，如果一个使用了 `panic!` 且链接到一个版本 Rust 标准库的库，被一个使用不同版本标准库的应用程序调用，即使该库仅在子线程中使用，也可能导致整个应用程序中止。
 
 r[panic.unwind.ffi.dispose-panic]
-There are currently no guarantees about the behavior that occurs when a foreign runtime attempts to dispose of, or rethrow, a Rust `panic` payload. In other words, an unwind originated from a Rust runtime must either lead to termination of the process or be caught by the same runtime.
+目前对于外部运行时尝试处理或重新抛出 Rust `panic` 负载时的行为没有任何保证。换句话说，起源于 Rust 运行时的展开必须要么导致进程终止，要么被同一个运行时捕获。
 
 [`-C panic`]: ../rustc/codegen-options/index.html#panic
 [`no_std`]: names/preludes.md#the-no_std-attribute

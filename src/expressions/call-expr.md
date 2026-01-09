@@ -1,5 +1,5 @@
 r[expr.call]
-# Call expressions
+# 调用表达式
 
 r[expr.call.syntax]
 ```grammar,expressions
@@ -9,24 +9,24 @@ CallParams -> Expression ( `,` Expression )* `,`?
 ```
 
 r[expr.call.intro]
-A *call expression* calls a function.
-The syntax of a call expression is an expression, called the *function operand*, followed by a parenthesized comma-separated list of expression, called the *argument operands*.
+一个  *调用表达式*  调用一个函数。
+调用表达式 的 语法格式 是一个表达式（称为  *函数操作数* ），后跟一个括号括起来的、逗号分隔的表达式列表（称为  *参数操作数* ）。
 
 r[expr.call.convergence]
-If the function eventually returns, then the expression completes.
+如果函数最终返回，则该表达式完成。
 
 r[expr.call.trait]
-For [non-function types], the expression `f(...)` uses the method on one of the following traits based on the function operand:
+对于 [非函数类型][non-function types]，表达式 `f(...)` 会根据 函数操作数 使用以下 特型 之一的方法：
 
-- [`Fn`] or [`AsyncFn`] --- shared reference.
-- [`FnMut`] or [`AsyncFnMut`] --- mutable reference.
-- [`FnOnce`] or [`AsyncFnOnce`] --- value.
+- [`Fn`] 或 [`AsyncFn`] --- 共享引用。
+- [`FnMut`] 或 [`AsyncFnMut`] --- 可变引用。
+- [`FnOnce`] 或 [`AsyncFnOnce`] --- 值。
 
 r[expr.call.autoref-deref]
-An automatic borrow will be taken if needed.
-The function operand will also be [automatically dereferenced] as required.
+如果需要，将进行自动借用。
+函数操作数 也会根据需要进行 [自动解引用][automatically dereferenced]。
 
-Some examples of call expressions:
+一些 调用表达式 的示例：
 
 ```rust
 # fn add(x: i32, y: i32) -> i32 { 0 }
@@ -35,29 +35,29 @@ let name: &'static str = (|| "Rust")();
 ```
 
 r[expr.call.desugar]
-## Disambiguating function calls
+## 消除函数调用歧义
 
 r[expr.call.desugar.fully-qualified]
-All function calls are sugar for a more explicit [fully-qualified syntax].
+所有函数调用都是更显式的 [完全限定语法][fully-qualified syntax] 的语法糖。
 
 r[expr.call.desugar.ambiguity]
-Function calls may need to be fully qualified, depending on the ambiguity of a call in light of in-scope items.
+函数调用可能需要完全限定，具体取决于考虑到作用域内 项 时调用的歧义性。
 
 > [!NOTE]
-> In the past, the terms "Unambiguous Function Call Syntax", "Universal Function Call Syntax", or "UFCS", have been used in documentation, issues, RFCs, and other community writings. However, these terms lack descriptive power and potentially confuse the issue at hand. We mention them here for searchability's sake.
+> 在过去，术语 "Unambiguous Function Call Syntax"、"Universal Function Call Syntax" 或 "UFCS" 已被用于文档、issue、RFC 和其他社区著作中。然而，这些术语缺乏描述力，并且可能会使手头的问题更加混淆。为了便于搜索，我们在这里提及它们。
 
 r[expr.call.desugar.limits]
-Several situations often occur which result in ambiguities about the receiver or referent of method or associated function calls.
-These situations may include:
+经常会出现几种导致方法或关联函数调用的接收者或指代对象产生歧义的情况。
+这些情况可能包括：
 
-* Multiple in-scope traits define methods with the same name for the same types
-* Auto-`deref` is undesirable; for example, distinguishing between methods on a smart pointer itself and the pointer's referent
-* Methods which take no arguments, like [`default()`], and return properties of a type, like [`size_of()`]
+* 多个作用域内的 特型 为相同类型定义了同名方法
+* 自动解引用 (Auto-`deref`) 是不希望的；例如，区分智能指针本身的方法和指针指代对象的方法
+* 不带参数的方法（如 [`default()`]）并返回类型的属性（如 [`size_of()`]）
 
 r[expr.call.desugar.explicit-path]
-To resolve the ambiguity, the programmer may refer to their desired method or function using more specific paths, types, or traits.
+为了解决歧义，程序员可以使用更具体的路径、类型或 特型 来引用其所需的方法或函数。
 
-For example,
+例如，
 
 ```rust
 trait Pretty {
@@ -85,22 +85,22 @@ fn main() {
     let f = Foo;
     let b = Bar;
 
-    // we can do this because we only have one item called `print` for `Foo`s
+    // 我们可以这样做，因为对于 Foo 类型，我们只有一个名为 print 的项
     f.print();
-    // more explicit, and, in the case of `Foo`, not necessary
+    // 更显式，而且对于 Foo 来说不是必需的
     Foo::print(&f);
-    // if you're not into the whole brevity thing
+    // 如果你不喜欢这种简洁方式的话
     <Foo as Pretty>::print(&f);
 
-    // b.print(); // Error: multiple 'print' found
-    // Bar::print(&b); // Still an error: multiple `print` found
+    // b.print(); // 错误：发现多个 'print'
+    // Bar::print(&b); // 仍然是错误：发现多个 print
 
-    // necessary because of in-scope items defining `print`
+    // 因为作用域内的项定义了 print，所以这是必需的
     <Bar as Pretty>::print(&b);
 }
 ```
 
-Refer to [RFC 132] for further details and motivations.
+有关更多细节和动机，请参阅 [RFC 132]。
 
 [RFC 132]: https://github.com/rust-lang/rfcs/blob/master/text/0132-ufcs.md
 [`default()`]: std::default::Default::default

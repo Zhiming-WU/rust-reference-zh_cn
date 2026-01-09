@@ -1,5 +1,5 @@
 r[expr.path]
-# Path expressions
+# 路径表达式
 
 r[expr.path.syntax]
 ```grammar,expressions
@@ -9,13 +9,13 @@ PathExpression ->
 ```
 
 r[expr.path.intro]
-A [path] used as an expression context denotes either a local variable or an item.
+一个在表达式语境中使用的 [路径][path] 表示一个局部变量或一个 项 。
 
 r[expr.path.place]
-Path expressions that resolve to local or static variables are [place expressions]; other paths are [value expressions].
+解析为局部变量或静态变量的路径表达式是 [位置表达式][place expressions] ；其他路径是 [值表达式][value expressions] 。
 
 r[expr.path.safety]
-Using a [`static mut`] variable requires an [`unsafe` block].
+使用 [`static mut`] 变量需要一个 [`unsafe` 块][`unsafe` block] 。
 
 ```rust
 # mod globals {
@@ -32,7 +32,7 @@ let slice_reverse = <[i32]>::reverse;
 ```
 
 r[expr.path.const]
-Evaluation of associated constants is handled the same way as [`const` blocks].
+关联常量的求值方式与 [`const` 块][`const` blocks] 相同。
 
 [place expressions]: ../expressions.md#place-expressions-and-value-expressions
 [value expressions]: ../expressions.md#place-expressions-and-value-expressions

@@ -1,7 +1,7 @@
 r[expr.tuple]
-# Tuple and tuple indexing expressions
+# 元组和元组索引表达式
 
-## Tuple expressions
+## 元组表达式
 
 r[expr.tuple.syntax]
 ```grammar,expressions
@@ -11,38 +11,38 @@ TupleElements -> ( Expression `,` )+ Expression?
 ```
 
 r[expr.tuple.result]
-A *tuple expression* constructs [tuple values][tuple type].
+一个  *元组表达式*  构造 [元组值][tuple type]。
 
 r[expr.tuple.intro]
-The syntax for tuple expressions is a parenthesized, comma separated list of expressions, called the *tuple initializer operands*.
+元组表达式 的 语法格式 是括号括起来的、逗号分隔的表达式列表，称为  *元组初始化操作数* 。
 
 r[expr.tuple.unary-tuple-restriction]
-1-ary tuple expressions require a comma after their tuple initializer operand to be disambiguated with a [parenthetical expression].
+一元 元组表达式 要求在其 元组初始化操作数 之后加一个逗号，以便与 [括号表达式][parenthetical expression] 区分开。
 
 r[expr.tuple.value]
-Tuple expressions are a [value expression] that evaluate into a newly constructed value of a tuple type.
+元组表达式 是 [值表达式][value expression]，它求值为新构造的 元组类型 的值。
 
 r[expr.tuple.type]
-The number of tuple initializer operands is the arity of the constructed tuple.
+元组初始化操作数 的数量是构造出的元组的元数。
 
 r[expr.tuple.unit]
-Tuple expressions without any tuple initializer operands produce the unit tuple.
+没有任何 元组初始化操作数 的 元组表达式 会产生单元元组。
 
 r[expr.tuple.fields]
-For other tuple expressions, the first written tuple initializer operand initializes the field `0` and subsequent operands initializes the next highest field.
-For example, in the tuple expression `('a', 'b', 'c')`, `'a'` initializes the value of the field `0`, `'b'` field `1`, and `'c'` field `2`.
+对于其他 元组表达式，第一个写入的 元组初始化操作数 初始化字段 `0`，随后的操作数初始化下一个更高的字段。
+例如，在 元组表达式 `('a', 'b', 'c')` 中，`'a'` 初始化字段 `0` 的值，`'b'` 字段 `1`，而 `'c'` 字段 `2`。
 
-Examples of tuple expressions and their types:
+元组表达式 及其类型的示例：
 
-| Expression           | Type         |
+| 表达式           | 类型         |
 | -------------------- | ------------ |
-| `()`                 | `()` (unit)  |
+| `()`                 | `()` (单元)  |
 | `(0.0, 4.5)`         | `(f64, f64)` |
 | `("x".to_string(), )` | `(String, )`  |
 | `("a", 4usize, true)`| `(&'static str, usize, bool)` |
 
 r[expr.tuple-index]
-## Tuple indexing expressions
+## 元组索引表达式
 
 r[expr.tuple-index.syntax]
 ```grammar,expressions
@@ -50,32 +50,32 @@ TupleIndexingExpression -> Expression `.` TUPLE_INDEX
 ```
 
 r[expr.tuple-index.intro]
-A *tuple indexing expression* accesses fields of [tuples][tuple type] and [tuple structs][tuple struct].
+一个  *元组索引表达式*  访问 [元组][tuple type] 和 [元组结构体][tuple struct] 的字段。
 
-The syntax for a tuple index expression is an expression, called the *tuple operand*, then a `.`, then finally a tuple index.
+元组索引表达式 的 语法格式 是一个表达式（称为  *元组操作数* ），然后是一个 `.`，最后是一个元组索引。
 
 r[expr.tuple-index.index-syntax]
-The syntax for the *tuple index* is a [decimal literal] with no leading zeros, underscores, or suffix.
-For example `0` and `2` are valid tuple indices but not `01`, `0_`, nor `0i32`.
+ *元组索引*  的 语法格式 是一个没有前导零、下划线或后缀的 [十进制字面量][decimal literal]。
+例如 `0` 和 `2` 是有效的元组索引，但 `01`、`0_` 和 `0i32` 不是。
 
 r[expr.tuple-index.required-type]
-The type of the tuple operand must be a [tuple type] or a [tuple struct].
+元组操作数 的类型必须是 [元组类型][tuple type] 或 [元组结构体][tuple struct]。
 
 r[expr.tuple-index.index-name-operand]
-The tuple index must be a name of a field of the type of the tuple operand.
+元组索引必须是 元组操作数 类型的一个字段名。
 
 r[expr.tuple-index.result]
-Evaluation of tuple index expressions has no side effects beyond evaluation of its tuple operand.
-As a [place expression], it evaluates to the location of the field of the tuple operand with the same name as the tuple index.
+元组索引表达式 的求值除了其 元组操作数 的求值之外没有副作用。
+作为 [位置表达式][place expression]，它求值为 元组操作数 中与元组索引同名的字段的位置。
 
-Examples of tuple indexing expressions:
+元组索引表达式 示例：
 
 ```rust
-// Indexing a tuple
+// 索引元组
 let pair = ("a string", 2);
 assert_eq!(pair.1, 2);
 
-// Indexing a tuple struct
+// 索引元组结构体
 # struct Point(f32, f32);
 let point = Point(1.0, 0.0);
 assert_eq!(point.0, 1.0);
@@ -83,10 +83,10 @@ assert_eq!(point.1, 0.0);
 ```
 
 > [!NOTE]
-> Unlike field access expressions, tuple index expressions can be the function operand of a [call expression] as it cannot be confused with a method call since method names cannot be numbers.
+> 与 [字段访问表达式][field access expressions] 不同，元组索引表达式 可以是 [调用表达式][call expression] 的函数操作数，因为它不会与方法调用混淆，因为方法名不能是数字。
 
 > [!NOTE]
-> Although arrays and slices also have elements, you must use an [array or slice indexing expression] or a [slice pattern] to access their elements.
+> 尽管数组和切片也有元素，你必须使用 [数组或切片索引表达式][array or slice indexing expression] 或 [切片模式][slice pattern] 来访问它们的元素。
 
 [array or slice indexing expression]: array-expr.md#array-and-slice-indexing-expressions
 [call expression]: ./call-expr.md

@@ -1,240 +1,192 @@
 r[undefined]
-# Behavior considered undefined
+# 被视为未定义的行为
 
 r[undefined.general]
-Rust code is incorrect if it exhibits any of the behaviors in the following
-list. This includes code within `unsafe` blocks and `unsafe` functions.
-`unsafe` only means that avoiding undefined behavior is on the programmer; it
-does not change anything about the fact that Rust programs must never cause
-undefined behavior.
+Rust 代码如果表现出以下列表中的任何行为，就是不正确的。这包括 `unsafe` 块和 `unsafe` 函数中的代码。`unsafe` 仅意味着避免未定义行为的责任在程序员身上；它并不会改变 Rust 程序决不能导致未定义行为这一事实。
 
 r[undefined.soundness]
-It is the programmer's responsibility when writing `unsafe` code to ensure that
-any safe code interacting with the `unsafe` code cannot trigger these
-behaviors. `unsafe` code that satisfies this property for any safe client is
-called *sound*; if `unsafe` code can be misused by safe code to exhibit
-undefined behavior, it is *unsound*.
+在编写 `unsafe` 代码时，程序员有责任确保任何与 `unsafe` 代码交互的安全代码都不会触发这些行为。对于任何安全客户端都能满足此属性的 `unsafe` 代码被称为 *sound (无害的)* ；如果 `unsafe` 代码可能被安全代码误用而表现出未定义行为，则它是 *unsound (有害的)* 。
 
 > [!WARNING]
-> The following list is not exhaustive; it may grow or shrink. There is no formal model of Rust's semantics for what is and is not allowed in unsafe code, so there may be more behavior considered unsafe. We also reserve the right to make some of the behavior in that list defined in the future. In other words, this list does not say that anything will *definitely* always be undefined in all future Rust version (but we might make such commitments for some list items in the future).
+> 以下列表并不详尽；它可能会增加或减少。对于在不安全代码中哪些允许、哪些不允许，目前还没有正式的 Rust 语义模型，因此可能还有更多行为被认为是不安全的。我们也保留在未来将列表中某些行为变为“已定义行为”的权利。换句话说，此列表并不代表任何内容在所有未来的 Rust 版本中都 *肯定* 始终是未定义的（但我们将来可能会对某些列表项做出此类承诺）。
 >
-> Please read the [Rustonomicon] before writing unsafe code.
+> 在编写不安全代码之前，请阅读 [Rustonomicon]。
 
 r[undefined.race]
-* Data races.
+* 数据竞争。
 
 r[undefined.pointer-access]
-* Accessing (loading from or storing to) a place that is [dangling] or [based on
-  a misaligned pointer].
+* 访问（加载或存储）一个 [悬垂][dangling] 或 [基于对齐错误指针][based on a misaligned pointer] 的位置。
 
 r[undefined.place-projection]
-* Performing a place projection that violates the requirements of [in-bounds
-  pointer arithmetic](pointer#method.offset). A place projection is a [field
-  expression][project-field], a [tuple index expression][project-tuple], or an
-  [array/slice index expression][project-slice].
+* 执行违反 [in-bounds 指针算术](pointer#method.offset) 要求的 位置投影 (place projection)。位置投影是指 [字段表达式][project-field]、[元组索引表达式][project-tuple] 或 [数组/切片索引表达式][project-slice]。
 
 r[undefined.alias]
-* Breaking the pointer aliasing rules. The exact aliasing rules are not determined yet, but here is an outline of the general principles:
-  `&T` must point to memory that is not mutated while they are live (except for data inside an [`UnsafeCell<U>`]),
-  and `&mut T` must point to memory that is not read or written by any pointer not derived from the reference and that no other reference points to while they are live.
-  `Box<T>` is treated similar to `&'static mut T` for the purpose of these rules.
-  The exact liveness duration is not specified, but some bounds exist:
-  * For references, the liveness duration is upper-bounded by the syntactic
-    lifetime assigned by the borrow checker; it cannot be live any *longer* than that lifetime.
-  * Each time a reference or box is dereferenced or reborrowed, it is considered live.
-  * Each time a reference or box is passed to or returned from a function, it is considered live.
-  * When a reference (but not a `Box`!) is passed to a function, it is live at least as long as that function call, again except if the `&T` contains an [`UnsafeCell<U>`].
+* 违反指针别名规则。精确的别名规则尚未确定，但这里有一个通用原则的大纲：
+  `&T` 必须指向在其存续期间未被修改的内存（除了 [`UnsafeCell<U>`] 内部的数据），
+  且 `&mut T` 必须指向在其存续期间不被任何非该引用派生的指针读取或写入，且没有其他引用指向的内存。
+  出于这些规则的目的，`Box<T>` 的处理方式类似于 `&'static mut T`。
+  精确的存续持续时间 (liveness duration) 尚未指定，但存在一些界限：
+  * 对于引用，存续持续时间由借用检查器分配的语法生命周期作为上限；它的存续时间不能比该生命周期更 *长*。
+  * 每次解引用或重新借用引用或 `Box` 时，它都被视为存续。
+  * 每次将引用或 `Box` 传递给函数或从函数返回时，它都被视为存续。
+  * 当引用（但不是 `Box`！）传递给函数时，它的存续时间至少与该函数调用一样长，同样，除非 `&T` 包含 [`UnsafeCell<U>`]。
 
-  All this also applies when values of these types are passed in a (nested) field of a compound type, but not behind pointer indirections.
+  当这些类型的值作为复合类型的（嵌套）字段传递时，上述规则同样适用，但不适用于指针间接寻址后的情况。
 
 r[undefined.immutable]
-* Mutating immutable bytes.
-  All bytes reachable through a [const-promoted] expression are immutable, as well as bytes reachable through borrows in `static` and `const` initializers that have been [lifetime-extended] to `'static`.
-  The bytes owned by an immutable binding or immutable `static` are immutable, unless those bytes are part of an [`UnsafeCell<U>`].
+* 修改不可变字节。
+  通过 [常量提升][const-promoted] 表达式可达的所有字节都是不可变的，以及通过 `static` 和 `const` 初始化器中已 [生命周期延长][lifetime-extended] 到 `'static` 的借用可达的字节也是不可变的。
+  由不可变绑定或不可变 `static` 拥有的字节是不可变的，除非这些字节是 [`UnsafeCell<U>`] 的一部分。
 
-  Moreover, the bytes [pointed to] by a shared reference, including transitively through other references (both shared and mutable) and `Box`es, are immutable; transitivity includes those references stored in fields of compound types.
+  此外，由共享引用 [指向][pointed to] 的字节（包括通过其他引用（共享和可变）以及 `Box` 的间接指向）都是不可变的；传递性包括存储在复合类型字段中的那些引用。
 
-  A mutation is any write of more than 0 bytes which overlaps with any of the relevant bytes (even if that write does not change the memory contents).
+  修改 (mutation) 是指与任何相关字节重叠的、多于 0 字节的任何写入（即使该写入没有改变内存内容）。
 
 r[undefined.intrinsic]
-* Invoking undefined behavior via compiler intrinsics.
+* 通过编译器内部函数 (compiler intrinsics) 调用未定义行为。
 
 r[undefined.target-feature]
-* Executing code compiled with platform features that the current platform
-  does not support (see [`target_feature`]), *except* if the platform explicitly documents this to be safe.
+* 执行由当前平台不支持的平台特性编译的代码（请参阅 [`target_feature`]），*除非* 平台明确记录这是安全的。
 
 r[undefined.call]
-* Calling a function with the wrong [call ABI][abi], or unwinding past a stack frame that does not allow unwinding (e.g. by calling a `"C-unwind"` function imported or transmuted as a `"C"` function or function pointer).
+* 使用错误的 [调用 ABI][abi] 调用函数，或者回溯 (unwind) 超过一个不允许回溯的栈帧（例如，通过调用一个导入为或转录为 `"C"` 函数或函数指针的 `"C-unwind"` 函数）。
 
 r[undefined.invalid]
-* Producing an [invalid value][invalid-values]. "Producing" a
-  value happens any time a value is assigned to or read from a place, passed to
-  a function/primitive operation or returned from a function/primitive
-  operation.
+* 产生 [无效值][invalid-values]。“产生”一个值发生在任何时候：当一个值被赋值给一个位置、从一个位置读取、传递给函数/原始操作或从函数/原始操作返回时。
 
 r[undefined.asm]
-* Incorrect use of inline assembly. For more details, refer to the [rules] to
-  follow when writing code that uses inline assembly.
+* 错误使用内联汇编。有关更多详细信息，请参阅编写使用内联汇编的代码时应遵守的 [规则][rules]。
 
 r[undefined.runtime]
-* Violating assumptions of the Rust runtime. Most assumptions of the Rust runtime are currently not explicitly documented.
-  * For assumptions specifically related to unwinding, see the [panic documentation][unwinding-ffi].
-  * The runtime assumes that a Rust stack frame is not deallocated without executing destructors for local variables owned by the stack frame. This assumption can be violated by C functions like `longjmp`.
+* 违反 Rust 运行时的假设。目前大多数 Rust 运行时的假设尚未明确记录。
+  * 对于专门与回溯相关的假设，请参阅 [恐慌文档][unwinding-ffi]。
+  * 运行时假设 Rust 栈帧在不执行该栈帧拥有的局部变量的析构函数的情况下不会被释放。这一假设可能被像 `longjmp` 这样的 C 函数违反。
 
 > [!NOTE]
-> Undefined behavior affects the entire program. For example, calling a function in C that exhibits undefined behavior of C means your entire program contains undefined behaviour that can also affect the Rust code. And vice versa, undefined behavior in Rust can cause adverse affects on code executed by any FFI calls to other languages.
+> 未定义行为会影响整个程序。例如，调用一个表现出 C 语言未定义行为的 C 函数意味着你的整个程序都包含未定义行为，这也可能影响 Rust 代码。反之亦然，Rust 中的未定义行为可能会对通过 FFI 调用其他语言执行的代码产生不利影响。
 
 r[undefined.pointed-to]
-## Pointed-to bytes
+## 指向的字节
 
-The span of bytes a pointer or reference "points to" is determined by the pointer value and the size of the pointee type (using `size_of_val`).
+指针或引用“指向”的字节范围由指针值和被指向类型的类型大小决定（使用 `size_of_val`）。
 
 r[undefined.misaligned]
-## Places based on misaligned pointers
+## 基于对齐错误指针的位置
 [based on a misaligned pointer]: #places-based-on-misaligned-pointers
 
 r[undefined.misaligned.general]
-A place is said to be "based on a misaligned pointer" if the last `*` projection
-during place computation was performed on a pointer that was not aligned for its
-type. (If there is no `*` projection in the place expression, then this is
-accessing the field of a local or `static` and rustc will guarantee proper alignment. If
-there are multiple `*` projection, then each of them incurs a load of the
-pointer-to-be-dereferenced itself from memory, and each of these loads is
-subject to the alignment constraint. Note that some `*` projections can be
-omitted in surface Rust syntax due to automatic dereferencing; we are
-considering the fully expanded place expression here.)
+如果在位置计算过程中的最后一个 `*` 投影是在对其类型未对齐的指针上执行的，则称该位置是“基于对齐错误指针的”。（如果位置表达式中没有 `*` 投影，那么这就是访问局部变量或 `static` 的字段，rustc 将保证正确的对齐。如果有多个 `*` 投影，则其中每一个都会导致从内存中加载待解引用的指针本身，并且这些加载中的每一个都受对齐约束。请注意，由于自动解引用，在 Rust 表面语法格式中可能会省略一些 `*` 投影；我们在这里考虑的是完全展开后的位置表达式。）
 
-For instance, if `ptr` has type `*const S` where `S` has an alignment of 8, then
-`ptr` must be 8-aligned or else `(*ptr).f` is "based on an misaligned pointer".
-This is true even if the type of the field `f` is `u8` (i.e., a type with
-alignment 1). In other words, the alignment requirement derives from the type of
-the pointer that was dereferenced, *not* the type of the field that is being
-accessed.
+例如，如果 `ptr` 的类型为 `*const S`，其中 `S` 的对齐要求为 8，那么 `ptr` 必须 8 字节对齐，否则 `(*ptr).f` 就是“基于对齐错误指针的”。即使字段 `f` 的类型是 `u8`（即对齐要求为 1 的类型），这也是成立的。换句话说，对齐要求源自被解引用的指针类型，*而不是* 正在被访问的字段类型。
 
 r[undefined.misaligned.load-store]
-Note that a place based on a misaligned pointer only leads to undefined behavior
-when it is loaded from or stored to.
+请注意，基于对齐错误指针的位置仅在被加载或存储时才会导致未定义行为。
 
 r[undefined.misaligned.raw]
-`&raw const`/`&raw mut` on such a place is allowed.
+在这样的位置上使用 `&raw const`/`&raw mut` 是允许的。
 
 r[undefined.misaligned.reference]
-`&`/`&mut` on a place requires the alignment of the field type (or
-else the program would be "producing an invalid value"), which generally is a
-less restrictive requirement than being based on an aligned pointer.
+在位置上使用 `&`/`&mut` 要求满足字段类型的对齐（否则程序将“产生无效值”），这通常比“基于对齐的指针”的要求更宽松。
 
 r[undefined.misaligned.packed]
-Taking a reference will lead to a compiler error in cases where the field type might be
-more aligned than the type that contains it, i.e., `repr(packed)`. This means
-that being based on an aligned pointer is always sufficient to ensure that the
-new reference is aligned, but it is not always necessary.
+在字段类型可能比包含它的类型更对齐的情况下（即 `repr(packed)`），获取引用将导致编译器错误。这意味着基于对齐的指针始终足以确保新引用是对齐的，但它并不总是必要的。
 
 r[undefined.dangling]
-## Dangling pointers
+## 悬垂指针
 [dangling]: #dangling-pointers
 
 r[undefined.dangling.general]
-A reference/pointer is "dangling" if not all of the bytes it
-[points to] are part of the same live allocation (so in particular they all have to be
-part of *some* allocation).
+如果引用/指针 [指向][points to] 的字节并不都属于同一个存活的分配（特别地，它们都必须属于 *某个* 分配），则该引用/指针是“悬垂的”。
 
 r[undefined.dangling.zero-size]
-If the size is 0, then the pointer is trivially never "dangling"
-(even if it is a null pointer).
+如果大小为 0，那么指针在平凡意义上永远不会是“悬垂的”（即使它是空指针）。
 
 r[undefined.dangling.dynamic-size]
-Note that dynamically sized types (such as slices and strings) point to their
-entire range, so it is important that the length metadata is never too large.
+请注意，动态大小类型（如切片和字符串）指向它们的整个范围，因此长度元数据绝不能过大非常重要。
 
 r[undefined.dangling.alloc-limit]
-In particular, the dynamic size of a Rust value (as determined by `size_of_val`)
-must never exceed `isize::MAX`, since it is impossible for a single allocation
-to be larger than `isize::MAX`.
+特别地，Rust 值的动态大小（由 `size_of_val` 确定）绝不能超过 `isize::MAX`，因为单个分配的大小不可能大于 `isize::MAX`。
 
 r[undefined.validity]
-## Invalid values
+## 无效值
 [invalid-values]: #invalid-values
 
 r[undefined.validity.general]
-The Rust compiler assumes that all values produced during program execution are
-"valid", and producing an invalid value is hence immediate UB.
+Rust 编译器假设程序执行期间产生的所有值都是“有效的”，因此产生无效值会立即导致 UB。
 
-Whether a value is valid depends on the type:
+一个值是否有效取决于其类型：
 
 r[undefined.validity.bool]
-* A [`bool`] value must be `false` (`0`) or `true` (`1`).
+* 一个 [`bool`] 值必须是 `false` (`0`) 或 `true` (`1`)。
 
 r[undefined.validity.fn-pointer]
-* A `fn` pointer value must be non-null.
+* 一个 `fn` 指针值必须非空。
 
 r[undefined.validity.char]
-* A `char` value must not be a surrogate (i.e., must not be in the range `0xD800..=0xDFFF`) and must be equal to or less than `char::MAX`.
+* 一个 `char` 值不能是代理对 (surrogate)（即不能在 `0xD800..=0xDFFF` 范围内），且必须小于或等于 `char::MAX`。
 
 r[undefined.validity.never]
-* A `!` value must never exist.
+* `!` 值绝不能存在。
 
 r[undefined.validity.scalar]
-* An integer (`i*`/`u*`), floating point value (`f*`), or raw pointer must be
-  initialized, i.e., must not be obtained from uninitialized memory.
+* 整数 (`i*`/`u*`)、浮点值 (`f*`) 或原始指针必须已初始化，即不能从未初始化的内存中获得。
 
 r[undefined.validity.str]
-* A `str` value is treated like `[u8]`, i.e. it must be initialized.
+* `str` 值被视为类似于 `[u8]`，即它必须已初始化。
 
 r[undefined.validity.enum]
-* An `enum` must have a valid discriminant, and all fields of the variant indicated by that discriminant must be valid at their respective type.
+* 一个 `enum` 必须具有有效的判别值 (discriminant)，且该判别值指示的变体 (variant) 的所有字段必须在其各自类型上有效。
 
 r[undefined.validity.struct]
-* A `struct`, tuple, and array requires all fields/elements to be valid at their respective type.
+* `struct`、元组和数组要求所有字段/元素在其各自类型上有效。
 
 r[undefined.validity.union]
-* For a `union`, the exact validity requirements are not decided yet.
-  Obviously, all values that can be created entirely in safe code are valid.
-  If the union has a zero-sized field, then every possible value is valid.
-  Further details are [still being debated](https://github.com/rust-lang/unsafe-code-guidelines/issues/438).
+* 对于 `union`，确切的有效性要求尚未确定。
+  显然，所有完全在安全代码中创建的值都是有效的。
+  如果联合体具有零大小字段，则每个可能的值都是有效的。
+  更多细节 [仍处于讨论中](https://github.com/rust-lang/unsafe-code-guidelines/issues/438)。
 
 r[undefined.validity.reference-box]
-* A reference or [`Box<T>`] must be aligned and non-null, it cannot be [dangling], and it must point to a valid value
-  (in case of dynamically sized types, using the actual dynamic type of the
-  pointee as determined by the metadata).
-  Note that the last point (about pointing to a valid value) remains a subject of some debate.
+* 引用或 [`Box<T>`] 必须对齐且非空，它不能是 [悬垂的][dangling]，且必须指向一个有效值
+  （对于动态大小类型，使用由元数据确定的被指向者的实际动态类型）。
+  请注意，最后一点（关于指向有效值）仍是一个有争议的话题。
 
 r[undefined.validity.wide]
-* The metadata of a wide reference, [`Box<T>`], or raw pointer must match
-  the type of the unsized tail:
-  * `dyn Trait` metadata must be a pointer to a compiler-generated vtable for `Trait`.
-    (For raw pointers, this requirement remains a subject of some debate.)
-  * Slice (`[T]`) metadata must be a valid `usize`.
-    Furthermore, for wide references and [`Box<T>`], slice metadata is invalid
-    if it makes the total size of the pointed-to value bigger than `isize::MAX`.
+* 宽引用、[`Box<T>`] 或原始指针的元数据必须与 unsized tail 的类型匹配：
+  * `dyn Trait` 元数据必须是编译器为 `Trait` 生成的虚表 (vtable) 指针。
+    （对于原始指针，这一要求仍是一个有争议的话题。）
+  * 切片 (`[T]`) 元数据必须是一个有效的 `usize`。
+    此外，对于宽引用和 [`Box<T>`]，如果切片元数据使得被指向值的总大小大于 `isize::MAX`，则该元数据是无效的。
 
 r[undefined.validity.valid-range]
-* If a type has a custom range of a valid values, then a valid value must be in that range.
-  In the standard library, this affects [`NonNull<T>`] and [`NonZero<T>`].
+* 如果一个类型具有自定义的有效值范围，那么有效值必须在该范围内。
+  在标准库中，这会影响 [`NonNull<T>`] 和 [`NonZero<T>`]。
 
   > [!NOTE]
-  > `rustc` achieves this with the unstable `rustc_layout_scalar_valid_range_*` attributes.
+  > `rustc` 通过不稳定的 `rustc_layout_scalar_valid_range_*` 属性来实现这一点。
 
 r[undefined.validity.const-provenance]
-* **In [const contexts]**: In addition to what is described above, further provenance-related requirements apply during const evaluation. Any value that holds pure integer data (the `i*`/`u*`/`f*` types as well as `bool` and `char`, enum discriminants, and slice metadata) must not carry any provenance. Any value that holds pointer data (references, raw pointers, function pointers, and `dyn Trait` metadata) must either carry no provenance, or all bytes must be fragments of the same original pointer value in the correct order.
+* **在 [常量上下文][const contexts] 中**：除了上述描述之外，常量求值期间还适用进一步的与 物源 (provenance) 相关的要求。任何持有纯整数数据（`i*`/`u*`/`f*` 类型以及 `bool` 和 `char`、枚举判别值和切片元数据）的值都不得携带任何物源。任何持有指针数据（引用、原始指针、函数指针和 `dyn Trait` 元数据）的值必须要么不携带物源，要么所有字节必须是同一个原始指针值按正确顺序排列的碎片。
 
-  This implies that transmuting or otherwise reinterpreting a pointer (reference, raw pointer, or function pointer) into a non-pointer type (such as integers) is undefined behavior if the pointer had provenance.
+  这意味着如果指针具有物源，那么将指针（引用、原始指针或函数指针） transmute 或以其他方式重新解释为非指针类型（如整数）就是未定义行为。
 
   > [!EXAMPLE]
-  > All of the following are UB:
+  > 以下所有情况都是 UB：
   >
   > ```rust,compile_fail
   > # use core::mem::MaybeUninit;
   > # use core::ptr;
-  > // We cannot reinterpret a pointer with provenance as an integer,
-  > // as then the bytes of the integer will have provenance.
+  > // 我们不能将具有物源的指针重新解释为整数，
+  > // 否则该整数的字节将具有物源。
   > const _: usize = {
   >     let ptr = &0;
   >     unsafe { (&raw const ptr as *const usize).read() }
   > };
   >
-  > // We cannot rearrange the bytes of a pointer with provenance and
-  > // then interpret them as a reference, as then a value holding
-  > // pointer data will have pointer fragments in the wrong order.
+  > // 我们不能重新排列具有物源的指针的字节，
+  > // 然后将它们解释为引用，因为那样持有
+  > // 指针数据的值将具有顺序错误的指针碎片。
   > const _: &i32 = {
   >     let mut ptr = &0;
   >     let ptr_bytes = &raw mut ptr as *mut MaybeUninit::<u8>;
@@ -244,10 +196,7 @@ r[undefined.validity.const-provenance]
   > ```
 
 r[undefined.validity.undef]
-**Note:** Uninitialized memory is also implicitly invalid for any type that has
-a restricted set of valid values. In other words, the only cases in which
-reading uninitialized memory is permitted are inside `union`s and in "padding"
-(the gaps between the fields of a type).
+**注意：** 未初始化内存对于任何具有限制有效值集合的类型也是隐式无效的。换句话说，唯一允许读取未初始化内存的情况是在 `union` 内部和“填充 (padding)”中（类型字段之间的间隙）。
 
 [`bool`]: types/boolean.md
 [`const`]: items/constant-items.md

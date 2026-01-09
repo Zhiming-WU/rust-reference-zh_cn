@@ -1,5 +1,5 @@
 r[expr.paren]
-# Grouped expressions
+# 分组表达式
 
 r[expr.paren.syntax]
 ```grammar,expressions
@@ -7,29 +7,29 @@ GroupedExpression -> `(` Expression `)`
 ```
 
 r[expr.paren.intro]
-A *parenthesized expression* wraps a single expression, evaluating to that expression.
-The syntax for a parenthesized expression is a `(`, then an expression, called the *enclosed operand*, and then a `)`.
+一个 *括号表达式* 包裹单个表达式，求值为该表达式。
+括号表达式的 语法格式 是一个 `(`，然后是一个表达式，称为 *被包裹的操作数*，接着是一个 `)`。
 
 r[expr.paren.evaluation]
-Parenthesized expressions evaluate to the value of the enclosed operand.
+括号表达式求值为被包裹的操作数的值。
 
 r[expr.paren.place-or-value]
-Unlike other expressions, parenthesized expressions are both [place expressions and value expressions][place].
-When the enclosed operand is a place expression, it is a place expression and when the enclosed operand is a value expression, it is a value expression.
+与其他表达式不同，括号表达式既是 [位置表达式和值表达式][place]。
+当被包裹的操作数是一个位置表达式时，它就是一个位置表达式；当被包裹的操作数是一个值表达式时，它就是一个值表达式。
 
 r[expr.paren.override-precedence]
-Parentheses can be used to explicitly modify the precedence order of subexpressions within an expression.
+括号可用于显式修改表达式中子表达式的优先级顺序。
 
-An example of a parenthesized expression:
+一个括号表达式的例子：
 
 ```rust
-let x: i32 = 2 + 3 * 4; // not parenthesized
-let y: i32 = (2 + 3) * 4; // parenthesized
+let x: i32 = 2 + 3 * 4; // 未加括号
+let y: i32 = (2 + 3) * 4; // 已加括号
 assert_eq!(x, 14);
 assert_eq!(y, 20);
 ```
 
-An example of a necessary use of parentheses is when calling a function pointer that is a member of a struct:
+一个必须使用括号的例子是调用 结构体 成员中的函数指针：
 
 ```rust
 # struct A {

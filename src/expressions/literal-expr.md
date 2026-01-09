@@ -1,5 +1,5 @@
 r[expr.literal]
-# Literal expressions
+# 字面量表达式
 
 r[expr.literal.syntax]
 ```grammar,expressions
@@ -19,49 +19,49 @@ LiteralExpression ->
 ```
 
 r[expr.literal.intro]
-A _literal expression_ is an expression consisting of a single token, rather than a sequence of tokens, that immediately and directly denotes the value it evaluates to, rather than referring to it by name or some other evaluation rule.
+ _字面量表达式_ 是由单个 词法单元 组成的表达式，而不是一系列 词法单元 ，它立即并直接地表示它所求得的值，而不是通过名称或其他求值规则来引用它。
 
 r[expr.literal.const-expr]
-A literal is a form of [constant expression], so is evaluated (primarily) at compile time.
+字面量是 [常量表达式][constant expression] 的一种形式，因此（主要）在编译时求值。
 
 r[expr.literal.literal-token]
-Each of the lexical [literal][literal tokens] forms described earlier can make up a literal expression, as can the keywords `true` and `false`.
+前面描述的每种词法 [字面量][literal tokens] 形式都可以构成字面量表达式，关键字 `true` 和 `false` 也是如此。
 
 ```rust
-"hello";   // string type
-'5';       // character type
-5;         // integer type
+"hello";   // 字符串类型
+'5';       // 字符类型
+5;         // 整数类型
 ```
 
 r[expr.literal.string-representation]
-In the descriptions below, the _string representation_ of a token is the sequence of characters from the input which matched the token's production in a *Lexer* grammar snippet.
+在下面的描述中， 词法单元 的 _字符串表示_ 是指输入中与 词法分析器 语法片段中的 词法单元 生成式匹配的字符序列。
 
 > [!NOTE]
-> This string representation never includes a character `U+000D` (CR) immediately followed by `U+000A` (LF): this pair would have been previously transformed into a single `U+000A` (LF).
+> 此字符串表示永远不会包含紧跟在 `U+000D` (CR) 之后的字符 `U+000A` (LF): 这对字符之前会被转换为单个 `U+000A` (LF)。
 
 r[expr.literal.escape]
-## Escapes
+## 转义
 
 r[expr.literal.escape.intro]
-The descriptions of textual literal expressions below make use of several forms of _escape_.
+下面对文本字面量表达式的描述使用了几种形式的 _转义_ 。
 
 r[expr.literal.escape.sequence]
-Each form of escape is characterised by:
- * an _escape sequence_: a sequence of characters, which always begins with `U+005C` (`\`)
- * an _escaped value_: either a single character or an empty sequence of characters
+每种形式的转义都具有以下特征: 
+ *  _转义序列_ : 一个字符序列，总是以 `U+005C` (`\`) 开头
+ *  _转义值_ : 单个字符或空字符序列
 
-In the definitions of escapes below:
- * An _octal digit_ is any of the characters in the range \[`0`-`7`].
- * A _hexadecimal digit_ is any of the characters in the ranges \[`0`-`9`], \[`a`-`f`], or \[`A`-`F`].
+在下面的转义定义中: 
+ *  _八进制数字_ 是范围 \[`0`-`7`] 中的任何字符。
+ *  _十六进制数字_ 是范围 \[`0`-`9`], \[`a`-`f`], 或 \[`A`-`F`] 中的任何字符。
 
 r[expr.literal.escape.simple]
-### Simple escapes
+### 简单转义
 
-Each sequence of characters occurring in the first column of the following table is an escape sequence.
+下表第一列中出现的每个字符序列都是一个转义序列。
 
-In each case, the escaped value is the character given in the corresponding entry in the second column.
+在每种情况下，转义值都是第二列相应条目中给出的字符。
 
-| Escape sequence | Escaped value            |
+| 转义序列 | 转义值            |
 |-----------------|--------------------------|
 | `\0`            | U+0000 (NUL)             |
 | `\t`            | U+0009 (HT)              |
@@ -72,42 +72,42 @@ In each case, the escaped value is the character given in the corresponding entr
 | `\\`            | U+005C (REVERSE SOLIDUS) |
 
 r[expr.literal.escape.hex-octet]
-### 8-bit escapes
+### 8位转义
 
-The escape sequence consists of `\x` followed by two hexadecimal digits.
+转义序列由 `\x` 后跟两个十六进制数字组成。
 
-The escaped value is the character whose [Unicode scalar value] is the result of interpreting the final two characters in the escape sequence as a hexadecimal integer, as if by [`u8::from_str_radix`] with radix 16.
+转义值是其 [Unicode 标量值][Unicode scalar value] 为将转义序列中的最后两个字符解释为十六进制整数的结果的字符，就像通过基数为 16 的 [`u8::from_str_radix`] 处理一样。
 
 > [!NOTE]
-> The escaped value therefore has a [Unicode scalar value] in the range of [`u8`][numeric types].
+> 因此，转义值具有 [`u8`][numeric types] 范围内的 [Unicode 标量值][Unicode scalar value] 。
 
 r[expr.literal.escape.hex-ascii]
-### 7-bit escapes
+### 7位转义
 
-The escape sequence consists of `\x` followed by an octal digit then a hexadecimal digit.
+转义序列由 `\x` 后跟一个八进制数字，然后是一个十六进制数字组成。
 
-The escaped value is the character whose [Unicode scalar value] is the result of interpreting the final two characters in the escape sequence as a hexadecimal integer, as if by [`u8::from_str_radix`] with radix 16.
+转义值是其 [Unicode 标量值][Unicode scalar value] 为将转义序列中的最后两个字符解释为十六进制整数的结果的字符，就像通过基数为 16 的 [`u8::from_str_radix`] 处理一样。
 
 r[expr.literal.escape.unicode]
-### Unicode escapes
+### Unicode 转义
 
-The escape sequence consists of `\u{`, followed by a sequence of characters each of which is a hexadecimal digit or `_`, followed by `}`.
+转义序列由 `\u{`, 后跟一系列字符（每个字符都是十六进制数字或 `_` ）, 最后跟 `}` 组成。
 
-The escaped value is the character whose [Unicode scalar value] is the result of interpreting the hexadecimal digits contained in the escape sequence as a hexadecimal integer, as if by [`u32::from_str_radix`] with radix 16.
+转义值是其 [Unicode 标量值][Unicode scalar value] 为将转义序列中包含的十六进制数字解释为十六进制整数的结果的字符，就像通过基数为 16 的 [`u32::from_str_radix`] 处理一样。
 
 > [!NOTE]
-> The permitted forms of a [CHAR_LITERAL] or [STRING_LITERAL] token ensure that there is such a character.
+>  [CHAR_LITERAL] 或 [STRING_LITERAL] 词法单元 的允许形式确保存在这样的字符。
 
 r[expr.literal.continuation]
-### String continuation escapes
+### 字符串续行转义
 
-The escape sequence consists of `\` followed immediately by `U+000A` (LF), and all following whitespace characters before the next non-whitespace character.
-For this purpose, the whitespace characters are `U+0009` (HT), `U+000A` (LF), `U+000D` (CR), and `U+0020` (SPACE).
+转义序列由 `\` 紧跟 `U+000A` (LF) 组成，以及在下一个非空白字符之前的所有后续空白字符。
+为此，空白字符为 `U+0009` (HT), `U+000A` (LF), `U+000D` (CR), 和 `U+0020` (SPACE)。
 
-The escaped value is an empty sequence of characters.
+转义值是一个空字符序列。
 
 > [!NOTE]
-> The effect of this form of escape is that a string continuation skips following whitespace, including additional newlines. Thus `a`, `b` and `c` are equal:
+> 这种形式的转义效果是字符串续行会跳过后续的空白字符，包括额外的换行符。因此 `a`, `b` 和 `c` 是相等的: 
 >
 > ```rust
 > let a = "foobar";
@@ -121,86 +121,86 @@ The escaped value is an empty sequence of characters.
 > assert_eq!(b, c);
 > ```
 >
-> Skipping additional newlines (as in example c) is potentially confusing and unexpected. This behavior may be adjusted in the future. Until a decision is made, it is recommended to avoid relying on skipping multiple newlines with line continuations. See [this issue](https://github.com/rust-lang/reference/pull/1042) for more information.
+> 跳过额外的换行符（如示例 c 所示）可能会令人困惑且出乎意料。此行为将来可能会进行调整。在做出决定之前，建议避免依赖于通过行续行跳过多个换行符。有关更多信息，请参阅 [此问题](https://github.com/rust-lang/reference/pull/1042) 。
 
 r[expr.literal.char]
-## Character literal expressions
+## 字符字面量表达式
 
 r[expr.literal.char.intro]
-A character literal expression consists of a single [CHAR_LITERAL] token.
+字符字面量表达式由单个 [CHAR_LITERAL] 词法单元 组成。
 
 r[expr.literal.char.type]
-The expression's type is the primitive [`char`][textual types] type.
+该表达式的类型是原始 [`char`][textual types] 类型。
 
 r[expr.literal.char.no-suffix]
-The token must not have a suffix.
+ 词法单元 必须没有后缀。
 
 r[expr.literal.char.literal-content]
-The token's _literal content_ is the sequence of characters following the first `U+0027` (`'`) and preceding the last `U+0027` (`'`) in the string representation of the token.
+ 词法单元 的 _字面量内容_ 是该 词法单元 的字符串表示中第一个 `U+0027` (`'`) 之后且最后一个 `U+0027` (`'`) 之前的字符序列。
 
 r[expr.literal.char.represented]
-The literal expression's _represented character_ is derived from the literal content as follows:
+字面量表达式的 _表示字符_ 按如下方式从字面量内容导出: 
 
 r[expr.literal.char.escape]
-* If the literal content is one of the following forms of escape sequence, the represented character is the escape sequence's escaped value:
-    * [Simple escapes]
-    * [7-bit escapes]
-    * [Unicode escapes]
+* 如果字面量内容是以下形式之一的转义序列，则表示字符是该转义序列的转义值: 
+    * [简单转义][Simple escapes]
+    * [7位转义][7-bit escapes]
+    * [Unicode 转义][Unicode escapes]
 
 r[expr.literal.char.single]
-* Otherwise the represented character is the single character that makes up the literal content.
+* 否则，表示字符是构成字面量内容的单个字符。
 
 r[expr.literal.char.result]
-The expression's value is the [`char`][textual types] corresponding to the represented character's [Unicode scalar value].
+该表达式的值是与表示字符的 [Unicode 标量值][Unicode scalar value] 对应的 [`char`][textual types] 。
 
 > [!NOTE]
-> The permitted forms of a [CHAR_LITERAL] token ensure that these rules always produce a single character.
+>  [CHAR_LITERAL] 词法单元 的允许形式确保这些规则总是产生单个字符。
 
-Examples of character literal expressions:
+字符字面量表达式的示例: 
 
 ```rust
 'R';                               // R
 '\'';                              // '
 '\x52';                            // R
-'\u{00E6}';                        // LATIN SMALL LETTER AE (U+00E6)
+'\u{00E6}';                        // 拉丁文小写字母 AE (U+00E6)
 ```
 
 r[expr.literal.string]
-## String literal expressions
+## 字符串字面量表达式
 
 r[expr.literal.string.intro]
-A string literal expression consists of a single [STRING_LITERAL] or [RAW_STRING_LITERAL] token.
+字符串字面量表达式由单个 [STRING_LITERAL] 或 [RAW_STRING_LITERAL] 词法单元 组成。
 
 r[expr.literal.string.type]
-The expression's type is a shared reference (with `static` lifetime) to the primitive [`str`][textual types] type.
-That is, the type is `&'static str`.
+该表达式的类型是向原始 [`str`][textual types] 类型的共享引用（具有 `static` 生命周期）。
+也就是说，类型是 `&'static str` 。
 
 r[expr.literal.string.no-suffix]
-The token must not have a suffix.
+ 词法单元 必须没有后缀。
 
 r[expr.literal.string.literal-content]
-The token's _literal content_ is the sequence of characters following the first `U+0022` (`"`) and preceding the last `U+0022` (`"`) in the string representation of the token.
+ 词法单元 的 _字面量内容_ 是该 词法单元 的字符串表示中第一个 `U+0022` (`"`) 之后且最后一个 `U+0022` (`"`) 之前的字符序列。
 
 r[expr.literal.string.represented]
-The literal expression's _represented string_ is a sequence of characters derived from the literal content as follows:
+字面量表达式的 _表示字符串_ 是按如下方式从字面量内容导出的字符序列: 
 
 r[expr.literal.string.escape]
-* If the token is a [STRING_LITERAL], each escape sequence of any of the following forms occurring in the literal content is replaced by the escape sequence's escaped value.
-    * [Simple escapes]
-    * [7-bit escapes]
-    * [Unicode escapes]
-    * [String continuation escapes]
+* 如果 词法单元 是 [STRING_LITERAL] ，则字面量内容中出现的以下任何形式的每个转义序列都将被替换为该转义序列的转义值。
+    * [简单转义][Simple escapes]
+    * [7位转义][7-bit escapes]
+    * [Unicode 转义][Unicode escapes]
+    * [字符串续行转义][String continuation escapes]
 
-  These replacements take place in left-to-right order.
-  For example, the token `"\\x41"` is converted to the characters `\` `x` `4` `1`.
+  这些替换按从左到右的顺序进行。
+  例如， 词法单元 `"\\x41"` 被转换为字符 `\` `x` `4` `1` 。
 
 r[expr.literal.string.raw]
-* If the token is a [RAW_STRING_LITERAL], the represented string is identical to the literal content.
+* 如果 词法单元 是 [RAW_STRING_LITERAL] ，则表示字符串与字面量内容完全相同。
 
 r[expr.literal.string.result]
-The expression's value is a reference to a statically allocated [`str`][textual types] containing the UTF-8 encoding of the represented string.
+该表达式的值是一个指向静态分配的 [`str`][textual types] 的引用，该字符串包含表示字符串的 UTF-8 编码。
 
-Examples of string literal expressions:
+字符串字面量表达式的示例: 
 
 ```rust
 "foo"; r"foo";                     // foo
@@ -214,38 +214,38 @@ r##"foo #"# bar"##;                // foo #"# bar
 ```
 
 r[expr.literal.byte-char]
-## Byte literal expressions
+## 字节字面量表达式
 
 r[expr.literal.byte-char.intro]
-A byte literal expression consists of a single [BYTE_LITERAL] token.
+字节字面量表达式由单个 [BYTE_LITERAL] 词法单元 组成。
 
 r[expr.literal.byte-char.literal]
-The expression's type is the primitive [`u8`][numeric types] type.
+该表达式的类型是原始 [`u8`][numeric types] 类型。
 
 r[expr.literal.byte-char.no-suffix]
-The token must not have a suffix.
+ 词法单元 必须没有后缀。
 
 r[expr.literal.byte-char.literal-content]
-The token's _literal content_ is the sequence of characters following the first `U+0027` (`'`) and preceding the last `U+0027` (`'`) in the string representation of the token.
+ 词法单元 的 _字面量内容_ 是该 词法单元 的字符串表示中第一个 `U+0027` (`'`) 之后且最后一个 `U+0027` (`'`) 之前的字符序列。
 
 r[expr.literal.byte-char.represented]
-The literal expression's _represented character_ is derived from the literal content as follows:
+字面量表达式的 _表示字符_ 按如下方式从字面量内容导出: 
 
 r[expr.literal.byte-char.escape]
-* If the literal content is one of the following forms of escape sequence, the represented character is the escape sequence's escaped value:
-    * [Simple escapes]
-    * [8-bit escapes]
+* 如果字面量内容是以下形式之一的转义序列，则表示字符是该转义序列的转义值: 
+    * [简单转义][Simple escapes]
+    * [8位转义][8-bit escapes]
 
 r[expr.literal.byte-char.single]
-* Otherwise the represented character is the single character that makes up the literal content.
+* 否则，表示字符是构成字面量内容的单个字符。
 
 r[expr.literal.byte-char.result]
-The expression's value is the represented character's [Unicode scalar value].
+该表达式的值是表示字符的 [Unicode 标量值][Unicode scalar value] 。
 
 > [!NOTE]
-> The permitted forms of a [BYTE_LITERAL] token ensure that these rules always produce a single character, whose Unicode scalar value is in the range of [`u8`][numeric types].
+>  [BYTE_LITERAL] 词法单元 的允许形式确保这些规则总是产生单个字符，其 Unicode 标量值在 [`u8`][numeric types] 范围内。
 
-Examples of byte literal expressions:
+字节字面量表达式的示例: 
 
 ```rust
 b'R';                              // 82
@@ -255,43 +255,43 @@ b'\xA0';                           // 160
 ```
 
 r[expr.literal.byte-string]
-## Byte string literal expressions
+## 字节串字面量表达式
 
 r[expr.literal.byte-string.intro]
-A byte string literal expression consists of a single [BYTE_STRING_LITERAL] or [RAW_BYTE_STRING_LITERAL] token.
+字节串字面量表达式由单个 [BYTE_STRING_LITERAL] 或 [RAW_BYTE_STRING_LITERAL] 词法单元 组成。
 
 r[expr.literal.byte-string.type]
-The expression's type is a shared reference (with `static` lifetime) to an array whose element type is [`u8`][numeric types].
-That is, the type is `&'static [u8; N]`, where `N` is the number of bytes in the represented string described below.
+该表达式的类型是对一个元素类型为 [`u8`][numeric types] 的数组的共享引用（具有 `static` 生命周期）。
+也就是说，类型是 `&'static [u8; N]` ，其中 `N` 是下面描述的表示字符串中的字节数。
 
 r[expr.literal.byte-string.no-suffix]
-The token must not have a suffix.
+ 词法单元 必须没有后缀。
 
 r[expr.literal.byte-string.literal-content]
-The token's _literal content_ is the sequence of characters following the first `U+0022` (`"`) and preceding the last `U+0022` (`"`) in the string representation of the token.
+ 词法单元 的 _字面量内容_ 是该 词法单元 的字符串表示中第一个 `U+0022` (`"`) 之后且最后一个 `U+0022` (`"`) 之前的字符序列。
 
 r[expr.literal.byte-string.represented]
-The literal expression's _represented string_ is a sequence of characters derived from the literal content as follows:
+字面量表达式的 _表示字符串_ 是按如下方式从字面量内容导出的字符序列: 
 
 r[expr.literal.byte-string.escape]
-* If the token is a [BYTE_STRING_LITERAL], each escape sequence of any of the following forms occurring in the literal content is replaced by the escape sequence's escaped value.
-    * [Simple escapes]
-    * [8-bit escapes]
-    * [String continuation escapes]
+* 如果 词法单元 是 [BYTE_STRING_LITERAL] ，则字面量内容中出现的以下任何形式的每个转义序列都将被替换为该转义序列的转义值。
+    * [简单转义][Simple escapes]
+    * [8位转义][8-bit escapes]
+    * [字符串续行转义][String continuation escapes]
 
-  These replacements take place in left-to-right order.
-  For example, the token `b"\\x41"` is converted to the characters `\` `x` `4` `1`.
+  这些替换按从左到右的顺序进行。
+  例如， 词法单元 `b"\\x41"` 被转换为字符 `\` `x` `4` `1` 。
 
 r[expr.literal.byte-string.raw]
-* If the token is a [RAW_BYTE_STRING_LITERAL], the represented string is identical to the literal content.
+* 如果 词法单元 是 [RAW_BYTE_STRING_LITERAL] ，则表示字符串与字面量内容完全相同。
 
 r[expr.literal.byte-string.result]
-The expression's value is a reference to a statically allocated array containing the [Unicode scalar values] of the characters in the represented string, in the same order.
+该表达式的值是一个指向静态分配数组的引用，该数组按相同顺序包含表示字符串中字符的 [Unicode 标量值][Unicode scalar values] 。
 
 > [!NOTE]
-> The permitted forms of [BYTE_STRING_LITERAL] and [RAW_BYTE_STRING_LITERAL] tokens ensure that these rules always produce array element values in the range of [`u8`][numeric types].
+>  [BYTE_STRING_LITERAL] 和 [RAW_BYTE_STRING_LITERAL] 词法单元 的允许形式确保这些规则总是产生 [`u8`][numeric types] 范围内的数组元素值。
 
-Examples of byte string literal expressions:
+字节串字面量表达式的示例: 
 
 ```rust
 b"foo"; br"foo";                     // foo
@@ -305,43 +305,43 @@ b"\\x52"; br"\x52";                  // \x52
 ```
 
 r[expr.literal.c-string]
-## C string literal expressions
+## C字符串字面量表达式
 
 r[expr.literal.c-string.intro]
-A C string literal expression consists of a single [C_STRING_LITERAL] or [RAW_C_STRING_LITERAL] token.
+C 字符串字面量表达式由单个 [C_STRING_LITERAL] 或 [RAW_C_STRING_LITERAL] 词法单元 组成。
 
 r[expr.literal.c-string.type]
-The expression's type is a shared reference (with `static` lifetime) to the standard library [CStr] type.
-That is, the type is `&'static core::ffi::CStr`.
+该表达式的类型是对标准库 [CStr] 类型的共享引用（具有 `static` 生命周期）。
+也就是说，类型是 `&'static core::ffi::CStr` 。
 
 r[expr.literal.c-string.no-suffix]
-The token must not have a suffix.
+ 词法单元 必须没有后缀。
 
 r[expr.literal.c-string.literal-content]
-The token's _literal content_ is the sequence of characters following the first `"` and preceding the last `"` in the string representation of the token.
+ 词法单元 的 _字面量内容_ 是该 词法单元 的字符串表示中第一个 `"` 之后且最后一个 `"` 之前的字符序列。
 
 r[expr.literal.c-string.represented]
-The literal expression's _represented bytes_ are a sequence of bytes derived from the literal content as follows:
+字面量表达式的 _表示字节_ 是按如下方式从字面量内容导出的字节序列: 
 
 r[expr.literal.c-string.escape]
-* If the token is a [C_STRING_LITERAL], the literal content is treated as a sequence of items, each of which is either a single Unicode character other than `\` or an [escape].
-The sequence of items is converted to a sequence of bytes as follows:
-  * Each single Unicode character contributes its UTF-8 representation.
-  * Each [simple escape] contributes the [Unicode scalar value] of its escaped value.
-  * Each [8-bit escape] contributes a single byte containing the [Unicode scalar value] of its escaped value.
-  * Each [unicode escape] contributes the UTF-8 representation of its escaped value.
-  * Each [string continuation escape] contributes no bytes.
+* 如果 词法单元 是 [C_STRING_LITERAL] ，则字面量内容被视为一系列 项 ，其中每个 项 要么是除 `\` 之外的单个 Unicode 字符，要么是一个 [转义][escape] 。
+ 项 序列按如下方式转换为字节序列: 
+  * 每个单个 Unicode 字符贡献其 UTF-8 表示。
+  * 每个 [简单转义][simple escape] 贡献其转义值的 [Unicode 标量值][Unicode scalar value] 。
+  * 每个 [8位转义][8-bit escape] 贡献一个包含其转义值的 [Unicode 标量值][Unicode scalar value] 的单字节。
+  * 每个 [Unicode 转义][unicode escape] 贡献其转义值的 UTF-8 表示。
+  * 每个 [字符串续行转义][string continuation escape] 不贡献字节。
 
 r[expr.literal.c-string.raw]
-* If the token is a [RAW_C_STRING_LITERAL], the represented bytes are the UTF-8 encoding of the literal content.
+* 如果 词法单元 是 [RAW_C_STRING_LITERAL] ，则表示字节是字面量内容的 UTF-8 编码。
 
 > [!NOTE]
-> The permitted forms of [C_STRING_LITERAL] and [RAW_C_STRING_LITERAL] tokens ensure that the represented bytes never include a null byte.
+>  [C_STRING_LITERAL] 和 [RAW_C_STRING_LITERAL] 词法单元 的允许形式确保表示字节永远不会包含空字节。
 
 r[expr.literal.c-string.result]
-The expression's value is a reference to a statically allocated [CStr] whose array of bytes contains the represented bytes followed by a null byte.
+该表达式的值是一个指向静态分配的 [CStr] 的引用，其字节数组包含表示字节，后跟一个空字节。
 
-Examples of C string literal expressions:
+C 字符串字面量表达式的示例: 
 
 ```rust
 c"foo"; cr"foo";                     // foo
@@ -353,151 +353,151 @@ cr##"foo #"# bar"##;                 // foo #"# bar
 c"\x52"; c"R"; cr"R";                // R
 c"\\x52"; cr"\x52";                  // \x52
 
-c"æ";                                // LATIN SMALL LETTER AE (U+00E6)
-c"\u{00E6}";                         // LATIN SMALL LETTER AE (U+00E6)
-c"\xC3\xA6";                         // LATIN SMALL LETTER AE (U+00E6)
+c"æ";                                // 拉丁文小写字母 AE (U+00E6)
+c"\u{00E6}";                         // 拉丁文小写字母 AE (U+00E6)
+c"\xC3\xA6";                         // 拉丁文小写字母 AE (U+00E6)
 
 c"\xE6".to_bytes();                  // [230]
 c"\u{00E6}".to_bytes();              // [195, 166]
 ```
 
 r[expr.literal.int]
-## Integer literal expressions
+## 整数字面量表达式
 
 r[expr.literal.int.intro]
-An integer literal expression consists of a single [INTEGER_LITERAL] token.
+整数字面量表达式由单个 [INTEGER_LITERAL] 词法单元 组成。
 
 r[expr.literal.int.suffix]
-If the token has a [suffix], the suffix must be the name of one of the [primitive integer types][numeric types]: `u8`, `i8`, `u16`, `i16`, `u32`, `i32`, `u64`, `i64`, `u128`, `i128`, `usize`, or `isize`, and the expression has that type.
+如果 词法单元 具有 [后缀][suffix] ，则后缀必须是 [原始整数类型][numeric types] 之一的名称:  `u8`, `i8`, `u16`, `i16`, `u32`, `i32`, `u64`, `i64`, `u128`, `i128`, `usize`, 或 `isize` ，并且表达式具有该类型。
 
 r[expr.literal.int.infer]
-If the token has no suffix, the expression's type is determined by type inference:
+如果 词法单元 没有后缀，则表达式的类型通过类型推导确定: 
 
 r[expr.literal.int.inference-unique-type]
-* If an integer type can be _uniquely_ determined from the surrounding program context, the expression has that type.
+* 如果可以从周围的程序上下文中 _唯一_ 确定整数类型，则该表达式具有该类型。
 
 r[expr.literal.int.inference-default]
-* If the program context under-constrains the type, it defaults to the signed 32-bit integer `i32`.
+* 如果程序上下文对类型的约束不足，则默认为有符号 32 位整数 `i32` 。
 
 r[expr.literal.int.inference-error]
-* If the program context over-constrains the type, it is considered a static type error.
+* 如果程序上下文对类型的约束过度，则被视为静态类型错误。
 
-Examples of integer literal expressions:
+整数字面量表达式的示例: 
 
 ```rust
-123;                               // type i32
-123i32;                            // type i32
-123u32;                            // type u32
-123_u32;                           // type u32
-let a: u64 = 123;                  // type u64
+123;                               // 类型 i32
+123i32;                            // 类型 i32
+123u32;                            // 类型 u32
+123_u32;                           // 类型 u32
+let a: u64 = 123;                  // 类型 u64
 
-0xff;                              // type i32
-0xff_u8;                           // type u8
+0xff;                              // 类型 i32
+0xff_u8;                           // 类型 u8
 
-0o70;                              // type i32
-0o70_i16;                          // type i16
+0o70;                              // 类型 i32
+0o70_i16;                          // 类型 i16
 
-0b1111_1111_1001_0000;             // type i32
-0b1111_1111_1001_0000i64;          // type i64
+0b1111_1111_1001_0000;             // 类型 i32
+0b1111_1111_1001_0000i64;          // 类型 i64
 
-0usize;                            // type usize
+0usize;                            // 类型 usize
 ```
 
 r[expr.literal.int.representation]
-The value of the expression is determined from the string representation of the token as follows:
+该表达式的值从 词法单元 的字符串表示中按如下方式确定: 
 
 r[expr.literal.int.radix]
-* An integer radix is chosen by inspecting the first two characters of the string, as follows:
+* 通过检查字符串的前两个字符来选择整数基数，如下所示: 
 
-    * `0b` indicates radix 2
-    * `0o` indicates radix 8
-    * `0x` indicates radix 16
-    * otherwise the radix is 10.
+    * `0b` 表示基数 2
+    * `0o` 表示基数 8
+    * `0x` 表示基数 16
+    * 否则基数为 10。
 
 r[expr.literal.int.radix-prefix-stripped]
-* If the radix is not 10, the first two characters are removed from the string.
+* 如果基数不是 10，则从字符串中移除前两个字符。
 
 r[expr.literal.int.type-suffix-stripped]
-* Any suffix is removed from the string.
+* 从字符串中移除任何后缀。
 
 r[expr.literal.int.separators-stripped]
-* Any underscores are removed from the string.
+* 从字符串中移除任何下划线。
 
 r[expr.literal.int.u128-value]
-* The string is converted to a `u128` value as if by [`u128::from_str_radix`] with the chosen radix.
-If the value does not fit in `u128`, it is a compiler error.
+* 字符串被转换为 `u128` 值，就像通过具有所选基数的 [`u128::from_str_radix`] 处理一样。
+如果值不适合 `u128` ，则是编译器错误。
 
 r[expr.literal.int.cast]
-* The `u128` value is converted to the expression's type via a [numeric cast].
+*  `u128` 值通过 [数值强转][numeric cast] 转换为表达式的类型。
 
 > [!NOTE]
-> The final cast will truncate the value of the literal if it does not fit in the expression's type. `rustc` includes a [lint check] named `overflowing_literals`, defaulting to `deny`, which rejects expressions where this occurs.
+> 如果字面量的值不适合表达式的类型，最终的强转将截断该值。 `rustc` 包含一个名为 `overflowing_literals` 的 [lint 检查][lint check] ，默认为 `deny` ，它会拒绝发生这种情况的表达式。
 
 > [!NOTE]
-> `-1i8`, for example, is an application of the [negation operator] to the literal expression `1i8`, not a single integer literal expression. See [Overflow] for notes on representing the most negative value for a signed type.
+> 例如， `-1i8` 是 [求负运算符][negation operator] 对字面量表达式 `1i8` 的应用，而不是单个整数字面量表达式。有关表示有符号类型的最小负值（绝对值最大）的注意事项，请参阅 [溢出][overflow] 。
 
 r[expr.literal.float]
-## Floating-point literal expressions
+## 浮点数字面量表达式
 
 r[expr.literal.float.intro]
-A floating-point literal expression has one of two forms:
- * a single [FLOAT_LITERAL] token
- * a single [INTEGER_LITERAL] token which has a suffix and no radix indicator
+浮点数字面量表达式具有以下两种形式之一: 
+ * 单个 [FLOAT_LITERAL] 词法单元
+ * 具有后缀且没有基数指示符的单个 [INTEGER_LITERAL] 词法单元
 
 r[expr.literal.float.suffix]
-If the token has a [suffix], the suffix must be the name of one of the [primitive floating-point types][floating-point types]: `f32` or `f64`, and the expression has that type.
+如果 词法单元 具有 [后缀][suffix] ，则后缀必须是 [原始浮点类型][floating-point types] 之一的名称:  `f32` 或 `f64` ，并且表达式具有该类型。
 
 r[expr.literal.float.infer]
-If the token has no suffix, the expression's type is determined by type inference:
+如果 词法单元 没有后缀，则表达式的类型通过类型推导确定: 
 
 r[expr.literal.float.inference-unique-type]
-* If a floating-point type can be _uniquely_ determined from the surrounding program context, the expression has that type.
+* 如果可以从周围的程序上下文中 _唯一_ 确定浮点类型，则该表达式具有该类型。
 
 r[expr.literal.float.inference-default]
-* If the program context under-constrains the type, it defaults to `f64`.
+* 如果程序上下文对类型的约束不足，则默认为 `f64` 。
 
 r[expr.literal.float.inference-error]
-* If the program context over-constrains the type, it is considered a static type error.
+* 如果程序上下文对类型的约束过度，则被视为静态类型错误。
 
-Examples of floating-point literal expressions:
+浮点数字面量表达式的示例: 
 
 ```rust
-123.0f64;        // type f64
-0.1f64;          // type f64
-0.1f32;          // type f32
-12E+99_f64;      // type f64
-5f32;            // type f32
-let x: f64 = 2.; // type f64
+123.0f64;        // 类型 f64
+0.1f64;          // 类型 f64
+0.1f32;          // 类型 f32
+12E+99_f64;      // 类型 f64
+5f32;            // 类型 f32
+let x: f64 = 2.; // 类型 f64
 ```
 
 r[expr.literal.float.result]
-The value of the expression is determined from the string representation of the token as follows:
+该表达式的值从 词法单元 的字符串表示中按如下方式确定: 
 
 r[expr.literal.float.type-suffix-stripped]
-* Any suffix is removed from the string.
+* 从字符串中移除任何后缀。
 
 r[expr.literal.float.separators-stripped]
-* Any underscores are removed from the string.
+* 从字符串中移除任何下划线。
 
 r[expr.literal.float.value]
-* The string is converted to the expression's type as if by [`f32::from_str`] or [`f64::from_str`].
+* 字符串被转换为表达式的类型，就像通过 [`f32::from_str`] 或 [`f64::from_str` ] 处理一样。
 
 > [!NOTE]
-> `-1.0`, for example, is an application of the [negation operator] to the literal expression `1.0`, not a single floating-point literal expression.
+> 例如， `-1.0` 是 [求负运算符][negation operator] 对字面量表达式 `1.0` 的应用，而不是单个浮点数字面量表达式。
 
 > [!NOTE]
-> `inf` and `NaN` are not literal tokens. The [`f32::INFINITY`], [`f64::INFINITY`], [`f32::NAN`], and [`f64::NAN`] constants can be used instead of literal expressions. In `rustc`, a literal large enough to be evaluated as infinite will trigger the `overflowing_literals` lint check.
+>  `inf` 和 `NaN` 不是字面量 词法单元 。可以使用 [`f32::INFINITY`], [`f64::INFINITY`], [`f32::NAN`], 和 [`f64::NAN`] 常量来代替字面量表达式。在 `rustc` 中，大到足以被求值为无穷大的字面量将触发 `overflowing_literals` lint 检查。
 
 r[expr.literal.bool]
-## Boolean literal expressions
+## 布尔字面量表达式
 
 r[expr.literal.bool.intro]
-A boolean literal expression consists of one of the keywords `true` or `false`.
+布尔字面量表达式由关键字 `true` 或 `false` 之一组成。
 
 r[expr.literal.bool.result]
-The expression's type is the primitive [boolean type], and its value is:
- * true if the keyword is `true`
- * false if the keyword is `false`
+该表达式的类型是原始 [布尔类型][boolean type] ，其值为: 
+ * 如果关键字是 `true` ，则为 true
+ * 如果关键字是 `false` ，则为 false
 
 [Escape]: #escapes
 [Simple escape]: #simple-escapes

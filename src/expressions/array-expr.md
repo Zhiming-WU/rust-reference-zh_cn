@@ -1,7 +1,7 @@
 r[expr.array]
-# Array and array index expressions
+# 数组和数组索引表达式
 
-## Array expressions
+## 数组表达式
 
 r[expr.array.syntax]
 ```grammar,expressions
@@ -13,69 +13,69 @@ ArrayElements ->
 ```
 
 r[expr.array.constructor]
-*Array expressions* construct [arrays][array].
-Array expressions come in two forms.
+ *数组表达式* 构造 [数组][array]。
+数组表达式有两种形式。
 
 r[expr.array.array]
-The first form lists out every value in the array.
+第一种形式列出数组中的每一个值。
 
 r[expr.array.array-syntax]
-The syntax for this form is a comma-separated list of expressions of uniform type enclosed in square brackets.
+这种形式的 语法格式 是在方括号中包含一个由逗号分隔的具有统一类型的表达式列表。
 
 r[expr.array.array-behavior]
-This produces an array containing each of these values in the order they are written.
+这会产生一个数组，按编写顺序包含这些值。
 
 r[expr.array.repeat]
-The syntax for the second form is two expressions separated by a semicolon (`;`) enclosed in square brackets.
+第二种形式的 语法格式 是在方括号中包含两个由分号 (`;`) 分隔的表达式。
 
 r[expr.array.repeat-operand]
-The expression before the `;` is called the *repeat operand*.
+`;` 之前的表达式称为 *重复操作数*。
 
 r[expr.array.length-operand]
-The expression after the `;` is called the *length operand*.
+`;` 之后的表达式称为 *长度操作数*。
 
 r[expr.array.length-restriction]
-The length operand must either be an [inferred const] or be a [constant expression] of type `usize` (e.g. a [literal] or a [constant item]).
+长度操作数必须是一个 [推断常量][inferred const] 或者是一个 `usize` 类型的 [常量表达式][constant expression]（例如 [字面量][literal] 或 [常量 项][constant item]）。
 
 ```rust
 const C: usize = 1;
-let _: [u8; C] = [0; 1]; // Literal.
-let _: [u8; C] = [0; C]; // Constant item.
-let _: [u8; C] = [0; _]; // Inferred const.
-let _: [u8; C] = [0; (((_)))]; // Inferred const.
+let _: [u8; C] = [0; 1]; // 字面量。
+let _: [u8; C] = [0; C]; // 常量 项。
+let _: [u8; C] = [0; _]; // 推断常量。
+let _: [u8; C] = [0; (((_)))]; // 推断常量。
 ```
 
 > [!NOTE]
-> In an array expression, an [inferred const] is parsed as an [expression][Expression] but then semantically treated as a separate kind of [const generic argument].
+> 在数组表达式中，一个 [推断常量][inferred const] 被解析为一个 [表达式][Expression]，但在语义上被视为一种单独的 [常量 泛型 参数][const generic argument]。
 
 r[expr.array.repeat-behavior]
-An array expression of this form creates an array with the length of the value of the length operand with each element being a copy of the repeat operand.
-That is, `[a; b]` creates an array containing `b` copies of the value of `a`.
+这种形式的数组表达式创建一个长度为长度操作数值的数组，其中每个元素都是重复操作数的副本。
+也就是说，`[a; b]` 创建一个包含 `b` 个 `a` 的值的副本的数组。
 
 r[expr.array.repeat-copy]
-If the length operand has a value greater than 1 then this requires the repeat operand to have a type that implements [`Copy`], to be a [const block expression], or to be a [path] to a constant item.
+如果长度操作数的值大于 1，则要求重复操作数的类型实现 [`Copy`]、或者是一个 [常量块表达式][const block expression]、或者是一个指向常量 项 的 [路径][path]。
 
 r[expr.array.repeat-const-item]
-When the repeat operand is a const block or a path to a constant item, it is evaluated the number of times specified in the length operand.
+当重复操作数是一个常量块或指向常量 项 的路径时，它将被评估长度操作数指定的次数。
 
 r[expr.array.repeat-evaluation-zero]
-If that value is `0`, then the const block or constant item is not evaluated at all.
+如果该值为 `0`，则常量块或常量 项 根本不会被评估。
 
 r[expr.array.repeat-non-const]
-For expressions that are neither a const block nor a path to a constant item, it is evaluated exactly once, and then the result is copied the length operand's value times.
+对于既不是常量块也不是指向常量 项 的路径的表达式，它仅被评估一次，然后结果被复制长度操作数的值次。
 
 ```rust
 [1, 2, 3, 4];
 ["a", "b", "c", "d"];
-[0; 128];              // array with 128 zeros
+[0; 128];              // 包含 128 个零的数组
 [0u8, 0u8, 0u8, 0u8,];
-[[1, 0, 0], [0, 1, 0], [0, 0, 1]]; // 2D array
+[[1, 0, 0], [0, 1, 0], [0, 0, 1]]; // 二维数组
 const EMPTY: Vec<i32> = Vec::new();
 [EMPTY; 2];
 ```
 
 r[expr.array.index]
-## Array and slice indexing expressions
+## 数组和切片索引表达式
 
 r[expr.array.index.syntax]
 ```grammar,expressions
@@ -83,40 +83,40 @@ IndexExpression -> Expression `[` Expression `]`
 ```
 
 r[expr.array.index.array]
-[Array] and [slice]-typed values can be indexed by writing a square-bracket-enclosed expression of type `usize` (the index) after them.
-When the array is mutable, the resulting [memory location] can be assigned to.
+[数组][array] 和 [切片][slice] 类型的值可以通过在它们后面编写一个由方括号括起来的 `usize` 类型表达式（索引）来进行索引。
+当数组是可变的时，生成的 [内存位置][memory location] 可以被赋值。
 
 r[expr.array.index.trait]
-For other types an index expression `a[b]` is equivalent to `*std::ops::Index::index(&a, b)`, or `*std::ops::IndexMut::index_mut(&mut a, b)` in a mutable place expression context.
-Just as with methods, Rust will also insert dereference operations on `a` repeatedly to find an implementation.
+对于其他类型，索引表达式 `a[b]` 等同于 `*std::ops::Index::index(&a, b)`，或者在可变位置表达式上下文中等同于 `*std::ops::IndexMut::index_mut(&mut a, b)`。
+与方法一样，Rust 也会在 `a` 上重复插入解引用操作以寻找实现。
 
 r[expr.array.index.zero-index]
-Indices are zero-based for arrays and slices.
+数组和切片的索引是从零开始的。
 
 r[expr.array.index.const]
-Array access is a [constant expression], so bounds can be checked at compile-time with a constant index value.
-Otherwise a check will be performed at run-time that will put the thread in a [_panicked state_][panic] if it fails.
+数组访问是一个 [常量表达式][constant expression]，因此可以使用常量索引值在编译时检查边界。
+否则将在运行时执行检查，如果失败，将使线程处于 [ _恐慌_ 状态][panic]。
 
 ```rust,should_panic
-// lint is deny by default.
+// lint 默认是 deny。
 #![warn(unconditional_panic)]
 
-([1, 2, 3, 4])[2];        // Evaluates to 3
+([1, 2, 3, 4])[2];        // 求值为 3
 
 let b = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
-b[1][2];                  // multidimensional array indexing
+b[1][2];                  // 多维数组索引
 
-let x = (["a", "b"])[10]; // warning: index out of bounds
+let x = (["a", "b"])[10]; // 警告：索引越界
 
 let n = 10;
-let y = (["a", "b"])[n];  // panics
+let y = (["a", "b"])[n];  // 恐慌
 
 let arr = ["a", "b"];
-arr[10];                  // warning: index out of bounds
+arr[10];                  // 警告：索引越界
 ```
 
 r[expr.array.index.trait-impl]
-The array index expression can be implemented for types other than arrays and slices by implementing the [Index] and [IndexMut] traits.
+数组索引表达式可以通过实现 [Index] 和 [IndexMut] 特型 来为数组和切片以外的类型实现。
 
 [`Copy`]: ../special-types-and-traits.md#copy
 [IndexMut]: std::ops::IndexMut

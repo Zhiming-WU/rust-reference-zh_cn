@@ -1,57 +1,30 @@
-# Behavior not considered `unsafe`
+# 不被视为 `unsafe` 的行为
 
-The Rust compiler does not consider the following behaviors _unsafe_,
-though a programmer may (should) find them undesirable, unexpected,
-or erroneous.
+Rust 编译器不认为以下行为是 _不安全_ 的，尽管程序员可能（应该）发现它们是不受欢迎的、意外的或错误的。
 
-- Deadlocks
-- Leaks of memory and other resources
-- Exiting without calling destructors
-- Exposing randomized base addresses through pointer leaks
+- 死锁
+- 内存和其他资源的泄漏
+- 退出而不调用析构函数
+- 通过指针泄漏暴露随机化的基地址
 
-## Integer overflow
+## 整数溢出
 
-If a program contains arithmetic overflow, the programmer has made an
-error. In the following discussion, we maintain a distinction between
-arithmetic overflow and wrapping arithmetic. The first is erroneous,
-while the second is intentional.
+如果程序包含算术溢出，说明程序员犯了错误。在接下来的讨论中，我们对算术溢出和回绕算术进行区分。前者是错误的，而后者是有意的。
 
-When the programmer has enabled `debug_assert!` assertions (for
-example, by enabling a non-optimized build), implementations must
-insert dynamic checks that `panic` on overflow. Other kinds of builds
-may result in `panics` or silently wrapped values on overflow, at the
-implementation's discretion.
+当程序员启用了 `debug_assert!` 断言时（例如，通过启用非优化构建），实现必须插入在溢出时触发 `恐慌` 的动态检查。其他类型的构建可能会根据实现的决定，在溢出时导致 `恐慌` 或静默回绕值。
 
-In the case of implicitly-wrapped overflow, implementations must
-provide well-defined (even if still considered erroneous) results by
-using two's complement overflow conventions.
+在隐式回绕溢出的情况下，实现必须通过使用补码溢出惯例提供定义良好的（即使仍被认为是错误的）结果。
 
-The integral types provide inherent methods to allow programmers
-explicitly to perform wrapping arithmetic. For example,
-`i32::wrapping_add` provides two's complement, wrapping addition.
+整数类型提供了固有方法，允许程序员显式地执行回绕算术。例如，`i32::wrapping_add` 提供了补码回绕加法。
 
-The standard library also provides a `Wrapping<T>` newtype which
-ensures all standard arithmetic operations for `T` have wrapping
-semantics.
+标准库还提供了一个 `Wrapping<T>` 新类型，它确保 `T` 的所有标准算术运算都具有回绕语义。
 
-See [RFC 560] for error conditions, rationale, and more details about
-integer overflow.
+有关错误条件、基本原理以及关于整数溢出的更多详细信息，请参阅 [RFC 560]。
 
-## Logic errors
+## 逻辑错误
 
-Safe code may impose extra logical constraints that can be checked
-at neither compile-time nor runtime. If a program breaks such
-a constraint, the behavior may be unspecified but will not result in
-undefined behavior. This could include panics, incorrect results,
-aborts, and non-termination. The behavior may also differ between
-runs, builds, or kinds of build.
+安全代码可能会施加额外的逻辑约束，这些约束既不能在编译时也不能在运行时检查。如果程序违反了此类约束，行为可能是未指明的，但不会导致未定义行为。这可能包括 `恐慌` 、错误结果、中止和非终止。行为在不同运行、构建或构建类型之间也可能有所不同。
 
-For example, implementing both `Hash` and `Eq` requires that values
-considered equal have equal hashes. Another example are data structures
-like `BinaryHeap`, `BTreeMap`, `BTreeSet`, `HashMap` and `HashSet`
-which describe constraints on the modification of their keys while
-they are in the data structure. Violating such constraints is not
-considered unsafe, yet the program is considered erroneous and
-its behavior unpredictable.
+例如，同时实现 `Hash` 和 `Eq` 要求被认为相等的值具有相等的哈希值。另一个例子是像 `BinaryHeap`、`BTreeMap`、`BTreeSet`、`HashMap` 和 `HashSet` 这样的数据结构，它们描述了当键位于数据结构中时对其进行修改的约束。违反这些约束不被视为不安全，但程序被认为是错误的，其行为是不可预测的。
 
 [RFC 560]: https://github.com/rust-lang/rfcs/blob/master/text/0560-integer-overflow.md
