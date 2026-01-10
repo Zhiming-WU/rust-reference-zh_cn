@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>类型强制转换 - Rust语言参考手册</title>
+        <title>类型隐式转换 - Rust语言参考手册</title>
 
 
         <!-- Custom HTML head -->
@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-be189161.js"></script>
+        <script src="toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,37 +181,31 @@
                         <div class="rule" id="r-coerce"><a class="rule-link" href="#r-coerce" title="coerce"><span>[coerce]</span></a>
 </div>
 
-<h1 id="type-coercions"><a class="header" href="#type-coercions">Type coercions</a></h1>
+<h1 id="隐式类型转换"><a class="header" href="#隐式类型转换">隐式类型转换</a></h1>
 <div class="rule" id="r-coerce.intro"><a class="rule-link" href="#r-coerce.intro" title="coerce.intro"><span>[coerce<wbr>.intro]</span></a>
 </div>
 
-<p><strong>Type coercions</strong> are implicit operations that change the type of a value.
-They happen automatically at specific locations and are highly restricted in
-what types actually coerce.</p>
+<p><strong>隐式类型转换</strong> 是改变值类型的隐式操作。它们在特定位置自动发生，并且对实际进行转换的类型有严格限制。</p>
 <div class="rule" id="r-coerce.as"><a class="rule-link" href="#r-coerce.as" title="coerce.as"><span>[coerce<wbr>.as]</span></a>
 </div>
 
-<p>Any conversions allowed by coercion can also be explicitly performed by the
-<a href="expressions/operator-expr.html#type-cast-expressions">type cast operator</a>, <code>as</code>.</p>
-<p>Coercions are originally defined in <a href="https://github.com/rust-lang/rfcs/blob/master/text/0401-coercions.md">RFC 401</a> and expanded upon in <a href="https://github.com/rust-lang/rfcs/blob/master/text/1558-closure-to-fn-coercion.md">RFC 1558</a>.</p>
+<p>任何允许隐式转换的转换也可以通过 <a href="expressions/operator-expr.html#type-cast-expressions">类型转换运算符</a> <code>as</code> 显式执行。</p>
+<p>隐式转换最初在 <a href="https://github.com/rust-lang/rfcs/blob/master/text/0401-coercions.md">RFC 401</a> 中定义，并在 <a href="https://github.com/rust-lang/rfcs/blob/master/text/1558-closure-to-fn-coercion.md">RFC 1558</a> 中得到扩展。</p>
 <div class="rule" id="r-coerce.site"><a class="rule-link" href="#r-coerce.site" title="coerce.site"><span>[coerce<wbr>.site]</span></a>
 </div>
 
-<h2 id="coercion-sites"><a class="header" href="#coercion-sites">Coercion sites</a></h2>
+<h2 id="转换点"><a class="header" href="#转换点">转换点</a></h2>
 <div class="rule" id="r-coerce.site.intro"><a class="rule-link" href="#r-coerce.site.intro" title="coerce.site.intro"><span>[coerce<wbr>.site<wbr>.intro]</span></a>
 </div>
 
-<p>A coercion can only occur at certain coercion sites in a program; these are
-typically places where the desired type is explicit or can be derived by
-propagation from explicit types (without type inference). Possible coercion
-sites are:</p>
+<p>隐式转换只能发生在程序中的某些转换点；这些位置通常是所需类型明确或可以通过从明确类型传播（无需类型推断）导出的地方。可能的转换点有：</p>
 <div class="rule" id="r-coerce.site.let"><a class="rule-link" href="#r-coerce.site.let" title="coerce.site.let"><span>[coerce<wbr>.site<wbr>.let]</span></a>
 </div>
 
 <ul>
 <li>
-<p><code>let</code> statements where an explicit type is given.</p>
-<p>For example, <code>&amp;mut 42</code> is coerced to have type <code>&amp;i8</code> in the following:</p>
+<p>给出显式类型的 <code>let</code> 语句。</p>
+<p>例如，在以下代码中， <code>&amp;mut 42</code> 被隐式转换为 <code>&amp;i8</code> 类型：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let _: &amp;i8 = &amp;mut 42;
@@ -222,24 +216,22 @@ sites are:</p>
 </div>
 
 <ul>
-<li><code>static</code> and <code>const</code> item declarations (similar to <code>let</code> statements).</li>
+<li><code>static</code> 和 <code>const</code> 项 声明（类似于 <code>let</code> 语句）。</li>
 </ul>
 <div class="rule" id="r-coerce.site.argument"><a class="rule-link" href="#r-coerce.site.argument" title="coerce.site.argument"><span>[coerce<wbr>.site<wbr>.argument]</span></a>
 </div>
 
 <ul>
 <li>
-<p>Arguments for function calls</p>
-<p>The value being coerced is the actual parameter, and it is coerced to
-the type of the formal parameter.</p>
-<p>For example, <code>&amp;mut 42</code> is coerced to have type <code>&amp;i8</code> in the following:</p>
+<p>函数调用的参数</p>
+<p>被转换的值是实际参数，它被转换为正式参数的类型。</p>
+<p>例如，在以下代码中， <code>&amp;mut 42</code> 被隐式转换为 <code>&amp;i8</code> 类型：</p>
 <pre class="playground"><code class="language-rust edition2024">fn bar(_: &amp;i8) { }
 
 fn main() {
     bar(&amp;mut 42);
 }</code></pre>
-<p>For method calls, the receiver (<code>self</code> parameter) type is coerced
-differently, see the documentation on <a href="expressions/method-call-expr.html">method-call expressions</a> for details.</p>
+<p>对于方法调用，接收者（ <code>self</code> 参数）类型的转换方式不同，详情请参阅 <a href="expressions/method-call-expr.html">方法调用表达式</a> 的文档。</p>
 </li>
 </ul>
 <div class="rule" id="r-coerce.site.constructor"><a class="rule-link" href="#r-coerce.site.constructor" title="coerce.site.constructor"><span>[coerce<wbr>.site<wbr>.constructor]</span></a>
@@ -247,8 +239,8 @@ differently, see the documentation on <a href="expressions/method-call-expr.html
 
 <ul>
 <li>
-<p>Instantiations of struct, union, or enum variant fields</p>
-<p>For example, <code>&amp;mut 42</code> is coerced to have type <code>&amp;i8</code> in the following:</p>
+<p>结构体、 联合体 或 枚举 变体 字段的实例化</p>
+<p>例如，在以下代码中， <code>&amp;mut 42</code> 被隐式转换为 <code>&amp;i8</code> 类型：</p>
 <pre class="playground"><code class="language-rust edition2024">struct Foo&lt;'a&gt; { x: &amp;'a i8 }
 
 fn main() {
@@ -261,9 +253,8 @@ fn main() {
 
 <ul>
 <li>
-<p>Function results—either the final line of a block if it is not
-semicolon-terminated or any expression in a <code>return</code> statement</p>
-<p>For example, <code>x</code> is coerced to have type <code>&amp;dyn Display</code> in the following:</p>
+<p>函数结果——如果代码块不是以分号结尾，则为代码块的最后一行，或者是 <code>return</code> 语句中的任何表达式</p>
+<p>例如，在以下代码中， <code>x</code> 被隐式转换为 <code>&amp;dyn Display</code> 类型：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::fmt::Display;
@@ -276,102 +267,87 @@ fn foo(x: &amp;u32) -&gt; &amp;dyn Display {
 <div class="rule" id="r-coerce.site.subexpr"><a class="rule-link" href="#r-coerce.site.subexpr" title="coerce.site.subexpr"><span>[coerce<wbr>.site<wbr>.subexpr]</span></a>
 </div>
 
-<p>If the expression in one of these coercion sites is a coercion-propagating
-expression, then the relevant sub-expressions in that expression are also
-coercion sites. Propagation recurses from these new coercion sites.
-Propagating expressions and their relevant sub-expressions are:</p>
+<p>如果这些转换点中的表达式是一个转换传播表达式，那么该表达式中相关的子表达式也是转换点。传播从这些新的转换点递归进行。传播表达式及其相关的子表达式包括：</p>
 <div class="rule" id="r-coerce.site.array"><a class="rule-link" href="#r-coerce.site.array" title="coerce.site.array"><span>[coerce<wbr>.site<wbr>.array]</span></a>
 </div>
 
 <ul>
-<li>Array literals, where the array has type <code>[U; n]</code>. Each sub-expression in
-the array literal is a coercion site for coercion to type <code>U</code>.</li>
+<li>数组字面量，其中数组类型为 <code>[U; n]</code> 。数组字面量中的每个子表达式都是转换为 <code>U</code> 类型的转换点。</li>
 </ul>
 <div class="rule" id="r-coerce.site.repeat"><a class="rule-link" href="#r-coerce.site.repeat" title="coerce.site.repeat"><span>[coerce<wbr>.site<wbr>.repeat]</span></a>
 </div>
 
 <ul>
-<li>Array literals with repeating syntax, where the array has type <code>[U; n]</code>. The
-repeated sub-expression is a coercion site for coercion to type <code>U</code>.</li>
+<li>具有重复语法格式的数组字面量，其中数组类型为 <code>[U; n]</code> 。重复的子表达式是转换为 <code>U</code> 类型的转换点。</li>
 </ul>
 <div class="rule" id="r-coerce.site.tuple"><a class="rule-link" href="#r-coerce.site.tuple" title="coerce.site.tuple"><span>[coerce<wbr>.site<wbr>.tuple]</span></a>
 </div>
 
 <ul>
-<li>Tuples, where a tuple is a coercion site to type <code>(U_0, U_1, ..., U_n)</code>.
-Each sub-expression is a coercion site to the respective type, e.g. the
-zeroth sub-expression is a coercion site to type <code>U_0</code>.</li>
+<li>元组，元组本身是转换为类型 <code>(U_0, U_1, ..., U_n)</code> 的转换点。每个子表达式都是对应类型的转换点，例如，第 0 个子表达式是转换为 <code>U_0</code> 类型的转换点。</li>
 </ul>
 <div class="rule" id="r-coerce.site.parenthesis"><a class="rule-link" href="#r-coerce.site.parenthesis" title="coerce.site.parenthesis"><span>[coerce<wbr>.site<wbr>.parenthesis]</span></a>
 </div>
 
 <ul>
-<li>Parenthesized sub-expressions (<code>(e)</code>): if the expression has type <code>U</code>, then
-the sub-expression is a coercion site to <code>U</code>.</li>
+<li>括号子表达式（ <code>(e)</code> ）：如果表达式具有类型 <code>U</code> ，则子表达式是转换为 <code>U</code> 的转换点。</li>
 </ul>
 <div class="rule" id="r-coerce.site.block"><a class="rule-link" href="#r-coerce.site.block" title="coerce.site.block"><span>[coerce<wbr>.site<wbr>.block]</span></a>
 </div>
 
 <ul>
-<li>Blocks: if a block has type <code>U</code>, then the last expression in the block (if
-it is not semicolon-terminated) is a coercion site to <code>U</code>. This includes
-blocks which are part of control flow statements, such as <code>if</code>/<code>else</code>, if
-the block has a known type.</li>
+<li>代码块：如果代码块具有类型 <code>U</code> ，则代码块中的最后一个表达式（如果不是以分号结尾）是转换为 <code>U</code> 的转换点。这包括属于控制流语句（如 <code>if</code> / <code>else</code> ）一部分的代码块，前提是该代码块具有已知类型。</li>
 </ul>
 <div class="rule" id="r-coerce.types"><a class="rule-link" href="#r-coerce.types" title="coerce.types"><span>[coerce<wbr>.types]</span></a>
 </div>
 
-<h2 id="coercion-types"><a class="header" href="#coercion-types">Coercion types</a></h2>
-<div class="rule" id="r-coerce.types.intro"><a class="rule-link" href="#r-coerce.types.intro" title="coerce.types.intro"><span>[coerce<wbr>.types<wbr>.intro]</span></a>
-</div>
-
-<p>Coercion is allowed between the following types:</p>
+<h2 id="转换类型"><a class="header" href="#转换类型">转换类型</a></h2>
+<p>允许在以下类型之间进行隐式转换：</p>
 <div class="rule" id="r-coerce.types.reflexive"><a class="rule-link" href="#r-coerce.types.reflexive" title="coerce.types.reflexive"><span>[coerce<wbr>.types<wbr>.reflexive]</span></a>
 </div>
 
 <ul>
-<li><code>T</code> to <code>U</code> if <code>T</code> is a <a href="subtyping.html">subtype</a> of <code>U</code> (<em>reflexive case</em>)</li>
+<li>如果 <code>T</code> 是 <code>U</code> 的 <a href="subtyping.html">子类型</a> ，则 <code>T</code> 到 <code>U</code> （ <em>自反情况</em> ）</li>
 </ul>
 <div class="rule" id="r-coerce.types.transitive"><a class="rule-link" href="#r-coerce.types.transitive" title="coerce.types.transitive"><span>[coerce<wbr>.types<wbr>.transitive]</span></a>
 </div>
 
 <ul>
 <li>
-<p><code>T_1</code> to <code>T_3</code> where <code>T_1</code> coerces to <code>T_2</code> and <code>T_2</code> coerces to <code>T_3</code>
-(<em>transitive case</em>)</p>
-<p>Note that this is not fully supported yet.</p>
+<p><code>T_1</code> 到 <code>T_3</code> ，其中 <code>T_1</code> 可隐式转换为 <code>T_2</code> 且 <code>T_2</code> 可隐式转换为 <code>T_3</code> （ <em>传递情况</em> ）</p>
+<p>请注意，这尚未得到完全支持。</p>
 </li>
 </ul>
 <div class="rule" id="r-coerce.types.mut-reborrow"><a class="rule-link" href="#r-coerce.types.mut-reborrow" title="coerce.types.mut-reborrow"><span>[coerce<wbr>.types<wbr>.mut-reborrow]</span></a>
 </div>
 
 <ul>
-<li><code>&amp;mut T</code> to <code>&amp;T</code></li>
+<li><code>&amp;mut T</code> 到 <code>&amp;T</code></li>
 </ul>
 <div class="rule" id="r-coerce.types.mut-pointer"><a class="rule-link" href="#r-coerce.types.mut-pointer" title="coerce.types.mut-pointer"><span>[coerce<wbr>.types<wbr>.mut-pointer]</span></a>
 </div>
 
 <ul>
-<li><code>*mut T</code> to <code>*const T</code></li>
+<li><code>*mut T</code> 到 <code>*const T</code></li>
 </ul>
 <div class="rule" id="r-coerce.types.ref-to-pointer"><a class="rule-link" href="#r-coerce.types.ref-to-pointer" title="coerce.types.ref-to-pointer"><span>[coerce<wbr>.types<wbr>.ref-to-pointer]</span></a>
 </div>
 
 <ul>
-<li><code>&amp;T</code> to <code>*const T</code></li>
+<li><code>&amp;T</code> 到 <code>*const T</code></li>
 </ul>
 <div class="rule" id="r-coerce.types.mut-to-pointer"><a class="rule-link" href="#r-coerce.types.mut-to-pointer" title="coerce.types.mut-to-pointer"><span>[coerce<wbr>.types<wbr>.mut-to-pointer]</span></a>
 </div>
 
 <ul>
-<li><code>&amp;mut T</code> to <code>*mut T</code></li>
+<li><code>&amp;mut T</code> 到 <code>*mut T</code></li>
 </ul>
 <div class="rule" id="r-coerce.types.deref"><a class="rule-link" href="#r-coerce.types.deref" title="coerce.types.deref"><span>[coerce<wbr>.types<wbr>.deref]</span></a>
 </div>
 
 <ul>
 <li>
-<p><code>&amp;T</code> or <code>&amp;mut T</code> to <code>&amp;U</code> if <code>T</code> implements <code>Deref&lt;Target = U&gt;</code>. For example:</p>
+<p>如果 <code>T</code> 实现了 <code>Deref&lt;Target = U&gt;</code> ，则 <code>&amp;T</code> 或 <code>&amp;mut T</code> 到 <code>&amp;U</code> 。例如：</p>
 <pre class="playground"><code class="language-rust edition2024">use std::ops::Deref;
 
 struct CharContainer {
@@ -390,7 +366,7 @@ fn foo(arg: &amp;char) {}
 
 fn main() {
     let x = &amp;mut CharContainer { value: 'y' };
-    foo(x); //&amp;mut CharContainer is coerced to &amp;char.
+    foo(x); // &amp;mut CharContainer 被隐式转换为 &amp;char。
 }</code></pre>
 </li>
 </ul>
@@ -398,14 +374,14 @@ fn main() {
 </div>
 
 <ul>
-<li><code>&amp;mut T</code> to <code>&amp;mut U</code> if <code>T</code> implements <code>DerefMut&lt;Target = U&gt;</code>.</li>
+<li>如果 <code>T</code> 实现了 <code>DerefMut&lt;Target = U&gt;</code> ，则 <code>&amp;mut T</code> 到 <code>&amp;mut U</code> 。</li>
 </ul>
 <div class="rule" id="r-coerce.types.unsize"><a class="rule-link" href="#r-coerce.types.unsize" title="coerce.types.unsize"><span>[coerce<wbr>.types<wbr>.unsize]</span></a>
 </div>
 
 <ul>
 <li>
-<p>TyCtor(<code>T</code>) to TyCtor(<code>U</code>), where TyCtor(<code>T</code>) is one of</p>
+<p>TyCtor( <code>T</code> ) 到 TyCtor( <code>U</code> )，其中 TyCtor( <code>T</code> ) 是以下之一</p>
 <ul>
 <li><code>&amp;T</code></li>
 <li><code>&amp;mut T</code></li>
@@ -413,7 +389,7 @@ fn main() {
 <li><code>*mut T</code></li>
 <li><code>Box&lt;T&gt;</code></li>
 </ul>
-<p>and where <code>U</code> can be obtained from <code>T</code> by <a href="#unsized-coercions">unsized coercion</a>.</p>
+<p>并且可以通过 <a href="#unsized-coercions">非定长转换</a> 从 <code>T</code> 获得 <code>U</code> 。</p>
   <!--In the future, coerce_inner will be recursively extended to tuples and
   structs. In addition, coercions from subtraits to supertraits will be
   added. See [RFC 401] for more details.-->
@@ -423,58 +399,52 @@ fn main() {
 </div>
 
 <ul>
-<li>Function item types to <code>fn</code> pointers</li>
+<li>函数 项 类型到 <code>fn</code> 指针</li>
 </ul>
 <div class="rule" id="r-coerce.types.closure"><a class="rule-link" href="#r-coerce.types.closure" title="coerce.types.closure"><span>[coerce<wbr>.types<wbr>.closure]</span></a>
 </div>
 
 <ul>
-<li>Non capturing closures to <code>fn</code> pointers</li>
+<li>非捕获闭包到 <code>fn</code> 指针</li>
 </ul>
 <div class="rule" id="r-coerce.types.never"><a class="rule-link" href="#r-coerce.types.never" title="coerce.types.never"><span>[coerce<wbr>.types<wbr>.never]</span></a>
 </div>
 
 <ul>
-<li><code>!</code> to any <code>T</code></li>
+<li><code>!</code> 到任何 <code>T</code></li>
 </ul>
 <div class="rule" id="r-coerce.unsize"><a class="rule-link" href="#r-coerce.unsize" title="coerce.unsize"><span>[coerce<wbr>.unsize]</span></a>
 </div>
 
-<h3 id="unsized-coercions"><a class="header" href="#unsized-coercions">Unsized coercions</a></h3>
+<h3 id="非定长转换"><a class="header" href="#非定长转换">非定长转换</a></h3>
 <div class="rule" id="r-coerce.unsize.intro"><a class="rule-link" href="#r-coerce.unsize.intro" title="coerce.unsize.intro"><span>[coerce<wbr>.unsize<wbr>.intro]</span></a>
 </div>
 
-<p>The following coercions are called <code>unsized coercions</code>, since they
-relate to converting types to unsized types, and are permitted in a few
-cases where other coercions are not, as described above. They can still happen
-anywhere else a coercion can occur.</p>
+<p>以下转换被称为 <code>非定长转换</code> ，因为它们与将类型转换为非定长类型有关，并且在上述其他转换不允许的少数情况下是允许的。它们仍然可以发生在隐式转换可以发生的任何其他地方。</p>
 <div class="rule" id="r-coerce.unsize.trait"><a class="rule-link" href="#r-coerce.unsize.trait" title="coerce.unsize.trait"><span>[coerce<wbr>.unsize<wbr>.trait]</span></a>
 </div>
 
-<p>Two traits, <a href="../core/marker/trait.Unsize.html"><code>Unsize</code></a> and <a href="../core/ops/unsize/trait.CoerceUnsized.html"><code>CoerceUnsized</code></a>, are used
-to assist in this process and expose it for library use. The following
-coercions are built-ins and, if <code>T</code> can be coerced to <code>U</code> with one of them, then
-an implementation of <code>Unsize&lt;U&gt;</code> for <code>T</code> will be provided:</p>
+<p>两个 特型 <a href="../core/marker/trait.Unsize.html"><code>Unsize</code></a> 和 <a href="../core/ops/unsize/trait.CoerceUnsized.html"><code>CoerceUnsized</code></a> 被用于协助此过程并将其公开给库使用。以下转换是内置的，如果 <code>T</code> 可以通过其中之一隐式转换为 <code>U</code> ，则将提供 <code>T</code> 对 <code>Unsize&lt;U&gt;</code> 的实现：</p>
 <div class="rule" id="r-coerce.unsize.slice"><a class="rule-link" href="#r-coerce.unsize.slice" title="coerce.unsize.slice"><span>[coerce<wbr>.unsize<wbr>.slice]</span></a>
 </div>
 
 <ul>
-<li><code>[T; n]</code> to <code>[T]</code>.</li>
+<li><code>[T; n]</code> 到 <code>[T]</code> 。</li>
 </ul>
 <div class="rule" id="r-coerce.unsize.trait-object"><a class="rule-link" href="#r-coerce.unsize.trait-object" title="coerce.unsize.trait-object"><span>[coerce<wbr>.unsize<wbr>.trait-object]</span></a>
 </div>
 
 <ul>
-<li><code>T</code> to <code>dyn U</code>, when <code>T</code> implements <code>U + Sized</code>, and <code>U</code> is <a href="items/traits.html#dyn-compatibility">dyn compatible</a>.</li>
+<li><code>T</code> 到 <code>dyn U</code> ，当 <code>T</code> 实现 <code>U + Sized</code> ，且 <code>U</code> 是 <a href="items/traits.html#dyn-compatibility">dyn 兼容</a> 的。</li>
 </ul>
 <div class="rule" id="r-coerce.unsize.trait-upcast"><a class="rule-link" href="#r-coerce.unsize.trait-upcast" title="coerce.unsize.trait-upcast"><span>[coerce<wbr>.unsize<wbr>.trait-upcast]</span></a>
 </div>
 
 <ul>
-<li><code>dyn T</code> to <code>dyn U</code>, when <code>U</code> is one of <code>T</code>’s <a href="items/traits.html#supertraits">supertraits</a>.
+<li><code>dyn T</code> 到 <code>dyn U</code> ，当 <code>U</code> 是 <code>T</code> 的 <a href="items/traits.html#supertraits">父特型</a> 之一时。
 <ul>
-<li>This allows dropping auto traits, i.e. <code>dyn T + Auto</code> to <code>dyn U</code> is allowed.</li>
-<li>This allows adding auto traits if the principal trait has the auto trait as a super trait, i.e. given <code>trait T: U + Send {}</code>, <code>dyn T</code> to <code>dyn T + Send</code> or to <code>dyn U + Send</code> coercions are allowed.</li>
+<li>这允许丢弃自动特型，即允许 <code>dyn T + Auto</code> 到 <code>dyn U</code> 。</li>
+<li>如果主特型将自动特型作为父特型，则允许添加自动特型，即给定 <code>trait T: U + Send {}</code> ，允许 <code>dyn T</code> 到 <code>dyn T + Send</code> 或到 <code>dyn U + Send</code> 的隐式转换。</li>
 </ul>
 </li>
 </ul>
@@ -482,83 +452,74 @@ an implementation of <code>Unsize&lt;U&gt;</code> for <code>T</code> will be pro
 </div>
 
 <ul>
-<li><code>Foo&lt;..., T, ...&gt;</code> to <code>Foo&lt;..., U, ...&gt;</code>, when:
+<li><code>Foo&lt;..., T, ...&gt;</code> 到 <code>Foo&lt;..., U, ...&gt;</code> ，当：
 <ul>
-<li><code>Foo</code> is a struct.</li>
-<li><code>T</code> implements <code>Unsize&lt;U&gt;</code>.</li>
-<li>The last field of <code>Foo</code> has a type involving <code>T</code>.</li>
-<li>If that field has type <code>Bar&lt;T&gt;</code>, then <code>Bar&lt;T&gt;</code> implements <code>Unsize&lt;Bar&lt;U&gt;&gt;</code>.</li>
-<li>T is not part of the type of any other fields.</li>
+<li><code>Foo</code> 是一个 结构体 。</li>
+<li><code>T</code> 实现了 <code>Unsize&lt;U&gt;</code> 。</li>
+<li><code>Foo</code> 的最后一个字段具有涉及 <code>T</code> 的类型。</li>
+<li>如果该字段的类型为 <code>Bar&lt;T&gt;</code> ，则 <code>Bar&lt;T&gt;</code> 实现了 <code>Unsize&lt;Bar&lt;U&gt;&gt;</code> 。</li>
+<li><code>T</code> 不是任何其他字段类型的一部分。</li>
 </ul>
 </li>
 </ul>
 <div class="rule" id="r-coerce.unsized.pointer"><a class="rule-link" href="#r-coerce.unsized.pointer" title="coerce.unsized.pointer"><span>[coerce<wbr>.unsized<wbr>.pointer]</span></a>
 </div>
 
-<p>Additionally, a type <code>Foo&lt;T&gt;</code> can implement <code>CoerceUnsized&lt;Foo&lt;U&gt;&gt;</code> when <code>T</code>
-implements <code>Unsize&lt;U&gt;</code> or <code>CoerceUnsized&lt;Foo&lt;U&gt;&gt;</code>. This allows it to provide an
-unsized coercion to <code>Foo&lt;U&gt;</code>.</p>
+<p>此外，当 <code>T</code> 实现了 <code>Unsize&lt;U&gt;</code> 或 <code>CoerceUnsized&lt;Foo&lt;U&gt;&gt;</code> 时，类型 <code>Foo&lt;T&gt;</code> 可以实现 <code>CoerceUnsized&lt;Foo&lt;U&gt;&gt;</code> 。这允许它提供到 <code>Foo&lt;U&gt;</code> 的非定长转换。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>While the definition of the unsized coercions and their implementation has been stabilized, the traits themselves are not yet stable and therefore can’t be used directly in stable Rust.</p>
+<p>虽然非定长转换的定义及其实现已经稳定，但特型本身尚未稳定，因此不能在稳定版 Rust 中直接使用。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-coerce.least-upper-bound"><a class="rule-link" href="#r-coerce.least-upper-bound" title="coerce.least-upper-bound"><span>[coerce<wbr>.least-upper-bound]</span></a>
 </div>
 
-<h2 id="least-upper-bound-coercions"><a class="header" href="#least-upper-bound-coercions">Least upper bound coercions</a></h2>
+<h2 id="最小上界转换"><a class="header" href="#最小上界转换">最小上界转换</a></h2>
 <div class="rule" id="r-coerce.least-upper-bound.intro"><a class="rule-link" href="#r-coerce.least-upper-bound.intro" title="coerce.least-upper-bound.intro"><span>[coerce<wbr>.least-upper-bound<wbr>.intro]</span></a>
 </div>
 
-<p>In some contexts, the compiler must coerce together multiple types to try and
-find the most general type. This is called a “Least Upper Bound” coercion.
-LUB coercion is used and only used in the following situations:</p>
+<p>在某些语境中，编译器必须将多个类型一起进行隐式转换，以尝试找到最通用的类型。这被称为 “最小上界” （LUB）转换。LUB 转换仅在以下情况下使用：</p>
 <ul>
-<li>To find the common type for a series of if branches.</li>
-<li>To find the common type for a series of match arms.</li>
-<li>To find the common type for array elements.</li>
-<li>To find the type for the return type of a closure with multiple return statements.</li>
-<li>To check the type for the return type of a function with multiple return statements.</li>
+<li>寻找一系列 <code>if</code> 分支的共同类型。</li>
+<li>寻找一系列 <code>match</code> 臂的共同类型。</li>
+<li>寻找数组元素的共同类型。</li>
+<li>寻找具有多个返回语句的闭包的返回类型。</li>
+<li>检查具有多个返回语句的函数的返回类型。</li>
 </ul>
 <div class="rule" id="r-coerce.least-upper-bound.target"><a class="rule-link" href="#r-coerce.least-upper-bound.target" title="coerce.least-upper-bound.target"><span>[coerce<wbr>.least-upper-bound<wbr>.target]</span></a>
 </div>
 
-<p>In each such case, there are a set of types <code>T0..Tn</code> to be mutually coerced
-to some target type <code>T_t</code>, which is unknown to start.</p>
+<p>在每种情况下，都有一组类型 <code>T0..Tn</code> 需要相互转换为某个目标类型 <code>T_t</code> ，该类型在开始时是未知的。</p>
 <div class="rule" id="r-coerce.least-upper-bound.computation"><a class="rule-link" href="#r-coerce.least-upper-bound.computation" title="coerce.least-upper-bound.computation"><span>[coerce<wbr>.least-upper-bound<wbr>.computation]</span></a>
 </div>
 
-<p>Computing the LUB
-coercion is done iteratively. The target type <code>T_t</code> begins as the type <code>T0</code>.
-For each new type <code>Ti</code>, we consider whether</p>
+<p>计算 LUB 转换是迭代进行的。目标类型 <code>T_t</code> 最初为类型 <code>T0</code> 。对于每个新类型 <code>Ti</code> ，我们考虑：</p>
 <div class="rule" id="r-coerce.least-upper-bound.computation-identity"><a class="rule-link" href="#r-coerce.least-upper-bound.computation-identity" title="coerce.least-upper-bound.computation-identity"><span>[coerce<wbr>.least-upper-bound<wbr>.computation-identity]</span></a>
 </div>
 
 <ul>
-<li>If <code>Ti</code> can be coerced to the current target type <code>T_t</code>, then no change is made.</li>
+<li>如果 <code>Ti</code> 可以隐式转换为当前目标类型 <code>T_t</code> ，则不作更改。</li>
 </ul>
 <div class="rule" id="r-coerce.least-upper-bound.computation-replace"><a class="rule-link" href="#r-coerce.least-upper-bound.computation-replace" title="coerce.least-upper-bound.computation-replace"><span>[coerce<wbr>.least-upper-bound<wbr>.computation-replace]</span></a>
 </div>
 
 <ul>
-<li>Otherwise, check whether <code>T_t</code> can be coerced to <code>Ti</code>; if so, the <code>T_t</code> is
-changed to <code>Ti</code>. (This check is also conditioned on whether all of the source
-expressions considered thus far have implicit coercions.)</li>
+<li>否则，检查 <code>T_t</code> 是否可以隐式转换为 <code>Ti</code> ；如果是，则将 <code>T_t</code> 更改为 <code>Ti</code> 。（此检查还取决于迄今为止考虑的所有源表达式是否都具有隐式转换。）</li>
 </ul>
 <div class="rule" id="r-coerce.least-upper-bound.computation-unify"><a class="rule-link" href="#r-coerce.least-upper-bound.computation-unify" title="coerce.least-upper-bound.computation-unify"><span>[coerce<wbr>.least-upper-bound<wbr>.computation-unify]</span></a>
 </div>
 
 <ul>
-<li>If not, try to compute a mutual supertype of <code>T_t</code> and <code>Ti</code>, which will become the new target type.</li>
+<li>如果都不是，尝试计算 <code>T_t</code> 和 <code>Ti</code> 的共同超类型，这将成为新的目标类型。</li>
 </ul>
-<h3 id="examples"><a class="header" href="#examples">Examples:</a></h3>
+<h3 id="示例"><a class="header" href="#示例">示例：</a></h3>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let (a, b, c) = (0, 1, 2);
-</span>// For if branches
+</span>// 对于 if 分支
 let bar = if true {
     a
 } else if false {
@@ -567,17 +528,17 @@ let bar = if true {
     c
 };
 
-// For match arms
+// 对于 match 臂
 let baw = match 42 {
     0 =&gt; a,
     1 =&gt; b,
     _ =&gt; c,
 };
 
-// For array elements
+// 对于数组元素
 let bax = [a, b, c];
 
-// For closure with multiple return statements
+// 对于具有多个返回语句的闭包
 let clo = || {
     if true {
         a
@@ -589,7 +550,7 @@ let clo = || {
 };
 let baz = clo();
 
-// For type checking of function with multiple return statements
+// 对于具有多个返回语句的函数的类型检查
 fn foo() -&gt; i32 {
     let (a, b, c) = (0, 1, 2);
     match 42 {
@@ -599,13 +560,9 @@ fn foo() -&gt; i32 {
     }
 }
 <span class="boring">}</span></code></pre>
-<p>In these examples, types of the <code>ba*</code> are found by LUB coercion. And the
-compiler checks whether LUB coercion result of <code>a</code>, <code>b</code>, <code>c</code> is <code>i32</code> in the
-processing of the function <code>foo</code>.</p>
-<h3 id="caveat"><a class="header" href="#caveat">Caveat</a></h3>
-<p>This description is obviously informal. Making it more precise is expected to
-proceed as part of a general effort to specify the Rust type checker more
-precisely.</p>
+<p>在这些示例中， <code>ba*</code> 的类型是通过 LUB 转换找到的。并且编译器在处理函数 <code>foo</code> 时会检查 <code>a</code> 、 <code>b</code> 、 <code>c</code> 的 LUB 转换结果是否为 <code>i32</code> 。</p>
+<h3 id="警告"><a class="header" href="#警告">警告</a></h3>
+<p>这种描述显然是非正式的。更精确的描述预计将作为更精确地规范 Rust 类型检查器总体工作的一部分来推进。</p>
 
                     </main>
 

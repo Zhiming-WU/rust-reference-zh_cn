@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-be189161.js"></script>
+        <script src="../toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-expr.return"><a class="rule-link" href="#r-expr.return" title="expr.return"><span>[expr<wbr>.return]</span></a>
 </div>
 
-<h1 id="return-expressions"><a class="header" href="#return-expressions"><code>return</code> expressions</a></h1>
+<h1 id="return表达式"><a class="header" href="#return表达式"><code>return</code>表达式</a></h1>
 <div class="rule" id="r-expr.return.syntax"><a class="rule-link" href="#r-expr.return.syntax" title="expr.return.syntax"><span>[expr<wbr>.return<wbr>.syntax]</span></a>
 </div>
 
@@ -233,12 +233,12 @@ Expression</text>
 <div class="rule" id="r-expr.return.intro"><a class="rule-link" href="#r-expr.return.intro" title="expr.return.intro"><span>[expr<wbr>.return<wbr>.intro]</span></a>
 </div>
 
-<p>Return expressions are denoted with the keyword <code>return</code>.</p>
+<p><code>return</code> 表达式由关键字 <code>return</code> 表示。</p>
 <div class="rule" id="r-expr.return.behavior"><a class="rule-link" href="#r-expr.return.behavior" title="expr.return.behavior"><span>[expr<wbr>.return<wbr>.behavior]</span></a>
 </div>
 
-<p>Evaluating a <code>return</code> expression moves its argument into the designated output location for the current function call, destroys the current function activation frame, and transfers control to the caller frame.</p>
-<p>An example of a <code>return</code> expression:</p>
+<p>求值 <code>return</code> 表达式会将其参数移动到当前函数调用的指定输出位置，销毁当前函数的活动帧，并将控制权转移给调用者帧。</p>
+<p>一个 <code>return</code> 表达式的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn max(a: i32, b: i32) -&gt; i32 {

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-be189161.js"></script>
+        <script src="../toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-expr.operator"><a class="rule-link" href="#r-expr.operator" title="expr.operator"><span>[expr<wbr>.operator]</span></a>
 </div>
 
-<h1 id="operator-expressions"><a class="header" href="#operator-expressions">Operator expressions</a></h1>
+<h1 id="运算符表达式"><a class="header" href="#运算符表达式">运算符表达式</a></h1>
 <div class="rule" id="r-expr.operator.syntax"><a class="rule-link" href="#r-expr.operator.syntax" title="expr.operator.syntax"><span>[expr<wbr>.operator<wbr>.syntax]</span></a>
 </div>
 
@@ -324,61 +324,61 @@ CompoundAssignmentExpression</text>
 <div class="rule" id="r-expr.operator.intro"><a class="rule-link" href="#r-expr.operator.intro" title="expr.operator.intro"><span>[expr<wbr>.operator<wbr>.intro]</span></a>
 </div>
 
-<p>Operators are defined for built in types by the Rust language.</p>
+<p>Rust 语言为内置类型定义了运算符。</p>
 <div class="rule" id="r-expr.operator.trait"><a class="rule-link" href="#r-expr.operator.trait" title="expr.operator.trait"><span>[expr<wbr>.operator<wbr>.trait]</span></a>
 </div>
 
-<p>Many of the following operators can also be overloaded using traits in <code>std::ops</code> or <code>std::cmp</code>.</p>
+<p>下面许多运算符也可以使用 <code>std::ops</code> 或 <code>std::cmp</code> 中的 特型 来重载。</p>
 <div class="rule" id="r-expr.operator.int-overflow"><a class="rule-link" href="#r-expr.operator.int-overflow" title="expr.operator.int-overflow"><span>[expr<wbr>.operator<wbr>.int-overflow]</span></a>
 </div>
 
-<h2 id="overflow"><a class="header" href="#overflow">Overflow</a></h2>
+<h2 id="溢出"><a class="header" href="#溢出">溢出</a></h2>
 <div class="rule" id="r-expr.operator.int-overflow.intro"><a class="rule-link" href="#r-expr.operator.int-overflow.intro" title="expr.operator.int-overflow.intro"><span>[expr<wbr>.operator<wbr>.int-overflow<wbr>.intro]</span></a>
 </div>
 
-<p>Integer operators will panic when they overflow when compiled in debug mode.
-The <code>-C debug-assertions</code> and <code>-C overflow-checks</code> compiler flags can be used to control this more directly.
-The following things are considered to be overflow:</p>
+<p>在调试模式下编译时，整数运算符在溢出时会产生 恐慌 。
+可以使用 <code>-C debug-assertions</code> 和 <code>-C overflow-checks</code> 编译器标志来更直接地控制此行为。
+以下情况被视为溢出：</p>
 <div class="rule" id="r-expr.operator.int-overflow.binary-arith"><a class="rule-link" href="#r-expr.operator.int-overflow.binary-arith" title="expr.operator.int-overflow.binary-arith"><span>[expr<wbr>.operator<wbr>.int-overflow<wbr>.binary-arith]</span></a>
 </div>
 
 <ul>
-<li>When <code>+</code>, <code>*</code> or binary <code>-</code> create a value greater than the maximum value, or less than the minimum value that can be stored.</li>
+<li>当 <code>+</code> 、 <code>*</code> 或二元 <code>-</code> 产生的值大于最大值，或小于可存储的最小值时。</li>
 </ul>
 <div class="rule" id="r-expr.operator.int-overflow.unary-neg"><a class="rule-link" href="#r-expr.operator.int-overflow.unary-neg" title="expr.operator.int-overflow.unary-neg"><span>[expr<wbr>.operator<wbr>.int-overflow<wbr>.unary-neg]</span></a>
 </div>
 
 <ul>
-<li>Applying unary <code>-</code> to the most negative value of any signed integer type, unless the operand is a <a href="literal-expr.html#integer-literal-expressions">literal expression</a> (or a literal expression standing alone inside one or more <a href="grouped-expr.html">grouped expressions</a>).</li>
+<li>对任何有符号整数类型的最小负值应用一元 <code>-</code> ，除非操作数是 <a href="literal-expr.html#integer-literal-expressions">字面量表达式</a> （或单独存在于一个或多个 <a href="grouped-expr.html">分组表达式</a> 中的字面量表达式）。</li>
 </ul>
 <div class="rule" id="r-expr.operator.int-overflow.div"><a class="rule-link" href="#r-expr.operator.int-overflow.div" title="expr.operator.int-overflow.div"><span>[expr<wbr>.operator<wbr>.int-overflow<wbr>.div]</span></a>
 </div>
 
 <ul>
-<li>Using <code>/</code> or <code>%</code>, where the left-hand argument is the smallest integer of a signed integer type and the right-hand argument is <code>-1</code>.
-These checks occur even when <code>-C overflow-checks</code> is disabled, for legacy reasons.</li>
+<li>使用 <code>/</code> 或 <code>%</code> ，其中左侧参数是有符号整数类型的最小整数，而右侧参数是 <code>-1</code> 。
+由于历史原因，即使禁用了 <code>-C overflow-checks</code> ，也会进行这些检查。</li>
 </ul>
 <div class="rule" id="r-expr.operator.int-overflow.shift"><a class="rule-link" href="#r-expr.operator.int-overflow.shift" title="expr.operator.int-overflow.shift"><span>[expr<wbr>.operator<wbr>.int-overflow<wbr>.shift]</span></a>
 </div>
 
 <ul>
-<li>Using <code>&lt;&lt;</code> or <code>&gt;&gt;</code> where the right-hand argument is greater than or equal to the number of bits in the type of the left-hand argument, or is negative.</li>
+<li>使用 <code>&lt;&lt;</code> 或 <code>&gt;&gt;</code> ，其中右侧参数大于或等于左侧参数类型中的位数，或者是负数。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The exception for literal expressions behind unary <code>-</code> means that forms such as <code>-128_i8</code> or <code>let j: i8 = -(128)</code> never cause a panic and have the expected value of -128.</p>
-<p>In these cases, the literal expression already has the most negative value for its type (for example, <code>128_i8</code> has the value -128) because integer literals are truncated to their type per the description in <a href="literal-expr.html#integer-literal-expressions">Integer literal expressions</a>.</p>
-<p>Negation of these most negative values leaves the value unchanged due to two’s complement overflow conventions.</p>
-<p>In <code>rustc</code>, these most negative expressions are also ignored by the <code>overflowing_literals</code> lint check.</p>
+<p>一元 <code>-</code> 后的字面量表达式的例外情况意味着诸如 <code>-128_i8</code> 或 <code>let j: i8 = -(128)</code> 之类的形式永远不会导致 恐慌 ，并且具有预期的值 -128。</p>
+<p>在这些情况下，字面量表达式已经具有其类型的最小负值（例如， <code>128_i8</code> 的值为 -128），因为整数字面量会根据 <a href="literal-expr.html#integer-literal-expressions">整数字面量表达式</a> 中的描述被截断为其类型。</p>
+<p>由于补码溢出约定，这些最小负值的取负操作保持原值不变。</p>
+<p>在 <code>rustc</code> 中，这些最小负数表达式也会被 <code>overflowing_literals</code> lint 检查忽略。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-expr.operator.borrow"><a class="rule-link" href="#r-expr.operator.borrow" title="expr.operator.borrow"><span>[expr<wbr>.operator<wbr>.borrow]</span></a>
 </div>
 
-<h2 id="borrow-operators"><a class="header" href="#borrow-operators">Borrow operators</a></h2>
+<h2 id="借用运算符"><a class="header" href="#借用运算符">借用运算符</a></h2>
 <div class="rule" id="r-expr.operator.borrow.syntax"><a class="rule-link" href="#r-expr.operator.borrow.syntax" title="expr.operator.borrow.syntax"><span>[expr<wbr>.operator<wbr>.borrow<wbr>.syntax]</span></a>
 </div>
 
@@ -551,50 +551,50 @@ Expression</text>
 <div class="rule" id="r-expr.operator.borrow.intro"><a class="rule-link" href="#r-expr.operator.borrow.intro" title="expr.operator.borrow.intro"><span>[expr<wbr>.operator<wbr>.borrow<wbr>.intro]</span></a>
 </div>
 
-<p>The <code>&amp;</code> (shared borrow) and <code>&amp;mut</code> (mutable borrow) operators are unary prefix operators.</p>
+<p><code>&amp;</code> （共享借用）和 <code>&amp;mut</code> （可变借用）运算符是一元前缀运算符。</p>
 <div class="rule" id="r-expr.operator.borrow.result"><a class="rule-link" href="#r-expr.operator.borrow.result" title="expr.operator.borrow.result"><span>[expr<wbr>.operator<wbr>.borrow<wbr>.result]</span></a>
 </div>
 
-<p>When applied to a <a href="../expressions.html#place-expressions-and-value-expressions">place expression</a>, this expressions produces a reference (pointer) to the location that the value refers to.</p>
+<p>当应用于 <a href="../expressions.html#place-expressions-and-value-expressions">位置表达式</a> 时，此表达式会产生一个指向该值所引用的位置的引用（指针）。</p>
 <div class="rule" id="r-expr.operator.borrow.lifetime"><a class="rule-link" href="#r-expr.operator.borrow.lifetime" title="expr.operator.borrow.lifetime"><span>[expr<wbr>.operator<wbr>.borrow<wbr>.lifetime]</span></a>
 </div>
 
-<p>The memory location is also placed into a borrowed state for the duration of the reference.
-For a shared borrow (<code>&amp;</code>), this implies that the place may not be mutated, but it may be read or shared again.
-For a mutable borrow (<code>&amp;mut</code>), the place may not be accessed in any way until the borrow expires.</p>
+<p>在引用的持续时间内，内存位置也处于借用状态。
+对于共享借用（ <code>&amp;</code> ），这意味着该位置不可被修改，但可以被读取或再次共享。
+对于可变借用（ <code>&amp;mut</code> ），在借用过期之前，不能以任何方式访问该位置。</p>
 <div class="rule" id="r-expr.operator.borrow.mut"><a class="rule-link" href="#r-expr.operator.borrow.mut" title="expr.operator.borrow.mut"><span>[expr<wbr>.operator<wbr>.borrow<wbr>.mut]</span></a>
 </div>
 
-<p><code>&amp;mut</code> evaluates its operand in a mutable place expression context.</p>
+<p><code>&amp;mut</code> 在可变位置表达式语境中对其操作数求值。</p>
 <div class="rule" id="r-expr.operator.borrow.temporary"><a class="rule-link" href="#r-expr.operator.borrow.temporary" title="expr.operator.borrow.temporary"><span>[expr<wbr>.operator<wbr>.borrow<wbr>.temporary]</span></a>
 </div>
 
-<p>If the <code>&amp;</code> or <code>&amp;mut</code> operators are applied to a <a href="../expressions.html#place-expressions-and-value-expressions">value expression</a>, then a <a href="../expressions.html#temporaries">temporary value</a> is created.</p>
-<p>These operators cannot be overloaded.</p>
+<p>如果 <code>&amp;</code> 或 <code>&amp;mut</code> 运算符应用于 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式</a> ，则会创建一个 <a href="../expressions.html#temporaries">临时值</a> 。</p>
+<p>这些运算符不能被重载。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>{
-    // a temporary with value 7 is created that lasts for this scope.
+    // 创建一个值为 7 的临时变量，持续作用域为当前块。
     let shared_reference = &amp;7;
 }
 let mut array = [-2, 3, 9];
 {
-    // Mutably borrows `array` for this scope.
-    // `array` may only be used through `mutable_reference`.
+    // 在此作用域内可变地借用 `array`。
+    // `array` 只能通过 `mutable_reference` 使用。
     let mutable_reference = &amp;mut array;
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-expr.borrow.and-and-syntax"><a class="rule-link" href="#r-expr.borrow.and-and-syntax" title="expr.borrow.and-and-syntax"><span>[expr<wbr>.borrow<wbr>.and-and-syntax]</span></a>
 </div>
 
-<p>Even though <code>&amp;&amp;</code> is a single token (<a href="#lazy-boolean-operators">the lazy ‘and’ operator</a>), when used in the context of borrow expressions it works as two borrows:</p>
+<p>尽管 <code>&amp;&amp;</code> 是单个 词法单元 （ <a href="#lazy-boolean-operators">惰性 ‘与’ 运算符</a> ），但在借用表达式的语境中使用时，它的作用相当于两次借用：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// same meanings:
+</span>// 含义相同：
 let a = &amp;&amp;  10;
 let a = &amp; &amp; 10;
 
-// same meanings:
+// 含义相同：
 let a = &amp;&amp;&amp;&amp;  mut 10;
 let a = &amp;&amp; &amp;&amp; mut 10;
 let a = &amp; &amp; &amp; &amp; mut 10;
@@ -602,25 +602,25 @@ let a = &amp; &amp; &amp; &amp; mut 10;
 <div class="rule" id="r-expr.borrow.raw"><a class="rule-link" href="#r-expr.borrow.raw" title="expr.borrow.raw"><span>[expr<wbr>.borrow<wbr>.raw]</span></a>
 </div>
 
-<h3 id="raw-borrow-operators"><a class="header" href="#raw-borrow-operators">Raw borrow operators</a></h3>
+<h3 id="原始借用运算符"><a class="header" href="#原始借用运算符">原始借用运算符</a></h3>
 <div class="rule" id="r-expr.borrow.raw.intro"><a class="rule-link" href="#r-expr.borrow.raw.intro" title="expr.borrow.raw.intro"><span>[expr<wbr>.borrow<wbr>.raw<wbr>.intro]</span></a>
 </div>
 
-<p><code>&amp;raw const</code> and <code>&amp;raw mut</code> are the <em>raw borrow operators</em>.</p>
+<p><code>&amp;raw const</code> 和 <code>&amp;raw mut</code> 是 <em>原始借用运算符</em> 。</p>
 <div class="rule" id="r-expr.borrow.raw.place"><a class="rule-link" href="#r-expr.borrow.raw.place" title="expr.borrow.raw.place"><span>[expr<wbr>.borrow<wbr>.raw<wbr>.place]</span></a>
 </div>
 
-<p>The operand expression of these operators is evaluated in place expression context.</p>
+<p>这些运算符的操作数表达式在位置表达式语境中求值。</p>
 <div class="rule" id="r-expr.borrow.raw.result"><a class="rule-link" href="#r-expr.borrow.raw.result" title="expr.borrow.raw.result"><span>[expr<wbr>.borrow<wbr>.raw<wbr>.result]</span></a>
 </div>
 
-<p><code>&amp;raw const expr</code> then creates a const raw pointer of type <code>*const T</code> to the given place, and <code>&amp;raw mut expr</code> creates a mutable raw pointer of type <code>*mut T</code>.</p>
+<p><code>&amp;raw const expr</code> 随后会创建一个指向给定位置的 <code>*const T</code> 类型的常量原始指针，而 <code>&amp;raw mut expr</code> 会创建一个 <code>*mut T</code> 类型的可变原始指针。</p>
 <div class="rule" id="r-expr.borrow.raw.invalid-ref"><a class="rule-link" href="#r-expr.borrow.raw.invalid-ref" title="expr.borrow.raw.invalid-ref"><span>[expr<wbr>.borrow<wbr>.raw<wbr>.invalid-ref]</span></a>
 </div>
 
-<p>The raw borrow operators must be used instead of a borrow operator whenever the place expression could evaluate to a place that is not properly aligned or does not store a valid value as determined by its type, or whenever creating a reference would introduce incorrect aliasing assumptions.
-In those situations, using a borrow operator would cause <a href="../behavior-considered-undefined.html">undefined behavior</a> by creating an invalid reference, but a raw pointer may still be constructed.</p>
-<p>The following is an example of creating a raw pointer to an unaligned place through a <code>packed</code> struct:</p>
+<p>每当位置表达式可能求得的位置未正确对齐，或者根据其类型未存储有效值，或者创建引用会引入不正确的别名假设时，必须使用原始借用运算符而不是借用运算符。
+在这些情况下，使用借用运算符会因创建无效引用而导致 <a href="../behavior-considered-undefined.html">未定义行为</a> ，但仍可以构造原始指针。</p>
+<p>以下是通过 <code>packed</code> 结构体 创建指向未对齐位置的原始指针的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[repr(packed)]
@@ -630,11 +630,11 @@ struct Packed {
 }
 
 let packed = Packed { f1: 1, f2: 2 };
-// `&amp;packed.f2` would create an unaligned reference, and thus be undefined behavior!
+// `&amp;packed.f2` 会创建一个未对齐的引用，因此会导致未定义行为！
 let raw_f2 = &amp;raw const packed.f2;
 assert_eq!(unsafe { raw_f2.read_unaligned() }, 2);
 <span class="boring">}</span></code></pre>
-<p>The following is an example of creating a raw pointer to a place that does not contain a valid value:</p>
+<p>以下是创建指向不包含有效值的位置的原始指针的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::mem::MaybeUninit;
@@ -644,8 +644,8 @@ struct Demo {
 }
 
 let mut uninit = MaybeUninit::&lt;Demo&gt;::uninit();
-// `&amp;uninit.as_mut().field` would create a reference to an uninitialized `bool`,
-// and thus be undefined behavior!
+// `&amp;uninit.as_mut().field` 会创建一个对未初始化 `bool` 的引用，
+// 因此会导致未定义行为！
 let f1_ptr = unsafe { &amp;raw mut (*uninit.as_mut_ptr()).field };
 unsafe { f1_ptr.write(true); }
 let init = unsafe { uninit.assume_init() };
@@ -653,7 +653,7 @@ let init = unsafe { uninit.assume_init() };
 <div class="rule" id="r-expr.deref"><a class="rule-link" href="#r-expr.deref" title="expr.deref"><span>[expr<wbr>.deref]</span></a>
 </div>
 
-<h2 id="the-dereference-operator"><a class="header" href="#the-dereference-operator">The dereference operator</a></h2>
+<h2 id="解引用运算符"><a class="header" href="#解引用运算符">解引用运算符</a></h2>
 <div class="rule" id="r-expr.deref.syntax"><a class="rule-link" href="#r-expr.deref.syntax" title="expr.deref.syntax"><span>[expr<wbr>.deref<wbr>.syntax]</span></a>
 </div>
 
@@ -702,23 +702,23 @@ Expression</text>
 <div class="rule" id="r-expr.deref.intro"><a class="rule-link" href="#r-expr.deref.intro" title="expr.deref.intro"><span>[expr<wbr>.deref<wbr>.intro]</span></a>
 </div>
 
-<p>The <code>*</code> (dereference) operator is also a unary prefix operator.</p>
+<p><code>*</code> （解引用）运算符也是一元前缀运算符。</p>
 <div class="rule" id="r-expr.deref.result"><a class="rule-link" href="#r-expr.deref.result" title="expr.deref.result"><span>[expr<wbr>.deref<wbr>.result]</span></a>
 </div>
 
-<p>When applied to a <a href="../types/pointer.html">pointer</a> it denotes the pointed-to location.</p>
+<p>当应用于 <a href="../types/pointer.html">指针</a> 时，它表示指向的位置。</p>
 <div class="rule" id="r-expr.deref.mut"><a class="rule-link" href="#r-expr.deref.mut" title="expr.deref.mut"><span>[expr<wbr>.deref<wbr>.mut]</span></a>
 </div>
 
-<p>If the expression is of type <code>&amp;mut T</code> or <code>*mut T</code>, and is either a local variable, a (nested) field of a local variable or is a mutable <a href="../expressions.html#place-expressions-and-value-expressions">place expression</a>, then the resulting memory location can be assigned to.</p>
+<p>如果表达式的类型是 <code>&amp;mut T</code> 或 <code>*mut T</code> ，并且是局部变量、局部变量的（嵌套）字段或可变 <a href="../expressions.html#place-expressions-and-value-expressions">位置表达式</a> ，则可以对产生的内存位置进行赋值。</p>
 <div class="rule" id="r-expr.deref.safety"><a class="rule-link" href="#r-expr.deref.safety" title="expr.deref.safety"><span>[expr<wbr>.deref<wbr>.safety]</span></a>
 </div>
 
-<p>Dereferencing a raw pointer requires <code>unsafe</code>.</p>
+<p>对原始指针进行解引用需要 <code>unsafe</code> 。</p>
 <div class="rule" id="r-expr.deref.traits"><a class="rule-link" href="#r-expr.deref.traits" title="expr.deref.traits"><span>[expr<wbr>.deref<wbr>.traits]</span></a>
 </div>
 
-<p>On non-pointer types <code>*x</code> is equivalent to <code>*std::ops::Deref::deref(&amp;x)</code> in an <a href="../expressions.html#mutability">immutable place expression context</a> and <code>*std::ops::DerefMut::deref_mut(&amp;mut x)</code> in a mutable place expression context.</p>
+<p>在 <a href="../expressions.html#mutability">不可变位置表达式语境</a> 中，对于非指针类型， <code>*x</code> 等价于 <code>*std::ops::Deref::deref(&amp;x)</code> ；在可变位置表达式语境中，等价于 <code>*std::ops::DerefMut::deref_mut(&amp;mut x)</code> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = &amp;7;
@@ -730,7 +730,7 @@ assert_eq!(*y, 11);
 <div class="rule" id="r-expr.try"><a class="rule-link" href="#r-expr.try" title="expr.try"><span>[expr<wbr>.try]</span></a>
 </div>
 
-<h2 id="the-try-propagation-expression"><a class="header" href="#the-try-propagation-expression">The try propagation expression</a></h2>
+<h2 id="try传播表达式"><a class="header" href="#try传播表达式">try传播表达式</a></h2>
 <div class="rule" id="r-expr.try.syntax"><a class="rule-link" href="#r-expr.try.syntax" title="expr.try.syntax"><span>[expr<wbr>.try<wbr>.syntax]</span></a>
 </div>
 
@@ -779,7 +779,7 @@ Expression</text>
 <div class="rule" id="r-expr.try.intro"><a class="rule-link" href="#r-expr.try.intro" title="expr.try.intro"><span>[expr<wbr>.try<wbr>.intro]</span></a>
 </div>
 
-<p>The try propagation expression uses the value of the inner expression and the <a href="../../core/ops/try_trait/trait.Try.html"><code>Try</code></a> trait to decide whether to produce a value, and if so, what value to produce, or whether to return a value to the caller, and if so, what value to return.</p>
+<p>try 传播表达式使用内部表达式的值和 <a href="../../core/ops/try_trait/trait.Try.html"><code>Try</code></a> 特型 来决定是产生一个值（如果产生，产生什么值），还是向调用者返回一个值（如果返回，返回什么值）。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -788,9 +788,9 @@ Expression</text>
 </span><span class="boring">fn main() {
 </span><span class="boring">use std::num::ParseIntError;
 </span>fn try_to_parse() -&gt; Result&lt;i32, ParseIntError&gt; {
-    let x: i32 = "123".parse()?; // `x` is `123`.
-    let y: i32 = "24a".parse()?; // Returns an `Err()` immediately.
-    Ok(x + y)                    // Doesn't run.
+    let x: i32 = "123".parse()?; // `x` 是 `123`。
+    let y: i32 = "24a".parse()?; // 立即返回 `Err()`。
+    Ok(x + y)                    // 不运行。
 }
 
 let res = try_to_parse();
@@ -854,8 +854,8 @@ impl&lt;T&gt; TreeNode&lt;T&gt; {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The <a href="../../core/ops/try_trait/trait.Try.html"><code>Try</code></a> trait is currently unstable, and thus cannot be implemented for user types.</p>
-<p>The try propagation expression is currently roughly equivalent to:</p>
+<p><a href="../../core/ops/try_trait/trait.Try.html"><code>Try</code></a> 特型 目前不稳定，因此不能为用户类型实现。</p>
+<p>try 传播表达式目前大致等价于：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">#![ feature(try_trait_v2) ]
@@ -876,53 +876,53 @@ impl&lt;T&gt; TreeNode&lt;T&gt; {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The try propagation operator is sometimes called <em>the question mark operator</em>, <em>the <code>?</code> operator</em>, or <em>the try operator</em>.</p>
+<p>try 传播运算符有时被称为 <em>问号运算符</em> 、 <em><code>?</code> 运算符</em> 或 <em>try 运算符</em> 。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-expr.try.restricted-types"><a class="rule-link" href="#r-expr.try.restricted-types" title="expr.try.restricted-types"><span>[expr<wbr>.try<wbr>.restricted-types]</span></a>
 </div>
 
-<p>The try propagation operator can be applied to expressions with the type of:</p>
+<p>try 传播运算符可以应用于具有以下类型的表达式：</p>
 <ul>
 <li><a href="../../core/result/enum.Result.html"><code>Result&lt;T, E&gt;</code></a>
 <ul>
-<li><code>Result::Ok(val)</code> evaluates to <code>val</code>.</li>
-<li><code>Result::Err(e)</code> returns <code>Result::Err(From::from(e))</code>.</li>
+<li><code>Result::Ok(val)</code> 求值为 <code>val</code> 。</li>
+<li><code>Result::Err(e)</code> 返回 <code>Result::Err(From::from(e))</code> 。</li>
 </ul>
 </li>
 <li><a href="../../core/option/enum.Option.html"><code>Option&lt;T&gt;</code></a>
 <ul>
-<li><code>Option::Some(val)</code> evaluates to <code>val</code>.</li>
-<li><code>Option::None</code> returns <code>Option::None</code>.</li>
+<li><code>Option::Some(val)</code> 求值为 <code>val</code> 。</li>
+<li><code>Option::None</code> 返回 <code>Option::None</code> 。</li>
 </ul>
 </li>
 <li><a href="../../core/ops/control_flow/enum.ControlFlow.html"><code>ControlFlow&lt;B, C&gt;</code></a>
 <ul>
-<li><code>ControlFlow::Continue(c)</code> evaluates to <code>c</code>.</li>
-<li><code>ControlFlow::Break(b)</code> returns <code>ControlFlow::Break(b)</code>.</li>
+<li><code>ControlFlow::Continue(c)</code> 求值为 <code>c</code> 。</li>
+<li><code>ControlFlow::Break(b)</code> 返回 <code>ControlFlow::Break(b)</code> 。</li>
 </ul>
 </li>
 <li><a href="../../core/task/poll/enum.Poll.html"><code>Poll&lt;Result&lt;T, E&gt;&gt;</code></a>
 <ul>
-<li><code>Poll::Ready(Ok(val))</code> evaluates to <code>Poll::Ready(val)</code>.</li>
-<li><code>Poll::Ready(Err(e))</code> returns <code>Poll::Ready(Err(From::from(e)))</code>.</li>
-<li><code>Poll::Pending</code> evaluates to <code>Poll::Pending</code>.</li>
+<li><code>Poll::Ready(Ok(val))</code> 求值为 <code>Poll::Ready(val)</code> 。</li>
+<li><code>Poll::Ready(Err(e))</code> 返回 <code>Poll::Ready(Err(From::from(e)))</code> 。</li>
+<li><code>Poll::Pending</code> 求值为 <code>Poll::Pending</code> 。</li>
 </ul>
 </li>
 <li><a href="../../core/task/poll/enum.Poll.html"><code>Poll&lt;Option&lt;Result&lt;T, E&gt;&gt;&gt;</code></a>
 <ul>
-<li><code>Poll::Ready(Some(Ok(val)))</code> evaluates to <code>Poll::Ready(Some(val))</code>.</li>
-<li><code>Poll::Ready(Some(Err(e)))</code> returns <code>Poll::Ready(Some(Err(From::from(e))))</code>.</li>
-<li><code>Poll::Ready(None)</code> evaluates to <code>Poll::Ready(None)</code>.</li>
-<li><code>Poll::Pending</code> evaluates to <code>Poll::Pending</code>.</li>
+<li><code>Poll::Ready(Some(Ok(val)))</code> 求值为 <code>Poll::Ready(Some(val))</code> 。</li>
+<li><code>Poll::Ready(Some(Err(e)))</code> 返回 <code>Poll::Ready(Some(Err(From::from(e))))</code> 。</li>
+<li><code>Poll::Ready(None)</code> 求值为 <code>Poll::Ready(None)</code> 。</li>
+<li><code>Poll::Pending</code> 求值为 <code>Poll::Pending</code> 。</li>
 </ul>
 </li>
 </ul>
 <div class="rule" id="r-expr.negate"><a class="rule-link" href="#r-expr.negate" title="expr.negate"><span>[expr<wbr>.negate]</span></a>
 </div>
 
-<h2 id="negation-operators"><a class="header" href="#negation-operators">Negation operators</a></h2>
+<h2 id="求负运算符"><a class="header" href="#求负运算符">求负运算符</a></h2>
 <div class="rule" id="r-expr.negate.syntax"><a class="rule-link" href="#r-expr.negate.syntax" title="expr.negate.syntax"><span>[expr<wbr>.negate<wbr>.syntax]</span></a>
 </div>
 
@@ -991,26 +991,26 @@ Expression</text>
 <div class="rule" id="r-expr.negate.intro"><a class="rule-link" href="#r-expr.negate.intro" title="expr.negate.intro"><span>[expr<wbr>.negate<wbr>.intro]</span></a>
 </div>
 
-<p>These are the last two unary operators.</p>
+<p>这是最后两个一元运算符。</p>
 <div class="rule" id="r-expr.negate.results"><a class="rule-link" href="#r-expr.negate.results" title="expr.negate.results"><span>[expr<wbr>.negate<wbr>.results]</span></a>
 </div>
 
-<p>This table summarizes the behavior of them on primitive types and which traits are used to overload these operators for other types.
-Remember that signed integers are always represented using two’s complement.
-The operands of all of these operators are evaluated in <a href="../expressions.html#place-expressions-and-value-expressions">value expression context</a> so are moved or copied.</p>
+<p>下表总结了它们在原始类型上的行为，以及用于为其他类型重载这些运算符的 特型 。
+请记住，有符号整数始终使用补码表示。
+所有这些运算符的操作数都在 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式语境</a> 中求值，因此会被移动或复制。</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Symbol</th><th>Integer</th><th><code>bool</code></th><th>Floating Point</th><th>Overloading Trait</th></tr>
+<tr><th>符号</th><th>整数</th><th><code>bool</code></th><th>浮点数</th><th>重载特型</th></tr>
 </thead>
 <tbody>
-<tr><td><code>-</code></td><td>Negation*</td><td></td><td>Negation</td><td><code>std::ops::Neg</code></td></tr>
-<tr><td><code>!</code></td><td>Bitwise NOT</td><td><a href="../types/boolean.html#logical-not">Logical NOT</a></td><td></td><td><code>std::ops::Not</code></td></tr>
+<tr><td><code>-</code></td><td>取负*</td><td></td><td>取负</td><td><code>std::ops::Neg</code></td></tr>
+<tr><td><code>!</code></td><td>按位取反</td><td><a href="../types/boolean.html#logical-not">逻辑非</a></td><td></td><td><code>std::ops::Not</code></td></tr>
 </tbody>
 </table>
 </div>
-<p>* Only for signed integer types.</p>
-<p>Here are some example of these operators</p>
+<p>* 仅适用于有符号整数类型。</p>
+<p>以下是这些运算符的一些示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = 6;
@@ -1021,7 +1021,7 @@ assert_eq!(true, !false);
 <div class="rule" id="r-expr.arith-logic"><a class="rule-link" href="#r-expr.arith-logic" title="expr.arith-logic"><span>[expr<wbr>.arith-logic]</span></a>
 </div>
 
-<h2 id="arithmetic-and-logical-binary-operators"><a class="header" href="#arithmetic-and-logical-binary-operators">Arithmetic and logical binary operators</a></h2>
+<h2 id="算术和逻辑二元运算符"><a class="header" href="#算术和逻辑二元运算符">算术和逻辑二元运算符</a></h2>
 <div class="rule" id="r-expr.arith-logic.syntax"><a class="rule-link" href="#r-expr.arith-logic.syntax" title="expr.arith-logic.syntax"><span>[expr<wbr>.arith-logic<wbr>.syntax]</span></a>
 </div>
 
@@ -1306,38 +1306,37 @@ Expression</text>
 <div class="rule" id="r-expr.arith-logic.intro"><a class="rule-link" href="#r-expr.arith-logic.intro" title="expr.arith-logic.intro"><span>[expr<wbr>.arith-logic<wbr>.intro]</span></a>
 </div>
 
-<p>Binary operators expressions are all written with infix notation.</p>
+<p>二元运算符表达式都使用中缀记法编写。</p>
 <div class="rule" id="r-expr.arith-logic.behavior"><a class="rule-link" href="#r-expr.arith-logic.behavior" title="expr.arith-logic.behavior"><span>[expr<wbr>.arith-logic<wbr>.behavior]</span></a>
 </div>
 
-<p>This table summarizes the behavior of arithmetic and logical binary operators on primitive types and which traits are used to overload these operators for other types.
-Remember that signed integers are always represented using two’s complement.
-The operands of all of these operators are evaluated in <a href="../expressions.html#place-expressions-and-value-expressions">value expression context</a> so are moved or copied.</p>
+<p>下表总结了算术和逻辑二元运算符在原始类型上的行为，以及用于为其他类型重载这些运算符的 特型 。
+请记住，有符号整数始终使用补码表示。
+所有这些运算符的操作数都在 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式语境</a> 中求值，因此会被移动或复制。</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Symbol</th><th>Integer</th><th><code>bool</code></th><th>Floating Point</th><th>Overloading Trait</th><th>Overloading Compound Assignment Trait</th></tr>
+<tr><th>符号</th><th>整数</th><th><code>bool</code></th><th>浮点数</th><th>重载特型</th><th>重载复合赋值特型</th></tr>
 </thead>
 <tbody>
-<tr><td><code>+</code></td><td>Addition</td><td></td><td>Addition</td><td><code>std::ops::Add</code></td><td><code>std::ops::AddAssign</code></td></tr>
-<tr><td><code>-</code></td><td>Subtraction</td><td></td><td>Subtraction</td><td><code>std::ops::Sub</code></td><td><code>std::ops::SubAssign</code></td></tr>
-<tr><td><code>*</code></td><td>Multiplication</td><td></td><td>Multiplication</td><td><code>std::ops::Mul</code></td><td><code>std::ops::MulAssign</code></td></tr>
-<tr><td><code>/</code></td><td>Division*†</td><td></td><td>Division</td><td><code>std::ops::Div</code></td><td><code>std::ops::DivAssign</code></td></tr>
-<tr><td><code>%</code></td><td>Remainder**†</td><td></td><td>Remainder</td><td><code>std::ops::Rem</code></td><td><code>std::ops::RemAssign</code></td></tr>
-<tr><td><code>&amp;</code></td><td>Bitwise AND</td><td><a href="../types/boolean.html#logical-and">Logical AND</a></td><td></td><td><code>std::ops::BitAnd</code></td><td><code>std::ops::BitAndAssign</code></td></tr>
-<tr><td><code>|</code></td><td>Bitwise OR</td><td><a href="../types/boolean.html#logical-or">Logical OR</a></td><td></td><td><code>std::ops::BitOr</code></td><td><code>std::ops::BitOrAssign</code></td></tr>
-<tr><td><code>^</code></td><td>Bitwise XOR</td><td><a href="../types/boolean.html#logical-xor">Logical XOR</a></td><td></td><td><code>std::ops::BitXor</code></td><td><code>std::ops::BitXorAssign</code></td></tr>
-<tr><td><code>&lt;&lt;</code></td><td>Left Shift</td><td></td><td></td><td><code>std::ops::Shl</code></td><td><code>std::ops::ShlAssign</code></td></tr>
-<tr><td><code>&gt;&gt;</code></td><td>Right Shift***</td><td></td><td></td><td><code>std::ops::Shr</code></td><td><code>std::ops::ShrAssign</code></td></tr>
+<tr><td><code>+</code></td><td>加法</td><td></td><td>加法</td><td><code>std::ops::Add</code></td><td><code>std::ops::AddAssign</code></td></tr>
+<tr><td><code>-</code></td><td>减法</td><td></td><td>减法</td><td><code>std::ops::Sub</code></td><td><code>std::ops::SubAssign</code></td></tr>
+<tr><td><code>*</code></td><td>乘法</td><td></td><td>乘法</td><td><code>std::ops::Mul</code></td><td><code>std::ops::MulAssign</code></td></tr>
+<tr><td><code>/</code></td><td>除法*†</td><td></td><td>除法</td><td><code>std::ops::Div</code></td><td><code>std::ops::DivAssign</code></td></tr>
+<tr><td><code>%</code></td><td>取余**†</td><td></td><td>取余</td><td><code>std::ops::Rem</code></td><td><code>std::ops::RemAssign</code></td></tr>
+<tr><td><code>&amp;</code></td><td>按位与</td><td><a href="../types/boolean.html#logical-and">逻辑与</a></td><td></td><td><code>std::ops::BitAnd</code></td><td><code>std::ops::BitAndAssign</code></td></tr>
+<tr><td>`</td><td>`</td><td>按位或</td><td><a href="../types/boolean.html#logical-or">逻辑或</a></td><td></td><td><code>std::ops::BitOr</code></td></tr>
+<tr><td><code>^</code></td><td>按位异或</td><td><a href="../types/boolean.html#logical-xor">逻辑异或</a></td><td></td><td><code>std::ops::BitXor</code></td><td><code>std::ops::BitXorAssign</code></td></tr>
+<tr><td><code>&lt;&lt;</code></td><td>左移</td><td></td><td></td><td><code>std::ops::Shl</code></td><td><code>std::ops::ShlAssign</code></td></tr>
+<tr><td><code>&gt;&gt;</code></td><td>右移***</td><td></td><td></td><td><code>std::ops::Shr</code></td><td><code>std::ops::ShrAssign</code></td></tr>
 </tbody>
 </table>
 </div>
-<p>* Integer division rounds towards zero.</p>
-<p>** Rust uses a remainder defined with <a href="https://en.wikipedia.org/wiki/Modulo_operation#Variants_of_the_definition">truncating division</a>. Given <code>remainder = dividend % divisor</code>, the remainder will have the same sign as the dividend.</p>
-<p>*** Arithmetic right shift on signed integer types, logical right shift on
-unsigned integer types.</p>
-<p>† For integer types, division by zero panics.</p>
-<p>Here are examples of these operators being used.</p>
+<p>* 整数除法向零舍入。</p>
+<p>** Rust 使用由 <a href="https://en.wikipedia.org/wiki/Modulo_operation#Variants_of_the_definition">截断除法</a> 定义的余数。给定 <code>remainder = dividend % divisor</code> ，余数将与被除数具有相同的符号。</p>
+<p>*** 有符号整数类型为算术右移，无符号整数类型为逻辑右移。</p>
+<p>† 对于整数类型，除以零会产生 恐慌 。</p>
+<p>以下是正在使用的这些运算符的示例。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>assert_eq!(3 + 6, 9);
@@ -1354,7 +1353,7 @@ assert_eq!(-10 &gt;&gt; 2, -3);
 <div class="rule" id="r-expr.cmp"><a class="rule-link" href="#r-expr.cmp" title="expr.cmp"><span>[expr<wbr>.cmp]</span></a>
 </div>
 
-<h2 id="comparison-operators"><a class="header" href="#comparison-operators">Comparison operators</a></h2>
+<h2 id="比较运算符"><a class="header" href="#比较运算符">比较运算符</a></h2>
 <div class="rule" id="r-expr.cmp.syntax"><a class="rule-link" href="#r-expr.cmp.syntax" title="expr.cmp.syntax"><span>[expr<wbr>.cmp<wbr>.syntax]</span></a>
 </div>
 
@@ -1539,48 +1538,48 @@ Expression</text>
 <div class="rule" id="r-expr.cmp.intro"><a class="rule-link" href="#r-expr.cmp.intro" title="expr.cmp.intro"><span>[expr<wbr>.cmp<wbr>.intro]</span></a>
 </div>
 
-<p>Comparison operators are also defined both for primitive types and many types in the standard library.</p>
+<p>比较运算符也为原始类型和标准库中的许多类型定义。</p>
 <div class="rule" id="r-expr.cmp.paren-chaining"><a class="rule-link" href="#r-expr.cmp.paren-chaining" title="expr.cmp.paren-chaining"><span>[expr<wbr>.cmp<wbr>.paren-chaining]</span></a>
 </div>
 
-<p>Parentheses are required when chaining comparison operators. For example, the expression <code>a == b == c</code> is invalid and may be written as <code>(a == b) == c</code>.</p>
+<p>在链式调用比较运算符时需要括号。例如，表达式 <code>a == b == c</code> 是无效的，可以写成 <code>(a == b) == c</code> 。</p>
 <div class="rule" id="r-expr.cmp.trait"><a class="rule-link" href="#r-expr.cmp.trait" title="expr.cmp.trait"><span>[expr<wbr>.cmp<wbr>.trait]</span></a>
 </div>
 
-<p>Unlike arithmetic and logical operators, the traits for overloading these operators are used more generally to show how a type may be compared and will likely be assumed to define actual comparisons by functions that use these traits as bounds.
-Many functions and macros in the standard library can then use that assumption (although not to ensure safety).</p>
+<p>与算术和逻辑运算符不同，重载这些运算符的 特型 被更广泛地用于展示一个类型如何被比较，并且很可能被使用这些 特型 作为界限的函数假设为定义了实际的比较。
+标准库中的许多函数和 声明宏 随后可以使用该假设（尽管不能以此来确保安全性）。</p>
 <div class="rule" id="r-expr.cmp.place"><a class="rule-link" href="#r-expr.cmp.place" title="expr.cmp.place"><span>[expr<wbr>.cmp<wbr>.place]</span></a>
 </div>
 
-<p>Unlike the arithmetic and logical operators above, these operators implicitly take shared borrows of their operands, evaluating them in <a href="../expressions.html#place-expressions-and-value-expressions">place expression context</a>:</p>
+<p>与上面的算术和逻辑运算符不同，这些运算符隐式地对其操作数进行共享借用，并在 <a href="../expressions.html#place-expressions-and-value-expressions">位置表达式语境</a> 中对它们求值：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let a = 1;
 </span><span class="boring">let b = 1;
 </span>a == b;
-// is equivalent to
+// 等价于
 ::std::cmp::PartialEq::eq(&amp;a, &amp;b);
 <span class="boring">}</span></code></pre>
-<p>This means that the operands don’t have to be moved out of.</p>
+<p>这意味着操作数不需要被移出。</p>
 <div class="rule" id="r-expr.cmp.behavior"><a class="rule-link" href="#r-expr.cmp.behavior" title="expr.cmp.behavior"><span>[expr<wbr>.cmp<wbr>.behavior]</span></a>
 </div>
 
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Symbol</th><th>Meaning</th><th>Overloading method</th></tr>
+<tr><th>符号</th><th>含义</th><th>重载方法</th></tr>
 </thead>
 <tbody>
-<tr><td><code>==</code></td><td>Equal</td><td><code>std::cmp::PartialEq::eq</code></td></tr>
-<tr><td><code>!=</code></td><td>Not equal</td><td><code>std::cmp::PartialEq::ne</code></td></tr>
-<tr><td><code>&gt;</code></td><td>Greater than</td><td><code>std::cmp::PartialOrd::gt</code></td></tr>
-<tr><td><code>&lt;</code></td><td>Less than</td><td><code>std::cmp::PartialOrd::lt</code></td></tr>
-<tr><td><code>&gt;=</code></td><td>Greater than or equal to</td><td><code>std::cmp::PartialOrd::ge</code></td></tr>
-<tr><td><code>&lt;=</code></td><td>Less than or equal to</td><td><code>std::cmp::PartialOrd::le</code></td></tr>
+<tr><td><code>==</code></td><td>等于</td><td><code>std::cmp::PartialEq::eq</code></td></tr>
+<tr><td><code>!=</code></td><td>不等于</td><td><code>std::cmp::PartialEq::ne</code></td></tr>
+<tr><td><code>&gt;</code></td><td>大于</td><td><code>std::cmp::PartialOrd::gt</code></td></tr>
+<tr><td><code>&lt;</code></td><td>小于</td><td><code>std::cmp::PartialOrd::lt</code></td></tr>
+<tr><td><code>&gt;=</code></td><td>大于等于</td><td><code>std::cmp::PartialOrd::ge</code></td></tr>
+<tr><td><code>&lt;=</code></td><td>小于等于</td><td><code>std::cmp::PartialOrd::le</code></td></tr>
 </tbody>
 </table>
 </div>
-<p>Here are examples of the comparison operators being used.</p>
+<p>以下是正在使用的比较运算符示例。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>assert!(123 == 123);
@@ -1593,7 +1592,7 @@ assert!("World" &gt;= "Hello");
 <div class="rule" id="r-expr.bool-logic"><a class="rule-link" href="#r-expr.bool-logic" title="expr.bool-logic"><span>[expr<wbr>.bool-logic]</span></a>
 </div>
 
-<h2 id="lazy-boolean-operators"><a class="header" href="#lazy-boolean-operators">Lazy boolean operators</a></h2>
+<h2 id="惰性布尔运算符"><a class="header" href="#惰性布尔运算符">惰性布尔运算符</a></h2>
 <div class="rule" id="r-expr.bool-logic.syntax"><a class="rule-link" href="#r-expr.bool-logic.syntax" title="expr.bool-logic.syntax"><span>[expr<wbr>.bool-logic<wbr>.syntax]</span></a>
 </div>
 
@@ -1678,22 +1677,22 @@ Expression</text>
 <div class="rule" id="r-expr.bool-logic.intro"><a class="rule-link" href="#r-expr.bool-logic.intro" title="expr.bool-logic.intro"><span>[expr<wbr>.bool-logic<wbr>.intro]</span></a>
 </div>
 
-<p>The operators <code>||</code> and <code>&amp;&amp;</code> may be applied to operands of boolean type.
-The <code>||</code> operator denotes logical ‘or’, and the <code>&amp;&amp;</code> operator denotes logical ‘and’.</p>
+<p>运算符 <code>||</code> 和 <code>&amp;&amp;</code> 可以应用于布尔类型的操作数。
+<code>||</code> 运算符表示逻辑‘或’， <code>&amp;&amp;</code> 运算符表示逻辑‘与’。</p>
 <div class="rule" id="r-expr.bool-logic.conditional-evaluation"><a class="rule-link" href="#r-expr.bool-logic.conditional-evaluation" title="expr.bool-logic.conditional-evaluation"><span>[expr<wbr>.bool-logic<wbr>.conditional-evaluation]</span></a>
 </div>
 
-<p>They differ from <code>|</code> and <code>&amp;</code> in that the right-hand operand is only evaluated when the left-hand operand does not already determine the result of the expression.
-That is, <code>||</code> only evaluates its right-hand operand when the left-hand operand evaluates to <code>false</code>, and <code>&amp;&amp;</code> only when it evaluates to <code>true</code>.</p>
+<p>它们与 <code>|</code> 和 <code>&amp;</code> 的不同之处在于，只有当左侧操作数尚未确定表达式结果时，才会对右侧操作数求值。
+也就是说，只有当左侧操作数求值为 <code>false</code> 时， <code>||</code> 才会对其右侧操作数求值；而只有当左侧操作数求值为 <code>true</code> 时， <code>&amp;&amp;</code> 才会对其右侧操作数求值。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = false || true; // true
-let y = false &amp;&amp; panic!(); // false, doesn't evaluate `panic!()`
+let y = false &amp;&amp; panic!(); // false, 不会对 `panic!()` 求值
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-expr.as"><a class="rule-link" href="#r-expr.as" title="expr.as"><span>[expr<wbr>.as]</span></a>
 </div>
 
-<h2 id="type-cast-expressions"><a class="header" href="#type-cast-expressions">Type cast expressions</a></h2>
+<h2 id="类型转换表达式"><a class="header" href="#类型转换表达式">类型转换表达式</a></h2>
 <div class="rule" id="r-expr.as.syntax"><a class="rule-link" href="#r-expr.as.syntax" title="expr.as.syntax"><span>[expr<wbr>.as<wbr>.syntax]</span></a>
 </div>
 
@@ -1750,12 +1749,12 @@ TypeNoBounds</text>
 <div class="rule" id="r-expr.as.intro"><a class="rule-link" href="#r-expr.as.intro" title="expr.as.intro"><span>[expr<wbr>.as<wbr>.intro]</span></a>
 </div>
 
-<p>A type cast expression is denoted with the binary operator <code>as</code>.</p>
+<p>类型转换表达式由二元运算符 <code>as</code> 表示。</p>
 <div class="rule" id="r-expr.as.result"><a class="rule-link" href="#r-expr.as.result" title="expr.as.result"><span>[expr<wbr>.as<wbr>.result]</span></a>
 </div>
 
-<p>Executing an <code>as</code> expression casts the value on the left-hand side to the type on the right-hand side.</p>
-<p>An example of an <code>as</code> expression:</p>
+<p>执行 <code>as</code> 表达式会将左侧的值转换为右侧的类型。</p>
+<p><code>as</code> 表达式的一个示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn sum(values: &amp;[f64]) -&gt; f64 { 0.0 }
@@ -1769,46 +1768,44 @@ TypeNoBounds</text>
 <div class="rule" id="r-expr.as.coercions"><a class="rule-link" href="#r-expr.as.coercions" title="expr.as.coercions"><span>[expr<wbr>.as<wbr>.coercions]</span></a>
 </div>
 
-<p><code>as</code> can be used to explicitly perform <a href="../type-coercions.html">coercions</a>, as well as the following additional casts.
-Any cast that does not fit either a coercion rule or an entry in the table is a compiler error.
-Here <code>*T</code> means either <code>*const T</code> or <code>*mut T</code>. <code>m</code> stands for optional <code>mut</code> in
-reference types and <code>mut</code> or <code>const</code> in pointer types.</p>
+<p><code>as</code> 可用于显式执行 <a href="../type-coercions.html">类型强制转换</a> ，以及以下额外的转换。
+任何既不符合强制转换规则也不符合表中条目的转换都是编译器错误。
+这里 <code>*T</code> 表示 <code>*const T</code> 或 <code>*mut T</code> 。 <code>m</code> 代表引用类型中可选的 <code>mut</code> ，以及指针类型中的 <code>mut</code> 或 <code>const</code> 。</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Type of <code>e</code></th><th><code>U</code></th><th>Cast performed by <code>e as U</code></th></tr>
+<tr><th><code>e</code> 的类型</th><th><code>U</code></th><th><code>e as U</code> 执行的转换</th></tr>
 </thead>
 <tbody>
-<tr><td>Integer or Float type</td><td>Integer or Float type</td><td><a href="operator-expr.html#r-expr.as.numeric">Numeric cast</a></td></tr>
-<tr><td>Enumeration</td><td>Integer type</td><td><a href="operator-expr.html#r-expr.as.enum">Enum cast</a></td></tr>
-<tr><td><code>bool</code> or <code>char</code></td><td>Integer type</td><td><a href="operator-expr.html#r-expr.as.bool-char-as-int">Primitive to integer cast</a></td></tr>
-<tr><td><code>u8</code></td><td><code>char</code></td><td><a href="operator-expr.html#r-expr.as.u8-as-char"><code>u8</code> to <code>char</code> cast</a></td></tr>
-<tr><td><code>*T</code></td><td><code>*V</code> <sup class="footnote-reference" id="fr-meta-compat-1"><a href="#footnote-meta-compat">1</a></sup></td><td><a href="operator-expr.html#r-expr.as.pointer">Pointer to pointer cast</a></td></tr>
-<tr><td><code>*T</code> where <code>T: Sized</code></td><td>Integer type</td><td><a href="operator-expr.html#r-expr.as.pointer-as-int">Pointer to address cast</a></td></tr>
-<tr><td>Integer type</td><td><code>*V</code> where <code>V: Sized</code></td><td><a href="operator-expr.html#r-expr.as.int-as-pointer">Address to pointer cast</a></td></tr>
-<tr><td><code>&amp;m₁ [T; n]</code></td><td><code>*m₂ T</code> <sup class="footnote-reference" id="fr-lessmut-1"><a href="#footnote-lessmut">2</a></sup></td><td>Array to pointer cast</td></tr>
-<tr><td><code>*m₁ [T; n]</code></td><td><code>*m₂ T</code> <sup class="footnote-reference" id="fr-lessmut-2"><a href="#footnote-lessmut">2</a></sup></td><td>Array to pointer cast</td></tr>
-<tr><td><a href="../types/function-item.html">Function item</a></td><td><a href="../types/function-pointer.html">Function pointer</a></td><td>Function item to function pointer cast</td></tr>
-<tr><td><a href="../types/function-item.html">Function item</a></td><td><code>*V</code> where <code>V: Sized</code></td><td>Function item to pointer cast</td></tr>
-<tr><td><a href="../types/function-item.html">Function item</a></td><td>Integer</td><td>Function item to address cast</td></tr>
-<tr><td><a href="../types/function-pointer.html">Function pointer</a></td><td><code>*V</code> where <code>V: Sized</code></td><td>Function pointer to pointer cast</td></tr>
-<tr><td><a href="../types/function-pointer.html">Function pointer</a></td><td>Integer</td><td>Function pointer to address cast</td></tr>
-<tr><td>Closure <sup class="footnote-reference" id="fr-no-capture-1"><a href="#footnote-no-capture">3</a></sup></td><td>Function pointer</td><td>Closure to function pointer cast</td></tr>
+<tr><td>整数或浮点数类型</td><td>整数或浮点数类型</td><td><a href="operator-expr.html#r-expr.as.numeric">数值转换</a></td></tr>
+<tr><td>枚举</td><td>整数类型</td><td><a href="operator-expr.html#r-expr.as.enum">枚举转换</a></td></tr>
+<tr><td><code>bool</code> 或 <code>char</code></td><td>整数类型</td><td><a href="operator-expr.html#r-expr.as.bool-char-as-int">原始类型到整数转换</a></td></tr>
+<tr><td><code>u8</code></td><td><code>char</code></td><td><a href="operator-expr.html#r-expr.as.u8-as-char"><code>u8</code> 到 <code>char</code> 转换</a></td></tr>
+<tr><td><code>*T</code></td><td><code>*V</code> <sup class="footnote-reference" id="fr-meta-compat-1"><a href="#footnote-meta-compat">1</a></sup></td><td><a href="operator-expr.html#r-expr.as.pointer">指针到指针转换</a></td></tr>
+<tr><td><code>*T</code> 当 <code>T: Sized</code></td><td>整数类型</td><td><a href="operator-expr.html#r-expr.as.pointer-as-int">指针到地址转换</a></td></tr>
+<tr><td>整数类型</td><td><code>*V</code> 当 <code>V: Sized</code></td><td><a href="operator-expr.html#r-expr.as.int-as-pointer">地址到指针转换</a></td></tr>
+<tr><td><code>&amp;m₁ [T; n]</code></td><td><code>*m₂ T</code> <sup class="footnote-reference" id="fr-lessmut-1"><a href="#footnote-lessmut">2</a></sup></td><td>数组到指针转换</td></tr>
+<tr><td><code>*m₁ [T; n]</code></td><td><code>*m₂ T</code> <sup class="footnote-reference" id="fr-lessmut-2"><a href="#footnote-lessmut">2</a></sup></td><td>数组到指针转换</td></tr>
+<tr><td><a href="../types/function-item.html">函数项</a></td><td><a href="../types/function-pointer.html">函数指针</a></td><td>函数项到函数指针转换</td></tr>
+<tr><td><a href="../types/function-item.html">函数项</a></td><td><code>*V</code> 当 <code>V: Sized</code></td><td>函数项到指针转换</td></tr>
+<tr><td><a href="../types/function-item.html">函数项</a></td><td>整数</td><td>函数项到地址转换</td></tr>
+<tr><td><a href="../types/function-pointer.html">函数指针</a></td><td><code>*V</code> 当 <code>V: Sized</code></td><td>函数指针到指针转换</td></tr>
+<tr><td><a href="../types/function-pointer.html">函数指针</a></td><td>整数</td><td>函数指针到地址转换</td></tr>
+<tr><td>闭包 <sup class="footnote-reference" id="fr-no-capture-1"><a href="#footnote-no-capture">3</a></sup></td><td>函数指针</td><td>闭包到函数指针转换</td></tr>
 </tbody>
 </table>
 </div>
-<h3 id="semantics"><a class="header" href="#semantics">Semantics</a></h3>
+<h3 id="语义"><a class="header" href="#语义">语义</a></h3>
 <div class="rule" id="r-expr.as.numeric"><a class="rule-link" href="#r-expr.as.numeric" title="expr.as.numeric"><span>[expr<wbr>.as<wbr>.numeric]</span></a>
 </div>
 
-<h4 id="numeric-cast"><a class="header" href="#numeric-cast">Numeric cast</a></h4>
+<h4 id="数值转换"><a class="header" href="#数值转换">数值转换</a></h4>
 <div class="rule" id="r-expr.as.numeric.int-same-size"><a class="rule-link" href="#r-expr.as.numeric.int-same-size" title="expr.as.numeric.int-same-size"><span>[expr<wbr>.as<wbr>.numeric<wbr>.int-same-size]</span></a>
 </div>
 
 <ul>
 <li>
-<p>Casting between two integers of the same size (e.g. i32 -&gt; u32) is a no-op
-(Rust uses 2’s complement for negative values of fixed integers)</p>
+<p>在两个大小相同的整数之间转换（例如 i32 -&gt; u32）是无操作的（Rust 对固定整数的负值使用补码）</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>assert_eq!(42i8 as u8, 42u8);
@@ -1823,8 +1820,7 @@ assert_eq!(-1i16 as u16, 65535u16);
 
 <ul>
 <li>
-<p>Casting from a larger integer to a smaller integer (e.g. u32 -&gt; u8) will
-truncate</p>
+<p>从较大的整数转换为较小的整数（例如 u32 -&gt; u8）将发生截断</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>assert_eq!(42u16 as u8, 42u8);
@@ -1842,18 +1838,18 @@ assert_eq!(0xabcdi32 as i8, -51i8);
 
 <ul>
 <li>
-<p>Casting from a smaller integer to a larger integer (e.g. u8 -&gt; u32) will</p>
+<p>从较小的整数转换为较大的整数（例如 u8 -&gt; u32）将</p>
 <ul>
-<li>zero-extend if the source is unsigned</li>
-<li>sign-extend if the source is signed</li>
+<li>如果源是无符号的，则进行零扩展</li>
+<li>如果源是有符号的，则进行符号扩展</li>
 </ul>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>assert_eq!(42i8 as i16, 42i16);
 assert_eq!(-17i8 as i16, -17i16);
-assert_eq!(0b1000_1010u8 as u16, 0b0000_0000_1000_1010u16, "Zero-extend");
-assert_eq!(0b0000_1010i8 as i16, 0b0000_0000_0000_1010i16, "Sign-extend 0");
-assert_eq!(0b1000_1010u8 as i8 as i16, 0b1111_1111_1000_1010u16 as i16, "Sign-extend 1");
+assert_eq!(0b1000_1010u8 as u16, 0b0000_0000_1000_1010u16, "零扩展");
+assert_eq!(0b0000_1010i8 as i16, 0b0000_0000_0000_1010i16, "符号扩展 0");
+assert_eq!(0b1000_1010u8 as i8 as i16, 0b1111_1111_1000_1010u16 as i16, "符号扩展 1");
 <span class="boring">}</span></code></pre>
 </li>
 </ul>
@@ -1862,11 +1858,11 @@ assert_eq!(0b1000_1010u8 as i8 as i16, 0b1111_1111_1000_1010u16 as i16, "Sign-ex
 
 <ul>
 <li>
-<p>Casting from a float to an integer will round the float towards zero</p>
+<p>从浮点数转换为整数将向零舍入</p>
 <ul>
-<li><code>NaN</code> will return <code>0</code></li>
-<li>Values larger than the maximum integer value, including <code>INFINITY</code>, will saturate to the maximum value of the integer type.</li>
-<li>Values smaller than the minimum integer value, including <code>NEG_INFINITY</code>, will saturate to the minimum value of the integer type.</li>
+<li><code>NaN</code> 将返回 <code>0</code></li>
+<li>大于最大整数值的值（包括 <code>INFINITY</code> ），将饱和为整数类型的最大值。</li>
+<li>小于最小整数值的值（包括 <code>NEG_INFINITY</code> ），将饱和为整数类型的最小值。</li>
 </ul>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -1884,17 +1880,16 @@ assert_eq!(std::f32::NEG_INFINITY as i32, -0x80000000i32);
 
 <ul>
 <li>
-<p>Casting from an integer to float will produce the closest possible float *</p>
+<p>从整数转换为浮点数将产生最接近的浮点数 *</p>
 <ul>
-<li>if necessary, rounding is according to <code>roundTiesToEven</code> mode ***</li>
-<li>on overflow, infinity (of the same sign as the input) is produced</li>
-<li>note: with the current set of numeric types, overflow can only happen
-on <code>u128 as f32</code> for values greater or equal to <code>f32::MAX + (0.5 ULP)</code></li>
+<li>如有必要，根据 <code>roundTiesToEven</code> 模式进行舍入 ***</li>
+<li>溢出时，产生（与输入符号相同的）无穷大</li>
+<li>注意：在当前的数值类型集中，溢出只能发生在 <code>u128 as f32</code> 且值大于或等于 <code>f32::MAX + (0.5 ULP)</code> 时</li>
 </ul>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>assert_eq!(1337i32 as f32, 1337f32);
-assert_eq!(123_456_789i32 as f32, 123_456_790f32, "Rounded");
+assert_eq!(123_456_789i32 as f32, 123_456_790f32, "已舍入");
 assert_eq!(0xffffffff_ffffffff_ffffffff_ffffffff_u128 as f32, std::f32::INFINITY);
 <span class="boring">}</span></code></pre>
 </li>
@@ -1904,7 +1899,7 @@ assert_eq!(0xffffffff_ffffffff_ffffffff_ffffffff_u128 as f32, std::f32::INFINITY
 
 <ul>
 <li>
-<p>Casting from an f32 to an f64 is perfect and lossless</p>
+<p>从 f32 转换为 f64 是完美的且无损的</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>assert_eq!(1_234.5f32 as f64, 1_234.5f64);
@@ -1918,41 +1913,35 @@ assert!((std::f32::NAN as f64).is_nan());
 
 <ul>
 <li>
-<p>Casting from an f64 to an f32 will produce the closest possible f32 **</p>
+<p>从 f64 转换为 f32 将产生最接近的 f32 **</p>
 <ul>
-<li>if necessary, rounding is according to <code>roundTiesToEven</code> mode ***</li>
-<li>on overflow, infinity (of the same sign as the input) is produced</li>
+<li>如有必要，根据 <code>roundTiesToEven</code> 模式进行舍入 ***</li>
+<li>溢出时，产生（与输入符号相同的）无穷大</li>
 </ul>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>assert_eq!(1_234.5f64 as f32, 1_234.5f32);
-assert_eq!(1_234_567_891.123f64 as f32, 1_234_567_890f32, "Rounded");
+assert_eq!(1_234_567_891.123f64 as f32, 1_234_567_890f32, "已舍入");
 assert_eq!(std::f64::INFINITY as f32, std::f32::INFINITY);
 assert!((std::f64::NAN as f32).is_nan());
 <span class="boring">}</span></code></pre>
 </li>
 </ul>
-<p>* if integer-to-float casts with this rounding mode and overflow behavior are
-not supported natively by the hardware, these casts will likely be slower than
-expected.</p>
-<p>** if f64-to-f32 casts with this rounding mode and overflow behavior are not
-supported natively by the hardware, these casts will likely be slower than
-expected.</p>
-<p>*** as defined in IEEE 754-2008 §4.3.1: pick the nearest floating point
-number, preferring the one with an even least significant digit if exactly
-halfway between two floating point numbers.</p>
+<p>* 如果硬件不原生支持具有这种舍入模式和溢出行为的整数到浮点数转换，则这些转换可能会比预期的慢。</p>
+<p>** 如果硬件不原生支持具有这种舍入模式和溢出行为的 f64 到 f32 转换，则这些转换可能会比预期的慢。</p>
+<p>*** 按照 IEEE 754-2008 §4.3.1 的定义：选择最接近的浮点数，如果在两个浮点数中间，则优先选择最低有效位为偶数的那个。</p>
 <div class="rule" id="r-expr.as.enum"><a class="rule-link" href="#r-expr.as.enum" title="expr.as.enum"><span>[expr<wbr>.as<wbr>.enum]</span></a>
 </div>
 
-<h4 id="enum-cast"><a class="header" href="#enum-cast">Enum cast</a></h4>
+<h4 id="枚举转换"><a class="header" href="#枚举转换">枚举转换</a></h4>
 <div class="rule" id="r-expr.as.enum.discriminant"><a class="rule-link" href="#r-expr.as.enum.discriminant" title="expr.as.enum.discriminant"><span>[expr<wbr>.as<wbr>.enum<wbr>.discriminant]</span></a>
 </div>
 
-<p>Casts an enum to its discriminant, then uses a numeric cast if needed.
-Casting is limited to the following kinds of enumerations:</p>
+<p>将枚举转换为其判别值，然后根据需要使用数值转换。
+转换仅限于以下几种枚举：</p>
 <ul>
-<li><a href="../items/enumerations.html#unit-only-enum">Unit-only enums</a></li>
-<li><a href="../items/enumerations.html#field-less-enum">Field-less enums</a> without <a href="../items/enumerations.html#explicit-discriminants">explicit discriminants</a>, or where only unit-variants have explicit discriminants</li>
+<li><a href="../items/enumerations.html#unit-only-enum">仅单元项枚举</a></li>
+<li><a href="../items/enumerations.html#field-less-enum">无字段枚举</a> 且没有 <a href="../items/enumerations.html#explicit-discriminants">显式判别值</a> ，或者只有单元项变体具有显式判别值</li>
 </ul>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -1964,14 +1953,14 @@ assert_eq!(Enum::C as i32, 2);
 <div class="rule" id="r-expr.as.enum.no-drop"><a class="rule-link" href="#r-expr.as.enum.no-drop" title="expr.as.enum.no-drop"><span>[expr<wbr>.as<wbr>.enum<wbr>.no-drop]</span></a>
 </div>
 
-<p>Casting is not allowed if the enum implements <a href="../../core/ops/drop/trait.Drop.html"><code>Drop</code></a>.</p>
+<p>如果枚举实现了 <a href="../../core/ops/drop/trait.Drop.html"><code>Drop</code></a> ，则不允许进行转换。</p>
 <div class="rule" id="r-expr.as.bool-char-as-int"><a class="rule-link" href="#r-expr.as.bool-char-as-int" title="expr.as.bool-char-as-int"><span>[expr<wbr>.as<wbr>.bool-char-as-int]</span></a>
 </div>
 
-<h4 id="primitive-to-integer-cast"><a class="header" href="#primitive-to-integer-cast">Primitive to integer cast</a></h4>
+<h4 id="原始类型到整数转换"><a class="header" href="#原始类型到整数转换">原始类型到整数转换</a></h4>
 <ul>
-<li><code>false</code> casts to <code>0</code>, <code>true</code> casts to <code>1</code></li>
-<li><code>char</code> casts to the value of the code point, then uses a numeric cast if needed.</li>
+<li><code>false</code> 转换为 <code>0</code> ， <code>true</code> 转换为 <code>1</code></li>
+<li><code>char</code> 转换为码位的值，然后根据需要使用数值转换。</li>
 </ul>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -1983,8 +1972,8 @@ assert_eq!('Ö' as i32, 214);
 <div class="rule" id="r-expr.as.u8-as-char"><a class="rule-link" href="#r-expr.as.u8-as-char" title="expr.as.u8-as-char"><span>[expr<wbr>.as<wbr>.u8-as-char]</span></a>
 </div>
 
-<h4 id="u8-to-char-cast"><a class="header" href="#u8-to-char-cast"><code>u8</code> to <code>char</code> cast</a></h4>
-<p>Casts to the <code>char</code> with the corresponding code point.</p>
+<h4 id="u8-到-char-转换"><a class="header" href="#u8-到-char-转换"><code>u8</code> 到 <code>char</code> 转换</a></h4>
+<p>转换为具有相应码位的 <code>char</code> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>assert_eq!(65u8 as char, 'A');
@@ -1993,25 +1982,25 @@ assert_eq!(214u8 as char, 'Ö');
 <div class="rule" id="r-expr.as.pointer-as-int"><a class="rule-link" href="#r-expr.as.pointer-as-int" title="expr.as.pointer-as-int"><span>[expr<wbr>.as<wbr>.pointer-as-int]</span></a>
 </div>
 
-<h4 id="pointer-to-address-cast"><a class="header" href="#pointer-to-address-cast">Pointer to address cast</a></h4>
-<p>Casting from a raw pointer to an integer produces the machine address of the referenced memory.
-If the integer type is smaller than the pointer type, the address may be truncated; using <code>usize</code> avoids this.</p>
+<h4 id="指针到地址转换"><a class="header" href="#指针到地址转换">指针到地址转换</a></h4>
+<p>从原始指针转换为整数会产生引用内存的机器地址。
+如果整数类型小于指针类型，则地址可能会被截断；使用 <code>usize</code> 可以避免这种情况。</p>
 <div class="rule" id="r-expr.as.int-as-pointer"><a class="rule-link" href="#r-expr.as.int-as-pointer" title="expr.as.int-as-pointer"><span>[expr<wbr>.as<wbr>.int-as-pointer]</span></a>
 </div>
 
-<h4 id="address-to-pointer-cast"><a class="header" href="#address-to-pointer-cast">Address to pointer cast</a></h4>
-<p>Casting from an integer to a raw pointer interprets the integer as a memory address and produces a pointer referencing that memory.</p>
+<h4 id="地址到指针转换"><a class="header" href="#地址到指针转换">地址到指针转换</a></h4>
+<p>从整数转换为原始指针会将整数解释为内存地址，并产生一个引用该内存的指针。</p>
 <div class="alert alert-warning">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>警告</p>
 
-<p>This interacts with the Rust memory model, which is still under development.
-A pointer obtained from this cast may suffer additional restrictions even if it is bitwise equal to a valid pointer.
-Dereferencing such a pointer may be <a href="../behavior-considered-undefined.html">undefined behavior</a> if aliasing rules are not followed.</p>
+<p>这与仍处于开发阶段的 Rust 内存模型有关。
+从此转换获得的指针即使在位上等于有效指针，也可能会受到额外的限制。
+如果不遵循别名规则，对这种指针进行解引用可能会导致 <a href="../behavior-considered-undefined.html">未定义行为</a> 。</p>
 </blockquote>
 </div>
 
-<p>A trivial example of sound address arithmetic:</p>
+<p>一个简单的健全地址算术示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut values: [i32; 2] = [1, 2];
@@ -2027,41 +2016,40 @@ assert_eq!(values[1], 3);
 <div class="rule" id="r-expr.as.pointer"><a class="rule-link" href="#r-expr.as.pointer" title="expr.as.pointer"><span>[expr<wbr>.as<wbr>.pointer]</span></a>
 </div>
 
-<h4 id="pointer-to-pointer-cast"><a class="header" href="#pointer-to-pointer-cast">Pointer-to-pointer cast</a></h4>
+<h4 id="指针到指针转换"><a class="header" href="#指针到指针转换">指针到指针转换</a></h4>
 <div class="rule" id="r-expr.as.pointer.behavior"><a class="rule-link" href="#r-expr.as.pointer.behavior" title="expr.as.pointer.behavior"><span>[expr<wbr>.as<wbr>.pointer<wbr>.behavior]</span></a>
 </div>
 
-<p><code>*const T</code> / <code>*mut T</code> can be cast to <code>*const U</code> / <code>*mut U</code> with the following behavior:</p>
+<p><code>*const T</code> / <code>*mut T</code> 可以转换为 <code>*const U</code> / <code>*mut U</code> ，具有以下行为：</p>
 <div class="rule" id="r-expr.as.pointer.sized"><a class="rule-link" href="#r-expr.as.pointer.sized" title="expr.as.pointer.sized"><span>[expr<wbr>.as<wbr>.pointer<wbr>.sized]</span></a>
 </div>
 
 <ul>
-<li>If <code>T</code> and <code>U</code> are both sized, the pointer is returned unchanged.</li>
+<li>如果 <code>T</code> 和 <code>U</code> 都是有大小的，则指针保持不变并返回。</li>
 </ul>
 <div class="rule" id="r-expr.as.pointer.unsized"><a class="rule-link" href="#r-expr.as.pointer.unsized" title="expr.as.pointer.unsized"><span>[expr<wbr>.as<wbr>.pointer<wbr>.unsized]</span></a>
 </div>
 
 <ul>
 <li>
-<p>If <code>T</code> and <code>U</code> are both unsized, the pointer is also returned unchanged.
-In particular, the metadata is preserved exactly.</p>
-<p>For instance, a cast from <code>*const [T]</code> to <code>*const [U]</code> preserves the number of elements.
-Note that, as a consequence, such casts do not necessarily preserve the size of the pointer’s referent
-(e.g., casting <code>*const [u16]</code> to <code>*const [u8]</code> will result in a raw pointer which refers to an object of half the size of the original).
-The same holds for <code>str</code> and any compound type whose unsized tail is a slice type,
-such as <code>struct Foo(i32, [u8])</code> or <code>(u64, Foo)</code>.</p>
+<p>如果 <code>T</code> 和 <code>U</code> 都是无大小的，则指针也保持不变并返回。
+特别地，元数据会被精确保留。</p>
+<p>例如，从 <code>*const [T]</code> 到 <code>*const [U]</code> 的转换会保留元素的数量。
+请注意，因此此类转换不一定保留指针引用对象的大小
+（例如，将 <code>*const [u16]</code> 转换为 <code>*const [u8]</code> 将产生一个原始指针，它指向的对象大小是原来的一半）。
+对于 <code>str</code> 和任何其无大小尾部是切片类型的复合类型（如 <code>struct Foo(i32, [u8])</code> 或 <code>(u64, Foo)</code> ），情况也是如此。</p>
 </li>
 </ul>
 <div class="rule" id="r-expr.as.pointer.discard-metadata"><a class="rule-link" href="#r-expr.as.pointer.discard-metadata" title="expr.as.pointer.discard-metadata"><span>[expr<wbr>.as<wbr>.pointer<wbr>.discard-metadata]</span></a>
 </div>
 
 <ul>
-<li>If <code>T</code> is unsized and <code>U</code> is sized, the cast discards all metadata that completes the wide pointer <code>T</code> and produces a thin pointer <code>U</code> consisting of the data part of the unsized pointer.</li>
+<li>如果 <code>T</code> 是无大小的且 <code>U</code> 是有大小的，则转换会丢弃完成宽指针 <code>T</code> 的所有元数据，并产生一个由无大小指针的数据部分组成的细指针 <code>U</code> 。</li>
 </ul>
 <div class="rule" id="r-expr.assign"><a class="rule-link" href="#r-expr.assign" title="expr.assign"><span>[expr<wbr>.assign]</span></a>
 </div>
 
-<h2 id="assignment-expressions"><a class="header" href="#assignment-expressions">Assignment expressions</a></h2>
+<h2 id="赋值表达式"><a class="header" href="#赋值表达式">赋值表达式</a></h2>
 <div class="rule" id="r-expr.assign.syntax"><a class="rule-link" href="#r-expr.assign.syntax" title="expr.assign.syntax"><span>[expr<wbr>.assign<wbr>.syntax]</span></a>
 </div>
 
@@ -2118,53 +2106,53 @@ Expression</text>
 <div class="rule" id="r-expr.assign.intro"><a class="rule-link" href="#r-expr.assign.intro" title="expr.assign.intro"><span>[expr<wbr>.assign<wbr>.intro]</span></a>
 </div>
 
-<p>An <em>assignment expression</em> moves a value into a specified place.</p>
+<p>一个 <em>赋值表达式</em> 将一个值移动到一个指定的位置。</p>
 <div class="rule" id="r-expr.assign.assignee"><a class="rule-link" href="#r-expr.assign.assignee" title="expr.assign.assignee"><span>[expr<wbr>.assign<wbr>.assignee]</span></a>
 </div>
 
-<p>An assignment expression consists of a <a href="../expressions.html#mutability">mutable</a> <a href="../expressions.html#place-expressions-and-value-expressions">assignee expression</a>, the <em>assignee operand</em>, followed by an equals sign (<code>=</code>) and a <a href="../expressions.html#place-expressions-and-value-expressions">value expression</a>, the <em>assigned value operand</em>.</p>
+<p>赋值表达式由一个 <a href="../expressions.html#mutability">可变</a> <a href="../expressions.html#place-expressions-and-value-expressions">赋值目标表达式</a> （即 <em>赋值目标操作数</em> ），后跟一个等号（ <code>=</code> ）和一个 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式</a> （即 <em>被赋值操作数</em> ）组成。</p>
 <div class="rule" id="r-expr.assign.behavior-basic"><a class="rule-link" href="#r-expr.assign.behavior-basic" title="expr.assign.behavior-basic"><span>[expr<wbr>.assign<wbr>.behavior-basic]</span></a>
 </div>
 
-<p>In its most basic form, an assignee expression is a <a href="../expressions.html#place-expressions-and-value-expressions">place expression</a>, and we discuss this case first.</p>
+<p>在其最基本的形式中，赋值目标表达式是一个 <a href="../expressions.html#place-expressions-and-value-expressions">位置表达式</a> ，我们首先讨论这种情况。</p>
 <div class="rule" id="r-expr.assign.behavior-destructuring"><a class="rule-link" href="#r-expr.assign.behavior-destructuring" title="expr.assign.behavior-destructuring"><span>[expr<wbr>.assign<wbr>.behavior-destructuring]</span></a>
 </div>
 
-<p>The more general case of destructuring assignment is discussed below, but this case always decomposes into sequential assignments to place expressions, which may be considered the more fundamental case.</p>
+<p>解构赋值的更一般情况在下面讨论，但这种情况总是分解为对位置表达式的顺序赋值，这可以被视为更基本的情况。</p>
 <div class="rule" id="r-expr.assign.basic"><a class="rule-link" href="#r-expr.assign.basic" title="expr.assign.basic"><span>[expr<wbr>.assign<wbr>.basic]</span></a>
 </div>
 
-<h3 id="basic-assignments"><a class="header" href="#basic-assignments">Basic assignments</a></h3>
+<h3 id="基本赋值"><a class="header" href="#基本赋值">基本赋值</a></h3>
 <div class="rule" id="r-expr.assign.evaluation-order"><a class="rule-link" href="#r-expr.assign.evaluation-order" title="expr.assign.evaluation-order"><span>[expr<wbr>.assign<wbr>.evaluation-order]</span></a>
 </div>
 
-<p>Evaluating assignment expressions begins by evaluating its operands.
-The assigned value operand is evaluated first, followed by the assignee expression.</p>
+<p>求值赋值表达式始于对其操作数求值。
+首先对被赋值操作数求值，然后对赋值目标表达式求值。</p>
 <div class="rule" id="r-expr.assign.destructuring-order"><a class="rule-link" href="#r-expr.assign.destructuring-order" title="expr.assign.destructuring-order"><span>[expr<wbr>.assign<wbr>.destructuring-order]</span></a>
 </div>
 
-<p>For destructuring assignment, subexpressions of the assignee expression are evaluated left-to-right.</p>
+<p>对于解构赋值，赋值目标表达式的子表达式按从左到右的顺序求值。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This is different than other expressions in that the right operand is evaluated before the left one.</p>
+<p>这与其他表达式不同，因为右侧操作数在左侧操作数之前求值。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-expr.assign.drop-target"><a class="rule-link" href="#r-expr.assign.drop-target" title="expr.assign.drop-target"><span>[expr<wbr>.assign<wbr>.drop-target]</span></a>
 </div>
 
-<p>It then has the effect of first <a href="../destructors.html">dropping</a> the value at the assigned place, unless the place is an uninitialized local variable or an uninitialized field of a local variable.</p>
+<p>然后它的效果是首先 <a href="../destructors.html">释放</a> 赋值位置的值，除非该位置是未初始化的局部变量或局部变量的未初始化字段。</p>
 <div class="rule" id="r-expr.assign.behavior"><a class="rule-link" href="#r-expr.assign.behavior" title="expr.assign.behavior"><span>[expr<wbr>.assign<wbr>.behavior]</span></a>
 </div>
 
-<p>Next it either <a href="../expressions.html#moved-and-copied-types">copies or moves</a> the assigned value to the assigned place.</p>
+<p>接着，它要么将分配的值 <a href="../expressions.html#moved-and-copied-types">复制或移动</a> 到赋值位置。</p>
 <div class="rule" id="r-expr.assign.result"><a class="rule-link" href="#r-expr.assign.result" title="expr.assign.result"><span>[expr<wbr>.assign<wbr>.result]</span></a>
 </div>
 
-<p>An assignment expression always produces <a href="../types/tuple.html">the unit value</a>.</p>
-<p>Example:</p>
+<p>赋值表达式总是产生 <a href="../types/tuple.html">单元值</a> 。</p>
+<p>示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut x = 0;
@@ -2174,29 +2162,29 @@ x = y;
 <div class="rule" id="r-expr.assign.destructure"><a class="rule-link" href="#r-expr.assign.destructure" title="expr.assign.destructure"><span>[expr<wbr>.assign<wbr>.destructure]</span></a>
 </div>
 
-<h3 id="destructuring-assignments"><a class="header" href="#destructuring-assignments">Destructuring assignments</a></h3>
+<h3 id="解构赋值"><a class="header" href="#解构赋值">解构赋值</a></h3>
 <div class="rule" id="r-expr.assign.destructure.intro"><a class="rule-link" href="#r-expr.assign.destructure.intro" title="expr.assign.destructure.intro"><span>[expr<wbr>.assign<wbr>.destructure<wbr>.intro]</span></a>
 </div>
 
-<p>Destructuring assignment is a counterpart to destructuring pattern matches for variable declaration, permitting assignment to complex values, such as tuples or structs.
-For instance, we may swap two mutable variables:</p>
+<p>解构赋值是变量声明中解构模式匹配的对应物，允许对复杂值（如元组或结构体）进行赋值。
+例如，我们可以交换两个可变变量：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let (mut a, mut b) = (0, 1);
-// Swap `a` and `b` using destructuring assignment.
+// 使用解构赋值交换 `a` 和 `b`。
 (b, a) = (a, b);
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-expr.assign.destructure.assignee"><a class="rule-link" href="#r-expr.assign.destructure.assignee" title="expr.assign.destructure.assignee"><span>[expr<wbr>.assign<wbr>.destructure<wbr>.assignee]</span></a>
 </div>
 
-<p>In contrast to destructuring declarations using <code>let</code>, patterns may not appear on the left-hand side of an assignment due to syntactic ambiguities.
-Instead, a group of expressions that correspond to patterns are designated to be <a href="../expressions.html#place-expressions-and-value-expressions">assignee expressions</a>, and permitted on the left-hand side of an assignment.
-Assignee expressions are then desugared to pattern matches followed by sequential assignment.</p>
+<p>与使用 <code>let</code> 的解构声明相反，由于语法歧义，模式不能出现在赋值语句的左侧。
+相反，对应于模式的一组表达式被指定为 <a href="../expressions.html#place-expressions-and-value-expressions">赋值目标表达式</a> ，并允许出现在赋值语句的左侧。
+赋值目标表达式随后被脱糖为模式匹配，后跟顺序赋值。</p>
 <div class="rule" id="r-expr.assign.destructure.irrefutable"><a class="rule-link" href="#r-expr.assign.destructure.irrefutable" title="expr.assign.destructure.irrefutable"><span>[expr<wbr>.assign<wbr>.destructure<wbr>.irrefutable]</span></a>
 </div>
 
-<p>The desugared patterns must be irrefutable: in particular, this means that only slice patterns whose length is known at compile-time, and the trivial slice <code>[..]</code>, are permitted for destructuring assignment.</p>
-<p>The desugaring method is straightforward, and is illustrated best by example.</p>
+<p>脱糖后的模式必须是不可驳回的：特别地，这意味着只有在编译时长度已知的切片模式，以及平凡切片 <code>[..]</code> ，才允许用于解构赋值。</p>
+<p>脱糖方法非常直接，通过示例可以最好地说明。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Struct { x: u32, y: u32 }
@@ -2207,7 +2195,7 @@ Assignee expressions are then desugared to pattern matches followed by sequentia
 
 Struct { x: a, y: b } = Struct { x: 3, y: 4};
 
-// desugars to:
+// 脱糖为：
 
 {
     let (_a, _b) = (3, 4);
@@ -2230,15 +2218,15 @@ Struct { x: a, y: b } = Struct { x: 3, y: 4};
 <div class="rule" id="r-expr.assign.destructure.repeat-ident"><a class="rule-link" href="#r-expr.assign.destructure.repeat-ident" title="expr.assign.destructure.repeat-ident"><span>[expr<wbr>.assign<wbr>.destructure<wbr>.repeat-ident]</span></a>
 </div>
 
-<p>Identifiers are not forbidden from being used multiple times in a single assignee expression.</p>
+<p>并不禁止在单个赋值目标表达式中多次使用标识符。</p>
 <div class="rule" id="r-expr.assign.destructure.discard-value"><a class="rule-link" href="#r-expr.assign.destructure.discard-value" title="expr.assign.destructure.discard-value"><span>[expr<wbr>.assign<wbr>.destructure<wbr>.discard-value]</span></a>
 </div>
 
-<p><a href="./underscore-expr.html">Underscore expressions</a> and empty <a href="./range-expr.html">range expressions</a> may be used to ignore certain values, without binding them.</p>
+<p><a href="./underscore-expr.html">下划线表达式</a> 和空 <a href="./range-expr.html">范围表达式</a> 可用于忽略某些值，而不绑定它们。</p>
 <div class="rule" id="r-expr.assign.destructure.default-binding"><a class="rule-link" href="#r-expr.assign.destructure.default-binding" title="expr.assign.destructure.default-binding"><span>[expr<wbr>.assign<wbr>.destructure<wbr>.default-binding]</span></a>
 </div>
 
-<p>Note that default binding modes do not apply for the desugared expression.</p>
+<p>请注意，默认绑定模式不适用于脱糖表达式。</p>
 <div class="rule" id="r-expr.assign.destructure.tmp-scopes"><a class="rule-link" href="#r-expr.assign.destructure.tmp-scopes" title="expr.assign.destructure.tmp-scopes"><span>[expr<wbr>.assign<wbr>.destructure<wbr>.tmp-scopes]</span></a>
 </div>
 
@@ -2246,8 +2234,8 @@ Struct { x: a, y: b } = Struct { x: 3, y: 4};
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The desugaring restricts the <a href="../destructors.html#r-destructors.scope.temporary">temporary scope</a> of the assigned value operand (the RHS) of a destructuring assignment.</p>
-<p>In a basic assignment, the <a href="../expressions.html#r-expr.temporary">temporary</a> is dropped at the end of the enclosing temporary scope. Below, that’s the statement. Therefore, the assignment and use is allowed.</p>
+<p>脱糖限制了解构赋值中被赋值操作数（右侧）的 <a href="../destructors.html#r-destructors.scope.temporary">临时作用域</a> 。</p>
+<p>在基本赋值中， <a href="../expressions.html#r-expr.temporary">临时变量</a> 在封闭的临时作用域结束时被释放。在下面，那就是语句。因此，赋值和使用是被允许的。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
@@ -2255,15 +2243,15 @@ Struct { x: a, y: b } = Struct { x: 3, y: 4};
 let x;
 (x = f(&amp;temp()), x); // OK
 <span class="boring">}</span></code></pre>
-<p>Conversely, in a destructuring assignment, the temporary is dropped at the end of the <code>let</code> statement in the desugaring. As that happens before we try to assign to <code>x</code>, below, it fails.</p>
+<p>相反，在解构赋值中，临时变量在脱糖后的 <code>let</code> 语句结束时被释放。由于这发生在尝试给 <code>x</code> 赋值之前，如下所示，它将失败。</p>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
 </span><span class="boring">fn f&lt;T&gt;(x: T) -&gt; T { x }
 </span><span class="boring">let x;
-</span>[x] = [f(&amp;temp())]; // ERROR
+</span>[x] = [f(&amp;temp())]; // 错误
 <span class="boring">}</span></code></pre>
-<p>This desugars to:</p>
+<p>这被脱糖为：</p>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
@@ -2272,8 +2260,8 @@ let x;
 </span>{
     let [_x] = [f(&amp;temp())];
     //                     ^
-    //      The temporary is dropped here.
-    x = _x; // ERROR
+    //      临时变量在这里被释放。
+    x = _x; // 错误
 }
 <span class="boring">}</span></code></pre>
 </blockquote>
@@ -2286,29 +2274,29 @@ let x;
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Due to the desugaring, the assigned value operand (the RHS) of a destructuring assignment is an <a href="../destructors.html#r-destructors.scope.lifetime-extension.exprs">extending expression</a> within a newly-introduced block.</p>
-<p>Below, because the <a href="../destructors.html#r-destructors.scope.temporary">temporary scope</a> is extended to the end of this introduced block, the assignment is allowed.</p>
+<p>由于脱糖，解构赋值的被赋值操作数（右侧）是新引入块内的 <a href="../destructors.html#r-destructors.scope.lifetime-extension.exprs">扩展表达式</a> 。</p>
+<p>在下面，因为 <a href="../destructors.html#r-destructors.scope.temporary">临时作用域</a> 被扩展到了此引入块的末尾，所以赋值是被允许的。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
 </span><span class="boring">let x;
 </span>[x] = [&amp;temp()]; // OK
 <span class="boring">}</span></code></pre>
-<p>This desugars to:</p>
+<p>这被脱糖为：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
 </span><span class="boring">let x;
 </span>{ let [_x] = [&amp;temp()]; x = _x; } // OK
 <span class="boring">}</span></code></pre>
-<p>However, if we try to use <code>x</code>, even within the same statement, we’ll get an error because the <a href="../expressions.html#r-expr.temporary">temporary</a> is dropped at the end of this introduced block.</p>
+<p>然而，如果我们尝试使用 <code>x</code> ，即使在同一语句中，也会得到一个错误，因为 <a href="../expressions.html#r-expr.temporary">临时变量</a> 在此引入块的末尾被释放。</p>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
 </span><span class="boring">let x;
-</span>([x] = [&amp;temp()], x); // ERROR
+</span>([x] = [&amp;temp()], x); // 错误
 <span class="boring">}</span></code></pre>
-<p>This desugars to:</p>
+<p>这被脱糖为：</p>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
@@ -2317,8 +2305,8 @@ let x;
     {
         let [_x] = [&amp;temp()];
         x = _x;
-    }, // &lt;-- The temporary is dropped here.
-    x, // ERROR
+    }, // &lt;-- 临时变量在这里被释放。
+    x, // 错误
 );
 <span class="boring">}</span></code></pre>
 </blockquote>
@@ -2327,7 +2315,7 @@ let x;
 <div class="rule" id="r-expr.compound-assign"><a class="rule-link" href="#r-expr.compound-assign" title="expr.compound-assign"><span>[expr<wbr>.compound-assign]</span></a>
 </div>
 
-<h2 id="compound-assignment-expressions"><a class="header" href="#compound-assignment-expressions">Compound assignment expressions</a></h2>
+<h2 id="复合赋值表达式"><a class="header" href="#复合赋值表达式">复合赋值表达式</a></h2>
 <div class="rule" id="r-expr.compound-assign.syntax"><a class="rule-link" href="#r-expr.compound-assign.syntax" title="expr.compound-assign.syntax"><span>[expr<wbr>.compound-assign<wbr>.syntax]</span></a>
 </div>
 
@@ -2612,31 +2600,31 @@ Expression</text>
 <div class="rule" id="r-expr.compound-assign.intro"><a class="rule-link" href="#r-expr.compound-assign.intro" title="expr.compound-assign.intro"><span>[expr<wbr>.compound-assign<wbr>.intro]</span></a>
 </div>
 
-<p><em>Compound assignment expressions</em> combine arithmetic and logical binary operators with assignment expressions.</p>
-<p>For example:</p>
+<p><em>复合赋值表达式</em> 将算术和逻辑二元运算符与赋值表达式结合在一起。</p>
+<p>例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut x = 5;
 x += 1;
 assert!(x == 6);
 <span class="boring">}</span></code></pre>
-<p>The syntax of compound assignment is a <a href="../expressions.html#mutability">mutable</a> <a href="../expressions.html#place-expressions-and-value-expressions">place expression</a>, the <em>assigned operand</em>, then one of the operators followed by an <code>=</code> as a single token (no whitespace), and then a <a href="../expressions.html#place-expressions-and-value-expressions">value expression</a>, the <em>modifying operand</em>.</p>
+<p>复合赋值的语法是一个 <a href="../expressions.html#mutability">可变</a> <a href="../expressions.html#place-expressions-and-value-expressions">位置表达式</a> （即 <em>被赋值操作数</em> ），然后是一个由运算符后跟 <code>=</code> 组成的单个 词法单元 （无空格），最后是一个 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式</a> （即 <em>修改操作数</em> ）。</p>
 <div class="rule" id="r-expr.compound-assign.place"><a class="rule-link" href="#r-expr.compound-assign.place" title="expr.compound-assign.place"><span>[expr<wbr>.compound-assign<wbr>.place]</span></a>
 </div>
 
-<p>Unlike other place operands, the assigned place operand must be a place expression.</p>
+<p>与其他位置操作数不同，被赋值的操作数必须是一个位置表达式。</p>
 <div class="rule" id="r-expr.compound-assign.no-value"><a class="rule-link" href="#r-expr.compound-assign.no-value" title="expr.compound-assign.no-value"><span>[expr<wbr>.compound-assign<wbr>.no-value]</span></a>
 </div>
 
-<p>Attempting to use a value expression is a compiler error rather than promoting it to a temporary.</p>
+<p>尝试使用值表达式是编译器错误，而不是将其提升为临时变量。</p>
 <div class="rule" id="r-expr.compound-assign.operand-order"><a class="rule-link" href="#r-expr.compound-assign.operand-order" title="expr.compound-assign.operand-order"><span>[expr<wbr>.compound-assign<wbr>.operand-order]</span></a>
 </div>
 
-<p>Evaluation of compound assignment expressions depends on the types of the operands.</p>
+<p>复合赋值表达式的求值得取决于操作数的类型。</p>
 <div class="rule" id="r-expr.compound-assign.primitives"><a class="rule-link" href="#r-expr.compound-assign.primitives" title="expr.compound-assign.primitives"><span>[expr<wbr>.compound-assign<wbr>.primitives]</span></a>
 </div>
 
-<p>If the types of both operands are known, prior to monomorphization, to be primitive, the right hand side is evaluated first, the left hand side is evaluated next, and the place given by the evaluation of the left hand side is mutated by applying the operator to the values of both sides.</p>
+<p>如果在单态化之前已知两个操作数的类型都是原始类型，则首先对右侧求值，接着对左侧求值，然后通过将运算符应用于两侧的值来修改由左侧求值得出的位置。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">use core::{num::Wrapping, ops::AddAssign};
 </span><span class="boring">
 </span>trait Equate {}
@@ -2644,25 +2632,22 @@ impl&lt;T&gt; Equate for (T, T) {}
 
 fn f1(x: (u8,)) {
     let mut order = vec![];
-    // The RHS is evaluated first as both operands are of primitive
-    // type.
+    // 首先对右侧求值，因为两个操作数都是原始类型。
     { order.push(2); x }.0 += { order.push(1); x }.0;
     assert!(order.is_sorted());
 }
 
 fn f2(x: (Wrapping&lt;u8&gt;,)) {
     let mut order = vec![];
-    // The LHS is evaluated first as `Wrapping&lt;_&gt;` is not a primitive
-    // type.
+    // 首先对左侧求值，因为 `Wrapping&lt;_&gt;` 不是原始类型。
     { order.push(1); x }.0 += { order.push(2); (0u8,) }.0;
     assert!(order.is_sorted());
 }
 
 fn f3&lt;T: AddAssign&lt;u8&gt; + Copy&gt;(x: (T,)) where (T, u8): Equate {
     let mut order = vec![];
-    // The LHS is evaluated first as one of the operands is a generic
-    // parameter, even though that generic parameter can be unified
-    // with a primitive type due to the where clause bound.
+    // 首先对左侧求值，因为其中一个操作数是泛型参数，
+    // 即使该泛型参数由于 where 子句界限可以与原始类型统一。
     { order.push(1); x }.0 += { order.push(2); (0u8,) }.0;
     assert!(order.is_sorted());
 }
@@ -2670,45 +2655,42 @@ fn f3&lt;T: AddAssign&lt;u8&gt; + Copy&gt;(x: (T,)) where (T, u8): Equate {
 fn main() {
     f1((0u8,));
     f2((Wrapping(0u8),));
-    // We supply a primitive type as the generic argument, but this
-    // does not affect the evaluation order in `f3` when
-    // monomorphized.
+    // 我们提供一个原始类型作为泛型参数，但这不会影响单态化后 `f3` 中的求值顺序。
     f3::&lt;u8&gt;((0u8,));
 }</code></pre>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This is unusual. Elsewhere left to right evaluation is the norm.</p>
-<p>See the <a href="https://github.com/rust-lang/rust/blob/1.58.0/src/test/ui/expr/compound-assignment/eval-order.rs">eval order test</a> for more examples.</p>
+<p>这是不寻常的。在其他地方，从左到右求值是常规。</p>
+<p>更多示例请参阅 <a href="https://github.com/rust-lang/rust/blob/1.58.0/src/test/ui/expr/compound-assignment/eval-order.rs">求值顺序测试</a> 。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-expr.compound-assign.trait"><a class="rule-link" href="#r-expr.compound-assign.trait" title="expr.compound-assign.trait"><span>[expr<wbr>.compound-assign<wbr>.trait]</span></a>
 </div>
 
-<p>Otherwise, this expression is syntactic sugar for using the corresponding trait for the operator (see <a href="operator-expr.html#r-expr.arith-logic.behavior">expr.arith-logic.behavior</a>) and calling its method with the left hand side as the <a href="method-call-expr.html#r-expr.method.intro">receiver</a> and the right hand side as the next argument.</p>
-<p>For example, the following two statements are equivalent:</p>
+<p>否则，此表达式是使用该运算符对应的 特型 （见 <a href="operator-expr.html#r-expr.arith-logic.behavior">expr.arith-logic.behavior</a> ）并以左侧作为 <a href="method-call-expr.html#r-expr.method.intro">接收者</a> 、右侧作为下一个参数调用其方法的语法糖。</p>
+<p>例如，以下两个语句是等价的：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use std::ops::AddAssign;
 </span>fn f&lt;T: AddAssign + Copy&gt;(mut x: T, y: T) {
-    x += y; // Statement 1.
-    x.add_assign(y); // Statement 2.
+    x += y; // 语句 1。
+    x.add_assign(y); // 语句 2。
 }
 <span class="boring">}</span></code></pre>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Surprisingly, desugaring this further to a fully qualified method call is not equivalent, as there is special borrow checker behavior when the mutable reference to the first operand is taken via <a href="method-call-expr.html#r-expr.method.candidate-receivers-refs">autoref</a>.</p>
+<p>令人惊讶的是，将其进一步脱糖为完全限定的方法调用并不等价，因为当通过 <a href="method-call-expr.html#r-expr.method.candidate-receivers-refs">自动引用</a> 获取指向第一个操作数的可变引用时，存在特殊的借用检查器行为。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use std::ops::AddAssign;
 </span>fn f&lt;T: AddAssign + Copy&gt;(mut x: T) {
-    // Here we used `x` as both the LHS and the RHS. Because the
-    // mutable borrow of the LHS needed to call the trait method
-    // is taken implicitly by autoref, this is OK.
+    // 这里我们将 `x` 同时用作左侧和右侧。因为调用特型方法所需的
+    // 左侧可变借用是通过自动引用隐式获取的，所以这是 OK 的。
     x += x; //~ OK
     x.add_assign(x); //~ OK
 }
@@ -2717,21 +2699,20 @@ fn main() {
 </span><span class="boring">fn main() {
 </span><span class="boring">use std::ops::AddAssign;
 </span>fn f&lt;T: AddAssign + Copy&gt;(mut x: T) {
-    // We can't desugar the above to the below, as once we take the
-    // mutable borrow of `x` to pass the first argument, we can't
-    // pass `x` by value in the second argument because the mutable
-    // reference is still live.
+    // 我们不能将上面的代码脱糖为下面的形式，因为一旦我们为了传递第一个参数
+    // 而获取了 `x` 的可变借用，我们就不能在第二个参数中按值传递 `x` ，
+    // 因为可变引用仍然有效。
     &lt;T as AddAssign&gt;::add_assign(&amp;mut x, x);
-    //~^ ERROR cannot use `x` because it was mutably borrowed
+    //~^ 错误：不能使用 `x` 因为它已被可变借用
 }
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0503 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use std::ops::AddAssign;
 </span>fn f&lt;T: AddAssign + Copy&gt;(mut x: T) {
-    // As above.
+    // 同上。
     (&amp;mut x).add_assign(x);
-    //~^ ERROR cannot use `x` because it was mutably borrowed
+    //~^ 错误：不能使用 `x` 因为它已被可变借用
 }
 <span class="boring">}</span></code></pre>
 </blockquote>
@@ -2740,36 +2721,35 @@ fn main() {
 <div class="rule" id="r-expr.compound-assign.result"><a class="rule-link" href="#r-expr.compound-assign.result" title="expr.compound-assign.result"><span>[expr<wbr>.compound-assign<wbr>.result]</span></a>
 </div>
 
-<p>As with normal assignment expressions, compound assignment expressions always produce <a href="../types/tuple.html">the unit value</a>.</p>
+<p>与普通赋值表达式一样，复合赋值表达式总是产生 <a href="../types/tuple.html">单元值</a> 。</p>
 <div class="alert alert-warning">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>警告</p>
 
-<p>Avoid writing code that depends on the evaluation order of operands in compound assignments as it can be unusual and surprising.</p>
+<p>避免编写依赖于复合赋值中操作数求值顺序的代码，因为它可能是不寻常且令人惊讶的。</p>
 </blockquote>
 </div>
 
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-meta-compat">
-<p>Where <code>T</code> and <code>V</code> have compatible metadata:</p>
+<p>其中 <code>T</code> 和 <code>V</code> 具有兼容的元数据：</p>
 <ul>
-<li><code>V: Sized</code>, or</li>
-<li>Both slice metadata (<code>*[u16]</code> -&gt; <code>*[u8]</code>, <code>*str</code> -&gt; <code>*(u8, [u32])</code>), or</li>
-<li>Both the same trait object metadata, modulo dropping auto traits (<code>*dyn Debug</code> -&gt; <code>*(u16, dyn Debug)</code>, <code>*dyn Debug + Send</code> -&gt; <code>*dyn Debug</code>)
+<li><code>V: Sized</code> ，或</li>
+<li>都是切片元数据（ <code>*[u16]</code> -&gt; <code>*[u8]</code> ， <code>*str</code> -&gt; <code>*(u8, [u32])</code> ），或</li>
+<li>都是相同的特型对象元数据，除了删除自动 特型 （ <code>*dyn Debug</code> -&gt; <code>*(u16, dyn Debug)</code> ， <code>*dyn Debug + Send</code> -&gt; <code>*dyn Debug</code> ）
 <ul>
-<li><strong>Note</strong>: <em>adding</em> auto traits is only allowed if the principal trait has the auto trait as a super trait (given <code>trait T: Send {}</code>, <code>*dyn T</code> -&gt; <code>*dyn T + Send</code> is valid, but <code>*dyn Debug</code> -&gt; <code>*dyn Debug + Send</code> is not)</li>
-<li><strong>Note</strong>: Generics (including lifetimes) must match (<code>*dyn T&lt;'a, A&gt;</code> -&gt; <code>*dyn T&lt;'b, B&gt;</code> requires <code>'a = 'b</code> and <code>A = B</code>)</li>
+<li><strong>注意</strong>：只有当主 特型 将自动 特型 作为超级 特型 时，才允许 <em>增加</em> 自动 特型 （给定 <code>trait T: Send {}</code> ， <code>*dyn T</code> -&gt; <code>*dyn T + Send</code> 是有效的，但 <code>*dyn Debug</code> -&gt; <code>*dyn Debug + Send</code> 则无效）</li>
+<li><strong>注意</strong>：泛型（包括生命周期）必须匹配（ <code>*dyn T&lt;'a, A&gt;</code> -&gt; <code>*dyn T&lt;'b, B&gt;</code> 要求 <code>'a = 'b</code> 且 <code>A = B</code> ）</li>
 </ul>
 </li>
 </ul>
  <a href="#fr-meta-compat-1">↩</a></li>
 <li id="footnote-lessmut">
-<p>Only when <code>m₁</code> is <code>mut</code> or <code>m₂</code> is <code>const</code>. Casting <code>mut</code> reference/pointer to
-<code>const</code> pointer is allowed. <a href="#fr-lessmut-1">↩</a> <a href="#fr-lessmut-2">↩2</a></p>
+<p>仅当 <code>m₁</code> 为 <code>mut</code> 或 <code>m₂</code> 为 <code>const</code> 时。允许将 <code>mut</code> 引用/指针转换为 <code>const</code> 指针。 <a href="#fr-lessmut-1">↩</a> <a href="#fr-lessmut-2">↩2</a></p>
 </li>
 <li id="footnote-no-capture">
-<p>Only closures that do not capture (close over) any local variables can be cast to function pointers. <a href="#fr-no-capture-1">↩</a></p>
+<p>只有不捕获（封闭）任何局部变量的闭包才能转换为函数指针。 <a href="#fr-no-capture-1">↩</a></p>
 </li>
 </ol>
 

@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-be189161.js"></script>
+        <script src="toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,159 +181,84 @@
                         <div class="rule" id="r-link"><a class="rule-link" href="#r-link" title="link"><span>[link]</span></a>
 </div>
 
-<h1 id="linkage"><a class="header" href="#linkage">Linkage</a></h1>
+<h1 id="链接"><a class="header" href="#链接">链接</a></h1>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This section is described more in terms of the compiler than of the language.</p>
+<p>本节更多是从编译器而非语言本身的角度进行描述。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-link.intro"><a class="rule-link" href="#r-link.intro" title="link.intro"><span>[link<wbr>.intro]</span></a>
 </div>
 
-<p>The compiler supports various methods to link crates together both
-statically and dynamically. This section will explore the various methods to
-link crates together, and more information about native libraries can be
-found in the <a href="../book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code">FFI section of the book</a>.</p>
+<p>编译器支持静态和动态链接 crate 的多种方法。本节将探讨链接 crate 的各种方法，有关原生库的更多信息可以在 <a href="../book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code">本书的 FFI 章节</a> 中找到。</p>
 <div class="rule" id="r-link.type"><a class="rule-link" href="#r-link.type" title="link.type"><span>[link<wbr>.type]</span></a>
 </div>
 
-<p>In one session of compilation, the compiler can generate multiple artifacts
-through the usage of either command line flags or the <code>crate_type</code> attribute.
-If one or more command line flags are specified, all <code>crate_type</code> attributes will
-be ignored in favor of only building the artifacts specified by command line.</p>
+<p>在一次编译会话中，编译器可以通过使用命令行标志或 <code>crate_type</code> 属性生成多个产物。如果指定了一个或多个命令行标志，则所有的 <code>crate_type</code> 属性都将被忽略，而只构建通过命令行指定的产物。</p>
 <div class="rule" id="r-link.bin"><a class="rule-link" href="#r-link.bin" title="link.bin"><span>[link<wbr>.bin]</span></a>
 </div>
 
 <ul>
-<li><code>--crate-type=bin</code>, <code>#![crate_type = "bin"]</code> - A runnable executable will be
-produced. This requires that there is a <code>main</code> function in the crate which
-will be run when the program begins executing. This will link in all Rust and
-native dependencies, producing a single distributable binary.
-This is the default crate type.</li>
+<li><code>--crate-type=bin</code>, <code>#![crate_type = "bin"]</code> - 将生成一个可运行的可执行文件。这要求 crate 中有一个 <code>main</code> 函数，该函数将在程序开始执行时运行。这将链接所有的 Rust 和原生依赖项，生成一个单一的可分发二进制文件。这是默认的 crate 类型。</li>
 </ul>
 <div class="rule" id="r-link.lib"><a class="rule-link" href="#r-link.lib" title="link.lib"><span>[link<wbr>.lib]</span></a>
 </div>
 
 <ul>
-<li><code>--crate-type=lib</code>, <code>#![crate_type = "lib"]</code> - A Rust library will be produced.
-This is an ambiguous concept as to what exactly is produced because a library
-can manifest itself in several forms. The purpose of this generic <code>lib</code> option
-is to generate the “compiler recommended” style of library. The output library
-will always be usable by rustc, but the actual type of library may change from
-time-to-time. The remaining output types are all different flavors of
-libraries, and the <code>lib</code> type can be seen as an alias for one of them (but the
-actual one is compiler-defined).</li>
+<li><code>--crate-type=lib</code>, <code>#![crate_type = "lib"]</code> - 将生成一个 Rust 库。这是一个模棱两可的概念，因为库可以以多种形式表现。这种通用的 <code>lib</code> 选项的目的是生成 “compiler recommended” 风格的库。输出的库始终可以被 rustc 使用，但库的具体类型可能会不时发生变化。其余输出类型都是库的不同变体，<code>lib</code> 类型可以看作是其中之一的别名 (but the actual one is compiler-defined)。</li>
 </ul>
 <div class="rule" id="r-link.dylib"><a class="rule-link" href="#r-link.dylib" title="link.dylib"><span>[link<wbr>.dylib]</span></a>
 </div>
 
 <ul>
-<li><code>--crate-type=dylib</code>, <code>#![crate_type = "dylib"]</code> - A dynamic Rust library will
-be produced. This is different from the <code>lib</code> output type in that this forces
-dynamic library generation. The resulting dynamic library can be used as a
-dependency for other libraries and/or executables. This output type will
-create <code>*.so</code> files on Linux, <code>*.dylib</code> files on macOS, and <code>*.dll</code> files on
-Windows.</li>
+<li><code>--crate-type=dylib</code>, <code>#![crate_type = "dylib"]</code> - 将生成一个动态 Rust 库。这与 <code>lib</code> 输出类型的不同之处在于它强制生成动态库。生成的动态库可以用作其他库和/或可执行文件的依赖项。这种输出类型将在 Linux 上创建 <code>*.so</code> 文件，在 macOS 上创建 <code>*.dylib</code> 文件，在 Windows 上创建 <code>*.dll</code> 文件。</li>
 </ul>
 <div class="rule" id="r-link.staticlib"><a class="rule-link" href="#r-link.staticlib" title="link.staticlib"><span>[link<wbr>.staticlib]</span></a>
 </div>
 
 <ul>
 <li>
-<p><code>--crate-type=staticlib</code>, <code>#![crate_type = "staticlib"]</code> - A static system
-library will be produced. This is different from other library outputs in that
-the compiler will never attempt to link to <code>staticlib</code> outputs. The
-purpose of this output type is to create a static library containing all of
-the local crate’s code along with all upstream dependencies. This output type
-will create <code>*.a</code> files on Linux, macOS and Windows (MinGW), and <code>*.lib</code> files
-on Windows (MSVC). This format is recommended for use in situations such as
-linking Rust code into an existing non-Rust application because it will not
-have dynamic dependencies on other Rust code.</p>
-<p>Note that any dynamic dependencies that the static library may have (such as
-dependencies on system libraries, or dependencies on Rust libraries that are
-compiled as dynamic libraries) will have to be specified manually when
-linking that static library from somewhere. The <code>--print=native-static-libs</code> flag may help with this.</p>
-<p>Note that, because the resulting static library contains the code of all the
-dependencies, including the standard library, and also exports all public
-symbols of them, linking the static library into an executable or shared
-library may need special care. In case of a shared library the list of
-exported symbols will have to be limited via e.g. a linker or symbol version
-script, exported symbols list (macOS), or module definition file (Windows).
-Additionally, unused sections can be removed to remove all code of
-dependencies that is not actually used (e.g. <code>--gc-sections</code> or <code>-dead_strip</code>
-for macOS).</p>
+<p><code>--crate-type=staticlib</code>, <code>#![crate_type = "staticlib"]</code> - 将生成一个静态系统库。这与其他库输出的不同之处在于，编译器永远不会尝试链接到 <code>staticlib</code> 输出。这种输出类型的目的是创建一个包含所有本地 crate 代码以及所有上游依赖项的静态库。这种输出类型将在 Linux, macOS 和 Windows (MinGW) 上创建 <code>*.a</code> 文件，并在 Windows (MSVC) 上创建 <code>*.lib</code> 文件。建议在将 Rust 代码链接到现有的非 Rust 应用程序等情况下使用此格式，因为它不会对其他 Rust 代码产生动态依赖。</p>
+<p>请注意，静态库可能具有的任何动态依赖项 (such as dependencies on system libraries, or dependencies on Rust libraries that are compiled as dynamic libraries) 在从某处链接该静态库时必须手动指定。 <code>--print=native-static-libs</code> 标志可能对此有所帮助。</p>
+<p>请注意，由于生成的静态库包含所有依赖项的代码 (including the standard library) ，并且还导出了它们的所有公共符号，因此将静态库链接到可执行文件或共享库可能需要特别注意。在共享库的情况下，必须通过例如链接器或符号版本脚本、导出符号列表 (macOS) 或模块定义文件 (Windows) 来限制导出符号的列表。此外，可以删除未使用的节，以删除未实际使用的所有依赖项代码 (e.g. <code>--gc-sections</code> or <code>-dead_strip</code> for macOS)。</p>
 </li>
 </ul>
 <div class="rule" id="r-link.cdylib"><a class="rule-link" href="#r-link.cdylib" title="link.cdylib"><span>[link<wbr>.cdylib]</span></a>
 </div>
 
 <ul>
-<li><code>--crate-type=cdylib</code>, <code>#![crate_type = "cdylib"]</code> - A dynamic system
-library will be produced.  This is used when compiling
-a dynamic library to be loaded from another language.  This output type will
-create <code>*.so</code> files on Linux, <code>*.dylib</code> files on macOS, and <code>*.dll</code> files on
-Windows.</li>
+<li><code>--crate-type=cdylib</code>, <code>#![crate_type = "cdylib"]</code> - 将生成一个动态系统库。这用于在编译要从另一种语言加载的动态库时使用。这种输出类型将在 Linux 上创建 <code>*.so</code> 文件，在 macOS 上创建 <code>*.dylib</code> 文件，在 Windows 上创建 <code>*.dll</code> 文件。</li>
 </ul>
 <div class="rule" id="r-link.rlib"><a class="rule-link" href="#r-link.rlib" title="link.rlib"><span>[link<wbr>.rlib]</span></a>
 </div>
 
 <ul>
-<li><code>--crate-type=rlib</code>, <code>#![crate_type = "rlib"]</code> - A “Rust library” file will be
-produced. This is used as an intermediate artifact and can be thought of as a
-“static Rust library”. These <code>rlib</code> files, unlike <code>staticlib</code> files, are
-interpreted by the compiler in future linkage. This essentially means
-that <code>rustc</code> will look for metadata in <code>rlib</code> files like it looks for metadata
-in dynamic libraries. This form of output is used to produce statically linked
-executables as well as <code>staticlib</code> outputs.</li>
+<li><code>--crate-type=rlib</code>, <code>#![crate_type = "rlib"]</code> - 将生成一个 “Rust library” 文件。这用作中间产物，可以被认为是 “static Rust library” 。与 <code>staticlib</code> 文件不同，这些 <code>rlib</code> 文件在未来的链接中由编译器解释。这本质上意味着 <code>rustc</code> 将在 <code>rlib</code> 文件中寻找元数据，就像在动态库中寻找元数据一样。这种输出形式用于生成静态链接的可执行文件以及 <code>staticlib</code> 输出。</li>
 </ul>
 <div class="rule" id="r-link.proc-macro"><a class="rule-link" href="#r-link.proc-macro" title="link.proc-macro"><span>[link<wbr>.proc-macro]</span></a>
 </div>
 
 <ul>
-<li><code>--crate-type=proc-macro</code>, <code>#![crate_type = "proc-macro"]</code> - The output
-produced is not specified, but if a <code>-L</code> path is provided to it then the
-compiler will recognize the output artifacts as a macro and it can be loaded
-for a program. Crates compiled with this crate type  must only export
-<a href="procedural-macros.html">procedural macros</a>. The compiler will automatically set the <code>proc_macro</code>
-<a href="conditional-compilation.html">configuration option</a>. The crates are always compiled with the same target
-that the compiler itself was built with. For example, if you are executing
-the compiler from Linux with an <code>x86_64</code> CPU, the target will be
-<code>x86_64-unknown-linux-gnu</code> even if the crate is a dependency of another crate
-being built for a different target.</li>
+<li><code>--crate-type=proc-macro</code>, <code>#![crate_type = "proc-macro"]</code> - 生成的输出未指定，但如果为其提供了 <code>-L</code> 路径，则编译器会将输出产物识别为宏，并且可以为程序加载它。使用此 crate 类型编译的 crate 只能导出 <a href="procedural-macros.html">过程宏</a>。编译器将自动设置 <code>proc_macro</code> <a href="conditional-compilation.html">配置选项</a>。crate 始终使用与编译器本身构建时相同的 target 进行编译。例如，如果您在带有 <code>x86_64</code> CPU 的 Linux 上执行编译器，则 target 将是 <code>x86_64-unknown-linux-gnu</code>，即使该 crate 是为不同 target 构建的另一个 crate 的依赖项。</li>
 </ul>
 <div class="rule" id="r-link.repetition"><a class="rule-link" href="#r-link.repetition" title="link.repetition"><span>[link<wbr>.repetition]</span></a>
 </div>
 
-<p>Note that these outputs are stackable in the sense that if multiple are
-specified, then the compiler will produce each form of output without
-having to recompile. However, this only applies for outputs specified by the
-same method. If only <code>crate_type</code> attributes are specified, then they will all
-be built, but if one or more <code>--crate-type</code> command line flags are specified,
-then only those outputs will be built.</p>
+<p>请注意，这些输出是可堆叠的，即如果指定了多个，则编译器将生成每种形式的输出，而无需重新编译。但是，这仅适用于通过相同方法指定的输出。如果仅指定了 <code>crate_type</code> 属性，则它们都将被构建，但如果指定了一个或多个 <code>--crate-type</code> 命令行标志，则仅构建那些输出。</p>
 <div class="rule" id="r-link.dependency"><a class="rule-link" href="#r-link.dependency" title="link.dependency"><span>[link<wbr>.dependency]</span></a>
 </div>
 
-<p>With all these different kinds of outputs, if crate A depends on crate B, then
-the compiler could find B in various different forms throughout the system. The
-only forms looked for by the compiler, however, are the <code>rlib</code> format and the
-dynamic library format. With these two options for a dependent library, the
-compiler must at some point make a choice between these two formats. With this
-in mind, the compiler follows these rules when determining what format of
-dependencies will be used:</p>
+<p>对于所有这些不同种类的输出，如果 crate A 依赖于 crate B，则编译器可能会在整个系统中找到各种不同形式的 B。然而，编译器寻找的唯一形式是 <code>rlib</code> 格式和动态库格式。对于依赖库的这两个选项，编译器必须在某个时间点在两种格式之间做出选择。考虑到这一点，编译器在确定将使用哪种格式的依赖项时遵循以下规则：</p>
 <div class="rule" id="r-link.dependency-staticlib"><a class="rule-link" href="#r-link.dependency-staticlib" title="link.dependency-staticlib"><span>[link<wbr>.dependency-staticlib]</span></a>
 </div>
 
 <ol>
 <li>
-<p>If a static library is being produced, all upstream dependencies are
-required to be available in <code>rlib</code> formats. This requirement stems from the
-reason that a dynamic library cannot be converted into a static format.</p>
-<p>Note that it is impossible to link in native dynamic dependencies to a static
-library, and in this case warnings will be printed about all unlinked native
-dynamic dependencies.</p>
+<p>如果正在生成静态库，则要求所有上游依赖项都必须以 <code>rlib</code> 格式可用。这一要求源于动态库无法转换为静态格式的原因。</p>
+<p>请注意，无法将原生动态依赖项链接到静态库，在这种情况下，将打印有关所有未链接的原生动态依赖项的警告。</p>
 </li>
 </ol>
 <div class="rule" id="r-link.dependency-rlib"><a class="rule-link" href="#r-link.dependency-rlib" title="link.dependency-rlib"><span>[link<wbr>.dependency-rlib]</span></a>
@@ -341,62 +266,36 @@ dynamic dependencies.</p>
 
 <ol start="2">
 <li>
-<p>If an <code>rlib</code> file is being produced, then there are no restrictions on what
-format the upstream dependencies are available in. It is simply required that
-all upstream dependencies be available for reading metadata from.</p>
-<p>The reason for this is that <code>rlib</code> files do not contain any of their upstream
-dependencies. It wouldn’t be very efficient for all <code>rlib</code> files to contain a
-copy of <code>libstd.rlib</code>!</p>
+<p>如果正在生成 <code>rlib</code> 文件，则对上游依赖项可用的格式没有限制。仅要求所有上游依赖项都可用于读取元数据。</p>
+<p>这是因为 <code>rlib</code> 文件不包含其任何上游依赖项。让所有 <code>rlib</code> 文件都包含 <code>libstd.rlib</code> 的副本是非常低效的！</p>
 </li>
 </ol>
 <div class="rule" id="r-link.dependency-prefer-dynamic"><a class="rule-link" href="#r-link.dependency-prefer-dynamic" title="link.dependency-prefer-dynamic"><span>[link<wbr>.dependency-prefer-dynamic]</span></a>
 </div>
 
 <ol start="3">
-<li>If an executable is being produced and the <code>-C prefer-dynamic</code> flag is not
-specified, then dependencies are first attempted to be found in the <code>rlib</code>
-format. If some dependencies are not available in an rlib format, then
-dynamic linking is attempted (see below).</li>
+<li>如果正在生成可执行文件且未指定 <code>-C prefer-dynamic</code> 标志，则首先尝试寻找 <code>rlib</code> 格式的依赖项。如果某些依赖项在 rlib 格式下不可用，则尝试动态链接 (see below)。</li>
 </ol>
 <div class="rule" id="r-link.dependency-dynamic"><a class="rule-link" href="#r-link.dependency-dynamic" title="link.dependency-dynamic"><span>[link<wbr>.dependency-dynamic]</span></a>
 </div>
 
 <ol start="4">
 <li>
-<p>If a dynamic library or an executable that is being dynamically linked is
-being produced, then the compiler will attempt to reconcile the available
-dependencies in either the rlib or dylib format to create a final product.</p>
-<p>A major goal of the compiler is to ensure that a library never appears more
-than once in any artifact. For example, if dynamic libraries B and C were
-each statically linked to library A, then a crate could not link to B and C
-together because there would be two copies of A. The compiler allows mixing
-the rlib and dylib formats, but this restriction must be satisfied.</p>
-<p>The compiler currently implements no method of hinting what format a library
-should be linked with. When dynamically linking, the compiler will attempt to
-maximize dynamic dependencies while still allowing some dependencies to be
-linked in via an rlib.</p>
-<p>For most situations, having all libraries available as a dylib is recommended
-if dynamically linking. For other situations, the compiler will emit a
-warning if it is unable to determine which formats to link each library with.</p>
+<p>如果正在生成动态库或正在动态链接的可执行文件，则编译器将尝试协调以 rlib 或 dylib 格式提供的依赖项，以创建最终产品。</p>
+<p>编译器的主要目标是确保一个库在任何产物中都不会出现超过一次。例如，如果动态库 B 和 C 都静态链接到库 A，那么一个 crate 就不能同时链接到 B 和 C，因为那样就会有两个 A 的副本。编译器允许混合 rlib 和 dylib 格式，但必须满足这一限制。</p>
+<p>编译器目前没有提供暗示库应以何种格式链接的方法。在动态链接时，编译器将尝试最大化动态依赖项，同时仍允许通过 rlib 链接一些依赖项。</p>
+<p>对于大多数情况，如果进行动态链接，建议所有库都以 dylib 形式可用。对于其他情况，如果编译器无法确定每个库应以哪种格式链接，它将发出警告。</p>
 </li>
 </ol>
-<p>In general, <code>--crate-type=bin</code> or <code>--crate-type=lib</code> should be sufficient for
-all compilation needs, and the other options are just available if more
-fine-grained control is desired over the output format of a crate.</p>
+<p>通常，对于所有编译需求，<code>--crate-type=bin</code> 或 <code>--crate-type=lib</code> 应该就足够了，其他选项仅在需要对 crate 输出格式进行更精细控制时可用。</p>
 <div class="rule" id="r-link.crt"><a class="rule-link" href="#r-link.crt" title="link.crt"><span>[link<wbr>.crt]</span></a>
 </div>
 
-<h2 id="static-and-dynamic-c-runtimes"><a class="header" href="#static-and-dynamic-c-runtimes">Static and dynamic C runtimes</a></h2>
+<h2 id="静态和动态c运行时"><a class="header" href="#静态和动态c运行时">静态和动态C运行时</a></h2>
 <div class="rule" id="r-link.crt.intro"><a class="rule-link" href="#r-link.crt.intro" title="link.crt.intro"><span>[link<wbr>.crt<wbr>.intro]</span></a>
 </div>
 
-<p>The standard library in general strives to support both statically linked and
-dynamically linked C runtimes for targets as appropriate. For example the
-<code>x86_64-pc-windows-msvc</code> and <code>x86_64-unknown-linux-musl</code> targets typically come
-with both runtimes and the user selects which one they’d like. All targets in
-the compiler have a default mode of linking to the C runtime. Typically targets
-are linked dynamically by default, but there are exceptions which are static by
-default such as:</p>
+<p>标准库通常力求根据需要为 target 支持静态链接和动态链接的 C 运行时。例如 <code>x86_64-pc-windows-msvc</code> 和 <code>x86_64-unknown-linux-musl</code> target 通常带有两种运行时，用户可以选择他们喜欢的。编译器中的所有 target 都有链接到 C 运行时的默认模式。通常 target 默认是动态链接的，但也有些例外是默认静态链接的，例如：</p>
 <ul>
 <li><code>arm-unknown-linux-musleabi</code></li>
 <li><code>arm-unknown-linux-musleabihf</code></li>
@@ -407,28 +306,20 @@ default such as:</p>
 <div class="rule" id="r-link.crt.crt-static"><a class="rule-link" href="#r-link.crt.crt-static" title="link.crt.crt-static"><span>[link<wbr>.crt<wbr>.crt-static]</span></a>
 </div>
 
-<p>The linkage of the C runtime is configured to respect the <code>crt-static</code> target
-feature. These target features are typically configured from the command line
-via flags to the compiler itself. For example to enable a static runtime you
-would execute:</p>
+<p>C 运行时的链接配置为遵循 <code>crt-static</code> target 特性。这些 target 特性通常在命令行中通过编译器的标志进行配置。例如，要启用静态运行时，您可以执行：</p>
 <pre><code class="language-sh">rustc -C target-feature=+crt-static foo.rs
 </code></pre>
-<p>whereas to link dynamically to the C runtime you would execute:</p>
+<p>而要动态链接到 C 运行时，您可以执行：</p>
 <pre><code class="language-sh">rustc -C target-feature=-crt-static foo.rs
 </code></pre>
 <div class="rule" id="r-link.crt.ineffective"><a class="rule-link" href="#r-link.crt.ineffective" title="link.crt.ineffective"><span>[link<wbr>.crt<wbr>.ineffective]</span></a>
 </div>
 
-<p>Targets which do not support switching between linkage of the C runtime will
-ignore this flag. It’s recommended to inspect the resulting binary to ensure
-that it’s linked as you would expect after the compiler succeeds.</p>
+<p>不支持在 C 运行时链接方式之间切换的 target 将忽略此标志。建议在编译器成功后检查生成的二进制文件，以确保它按预期链接。</p>
 <div class="rule" id="r-link.crt.target_feature"><a class="rule-link" href="#r-link.crt.target_feature" title="link.crt.target_feature"><span>[link<wbr>.crt<wbr>.target_feature]</span></a>
 </div>
 
-<p>Crates may also learn about how the C runtime is being linked. Code on MSVC, for
-example, needs to be compiled differently (e.g. with <code>/MT</code> or <code>/MD</code>) depending
-on the runtime being linked. This is exported currently through the
-<a href="conditional-compilation.html#target_feature"><code>cfg</code> attribute <code>target_feature</code> option</a>:</p>
+<p>crate 也可以了解 C 运行时是如何被链接的。例如，MSVC 上的代码需要根据链接的运行时进行不同的编译 (e.g. with <code>/MT</code> or <code>/MD</code>) 。这目前通过 <a href="conditional-compilation.html#target_feature"><code>cfg</code> 属性 <code>target_feature</code> 选项</a> 导出：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[cfg(target_feature = "crt-static")]
@@ -441,9 +332,7 @@ fn foo() {
     println!("the C runtime should be dynamically linked");
 }
 <span class="boring">}</span></code></pre>
-<p>Also note that Cargo build scripts can learn about this feature through
-<a href="../cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-build-scripts">environment variables</a>. In a build script you can detect the linkage
-via:</p>
+<p>另请注意，Cargo 构建脚本可以通过 <a href="../cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-build-scripts">环境变量</a> 了解此特性。在构建脚本中，您可以通过以下方式检测链接：</p>
 <pre class="playground"><code class="language-rust edition2024">use std::env;
 
 fn main() {
@@ -455,74 +344,64 @@ fn main() {
         println!("the C runtime will be dynamically linked");
     }
 }</code></pre>
-<p>To use this feature locally, you typically will use the <code>RUSTFLAGS</code> environment
-variable to specify flags to the compiler through Cargo. For example to compile
-a statically linked binary on MSVC you would execute:</p>
+<p>要在本地使用此特性，您通常会使用 <code>RUSTFLAGS</code> 环境变量通过 Cargo 为编译器指定标志。例如，要在 MSVC 上编译静态链接的二进制文件，您可以执行：</p>
 <pre><code class="language-sh">RUSTFLAGS='-C target-feature=+crt-static' cargo build --target x86_64-pc-windows-msvc
 </code></pre>
 <div class="rule" id="r-link.foreign-code"><a class="rule-link" href="#r-link.foreign-code" title="link.foreign-code"><span>[link<wbr>.foreign-code]</span></a>
 </div>
 
-<h2 id="mixed-rust-and-foreign-codebases"><a class="header" href="#mixed-rust-and-foreign-codebases">Mixed Rust and foreign codebases</a></h2>
+<h2 id="混合rust和外部代码库"><a class="header" href="#混合rust和外部代码库">混合Rust和外部代码库</a></h2>
 <div class="rule" id="r-link.foreign-code.foreign-linkers"><a class="rule-link" href="#r-link.foreign-code.foreign-linkers" title="link.foreign-code.foreign-linkers"><span>[link<wbr>.foreign-code<wbr>.foreign-linkers]</span></a>
 </div>
 
-<p>If you are mixing Rust with foreign code (e.g. C, C++) and wish to make a single
-binary containing both types of code, you have two approaches for the final
-binary link:</p>
+<p>如果您混合使用 Rust 和外部代码 (e.g. C, C++) 并希望制作包含两种代码类型的单个二进制文件，则最终二进制链接有两种方法：</p>
 <ul>
-<li>Use <code>rustc</code>. Pass any non-Rust libraries using <code>-L &lt;directory&gt;</code> and <code>-l&lt;library&gt;</code>
-rustc arguments, and/or <code>#[link]</code> directives in your Rust code. If you need to
-link against <code>.o</code> files you can use <code>-Clink-arg=file.o</code>.</li>
-<li>Use your foreign linker. In this case, you first need to generate a Rust <code>staticlib</code>
-target and pass that into your foreign linker invocation. If you need to link
-multiple Rust subsystems, you will need to generate a <em>single</em> <code>staticlib</code>
-perhaps using lots of <code>extern crate</code> statements to include multiple Rust <code>rlib</code>s.
-Multiple Rust <code>staticlib</code> files are likely to conflict.</li>
+<li>使用 <code>rustc</code>。使用 <code>rustc</code> 参数 <code>-L &lt;directory&gt;</code> 和 <code>-l&lt;library&gt;</code> 传递任何非 Rust 库，和/或在 Rust 代码中使用 <code>#[link]</code> 指令。如果您需要链接 <code>*.o</code> 文件，可以使用 <code>-Clink-arg=file.o</code>。</li>
+<li>使用您的外部链接器。在这种情况下，您首先需要生成一个 Rust <code>staticlib</code> target 并将其传递给您的外部链接器调用。如果您需要链接多个 Rust 子系统，您将需要生成一个 <em>单个</em> <code>staticlib</code>，可能需要使用大量的 <code>extern crate</code> 语句来包含多个 Rust <code>rlib</code>。多个 Rust <code>staticlib</code> 文件很可能会冲突。</li>
 </ul>
-<p>Passing <code>rlib</code>s directly into your foreign linker is currently unsupported.</p>
+<p>目前不支持将 <code>rlib</code> 直接传递到您的外部链接器中。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Rust code compiled or linked with a different instance of the Rust runtime counts as “foreign code” for the purpose of this section.</p>
+<p>对于本节而言，使用不同的 Rust 运行时实例编译或链接的 Rust 代码也算作 “foreign code” 。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-link.unwinding"><a class="rule-link" href="#r-link.unwinding" title="link.unwinding"><span>[link<wbr>.unwinding]</span></a>
 </div>
 
-<h3 id="prohibited-linkage-and-unwinding"><a class="header" href="#prohibited-linkage-and-unwinding">Prohibited linkage and unwinding</a></h3>
+<h3 id="禁止的链接和恐慌展开"><a class="header" href="#禁止的链接和恐慌展开">禁止的链接和恐慌展开</a></h3>
 <div class="rule" id="r-link.unwinding.intro"><a class="rule-link" href="#r-link.unwinding.intro" title="link.unwinding.intro"><span>[link<wbr>.unwinding<wbr>.intro]</span></a>
 </div>
 
-<p>Panic unwinding can only be used if the binary is built consistently according to the following rules.</p>
+<p>仅当二进制文件根据以下规则一致地构建时，才能使用恐慌展开。</p>
 <div class="rule" id="r-link.unwinding.potential"><a class="rule-link" href="#r-link.unwinding.potential" title="link.unwinding.potential"><span>[link<wbr>.unwinding<wbr>.potential]</span></a>
 </div>
 
-<p>A Rust artifact is called <em>potentially unwinding</em> if any of the following conditions is met:</p>
+<p>如果满足以下任何条件，则 Rust 产物被称为 <em>潜在展开的</em> ：</p>
 <ul>
-<li>The artifact uses the <a href="panic.html#r-panic.panic_handler"><code>unwind</code> panic handler</a>.</li>
-<li>The artifact contains a crate built with the <code>unwind</code> <a href="panic.html#panic-strategy">panic strategy</a> that makes a call to a function using a <code>-unwind</code> ABI.</li>
-<li>The artifact makes a <code>"Rust"</code> ABI call to code running in another Rust artifact that has a separate copy of the Rust runtime, and that other artifact is potentially unwinding.</li>
+<li>该产物使用 <a href="panic.html#r-panic.panic_handler"><code>unwind</code> 恐慌处理器</a>。</li>
+<li>该产物包含一个使用 <code>unwind</code> <a href="panic.html#panic-strategy">恐慌策略</a> 构建的 crate，该 crate 使用 <code>-unwind</code> ABI 调用函数。</li>
+<li>该产物对在另一个拥有独立的 Rust 运行时副本的 Rust 产物中运行的代码进行 “Rust” ABI 调用，并且该另一个产物是潜在展开的。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This definition captures whether a <code>"Rust"</code> ABI call inside a Rust artifact can ever unwind.</p>
+<p>此定义涵盖了 Rust 产物内部的 “Rust” ABI 调用是否会发生展开。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-link.unwinding.prohibited"><a class="rule-link" href="#r-link.unwinding.prohibited" title="link.unwinding.prohibited"><span>[link<wbr>.unwinding<wbr>.prohibited]</span></a>
 </div>
 
-<p>If a Rust artifact is potentially unwinding, then all its crates must be built with the <code>unwind</code> <a href="panic.html#panic-strategy">panic strategy</a>. Otherwise, unwinding can cause undefined behavior.</p>
+<p>如果一个 Rust 产物是潜在展开的，那么它的所有 crate 都必须使用 <code>unwind</code> <a href="panic.html#panic-strategy">恐慌策略</a> 构建。否则，展开可能会导致未定义行为。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>If you are using <code>rustc</code> to link, these rules are enforced automatically. If you are <em>not</em> using <code>rustc</code> to link, you must take care to ensure that unwinding is handled consistently across the entire binary. Linking without <code>rustc</code> includes using <code>dlopen</code> or similar facilities where linking is done by the system runtime without <code>rustc</code> being involved. This can only happen when mixing code with different <a href="../rustc/codegen-options/index.html#panic"><code>-C panic</code></a> flags, so most users do not have to be concerned about this.</p>
+<p>如果您使用 <code>rustc</code> 进行链接，这些规则会自动执行。如果您 <em>不</em> 使用 <code>rustc</code> 进行链接，则必须注意确保在整个二进制文件中一致地处理展开。不使用 <code>rustc</code> 链接包括使用 <code>dlopen</code> 或类似设施，其中链接由系统运行时完成，而不涉及 <code>rustc</code>。这种情况仅在混合使用具有不同 <a href="../rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 标志的代码时才会发生，因此大多数用户无需担心这一点。</p>
 </blockquote>
 </div>
 
@@ -530,7 +409,7 @@ Multiple Rust <code>staticlib</code> files are likely to conflict.</li>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>To guarantee that a library will be sound (and linkable with <code>rustc</code>) regardless of the panic runtime used at link-time, the <a href="../rustc/lints/listing/allowed-by-default.html#ffi-unwind-calls"><code>ffi_unwind_calls</code> lint</a> may be used. The lint flags any calls to <code>-unwind</code> foreign functions or function pointers.</p>
+<p>为了保证无论链接时使用何种恐慌运行时，库都是健全的 (and linkable with <code>rustc</code>) ，可以使用 <a href="../rustc/lints/listing/allowed-by-default.html#ffi-unwind-calls"><code>ffi_unwind_calls</code> lint</a> 。该 lint 会标记对 <code>-unwind</code> 外部函数或函数指针的任何调用。</p>
 </blockquote>
 </div>
 

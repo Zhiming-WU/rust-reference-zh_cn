@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-be189161.js"></script>
+        <script src="toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,29 +181,21 @@
                         <div class="rule" id="r-undefined"><a class="rule-link" href="#r-undefined" title="undefined"><span>[undefined]</span></a>
 </div>
 
-<h1 id="behavior-considered-undefined"><a class="header" href="#behavior-considered-undefined">Behavior considered undefined</a></h1>
+<h1 id="被视为未定义的行为"><a class="header" href="#被视为未定义的行为">被视为未定义的行为</a></h1>
 <div class="rule" id="r-undefined.general"><a class="rule-link" href="#r-undefined.general" title="undefined.general"><span>[undefined<wbr>.general]</span></a>
 </div>
 
-<p>Rust code is incorrect if it exhibits any of the behaviors in the following
-list. This includes code within <code>unsafe</code> blocks and <code>unsafe</code> functions.
-<code>unsafe</code> only means that avoiding undefined behavior is on the programmer; it
-does not change anything about the fact that Rust programs must never cause
-undefined behavior.</p>
+<p>Rust 代码如果表现出以下列表中的任何行为，就是不正确的。这包括 <code>unsafe</code> 块和 <code>unsafe</code> 函数中的代码。<code>unsafe</code> 仅意味着避免未定义行为的责任在程序员身上；它并不会改变 Rust 程序决不能导致未定义行为这一事实。</p>
 <div class="rule" id="r-undefined.soundness"><a class="rule-link" href="#r-undefined.soundness" title="undefined.soundness"><span>[undefined<wbr>.soundness]</span></a>
 </div>
 
-<p>It is the programmer’s responsibility when writing <code>unsafe</code> code to ensure that
-any safe code interacting with the <code>unsafe</code> code cannot trigger these
-behaviors. <code>unsafe</code> code that satisfies this property for any safe client is
-called <em>sound</em>; if <code>unsafe</code> code can be misused by safe code to exhibit
-undefined behavior, it is <em>unsound</em>.</p>
+<p>在编写 <code>unsafe</code> 代码时，程序员有责任确保任何与 <code>unsafe</code> 代码交互的安全代码都不会触发这些行为。对于任何安全客户端都能满足此属性的 <code>unsafe</code> 代码被称为 <em>sound (无害的)</em> ；如果 <code>unsafe</code> 代码可能被安全代码误用而表现出未定义行为，则它是 <em>unsound (有害的)</em> 。</p>
 <div class="alert alert-warning">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>警告</p>
 
-<p>The following list is not exhaustive; it may grow or shrink. There is no formal model of Rust’s semantics for what is and is not allowed in unsafe code, so there may be more behavior considered unsafe. We also reserve the right to make some of the behavior in that list defined in the future. In other words, this list does not say that anything will <em>definitely</em> always be undefined in all future Rust version (but we might make such commitments for some list items in the future).</p>
-<p>Please read the <a href="../nomicon/index.html">Rustonomicon</a> before writing unsafe code.</p>
+<p>以下列表并不详尽；它可能会增加或减少。对于在不安全代码中哪些允许、哪些不允许，目前还没有正式的 Rust 语义模型，因此可能还有更多行为被认为是不安全的。我们也保留在未来将列表中某些行为变为“已定义行为”的权利。换句话说，此列表并不代表任何内容在所有未来的 Rust 版本中都 <em>肯定</em> 始终是未定义的（但我们将来可能会对某些列表项做出此类承诺）。</p>
+<p>在编写不安全代码之前，请阅读 <a href="../nomicon/index.html">Rustonomicon</a>。</p>
 </blockquote>
 </div>
 
@@ -211,42 +203,37 @@ undefined behavior, it is <em>unsound</em>.</p>
 </div>
 
 <ul>
-<li>Data races.</li>
+<li>数据竞争。</li>
 </ul>
 <div class="rule" id="r-undefined.pointer-access"><a class="rule-link" href="#r-undefined.pointer-access" title="undefined.pointer-access"><span>[undefined<wbr>.pointer-access]</span></a>
 </div>
 
 <ul>
-<li>Accessing (loading from or storing to) a place that is <a href="#dangling-pointers">dangling</a> or <a href="#places-based-on-misaligned-pointers">based on
-a misaligned pointer</a>.</li>
+<li>访问（加载或存储）一个 <a href="#dangling-pointers">悬垂</a> 或 <a href="#places-based-on-misaligned-pointers">基于对齐错误指针</a> 的位置。</li>
 </ul>
 <div class="rule" id="r-undefined.place-projection"><a class="rule-link" href="#r-undefined.place-projection" title="undefined.place-projection"><span>[undefined<wbr>.place-projection]</span></a>
 </div>
 
 <ul>
-<li>Performing a place projection that violates the requirements of <a href="../std/primitive.pointer.html#method.offset">in-bounds
-pointer arithmetic</a>. A place projection is a <a href="expressions/field-expr.html">field
-expression</a>, a <a href="expressions/tuple-expr.html#tuple-indexing-expressions">tuple index expression</a>, or an
-<a href="expressions/array-expr.html#array-and-slice-indexing-expressions">array/slice index expression</a>.</li>
+<li>执行违反 <a href="../std/primitive.pointer.html#method.offset">in-bounds 指针算术</a> 要求的 位置投影 (place projection)。位置投影是指 <a href="expressions/field-expr.html">字段表达式</a>、<a href="expressions/tuple-expr.html#tuple-indexing-expressions">元组索引表达式</a> 或 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组/切片索引表达式</a>。</li>
 </ul>
 <div class="rule" id="r-undefined.alias"><a class="rule-link" href="#r-undefined.alias" title="undefined.alias"><span>[undefined<wbr>.alias]</span></a>
 </div>
 
 <ul>
 <li>
-<p>Breaking the pointer aliasing rules. The exact aliasing rules are not determined yet, but here is an outline of the general principles:
-<code>&amp;T</code> must point to memory that is not mutated while they are live (except for data inside an <a href="../core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a>),
-and <code>&amp;mut T</code> must point to memory that is not read or written by any pointer not derived from the reference and that no other reference points to while they are live.
-<code>Box&lt;T&gt;</code> is treated similar to <code>&amp;'static mut T</code> for the purpose of these rules.
-The exact liveness duration is not specified, but some bounds exist:</p>
+<p>违反指针别名规则。精确的别名规则尚未确定，但这里有一个通用原则的大纲：
+<code>&amp;T</code> 必须指向在其存续期间未被修改的内存（除了 <a href="../core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a> 内部的数据），
+且 <code>&amp;mut T</code> 必须指向在其存续期间不被任何非该引用派生的指针读取或写入，且没有其他引用指向的内存。
+出于这些规则的目的，<code>Box&lt;T&gt;</code> 的处理方式类似于 <code>&amp;'static mut T</code>。
+精确的存续持续时间 (liveness duration) 尚未指定，但存在一些界限：</p>
 <ul>
-<li>For references, the liveness duration is upper-bounded by the syntactic
-lifetime assigned by the borrow checker; it cannot be live any <em>longer</em> than that lifetime.</li>
-<li>Each time a reference or box is dereferenced or reborrowed, it is considered live.</li>
-<li>Each time a reference or box is passed to or returned from a function, it is considered live.</li>
-<li>When a reference (but not a <code>Box</code>!) is passed to a function, it is live at least as long as that function call, again except if the <code>&amp;T</code> contains an <a href="../core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a>.</li>
+<li>对于引用，存续持续时间由借用检查器分配的语法生命周期作为上限；它的存续时间不能比该生命周期更 <em>长</em>。</li>
+<li>每次解引用或重新借用引用或 <code>Box</code> 时，它都被视为存续。</li>
+<li>每次将引用或 <code>Box</code> 传递给函数或从函数返回时，它都被视为存续。</li>
+<li>当引用（但不是 <code>Box</code>！）传递给函数时，它的存续时间至少与该函数调用一样长，同样，除非 <code>&amp;T</code> 包含 <a href="../core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a>。</li>
 </ul>
-<p>All this also applies when values of these types are passed in a (nested) field of a compound type, but not behind pointer indirections.</p>
+<p>当这些类型的值作为复合类型的（嵌套）字段传递时，上述规则同样适用，但不适用于指针间接寻址后的情况。</p>
 </li>
 </ul>
 <div class="rule" id="r-undefined.immutable"><a class="rule-link" href="#r-undefined.immutable" title="undefined.immutable"><span>[undefined<wbr>.immutable]</span></a>
@@ -254,56 +241,51 @@ lifetime assigned by the borrow checker; it cannot be live any <em>longer</em> t
 
 <ul>
 <li>
-<p>Mutating immutable bytes.
-All bytes reachable through a <a href="destructors.html#constant-promotion">const-promoted</a> expression are immutable, as well as bytes reachable through borrows in <code>static</code> and <code>const</code> initializers that have been <a href="destructors.html#temporary-lifetime-extension">lifetime-extended</a> to <code>'static</code>.
-The bytes owned by an immutable binding or immutable <code>static</code> are immutable, unless those bytes are part of an <a href="../core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a>.</p>
-<p>Moreover, the bytes <a href="#pointed-to-bytes">pointed to</a> by a shared reference, including transitively through other references (both shared and mutable) and <code>Box</code>es, are immutable; transitivity includes those references stored in fields of compound types.</p>
-<p>A mutation is any write of more than 0 bytes which overlaps with any of the relevant bytes (even if that write does not change the memory contents).</p>
+<p>修改不可变字节。
+通过 <a href="destructors.html#constant-promotion">常量提升</a> 表达式可达的所有字节都是不可变的，以及通过 <code>static</code> 和 <code>const</code> 初始化器中已 <a href="destructors.html#temporary-lifetime-extension">生命周期延长</a> 到 <code>'static</code> 的借用可达的字节也是不可变的。
+由不可变绑定或不可变 <code>static</code> 拥有的字节是不可变的，除非这些字节是 <a href="../core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a> 的一部分。</p>
+<p>此外，由共享引用 <a href="#pointed-to-bytes">指向</a> 的字节（包括通过其他引用（共享和可变）以及 <code>Box</code> 的间接指向）都是不可变的；传递性包括存储在复合类型字段中的那些引用。</p>
+<p>修改 (mutation) 是指与任何相关字节重叠的、多于 0 字节的任何写入（即使该写入没有改变内存内容）。</p>
 </li>
 </ul>
 <div class="rule" id="r-undefined.intrinsic"><a class="rule-link" href="#r-undefined.intrinsic" title="undefined.intrinsic"><span>[undefined<wbr>.intrinsic]</span></a>
 </div>
 
 <ul>
-<li>Invoking undefined behavior via compiler intrinsics.</li>
+<li>通过编译器内部函数 (compiler intrinsics) 调用未定义行为。</li>
 </ul>
 <div class="rule" id="r-undefined.target-feature"><a class="rule-link" href="#r-undefined.target-feature" title="undefined.target-feature"><span>[undefined<wbr>.target-feature]</span></a>
 </div>
 
 <ul>
-<li>Executing code compiled with platform features that the current platform
-does not support (see <a href="attributes/codegen.html#the-target_feature-attribute"><code>target_feature</code></a>), <em>except</em> if the platform explicitly documents this to be safe.</li>
+<li>执行由当前平台不支持的平台特性编译的代码（请参阅 <a href="attributes/codegen.html#the-target_feature-attribute"><code>target_feature</code></a>），<em>除非</em> 平台明确记录这是安全的。</li>
 </ul>
 <div class="rule" id="r-undefined.call"><a class="rule-link" href="#r-undefined.call" title="undefined.call"><span>[undefined<wbr>.call]</span></a>
 </div>
 
 <ul>
-<li>Calling a function with the wrong <a href="items/external-blocks.html#abi">call ABI</a>, or unwinding past a stack frame that does not allow unwinding (e.g. by calling a <code>"C-unwind"</code> function imported or transmuted as a <code>"C"</code> function or function pointer).</li>
+<li>使用错误的 <a href="items/external-blocks.html#abi">调用 ABI</a> 调用函数，或者回溯 (unwind) 超过一个不允许回溯的栈帧（例如，通过调用一个导入为或转录为 <code>"C"</code> 函数或函数指针的 <code>"C-unwind"</code> 函数）。</li>
 </ul>
 <div class="rule" id="r-undefined.invalid"><a class="rule-link" href="#r-undefined.invalid" title="undefined.invalid"><span>[undefined<wbr>.invalid]</span></a>
 </div>
 
 <ul>
-<li>Producing an <a href="#invalid-values">invalid value</a>. “Producing” a
-value happens any time a value is assigned to or read from a place, passed to
-a function/primitive operation or returned from a function/primitive
-operation.</li>
+<li>产生 <a href="#invalid-values">无效值</a>。“产生”一个值发生在任何时候：当一个值被赋值给一个位置、从一个位置读取、传递给函数/原始操作或从函数/原始操作返回时。</li>
 </ul>
 <div class="rule" id="r-undefined.asm"><a class="rule-link" href="#r-undefined.asm" title="undefined.asm"><span>[undefined<wbr>.asm]</span></a>
 </div>
 
 <ul>
-<li>Incorrect use of inline assembly. For more details, refer to the <a href="inline-assembly.html#rules-for-inline-assembly">rules</a> to
-follow when writing code that uses inline assembly.</li>
+<li>错误使用内联汇编。有关更多详细信息，请参阅编写使用内联汇编的代码时应遵守的 <a href="inline-assembly.html#rules-for-inline-assembly">规则</a>。</li>
 </ul>
 <div class="rule" id="r-undefined.runtime"><a class="rule-link" href="#r-undefined.runtime" title="undefined.runtime"><span>[undefined<wbr>.runtime]</span></a>
 </div>
 
 <ul>
-<li>Violating assumptions of the Rust runtime. Most assumptions of the Rust runtime are currently not explicitly documented.
+<li>违反 Rust 运行时的假设。目前大多数 Rust 运行时的假设尚未明确记录。
 <ul>
-<li>For assumptions specifically related to unwinding, see the <a href="panic.html#unwinding-across-ffi-boundaries">panic documentation</a>.</li>
-<li>The runtime assumes that a Rust stack frame is not deallocated without executing destructors for local variables owned by the stack frame. This assumption can be violated by C functions like <code>longjmp</code>.</li>
+<li>对于专门与回溯相关的假设，请参阅 <a href="panic.html#unwinding-across-ffi-boundaries">恐慌文档</a>。</li>
+<li>运行时假设 Rust 栈帧在不执行该栈帧拥有的局部变量的析构函数的情况下不会被释放。这一假设可能被像 <code>longjmp</code> 这样的 C 函数违反。</li>
 </ul>
 </li>
 </ul>
@@ -311,174 +293,144 @@ follow when writing code that uses inline assembly.</li>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Undefined behavior affects the entire program. For example, calling a function in C that exhibits undefined behavior of C means your entire program contains undefined behaviour that can also affect the Rust code. And vice versa, undefined behavior in Rust can cause adverse affects on code executed by any FFI calls to other languages.</p>
+<p>未定义行为会影响整个程序。例如，调用一个表现出 C 语言未定义行为的 C 函数意味着你的整个程序都包含未定义行为，这也可能影响 Rust 代码。反之亦然，Rust 中的未定义行为可能会对通过 FFI 调用其他语言执行的代码产生不利影响。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-undefined.pointed-to"><a class="rule-link" href="#r-undefined.pointed-to" title="undefined.pointed-to"><span>[undefined<wbr>.pointed-to]</span></a>
 </div>
 
-<h2 id="pointed-to-bytes"><a class="header" href="#pointed-to-bytes">Pointed-to bytes</a></h2>
-<p>The span of bytes a pointer or reference “points to” is determined by the pointer value and the size of the pointee type (using <code>size_of_val</code>).</p>
+<h2 id="指向的字节"><a class="header" href="#指向的字节">指向的字节</a></h2>
+<p>指针或引用“指向”的字节范围由指针值和被指向类型的类型大小决定（使用 <code>size_of_val</code>）。</p>
 <div class="rule" id="r-undefined.misaligned"><a class="rule-link" href="#r-undefined.misaligned" title="undefined.misaligned"><span>[undefined<wbr>.misaligned]</span></a>
 </div>
 
-<h2 id="places-based-on-misaligned-pointers"><a class="header" href="#places-based-on-misaligned-pointers">Places based on misaligned pointers</a></h2>
+<h2 id="基于对齐错误指针的位置"><a class="header" href="#基于对齐错误指针的位置">基于对齐错误指针的位置</a></h2>
 <div class="rule" id="r-undefined.misaligned.general"><a class="rule-link" href="#r-undefined.misaligned.general" title="undefined.misaligned.general"><span>[undefined<wbr>.misaligned<wbr>.general]</span></a>
 </div>
 
-<p>A place is said to be “based on a misaligned pointer” if the last <code>*</code> projection
-during place computation was performed on a pointer that was not aligned for its
-type. (If there is no <code>*</code> projection in the place expression, then this is
-accessing the field of a local or <code>static</code> and rustc will guarantee proper alignment. If
-there are multiple <code>*</code> projection, then each of them incurs a load of the
-pointer-to-be-dereferenced itself from memory, and each of these loads is
-subject to the alignment constraint. Note that some <code>*</code> projections can be
-omitted in surface Rust syntax due to automatic dereferencing; we are
-considering the fully expanded place expression here.)</p>
-<p>For instance, if <code>ptr</code> has type <code>*const S</code> where <code>S</code> has an alignment of 8, then
-<code>ptr</code> must be 8-aligned or else <code>(*ptr).f</code> is “based on an misaligned pointer”.
-This is true even if the type of the field <code>f</code> is <code>u8</code> (i.e., a type with
-alignment 1). In other words, the alignment requirement derives from the type of
-the pointer that was dereferenced, <em>not</em> the type of the field that is being
-accessed.</p>
+<p>如果在位置计算过程中的最后一个 <code>*</code> 投影是在对其类型未对齐的指针上执行的，则称该位置是“基于对齐错误指针的”。（如果位置表达式中没有 <code>*</code> 投影，那么这就是访问局部变量或 <code>static</code> 的字段，rustc 将保证正确的对齐。如果有多个 <code>*</code> 投影，则其中每一个都会导致从内存中加载待解引用的指针本身，并且这些加载中的每一个都受对齐约束。请注意，由于自动解引用，在 Rust 表面语法格式中可能会省略一些 <code>*</code> 投影；我们在这里考虑的是完全展开后的位置表达式。）</p>
+<p>例如，如果 <code>ptr</code> 的类型为 <code>*const S</code>，其中 <code>S</code> 的对齐要求为 8，那么 <code>ptr</code> 必须 8 字节对齐，否则 <code>(*ptr).f</code> 就是“基于对齐错误指针的”。即使字段 <code>f</code> 的类型是 <code>u8</code>（即对齐要求为 1 的类型），这也是成立的。换句话说，对齐要求源自被解引用的指针类型，<em>而不是</em> 正在被访问的字段类型。</p>
 <div class="rule" id="r-undefined.misaligned.load-store"><a class="rule-link" href="#r-undefined.misaligned.load-store" title="undefined.misaligned.load-store"><span>[undefined<wbr>.misaligned<wbr>.load-store]</span></a>
 </div>
 
-<p>Note that a place based on a misaligned pointer only leads to undefined behavior
-when it is loaded from or stored to.</p>
+<p>请注意，基于对齐错误指针的位置仅在被加载或存储时才会导致未定义行为。</p>
 <div class="rule" id="r-undefined.misaligned.raw"><a class="rule-link" href="#r-undefined.misaligned.raw" title="undefined.misaligned.raw"><span>[undefined<wbr>.misaligned<wbr>.raw]</span></a>
 </div>
 
-<p><code>&amp;raw const</code>/<code>&amp;raw mut</code> on such a place is allowed.</p>
+<p>在这样的位置上使用 <code>&amp;raw const</code>/<code>&amp;raw mut</code> 是允许的。</p>
 <div class="rule" id="r-undefined.misaligned.reference"><a class="rule-link" href="#r-undefined.misaligned.reference" title="undefined.misaligned.reference"><span>[undefined<wbr>.misaligned<wbr>.reference]</span></a>
 </div>
 
-<p><code>&amp;</code>/<code>&amp;mut</code> on a place requires the alignment of the field type (or
-else the program would be “producing an invalid value”), which generally is a
-less restrictive requirement than being based on an aligned pointer.</p>
+<p>在位置上使用 <code>&amp;</code>/<code>&amp;mut</code> 要求满足字段类型的对齐（否则程序将“产生无效值”），这通常比“基于对齐的指针”的要求更宽松。</p>
 <div class="rule" id="r-undefined.misaligned.packed"><a class="rule-link" href="#r-undefined.misaligned.packed" title="undefined.misaligned.packed"><span>[undefined<wbr>.misaligned<wbr>.packed]</span></a>
 </div>
 
-<p>Taking a reference will lead to a compiler error in cases where the field type might be
-more aligned than the type that contains it, i.e., <code>repr(packed)</code>. This means
-that being based on an aligned pointer is always sufficient to ensure that the
-new reference is aligned, but it is not always necessary.</p>
+<p>在字段类型可能比包含它的类型更对齐的情况下（即 <code>repr(packed)</code>），获取引用将导致编译器错误。这意味着基于对齐的指针始终足以确保新引用是对齐的，但它并不总是必要的。</p>
 <div class="rule" id="r-undefined.dangling"><a class="rule-link" href="#r-undefined.dangling" title="undefined.dangling"><span>[undefined<wbr>.dangling]</span></a>
 </div>
 
-<h2 id="dangling-pointers"><a class="header" href="#dangling-pointers">Dangling pointers</a></h2>
+<h2 id="悬垂指针"><a class="header" href="#悬垂指针">悬垂指针</a></h2>
 <div class="rule" id="r-undefined.dangling.general"><a class="rule-link" href="#r-undefined.dangling.general" title="undefined.dangling.general"><span>[undefined<wbr>.dangling<wbr>.general]</span></a>
 </div>
 
-<p>A reference/pointer is “dangling” if not all of the bytes it
-<a href="#pointed-to-bytes">points to</a> are part of the same live allocation (so in particular they all have to be
-part of <em>some</em> allocation).</p>
+<p>如果引用/指针 <a href="#pointed-to-bytes">指向</a> 的字节并不都属于同一个存活的分配（特别地，它们都必须属于 <em>某个</em> 分配），则该引用/指针是“悬垂的”。</p>
 <div class="rule" id="r-undefined.dangling.zero-size"><a class="rule-link" href="#r-undefined.dangling.zero-size" title="undefined.dangling.zero-size"><span>[undefined<wbr>.dangling<wbr>.zero-size]</span></a>
 </div>
 
-<p>If the size is 0, then the pointer is trivially never “dangling”
-(even if it is a null pointer).</p>
+<p>如果大小为 0，那么指针在平凡意义上永远不会是“悬垂的”（即使它是空指针）。</p>
 <div class="rule" id="r-undefined.dangling.dynamic-size"><a class="rule-link" href="#r-undefined.dangling.dynamic-size" title="undefined.dangling.dynamic-size"><span>[undefined<wbr>.dangling<wbr>.dynamic-size]</span></a>
 </div>
 
-<p>Note that dynamically sized types (such as slices and strings) point to their
-entire range, so it is important that the length metadata is never too large.</p>
+<p>请注意，动态大小类型（如切片和字符串）指向它们的整个范围，因此长度元数据绝不能过大非常重要。</p>
 <div class="rule" id="r-undefined.dangling.alloc-limit"><a class="rule-link" href="#r-undefined.dangling.alloc-limit" title="undefined.dangling.alloc-limit"><span>[undefined<wbr>.dangling<wbr>.alloc-limit]</span></a>
 </div>
 
-<p>In particular, the dynamic size of a Rust value (as determined by <code>size_of_val</code>)
-must never exceed <code>isize::MAX</code>, since it is impossible for a single allocation
-to be larger than <code>isize::MAX</code>.</p>
+<p>特别地，Rust 值的动态大小（由 <code>size_of_val</code> 确定）绝不能超过 <code>isize::MAX</code>，因为单个分配的大小不可能大于 <code>isize::MAX</code>。</p>
 <div class="rule" id="r-undefined.validity"><a class="rule-link" href="#r-undefined.validity" title="undefined.validity"><span>[undefined<wbr>.validity]</span></a>
 </div>
 
-<h2 id="invalid-values"><a class="header" href="#invalid-values">Invalid values</a></h2>
+<h2 id="无效值"><a class="header" href="#无效值">无效值</a></h2>
 <div class="rule" id="r-undefined.validity.general"><a class="rule-link" href="#r-undefined.validity.general" title="undefined.validity.general"><span>[undefined<wbr>.validity<wbr>.general]</span></a>
 </div>
 
-<p>The Rust compiler assumes that all values produced during program execution are
-“valid”, and producing an invalid value is hence immediate UB.</p>
-<p>Whether a value is valid depends on the type:</p>
+<p>Rust 编译器假设程序执行期间产生的所有值都是“有效的”，因此产生无效值会立即导致 UB。</p>
+<p>一个值是否有效取决于其类型：</p>
 <div class="rule" id="r-undefined.validity.bool"><a class="rule-link" href="#r-undefined.validity.bool" title="undefined.validity.bool"><span>[undefined<wbr>.validity<wbr>.bool]</span></a>
 </div>
 
 <ul>
-<li>A <a href="types/boolean.html"><code>bool</code></a> value must be <code>false</code> (<code>0</code>) or <code>true</code> (<code>1</code>).</li>
+<li>一个 <a href="types/boolean.html"><code>bool</code></a> 值必须是 <code>false</code> (<code>0</code>) 或 <code>true</code> (<code>1</code>)。</li>
 </ul>
 <div class="rule" id="r-undefined.validity.fn-pointer"><a class="rule-link" href="#r-undefined.validity.fn-pointer" title="undefined.validity.fn-pointer"><span>[undefined<wbr>.validity<wbr>.fn-pointer]</span></a>
 </div>
 
 <ul>
-<li>A <code>fn</code> pointer value must be non-null.</li>
+<li>一个 <code>fn</code> 指针值必须非空。</li>
 </ul>
 <div class="rule" id="r-undefined.validity.char"><a class="rule-link" href="#r-undefined.validity.char" title="undefined.validity.char"><span>[undefined<wbr>.validity<wbr>.char]</span></a>
 </div>
 
 <ul>
-<li>A <code>char</code> value must not be a surrogate (i.e., must not be in the range <code>0xD800..=0xDFFF</code>) and must be equal to or less than <code>char::MAX</code>.</li>
+<li>一个 <code>char</code> 值不能是代理对 (surrogate)（即不能在 <code>0xD800..=0xDFFF</code> 范围内），且必须小于或等于 <code>char::MAX</code>。</li>
 </ul>
 <div class="rule" id="r-undefined.validity.never"><a class="rule-link" href="#r-undefined.validity.never" title="undefined.validity.never"><span>[undefined<wbr>.validity<wbr>.never]</span></a>
 </div>
 
 <ul>
-<li>A <code>!</code> value must never exist.</li>
+<li><code>!</code> 值绝不能存在。</li>
 </ul>
 <div class="rule" id="r-undefined.validity.scalar"><a class="rule-link" href="#r-undefined.validity.scalar" title="undefined.validity.scalar"><span>[undefined<wbr>.validity<wbr>.scalar]</span></a>
 </div>
 
 <ul>
-<li>An integer (<code>i*</code>/<code>u*</code>), floating point value (<code>f*</code>), or raw pointer must be
-initialized, i.e., must not be obtained from uninitialized memory.</li>
+<li>整数 (<code>i*</code>/<code>u*</code>)、浮点值 (<code>f*</code>) 或原始指针必须已初始化，即不能从未初始化的内存中获得。</li>
 </ul>
 <div class="rule" id="r-undefined.validity.str"><a class="rule-link" href="#r-undefined.validity.str" title="undefined.validity.str"><span>[undefined<wbr>.validity<wbr>.str]</span></a>
 </div>
 
 <ul>
-<li>A <code>str</code> value is treated like <code>[u8]</code>, i.e. it must be initialized.</li>
+<li><code>str</code> 值被视为类似于 <code>[u8]</code>，即它必须已初始化。</li>
 </ul>
 <div class="rule" id="r-undefined.validity.enum"><a class="rule-link" href="#r-undefined.validity.enum" title="undefined.validity.enum"><span>[undefined<wbr>.validity<wbr>.enum]</span></a>
 </div>
 
 <ul>
-<li>An <code>enum</code> must have a valid discriminant, and all fields of the variant indicated by that discriminant must be valid at their respective type.</li>
+<li>一个 <code>enum</code> 必须具有有效的判别值 (discriminant)，且该判别值指示的变体 (variant) 的所有字段必须在其各自类型上有效。</li>
 </ul>
 <div class="rule" id="r-undefined.validity.struct"><a class="rule-link" href="#r-undefined.validity.struct" title="undefined.validity.struct"><span>[undefined<wbr>.validity<wbr>.struct]</span></a>
 </div>
 
 <ul>
-<li>A <code>struct</code>, tuple, and array requires all fields/elements to be valid at their respective type.</li>
+<li><code>struct</code>、元组和数组要求所有字段/元素在其各自类型上有效。</li>
 </ul>
 <div class="rule" id="r-undefined.validity.union"><a class="rule-link" href="#r-undefined.validity.union" title="undefined.validity.union"><span>[undefined<wbr>.validity<wbr>.union]</span></a>
 </div>
 
 <ul>
-<li>For a <code>union</code>, the exact validity requirements are not decided yet.
-Obviously, all values that can be created entirely in safe code are valid.
-If the union has a zero-sized field, then every possible value is valid.
-Further details are <a href="https://github.com/rust-lang/unsafe-code-guidelines/issues/438">still being debated</a>.</li>
+<li>对于 <code>union</code>，确切的有效性要求尚未确定。
+显然，所有完全在安全代码中创建的值都是有效的。
+如果联合体具有零大小字段，则每个可能的值都是有效的。
+更多细节 <a href="https://github.com/rust-lang/unsafe-code-guidelines/issues/438">仍处于讨论中</a>。</li>
 </ul>
 <div class="rule" id="r-undefined.validity.reference-box"><a class="rule-link" href="#r-undefined.validity.reference-box" title="undefined.validity.reference-box"><span>[undefined<wbr>.validity<wbr>.reference-box]</span></a>
 </div>
 
 <ul>
-<li>A reference or <a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> must be aligned and non-null, it cannot be <a href="#dangling-pointers">dangling</a>, and it must point to a valid value
-(in case of dynamically sized types, using the actual dynamic type of the
-pointee as determined by the metadata).
-Note that the last point (about pointing to a valid value) remains a subject of some debate.</li>
+<li>引用或 <a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> 必须对齐且非空，它不能是 <a href="#dangling-pointers">悬垂的</a>，且必须指向一个有效值
+（对于动态大小类型，使用由元数据确定的被指向者的实际动态类型）。
+请注意，最后一点（关于指向有效值）仍是一个有争议的话题。</li>
 </ul>
 <div class="rule" id="r-undefined.validity.wide"><a class="rule-link" href="#r-undefined.validity.wide" title="undefined.validity.wide"><span>[undefined<wbr>.validity<wbr>.wide]</span></a>
 </div>
 
 <ul>
-<li>The metadata of a wide reference, <a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a>, or raw pointer must match
-the type of the unsized tail:
+<li>宽引用、<a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> 或原始指针的元数据必须与 unsized tail 的类型匹配：
 <ul>
-<li><code>dyn Trait</code> metadata must be a pointer to a compiler-generated vtable for <code>Trait</code>.
-(For raw pointers, this requirement remains a subject of some debate.)</li>
-<li>Slice (<code>[T]</code>) metadata must be a valid <code>usize</code>.
-Furthermore, for wide references and <a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a>, slice metadata is invalid
-if it makes the total size of the pointed-to value bigger than <code>isize::MAX</code>.</li>
+<li><code>dyn Trait</code> 元数据必须是编译器为 <code>Trait</code> 生成的虚表 (vtable) 指针。
+（对于原始指针，这一要求仍是一个有争议的话题。）</li>
+<li>切片 (<code>[T]</code>) 元数据必须是一个有效的 <code>usize</code>。
+此外，对于宽引用和 <a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a>，如果切片元数据使得被指向值的总大小大于 <code>isize::MAX</code>，则该元数据是无效的。</li>
 </ul>
 </li>
 </ul>
@@ -487,13 +439,13 @@ if it makes the total size of the pointed-to value bigger than <code>isize::MAX<
 
 <ul>
 <li>
-<p>If a type has a custom range of a valid values, then a valid value must be in that range.
-In the standard library, this affects <a href="../core/ptr/non_null/struct.NonNull.html"><code>NonNull&lt;T&gt;</code></a> and <a href="../core/num/nonzero/struct.NonZero.html"><code>NonZero&lt;T&gt;</code></a>.</p>
+<p>如果一个类型具有自定义的有效值范围，那么有效值必须在该范围内。
+在标准库中，这会影响 <a href="../core/ptr/non_null/struct.NonNull.html"><code>NonNull&lt;T&gt;</code></a> 和 <a href="../core/num/nonzero/struct.NonZero.html"><code>NonZero&lt;T&gt;</code></a>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> achieves this with the unstable <code>rustc_layout_scalar_valid_range_*</code> attributes.</p>
+<p><code>rustc</code> 通过不稳定的 <code>rustc_layout_scalar_valid_range_*</code> 属性来实现这一点。</p>
 </blockquote>
 </div>
 
@@ -504,27 +456,27 @@ In the standard library, this affects <a href="../core/ptr/non_null/struct.NonNu
 
 <ul>
 <li>
-<p><strong>In <a href="const_eval.html#r-const-eval.const-context">const contexts</a></strong>: In addition to what is described above, further provenance-related requirements apply during const evaluation. Any value that holds pure integer data (the <code>i*</code>/<code>u*</code>/<code>f*</code> types as well as <code>bool</code> and <code>char</code>, enum discriminants, and slice metadata) must not carry any provenance. Any value that holds pointer data (references, raw pointers, function pointers, and <code>dyn Trait</code> metadata) must either carry no provenance, or all bytes must be fragments of the same original pointer value in the correct order.</p>
-<p>This implies that transmuting or otherwise reinterpreting a pointer (reference, raw pointer, or function pointer) into a non-pointer type (such as integers) is undefined behavior if the pointer had provenance.</p>
+<p><strong>在 <a href="const_eval.html#r-const-eval.const-context">常量上下文</a> 中</strong>：除了上述描述之外，常量求值期间还适用进一步的与 物源 (provenance) 相关的要求。任何持有纯整数数据（<code>i*</code>/<code>u*</code>/<code>f*</code> 类型以及 <code>bool</code> 和 <code>char</code>、枚举判别值和切片元数据）的值都不得携带任何物源。任何持有指针数据（引用、原始指针、函数指针和 <code>dyn Trait</code> 元数据）的值必须要么不携带物源，要么所有字节必须是同一个原始指针值按正确顺序排列的碎片。</p>
+<p>这意味着如果指针具有物源，那么将指针（引用、原始指针或函数指针） transmute 或以其他方式重新解释为非指针类型（如整数）就是未定义行为。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
-<p>All of the following are UB:</p>
+<p>以下所有情况都是 UB：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::mem::MaybeUninit;
 </span><span class="boring">use core::ptr;
-</span>// We cannot reinterpret a pointer with provenance as an integer,
-// as then the bytes of the integer will have provenance.
+</span>// 我们不能将具有物源的指针重新解释为整数，
+// 否则该整数的字节将具有物源。
 const _: usize = {
     let ptr = &amp;0;
     unsafe { (&amp;raw const ptr as *const usize).read() }
 };
 
-// We cannot rearrange the bytes of a pointer with provenance and
-// then interpret them as a reference, as then a value holding
-// pointer data will have pointer fragments in the wrong order.
+// 我们不能重新排列具有物源的指针的字节，
+// 然后将它们解释为引用，因为那样持有
+// 指针数据的值将具有顺序错误的指针碎片。
 const _: &amp;i32 = {
     let mut ptr = &amp;0;
     let ptr_bytes = &amp;raw mut ptr as *mut MaybeUninit::&lt;u8&gt;;
@@ -540,10 +492,7 @@ const _: &amp;i32 = {
 <div class="rule" id="r-undefined.validity.undef"><a class="rule-link" href="#r-undefined.validity.undef" title="undefined.validity.undef"><span>[undefined<wbr>.validity<wbr>.undef]</span></a>
 </div>
 
-<p><strong>Note:</strong> Uninitialized memory is also implicitly invalid for any type that has
-a restricted set of valid values. In other words, the only cases in which
-reading uninitialized memory is permitted are inside <code>union</code>s and in “padding”
-(the gaps between the fields of a type).</p>
+<p><strong>注意：</strong> 未初始化内存对于任何具有限制有效值集合的类型也是隐式无效的。换句话说，唯一允许读取未初始化内存的情况是在 <code>union</code> 内部和“填充 (padding)”中（类型字段之间的间隙）。</p>
 
                     </main>
 

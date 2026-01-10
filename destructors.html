@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-be189161.js"></script>
+        <script src="toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,41 +181,34 @@
                         <div class="rule" id="r-destructors"><a class="rule-link" href="#r-destructors" title="destructors"><span>[destructors]</span></a>
 </div>
 
-<h1 id="destructors"><a class="header" href="#destructors">Destructors</a></h1>
+<h1 id="析构函数"><a class="header" href="#析构函数">析构函数</a></h1>
 <div class="rule" id="r-destructors.intro"><a class="rule-link" href="#r-destructors.intro" title="destructors.intro"><span>[destructors<wbr>.intro]</span></a>
 </div>
 
-<p>When an <a href="glossary.html#initialized">initialized</a> <a href="variables.html">variable</a> or <a href="expressions.html#temporaries">temporary</a> goes out of
-<a href="#drop-scopes">scope</a>, its <em>destructor</em> is run or it is <em>dropped</em>. <a href="expressions/operator-expr.html#assignment-expressions">Assignment</a>
-also runs the destructor of its left-hand operand, if it’s initialized. If a
-variable has been partially initialized, only its initialized fields are
-dropped.</p>
+<p>当一个 <a href="glossary.html#initialized">已初始化</a> <a href="variables.html">变量</a> 或 <a href="expressions.html#temporaries">临时变量</a> 离开 <a href="#drop-scopes">作用域</a> 时，其 <em>析构函数</em> 会被运行，或者说它被 <em>销毁(dropped)</em>。 <a href="expressions/operator-expr.html#assignment-expressions">赋值</a> 也会运行其左侧操作数（如果已初始化）的析构函数。如果一个变量已被部分初始化，则仅销毁其已初始化的字段。</p>
 <div class="rule" id="r-destructors.operation"><a class="rule-link" href="#r-destructors.operation" title="destructors.operation"><span>[destructors<wbr>.operation]</span></a>
 </div>
 
-<p>The destructor of a type <code>T</code> consists of:</p>
+<p>类型 <code>T</code> 的析构函数由以下部分组成：</p>
 <ol>
-<li>If <code>T: Drop</code>, calling <a href="../core/ops/drop/trait.Drop.html#tymethod.drop"><code>&lt;T as core::ops::Drop&gt;::drop</code></a></li>
-<li>Recursively running the destructor of all of its fields.
+<li>如果 <code>T: Drop</code>，则调用 <a href="../core/ops/drop/trait.Drop.html#tymethod.drop"><code>&lt;T as core::ops::Drop&gt;::drop</code></a></li>
+<li>递归运行其所有字段的析构函数。
 <ul>
-<li>The fields of a <a href="types/struct.html">struct</a> are dropped in declaration order.</li>
-<li>The fields of the active <a href="types/enum.html">enum variant</a> are dropped in declaration order.</li>
-<li>The fields of a <a href="types/tuple.html">tuple</a> are dropped in order.</li>
-<li>The elements of an <a href="types/array.html">array</a> or owned <a href="types/slice.html">slice</a> are dropped from the
-first element to the last.</li>
-<li>The variables that a <a href="types/closure.html">closure</a> captures by move are dropped in an
-unspecified order.</li>
-<li><a href="types/trait-object.html">Trait objects</a> run the destructor of the underlying type.</li>
-<li>Other types don’t result in any further drops.</li>
+<li><a href="types/struct.html">结构体</a> 的字段按声明顺序销毁。</li>
+<li>活跃 <a href="types/enum.html">枚举变体</a> 的字段按声明顺序销毁。</li>
+<li><a href="types/tuple.html">元组</a> 的字段按顺序销毁。</li>
+<li><a href="types/array.html">数组</a> 或拥有所有权的 <a href="types/slice.html">切片</a> 的元素从第一个元素到最后一个元素依次销毁。</li>
+<li><a href="types/closure.html">闭包</a> 通过移动(move)捕获的变量按未指定的顺序销毁。</li>
+<li><a href="types/trait-object.html">特型对象</a> 运行底层类型的析构函数。</li>
+<li>其他类型不会导致进一步的销毁操作。</li>
 </ul>
 </li>
 </ol>
 <div class="rule" id="r-destructors.drop_in_place"><a class="rule-link" href="#r-destructors.drop_in_place" title="destructors.drop_in_place"><span>[destructors<wbr>.drop_in_place]</span></a>
 </div>
 
-<p>If a destructor must be run manually, such as when implementing your own smart
-pointer, <a href="../core/ptr/fn.drop_in_place.html"><code>core::ptr::drop_in_place</code></a> can be used.</p>
-<p>Some examples:</p>
+<p>如果必须手动运行析构函数（例如在实现自己的智能指针时），可以使用 <a href="../core/ptr/fn.drop_in_place.html"><code>core::ptr::drop_in_place</code></a> 。</p>
+<p>一些示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct PrintOnDrop(&amp;'static str);
@@ -227,76 +220,70 @@ impl Drop for PrintOnDrop {
 }
 
 let mut overwritten = PrintOnDrop("drops when overwritten");
-overwritten = PrintOnDrop("drops when scope ends");
+overwritten = PrintOnDrop("drops when scope ends"); // 覆盖时销毁
 
 let tuple = (PrintOnDrop("Tuple first"), PrintOnDrop("Tuple second"));
 
 let moved;
-// No destructor run on assignment.
+// 赋值时不运行析构函数。
 moved = PrintOnDrop("Drops when moved");
-// Drops now, but is then uninitialized.
+// 现在销毁，但之后变为未初始化状态。
 moved;
 
-// Uninitialized does not drop.
+// 未初始化不会销毁。
 let uninitialized: PrintOnDrop;
 
-// After a partial move, only the remaining fields are dropped.
+// 部分移动后，仅销毁剩余字段。
 let mut partial_move = (PrintOnDrop("first"), PrintOnDrop("forgotten"));
-// Perform a partial move, leaving only `partial_move.0` initialized.
+// 执行部分移动，仅保留 `partial_move.0` 为初始化状态。
 core::mem::forget(partial_move.1);
-// When partial_move's scope ends, only the first field is dropped.
+// 当 partial_move 的作用域结束时，仅销毁第一个字段。
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-destructors.scope"><a class="rule-link" href="#r-destructors.scope" title="destructors.scope"><span>[destructors<wbr>.scope]</span></a>
 </div>
 
-<h2 id="drop-scopes"><a class="header" href="#drop-scopes">Drop scopes</a></h2>
+<h2 id="销毁作用域"><a class="header" href="#销毁作用域">销毁作用域</a></h2>
 <div class="rule" id="r-destructors.scope.intro"><a class="rule-link" href="#r-destructors.scope.intro" title="destructors.scope.intro"><span>[destructors<wbr>.scope<wbr>.intro]</span></a>
 </div>
 
-<p>Each variable or temporary is associated to a <em>drop scope</em>. When control flow
-leaves a drop scope all variables associated to that scope are dropped in
-reverse order of declaration (for variables) or creation (for temporaries).</p>
+<p>每个变量或临时变量都与一个 <em>销毁作用域</em> 相关联。当控制流离开销毁作用域时，与该作用域相关的所有变量都将按声明（对于变量）或创建（对于临时变量）的逆序进行销毁。</p>
 <div class="rule" id="r-destructors.scope.desugaring"><a class="rule-link" href="#r-destructors.scope.desugaring" title="destructors.scope.desugaring"><span>[destructors<wbr>.scope<wbr>.desugaring]</span></a>
 </div>
 
-<p>Drop scopes can be determined by replacing <a href="expressions/loop-expr.html#iterator-loops"><code>for</code></a>, <a href="expressions/if-expr.html#if-expressions"><code>if</code></a>, and <a href="expressions/loop-expr.html#predicate-loops"><code>while</code></a>
-expressions with equivalent expressions using <a href="expressions/match-expr.html"><code>match</code></a>, <a href="expressions/loop-expr.html#infinite-loops"><code>loop</code></a> and
-<code>break</code>.</p>
+<p>可以通过使用 <a href="expressions/match-expr.html"><code>match</code></a> 、 <a href="expressions/loop-expr.html#infinite-loops"><code>loop</code></a> 和 <code>break</code> 将 <a href="expressions/loop-expr.html#iterator-loops"><code>for</code></a> 、 <a href="expressions/if-expr.html#if-expressions"><code>if</code></a> 和 <a href="expressions/loop-expr.html#predicate-loops"><code>while</code></a> 表达式替换为等效表达式来确定销毁作用域。</p>
 <div class="rule" id="r-destructors.scope.operators"><a class="rule-link" href="#r-destructors.scope.operators" title="destructors.scope.operators"><span>[destructors<wbr>.scope<wbr>.operators]</span></a>
 </div>
 
-<p>Overloaded operators are not distinguished from built-in operators and <a href="patterns.html#binding-modes">binding
-modes</a> are not considered.</p>
+<p>重载运算符与内置运算符不作区分，且不考虑 <a href="patterns.html#binding-modes">绑定模式</a> 。</p>
 <div class="rule" id="r-destructors.scope.list"><a class="rule-link" href="#r-destructors.scope.list" title="destructors.scope.list"><span>[destructors<wbr>.scope<wbr>.list]</span></a>
 </div>
 
-<p>Given a function, or closure, there are drop scopes for:</p>
+<p>给定一个函数或闭包，存在以下销毁作用域：</p>
 <div class="rule" id="r-destructors.scope.function"><a class="rule-link" href="#r-destructors.scope.function" title="destructors.scope.function"><span>[destructors<wbr>.scope<wbr>.function]</span></a>
 </div>
 
 <ul>
-<li>The entire function</li>
+<li>整个函数</li>
 </ul>
 <div class="rule" id="r-destructors.scope.statement"><a class="rule-link" href="#r-destructors.scope.statement" title="destructors.scope.statement"><span>[destructors<wbr>.scope<wbr>.statement]</span></a>
 </div>
 
 <ul>
-<li>Each <a href="statements.html">statement</a></li>
+<li>每个 <a href="statements.html">语句</a></li>
 </ul>
 <div class="rule" id="r-destructors.scope.expression"><a class="rule-link" href="#r-destructors.scope.expression" title="destructors.scope.expression"><span>[destructors<wbr>.scope<wbr>.expression]</span></a>
 </div>
 
 <ul>
-<li>Each <a href="expressions.html">expression</a></li>
+<li>每个 <a href="expressions.html">表达式</a></li>
 </ul>
 <div class="rule" id="r-destructors.scope.block"><a class="rule-link" href="#r-destructors.scope.block" title="destructors.scope.block"><span>[destructors<wbr>.scope<wbr>.block]</span></a>
 </div>
 
 <ul>
-<li>Each block, including the function body
+<li>每个块，包括函数体
 <ul>
-<li>In the case of a <a href="expressions/block-expr.html">block expression</a>, the scope for the block and the
-expression are the same scope.</li>
+<li>在 <a href="expressions/block-expr.html">块表达式</a> 的情况下，块的作用域和表达式的作用域是同一个作用域。</li>
 </ul>
 </li>
 </ul>
@@ -304,82 +291,71 @@ expression are the same scope.</li>
 </div>
 
 <ul>
-<li>Each arm of a <code>match</code> expression</li>
+<li><code>match</code> 表达式的每个分支(arm)</li>
 </ul>
 <div class="rule" id="r-destructors.scope.nesting"><a class="rule-link" href="#r-destructors.scope.nesting" title="destructors.scope.nesting"><span>[destructors<wbr>.scope<wbr>.nesting]</span></a>
 </div>
 
-<p>Drop scopes are nested within one another as follows. When multiple scopes are
-left at once, such as when returning from a function, variables are dropped
-from the inside outwards.</p>
+<p>销毁作用域按如下方式相互嵌套。当同时离开多个作用域时（例如从函数返回时），变量按从内向外的顺序销毁。</p>
 <div class="rule" id="r-destructors.scope.nesting.function"><a class="rule-link" href="#r-destructors.scope.nesting.function" title="destructors.scope.nesting.function"><span>[destructors<wbr>.scope<wbr>.nesting<wbr>.function]</span></a>
 </div>
 
 <ul>
-<li>The entire function scope is the outer most scope.</li>
+<li>整个函数作用域是最外层作用域。</li>
 </ul>
 <div class="rule" id="r-destructors.scope.nesting.function-body"><a class="rule-link" href="#r-destructors.scope.nesting.function-body" title="destructors.scope.nesting.function-body"><span>[destructors<wbr>.scope<wbr>.nesting<wbr>.function-body]</span></a>
 </div>
 
 <ul>
-<li>The function body block is contained within the scope of the entire function.</li>
+<li>函数体块包含在整个函数的作用域内。</li>
 </ul>
 <div class="rule" id="r-destructors.scope.nesting.expr-statement"><a class="rule-link" href="#r-destructors.scope.nesting.expr-statement" title="destructors.scope.nesting.expr-statement"><span>[destructors<wbr>.scope<wbr>.nesting<wbr>.expr-statement]</span></a>
 </div>
 
 <ul>
-<li>The parent of the expression in an expression statement is the scope of the
-statement.</li>
+<li>表达式语句中表达式的父作用域是该语句的作用域。</li>
 </ul>
 <div class="rule" id="r-destructors.scope.nesting.let-initializer"><a class="rule-link" href="#r-destructors.scope.nesting.let-initializer" title="destructors.scope.nesting.let-initializer"><span>[destructors<wbr>.scope<wbr>.nesting<wbr>.let-initializer]</span></a>
 </div>
 
 <ul>
-<li>The parent of the initializer of a <a href="statements.html#let-statements"><code>let</code> statement</a> is the <code>let</code> statement’s
-scope.</li>
+<li><a href="statements.html#let-statements"><code>let</code> 语句</a> 的初始化器的父作用域是该 <code>let</code> 语句的作用域。</li>
 </ul>
 <div class="rule" id="r-destructors.scope.nesting.statement"><a class="rule-link" href="#r-destructors.scope.nesting.statement" title="destructors.scope.nesting.statement"><span>[destructors<wbr>.scope<wbr>.nesting<wbr>.statement]</span></a>
 </div>
 
 <ul>
-<li>The parent of a statement scope is the scope of the block that contains the
-statement.</li>
+<li>语句作用域的父作用域是包含该语句的块的作用域。</li>
 </ul>
 <div class="rule" id="r-destructors.scope.nesting.match-guard"><a class="rule-link" href="#r-destructors.scope.nesting.match-guard" title="destructors.scope.nesting.match-guard"><span>[destructors<wbr>.scope<wbr>.nesting<wbr>.match-guard]</span></a>
 </div>
 
 <ul>
-<li>The parent of the expression for a <code>match</code> guard is the scope of the arm that
-the guard is for.</li>
+<li><code>match</code> 守卫(guard)表达式的父作用域是该守卫所属分支的作用域。</li>
 </ul>
 <div class="rule" id="r-destructors.scope.nesting.match-arm"><a class="rule-link" href="#r-destructors.scope.nesting.match-arm" title="destructors.scope.nesting.match-arm"><span>[destructors<wbr>.scope<wbr>.nesting<wbr>.match-arm]</span></a>
 </div>
 
 <ul>
-<li>The parent of the expression after the <code>=&gt;</code> in a <code>match</code> expression is the
-scope of the arm that it’s in.</li>
+<li><code>match</code> 表达式中 <code>=&gt;</code> 之后表达式的父作用域是该表达式所属分支的作用域。</li>
 </ul>
 <div class="rule" id="r-destructors.scope.nesting.match"><a class="rule-link" href="#r-destructors.scope.nesting.match" title="destructors.scope.nesting.match"><span>[destructors<wbr>.scope<wbr>.nesting<wbr>.match]</span></a>
 </div>
 
 <ul>
-<li>The parent of the arm scope is the scope of the <code>match</code> expression that it
-belongs to.</li>
+<li>分支作用域的父作用域是该分支所属 <code>match</code> 表达式的作用域。</li>
 </ul>
 <div class="rule" id="r-destructors.scope.nesting.other"><a class="rule-link" href="#r-destructors.scope.nesting.other" title="destructors.scope.nesting.other"><span>[destructors<wbr>.scope<wbr>.nesting<wbr>.other]</span></a>
 </div>
 
 <ul>
-<li>The parent of all other scopes is the scope of the immediately enclosing
-expression.</li>
+<li>所有其他作用域的父作用域是直接包围它们的表达式的作用域。</li>
 </ul>
 <div class="rule" id="r-destructors.scope.params"><a class="rule-link" href="#r-destructors.scope.params" title="destructors.scope.params"><span>[destructors<wbr>.scope<wbr>.params]</span></a>
 </div>
 
-<h3 id="scopes-of-function-parameters"><a class="header" href="#scopes-of-function-parameters">Scopes of function parameters</a></h3>
-<p>All function parameters are in the scope of the entire function body, so are
-dropped last when evaluating the function. Each actual function parameter is
-dropped after any bindings introduced in that parameter’s pattern.</p>
+<h3 id="函数参数的作用域"><a class="header" href="#函数参数的作用域">函数参数的作用域</a></h3>
+<p>所有函数参数都在整个函数体的作用域内，因此在评估函数时最后被销毁。每个实际的函数参数都在该参数模式中引入的任何绑定之后被销毁。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct PrintOnDrop(&amp;'static str);
@@ -388,13 +364,13 @@ dropped after any bindings introduced in that parameter’s pattern.</p>
 </span><span class="boring">        println!("drop({})", self.0);
 </span><span class="boring">    }
 </span><span class="boring">}
-</span>// Drops `y`, then the second parameter, then `x`, then the first parameter
+</span>// 先销毁 `y`，然后是第二个参数，接着是 `x`，最后是第一个参数
 fn patterns_in_parameters(
     (x, _): (PrintOnDrop, PrintOnDrop),
     (_, y): (PrintOnDrop, PrintOnDrop),
 ) {}
 
-// drop order is 3 2 0 1
+// 销毁顺序是 3 2 0 1
 patterns_in_parameters(
     (PrintOnDrop("0"), PrintOnDrop("1")),
     (PrintOnDrop("2"), PrintOnDrop("3")),
@@ -403,14 +379,11 @@ patterns_in_parameters(
 <div class="rule" id="r-destructors.scope.bindings"><a class="rule-link" href="#r-destructors.scope.bindings" title="destructors.scope.bindings"><span>[destructors<wbr>.scope<wbr>.bindings]</span></a>
 </div>
 
-<h3 id="scopes-of-local-variables"><a class="header" href="#scopes-of-local-variables">Scopes of local variables</a></h3>
+<h3 id="局部变量的作用域"><a class="header" href="#局部变量的作用域">局部变量的作用域</a></h3>
 <div class="rule" id="r-destructors.scope.bindings.intro"><a class="rule-link" href="#r-destructors.scope.bindings.intro" title="destructors.scope.bindings.intro"><span>[destructors<wbr>.scope<wbr>.bindings<wbr>.intro]</span></a>
 </div>
 
-<p>Local variables declared in a <code>let</code> statement are associated to the scope of
-the block that contains the <code>let</code> statement. Local variables declared in a
-<code>match</code> expression are associated to the arm scope of the <code>match</code> arm that they
-are declared in.</p>
+<p>在 <code>let</code> 语句中声明的局部变量与包含该 <code>let</code> 语句的块的作用域相关联。在 <code>match</code> 表达式中声明的局部变量与它们所声明的 <code>match</code> 分支作用域相关联。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct PrintOnDrop(&amp;'static str);
@@ -428,7 +401,7 @@ let declared_last = PrintOnDrop("Dropped first in outer scope");
 <div class="rule" id="r-destructors.scope.bindings.patterns"><a class="rule-link" href="#r-destructors.scope.bindings.patterns" title="destructors.scope.bindings.patterns"><span>[destructors<wbr>.scope<wbr>.bindings<wbr>.patterns]</span></a>
 </div>
 
-<p>Variables in patterns are dropped in reverse order of declaration within the pattern.</p>
+<p>模式中的变量按模式内声明顺序的逆序销毁。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct PrintOnDrop(&amp;'static str);
@@ -445,7 +418,7 @@ let declared_last = PrintOnDrop("Dropped first in outer scope");
 <div class="rule" id="r-destructors.scope.bindings.or-patterns"><a class="rule-link" href="#r-destructors.scope.bindings.or-patterns" title="destructors.scope.bindings.or-patterns"><span>[destructors<wbr>.scope<wbr>.bindings<wbr>.or-patterns]</span></a>
 </div>
 
-<p>For the purpose of drop order, <a href="patterns.html#or-patterns">or-patterns</a> declare bindings in the order given by the first subpattern.</p>
+<p>出于销毁顺序的目的， <a href="patterns.html#or-patterns">或模式</a> 按第一个子模式给出的顺序声明绑定。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct PrintOnDrop(&amp;'static str);
@@ -454,28 +427,25 @@ let declared_last = PrintOnDrop("Dropped first in outer scope");
 </span><span class="boring">        println!("drop({})", self.0);
 </span><span class="boring">    }
 </span><span class="boring">}
-</span>// Drops `x` before `y`.
+</span>// 先销毁 `x` 后销毁 `y`。
 fn or_pattern_drop_order&lt;T&gt;(
     (Ok([x, y]) | Err([y, x])): Result&lt;[T; 2], [T; 2]&gt;
-//   ^^^^^^^^^^   ^^^^^^^^^^^ This is the second subpattern.
+//   ^^^^^^^^^^   ^^^^^^^^^^^ 这是第二个子模式。
 //   |
-//   This is the first subpattern.
+//   这是第一个子模式。
 //
-//   In the first subpattern, `x` is declared before `y`. Since it is
-//   the first subpattern, that is the order used even if the second
-//   subpattern, where the bindings are declared in the opposite
-//   order, is matched.
+//   在第一个子模式中，`x` 在 `y` 之前声明。由于它是
+//   第一个子模式，即使匹配的是第二个子模式（其中绑定的声明顺序相反），
+//   也会使用该顺序。
 ) {}
 
-// Here we match the first subpattern, and the drops happen according
-// to the declaration order in the first subpattern.
+// 这里我们匹配第一个子模式，销毁按第一个子模式中的声明顺序发生。
 or_pattern_drop_order(Ok([
     PrintOnDrop("Declared first, dropped last"),
     PrintOnDrop("Declared last, dropped first"),
 ]));
 
-// Here we match the second subpattern, and the drops still happen
-// according to the declaration order in the first subpattern.
+// 这里我们匹配第二个子模式，销毁仍按第一个子模式中的声明顺序发生。
 or_pattern_drop_order(Err([
     PrintOnDrop("Declared last, dropped first"),
     PrintOnDrop("Declared first, dropped last"),
@@ -484,36 +454,32 @@ or_pattern_drop_order(Err([
 <div class="rule" id="r-destructors.scope.temporary"><a class="rule-link" href="#r-destructors.scope.temporary" title="destructors.scope.temporary"><span>[destructors<wbr>.scope<wbr>.temporary]</span></a>
 </div>
 
-<h3 id="temporary-scopes"><a class="header" href="#temporary-scopes">Temporary scopes</a></h3>
+<h3 id="临时作用域"><a class="header" href="#临时作用域">临时作用域</a></h3>
 <div class="rule" id="r-destructors.scope.temporary.intro"><a class="rule-link" href="#r-destructors.scope.temporary.intro" title="destructors.scope.temporary.intro"><span>[destructors<wbr>.scope<wbr>.temporary<wbr>.intro]</span></a>
 </div>
 
-<p>The <em>temporary scope</em> of an expression is the scope that is used for the
-temporary variable that holds the result of that expression when used in a
-<a href="expressions.html#place-expressions-and-value-expressions">place context</a>, unless it is <a href="destructors.html#constant-promotion">promoted</a>.</p>
+<p>表达式的 <em>临时作用域</em> 是指当表达式用于 <a href="expressions.html#place-expressions-and-value-expressions">位置上下文</a> 时，用于持有该表达式结果的临时变量的作用域，除非该表达式被 <a href="destructors.html#constant-promotion">提升</a> 。</p>
 <div class="rule" id="r-destructors.scope.temporary.enclosing"><a class="rule-link" href="#r-destructors.scope.temporary.enclosing" title="destructors.scope.temporary.enclosing"><span>[destructors<wbr>.scope<wbr>.temporary<wbr>.enclosing]</span></a>
 </div>
 
-<p>Apart from lifetime extension, the temporary scope of an expression is the
-smallest scope that contains the expression and is one of the following:</p>
+<p>除生命周期延长外，表达式的临时作用域是包含该表达式的最小作用域，且为以下之一：</p>
 <ul>
-<li>The entire function.</li>
-<li>A statement.</li>
-<li>The body of an <a href="expressions/if-expr.html#if-expressions"><code>if</code></a>, <a href="expressions/loop-expr.html#predicate-loops"><code>while</code></a> or <a href="expressions/loop-expr.html#infinite-loops"><code>loop</code></a> expression.</li>
-<li>The <code>else</code> block of an <code>if</code> expression.</li>
-<li>The non-pattern matching condition expression of an <code>if</code> or <code>while</code> expression,
-or a <code>match</code> guard.</li>
-<li>The body expression for a match arm.</li>
-<li>Each operand of a <a href="expressions/operator-expr.html#lazy-boolean-operators">lazy boolean expression</a>.</li>
-<li>The pattern-matching condition(s) and consequent body of <a href="expressions/if-expr.html#if-expressions"><code>if</code></a> (<a href="destructors.html#r-destructors.scope.temporary.edition2024">destructors.scope.temporary.edition2024</a>).</li>
-<li>The pattern-matching condition and loop body of <a href="expressions/loop-expr.html#predicate-loops"><code>while</code></a>.</li>
-<li>The entirety of the tail expression of a block (<a href="destructors.html#r-destructors.scope.temporary.edition2024">destructors.scope.temporary.edition2024</a>).</li>
+<li>整个函数。</li>
+<li>一个语句。</li>
+<li><a href="expressions/if-expr.html#if-expressions"><code>if</code></a> 、 <a href="expressions/loop-expr.html#predicate-loops"><code>while</code></a> 或 <a href="expressions/loop-expr.html#infinite-loops"><code>loop</code></a> 表达式的体部。</li>
+<li><code>if</code> 表达式的 <code>else</code> 块。</li>
+<li><code>if</code> 或 <code>while</code> 表达式中非模式匹配的条件表达式，或 <code>match</code> 守卫。</li>
+<li>match 分支的体表达式。</li>
+<li><a href="expressions/operator-expr.html#lazy-boolean-operators">惰性布尔表达式</a> 的每个操作数。</li>
+<li><a href="expressions/if-expr.html#if-expressions"><code>if</code></a> 的模式匹配条件及随后的体部 (<a href="destructors.html#r-destructors.scope.temporary.edition2024">destructors.scope.temporary.edition2024</a>)。</li>
+<li><a href="expressions/loop-expr.html#predicate-loops"><code>while</code></a> 的模式匹配条件和循环体。</li>
+<li>块的尾随表达式的整体 (<a href="destructors.html#r-destructors.scope.temporary.edition2024">destructors.scope.temporary.edition2024</a>)。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The <a href="glossary.html#scrutinee">scrutinee</a> of a <code>match</code> expression is not a temporary scope, so temporaries in the scrutinee can be dropped after the <code>match</code> expression. For example, the temporary for <code>1</code> in <code>match 1 { ref mut z =&gt; z };</code> lives until the end of the statement.</p>
+<p><code>match</code> 表达式的 <a href="glossary.html#scrutinee">受查表达式</a> 不是临时作用域，因此受查表达式中的临时变量可以在 <code>match</code> 表达式之后销毁。例如， <code>match 1 { ref mut z =&gt; z };</code> 中 <code>1</code> 的临时变量存活到语句结束。</p>
 </blockquote>
 </div>
 
@@ -521,7 +487,7 @@ or a <code>match</code> guard.</li>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The desugaring of a <a href="expressions/operator-expr.html#r-expr.assign.destructure">destructuring assignment</a> restricts the temporary scope of its assigned value operand (the RHS). For details, see <a href="expressions/operator-expr.html#r-expr.assign.destructure.tmp-scopes">expr.assign.destructure.tmp-scopes</a>.</p>
+<p><a href="expressions/operator-expr.html#r-expr.assign.destructure">解构赋值</a> 的脱糖限制了其赋值操作数（右侧值）的临时作用域。有关详细信息，请参阅 <a href="expressions/operator-expr.html#r-expr.assign.destructure.tmp-scopes">expr.assign.destructure.tmp-scopes</a> 。</p>
 </blockquote>
 </div>
 
@@ -532,11 +498,11 @@ or a <code>match</code> guard.</li>
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2024</span> 版次差异</p>
 
-<p>The 2024 edition added two new temporary scope narrowing rules: <code>if let</code> temporaries are dropped before the <code>else</code> block, and temporaries of tail expressions of blocks are dropped immediately after the tail expression is evaluated.</p>
+<p>2024 版次增加了两条新的临时作用域收窄规则： <code>if let</code> 临时变量在 <code>else</code> 块之前销毁，块的尾随表达式的临时变量在尾随表达式评估后立即销毁。</p>
 </blockquote>
 </div>
 
-<p>Some examples:</p>
+<p>一些示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">#![allow(irrefutable_let_patterns)]
@@ -548,9 +514,9 @@ or a <code>match</code> guard.</li>
 </span><span class="boring">}
 </span>let local_var = PrintOnDrop("local var");
 
-// Dropped once the condition has been evaluated
+// 一旦条件评估完毕就会被销毁
 if PrintOnDrop("If condition").0 == "If condition" {
-    // Dropped at the end of the block
+    // 在块结束时销毁
     PrintOnDrop("If body").0
 } else {
     unreachable!()
@@ -558,32 +524,32 @@ if PrintOnDrop("If condition").0 == "If condition" {
 
 if let "if let scrutinee" = PrintOnDrop("if let scrutinee").0 {
     PrintOnDrop("if let consequent").0
-    // `if let consequent` dropped here
+    // `if let consequent` 在此处销毁
 }
-// `if let scrutinee` is dropped here
+// `if let scrutinee` 在此处销毁
 else {
     PrintOnDrop("if let else").0
-    // `if let else` dropped here
+    // `if let else` 在此处销毁
 };
 
 while let x = PrintOnDrop("while let scrutinee").0 {
     PrintOnDrop("while let loop body").0;
     break;
-    // `while let loop body` dropped here.
-    // `while let scrutinee` dropped here.
+    // `while let loop body` 在此处销毁。
+    // `while let scrutinee` 在此处销毁。
 }
 
-// Dropped before the first ||
+// 在第一个 || 之前销毁
 (PrintOnDrop("first operand").0 == ""
-// Dropped before the )
+// 在 ) 之前销毁
 || PrintOnDrop("second operand").0 == "")
-// Dropped before the ;
+// 在 ; 之前销毁
 || PrintOnDrop("third operand").0 == "";
 
-// Scrutinee is dropped at the end of the function, before local variables
-// (because this is the tail expression of the function body block).
+// 受查表达式在函数结束时、局部变量之前销毁
+// （因为这是函数体块的尾随表达式）。
 match PrintOnDrop("Matched value in final expression") {
-    // Dropped once the condition has been evaluated
+    // 一旦条件评估完毕就会被销毁
     _ if PrintOnDrop("guard condition").0 == "" =&gt; (),
     _ =&gt; (),
 }
@@ -591,12 +557,8 @@ match PrintOnDrop("Matched value in final expression") {
 <div class="rule" id="r-destructors.scope.operands"><a class="rule-link" href="#r-destructors.scope.operands" title="destructors.scope.operands"><span>[destructors<wbr>.scope<wbr>.operands]</span></a>
 </div>
 
-<h3 id="operands"><a class="header" href="#operands">Operands</a></h3>
-<p>Temporaries are also created to hold the result of operands to an expression
-while the other operands are evaluated. The temporaries are associated to the
-scope of the expression with that operand. Since the temporaries are moved from
-once the expression is evaluated, dropping them has no effect unless one of the
-operands to an expression breaks out of the expression, returns, or <a href="panic.html">panics</a>.</p>
+<h3 id="操作数"><a class="header" href="#操作数">操作数</a></h3>
+<p>在评估表达式的其他操作数时，也会创建临时变量来持有该表达式的操作数结果。这些临时变量与具有该操作数的表达式的作用域相关联。由于一旦表达式评估完毕，临时变量就会被移走，因此销毁它们没有影响，除非表达式的一个操作数跳出了表达式、返回或发生了 <a href="panic.html">恐慌</a> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct PrintOnDrop(&amp;'static str);
@@ -606,7 +568,7 @@ operands to an expression breaks out of the expression, returns, or <a href="pan
 </span><span class="boring">    }
 </span><span class="boring">}
 </span>loop {
-    // Tuple expression doesn't finish evaluating so operands drop in reverse order
+    // 元组表达式未完成评估，因此操作数按逆序销毁
     (
         PrintOnDrop("Outer tuple first"),
         PrintOnDrop("Outer tuple second"),
@@ -622,180 +584,165 @@ operands to an expression breaks out of the expression, returns, or <a href="pan
 <div class="rule" id="r-destructors.scope.const-promotion"><a class="rule-link" href="#r-destructors.scope.const-promotion" title="destructors.scope.const-promotion"><span>[destructors<wbr>.scope<wbr>.const-promotion]</span></a>
 </div>
 
-<h3 id="constant-promotion"><a class="header" href="#constant-promotion">Constant promotion</a></h3>
-<p>Promotion of a value expression to a <code>'static</code> slot occurs when the expression
-could be written in a constant and borrowed, and that borrow could be dereferenced
-where
-the expression was originally written, without changing the runtime behavior.
-That is, the promoted expression can be evaluated at compile-time and the
-resulting value does not contain <a href="interior-mutability.html">interior mutability</a> or <a href="destructors.html">destructors</a> (these
-properties are determined based on the value where possible, e.g. <code>&amp;None</code>
-always has the type <code>&amp;'static Option&lt;_&gt;</code>, as it contains nothing disallowed).</p>
+<h3 id="常量提升"><a class="header" href="#常量提升">常量提升</a></h3>
+<p>当一个值表达式可以写在常量中并被借用，且该借用可以在表达式最初编写的地方被解引用而不会改变运行时行为时，就会发生将该表达式提升到 <code>'static</code> 槽位的操作。也就是说，被提升的表达式可以在编译时评估，且结果值不包含 <a href="interior-mutability.html">内部可变性</a> 或 <a href="destructors.html">析构函数</a> （这些属性尽可能根据值来确定，例如 <code>&amp;None</code> 始终具有类型 <code>&amp;'static Option&lt;_&gt;</code> ，因为它不包含任何被禁止的内容）。</p>
 <div class="rule" id="r-destructors.scope.lifetime-extension"><a class="rule-link" href="#r-destructors.scope.lifetime-extension" title="destructors.scope.lifetime-extension"><span>[destructors<wbr>.scope<wbr>.lifetime-extension]</span></a>
 </div>
 
-<h3 id="temporary-lifetime-extension"><a class="header" href="#temporary-lifetime-extension">Temporary lifetime extension</a></h3>
+<h3 id="临时生命周期延长"><a class="header" href="#临时生命周期延长">临时生命周期延长</a></h3>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The exact rules for temporary lifetime extension are subject to change. This is describing the current behavior only.</p>
+<p>临时生命周期延长的具体规则可能会发生变化。此处仅描述当前行为。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-destructors.scope.lifetime-extension.let"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.let" title="destructors.scope.lifetime-extension.let"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.let]</span></a>
 </div>
 
-<p>The temporary scopes for expressions in <code>let</code> statements are sometimes
-<em>extended</em> to the scope of the block containing the <code>let</code> statement. This is
-done when the usual temporary scope would be too small, based on certain
-syntactic rules. For example:</p>
+<p>在 <code>let</code> 语句中，表达式的临时作用域有时会 <em>延长</em> 到包含该 <code>let</code> 语句的块的作用域。根据某些语法规则，当通常的临时作用域太小时会执行此操作。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = &amp;mut 0;
-// Usually a temporary would be dropped by now, but the temporary for `0` lives
-// to the end of the block.
+// 通常临时变量现在已经被销毁了，但 `0` 的临时变量
+// 存活到块结束。
 println!("{}", x);
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-destructors.scope.lifetime-extension.static"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.static" title="destructors.scope.lifetime-extension.static"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.static]</span></a>
 </div>
 
-<p>Lifetime extension also applies to <code>static</code> and <code>const</code> items, where it
-makes temporaries live until the end of the program. For example:</p>
+<p>生命周期延长也适用于 <code>static</code> 和 <code>const</code> 项 ，这使得临时变量存活到程序结束。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>const C: &amp;Vec&lt;i32&gt; = &amp;Vec::new();
-// Usually this would be a dangling reference as the `Vec` would only
-// exist inside the initializer expression of `C`, but instead the
-// borrow gets lifetime-extended so it effectively has `'static` lifetime.
+// 通常这将是一个悬空引用，因为 `Vec` 仅存在于 `C` 的
+// 初始化表达式内部，但这里的借用被延长了生命周期，
+// 因此它实际上具有 `'static` 生命周期。
 println!("{:?}", C);
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-destructors.scope.lifetime-extension.sub-expressions"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.sub-expressions" title="destructors.scope.lifetime-extension.sub-expressions"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.sub-expressions]</span></a>
 </div>
 
-<p>If a <a href="expressions/operator-expr.html#r-expr.operator.borrow">borrow</a>, <a href="expressions/operator-expr.html#the-dereference-operator">dereference</a>, <a href="expressions/field-expr.html">field</a>, or <a href="expressions/tuple-expr.html#tuple-indexing-expressions">tuple indexing expression</a> has an extended temporary scope, then so does its operand. If an <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">indexing expression</a> has an extended temporary scope, then the indexed expression also has an extended temporary scope.</p>
+<p>如果 <a href="expressions/operator-expr.html#r-expr.operator.borrow">借用</a> 、 <a href="expressions/operator-expr.html#the-dereference-operator">解引用表达式</a> 、 <a href="expressions/field-expr.html">字段表达式</a> 或 <a href="expressions/tuple-expr.html#tuple-indexing-expressions">元组索引表达式</a> 具有延长的临时作用域，则其操作数也具有。如果 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">索引表达式</a> 具有延长的临时作用域，则被索引的表达式也具有延长的临时作用域。</p>
 <div class="rule" id="r-destructors.scope.lifetime-extension.patterns"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.patterns" title="destructors.scope.lifetime-extension.patterns"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.patterns]</span></a>
 </div>
 
-<h4 id="extending-based-on-patterns"><a class="header" href="#extending-based-on-patterns">Extending based on patterns</a></h4>
+<h4 id="基于模式的延长"><a class="header" href="#基于模式的延长">基于模式的延长</a></h4>
 <div class="rule" id="r-destructors.scope.lifetime-extension.patterns.extending"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.patterns.extending" title="destructors.scope.lifetime-extension.patterns.extending"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.patterns<wbr>.extending]</span></a>
 </div>
 
-<p>An <em>extending pattern</em> is either:</p>
+<p>一个 <em>延长模式</em> 是以下之一：</p>
 <ul>
 <li>
-<p>An <a href="patterns.html#identifier-patterns">identifier pattern</a> that binds by reference or mutable reference.</p>
+<p>通过引用或可变引用绑定的 <a href="patterns.html#identifier-patterns">标识符模式</a> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
-</span>let ref x = temp(); // Binds by reference.
+</span>let ref x = temp(); // 通过引用绑定。
 <span class="boring">x;
-</span>let ref mut x = temp(); // Binds by mutable reference.
+</span>let ref mut x = temp(); // 通过可变引用绑定。
 <span class="boring">x;
 </span><span class="boring">}</span></code></pre>
 </li>
 <li>
-<p>A <a href="patterns.html#struct-patterns">struct</a>, <a href="patterns.html#tuple-patterns">tuple</a>, <a href="patterns.html#tuple-struct-patterns">tuple struct</a>, <a href="patterns.html#slice-patterns">slice</a>, or <a href="patterns.html#or-patterns">or-pattern</a> where at least one of the direct subpatterns is an extending pattern.</p>
+<p><a href="patterns.html#struct-patterns">结构体模式</a> 、 <a href="patterns.html#tuple-patterns">元组模式</a> 、 <a href="patterns.html#tuple-struct-patterns">元组结构体模式</a> 、 <a href="patterns.html#slice-patterns">切片模式</a> 或 <a href="patterns.html#or-patterns">或模式</a> ，其中至少一个直接子模式是延长模式。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::sync::atomic::{AtomicU64, Ordering::Relaxed};
 </span><span class="boring">static X: AtomicU64 = AtomicU64::new(0);
 </span>struct W&lt;T&gt;(T);
 <span class="boring">impl&lt;T&gt; Drop for W&lt;T&gt; { fn drop(&amp;mut self) { X.fetch_add(1, Relaxed); } }
-</span>let W { 0: ref x } = W(()); // Struct pattern.
+</span>let W { 0: ref x } = W(()); // 结构体模式。
 <span class="boring">x;
-</span>let W(ref x) = W(()); // Tuple struct pattern.
+</span>let W(ref x) = W(()); // 元组结构体模式。
 <span class="boring">x;
-</span>let (W(ref x),) = (W(()),); // Tuple pattern.
+</span>let (W(ref x),) = (W(()),); // 元组模式。
 <span class="boring">x;
-</span>let [W(ref x), ..] = [W(())]; // Slice pattern.
+</span>let [W(ref x), ..] = [W(())]; // 切片模式。
 <span class="boring">x;
-</span>let (Ok(W(ref x)) | Err(&amp;ref x)) = Ok(W(())); // Or pattern.
+</span>let (Ok(W(ref x)) | Err(&amp;ref x)) = Ok(W(())); // 或模式。
 <span class="boring">x;
 </span>//
-// All of the temporaries above are still live here.
+// 以上所有临时变量在这里仍然存活。
 <span class="boring">assert_eq!(0, X.load(Relaxed));
 </span><span class="boring">}</span></code></pre>
 </li>
 </ul>
-<p>So <code>ref x</code>, <code>V(ref x)</code> and <code>[ref x, y]</code> are all extending patterns, but <code>x</code>, <code>&amp;ref x</code> and <code>&amp;(ref x,)</code> are not.</p>
+<p>因此 <code>ref x</code> 、 <code>V(ref x)</code> 和 <code>[ref x, y]</code> 都是延长模式，但 <code>x</code> 、 <code>&amp;ref x</code> 和 <code>&amp;(ref x,)</code> 则不是。</p>
 <div class="rule" id="r-destructors.scope.lifetime-extension.patterns.let"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.patterns.let" title="destructors.scope.lifetime-extension.patterns.let"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.patterns<wbr>.let]</span></a>
 </div>
 
-<p>If the pattern in a <code>let</code> statement is an extending pattern then the temporary
-scope of the initializer expression is extended.</p>
+<p>如果 <code>let</code> 语句中的模式是延长模式，则初始化器表达式的临时作用域将被延长。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
-</span>// This is an extending pattern, so the temporary scope is extended.
-let ref x = *&amp;temp(); // OK
+</span>// 这是一个延长模式，因此临时作用域被延长。
+let ref x = *&amp;temp(); // 正常
 <span class="boring">x;
 </span><span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
-</span>// This is neither an extending pattern nor an extending expression,
-// so the temporary is dropped at the semicolon.
-let &amp;ref x = *&amp;&amp;temp(); // ERROR
+</span>// 这既不是延长模式也不是延长表达式，
+// 因此临时变量在分号处销毁。
+let &amp;ref x = *&amp;&amp;temp(); // 错误
 <span class="boring">x;
 </span><span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
-</span>// This is not an extending pattern but it is an extending expression,
-// so the temporary lives beyond the `let` statement.
-let &amp;ref x = &amp;*&amp;temp(); // OK
+</span>// 这不是延长模式，但它是一个延长表达式，
+// 因此临时变量存活超过了 `let` 语句。
+let &amp;ref x = &amp;*&amp;temp(); // 正常
 <span class="boring">x;
 </span><span class="boring">}</span></code></pre>
 <div class="rule" id="r-destructors.scope.lifetime-extension.exprs"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.exprs" title="destructors.scope.lifetime-extension.exprs"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.exprs]</span></a>
 </div>
 
-<h4 id="extending-based-on-expressions"><a class="header" href="#extending-based-on-expressions">Extending based on expressions</a></h4>
+<h4 id="基于表达式的延长"><a class="header" href="#基于表达式的延长">基于表达式的延长</a></h4>
 <div class="rule" id="r-destructors.scope.lifetime-extension.exprs.extending"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.exprs.extending" title="destructors.scope.lifetime-extension.exprs.extending"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.exprs<wbr>.extending]</span></a>
 </div>
 
-<p>For a let statement with an initializer, an <em>extending expression</em> is an
-expression which is one of the following:</p>
+<p>对于带有初始化器的 let 语句， <em>延长表达式</em> 是以下表达式之一：</p>
 <ul>
-<li>The initializer expression.</li>
-<li>The operand of an extending <a href="expressions/operator-expr.html#r-expr.operator.borrow">borrow</a> expression.</li>
-<li>The <a href="expressions.html#r-expr.super-macros">super operands</a> of an extending <a href="expressions.html#r-expr.super-macros">super macro call</a> expression.</li>
-<li>The operand(s) of an extending <a href="expressions/array-expr.html#array-expressions">array</a>, <a href="expressions/operator-expr.html#type-cast-expressions">cast</a>, <a href="expressions/struct-expr.html">braced struct</a>, or <a href="expressions/tuple-expr.html#tuple-expressions">tuple</a>
-expression.</li>
-<li>The arguments to an extending <a href="types/struct.html#r-type.struct.tuple">tuple struct</a> or <a href="types/enum.html#r-type.enum.declaration">tuple enum variant</a> constructor expression.</li>
-<li>The final expression of an extending <a href="expressions/block-expr.html">block expression</a> except for an <a href="expressions/block-expr.html#r-expr.block.async">async block expression</a>.</li>
-<li>The final expression of an extending <a href="expressions/if-expr.html#if-expressions"><code>if</code></a> expression’s consequent, <code>else if</code>, or <code>else</code> block.</li>
-<li>An arm expression of an extending <a href="expressions/match-expr.html"><code>match</code></a> expression.</li>
+<li>初始化器表达式。</li>
+<li>延长 <a href="expressions/operator-expr.html#r-expr.operator.borrow">借用</a> 表达式的操作数。</li>
+<li>延长 <a href="expressions.html#r-expr.super-macros">超级宏调用</a> 表达式的 <a href="expressions.html#r-expr.super-macros">超级操作数</a> 。</li>
+<li>延长 <a href="expressions/array-expr.html#array-expressions">数组表达式</a> 、 <a href="expressions/operator-expr.html#type-cast-expressions">转换表达式</a> 、 <a href="expressions/struct-expr.html">大括号结构体表达式</a> 或 <a href="expressions/tuple-expr.html#tuple-expressions">元组表达式</a> 的操作数。</li>
+<li>延长 <a href="types/struct.html#r-type.struct.tuple">元组结构体</a> 或 <a href="types/enum.html#r-type.enum.declaration">元组枚举变体</a> 构造器表达式的参数。</li>
+<li>延长 <a href="expressions/block-expr.html">块表达式</a> 的最终表达式（异步块表达式 <a href="expressions/block-expr.html#r-expr.block.async">async block expression</a> 除外）。</li>
+<li>延长 <a href="expressions/if-expr.html#if-expressions"><code>if</code></a> 表达式的 <code>consequent</code> 、 <code>else if</code> 或 <code>else</code> 块的最终表达式。</li>
+<li>延长 <a href="expressions/match-expr.html"><code>match</code></a> 表达式的分支表达式。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The desugaring of a <a href="expressions/operator-expr.html#r-expr.assign.destructure">destructuring assignment</a> makes its assigned value operand (the RHS) an extending expression within a newly-introduced block. For details, see <a href="expressions/operator-expr.html#r-expr.assign.destructure.tmp-ext">expr.assign.destructure.tmp-ext</a>.</p>
+<p><a href="expressions/operator-expr.html#r-expr.assign.destructure">解构赋值</a> 的脱糖使其赋值操作数（右侧值）成为新引入块内的延长表达式。有关详细信息，请参阅 <a href="expressions/operator-expr.html#r-expr.assign.destructure.tmp-ext">expr.assign.destructure.tmp-ext</a> 。</p>
 </blockquote>
 </div>
 
-<p>So the borrow expressions in <code>&amp;mut 0</code>, <code>(&amp;1, &amp;mut 2)</code>, and <code>Some(&amp;mut 3)</code>
-are all extending expressions. The borrows in <code>&amp;0 + &amp;1</code> and <code>f(&amp;mut 0)</code> are not.</p>
+<p>因此 <code>&amp;mut 0</code> 、 <code>(&amp;1, &amp;mut 2)</code> 和 <code>Some(&amp;mut 3)</code> 中的借用表达式都是延长表达式。而 <code>&amp;0 + &amp;1</code> 和 <code>f(&amp;mut 0)</code> 中的借用则不是。</p>
 <div class="rule" id="r-destructors.scope.lifetime-extension.exprs.borrows"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.exprs.borrows" title="destructors.scope.lifetime-extension.exprs.borrows"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.exprs<wbr>.borrows]</span></a>
 </div>
 
-<p>The operand of an extending <a href="expressions/operator-expr.html#r-expr.operator.borrow">borrow</a> expression has its <a href="destructors.html#r-destructors.scope.temporary">temporary scope</a> <a href="destructors.html#r-destructors.scope.lifetime-extension">extended</a>.</p>
+<p>延长 <a href="expressions/operator-expr.html#r-expr.operator.borrow">借用</a> 表达式的操作数其 <a href="destructors.html#r-destructors.scope.temporary">临时作用域</a> 被 <a href="destructors.html#r-destructors.scope.lifetime-extension">延长</a> 。</p>
 <div class="rule" id="r-destructors.scope.lifetime-extension.exprs.super-macros"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.exprs.super-macros" title="destructors.scope.lifetime-extension.exprs.super-macros"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.exprs<wbr>.super-macros]</span></a>
 </div>
 
-<p>The <a href="expressions.html#r-expr.super-macros">super temporaries</a> of an extending <a href="expressions.html#r-expr.super-macros">super macro call</a> expression have their <a href="destructors.html#r-destructors.scope.temporary">scopes</a> <a href="destructors.html#r-destructors.scope.lifetime-extension">extended</a>.</p>
+<p>延长 <a href="expressions.html#r-expr.super-macros">超级宏调用</a> 表达式的 <a href="expressions.html#r-expr.super-macros">超级临时变量</a> 其 <a href="destructors.html#r-destructors.scope.temporary">作用域</a> 被 <a href="destructors.html#r-destructors.scope.lifetime-extension">延长</a> 。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> does not treat <a href="expressions/array-expr.html#r-expr.array.repeat-operand">array repeat operands</a> of extending <a href="types/array.html">array</a> expressions as extending expressions. Whether it should is an open question.</p>
-<p>For details, see <a href="https://github.com/rust-lang/rust/issues/146092">Rust issue #146092</a>.</p>
+<p><code>rustc</code> 不将延长 <a href="types/array.html">数组</a> 表达式的 <a href="expressions/array-expr.html#r-expr.array.repeat-operand">数组重复操作数</a> 视为延长表达式。是否应该这样做是一个悬而未决的问题。</p>
+<p>有关详细信息，请参阅 <a href="https://github.com/rust-lang/rust/issues/146092">Rust issue #146092</a> 。</p>
 </blockquote>
 </div>
 
-<h4 id="examples"><a class="header" href="#examples">Examples</a></h4>
-<p>Here are some examples where expressions have extended temporary scopes:</p>
+<h4 id="示例"><a class="header" href="#示例">示例</a></h4>
+<p>以下是表达式具有延长临时作用域的一些示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::pin::pin;
@@ -804,48 +751,47 @@ are all extending expressions. The borrows in <code>&amp;0 + &amp;1</code> and <
 </span><span class="boring">#[derive(Debug)] struct S;
 </span><span class="boring">impl Drop for S { fn drop(&amp;mut self) { X.fetch_add(1, Relaxed); } }
 </span><span class="boring">const fn temp() -&gt; S { S }
-</span>let x = &amp;temp(); // Operand of borrow.
+</span>let x = &amp;temp(); // 借用的操作数。
 <span class="boring">x;
-</span>let x = &amp;raw const *&amp;temp(); // Operand of raw borrow.
+</span>let x = &amp;raw const *&amp;temp(); // 原生借用的操作数。
 <span class="boring">assert_eq!(X.load(Relaxed), 0);
-</span>let x = &amp;temp() as &amp;dyn Send; // Operand of cast.
+</span>let x = &amp;temp() as &amp;dyn Send; // 转换的操作数。
 <span class="boring">x;
-</span>let x = (&amp;*&amp;temp(),); // Operand of tuple constructor.
+</span>let x = (&amp;*&amp;temp(),); // 元组构造器的操作数。
 <span class="boring">x;
 </span>struct W&lt;T&gt;(T);
-let x = W(&amp;temp()); // Argument to tuple struct constructor.
+let x = W(&amp;temp()); // 元组结构体构造器的参数。
 <span class="boring">x;
-</span>let x = Some(&amp;temp()); // Argument to tuple enum variant constructor.
+</span>let x = Some(&amp;temp()); // 元组枚举变体构造器的参数。
 <span class="boring">x;
-</span>let x = { [Some(&amp;temp())] }; // Final expr of block.
+</span>let x = { [Some(&amp;temp())] }; // 块的最终表达式。
 <span class="boring">x;
-</span>let x = const { &amp;temp() }; // Final expr of `const` block.
+</span>let x = const { &amp;temp() }; // `const` 块的最终表达式。
 <span class="boring">x;
-</span>let x = unsafe { &amp;temp() }; // Final expr of `unsafe` block.
+</span>let x = unsafe { &amp;temp() }; // `unsafe` 块的最终表达式。
 <span class="boring">x;
 </span>let x = if true { &amp;temp() } else { &amp;temp() };
 //              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//           Final exprs of `if`/`else` blocks.
+//           `if`/`else` 块的最终表达式。
 <span class="boring">x;
-</span>let x = match () { _ =&gt; &amp;temp() }; // `match` arm expression.
+</span>let x = match () { _ =&gt; &amp;temp() }; // `match` 分支表达式。
 <span class="boring">x;
-</span>let x = pin!(temp()); // Super operand of super macro call expression.
+</span>let x = pin!(temp()); // 超级宏调用表达式的超级操作数。
 <span class="boring">x;
-</span>let x = pin!({ &amp;mut temp() }); // As above.
+</span>let x = pin!({ &amp;mut temp() }); // 同上。
 <span class="boring">x;
-</span>let x = format_args!("{:?}", temp()); // As above.
+</span>let x = format_args!("{:?}", temp()); // 同上。
 <span class="boring">x;
 </span>//
-// All of the temporaries above are still live here.
+// 以上所有临时变量在这里仍然存活。
 <span class="boring">assert_eq!(0, X.load(Relaxed));
 </span><span class="boring">}</span></code></pre>
-<p>Here are some examples where expressions don’t have extended temporary scopes:</p>
+<p>以下是表达式不具有延长临时作用域的一些示例：</p>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
-</span>// Arguments to function calls are not extending expressions. The
-// temporary is dropped at the semicolon.
-let x = core::convert::identity(&amp;temp()); // ERROR
+</span>// 函数调用的参数不是延长表达式。临时变量在分号处销毁。
+let x = core::convert::identity(&amp;temp()); // 错误
 <span class="boring">x;
 </span><span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
@@ -853,87 +799,84 @@ let x = core::convert::identity(&amp;temp()); // ERROR
 </span><span class="boring">fn temp() {}
 </span><span class="boring">trait Use { fn use_temp(&amp;self) -&gt; &amp;Self { self } }
 </span><span class="boring">impl Use for () {}
-</span>// Receivers of method calls are not extending expressions.
-let x = (&amp;temp()).use_temp(); // ERROR
+</span>// 方法调用的接收者不是延长表达式。
+let x = (&amp;temp()).use_temp(); // 错误
 <span class="boring">x;
 </span><span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
-</span>// Scrutinees of match expressions are not extending expressions.
-let x = match &amp;temp() { x =&gt; x }; // ERROR
+</span>// match 表达式的受查表达式不是延长表达式。
+let x = match &amp;temp() { x =&gt; x }; // 错误
 <span class="boring">x;
 </span><span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0515 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
-</span>// Final expressions of `async` blocks are not extending expressions.
-let x = async { &amp;temp() }; // ERROR
+</span>// `async` 块的最终表达式不是延长表达式。
+let x = async { &amp;temp() }; // 错误
 <span class="boring">x;
 </span><span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0515 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
-</span>// Final expressions of closures are not extending expressions.
-let x = || &amp;temp(); // ERROR
+</span>// 闭包的最终表达式不是延长表达式。
+let x = || &amp;temp(); // 错误
 <span class="boring">x;
 </span><span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
-</span>// Operands of loop breaks are not extending expressions.
-let x = loop { break &amp;temp() }; // ERROR
+</span>// 循环 break 的操作数不是延长表达式。
+let x = loop { break &amp;temp() }; // 错误
 <span class="boring">x;
 </span><span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
-</span>// Operands of breaks to labels are not extending expressions.
-let x = 'a: { break 'a &amp;temp() }; // ERROR
+</span>// 带有标签的 break 的操作数不是延长表达式。
+let x = 'a: { break 'a &amp;temp() }; // 错误
 <span class="boring">x;
 </span><span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust edition2024 compile_fail E0716"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::pin::pin;
 </span><span class="boring">fn temp() {}
-</span>// The argument to `pin!` is only an extending expression if the call
-// is an extending expression. Since it's not, the inner block is not
-// an extending expression, so the temporaries in its trailing
-// expression are dropped immediately.
-pin!({ &amp;temp() }); // ERROR
+</span>// 仅当调用是延长表达式时，`pin!` 的参数才是延长表达式。
+// 由于它不是，内部块不是延长表达式，因此其尾随表达式中的
+// 临时变量会立即销毁。
+pin!({ &amp;temp() }); // 错误
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust edition2024 compile_fail E0716"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
-</span>// As above.
-format_args!("{:?}", { &amp;temp() }); // ERROR
+</span>// 同上。
+format_args!("{:?}", { &amp;temp() }); // 错误
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-destructors.forget"><a class="rule-link" href="#r-destructors.forget" title="destructors.forget"><span>[destructors<wbr>.forget]</span></a>
 </div>
 
-<h2 id="not-running-destructors"><a class="header" href="#not-running-destructors">Not running destructors</a></h2>
+<h2 id="不运行析构函数"><a class="header" href="#不运行析构函数">不运行析构函数</a></h2>
 <div class="rule" id="r-destructors.manually-suppressing"><a class="rule-link" href="#r-destructors.manually-suppressing" title="destructors.manually-suppressing"><span>[destructors<wbr>.manually-suppressing]</span></a>
 </div>
 
-<h3 id="manually-suppressing-destructors"><a class="header" href="#manually-suppressing-destructors">Manually suppressing destructors</a></h3>
-<p><a href="../core/mem/fn.forget.html"><code>core::mem::forget</code></a> can be used to prevent the destructor of a variable from being run,
-and <a href="../core/mem/manually_drop/struct.ManuallyDrop.html"><code>core::mem::ManuallyDrop</code></a> provides a wrapper to prevent a
-variable or field from being dropped automatically.</p>
+<h3 id="手动抑制析构函数"><a class="header" href="#手动抑制析构函数">手动抑制析构函数</a></h3>
+<p><a href="../core/mem/fn.forget.html"><code>core::mem::forget</code></a> 可用于防止运行变量的析构函数，而 <a href="../core/mem/manually_drop/struct.ManuallyDrop.html"><code>core::mem::ManuallyDrop</code></a> 提供了一个包装器来防止变量或字段被自动销毁。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Preventing a destructor from being run via <a href="../core/mem/fn.forget.html"><code>core::mem::forget</code></a> or other means is safe even if it has a type that isn’t <code>'static</code>. Besides the places where destructors are guaranteed to run as defined by this document, types may <em>not</em> safely rely on a destructor being run for soundness.</p>
+<p>通过 <a href="../core/mem/fn.forget.html"><code>core::mem::forget</code></a> 或其他手段防止析构函数运行是安全的，即使它的类型不是 <code>'static</code> 。除了本文档定义的保证运行析构函数的地方外，为了健全性，类型 <em>不可</em> 安全地依赖于析构函数的运行。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-destructors.process-termination"><a class="rule-link" href="#r-destructors.process-termination" title="destructors.process-termination"><span>[destructors<wbr>.process-termination]</span></a>
 </div>
 
-<h3 id="process-termination-without-unwinding"><a class="header" href="#process-termination-without-unwinding">Process termination without unwinding</a></h3>
-<p>There are some ways to terminate the process without <a href="panic.html#unwinding">unwinding</a>, in which case destructors will not be run.</p>
-<p>The standard library provides <a href="../std/process/fn.exit.html"><code>std::process::exit</code></a> and <a href="../std/process/fn.abort.html"><code>std::process::abort</code></a> to do this explicitly. Additionally, if the <a href="panic.html#r-panic.panic_handler.std">panic handler</a> is set to <code>abort</code>, panicking will always terminate the process without destructors being run.</p>
-<p>There is one additional case to be aware of: when a panic reaches a <a href="items/functions.html#unwinding">non-unwinding ABI boundary</a>, either no destructors will run, or all destructors up until the ABI boundary will run.</p>
+<h3 id="无需展开的进程终止"><a class="header" href="#无需展开的进程终止">无需展开的进程终止</a></h3>
+<p>有一些方法可以在不进行 <a href="panic.html#unwinding">展开</a> 的情况下终止进程，在这种情况下将不运行析构函数。</p>
+<p>标准库提供了 <a href="../std/process/fn.exit.html"><code>std::process::exit</code></a> 和 <a href="../std/process/fn.abort.html"><code>std::process::abort</code></a> 来显式执行此操作。此外，如果 <a href="panic.html#r-panic.panic_handler.std">恐慌处理器</a> 设置为 <code>abort</code> ，发生恐慌时将始终终止进程而不运行析构函数。</p>
+<p>还有一个需要注意的情况：当恐慌达到 <a href="items/functions.html#unwinding">非展开 ABI 边界</a> 时，要么不运行任何析构函数，要么运行直到该 ABI 边界为止的所有析构函数。</p>
 
                     </main>
 

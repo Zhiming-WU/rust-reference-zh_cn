@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-be189161.js"></script>
+        <script src="../toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-expr.await"><a class="rule-link" href="#r-expr.await" title="expr.await"><span>[expr<wbr>.await]</span></a>
 </div>
 
-<h1 id="await-expressions"><a class="header" href="#await-expressions">Await expressions</a></h1>
+<h1 id="await表达式"><a class="header" href="#await表达式"><code>await</code>表达式</a></h1>
 <div class="rule" id="r-expr.await.syntax"><a class="rule-link" href="#r-expr.await.syntax" title="expr.await.syntax"><span>[expr<wbr>.await<wbr>.syntax]</span></a>
 </div>
 
@@ -236,28 +236,26 @@ await</text>
 <div class="rule" id="r-expr.await.intro"><a class="rule-link" href="#r-expr.await.intro" title="expr.await.intro"><span>[expr<wbr>.await<wbr>.intro]</span></a>
 </div>
 
-<p>An <code>await</code> expression is a syntactic construct for suspending a computation
-provided by an implementation of <code>std::future::IntoFuture</code> until the given
-future is ready to produce a value.</p>
+<p><code>await</code> 表达式是一种语法结构，用于挂起由 <code>std::future::IntoFuture</code> 的实现提供的计算，直到给定的 future 准备好产生一个值。</p>
 <div class="rule" id="r-expr.await.construct"><a class="rule-link" href="#r-expr.await.construct" title="expr.await.construct"><span>[expr<wbr>.await<wbr>.construct]</span></a>
 </div>
 
-<p>The syntax for an await expression is an expression with a type that implements the <a href="../../core/future/into_future/trait.IntoFuture.html"><code>IntoFuture</code></a> trait, called the <em>future operand</em>, then the token <code>.</code>, and then the <code>await</code> keyword.</p>
+<p><code>await</code> 表达式的 语法格式 是一个具有实现了 <a href="../../core/future/into_future/trait.IntoFuture.html"><code>IntoFuture</code></a> 特型的类型的表达式（称为 <em>future 操作数</em>），后跟 词法单元 <code>.</code>，然后是 <code>await</code> 关键字。</p>
 <div class="rule" id="r-expr.await.allowed-positions"><a class="rule-link" href="#r-expr.await.allowed-positions" title="expr.await.allowed-positions"><span>[expr<wbr>.await<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>Await expressions are legal only within an <a href="../expressions/block-expr.html#async-context">async context</a>, like an <a href="../items/functions.html#async-functions"><code>async fn</code></a>, <a href="closure-expr.html#async-closures"><code>async</code> closure</a>, or <a href="block-expr.html#async-blocks"><code>async</code> block</a>.</p>
+<p><code>await</code> 表达式仅在 <a href="../expressions/block-expr.html#async-context">异步上下文</a>（如 <a href="../items/functions.html#async-functions"><code>async fn</code></a>、<a href="closure-expr.html#async-closures"><code>async</code> 闭包</a> 或 <a href="block-expr.html#async-blocks"><code>async</code> 块</a>）中合法。</p>
 <div class="rule" id="r-expr.await.effects"><a class="rule-link" href="#r-expr.await.effects" title="expr.await.effects"><span>[expr<wbr>.await<wbr>.effects]</span></a>
 </div>
 
-<p>More specifically, an await expression has the following effect.</p>
+<p>更具体地说，一个 <code>await</code> 表达式具有以下效果。</p>
 <ol>
-<li>Create a future by calling <a href="../../core/future/into_future/trait.IntoFuture.html#tymethod.into_future"><code>IntoFuture::into_future</code></a> on the future operand.</li>
-<li>Evaluate the future to a <a href="../../core/future/future/trait.Future.html">future</a> <code>tmp</code>;</li>
-<li>Pin <code>tmp</code> using <a href="../../core/pin/struct.Pin.html#method.new_unchecked"><code>Pin::new_unchecked</code></a>;</li>
-<li>This pinned future is then polled by calling the <a href="../../core/future/future/trait.Future.html#tymethod.poll"><code>Future::poll</code></a> method and passing it the current <a href="#task-context">task context</a>;</li>
-<li>If the call to <code>poll</code> returns <a href="../../core/task/poll/enum.Poll.html#variant.Pending"><code>Poll::Pending</code></a>, then the future returns <code>Poll::Pending</code>, suspending its state so that, when the surrounding async context is re-polled, execution returns to step 3;</li>
-<li>Otherwise the call to <code>poll</code> must have returned <a href="../../core/task/poll/enum.Poll.html#variant.Ready"><code>Poll::Ready</code></a>, in which case the value contained in the <a href="../../core/task/poll/enum.Poll.html#variant.Ready"><code>Poll::Ready</code></a> variant is used as the result of the <code>await</code> expression itself.</li>
+<li>通过在 future 操作数上调用 <a href="../../core/future/into_future/trait.IntoFuture.html#tymethod.into_future"><code>IntoFuture::into_future</code></a> 来创建一个 future。</li>
+<li>将该 future 求值为一个 <a href="../../core/future/future/trait.Future.html">future</a> <code>tmp</code>；</li>
+<li>使用 <a href="../../core/pin/struct.Pin.html#method.new_unchecked"><code>Pin::new_unchecked</code></a> 固定 <code>tmp</code>；</li>
+<li>然后通过调用 <a href="../../core/future/future/trait.Future.html#tymethod.poll"><code>Future::poll</code></a> 方法并向其传递当前 <a href="#task-context">任务上下文</a> 来轮询此固定的 future；</li>
+<li>如果对 <code>poll</code> 的调用返回 <a href="../../core/task/poll/enum.Poll.html#variant.Pending"><code>Poll::Pending</code></a>，则 future 返回 <code>Poll::Pending</code>，并挂起其状态，以便当周围的异步上下文被重新轮询时，执行返回到步骤 3；</li>
+<li>否则对 <code>poll</code> 的调用必须返回 <a href="../../core/task/poll/enum.Poll.html#variant.Ready"><code>Poll::Ready</code></a>，在这种情况下，<a href="../../core/task/poll/enum.Poll.html#variant.Ready"><code>Poll::Ready</code></a> 变体中包含的值将用作 <code>await</code> 表达式本身的结果。</li>
 </ol>
 <div class="rule" id="r-expr.await.edition2018"><a class="rule-link" href="#r-expr.await.edition2018" title="expr.await.edition2018"><span>[expr<wbr>.await<wbr>.edition2018]</span></a>
 </div>
@@ -266,21 +264,20 @@ future is ready to produce a value.</p>
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>Await expressions are only available beginning with Rust 2018.</p>
+<p><code>await</code> 表达式仅从 Rust 2018 版次开始提供。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-expr.await.task"><a class="rule-link" href="#r-expr.await.task" title="expr.await.task"><span>[expr<wbr>.await<wbr>.task]</span></a>
 </div>
 
-<h2 id="task-context"><a class="header" href="#task-context">Task context</a></h2>
-<p>The task context refers to the <a href="../../core/task/wake/struct.Context.html"><code>Context</code></a> which was supplied to the current <a href="../expressions/block-expr.html#async-context">async context</a> when the async context itself was polled.
-Because <code>await</code> expressions are only legal in an async context, there must be some task context available.</p>
+<h2 id="任务上下文"><a class="header" href="#任务上下文">任务上下文</a></h2>
+<p>任务上下文是指当异步上下文本身被轮询时提供给当前 <a href="../expressions/block-expr.html#async-context">异步上下文</a> 的 <a href="../../core/task/wake/struct.Context.html"><code>Context</code></a>。由于 <code>await</code> 表达式仅在异步上下文中合法，因此必须存在某种可用的任务上下文。</p>
 <div class="rule" id="r-expr.await.desugar"><a class="rule-link" href="#r-expr.await.desugar" title="expr.await.desugar"><span>[expr<wbr>.await<wbr>.desugar]</span></a>
 </div>
 
-<h2 id="approximate-desugaring"><a class="header" href="#approximate-desugaring">Approximate desugaring</a></h2>
-<p>Effectively, an await expression is roughly equivalent to the following non-normative desugaring:</p>
+<h2 id="近似脱糖"><a class="header" href="#近似脱糖">近似脱糖</a></h2>
+<p>实际上，<code>await</code> 表达式大致等效于以下非规范性的脱糖：</p>
 <!-- ignore: example expansion -->
 <pre><code class="language-rust ignore">match operand.into_future() {
     mut pinned =&gt; loop {
@@ -291,8 +288,7 @@ Because <code>await</code> expressions are only legal in an async context, there
         }
     }
 }</code></pre>
-<p>where the <code>yield</code> pseudo-code returns <code>Poll::Pending</code> and, when re-invoked, resumes execution from that point.
-The variable <code>current_context</code> refers to the context taken from the async environment.</p>
+<p>其中 <code>yield</code> 伪代码返回 <code>Poll::Pending</code>，并且在重新调用时从该点恢复执行。变量 <code>current_context</code> 是指从异步环境中获取的上下文。</p>
 
                     </main>
 

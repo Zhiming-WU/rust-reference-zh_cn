@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-be189161.js"></script>
+        <script src="toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,56 +181,56 @@
                         <div class="rule" id="r-panic"><a class="rule-link" href="#r-panic" title="panic"><span>[panic]</span></a>
 </div>
 
-<h1 id="panic"><a class="header" href="#panic">Panic</a></h1>
+<h1 id="恐慌"><a class="header" href="#恐慌">恐慌</a></h1>
 <div class="rule" id="r-panic.intro"><a class="rule-link" href="#r-panic.intro" title="panic.intro"><span>[panic<wbr>.intro]</span></a>
 </div>
 
-<p>Rust provides a mechanism to prevent a function from returning normally, and instead “panic,” which is a response to an error condition that is typically not expected to be recoverable within the context in which the error is encountered.</p>
+<p>Rust 提供了一种机制来防止函数正常返回，而是引发 “恐慌 (panic)”。这是对错误条件的响应，通常在遇到错误的上下文中被认为无法恢复。</p>
 <div class="rule" id="r-panic.lang-ops"><a class="rule-link" href="#r-panic.lang-ops" title="panic.lang-ops"><span>[panic<wbr>.lang-ops]</span></a>
 </div>
 
-<p>Some language constructs, such as out-of-bounds <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">array indexing</a>, panic automatically.</p>
+<p>一些语言结构，例如越界的 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a>，会自动引发恐慌。</p>
 <div class="rule" id="r-panic.control"><a class="rule-link" href="#r-panic.control" title="panic.control"><span>[panic<wbr>.control]</span></a>
 </div>
 
-<p>There are also language features that provide a level of control over panic behavior:</p>
+<p>还有一些语言特性提供了一定程度的恐慌行为控制：</p>
 <ul>
-<li>A <a href="#the-panic_handler-attribute"><em>panic handler</em></a> defines the behavior of a panic.</li>
-<li><a href="items/functions.html#unwinding">FFI ABIs</a> may alter how panics behave.</li>
+<li><a href="#the-panic_handler-attribute"><em>恐慌处理器 (panic handler)</em></a> 定义了恐慌的行为。</li>
+<li><a href="items/functions.html#unwinding">FFI ABI</a> 可能会改变恐慌的行为。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The standard library provides the capability to explicitly panic via the <a href="../std/macro.panic.html"><code>panic!</code> macro</a>.</p>
+<p>标准库提供了通过 <a href="../std/macro.panic.html">panic! 宏</a> 显式引发恐慌的能力。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-panic.panic_handler"><a class="rule-link" href="#r-panic.panic_handler" title="panic.panic_handler"><span>[panic<wbr>.panic_handler]</span></a>
 </div>
 
-<h2 id="the-panic_handler-attribute"><a class="header" href="#the-panic_handler-attribute">The <code>panic_handler</code> attribute</a></h2>
+<h2 id="panic_handler属性"><a class="header" href="#panic_handler属性">panic_handler属性</a></h2>
 <div class="rule" id="r-panic.panic_handler.intro"><a class="rule-link" href="#r-panic.panic_handler.intro" title="panic.panic_handler.intro"><span>[panic<wbr>.panic_handler<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>panic_handler</code> attribute</em> can be applied to a function to define the behavior of panics.</p>
+<p><em>panic_handler 属性</em> 可以应用于函数以定义恐慌的行为。</p>
 <div class="rule" id="r-panic.panic_handler.allowed-positions"><a class="rule-link" href="#r-panic.panic_handler.allowed-positions" title="panic.panic_handler.allowed-positions"><span>[panic<wbr>.panic_handler<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>panic_handler</code> attribute can only be applied to a function with signature <code>fn(&amp;PanicInfo) -&gt; !</code>.</p>
+<p>panic_handler 属性只能应用于具有签名 <code>fn(&amp;PanicInfo) -&gt; !</code> 的函数。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The <a href="../core/panic/panic_info/struct.PanicInfo.html"><code>PanicInfo</code></a> struct contains information about the location of the panic.</p>
+<p><a href="../core/panic/panic_info/struct.PanicInfo.html">PanicInfo 结构体</a> 包含了有关恐慌发生位置的信息。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-panic.panic_handler.unique"><a class="rule-link" href="#r-panic.panic_handler.unique" title="panic.panic_handler.unique"><span>[panic<wbr>.panic_handler<wbr>.unique]</span></a>
 </div>
 
-<p>There must be a single <code>panic_handler</code> function in the dependency graph.</p>
-<p>Below is shown a <code>panic_handler</code> function that logs the panic message and then halts the thread.</p>
+<p>在依赖图中必须有且仅有一个 panic_handler 函数。</p>
+<p>下面展示了一个记录恐慌消息然后停止线程的 panic_handler 函数。</p>
 <!-- ignore: test infrastructure can't handle no_std -->
 <pre><code class="language-rust ignore">#![no_std]
 
@@ -254,7 +254,7 @@ struct Sink {
 fn panic(info: &amp;PanicInfo) -&gt; ! {
     let mut sink = Sink::new();
 
-    // logs "panicked at '$reason', src/main.rs:27:4" to some `sink`
+    // 将 "panicked at '$reason', src/main.rs:27:4" 记录到某个 `sink`
     let _ = writeln!(sink, "{}", info);
 
     loop {}
@@ -262,43 +262,43 @@ fn panic(info: &amp;PanicInfo) -&gt; ! {
 <div class="rule" id="r-panic.panic_handler.std"><a class="rule-link" href="#r-panic.panic_handler.std" title="panic.panic_handler.std"><span>[panic<wbr>.panic_handler<wbr>.std]</span></a>
 </div>
 
-<h3 id="standard-behavior"><a class="header" href="#standard-behavior">Standard behavior</a></h3>
+<h3 id="标准行为"><a class="header" href="#标准行为">标准行为</a></h3>
 <div class="rule" id="r-panic.panic_handler.std.kinds"><a class="rule-link" href="#r-panic.panic_handler.std.kinds" title="panic.panic_handler.std.kinds"><span>[panic<wbr>.panic_handler<wbr>.std<wbr>.kinds]</span></a>
 </div>
 
-<p><code>std</code> provides two different panic handlers:</p>
+<p><code>std</code> 提供了两种不同的恐慌处理器：</p>
 <ul>
-<li><code>unwind</code> — unwinds the stack and is potentially recoverable.</li>
-<li><code>abort</code> –– aborts the process and is non-recoverable.</li>
+<li><code>unwind</code> — 展开栈，并且是潜在可恢复的。</li>
+<li><code>abort</code> –– 中止进程，且是不可恢复的。</li>
 </ul>
-<p>Not all targets may provide the <code>unwind</code> handler.</p>
+<p>并非所有 target 都提供 <code>unwind</code> 处理器。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The panic handler used when linking with <code>std</code> can be set with the <a href="../rustc/codegen-options/index.html#panic"><code>-C panic</code></a> CLI flag. The default for most targets is <code>unwind</code>.</p>
-<p>The standard library’s panic behavior can be modified at runtime with the <a href="../std/panicking/fn.set_hook.html"><code>std::panic::set_hook</code></a> function.</p>
+<p>链接 <code>std</code> 时使用的恐慌处理器可以通过 <a href="../rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 命令行标志设置。大多数 target 的默认值是 <code>unwind</code>。</p>
+<p>标准库的恐慌行为可以在运行时使用 <a href="../std/panicking/fn.set_hook.html"><code>std::panic::set_hook</code></a> 函数进行修改。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-panic.panic_handler.std.no_std"><a class="rule-link" href="#r-panic.panic_handler.std.no_std" title="panic.panic_handler.std.no_std"><span>[panic<wbr>.panic_handler<wbr>.std<wbr>.no_std]</span></a>
 </div>
 
-<p>Linking a <a href="names/preludes.html#the-no_std-attribute"><code>no_std</code></a> binary, dylib, cdylib, or staticlib will require specifying your own panic handler.</p>
+<p>链接 <a href="names/preludes.html#the-no_std-attribute"><code>no_std</code></a> 二进制文件、dylib、cdylib 或 staticlib 时，需要指定你自己的恐慌处理器。</p>
 <div class="rule" id="r-panic.strategy"><a class="rule-link" href="#r-panic.strategy" title="panic.strategy"><span>[panic<wbr>.strategy]</span></a>
 </div>
 
-<h2 id="panic-strategy"><a class="header" href="#panic-strategy">Panic strategy</a></h2>
+<h2 id="恐慌策略"><a class="header" href="#恐慌策略">恐慌策略</a></h2>
 <div class="rule" id="r-panic.strategy.intro"><a class="rule-link" href="#r-panic.strategy.intro" title="panic.strategy.intro"><span>[panic<wbr>.strategy<wbr>.intro]</span></a>
 </div>
 
-<p>The <em>panic strategy</em> defines the kind of panic behavior that a crate is built to support.</p>
+<p><em>恐慌策略 (panic strategy)</em> 定义了一个 crate 构建时支持的恐慌行为类型。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The panic strategy can be chosen in <code>rustc</code> with the <a href="../rustc/codegen-options/index.html#panic"><code>-C panic</code></a> CLI flag.</p>
-<p>When generating a binary, dylib, cdylib, or staticlib and linking with <code>std</code>, the <code>-C panic</code> CLI flag also influences which <a href="#the-panic_handler-attribute">panic handler</a> is used.</p>
+<p>恐慌策略可以在 <code>rustc</code> 中使用 <a href="../rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 命令行标志进行选择。</p>
+<p>当生成二进制文件、dylib、cdylib 或 staticlib 且链接 <code>std</code> 时， <code>-C panic</code> 命令行标志也会影响使用哪个 <a href="#the-panic_handler-attribute">恐慌处理器</a>。</p>
 </blockquote>
 </div>
 
@@ -306,7 +306,7 @@ fn panic(info: &amp;PanicInfo) -&gt; ! {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>When compiling code with the <code>abort</code> panic strategy, the optimizer may assume that unwinding across Rust frames is impossible, which can result in both code-size and runtime speed improvements.</p>
+<p>当使用 <code>abort</code> 恐慌策略编译代码时，优化器可能会假设跨 Rust 栈帧的展开是不可能的，这可以提高代码大小和运行时速度。</p>
 </blockquote>
 </div>
 
@@ -314,27 +314,27 @@ fn panic(info: &amp;PanicInfo) -&gt; ! {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>See <a href="linkage.html#r-link.unwinding">link.unwinding</a> for restrictions on linking crates with different panic strategies. An implication is that crates built with the <code>unwind</code> strategy can use the <code>abort</code> panic handler, but the <code>abort</code> strategy cannot use the <code>unwind</code> panic handler.</p>
+<p>有关链接具有不同恐慌策略的 crate 的限制，请参见 <a href="linkage.html#r-link.unwinding">link.unwinding</a>。其中一个暗示是，使用 <code>unwind</code> 策略构建的 crate 可以使用 <code>abort</code> 恐慌处理器，但 <code>abort</code> 策略不能使用 <code>unwind</code> 恐慌处理器。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-panic.unwind"><a class="rule-link" href="#r-panic.unwind" title="panic.unwind"><span>[panic<wbr>.unwind]</span></a>
 </div>
 
-<h2 id="unwinding"><a class="header" href="#unwinding">Unwinding</a></h2>
+<h2 id="展开"><a class="header" href="#展开">展开</a></h2>
 <div class="rule" id="r-panic.unwind.intro"><a class="rule-link" href="#r-panic.unwind.intro" title="panic.unwind.intro"><span>[panic<wbr>.unwind<wbr>.intro]</span></a>
 </div>
 
-<p>Panicking may either be recoverable or non-recoverable, though it can be configured (by choosing a non-unwinding panic handler) to always be non-recoverable. (The converse is not true: the <code>unwind</code> handler does not guarantee that all panics are recoverable, only that panicking via the <code>panic!</code> macro and similar standard library mechanisms is recoverable.)</p>
+<p>引发恐慌可能是可恢复的或不可恢复的，尽管可以配置（通过选择不展开的恐慌处理器）为始终不可恢复。（反之则不然：<code>unwind</code> 处理器不保证所有恐慌都是可恢复的，仅保证通过 <code>panic!</code> 宏及类似的标准库机制引发的恐慌是可恢复的。）</p>
 <div class="rule" id="r-panic.unwind.destruction"><a class="rule-link" href="#r-panic.unwind.destruction" title="panic.unwind.destruction"><span>[panic<wbr>.unwind<wbr>.destruction]</span></a>
 </div>
 
-<p>When a panic occurs, the <code>unwind</code> handler “unwinds” Rust frames, just as C++’s <code>throw</code> unwinds C++ frames, until the panic reaches the point of recovery (for instance at a thread boundary). This means that as the panic traverses Rust frames, live objects in those frames that <a href="destructors.html">implement <code>Drop</code></a> will have their <code>drop</code> methods called. Thus, when normal execution resumes, no-longer-accessible objects will have been “cleaned up” just as if they had gone out of scope normally.</p>
+<p>当发生恐慌时，<code>unwind</code> 处理器会 “展开 (unwind)” Rust 栈帧，就像 C++ 的 <code>throw</code> 展开 C++ 栈帧一样，直到恐慌到达恢复点（例如在线程边界处）。这意味着当恐慌遍历 Rust 栈帧时，这些栈帧中 <a href="destructors.html">实现 Drop</a> 的活跃对象将调用其 <code>drop</code> 方法。因此，当恢复正常执行时，不再可访问的对象将被 “清理” 掉，就像它们正常超出作用域一样。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>As long as this guarantee of resource-cleanup is preserved, “unwinding” may be implemented without actually using the mechanism used by C++ for the target platform.</p>
+<p>只要保留了这种资源清理的保证， “展开” 的实现可以不实际使用 target 平台 C++ 所使用的机制。</p>
 </blockquote>
 </div>
 
@@ -342,46 +342,46 @@ fn panic(info: &amp;PanicInfo) -&gt; ! {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The standard library provides two mechanisms for recovering from a panic, <a href="../std/panic/fn.catch_unwind.html"><code>std::panic::catch_unwind</code></a> (which enables recovery within the panicking thread) and <a href="../std/thread/functions/fn.spawn.html"><code>std::thread::spawn</code></a> (which automatically sets up panic recovery for the spawned thread so that other threads may continue running).</p>
+<p>标准库提供了两种从恐慌中恢复的机制：<a href="../std/panic/fn.catch_unwind.html"><code>std::panic::catch_unwind</code></a>（允许在发生恐慌的线程内恢复）和 <a href="../std/thread/functions/fn.spawn.html"><code>std::thread::spawn</code></a>（自动为生成的线程设置恐慌恢复，以便其他线程可以继续运行）。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-panic.unwind.ffi"><a class="rule-link" href="#r-panic.unwind.ffi" title="panic.unwind.ffi"><span>[panic<wbr>.unwind<wbr>.ffi]</span></a>
 </div>
 
-<h3 id="unwinding-across-ffi-boundaries"><a class="header" href="#unwinding-across-ffi-boundaries">Unwinding across FFI boundaries</a></h3>
+<h3 id="跨ffi边界展开"><a class="header" href="#跨ffi边界展开">跨FFI边界展开</a></h3>
 <div class="rule" id="r-panic.unwind.ffi.intro"><a class="rule-link" href="#r-panic.unwind.ffi.intro" title="panic.unwind.ffi.intro"><span>[panic<wbr>.unwind<wbr>.ffi<wbr>.intro]</span></a>
 </div>
 
-<p>It is possible to unwind across FFI boundaries using an <a href="items/functions.html#unwinding">appropriate ABI declaration</a>. While useful in certain cases, this creates unique opportunities for undefined behavior, especially when multiple language runtimes are involved.</p>
+<p>可以使用 <a href="items/functions.html#unwinding">适当的 ABI 声明</a> 跨 FFI 边界进行展开。虽然在某些情况下很有用，但这为未定义行为创造了独特的机会，特别是在涉及多个语言运行时时。</p>
 <div class="rule" id="r-panic.unwind.ffi.undefined"><a class="rule-link" href="#r-panic.unwind.ffi.undefined" title="panic.unwind.ffi.undefined"><span>[panic<wbr>.unwind<wbr>.ffi<wbr>.undefined]</span></a>
 </div>
 
-<p>Unwinding with the wrong ABI is undefined behavior:</p>
+<p>使用错误的 ABI 进行展开是未定义行为：</p>
 <ul>
-<li>Causing an unwind into Rust code from a foreign function that was called via a function declaration or pointer declared with a non-unwinding ABI, such as <code>"C"</code>, <code>"system"</code>, etc. (For example, this case occurs when such a function written in C++ throws an exception that is uncaught and propagates to Rust.)</li>
-<li>Calling a Rust <code>extern</code> function that unwinds (with <code>extern "C-unwind"</code> or another ABI that permits unwinding) from code that does not support unwinding, such as code compiled with GCC or Clang using <code>-fno-exceptions</code></li>
+<li>从通过不带展开的 ABI（如 <code>"C"</code>、<code>"system"</code> 等）声明的函数声明或指针调用的外部函数，引发指向 Rust 代码的展开。（例如，这种情况发生在用 C++ 编写的此类函数抛出未捕获且传播到 Rust 的异常时。）</li>
+<li>在不支持展开的代码（例如使用 GCC 或 Clang 并配合 <code>-fno-exceptions</code> 编译的代码）中调用会展开（带有 <code>extern "C-unwind"</code> 或其他允许展开的 ABI）的 Rust <code>extern</code> 函数。</li>
 </ul>
 <div class="rule" id="r-panic.unwind.ffi.catch-foreign"><a class="rule-link" href="#r-panic.unwind.ffi.catch-foreign" title="panic.unwind.ffi.catch-foreign"><span>[panic<wbr>.unwind<wbr>.ffi<wbr>.catch-foreign]</span></a>
 </div>
 
-<p>Catching a foreign unwinding operation (such as a C++ exception) using <a href="../std/panic/fn.catch_unwind.html"><code>std::panic::catch_unwind</code></a>, <a href="../std/thread/join_handle/struct.JoinHandle.html#method.join"><code>std::thread::JoinHandle::join</code></a>, or by letting it propagate beyond the Rust <code>main()</code> function or thread root will have one of two behaviors, and it is unspecified which will occur:</p>
+<p>使用 <a href="../std/panic/fn.catch_unwind.html"><code>std::panic::catch_unwind</code></a>、<a href="../std/thread/join_handle/struct.JoinHandle.html#method.join"><code>std::thread::JoinHandle::join</code></a> 或让外部展开操作传播到 Rust <code>main()</code> 函数或线程根部之外来捕获它（例如 C++ 异常），将产生以下两种行为之一，且未指定具体会发生哪种：</p>
 <ul>
-<li>The process aborts.</li>
-<li>The function returns a <a href="../core/result/enum.Result.html#variant.Err"><code>Result::Err</code></a> containing an opaque type.</li>
+<li>进程中止。</li>
+<li>函数返回一个包含不透明类型的 <a href="../core/result/enum.Result.html#variant.Err"><code>Result::Err</code></a>。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Rust code compiled or linked with a different instance of the Rust standard library counts as a “foreign exception” for the purpose of this guarantee. Thus, a library that uses <code>panic!</code> and is linked against one version of the Rust standard library, invoked from an application that uses a different version of the standard library, may cause the entire application to abort even if the library is only used within a child thread.</p>
+<p>就此项保证而言，使用不同的 Rust 标准库实例编译或链接的 Rust 代码算作 “外部异常” 。因此，如果一个使用了 <code>panic!</code> 且链接到一个版本 Rust 标准库的库，被一个使用不同版本标准库的应用程序调用，即使该库仅在子线程中使用，也可能导致整个应用程序中止。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-panic.unwind.ffi.dispose-panic"><a class="rule-link" href="#r-panic.unwind.ffi.dispose-panic" title="panic.unwind.ffi.dispose-panic"><span>[panic<wbr>.unwind<wbr>.ffi<wbr>.dispose-panic]</span></a>
 </div>
 
-<p>There are currently no guarantees about the behavior that occurs when a foreign runtime attempts to dispose of, or rethrow, a Rust <code>panic</code> payload. In other words, an unwind originated from a Rust runtime must either lead to termination of the process or be caught by the same runtime.</p>
+<p>目前对于外部运行时尝试处理或重新抛出 Rust <code>panic</code> 负载时的行为没有任何保证。换句话说，起源于 Rust 运行时的展开必须要么导致进程终止，要么被同一个运行时捕获。</p>
 
                     </main>
 

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-be189161.js"></script>
+        <script src="../toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-expr.closure"><a class="rule-link" href="#r-expr.closure" title="expr.closure"><span>[expr<wbr>.closure]</span></a>
 </div>
 
-<h1 id="closure-expressions"><a class="header" href="#closure-expressions">Closure expressions</a></h1>
+<h1 id="闭包表达式"><a class="header" href="#闭包表达式">闭包表达式</a></h1>
 <div class="rule" id="r-expr.closure.syntax"><a class="rule-link" href="#r-expr.closure.syntax" title="expr.closure.syntax"><span>[expr<wbr>.closure<wbr>.syntax]</span></a>
 </div>
 
@@ -435,61 +435,61 @@ Type</text>
 <div class="rule" id="r-expr.closure.intro"><a class="rule-link" href="#r-expr.closure.intro" title="expr.closure.intro"><span>[expr<wbr>.closure<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>closure expression</em>, also known as a lambda expression or a lambda, defines a <a href="../types/closure.html">closure type</a> and evaluates to a value of that type.
-The syntax for a closure expression is an optional <code>async</code> keyword, an optional <code>move</code> keyword, then a pipe-symbol-delimited (<code>|</code>) comma-separated list of <a href="../patterns.html">patterns</a>, called the <em>closure parameters</em> each optionally followed by a <code>:</code> and a type, then an optional <code>-&gt;</code> and type, called the <em>return type</em>, and then an expression, called the <em>closure body operand</em>.</p>
+<p>一个 <em>闭包表达式</em> ，也称为 lambda 表达式或 lambda，定义了一个 <a href="../types/closure.html">闭包类型</a> 并求值为该类型的一个值。
+闭包表达式的 语法格式 是一个可选的 <code>async</code> 关键字，一个可选的 <code>move</code> 关键字，然后是由管道符号（<code>|</code>）分隔的逗号分隔的 <a href="../patterns.html">模式</a> 列表（称为 <em>闭包参数</em> ），每个参数后面可以可选地跟着 <code>:</code> 和一个类型，然后是一个可选的 <code>-&gt;</code> 和一个类型（称为 <em>返回类型</em> ），最后是一个表达式（称为 <em>闭包体操作数</em> ）。</p>
 <div class="rule" id="r-expr.closure.param-type"><a class="rule-link" href="#r-expr.closure.param-type" title="expr.closure.param-type"><span>[expr<wbr>.closure<wbr>.param-type]</span></a>
 </div>
 
-<p>The optional type after each pattern is a type annotation for the pattern.</p>
+<p>每个模式后的可选类型是该模式的类型标注。</p>
 <div class="rule" id="r-expr.closure.explicit-type-body"><a class="rule-link" href="#r-expr.closure.explicit-type-body" title="expr.closure.explicit-type-body"><span>[expr<wbr>.closure<wbr>.explicit-type-body]</span></a>
 </div>
 
-<p>If there is a return type, the closure body must be a <a href="block-expr.html">block</a>.</p>
+<p>如果有返回类型，闭包体必须是一个 <a href="block-expr.html">块</a>。</p>
 <div class="rule" id="r-expr.closure.parameter-restriction"><a class="rule-link" href="#r-expr.closure.parameter-restriction" title="expr.closure.parameter-restriction"><span>[expr<wbr>.closure<wbr>.parameter-restriction]</span></a>
 </div>
 
-<p>A closure expression denotes a function that maps a list of parameters onto the expression that follows the parameters.
-Just like a <a href="../statements.html#let-statements"><code>let</code> binding</a>, the closure parameters are irrefutable <a href="../patterns.html">patterns</a>, whose type annotation is optional and will be inferred from context if not given.</p>
+<p>闭包表达式表示一个函数，它将参数列表映射到参数之后的表达式上。
+就像 <a href="../statements.html#let-statements"><code>let</code> 绑定</a> 一样，闭包参数是不可反驳的 <a href="../patterns.html">模式</a>，其类型标注是可选的，如果未给出，将从上下文中推导。</p>
 <div class="rule" id="r-expr.closure.unique-type"><a class="rule-link" href="#r-expr.closure.unique-type" title="expr.closure.unique-type"><span>[expr<wbr>.closure<wbr>.unique-type]</span></a>
 </div>
 
-<p>Each closure expression has a unique, anonymous type.</p>
+<p>每个闭包表达式都有一个唯一的、匿名的类型。</p>
 <div class="rule" id="r-expr.closure.captures"><a class="rule-link" href="#r-expr.closure.captures" title="expr.closure.captures"><span>[expr<wbr>.closure<wbr>.captures]</span></a>
 </div>
 
-<p>Significantly, closure expressions <em>capture their environment</em>, which regular <a href="../items/functions.html">function definitions</a> do not.</p>
+<p>重要的是，闭包表达式会 <em>捕获其环境</em> ，而普通的 <a href="../items/functions.html">函数定义</a> 则不会。</p>
 <div class="rule" id="r-expr.closure.capture-inference"><a class="rule-link" href="#r-expr.closure.capture-inference" title="expr.closure.capture-inference"><span>[expr<wbr>.closure<wbr>.capture-inference]</span></a>
 </div>
 
-<p>Without the <code>move</code> keyword, the closure expression <a href="../types/closure.html#capture-modes">infers how it captures each variable from its environment</a>, preferring to capture by shared reference, effectively borrowing all outer variables mentioned inside the closure’s body.</p>
+<p>如果没有 <code>move</code> 关键字，闭包表达式会 <a href="../types/closure.html#capture-modes">推导它如何从其环境中捕获每个变量</a>，优先通过共享引用进行捕获，从而实际上借用了闭包体内提到的所有外部变量。</p>
 <div class="rule" id="r-expr.closure.capture-mut-ref"><a class="rule-link" href="#r-expr.closure.capture-mut-ref" title="expr.closure.capture-mut-ref"><span>[expr<wbr>.closure<wbr>.capture-mut-ref]</span></a>
 </div>
 
-<p>If needed the compiler will infer that instead mutable references should be taken, or that the values should be moved or copied (depending on their type) from the environment.</p>
+<p>如果需要，编译器将推导应该采用可变引用，或者应该从环境中移动或复制值（取决于它们的类型）。</p>
 <div class="rule" id="r-expr.closure.capture-move"><a class="rule-link" href="#r-expr.closure.capture-move" title="expr.closure.capture-move"><span>[expr<wbr>.closure<wbr>.capture-move]</span></a>
 </div>
 
-<p>A closure can be forced to capture its environment by copying or moving values by prefixing it with the <code>move</code> keyword.
-This is often used to ensure that the closure’s lifetime is <code>'static</code>.</p>
+<p>通过在闭包前加上 <code>move</code> 关键字，可以强制闭包通过复制或移动值来捕获其环境。
+这通常用于确保闭包的生命周期是 <code>'static</code>。</p>
 <div class="rule" id="r-expr.closure.trait-impl"><a class="rule-link" href="#r-expr.closure.trait-impl" title="expr.closure.trait-impl"><span>[expr<wbr>.closure<wbr>.trait-impl]</span></a>
 </div>
 
-<h2 id="closure-trait-implementations"><a class="header" href="#closure-trait-implementations">Closure trait implementations</a></h2>
-<p>Which traits the closure type implement depends on how variables are captured, the types of the captured variables, and the presence of <code>async</code>.
-See the <a href="../types/closure.html#call-traits-and-coercions">call traits and coercions</a> chapter for how and when a closure implements <code>Fn</code>, <code>FnMut</code>, and <code>FnOnce</code>.
-The closure type implements <a href="../special-types-and-traits.html#send"><code>Send</code></a> and <a href="../special-types-and-traits.html#sync"><code>Sync</code></a> if the type of every captured variable also implements the trait.</p>
+<h2 id="闭包特型实现"><a class="header" href="#闭包特型实现">闭包特型实现</a></h2>
+<p>闭包类型实现哪些特型取决于变量如何被捕获、被捕获变量的类型以及 <code>async</code> 的存在。
+有关闭包如何以及何时实现 <code>Fn</code>、<code>FnMut</code> 和 <code>FnOnce</code>，请参见 <a href="../types/closure.html#call-traits-and-coercions">调用特型与强转</a> 章节。
+如果每个被捕获变量的类型也都实现了该特型，则闭包类型就会实现 <a href="../special-types-and-traits.html#send"><code>Send</code></a> 和 <a href="../special-types-and-traits.html#sync"><code>Sync</code></a>。</p>
 <div class="rule" id="r-expr.closure.async"><a class="rule-link" href="#r-expr.closure.async" title="expr.closure.async"><span>[expr<wbr>.closure<wbr>.async]</span></a>
 </div>
 
-<h2 id="async-closures"><a class="header" href="#async-closures">Async closures</a></h2>
+<h2 id="async闭包"><a class="header" href="#async闭包">Async闭包</a></h2>
 <div class="rule" id="r-expr.closure.async.intro"><a class="rule-link" href="#r-expr.closure.async.intro" title="expr.closure.async.intro"><span>[expr<wbr>.closure<wbr>.async<wbr>.intro]</span></a>
 </div>
 
-<p>Closures marked with the <code>async</code> keyword indicate that they are asynchronous in an analogous way to an <a href="../items/functions.html#r-items.fn.async">async function</a>.</p>
+<p>带有 <code>async</code> 关键字标记的闭包表示它们是异步的，其方式类似于 <a href="../items/functions.html#r-items.fn.async">异步函数</a>。</p>
 <div class="rule" id="r-expr.closure.async.future"><a class="rule-link" href="#r-expr.closure.async.future" title="expr.closure.async.future"><span>[expr<wbr>.closure<wbr>.async<wbr>.future]</span></a>
 </div>
 
-<p>Calling the async closure does not perform any work, but instead evaluates to a value that implements <a href="../../core/future/future/trait.Future.html"><code>Future</code></a> that corresponds to the computation of the body of the closure.</p>
+<p>调用 Async 闭包不会执行任何工作，而是求值为一个实现了 <a href="../../core/future/future/trait.Future.html"><code>Future</code></a> 的值，该值对应于闭包体的计算。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>async fn takes_async_callback(f: impl AsyncFn(u64)) {
@@ -511,12 +511,12 @@ async fn example() {
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>Async closures are only available beginning with Rust 2018.</p>
+<p>Async 闭包仅从 Rust 2018 版次开始可用。</p>
 </blockquote>
 </div>
 
-<h2 id="example"><a class="header" href="#example">Example</a></h2>
-<p>In this example, we define a function <code>ten_times</code> that takes a higher-order function argument, and we then call it with a closure expression as an argument, followed by a closure expression that moves values from its environment.</p>
+<h2 id="示例"><a class="header" href="#示例">示例</a></h2>
+<p>在此示例中，我们定义了一个函数 <code>ten_times</code>，它接受一个高阶函数参数，然后我们使用闭包表达式作为参数来调用它，随后是一个从其环境移动值的闭包表达式。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn ten_times&lt;F&gt;(f: F) where F: Fn(i32) {
@@ -526,21 +526,21 @@ async fn example() {
 }
 
 ten_times(|j| println!("hello, {}", j));
-// With type annotations
+// 带有类型标注
 ten_times(|j: i32| -&gt; () { println!("hello, {}", j) });
 
 let word = "konnichiwa".to_owned();
 ten_times(move |j| println!("{}, {}", word, j));
 <span class="boring">}</span></code></pre>
-<h2 id="attributes-on-closure-parameters"><a class="header" href="#attributes-on-closure-parameters">Attributes on closure parameters</a></h2>
+<h2 id="闭包参数上的属性"><a class="header" href="#闭包参数上的属性">闭包参数上的属性</a></h2>
 <div class="rule" id="r-expr.closure.param-attributes"><a class="rule-link" href="#r-expr.closure.param-attributes" title="expr.closure.param-attributes"><span>[expr<wbr>.closure<wbr>.param-attributes]</span></a>
 </div>
 
-<p>Attributes on closure parameters follow the same rules and restrictions as <a href="../items/functions.html#attributes-on-function-parameters">regular function parameters</a>.</p>
+<p>闭包参数上的属性遵循与 <a href="../items/functions.html#attributes-on-function-parameters">普通函数参数</a> 相同的规则和限制。</p>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-cl-async-edition">
-<p>The <code>async</code> qualifier is not allowed in the 2015 edition. <a href="#fr-cl-async-edition-1">↩</a></p>
+<p><code>async</code> 限定符在 2015 版次中不允许使用。 <a href="#fr-cl-async-edition-1">↩</a></p>
 </li>
 </ol>
 

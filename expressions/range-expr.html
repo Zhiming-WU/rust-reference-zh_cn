@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-be189161.js"></script>
+        <script src="../toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-expr.range"><a class="rule-link" href="#r-expr.range" title="expr.range"><span>[expr<wbr>.range]</span></a>
 </div>
 
-<h1 id="range-expressions"><a class="header" href="#range-expressions">Range expressions</a></h1>
+<h1 id="范围表达式"><a class="header" href="#范围表达式">范围表达式</a></h1>
 <div class="rule" id="r-expr.range.syntax"><a class="rule-link" href="#r-expr.range.syntax" title="expr.range.syntax"><span>[expr<wbr>.range<wbr>.syntax]</span></a>
 </div>
 
@@ -484,23 +484,23 @@ Expression</text>
 <div class="rule" id="r-expr.range.behavior"><a class="rule-link" href="#r-expr.range.behavior" title="expr.range.behavior"><span>[expr<wbr>.range<wbr>.behavior]</span></a>
 </div>
 
-<p>The <code>..</code> and <code>..=</code> operators will construct an object of one of the <code>std::ops::Range</code> (or <code>core::ops::Range</code>) variants, according to the following table:</p>
+<p><code>..</code> 和 <code>..=</code> 运算符将根据下表构造 <code>std::ops::Range</code> (或 <code>core::ops::Range</code>) 变体之一的对象：</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Production</th><th>Syntax</th><th>Type</th><th>Range</th></tr>
+<tr><th>产生式</th><th>语法格式</th><th>类型</th><th>范围</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="range-expr.html#grammar-RangeExpr">RangeExpr</a></td><td>start<code>..</code>end</td><td><a href="../../core/ops/range/struct.Range.html">std::ops::Range</a></td><td>start ≤ x &lt; end</td></tr>
-<tr><td><a href="range-expr.html#grammar-RangeFromExpr">RangeFromExpr</a></td><td>start<code>..</code></td><td><a href="../../core/ops/range/struct.RangeFrom.html">std::ops::RangeFrom</a></td><td>start ≤ x</td></tr>
-<tr><td><a href="range-expr.html#grammar-RangeToExpr">RangeToExpr</a></td><td><code>..</code>end</td><td><a href="../../core/ops/range/struct.RangeTo.html">std::ops::RangeTo</a></td><td>x &lt; end</td></tr>
-<tr><td><a href="range-expr.html#grammar-RangeFullExpr">RangeFullExpr</a></td><td><code>..</code></td><td><a href="../../core/ops/range/struct.RangeFull.html">std::ops::RangeFull</a></td><td>-</td></tr>
-<tr><td><a href="range-expr.html#grammar-RangeInclusiveExpr">RangeInclusiveExpr</a></td><td>start<code>..=</code>end</td><td><a href="../../core/ops/range/struct.RangeInclusive.html">std::ops::RangeInclusive</a></td><td>start ≤ x ≤ end</td></tr>
-<tr><td><a href="range-expr.html#grammar-RangeToInclusiveExpr">RangeToInclusiveExpr</a></td><td><code>..=</code>end</td><td><a href="../../core/ops/range/struct.RangeToInclusive.html">std::ops::RangeToInclusive</a></td><td>x ≤ end</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeExpr">范围表达式</a></td><td>start<code>..</code>end</td><td><a href="../../core/ops/range/struct.Range.html">std::ops::Range</a></td><td>start ≤ x &lt; end</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeFromExpr">左闭范围表达式</a></td><td>start<code>..</code></td><td><a href="../../core/ops/range/struct.RangeFrom.html">std::ops::RangeFrom</a></td><td>start ≤ x</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeToExpr">右开范围表达式</a></td><td><code>..</code>end</td><td><a href="../../core/ops/range/struct.RangeTo.html">std::ops::RangeTo</a></td><td>x &lt; end</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeFullExpr">全范围表达式</a></td><td><code>..</code></td><td><a href="../../core/ops/range/struct.RangeFull.html">std::ops::RangeFull</a></td><td>-</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeInclusiveExpr">闭范围表达式</a></td><td>start<code>..=</code>end</td><td><a href="../../core/ops/range/struct.RangeInclusive.html">std::ops::RangeInclusive</a></td><td>start ≤ x ≤ end</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeToInclusiveExpr">右闭范围表达式</a></td><td><code>..=</code>end</td><td><a href="../../core/ops/range/struct.RangeToInclusive.html">std::ops::RangeToInclusive</a></td><td>x ≤ end</td></tr>
 </tbody>
 </table>
 </div>
-<p>Examples:</p>
+<p>示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>1..2;   // std::ops::Range
@@ -513,7 +513,7 @@ Expression</text>
 <div class="rule" id="r-expr.range.equivalence"><a class="rule-link" href="#r-expr.range.equivalence" title="expr.range.equivalence"><span>[expr<wbr>.range<wbr>.equivalence]</span></a>
 </div>
 
-<p>The following expressions are equivalent.</p>
+<p>以下表达式是等价的。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = std::ops::Range {start: 0, end: 10};
@@ -524,7 +524,7 @@ assert_eq!(x, y);
 <div class="rule" id="r-expr.range.for"><a class="rule-link" href="#r-expr.range.for" title="expr.range.for"><span>[expr<wbr>.range<wbr>.for]</span></a>
 </div>
 
-<p>Ranges can be used in <code>for</code> loops:</p>
+<p>范围可以用于 <code>for</code> 循环：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>for i in 1..11 {

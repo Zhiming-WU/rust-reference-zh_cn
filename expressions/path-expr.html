@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-be189161.js"></script>
+        <script src="../toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-expr.path"><a class="rule-link" href="#r-expr.path" title="expr.path"><span>[expr<wbr>.path]</span></a>
 </div>
 
-<h1 id="path-expressions"><a class="header" href="#path-expressions">Path expressions</a></h1>
+<h1 id="路径表达式"><a class="header" href="#路径表达式">路径表达式</a></h1>
 <div class="rule" id="r-expr.path.syntax"><a class="rule-link" href="#r-expr.path.syntax" title="expr.path.syntax"><span>[expr<wbr>.path<wbr>.syntax]</span></a>
 </div>
 
@@ -236,15 +236,15 @@ QualifiedPathInExpression</text>
 <div class="rule" id="r-expr.path.intro"><a class="rule-link" href="#r-expr.path.intro" title="expr.path.intro"><span>[expr<wbr>.path<wbr>.intro]</span></a>
 </div>
 
-<p>A <a href="../paths.html">path</a> used as an expression context denotes either a local variable or an item.</p>
+<p>一个在表达式语境中使用的 <a href="../paths.html">路径</a> 表示一个局部变量或一个 项 。</p>
 <div class="rule" id="r-expr.path.place"><a class="rule-link" href="#r-expr.path.place" title="expr.path.place"><span>[expr<wbr>.path<wbr>.place]</span></a>
 </div>
 
-<p>Path expressions that resolve to local or static variables are <a href="../expressions.html#place-expressions-and-value-expressions">place expressions</a>; other paths are <a href="../expressions.html#place-expressions-and-value-expressions">value expressions</a>.</p>
+<p>解析为局部变量或静态变量的路径表达式是 <a href="../expressions.html#place-expressions-and-value-expressions">位置表达式</a> ；其他路径是 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式</a> 。</p>
 <div class="rule" id="r-expr.path.safety"><a class="rule-link" href="#r-expr.path.safety" title="expr.path.safety"><span>[expr<wbr>.path<wbr>.safety]</span></a>
 </div>
 
-<p>Using a <a href="../items/static-items.html#mutable-statics"><code>static mut</code></a> variable requires an <a href="block-expr.html#unsafe-blocks"><code>unsafe</code> block</a>.</p>
+<p>使用 <a href="../items/static-items.html#mutable-statics"><code>static mut</code></a> 变量需要一个 <a href="block-expr.html#unsafe-blocks"><code>unsafe</code> 块</a> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">mod globals {
@@ -262,7 +262,7 @@ let slice_reverse = &lt;[i32]&gt;::reverse;
 <div class="rule" id="r-expr.path.const"><a class="rule-link" href="#r-expr.path.const" title="expr.path.const"><span>[expr<wbr>.path<wbr>.const]</span></a>
 </div>
 
-<p>Evaluation of associated constants is handled the same way as <a href="block-expr.html#const-blocks"><code>const</code> blocks</a>.</p>
+<p>关联常量的求值方式与 <a href="block-expr.html#const-blocks"><code>const</code> 块</a> 相同。</p>
 
                     </main>
 

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-be189161.js"></script>
+        <script src="../toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,102 +181,93 @@
                         <div class="rule" id="r-names.namespaces"><a class="rule-link" href="#r-names.namespaces" title="names.namespaces"><span>[names<wbr>.namespaces]</span></a>
 </div>
 
-<h1 id="namespaces"><a class="header" href="#namespaces">Namespaces</a></h1>
+<h1 id="命名空间"><a class="header" href="#命名空间">命名空间</a></h1>
 <div class="rule" id="r-names.namespaces.intro"><a class="rule-link" href="#r-names.namespaces.intro" title="names.namespaces.intro"><span>[names<wbr>.namespaces<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>namespace</em> is a logical grouping of declared <a href="../names.html">names</a>. Names are segregated
-into separate namespaces based on the kind of entity the name refers to.
-Namespaces allow the occurrence of a name in one namespace to not conflict
-with the same name in another namespace.</p>
-<p>There are several different namespaces that each contain different kinds of
-entities. The usage of a name will look for the declaration of that name in
-different namespaces, based on the context, as described in the <a href="name-resolution.html">name
-resolution</a> chapter.</p>
+<p>一个 <em>命名空间</em> 是已声明 <a href="../names.html">名称</a> 的逻辑分组。名称根据其引用的实体种类被隔离到不同的命名空间中。命名空间允许一个命名空间中出现的名称与另一个命名空间中的相同名称不发生冲突。</p>
+<p>存在几个不同的命名空间，每个命名空间包含不同种类的实体。名称的使用将根据上下文在不同的命名空间中寻找该名称的声明，如 <a href="name-resolution.html">名称解析</a> 章节所述。</p>
 <div class="rule" id="r-names.namespaces.kinds"><a class="rule-link" href="#r-names.namespaces.kinds" title="names.namespaces.kinds"><span>[names<wbr>.namespaces<wbr>.kinds]</span></a>
 </div>
 
-<p>The following is a list of namespaces, with their corresponding entities:</p>
+<p>以下是命名空间列表及其对应的实体：</p>
 <ul>
-<li>Type Namespace
+<li>类型命名空间
 <ul>
-<li><a href="../items/modules.html">Module declarations</a></li>
-<li><a href="../items/extern-crates.html">External crate declarations</a></li>
-<li><a href="preludes.html#extern-prelude">External crate prelude</a> items</li>
-<li><a href="../items/structs.html">Struct</a>, <a href="../items/unions.html">union</a>, <a href="../items/enumerations.html">enum</a>, enum variant declarations</li>
-<li><a href="../items/traits.html">Trait item declarations</a></li>
-<li><a href="../items/type-aliases.html">Type aliases</a></li>
-<li><a href="../items/associated-items.html#associated-types">Associated type declarations</a></li>
-<li>Built-in types: <a href="../types/boolean.html">boolean</a>, <a href="../types/numeric.html">numeric</a>, and <a href="../types/textual.html">textual</a></li>
-<li><a href="../items/generics.html">Generic type parameters</a></li>
-<li><a href="../paths.html#self-1"><code>Self</code> type</a></li>
-<li><a href="../attributes.html#tool-attributes">Tool attribute modules</a></li>
+<li><a href="../items/modules.html">模块声明</a></li>
+<li><a href="../items/extern-crates.html">外部 crate 声明</a></li>
+<li><a href="preludes.html#extern-prelude">外部 crate 预导入</a> 项</li>
+<li><a href="../items/structs.html">结构体</a> 、 <a href="../items/unions.html">联合体</a> 、 <a href="../items/enumerations.html">枚举</a> 、枚举变体声明</li>
+<li><a href="../items/traits.html">特型项声明</a></li>
+<li><a href="../items/type-aliases.html">类型别名</a></li>
+<li><a href="../items/associated-items.html#associated-types">关联类型声明</a></li>
+<li>内置类型： <a href="../types/boolean.html">布尔型</a> 、 <a href="../types/numeric.html">数值型</a> 和 <a href="../types/textual.html">文本型</a></li>
+<li><a href="../items/generics.html">泛型类型参数</a></li>
+<li><a href="../paths.html#self-1"><code>Self</code> 类型</a></li>
+<li><a href="../attributes.html#tool-attributes">工具属性模块</a></li>
 </ul>
 </li>
-<li>Value Namespace
+<li>值命名空间
 <ul>
-<li><a href="../items/functions.html">Function declarations</a></li>
-<li><a href="../items/constant-items.html">Constant item declarations</a></li>
-<li><a href="../items/static-items.html">Static item declarations</a></li>
-<li><a href="../items/structs.html">Struct constructors</a></li>
-<li><a href="../items/enumerations.html">Enum variant constructors</a></li>
-<li><a href="../paths.html#self-1"><code>Self</code> constructors</a></li>
-<li><a href="../items/generics.html#const-generics">Generic const parameters</a></li>
-<li><a href="../items/associated-items.html#associated-constants">Associated const declarations</a></li>
-<li><a href="../items/associated-items.html#associated-functions-and-methods">Associated function declarations</a></li>
-<li>Local bindings — <a href="../statements.html#let-statements"><code>let</code></a>, <a href="../expressions/if-expr.html#if-let-patterns"><code>if let</code></a>, <a href="../expressions/loop-expr.html#while-let-patterns"><code>while let</code></a>, <a href="../expressions/loop-expr.html#iterator-loops"><code>for</code></a>, <a href="../expressions/match-expr.html"><code>match</code></a>
-arms, <a href="../items/functions.html#function-parameters">function parameters</a>, <a href="../expressions/closure-expr.html">closure parameters</a></li>
-<li>Captured <a href="../expressions/closure-expr.html">closure</a> variables</li>
+<li><a href="../items/functions.html">函数声明</a></li>
+<li><a href="../items/constant-items.html">常量项声明</a></li>
+<li><a href="../items/static-items.html">静态项声明</a></li>
+<li><a href="../items/structs.html">结构体构造函数</a></li>
+<li><a href="../items/enumerations.html">枚举变体构造函数</a></li>
+<li><a href="../paths.html#self-1"><code>Self</code> 构造函数</a></li>
+<li><a href="../items/generics.html#const-generics">泛型常量参数</a></li>
+<li><a href="../items/associated-items.html#associated-constants">关联常量声明</a></li>
+<li><a href="../items/associated-items.html#associated-functions-and-methods">关联函数声明</a></li>
+<li>本地绑定 — <a href="../statements.html#let-statements"><code>let</code></a> 、 <a href="../expressions/if-expr.html#if-let-patterns"><code>if let</code></a> 、 <a href="../expressions/loop-expr.html#while-let-patterns"><code>while let</code></a> 、 <a href="../expressions/loop-expr.html#iterator-loops"><code>for</code></a> 、 <a href="../expressions/match-expr.html"><code>match</code></a> 分支、 <a href="../items/functions.html#function-parameters">函数参数</a> 、 <a href="../expressions/closure-expr.html">闭包参数</a></li>
+<li>捕获的 <a href="../expressions/closure-expr.html">闭包</a> 变量</li>
 </ul>
 </li>
-<li>Macro Namespace
+<li>宏命名空间
 <ul>
-<li><a href="../macros-by-example.html"><code>macro_rules</code> declarations</a></li>
-<li><a href="../attributes.html#built-in-attributes-index">Built-in attributes</a></li>
-<li><a href="../attributes.html#tool-attributes">Tool attributes</a></li>
-<li><a href="../procedural-macros.html#proc_macro属性">Function-like procedural macros</a></li>
-<li><a href="../procedural-macros.html#r-macro.proc.derive">Derive macros</a></li>
-<li><a href="../procedural-macros.html#派生宏辅助属性">Derive macro helpers</a></li>
-<li><a href="../procedural-macros.html#proc_macro_attribute属性">Attribute macros</a></li>
+<li><a href="../macros-by-example.html"><code>macro_rules</code> 声明</a></li>
+<li><a href="../attributes.html#built-in-attributes-index">内置属性</a></li>
+<li><a href="../attributes.html#tool-attributes">工具属性</a></li>
+<li><a href="../procedural-macros.html#proc_macro属性">类函数过程宏</a></li>
+<li><a href="../procedural-macros.html#r-macro.proc.derive">派生宏</a></li>
+<li><a href="../procedural-macros.html#派生宏辅助属性">派生宏辅助属性</a></li>
+<li><a href="../procedural-macros.html#proc_macro_attribute属性">属性宏</a></li>
 </ul>
 </li>
-<li>Lifetime Namespace
+<li>生命周期命名空间
 <ul>
-<li><a href="../items/generics.html">Generic lifetime parameters</a></li>
+<li><a href="../items/generics.html">泛型生命周期参数</a></li>
 </ul>
 </li>
-<li>Label Namespace
+<li>标签命名空间
 <ul>
-<li><a href="../expressions/loop-expr.html#loop-labels">Loop labels</a></li>
-<li><a href="../expressions/loop-expr.html#r-expr.loop.block-labels">Block labels</a></li>
+<li><a href="../expressions/loop-expr.html#loop-labels">循环标签</a></li>
+<li><a href="../expressions/loop-expr.html#r-expr.loop.block-labels">块标签</a></li>
 </ul>
 </li>
 </ul>
-<p>An example of how overlapping names in different namespaces can be used unambiguously:</p>
+<p>关于如何在不同命名空间中使用重叠名称而不会产生歧义的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Foo introduces a type in the type namespace and a constructor in the value
-// namespace.
+</span>// Foo 在类型命名空间中引入了一个类型，在值命名空间中引入了一个构造函数。
 struct Foo(u32);
 
-// The `Foo` macro is declared in the macro namespace.
+// Foo 宏在宏命名空间中声明。
 macro_rules! Foo {
     () =&gt; {};
 }
 
-// `Foo` in the `f` parameter type refers to `Foo` in the type namespace.
-// `'Foo` introduces a new lifetime in the lifetime namespace.
+// f 参数类型中的 Foo 指向类型命名空间中的 Foo。
+// 'Foo 在生命周期命名空间中引入了一个新的生命周期。
 fn example&lt;'Foo&gt;(f: Foo) {
-    // `Foo` refers to the `Foo` constructor in the value namespace.
+    // Foo 指向值命名空间中的 Foo 构造函数。
     let ctor = Foo;
-    // `Foo` refers to the `Foo` macro in the macro namespace.
+    // Foo 指向宏命名空间中的 Foo 宏。
     Foo!{}
-    // `'Foo` introduces a label in the label namespace.
+    // 'Foo 在标签命名空间中引入了一个标签。
     'Foo: loop {
-        // `'Foo` refers to the `'Foo` lifetime parameter, and `Foo`
-        // refers to the type namespace.
+        // 'Foo 指向 'Foo 生命周期参数，而 Foo 指向类型命名空间。
         let x: &amp;'Foo Foo;
-        // `'Foo` refers to the label.
+        // 'Foo 指向该标签。
         break 'Foo;
     }
 }
@@ -284,49 +275,42 @@ fn example&lt;'Foo&gt;(f: Foo) {
 <div class="rule" id="r-names.namespaces.without"><a class="rule-link" href="#r-names.namespaces.without" title="names.namespaces.without"><span>[names<wbr>.namespaces<wbr>.without]</span></a>
 </div>
 
-<h2 id="named-entities-without-a-namespace"><a class="header" href="#named-entities-without-a-namespace">Named entities without a namespace</a></h2>
-<p>The following entities have explicit names, but the names are not a part of
-any specific namespace.</p>
-<h3 id="fields"><a class="header" href="#fields">Fields</a></h3>
+<h2 id="无命名空间的具名实体"><a class="header" href="#无命名空间的具名实体">无命名空间的具名实体</a></h2>
+<p>以下实体具有显式名称，但这些名称不属于任何特定的命名空间。</p>
+<h3 id="字段"><a class="header" href="#字段">字段</a></h3>
 <div class="rule" id="r-names.namespaces.without.fields"><a class="rule-link" href="#r-names.namespaces.without.fields" title="names.namespaces.without.fields"><span>[names<wbr>.namespaces<wbr>.without<wbr>.fields]</span></a>
 </div>
 
-<p>Even though struct, enum, and union fields are named, the named fields do not
-live in an explicit namespace. They can only be accessed via a <a href="../expressions/field-expr.html">field
-expression</a>, which only inspects the field names of the specific type being
-accessed.</p>
-<h3 id="use-declarations"><a class="header" href="#use-declarations">Use declarations</a></h3>
+<p>尽管结构体、枚举和联合体字段是具名的，但这些具名字段并不存在于显式命名空间中。它们只能通过 <a href="../expressions/field-expr.html">字段表达式</a> 访问，该表达式仅检查正在访问的特定类型的字段名称。</p>
+<h3 id="use声明"><a class="header" href="#use声明">Use声明</a></h3>
 <div class="rule" id="r-names.namespaces.without.use"><a class="rule-link" href="#r-names.namespaces.without.use" title="names.namespaces.without.use"><span>[names<wbr>.namespaces<wbr>.without<wbr>.use]</span></a>
 </div>
 
-<p>A <a href="../items/use-declarations.html">use declaration</a> has named aliases that it imports into scope, but the
-<code>use</code> item itself does not belong to a specific namespace. Instead, it can
-introduce aliases into multiple namespaces, depending on the item kind being
-imported.</p>
+<p>一个 <a href="../items/use-declarations.html">use声明</a> 具有导入到作用域中的具名别名，但 <code>use</code> 项本身并不属于特定命名空间。相反，它可以根据正在导入的项种类，将别名引入到多个命名空间中。</p>
 <div class="rule" id="r-names.namespaces.sub-namespaces"><a class="rule-link" href="#r-names.namespaces.sub-namespaces" title="names.namespaces.sub-namespaces"><span>[names<wbr>.namespaces<wbr>.sub-namespaces]</span></a>
 </div>
 
-<h2 id="sub-namespaces"><a class="header" href="#sub-namespaces">Sub-namespaces</a></h2>
+<h2 id="子命名空间"><a class="header" href="#子命名空间">子命名空间</a></h2>
 <div class="rule" id="r-names.namespaces.sub-namespaces.intro"><a class="rule-link" href="#r-names.namespaces.sub-namespaces.intro" title="names.namespaces.sub-namespaces.intro"><span>[names<wbr>.namespaces<wbr>.sub-namespaces<wbr>.intro]</span></a>
 </div>
 
-<p>The macro namespace is split into two sub-namespaces: one for <a href="../macros.html">bang-style macros</a> and one for <a href="../attributes.html">attributes</a>.
-When an attribute is resolved, any bang-style macros in scope will be ignored.
-And conversely resolving a bang-style macro will ignore attribute macros in scope.
-This prevents one style from shadowing another.</p>
-<p>For example, the <a href="../conditional-compilation.html#cfg属性"><code>cfg</code> attribute</a> and the <a href="../conditional-compilation.html#cfg宏"><code>cfg</code> macro</a> are two different entities with the same name in the macro namespace, but they can still be used in their respective context.</p>
+<p>宏命名空间分为两个子命名空间：一个用于 <a href="../macros.html">感叹号风格宏</a> ，另一个用于 <a href="../attributes.html">属性</a> 。
+当解析属性时，作用域内的任何感叹号风格宏都将被忽略。
+反之，解析感叹号风格宏将忽略作用域内的属性宏。
+这可以防止一种风格遮蔽另一种风格。</p>
+<p>例如， <a href="../conditional-compilation.html#cfg属性"><code>cfg</code> 属性</a> 和 <a href="../conditional-compilation.html#cfg宏"><code>cfg</code> 宏</a> 是宏命名空间中具有相同名称的两个不同实体，但它们仍然可以在各自的上下文中使用。</p>
 <!-- ignore: requires external crates -->
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>use</code> imports still cannot create duplicate bindings of the same name in a module or block, regardless of sub-namespace.</p>
+<p><code>use</code> 导入仍然不能在模块或块中创建相同名称的重复绑定，无论子命名空间如何。</p>
 <pre><code class="language-rust ignore">#[macro_export]
 macro_rules! mymac {
     () =&gt; {};
 }
 
-use myattr::mymac; // error[E0252]: the name `mymac` is defined multiple times.</code></pre>
+use myattr::mymac; // error[E0252]: 名称 `mymac` 被多次定义。</code></pre>
 </blockquote>
 </div>
 

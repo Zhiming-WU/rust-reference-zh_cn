@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-be189161.js"></script>
+        <script src="toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,99 +181,99 @@
                         <div class="rule" id="r-const-eval"><a class="rule-link" href="#r-const-eval" title="const-eval"><span>[const-eval]</span></a>
 </div>
 
-<h1 id="constant-evaluation"><a class="header" href="#constant-evaluation">Constant evaluation</a></h1>
+<h1 id="常量求值"><a class="header" href="#常量求值">常量求值</a></h1>
 <div class="rule" id="r-const-eval.general"><a class="rule-link" href="#r-const-eval.general" title="const-eval.general"><span>[const-eval<wbr>.general]</span></a>
 </div>
 
-<p>Constant evaluation is the process of computing the result of <a href="expressions.html">expressions</a> during compilation. Only a subset of all expressions can be evaluated at compile-time.</p>
+<p>常量求值是在编译过程中计算 <a href="expressions.html">表达式</a> 结果的过程。所有表达式中只有一部分可以在编译时求值。</p>
 <div class="rule" id="r-const-eval.const-expr"><a class="rule-link" href="#r-const-eval.const-expr" title="const-eval.const-expr"><span>[const-eval<wbr>.const-expr]</span></a>
 </div>
 
-<h2 id="constant-expressions"><a class="header" href="#constant-expressions">Constant expressions</a></h2>
+<h2 id="常量表达式"><a class="header" href="#常量表达式">常量表达式</a></h2>
 <div class="rule" id="r-const-eval.const-expr.general"><a class="rule-link" href="#r-const-eval.const-expr.general" title="const-eval.const-expr.general"><span>[const-eval<wbr>.const-expr<wbr>.general]</span></a>
 </div>
 
-<p>Certain forms of expressions, called constant expressions, can be evaluated at compile time.</p>
+<p>某些形式的表达式，称为常量表达式，可以在编译时求值。</p>
 <div class="rule" id="r-const-eval.const-expr.const-context"><a class="rule-link" href="#r-const-eval.const-expr.const-context" title="const-eval.const-expr.const-context"><span>[const-eval<wbr>.const-expr<wbr>.const-context]</span></a>
 </div>
 
-<p>Expressions in a <a href="#const-context">const context</a> must be constant expressions.</p>
+<p>在 <a href="#常量上下文">常量上下文</a> 中的表达式必须是常量表达式。</p>
 <div class="rule" id="r-const-eval.const-expr.evaluation"><a class="rule-link" href="#r-const-eval.const-expr.evaluation" title="const-eval.const-expr.evaluation"><span>[const-eval<wbr>.const-expr<wbr>.evaluation]</span></a>
 </div>
 
-<p>Expressions in const contexts are always evaluated at compile time.</p>
+<p>常量上下文中的表达式总是在编译时求值。</p>
 <div class="rule" id="r-const-eval.const-expr.runtime-context"><a class="rule-link" href="#r-const-eval.const-expr.runtime-context" title="const-eval.const-expr.runtime-context"><span>[const-eval<wbr>.const-expr<wbr>.runtime-context]</span></a>
 </div>
 
-<p>Outside of const contexts, constant expressions <em>may</em> be, but are not guaranteed to be, evaluated at compile time.</p>
+<p>在常量上下文之外，常量表达式 <em>可能</em> 会被求值，但不保证一定在编译时求值。</p>
 <div class="rule" id="r-const-eval.const-expr.error"><a class="rule-link" href="#r-const-eval.const-expr.error" title="const-eval.const-expr.error"><span>[const-eval<wbr>.const-expr<wbr>.error]</span></a>
 </div>
 
-<p>Behaviors such as out of bounds <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">array indexing</a> or <a href="expressions/operator-expr.html#overflow">overflow</a> are compiler errors if the value must be evaluated at compile time (i.e. in const contexts). Otherwise, these behaviors are warnings, but will likely panic at run-time.</p>
+<p>如果一个值必须在编译时（即在常量上下文中）求值，那么诸如越界 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a> 或 <a href="expressions/operator-expr.html#overflow">溢出</a> 之类的行为将是编译器错误。否则，这些行为只是警告，但在运行时很可能会产生 恐慌。</p>
 <div class="rule" id="r-const-eval.const-expr.list"><a class="rule-link" href="#r-const-eval.const-expr.list" title="const-eval.const-expr.list"><span>[const-eval<wbr>.const-expr<wbr>.list]</span></a>
 </div>
 
-<p>The following expressions are constant expressions, so long as any operands are also constant expressions and do not cause any <a href="destructors.html"><code>Drop::drop</code></a> calls to be run.</p>
+<p>只要所有操作数也都是常量表达式，且不会导致任何 <a href="destructors.html"><code>Drop::drop</code></a> 调用被运行，以下表达式就是常量表达式。</p>
 <div class="rule" id="r-const-eval.const-expr.literal"><a class="rule-link" href="#r-const-eval.const-expr.literal" title="const-eval.const-expr.literal"><span>[const-eval<wbr>.const-expr<wbr>.literal]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/literal-expr.html">Literals</a>.</li>
+<li><a href="expressions/literal-expr.html">字面量</a>。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.parameter"><a class="rule-link" href="#r-const-eval.const-expr.parameter" title="const-eval.const-expr.parameter"><span>[const-eval<wbr>.const-expr<wbr>.parameter]</span></a>
 </div>
 
 <ul>
-<li><a href="items/generics.html">Const parameters</a>.</li>
+<li><a href="items/generics.html">常量参数</a>。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.path-item"><a class="rule-link" href="#r-const-eval.const-expr.path-item" title="const-eval.const-expr.path-item"><span>[const-eval<wbr>.const-expr<wbr>.path-item]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/path-expr.html">Paths</a> to <a href="items/functions.html">functions</a> and <a href="items/constant-items.html">constants</a>. Recursively defining constants is not allowed.</li>
+<li>指向 <a href="items/functions.html">函数</a> 和 <a href="items/constant-items.html">常量</a> 的 <a href="expressions/path-expr.html">路径</a>。不允许递归地定义常量。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.path-static"><a class="rule-link" href="#r-const-eval.const-expr.path-static" title="const-eval.const-expr.path-static"><span>[const-eval<wbr>.const-expr<wbr>.path-static]</span></a>
 </div>
 
 <ul>
 <li>
-<p>Paths to <a href="items/static-items.html">statics</a> with these restrictions:</p>
+<p>指向 <a href="items/static-items.html">静态项</a> 的路径，具有以下限制：</p>
 <ul>
-<li>Writes to <code>static</code> items are not allowed in any constant evaluation context.</li>
-<li>Reads from <code>extern</code> statics are not allowed in any constant evaluation context.</li>
-<li>If the evaluation is <em>not</em> carried out in an initializer of a <code>static</code> item, then reads from any mutable <code>static</code> are not allowed. A mutable <code>static</code> is a <code>static mut</code> item, or a <code>static</code> item with an interior-mutable type.</li>
+<li>在任何常量求值上下文中都不允许对 <code>static</code> 项进行写入。</li>
+<li>在任何常量求值上下文中都不允许从 <code>extern</code> 静态项中读取。</li>
+<li>如果求值 <em>不是</em> 在 <code>static</code> 项的初始化器中进行的，那么就不允许从任何可变的 <code>static</code> 中读取。可变的 <code>static</code> 是指 <code>static mut</code> 项，或者具有内部可变类型的 <code>static</code> 项。</li>
 </ul>
-<p>These requirements are checked only when the constant is evaluated. In other words, having such accesses syntactically occur in const contexts is allowed as long as they never get executed.</p>
+<p>这些要求仅在常量求值时检查。换句话说，只要这些访问从未被执行，它们在语法上出现在常量上下文中是允许的。</p>
 </li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.tuple"><a class="rule-link" href="#r-const-eval.const-expr.tuple" title="const-eval.const-expr.tuple"><span>[const-eval<wbr>.const-expr<wbr>.tuple]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/tuple-expr.html">Tuple expressions</a>.</li>
+<li><a href="expressions/tuple-expr.html">元组表达式</a>。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.array"><a class="rule-link" href="#r-const-eval.const-expr.array" title="const-eval.const-expr.array"><span>[const-eval<wbr>.const-expr<wbr>.array]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/array-expr.html">Array expressions</a>.</li>
+<li><a href="expressions/array-expr.html">数组表达式</a>。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.constructor"><a class="rule-link" href="#r-const-eval.const-expr.constructor" title="const-eval.const-expr.constructor"><span>[const-eval<wbr>.const-expr<wbr>.constructor]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/struct-expr.html">Struct expressions</a>.</li>
+<li><a href="expressions/struct-expr.html">结构体表达式</a>。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.block"><a class="rule-link" href="#r-const-eval.const-expr.block" title="const-eval.const-expr.block"><span>[const-eval<wbr>.const-expr<wbr>.block]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/block-expr.html">Block expressions</a>, including <code>unsafe</code> and <code>const</code> blocks.
+<li><a href="expressions/block-expr.html">块表达式</a>，包括 <code>unsafe</code> 和 <code>const</code> 块。
 <ul>
-<li><a href="statements.html#let-statements">let statements</a> and thus irrefutable <a href="patterns.html">patterns</a>, including mutable bindings</li>
-<li><a href="expressions/operator-expr.html#assignment-expressions">assignment expressions</a></li>
-<li><a href="expressions/operator-expr.html#compound-assignment-expressions">compound assignment expressions</a></li>
-<li><a href="statements.html#expression-statements">expression statements</a></li>
+<li><a href="statements.html#let-statements">let 语句</a> 及其不可驳 <a href="patterns.html">模式</a>，包括可变绑定</li>
+<li><a href="expressions/operator-expr.html#assignment-expressions">赋值表达式</a></li>
+<li><a href="expressions/operator-expr.html#compound-assignment-expressions">复合赋值表达式</a></li>
+<li><a href="statements.html#expression-statements">表达式语句</a></li>
 </ul>
 </li>
 </ul>
@@ -281,79 +281,75 @@
 </div>
 
 <ul>
-<li><a href="expressions/field-expr.html">Field</a> expressions.</li>
+<li><a href="expressions/field-expr.html">字段</a> 表达式。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.index"><a class="rule-link" href="#r-const-eval.const-expr.index" title="const-eval.const-expr.index"><span>[const-eval<wbr>.const-expr<wbr>.index]</span></a>
 </div>
 
 <ul>
-<li>Index expressions, <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">array indexing</a> or <a href="types/slice.html">slice</a> with a <code>usize</code>.</li>
+<li>索引表达式，使用 <code>usize</code> 进行 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a> 或 <a href="types/slice.html">切片</a>。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.range"><a class="rule-link" href="#r-const-eval.const-expr.range" title="const-eval.const-expr.range"><span>[const-eval<wbr>.const-expr<wbr>.range]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/range-expr.html">Range expressions</a>.</li>
+<li><a href="expressions/range-expr.html">范围表达式</a>。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.closure"><a class="rule-link" href="#r-const-eval.const-expr.closure" title="const-eval.const-expr.closure"><span>[const-eval<wbr>.const-expr<wbr>.closure]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/closure-expr.html">Closure expressions</a> which don’t capture variables from the environment.</li>
+<li>不从环境中捕获变量的 <a href="expressions/closure-expr.html">闭包表达式</a>。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.builtin-arith-logic"><a class="rule-link" href="#r-const-eval.const-expr.builtin-arith-logic" title="const-eval.const-expr.builtin-arith-logic"><span>[const-eval<wbr>.const-expr<wbr>.builtin-arith-logic]</span></a>
 </div>
 
 <ul>
-<li>Built-in <a href="expressions/operator-expr.html#negation-operators">negation</a>, <a href="expressions/operator-expr.html#arithmetic-and-logical-binary-operators">arithmetic</a>, <a href="expressions/operator-expr.html#arithmetic-and-logical-binary-operators">logical</a>, <a href="expressions/operator-expr.html#comparison-operators">comparison</a> or <a href="expressions/operator-expr.html#lazy-boolean-operators">lazy boolean</a> operators used on integer and floating point types, <code>bool</code>, and <code>char</code>.</li>
+<li>用于整数和浮点类型、<code>bool</code> 和 <code>char</code> 的内建 <a href="expressions/operator-expr.html#negation-operators">取反</a>、<a href="expressions/operator-expr.html#arithmetic-and-logical-binary-operators">算术</a>、<a href="expressions/operator-expr.html#arithmetic-and-logical-binary-operators">逻辑</a>、<a href="expressions/operator-expr.html#comparison-operators">比较</a> 或 <a href="expressions/operator-expr.html#lazy-boolean-operators">惰性布尔</a> 运算符。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.borrows"><a class="rule-link" href="#r-const-eval.const-expr.borrows" title="const-eval.const-expr.borrows"><span>[const-eval<wbr>.const-expr<wbr>.borrows]</span></a>
 </div>
 
 <ul>
 <li>
-<p>All forms of <a href="expressions/operator-expr.html#borrow-operators">borrow</a>s, including raw borrows, except borrows of expressions whose temporary scopes would be extended (see <a href="destructors.html#r-destructors.scope.lifetime-extension">temporary lifetime extension</a>) to the end of the program and which are either:</p>
+<p>所有形式的 <a href="expressions/operator-expr.html#borrow-operators">借用</a>，包括原始借用，但以下表达式的借用除外（这些表达式的临时作用域会被延长（见 <a href="destructors.html#r-destructors.scope.lifetime-extension">临时变量生命周期延长</a>）至程序结束）：</p>
 <ul>
-<li>Mutable borrows.</li>
-<li>Shared borrows of expressions that result in values with <a href="interior-mutability.html">interior mutability</a>.</li>
+<li>可变借用。</li>
+<li>对产生具有 <a href="interior-mutability.html">内部可变性</a> 的值的表达式的共享借用。</li>
 </ul>
 <pre class="playground"><code class="language-rust compile_fail E0764 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Due to being in tail position, this borrow extends the scope of the
-// temporary to the end of the program. Since the borrow is mutable,
-// this is not allowed in a const expression.
+</span>// 由于处于尾部位置，此借用将临时变量的作用域延长至程序结束。
+// 由于借用是可变的，这在常量表达式中是不允许的。
 const C: &amp;u8 = &amp;mut 0; // ERROR not allowed
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0764 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Const blocks are similar to initializers of `const` items.
+</span>// 常量块类似于常量项的初始化器。
 let _: &amp;u8 = const { &amp;mut 0 }; // ERROR not allowed
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0492 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::sync::atomic::AtomicU8;
-</span>// This is not allowed as 1) the temporary scope is extended to the
-// end of the program and 2) the temporary has interior mutability.
+</span>// 这是不允许的，因为 1) 临时作用域延长到了程序结束，且 2) 临时变量具有内部可变性。
 const C: &amp;AtomicU8 = &amp;AtomicU8::new(0); // ERROR not allowed
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0492 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::sync::atomic::AtomicU8;
-</span>// As above.
+</span>// 同上。
 let _: &amp;_ = const { &amp;AtomicU8::new(0) }; // ERROR not allowed
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">#![allow(static_mut_refs)]
-</span>// Even though this borrow is mutable, it's not of a temporary, so
-// this is allowed.
+</span>// 尽管此借用是可变的，但它不是对临时变量的借用，因此这是允许的。
 const C: &amp;u8 = unsafe { static mut S: u8 = 0; &amp;mut S }; // OK
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::sync::atomic::AtomicU8;
-</span>// Even though this borrow is of a value with interior mutability,
-// it's not of a temporary, so this is allowed.
+</span>// 尽管此借用是对具有内部可变性的值的借用，但它不是对临时变量的借用，因此这是允许的。
 const C: &amp;AtomicU8 = {
     static S: AtomicU8 = AtomicU8::new(0); &amp;S // OK
 };
@@ -361,50 +357,44 @@ const C: &amp;AtomicU8 = {
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::sync::atomic::AtomicU8;
-</span>// This shared borrow of an interior mutable temporary is allowed
-// because its scope is not extended.
+</span>// 这种对内部可变临时变量的共享借用是允许的，因为其作用域没有被延长。
 const C: () = { _ = &amp;AtomicU8::new(0); }; // OK
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Even though the borrow is mutable and the temporary lives to the
-// end of the program due to promotion, this is allowed because the
-// borrow is not in tail position and so the scope of the temporary
-// is not extended via temporary lifetime extension.
+</span>// 尽管借用是可变的，且临时变量因提升而存续到程序结束，但这是允许的，因为
+// 借用不在尾部位置，因此临时变量的作用域不会通过临时变量生命周期延长来延长。
 const C: () = { let _: &amp;'static mut [u8] = &amp;mut []; }; // OK
 //                                              ~~
-//                                     Promoted temporary.
+//                                     提升的临时变量。
 <span class="boring">}</span></code></pre>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>In other words — to focus on what’s allowed rather than what’s not allowed — shared borrows of interior mutable data and mutable borrows are only allowed in a <a href="#const-context">const context</a> when the borrowed <a href="expressions.html#r-expr.place-value.place-memory-location">place expression</a> is <em>transient</em>, <em>indirect</em>, or <em>static</em>.</p>
-<p>A place expression is <em>transient</em> if it is a variable local to the current const context or an expression whose temporary scope is contained inside the current const context.</p>
+<p>换句话说 —— 为了关注什么是允许的而不是什么是不允许的 —— 只有当被借用的 <a href="expressions.html#r-expr.place-value.place-memory-location">位置表达式</a> 是 <em>瞬态的</em> 、 <em>间接的</em> 或 <em>静态的</em> 时，才允许在 <a href="#常量上下文">常量上下文</a> 中对内部可变数据进行共享借用和可变借用。</p>
+<p>如果位置表达式是当前常量上下文的局部变量，或者是临时作用域包含在当前常量上下文中的表达式，则该位置表达式是 <em>瞬态的</em> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// The borrow is of a variable local to the initializer, therefore
-// this place expression is transient.
+</span>// 借用是对初始化器局部变量的借用，因此此位置表达式是瞬态的。
 const C: () = { let mut x = 0; _ = &amp;mut x; };
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// The borrow is of a temporary whose scope has not been extended,
-// therefore this place expression is transient.
+</span>// 借用是对作用域未延长的临时变量的借用，因此此位置表达式是瞬态的。
 const C: () = { _ = &amp;mut 0u8; };
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// When a temporary is promoted but not lifetime extended, its
-// place expression is still treated as transient.
+</span>// 当临时变量被提升但没有延长生命周期时，其位置表达式仍被视为瞬态的。
 const C: () = { let _: &amp;'static mut [u8] = &amp;mut []; };
 <span class="boring">}</span></code></pre>
-<p>A place expression is <em>indirect</em> if it is a <a href="expressions/operator-expr.html#r-expr.deref">dereference expression</a>.</p>
+<p>如果位置表达式是 <a href="expressions/operator-expr.html#r-expr.deref">解引用表达式</a>，则该位置表达式是 <em>间接的</em> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>const C: () = { _ = &amp;mut *(&amp;mut 0); };
 <span class="boring">}</span></code></pre>
-<p>A place expression is <em>static</em> if it is a <code>static</code> item.</p>
+<p>如果位置表达式是一个 <code>static</code> 项，则该位置表达式是 <em>静态的</em> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">#![allow(static_mut_refs)]
@@ -417,23 +407,23 @@ const C: () = { let _: &amp;'static mut [u8] = &amp;mut []; };
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>One surprising consequence of these rules is that we allow this,</p>
+<p>这些规则的一个令人惊讶的后果是我们允许这样做：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>const C: &amp;[u8] = { let x: &amp;mut [u8] = &amp;mut []; x }; // OK
 //                                    ~~~~~~~
-// Empty arrays are promoted even behind mutable borrows.
+// 即使在可变借用之后，空数组也会被提升。
 <span class="boring">}</span></code></pre>
-<p>but we disallow this similar code:</p>
+<p>但我们不允许类似的这段代码：</p>
 <pre class="playground"><code class="language-rust compile_fail E0764 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>const C: &amp;[u8] = &amp;mut []; // ERROR
 //               ~~~~~~~
-//           Tail expression.
+//           尾部表达式。
 <span class="boring">}</span></code></pre>
-<p>The difference between these is that, in the first, the empty array is <a href="destructors.html#constant-promotion">promoted</a> but its scope does not undergo <a href="destructors.html#r-destructors.scope.lifetime-extension">temporary lifetime extension</a>, so we consider the <a href="expressions.html#r-expr.place-value.place-memory-location">place expression</a> to be transient (even though after promotion the place indeed lives to the end of the program). In the second, the scope of the empty array temporary does undergo lifetime extension, and so it is rejected due to being a mutable borrow of a lifetime-extended temporary (and therefore borrowing a non-transient place expression).</p>
-<p>The effect is surprising because temporary lifetime extension, in this case, causes less code to compile than would without it.</p>
-<p>See <a href="https://github.com/rust-lang/rust/issues/143129">issue #143129</a> for more details.</p>
+<p>它们之间的区别在于，在第一种情况中，空数组被 <a href="destructors.html#constant-promotion">提升</a> 了，但它的作用域没有经历 <a href="destructors.html#r-destructors.scope.lifetime-extension">临时变量生命周期延长</a>，所以我们认为 <a href="expressions.html#r-expr.place-value.place-memory-location">位置表达式</a> 是瞬态的（即使在提升之后该位置确实存续到程序结束）。在第二种情况中，空数组临时变量的作用域确实经历了生命周期延长，因此它因为是对生命周期延长的临时变量的可变借用（从而借用了非瞬态的位置表达式）而被拒绝。</p>
+<p>这种效果令人惊讶，因为在这种情况下，临时变量生命周期延长导致可编译的代码比没有它时更少。</p>
+<p>见 <a href="https://github.com/rust-lang/rust/issues/143129">issue #143129</a> 了解更多细节。</p>
 </blockquote>
 </div>
 
@@ -444,20 +434,20 @@ const C: () = { let _: &amp;'static mut [u8] = &amp;mut []; };
 
 <ul>
 <li>
-<p><a href="expressions/operator-expr.html#r-expr.deref">Dereference expressions</a>.</p>
+<p><a href="expressions/operator-expr.html#r-expr.deref">解引用表达式</a>。</p>
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::cell::UnsafeCell;
 </span>const _: u8 = unsafe {
     let x: *mut u8 = &amp;raw mut *&amp;mut 0;
     //                        ^^^^^^^
-    //             Dereference of mutable reference.
-    *x = 1; // Dereference of mutable pointer.
-    *(x as *const u8) // Dereference of constant pointer.
+    //             对可变引用的解引用。
+    *x = 1; // 对可变指针的解引用。
+    *(x as *const u8) // 对常量指针的解引用。
 };
 const _: u8 = unsafe {
     let x = &amp;UnsafeCell::new(0);
-    *x.get() = 1; // Mutation of interior mutable value.
+    *x.get() = 1; // 对内部可变值的修改。
     *x.get()
 };
 <span class="boring">}</span></code></pre>
@@ -467,16 +457,16 @@ const _: u8 = unsafe {
 </div>
 
 <ul>
-<li><a href="expressions/grouped-expr.html">Grouped</a> expressions.</li>
+<li><a href="expressions/grouped-expr.html">分组</a> 表达式。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.cast"><a class="rule-link" href="#r-const-eval.const-expr.cast" title="const-eval.const-expr.cast"><span>[const-eval<wbr>.const-expr<wbr>.cast]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/operator-expr.html#type-cast-expressions">Cast</a> expressions, except
+<li><a href="expressions/operator-expr.html#type-cast-expressions">转换</a> 表达式，除了
 <ul>
-<li>pointer to address casts and</li>
-<li>function pointer to address casts.</li>
+<li>指针到地址转换以及</li>
+<li>函数指针到地址转换。</li>
 </ul>
 </li>
 </ul>
@@ -484,49 +474,49 @@ const _: u8 = unsafe {
 </div>
 
 <ul>
-<li>Calls of <a href="items/functions.html#const-functions">const functions</a> and const methods.</li>
+<li>调用 <a href="items/functions.html#const-functions">常量函数</a> 和常量方法。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.loop"><a class="rule-link" href="#r-const-eval.const-expr.loop" title="const-eval.const-expr.loop"><span>[const-eval<wbr>.const-expr<wbr>.loop]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/loop-expr.html#infinite-loops">loop</a> and <a href="expressions/loop-expr.html#predicate-loops">while</a> expressions.</li>
+<li><a href="expressions/loop-expr.html#infinite-loops">loop</a> 和 <a href="expressions/loop-expr.html#predicate-loops">while</a> 表达式。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.if-match"><a class="rule-link" href="#r-const-eval.const-expr.if-match" title="const-eval.const-expr.if-match"><span>[const-eval<wbr>.const-expr<wbr>.if-match]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/if-expr.html#if-expressions">if</a> and <a href="expressions/match-expr.html">match</a> expressions.</li>
+<li><a href="expressions/if-expr.html#if-expressions">if</a> 和 <a href="expressions/match-expr.html">match</a> 表达式。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-context"><a class="rule-link" href="#r-const-eval.const-context" title="const-eval.const-context"><span>[const-eval<wbr>.const-context]</span></a>
 </div>
 
-<h2 id="const-context"><a class="header" href="#const-context">Const context</a></h2>
+<h2 id="常量上下文"><a class="header" href="#常量上下文">常量上下文</a></h2>
 <div class="rule" id="r-const-eval.const-context.general"><a class="rule-link" href="#r-const-eval.const-context.general" title="const-eval.const-context.general"><span>[const-eval<wbr>.const-context<wbr>.general]</span></a>
 </div>
 
-<p>A <em>const context</em> is one of the following:</p>
+<p><em>常量上下文</em> 是以下之一：</p>
 <div class="rule" id="r-const-eval.const-context.array-length"><a class="rule-link" href="#r-const-eval.const-context.array-length" title="const-eval.const-context.array-length"><span>[const-eval<wbr>.const-context<wbr>.array-length]</span></a>
 </div>
 
 <ul>
-<li><a href="types/array.html">Array type length expressions</a></li>
+<li><a href="types/array.html">数组类型长度表达式</a></li>
 </ul>
 <div class="rule" id="r-const-eval.const-context.repeat-length"><a class="rule-link" href="#r-const-eval.const-context.repeat-length" title="const-eval.const-context.repeat-length"><span>[const-eval<wbr>.const-context<wbr>.repeat-length]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/array-expr.html">Array repeat length expressions</a></li>
+<li><a href="expressions/array-expr.html">数组重复长度表达式</a></li>
 </ul>
 <div class="rule" id="r-const-eval.const-context.init"><a class="rule-link" href="#r-const-eval.const-context.init" title="const-eval.const-context.init"><span>[const-eval<wbr>.const-context<wbr>.init]</span></a>
 </div>
 
 <ul>
-<li>The initializer of
+<li>以下项的初始化器
 <ul>
-<li><a href="items/constant-items.html">constants</a></li>
-<li><a href="items/static-items.html">statics</a></li>
-<li><a href="items/enumerations.html#discriminants">enum discriminants</a></li>
+<li><a href="items/constant-items.html">常量</a></li>
+<li><a href="items/static-items.html">静态项</a></li>
+<li><a href="items/enumerations.html#discriminants">枚举判别值</a></li>
 </ul>
 </li>
 </ul>
@@ -534,26 +524,26 @@ const _: u8 = unsafe {
 </div>
 
 <ul>
-<li>A <a href="items/generics.html#const-generics">const generic argument</a></li>
+<li><a href="items/generics.html#const-generics">常量泛型参数</a></li>
 </ul>
 <div class="rule" id="r-const-eval.const-context.block"><a class="rule-link" href="#r-const-eval.const-context.block" title="const-eval.const-context.block"><span>[const-eval<wbr>.const-context<wbr>.block]</span></a>
 </div>
 
 <ul>
-<li>A <a href="expressions/block-expr.html#const-blocks">const block</a></li>
+<li><a href="expressions/block-expr.html#const-blocks">常量块</a></li>
 </ul>
 <div class="rule" id="r-const-eval.const-context.outer-generics"><a class="rule-link" href="#r-const-eval.const-context.outer-generics" title="const-eval.const-context.outer-generics"><span>[const-eval<wbr>.const-context<wbr>.outer-generics]</span></a>
 </div>
 
-<p>Const contexts that are used as parts of types (array type and repeat length expressions as well as const generic arguments) can only make restricted use of surrounding generic parameters: such an expression must either be a single bare const generic parameter, or an arbitrary expression not making use of any generics.</p>
+<p>作为类型一部分使用的常量上下文（数组类型和重复长度表达式以及常量泛型参数）只能限制性地使用周围的泛型参数：此类表达式必须要么是单个裸常量泛型参数，要么是不使用任何泛型的任意表达式。</p>
 <div class="rule" id="r-const-eval.const-fn"><a class="rule-link" href="#r-const-eval.const-fn" title="const-eval.const-fn"><span>[const-eval<wbr>.const-fn]</span></a>
 </div>
 
-<h2 id="const-functions"><a class="header" href="#const-functions">Const functions</a></h2>
+<h2 id="常量函数"><a class="header" href="#常量函数">常量函数</a></h2>
 <div class="rule" id="r-const-eval.const-fn.intro"><a class="rule-link" href="#r-const-eval.const-fn.intro" title="const-eval.const-fn.intro"><span>[const-eval<wbr>.const-fn<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>const function</em> is a function that can be called from a const context. It is defined with the <code>const</code> qualifier, and also includes <a href="items/structs.html">tuple struct</a> and <a href="items/enumerations.html">tuple enum variant</a> constructors.</p>
+<p><em>常量函数</em> 是可以从常量上下文中调用的函数。它使用 <code>const</code> 限定符定义，并且还包括 <a href="items/structs.html">元组结构体</a> 和 <a href="items/enumerations.html">元组枚举变体</a> 构造函数。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -563,6 +553,7 @@ const _: u8 = unsafe {
 </span>const fn square(x: i32) -&gt; i32 { x * x }
 
 const VALUE: i32 = square(12);
+square(12);
 <span class="boring">}</span></code></pre>
 </blockquote>
 </div>
@@ -570,24 +561,24 @@ const VALUE: i32 = square(12);
 <div class="rule" id="r-const-eval.const-fn.const-context"><a class="rule-link" href="#r-const-eval.const-fn.const-context" title="const-eval.const-fn.const-context"><span>[const-eval<wbr>.const-fn<wbr>.const-context]</span></a>
 </div>
 
-<p>When called from a const context, a const function is interpreted by the compiler at compile time. The interpretation happens in the environment of the compilation target and not the host. So <code>usize</code> is <code>32</code> bits if you are compiling against a <code>32</code> bit system, irrelevant of whether you are building on a <code>64</code> bit or a <code>32</code> bit system.</p>
+<p>当从常量上下文中调用时，常量函数由编译器在编译时解释。这种解释发生在编译 target 的环境中，而不是宿主环境。因此，如果你针对 <code>32</code> 位系统进行编译，<code>usize</code> 就是 <code>32</code> 位，而不管你是在 <code>64</code> 位还是 <code>32</code> 位系统上进行构建。</p>
 <div class="rule" id="r-const-eval.const-fn.outside-context"><a class="rule-link" href="#r-const-eval.const-fn.outside-context" title="const-eval.const-fn.outside-context"><span>[const-eval<wbr>.const-fn<wbr>.outside-context]</span></a>
 </div>
 
-<p>When a const function is called from outside a const context, it behaves the same as if it did not have the <code>const</code> qualifier.</p>
+<p>当在常量上下文之外调用常量函数时，它的行为与没有 <code>const</code> 限定符时相同。</p>
 <div class="rule" id="r-const-eval.const-fn.body-restriction"><a class="rule-link" href="#r-const-eval.const-fn.body-restriction" title="const-eval.const-fn.body-restriction"><span>[const-eval<wbr>.const-fn<wbr>.body-restriction]</span></a>
 </div>
 
-<p>The body of a const function may only use <a href="#constant-expressions">constant expressions</a>.</p>
+<p>常量函数的主体只能使用 <a href="#constant-expressions">常量表达式</a>。</p>
 <div class="rule" id="r-const-eval.const-fn.async"><a class="rule-link" href="#r-const-eval.const-fn.async" title="const-eval.const-fn.async"><span>[const-eval<wbr>.const-fn<wbr>.async]</span></a>
 </div>
 
-<p>Const functions are not allowed to be <a href="items/functions.html#async-functions">async</a>.</p>
+<p>常量函数不允许是 <a href="items/functions.html#async-functions">异步</a> 的。</p>
 <div class="rule" id="r-const-eval.const-fn.type-restrictions"><a class="rule-link" href="#r-const-eval.const-fn.type-restrictions" title="const-eval.const-fn.type-restrictions"><span>[const-eval<wbr>.const-fn<wbr>.type-restrictions]</span></a>
 </div>
 
-<p>The types of a const function’s parameters and return type are restricted to those that are compatible with a const context.</p>
-<!-- TODO: Define the type restrictions. -->
+<p>常量函数的参数类型和返回类型仅限于那些与常量上下文兼容的类型。</p>
+<!-- TODO: 定义类型限制。 -->
 
                     </main>
 

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-be189161.js"></script>
+        <script src="../toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-expr.struct"><a class="rule-link" href="#r-expr.struct" title="expr.struct"><span>[expr<wbr>.struct]</span></a>
 </div>
 
-<h1 id="struct-expressions"><a class="header" href="#struct-expressions">Struct expressions</a></h1>
+<h1 id="结构体表达式"><a class="header" href="#结构体表达式">结构体表达式</a></h1>
 <div class="rule" id="r-expr.struct.syntax"><a class="rule-link" href="#r-expr.struct.syntax" title="expr.struct.syntax"><span>[expr<wbr>.struct<wbr>.syntax]</span></a>
 </div>
 
@@ -455,9 +455,9 @@ Expression</text>
 <div class="rule" id="r-expr.struct.intro"><a class="rule-link" href="#r-expr.struct.intro" title="expr.struct.intro"><span>[expr<wbr>.struct<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>struct expression</em> creates a struct, enum, or union value.
-It consists of a path to a <a href="../items/structs.html">struct</a>, <a href="../items/enumerations.html">enum variant</a>, or <a href="../items/unions.html">union</a> item followed by the values for the fields of the item.</p>
-<p>The following are examples of struct expressions:</p>
+<p>一个  <em>结构体表达式</em>  创建一个结构体、枚举或联合体值。
+它由指向 <a href="../items/structs.html">结构体</a>、<a href="../items/enumerations.html">枚举变体</a> 或 <a href="../items/unions.html">联合体</a> 项 的路径，以及随后该 项 的字段值组成。</p>
+<p>以下是结构体表达式的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Point { x: f64, y: f64 }
@@ -473,20 +473,20 @@ Enum::Variant {};
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Tuple structs and tuple enum variants are typically instantiated using a <a href="call-expr.html#r-expr.call">call expression</a> referring to the <a href="../items/structs.html#r-items.struct.tuple">constructor in the value namespace</a>. These are distinct from a struct expression using curly braces referring to the constructor in the type namespace.</p>
+<p>元组结构体和元组枚举变体通常使用引用 <a href="../items/structs.html#r-items.struct.tuple">值命名空间中的构造函数</a> 的 <a href="call-expr.html#r-expr.call">调用表达式</a> 来实例化。这些不同于使用花括号引用类型命名空间中构造函数的结构体表达式。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Position(i32, i32, i32);
-Position(0, 0, 0);  // Typical way of creating a tuple struct.
-let c = Position;  // `c` is a function that takes 3 arguments.
-let pos = c(8, 6, 7);  // Creates a `Position` value.
+Position(0, 0, 0);  // 创建元组结构体的典型方式。
+let c = Position;  // `c` 是一个接受 3 个参数的函数。
+let pos = c(8, 6, 7);  // 创建一个 `Position` 值。
 
 enum Version { Triple(i32, i32, i32) };
 Version::Triple(0, 0, 0);
 let f = Version::Triple;
 let ver = f(8, 6, 7);
 <span class="boring">}</span></code></pre>
-<p>The last segment of the call path cannot refer to a type alias:</p>
+<p>调用路径的最后一段不能引用类型别名：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Tr { type T; }
@@ -495,18 +495,17 @@ impl&lt;T&gt; Tr for T { type T = T; }
 struct Tuple();
 enum Enum { Tuple() }
 
-// &lt;Unit as Tr&gt;::T(); // causes an error -- `::T` is a type, not a value
-&lt;Enum as Tr&gt;::T::Tuple(); // OK
+// &lt;Unit as Tr&gt;::T(); // 导致错误 —— `::T` 是一个类型，而不是一个值
+&lt;Enum as Tr&gt;::T::Tuple(); // 确定
 <span class="boring">}</span></code></pre>
 <hr>
-<p>Unit structs and unit enum variants are typically instantiated using a <a href="path-expr.html#r-expr.path">path expression</a> referring to the <a href="../items/structs.html#r-items.struct.unit">constant in the value namespace</a>.</p>
+<p>单元结构体和单元枚举变体通常使用引用 <a href="../items/structs.html#r-items.struct.unit">值命名空间中的常量</a> 的 <a href="path-expr.html#r-expr.path">路径表达式</a> 来实例化。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Gamma;
-// Gamma unit value, referring to the const in the value namespace.
+// Gamma 单元值，引用值命名空间中的常量。
 let a = Gamma;
-// Exact same value as `a`, but constructed using a struct expression
-// referring to the type namespace.
+// 与 `a` 完全相同的值，但是使用引用类型命名空间的结构体表达式构造的。
 let b = Gamma {};
 
 enum ColorSpace { Oklch }
@@ -519,68 +518,68 @@ let d = ColorSpace::Oklch {};
 <div class="rule" id="r-expr.struct.field"><a class="rule-link" href="#r-expr.struct.field" title="expr.struct.field"><span>[expr<wbr>.struct<wbr>.field]</span></a>
 </div>
 
-<h2 id="field-struct-expression"><a class="header" href="#field-struct-expression">Field struct expression</a></h2>
+<h2 id="带字段的结构体表达式"><a class="header" href="#带字段的结构体表达式">带字段的结构体表达式</a></h2>
 <div class="rule" id="r-expr.struct.field.intro"><a class="rule-link" href="#r-expr.struct.field.intro" title="expr.struct.field.intro"><span>[expr<wbr>.struct<wbr>.field<wbr>.intro]</span></a>
 </div>
 
-<p>A struct expression with fields enclosed in curly braces allows you to specify the value for each individual field in any order.
-The field name is separated from its value with a colon.</p>
+<p>带有花括号包围字段的结构体表达式允许你以任意顺序指定每个单独字段的值。
+字段名与其值之间用冒号分隔。</p>
 <div class="rule" id="r-expr.struct.field.union-constraint"><a class="rule-link" href="#r-expr.struct.field.union-constraint" title="expr.struct.field.union-constraint"><span>[expr<wbr>.struct<wbr>.field<wbr>.union-constraint]</span></a>
 </div>
 
-<p>A value of a <a href="../items/unions.html">union</a> type can only be created using this syntax, and it must specify exactly one field.</p>
+<p><a href="../items/unions.html">联合体</a> 类型的值只能使用此语法创建，并且必须指定恰好一个字段。</p>
 <div class="rule" id="r-expr.struct.update"><a class="rule-link" href="#r-expr.struct.update" title="expr.struct.update"><span>[expr<wbr>.struct<wbr>.update]</span></a>
 </div>
 
-<h2 id="functional-update-syntax"><a class="header" href="#functional-update-syntax">Functional update syntax</a></h2>
+<h2 id="函数式更新语法"><a class="header" href="#函数式更新语法">函数式更新语法</a></h2>
 <div class="rule" id="r-expr.struct.update.intro"><a class="rule-link" href="#r-expr.struct.update.intro" title="expr.struct.update.intro"><span>[expr<wbr>.struct<wbr>.update<wbr>.intro]</span></a>
 </div>
 
-<p>A struct expression that constructs a value of a struct type can terminate with the syntax <code>..</code> followed by an expression to denote a functional update.</p>
+<p>构造结构体类型值的结构体表达式可以以语法 <code>..</code> 后跟一个表达式结束，以表示函数式更新。</p>
 <div class="rule" id="r-expr.struct.update.base-same-type"><a class="rule-link" href="#r-expr.struct.update.base-same-type" title="expr.struct.update.base-same-type"><span>[expr<wbr>.struct<wbr>.update<wbr>.base-same-type]</span></a>
 </div>
 
-<p>The expression following <code>..</code> (the base) must have the same struct type as the new struct type being formed.</p>
+<p>在 <code>..</code> 之后的表达式（基准）必须具有与正在形成的新结构体类型相同的结构体类型。</p>
 <div class="rule" id="r-expr.struct.update.fields"><a class="rule-link" href="#r-expr.struct.update.fields" title="expr.struct.update.fields"><span>[expr<wbr>.struct<wbr>.update<wbr>.fields]</span></a>
 </div>
 
-<p>The entire expression uses the given values for the fields that were specified and moves or copies the remaining fields from the base expression.</p>
+<p>整个表达式使用指定的字段的给定值，并从基准表达式中移动 (move) 或复制 (copy) 剩余的字段。</p>
 <div class="rule" id="r-expr.struct.update.visibility-constraint"><a class="rule-link" href="#r-expr.struct.update.visibility-constraint" title="expr.struct.update.visibility-constraint"><span>[expr<wbr>.struct<wbr>.update<wbr>.visibility-constraint]</span></a>
 </div>
 
-<p>As with all struct expressions, all of the fields of the struct must be <a href="../visibility-and-privacy.html">visible</a>, even those not explicitly named.</p>
+<p>与所有结构体表达式一样，结构体的所有字段必须是 <a href="../visibility-and-privacy.html">可见</a> 的，即使是那些没有明确命名的字段。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Point3d { x: i32, y: i32, z: i32 }
 </span>let mut base = Point3d {x: 1, y: 2, z: 3};
 let y_ref = &amp;mut base.y;
-Point3d {y: 0, z: 10, .. base}; // OK, only base.x is accessed
+Point3d {y: 0, z: 10, .. base}; // 确定，仅访问了 base.x
 drop(y_ref);
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-expr.struct.brace-restricted-positions"><a class="rule-link" href="#r-expr.struct.brace-restricted-positions" title="expr.struct.brace-restricted-positions"><span>[expr<wbr>.struct<wbr>.brace-restricted-positions]</span></a>
 </div>
 
-<p>Struct expressions can’t be used directly in a <a href="loop-expr.html">loop</a> or <a href="if-expr.html#if-expressions">if</a> expression’s head, or in the <a href="../glossary.html#scrutinee">scrutinee</a> of an <a href="if-expr.html#if-let-patterns">if let</a> or <a href="match-expr.html">match</a> expression.
-However, struct expressions can be used in these situations if they are within another expression, for example inside <a href="grouped-expr.html">parentheses</a>.</p>
+<p>结构体表达式不能直接用于 <a href="loop-expr.html">loop</a> 或 <a href="if-expr.html#if-expressions">if</a> 表达式的头部，也不能用于 <a href="if-expr.html#if-let-patterns">if let</a> 或 <a href="match-expr.html">match</a> 表达式的 <a href="../glossary.html#scrutinee">审查对象</a>。
+然而，如果结构体表达式位于另一个表达式之内（例如在 <a href="grouped-expr.html">括号</a> 内），则可以用于这些情况。</p>
 <div class="rule" id="r-expr.struct.tuple-field"><a class="rule-link" href="#r-expr.struct.tuple-field" title="expr.struct.tuple-field"><span>[expr<wbr>.struct<wbr>.tuple-field]</span></a>
 </div>
 
-<p>The field names can be decimal integer values to specify indices for constructing tuple structs.
-This can be used with base structs to fill out the remaining indices not specified:</p>
+<p>字段名可以是十进制整数值，用于指定构造元组结构体的索引。
+这可以与基准结构体一起使用，以填充未指定的其余索引：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Color(u8, u8, u8);
-let c1 = Color(0, 0, 0);  // Typical way of creating a tuple struct.
-let c2 = Color{0: 255, 1: 127, 2: 0};  // Specifying fields by index.
-let c3 = Color{1: 0, ..c2};  // Fill out all other fields using a base struct.
+let c1 = Color(0, 0, 0);  // 创建元组结构体的典型方式。
+let c2 = Color{0: 255, 1: 127, 2: 0};  // 按索引指定字段。
+let c3 = Color{1: 0, ..c2};  // 使用基准结构体填充所有其他字段。
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-expr.struct.field.named"><a class="rule-link" href="#r-expr.struct.field.named" title="expr.struct.field.named"><span>[expr<wbr>.struct<wbr>.field<wbr>.named]</span></a>
 </div>
 
-<h3 id="struct-field-init-shorthand"><a class="header" href="#struct-field-init-shorthand">Struct field init shorthand</a></h3>
-<p>When initializing a data structure (struct, enum, union) with named (but not numbered) fields, it is allowed to write <code>fieldname</code> as a shorthand for <code>fieldname: fieldname</code>.
-This allows a compact syntax with less duplication.
-For example:</p>
+<h3 id="结构体字段初始化简写"><a class="header" href="#结构体字段初始化简写">结构体字段初始化简写</a></h3>
+<p>当初始化具有命名（但不是编号）字段的数据结构（结构体、枚举、联合体）时，允许将 <code>fieldname</code> 写为 <code>fieldname: fieldname</code> 的简写。
+这允许一种更紧凑、重复更少的语法。
+例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct Point3d { x: i32, y: i32, z: i32 }

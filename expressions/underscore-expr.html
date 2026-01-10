@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-be189161.js"></script>
+        <script src="../toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-expr.placeholder"><a class="rule-link" href="#r-expr.placeholder" title="expr.placeholder"><span>[expr<wbr>.placeholder]</span></a>
 </div>
 
-<h1 id="_-expressions"><a class="header" href="#_-expressions"><code>_</code> expressions</a></h1>
+<h1 id="_表达式"><a class="header" href="#_表达式"><code>_</code>表达式</a></h1>
 <div class="rule" id="r-expr.placeholder.syntax"><a class="rule-link" href="#r-expr.placeholder.syntax" title="expr.placeholder.syntax"><span>[expr<wbr>.placeholder<wbr>.syntax]</span></a>
 </div>
 
@@ -220,17 +220,16 @@ _</text>
 <div class="rule" id="r-expr.placeholder.intro"><a class="rule-link" href="#r-expr.placeholder.intro" title="expr.placeholder.intro"><span>[expr<wbr>.placeholder<wbr>.intro]</span></a>
 </div>
 
-<p>Underscore expressions, denoted with the symbol <code>_</code>, are used to signify a
-placeholder in a destructuring assignment.</p>
+<p>下划线表达式由符号 <code>_</code> 表示，用于在解构赋值中表示占位符。</p>
 <div class="rule" id="r-expr.placeholder.lhs-assignment-only"><a class="rule-link" href="#r-expr.placeholder.lhs-assignment-only" title="expr.placeholder.lhs-assignment-only"><span>[expr<wbr>.placeholder<wbr>.lhs-assignment-only]</span></a>
 </div>
 
-<p>They may only appear in the left-hand side of an assignment.</p>
+<p>它们只能出现在赋值语句的左侧。</p>
 <div class="rule" id="r-expr.placeholder.pattern"><a class="rule-link" href="#r-expr.placeholder.pattern" title="expr.placeholder.pattern"><span>[expr<wbr>.placeholder<wbr>.pattern]</span></a>
 </div>
 
-<p>Note that this is distinct from the <a href="../patterns.html#wildcard-pattern">wildcard pattern</a>.</p>
-<p>Examples of <code>_</code> expressions:</p>
+<p>请注意，这与 <a href="../patterns.html#wildcard-pattern">通配符模式</a> 不同。</p>
+<p><code>_</code> 表达式的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let p = (1, 2);
@@ -244,12 +243,12 @@ struct Position {
 
 Position { x: a, y: _ } = Position{ x: 2, y: 3 };
 
-// unused result, assignment to `_` used to declare intent and remove a warning
+// 未使用的结果，赋值给 `_` 用于声明意图并消除警告
 _ = 2 + 2;
-// triggers unused_must_use warning
+// 触发 unused_must_use 警告
 // 2 + 2;
 
-// equivalent technique using a wildcard pattern in a let-binding
+// 在 let 绑定中使用通配符模式的等效技术
 let _ = 2 + 2;
 <span class="boring">}</span></code></pre>
 

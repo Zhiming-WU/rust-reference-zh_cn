@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-be189161.js"></script>
+        <script src="toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-statement"><a class="rule-link" href="#r-statement" title="statement"><span>[statement]</span></a>
 </div>
 
-<h1 id="statements"><a class="header" href="#statements">Statements</a></h1>
+<h1 id="语句"><a class="header" href="#语句">语句</a></h1>
 <div class="rule" id="r-statement.syntax"><a class="rule-link" href="#r-statement.syntax" title="statement.syntax"><span>[statement<wbr>.syntax]</span></a>
 </div>
 
@@ -284,47 +284,43 @@ MacroInvocationSemi</text>
 <div class="rule" id="r-statement.intro"><a class="rule-link" href="#r-statement.intro" title="statement.intro"><span>[statement<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>statement</em> is a component of a <a href="expressions/block-expr.html">block</a>, which is in turn a component of an outer <a href="expressions.html">expression</a> or <a href="items/functions.html">function</a>.</p>
+<p><em>语句 (statement)</em> 是 <a href="expressions/block-expr.html">块</a> 的组成部分，而块又是外部 <a href="expressions.html">表达式</a> 或 <a href="items/functions.html">函数</a> 的组成部分。</p>
 <div class="rule" id="r-statement.kind"><a class="rule-link" href="#r-statement.kind" title="statement.kind"><span>[statement<wbr>.kind]</span></a>
 </div>
 
-<p>Rust has two kinds of statement: <a href="#declaration-statements">declaration statements</a> and <a href="#expression-statements">expression statements</a>.</p>
+<p>Rust 有两种语句： <a href="#declaration-statements">声明语句</a> 和 <a href="#expression-statements">表达式语句</a>。</p>
 <div class="rule" id="r-statement.decl"><a class="rule-link" href="#r-statement.decl" title="statement.decl"><span>[statement<wbr>.decl]</span></a>
 </div>
 
-<h2 id="declaration-statements"><a class="header" href="#declaration-statements">Declaration statements</a></h2>
-<p>A <em>declaration statement</em> is one that introduces one or more <em>names</em> into the enclosing statement block.
-The declared names may denote new variables or new <a href="items.html">items</a>.</p>
-<p>The two kinds of declaration statements are item declarations and <code>let</code> statements.</p>
+<h2 id="声明语句"><a class="header" href="#声明语句">声明语句</a></h2>
+<p><em>声明语句</em> 是指在封闭的语句块中引入一个或多个 <em>名称</em> 的语句。声明的名称可能表示新变量或新 <a href="items.html">项</a>。</p>
+<p>两种声明语句分别是项声明和 <code>let</code> 语句。</p>
 <div class="rule" id="r-statement.item"><a class="rule-link" href="#r-statement.item" title="statement.item"><span>[statement<wbr>.item]</span></a>
 </div>
 
-<h3 id="item-declarations"><a class="header" href="#item-declarations">Item declarations</a></h3>
+<h3 id="项声明"><a class="header" href="#项声明">项声明</a></h3>
 <div class="rule" id="r-statement.item.intro"><a class="rule-link" href="#r-statement.item.intro" title="statement.item.intro"><span>[statement<wbr>.item<wbr>.intro]</span></a>
 </div>
 
-<p>An <em>item declaration statement</em> has a syntactic form identical to an <a href="items.html">item declaration</a> within a <a href="items/modules.html">module</a>.</p>
+<p><em>项声明语句</em> 的 语法格式 与 <a href="items/modules.html">模块</a> 中的 <a href="items.html">项声明</a> 相同。</p>
 <div class="rule" id="r-statement.item.scope"><a class="rule-link" href="#r-statement.item.scope" title="statement.item.scope"><span>[statement<wbr>.item<wbr>.scope]</span></a>
 </div>
 
-<p>Declaring an item within a statement block restricts its <a href="names/scopes.html">scope</a> to the block containing the statement.
-The item is not given a <a href="paths.html#canonical-paths">canonical path</a> nor are any sub-items it may declare.</p>
+<p>在语句块中声明项会将其 <a href="names/scopes.html">作用域</a> 限制在包含该语句的块中。该项及其可能声明的任何子项都不会被赋予 <a href="paths.html#canonical-paths">规范路径</a>。</p>
 <div class="rule" id="r-statement.item.associated-scope"><a class="rule-link" href="#r-statement.item.associated-scope" title="statement.item.associated-scope"><span>[statement<wbr>.item<wbr>.associated-scope]</span></a>
 </div>
 
-<p>The exception to this is that associated items defined by <a href="items/implementations.html">implementations</a> are still accessible in outer scopes as long as the item and, if applicable, trait are accessible.
-It is otherwise identical in meaning to declaring the item inside a module.</p>
+<p>此规则的例外是，只要项以及（如果适用） 特型 是可访问的，由 <a href="items/implementations.html">实现</a> 定义的关联项在外部作用域中仍然是可访问的。在其他方面的含义与在模块内部声明该项相同。</p>
 <div class="rule" id="r-statement.item.outer-generics"><a class="rule-link" href="#r-statement.item.outer-generics" title="statement.item.outer-generics"><span>[statement<wbr>.item<wbr>.outer-generics]</span></a>
 </div>
 
-<p>There is no implicit capture of the containing function’s generic parameters, parameters, and local variables.
-For example, <code>inner</code> may not access <code>outer_var</code>.</p>
+<p>不会隐式捕获包含函数的 泛型 参数、参数和局部变量。例如， <code>inner</code> 无法访问 <code>outer_var</code>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn outer() {
   let outer_var = true;
 
-  fn inner() { /* outer_var is not in scope here */ }
+  fn inner() { /* outer_var 在此处不在作用域内 */ }
 
   inner();
 }
@@ -332,7 +328,7 @@ For example, <code>inner</code> may not access <code>outer_var</code>.</p>
 <div class="rule" id="r-statement.let"><a class="rule-link" href="#r-statement.let" title="statement.let"><span>[statement<wbr>.let]</span></a>
 </div>
 
-<h3 id="let-statements"><a class="header" href="#let-statements"><code>let</code> statements</a></h3>
+<h3 id="let语句"><a class="header" href="#let语句"><code>let</code>语句</a></h3>
 <div class="rule" id="r-statement.let.syntax"><a class="rule-link" href="#r-statement.let.syntax" title="statement.let.syntax"><span>[statement<wbr>.let<wbr>.syntax]</span></a>
 </div>
 
@@ -486,41 +482,40 @@ BlockExpression</text>
 <div class="rule" id="r-statement.let.intro"><a class="rule-link" href="#r-statement.let.intro" title="statement.let.intro"><span>[statement<wbr>.let<wbr>.intro]</span></a>
 </div>
 
-<p>A <em><code>let</code> statement</em> introduces a new set of <a href="variables.html">variables</a>, given by a <a href="patterns.html">pattern</a>.
-The pattern is followed optionally by a type annotation and then either ends, or is followed by an initializer expression plus an optional <code>else</code> block.</p>
+<ul>
+<li><code>let</code> 语句* 通过 <a href="patterns.html">模式</a> 引入一组新 <a href="variables.html">变量</a>。模式后面可以跟一个可选的类型标注，然后要么结束，要么后面跟一个初始化表达式以及一个可选的 <code>else</code> 块。</li>
+</ul>
 <div class="rule" id="r-statement.let.inference"><a class="rule-link" href="#r-statement.let.inference" title="statement.let.inference"><span>[statement<wbr>.let<wbr>.inference]</span></a>
 </div>
 
-<p>When no type annotation is given, the compiler will infer the type, or signal an error if insufficient type information is available for definite inference.</p>
+<p>如果未给出类型标注，编译器将推断类型；如果没有足够的类型信息进行明确推断，则报错。</p>
 <div class="rule" id="r-statement.let.scope"><a class="rule-link" href="#r-statement.let.scope" title="statement.let.scope"><span>[statement<wbr>.let<wbr>.scope]</span></a>
 </div>
 
-<p>Any variables introduced by a variable declaration are visible from the point of declaration until the end of the enclosing block scope, except when they are shadowed by another variable declaration.</p>
+<p>由变量声明引入的任何变量从声明点到封闭块作用域结束都是可见的，除非它们被另一个变量声明遮蔽。</p>
 <div class="rule" id="r-statement.let.constraint"><a class="rule-link" href="#r-statement.let.constraint" title="statement.let.constraint"><span>[statement<wbr>.let<wbr>.constraint]</span></a>
 </div>
 
-<p>If an <code>else</code> block is not present, the pattern must be irrefutable.
-If an <code>else</code> block is present, the pattern may be refutable.</p>
+<p>如果没有 <code>else</code> 块，模式必须是不可驳回的。如果有 <code>else</code> 块，模式可以是可驳回的。</p>
 <div class="rule" id="r-statement.let.behavior"><a class="rule-link" href="#r-statement.let.behavior" title="statement.let.behavior"><span>[statement<wbr>.let<wbr>.behavior]</span></a>
 </div>
 
-<p>If the pattern does not match (this requires it to be refutable), the <code>else</code> block is executed.
-The <code>else</code> block must always diverge (evaluate to the <a href="types/never.html">never type</a>).</p>
+<p>如果模式不匹配（这要求它是可驳回的），则执行 <code>else</code> 块。 <code>else</code> 块必须始终发散（求值为 <a href="types/never.html">never 类型</a>）。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>let (mut v, w) = (vec![1, 2, 3], 42); // The bindings may be mut or const
-let Some(t) = v.pop() else { // Refutable patterns require an else block
-    panic!(); // The else block must diverge
+</span>let (mut v, w) = (vec![1, 2, 3], 42); // 绑定可以是 mut 或 const
+let Some(t) = v.pop() else { // 可驳回模式需要 else 块
+    panic!(); // else 块必须发散
 };
-let [u, v] = [v[0], v[1]] else { // This pattern is irrefutable, so the compiler
-                                 // will lint as the else block is redundant.
+let [u, v] = [v[0], v[1]] else { // 此模式是不可驳回的，因此编译器
+                                 // 会发出 lint，因为 else 块是多余的。
     panic!();
 };
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-statement.expr"><a class="rule-link" href="#r-statement.expr" title="statement.expr"><span>[statement<wbr>.expr]</span></a>
 </div>
 
-<h2 id="expression-statements"><a class="header" href="#expression-statements">Expression statements</a></h2>
+<h2 id="表达式语句"><a class="header" href="#表达式语句">表达式语句</a></h2>
 <div class="rule" id="r-statement.expr.syntax"><a class="rule-link" href="#r-statement.expr.syntax" title="statement.expr.syntax"><span>[statement<wbr>.expr<wbr>.syntax]</span></a>
 </div>
 
@@ -592,39 +587,36 @@ ExpressionWithBlock</text>
 <div class="rule" id="r-statement.expr.intro"><a class="rule-link" href="#r-statement.expr.intro" title="statement.expr.intro"><span>[statement<wbr>.expr<wbr>.intro]</span></a>
 </div>
 
-<p>An <em>expression statement</em> is one that evaluates an <a href="expressions.html">expression</a> and ignores its result.
-As a rule, an expression statement’s purpose is to trigger the effects of evaluating its expression.</p>
+<p><em>表达式语句</em> 是指对 <a href="expressions.html">表达式</a> 求值并忽略其结果的语句。通常，表达式语句的目的是触发其表达式求值的副作用。</p>
 <div class="rule" id="r-statement.expr.restriction-semicolon"><a class="rule-link" href="#r-statement.expr.restriction-semicolon" title="statement.expr.restriction-semicolon"><span>[statement<wbr>.expr<wbr>.restriction-semicolon]</span></a>
 </div>
 
-<p>An expression that consists of only a <a href="expressions/block-expr.html">block expression</a> or control flow expression, if used in a context where a statement is permitted, can omit the trailing semicolon.
-This can cause an ambiguity between it being parsed as a standalone statement and as a part of another expression;
-in this case, it is parsed as a statement.</p>
+<p>在允许使用语句的上下文中，仅由 <a href="expressions/block-expr.html">块表达式</a> 或控制流表达式组成的表达式可以省略末尾的分号。这可能会导致将其解析为独立语句还是解析为另一个表达式的一部分之间产生歧义；在这种情况下，它被解析为语句。</p>
 <div class="rule" id="r-statement.expr.constraint-block"><a class="rule-link" href="#r-statement.expr.constraint-block" title="statement.expr.constraint-block"><span>[statement<wbr>.expr<wbr>.constraint-block]</span></a>
 </div>
 
-<p>The type of <a href="expressions.html#grammar-ExpressionWithBlock">ExpressionWithBlock</a> expressions when used as statements must be the unit type.</p>
+<p>当 <a href="expressions.html#grammar-ExpressionWithBlock">ExpressionWithBlock</a> 表达式用作语句时，其类型必须是单元类型。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let mut v = vec![1, 2, 3];
-</span>v.pop();          // Ignore the element returned from pop
+</span>v.pop();          // 忽略 pop 返回的元素
 if v.is_empty() {
     v.push(5);
 } else {
     v.remove(0);
-}                 // Semicolon can be omitted.
-[1];              // Separate expression statement, not an indexing expression.
+}                 // 分号可以省略。
+[1];              // 独立的表达式语句，不是索引表达式。
 <span class="boring">}</span></code></pre>
-<p>When the trailing semicolon is omitted, the result must be type <code>()</code>.</p>
+<p>当省略末尾分号时，结果必须是类型 <code>()</code>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// bad: the block's type is i32, not ()
+</span>// 错误：块的类型是 i32，而不是 ()
 // Error: expected `()` because of default return type
 // if true {
 //   1
 // }
 
-// good: the block's type is i32
+// 正确：块的类型是 i32
 if true {
   1
 } else {
@@ -634,9 +626,8 @@ if true {
 <div class="rule" id="r-statement.attribute"><a class="rule-link" href="#r-statement.attribute" title="statement.attribute"><span>[statement<wbr>.attribute]</span></a>
 </div>
 
-<h2 id="attributes-on-statements"><a class="header" href="#attributes-on-statements">Attributes on statements</a></h2>
-<p>Statements accept <a href="attributes.html">outer attributes</a>.
-The attributes that have meaning on a statement are <a href="conditional-compilation.html"><code>cfg</code></a>, and <a href="attributes/diagnostics.html#lint-check-attributes">the lint check attributes</a>.</p>
+<h2 id="语句上的属性"><a class="header" href="#语句上的属性">语句上的属性</a></h2>
+<p>语句接受 <a href="attributes.html">外部属性</a>。在语句上有意义的属性是 <a href="conditional-compilation.html"><code>cfg</code></a> 和 <a href="attributes/diagnostics.html#lint-check-attributes">lint 检查属性</a>。</p>
 
                     </main>
 

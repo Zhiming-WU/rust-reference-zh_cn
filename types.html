@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-be189161.js"></script>
+        <script src="toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,73 +181,70 @@
                         <div class="rule" id="r-type"><a class="rule-link" href="#r-type" title="type"><span>[type]</span></a>
 </div>
 
-<h1 id="types"><a class="header" href="#types">Types</a></h1>
+<h1 id="类型"><a class="header" href="#类型">类型</a></h1>
 <div class="rule" id="r-type.intro"><a class="rule-link" href="#r-type.intro" title="type.intro"><span>[type<wbr>.intro]</span></a>
 </div>
 
-<p>Every variable, item, and value in a Rust program has a type. The <em>type</em> of a
-<em>value</em> defines the interpretation of the memory holding it and the operations
-that may be performed on the value.</p>
+<p>Rust 程序中的每个变量、 项 和值都有一个类型。 <em>值</em> 的 <em>类型</em> 定义了对持有它的内存的解释以及可以对该值执行的操作。</p>
 <div class="rule" id="r-type.builtin"><a class="rule-link" href="#r-type.builtin" title="type.builtin"><span>[type<wbr>.builtin]</span></a>
 </div>
 
-<p>Built-in types are tightly integrated into the language, in nontrivial ways
-that are not possible to emulate in user-defined types.</p>
+<p>内置类型紧密地集成到语言中，其方式非常复杂，无法在用户定义类型中模拟。</p>
 <div class="rule" id="r-type.user-defined"><a class="rule-link" href="#r-type.user-defined" title="type.user-defined"><span>[type<wbr>.user-defined]</span></a>
 </div>
 
-<p>User-defined types have limited capabilities.</p>
+<p>用户定义类型的能力有限。</p>
 <div class="rule" id="r-type.kinds"><a class="rule-link" href="#r-type.kinds" title="type.kinds"><span>[type<wbr>.kinds]</span></a>
 </div>
 
-<p>The list of types is:</p>
+<p>类型列表如下：</p>
 <ul>
-<li>Primitive types:
+<li>原语类型：
 <ul>
-<li><a href="types/boolean.html">Boolean</a> — <code>bool</code></li>
-<li><a href="types/numeric.html">Numeric</a> — integer and float</li>
-<li><a href="types/textual.html">Textual</a> — <code>char</code> and <code>str</code></li>
-<li><a href="types/never.html">Never</a> — <code>!</code> — a type with no values</li>
+<li><a href="types/boolean.html">布尔型</a> — <code>bool</code></li>
+<li><a href="types/numeric.html">数值型</a> — 整数和浮点数</li>
+<li><a href="types/textual.html">文本型</a> — <code>char</code> 和 <code>str</code></li>
+<li><a href="types/never.html">Never</a> — <code>!</code> — 一种没有值的类型</li>
 </ul>
 </li>
-<li>Sequence types:
+<li>序列类型：
 <ul>
-<li><a href="types/tuple.html">Tuple</a></li>
-<li><a href="types/array.html">Array</a></li>
-<li><a href="types/slice.html">Slice</a></li>
+<li><a href="types/tuple.html">元组</a></li>
+<li><a href="types/array.html">数组</a></li>
+<li><a href="types/slice.html">切片</a></li>
 </ul>
 </li>
-<li>User-defined types:
+<li>用户定义类型：
 <ul>
-<li><a href="types/struct.html">Struct</a></li>
-<li><a href="types/enum.html">Enum</a></li>
-<li><a href="types/union.html">Union</a></li>
+<li><a href="types/struct.html">结构体</a></li>
+<li><a href="types/enum.html">枚举</a></li>
+<li><a href="types/union.html">联合体</a></li>
 </ul>
 </li>
-<li>Function types:
+<li>函数类型：
 <ul>
-<li><a href="types/function-item.html">Functions</a></li>
-<li><a href="types/closure.html">Closures</a></li>
+<li><a href="types/function-item.html">函数</a></li>
+<li><a href="types/closure.html">闭包</a></li>
 </ul>
 </li>
-<li>Pointer types:
+<li>指针类型：
 <ul>
-<li><a href="types/pointer.html#shared-references-">References</a></li>
-<li><a href="types/pointer.html#raw-pointers-const-and-mut">Raw pointers</a></li>
-<li><a href="types/function-pointer.html">Function pointers</a></li>
+<li><a href="types/pointer.html#shared-references-">引用</a></li>
+<li><a href="types/pointer.html#raw-pointers-const-and-mut">裸指针</a></li>
+<li><a href="types/function-pointer.html">函数指针</a></li>
 </ul>
 </li>
-<li>Trait types:
+<li>特型类型：
 <ul>
-<li><a href="types/trait-object.html">Trait objects</a></li>
-<li><a href="types/impl-trait.html">Impl trait</a></li>
+<li><a href="types/trait-object.html">特型对象</a></li>
+<li><a href="types/impl-trait.html">impl 特型</a></li>
 </ul>
 </li>
 </ul>
 <div class="rule" id="r-type.name"><a class="rule-link" href="#r-type.name" title="type.name"><span>[type<wbr>.name]</span></a>
 </div>
 
-<h2 id="type-expressions"><a class="header" href="#type-expressions">Type expressions</a></h2>
+<h2 id="类型表达式"><a class="header" href="#类型表达式">类型表达式</a></h2>
 <div class="rule" id="r-type.name.syntax"><a class="rule-link" href="#r-type.name.syntax" title="type.name.syntax"><span>[type<wbr>.name<wbr>.syntax]</span></a>
 </div>
 
@@ -484,24 +481,23 @@ MacroInvocation</text>
 <div class="rule" id="r-type.name.intro"><a class="rule-link" href="#r-type.name.intro" title="type.name.intro"><span>[type<wbr>.name<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>type expression</em> as defined in the <a href="types.html#r-type">Type</a> grammar rule above is the syntax
-for referring to a type. It may refer to:</p>
+<p>上面 <a href="types.html#r-type">类型</a> 语法格式规则中定义的 <em>类型表达式</em> 是引用类型的语法格式。它可以引用：</p>
 <div class="rule" id="r-type.name.sequence"><a class="rule-link" href="#r-type.name.sequence" title="type.name.sequence"><span>[type<wbr>.name<wbr>.sequence]</span></a>
 </div>
 
 <ul>
-<li>Sequence types (<a href="types/tuple.html">tuple</a>, <a href="types/array.html">array</a>, <a href="types/slice.html">slice</a>).</li>
+<li>序列类型（ <a href="types/tuple.html">元组</a>、 <a href="types/array.html">数组</a>、 <a href="types/slice.html">切片</a> ）。</li>
 </ul>
 <div class="rule" id="r-type.name.path"><a class="rule-link" href="#r-type.name.path" title="type.name.path"><span>[type<wbr>.name<wbr>.path]</span></a>
 </div>
 
 <ul>
-<li><a href="paths.html#paths-in-types">Type paths</a> which can reference:
+<li><a href="paths.html#paths-in-types">类型路径</a> 可以引用：
 <ul>
-<li>Primitive types (<a href="types/boolean.html">boolean</a>, <a href="types/numeric.html">numeric</a>, <a href="types/textual.html">textual</a>).</li>
-<li>Paths to an <a href="items.html">item</a> (<a href="types/struct.html">struct</a>, <a href="types/enum.html">enum</a>, <a href="types/union.html">union</a>, <a href="items/type-aliases.html">type alias</a>, <a href="types/trait-object.html">trait</a>).</li>
-<li><a href="paths.html#self-1"><code>Self</code> path</a> where <code>Self</code> is the implementing type.</li>
-<li>Generic <a href="types/parameters.html">type parameters</a>.</li>
+<li>原语类型（ <a href="types/boolean.html">布尔型</a>、 <a href="types/numeric.html">数值型</a>、 <a href="types/textual.html">文本型</a> ）。</li>
+<li>指向 <a href="items.html">项</a> 的路径（ <a href="types/struct.html">结构体</a>、 <a href="types/enum.html">枚举</a>、 <a href="types/union.html">联合体</a>、 <a href="items/type-aliases.html">类型别名</a>、 <a href="types/trait-object.html">特型</a> ）。</li>
+<li><a href="paths.html#self-1"><code>Self</code> 路径</a> ，其中 <code>Self</code> 是实现类型。</li>
+<li>泛型 <a href="types/parameters.html">类型参数</a> 。</li>
 </ul>
 </li>
 </ul>
@@ -509,42 +505,42 @@ for referring to a type. It may refer to:</p>
 </div>
 
 <ul>
-<li>Pointer types (<a href="types/pointer.html#shared-references-">reference</a>, <a href="types/pointer.html#raw-pointers-const-and-mut">raw pointer</a>, <a href="types/function-pointer.html">function pointer</a>).</li>
+<li>指针类型（ <a href="types/pointer.html#shared-references-">引用</a>、 <a href="types/pointer.html#raw-pointers-const-and-mut">裸指针</a>、 <a href="types/function-pointer.html">函数指针</a> ）。</li>
 </ul>
 <div class="rule" id="r-type.name.inference"><a class="rule-link" href="#r-type.name.inference" title="type.name.inference"><span>[type<wbr>.name<wbr>.inference]</span></a>
 </div>
 
 <ul>
-<li>The <a href="types/inferred.html">inferred type</a> which asks the compiler to determine the type.</li>
+<li><a href="types/inferred.html">推断类型</a> ，它要求编译器确定类型。</li>
 </ul>
 <div class="rule" id="r-type.name.grouped"><a class="rule-link" href="#r-type.name.grouped" title="type.name.grouped"><span>[type<wbr>.name<wbr>.grouped]</span></a>
 </div>
 
 <ul>
-<li><a href="#parenthesized-types">Parentheses</a> which are used for disambiguation.</li>
+<li>用于消除歧义的 <a href="#parenthesized-types">括号</a> 。</li>
 </ul>
 <div class="rule" id="r-type.name.trait"><a class="rule-link" href="#r-type.name.trait" title="type.name.trait"><span>[type<wbr>.name<wbr>.trait]</span></a>
 </div>
 
 <ul>
-<li>Trait types: <a href="types/trait-object.html">Trait objects</a> and <a href="types/impl-trait.html">impl trait</a>.</li>
+<li>特型类型： <a href="types/trait-object.html">特型对象</a> 和 <a href="types/impl-trait.html">impl 特型</a> 。</li>
 </ul>
 <div class="rule" id="r-type.name.never"><a class="rule-link" href="#r-type.name.never" title="type.name.never"><span>[type<wbr>.name<wbr>.never]</span></a>
 </div>
 
 <ul>
-<li>The <a href="types/never.html">never</a> type.</li>
+<li><a href="types/never.html">never</a> 类型。</li>
 </ul>
 <div class="rule" id="r-type.name.macro-expansion"><a class="rule-link" href="#r-type.name.macro-expansion" title="type.name.macro-expansion"><span>[type<wbr>.name<wbr>.macro-expansion]</span></a>
 </div>
 
 <ul>
-<li><a href="macros.html">Macros</a> which expand to a type expression.</li>
+<li>展开为类型表达式的 <a href="macros.html">宏</a> 。</li>
 </ul>
 <div class="rule" id="r-type.name.parenthesized"><a class="rule-link" href="#r-type.name.parenthesized" title="type.name.parenthesized"><span>[type<wbr>.name<wbr>.parenthesized]</span></a>
 </div>
 
-<h3 id="parenthesized-types"><a class="header" href="#parenthesized-types">Parenthesized types</a></h3>
+<h3 id="括号类型"><a class="header" href="#括号类型">括号类型</a></h3>
 <div class="rule" id="r-type.name.parenthesized.syntax"><a class="rule-link" href="#r-type.name.parenthesized.syntax" title="type.name.parenthesized.syntax"><span>[type<wbr>.name<wbr>.parenthesized<wbr>.syntax]</span></a>
 </div>
 
@@ -599,12 +595,7 @@ Type</text>
 <div class="rule" id="r-type.name.parenthesized.intro"><a class="rule-link" href="#r-type.name.parenthesized.intro" title="type.name.parenthesized.intro"><span>[type<wbr>.name<wbr>.parenthesized<wbr>.intro]</span></a>
 </div>
 
-<p>In some situations the combination of types may be ambiguous. Use parentheses
-around a type to avoid ambiguity. For example, the <code>+</code> operator for <a href="trait-bounds.html">type
-boundaries</a> within a <a href="types/pointer.html#shared-references-">reference type</a> is unclear where the
-boundary applies, so the use of parentheses is required. Grammar rules that
-require this disambiguation use the <a href="types.html#grammar-TypeNoBounds">TypeNoBounds</a> rule instead of
-<a href="types.html#grammar-Type">Type</a>.</p>
+<p>在某些情况下，类型的组合可能会产生歧义。在类型周围使用括号以避免歧义。例如， <a href="types/pointer.html#shared-references-">引用类型</a> 中用于 <a href="trait-bounds.html">特型边界</a> 的 <code>+</code> 运算符不清楚边界应用于何处，因此需要使用括号。需要这种消除歧义的语法格式规则使用 <a href="types.html#grammar-TypeNoBounds">TypeNoBounds</a> 规则而不是 <a href="types.html#grammar-Type">类型</a> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use std::any::Any;
@@ -613,25 +604,20 @@ require this disambiguation use the <a href="types.html#grammar-TypeNoBounds">Ty
 <div class="rule" id="r-type.recursive"><a class="rule-link" href="#r-type.recursive" title="type.recursive"><span>[type<wbr>.recursive]</span></a>
 </div>
 
-<h2 id="recursive-types"><a class="header" href="#recursive-types">Recursive types</a></h2>
+<h2 id="递归类型"><a class="header" href="#递归类型">递归类型</a></h2>
 <div class="rule" id="r-type.recursive.intro"><a class="rule-link" href="#r-type.recursive.intro" title="type.recursive.intro"><span>[type<wbr>.recursive<wbr>.intro]</span></a>
 </div>
 
-<p>Nominal types — <a href="types/struct.html">structs</a>, <a href="types/enum.html">enumerations</a>, and <a href="types/union.html">unions</a> — may be
-recursive. That is, each <code>enum</code> variant or <code>struct</code> or <code>union</code> field may
-refer, directly or indirectly, to the enclosing <code>enum</code> or <code>struct</code> type
-itself.</p>
+<p>标称类型 —— <a href="types/struct.html">结构体</a> 、 <a href="types/enum.html">枚举</a> 和 <a href="types/union.html">联合体</a> —— 可能是递归的。也就是说，每个 <code>enum</code> 变体或 <code>struct</code> 或 <code>union</code> 字段可以直接或间接地引用包围它的 <code>enum</code> 或 <code>struct</code> 类型本身。</p>
 <div class="rule" id="r-type.recursive.constraint"><a class="rule-link" href="#r-type.recursive.constraint" title="type.recursive.constraint"><span>[type<wbr>.recursive<wbr>.constraint]</span></a>
 </div>
 
-<p>Such recursion has restrictions:</p>
+<p>这种递归有限制：</p>
 <ul>
-<li>Recursive types must include a nominal type in the recursion (not mere <a href="items/type-aliases.html">type
-aliases</a>, or other structural types such as <a href="types/array.html">arrays</a> or <a href="types/tuple.html">tuples</a>). So <code>type Rec = &amp;'static [Rec]</code> is not allowed.</li>
-<li>The size of a recursive type must be finite; in other words the recursive
-fields of the type must be <a href="types/pointer.html">pointer types</a>.</li>
+<li>递归类型必须在递归中包含一个标称类型（不只是 <a href="items/type-aliases.html">类型别名</a> ，或者其他结构化类型，如 <a href="types/array.html">数组</a> 或 <a href="types/tuple.html">元组</a> ）。因此 <code>type Rec = &amp;'static [Rec]</code> 是不允许的。</li>
+<li>递归类型的大小必须是有限的；换句话说，类型的递归字段必须是 <a href="types/pointer.html">指针类型</a> 。</li>
 </ul>
-<p>An example of a <em>recursive</em> type and its use:</p>
+<p>一个 <em>递归</em> 类型及其使用的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum List&lt;T&gt; {

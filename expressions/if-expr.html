@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-be189161.js"></script>
+        <script src="../toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-expr.if"><a class="rule-link" href="#r-expr.if" title="expr.if"><span>[expr<wbr>.if]</span></a>
 </div>
 
-<h1 id="if-expressions"><a class="header" href="#if-expressions"><code>if</code> expressions</a></h1>
+<h1 id="if表达式"><a class="header" href="#if表达式"><code>if</code>表达式</a></h1>
 <div class="rule" id="r-expr.if.syntax"><a class="rule-link" href="#r-expr.if.syntax" title="expr.if.syntax"><span>[expr<wbr>.if<wbr>.syntax]</span></a>
 </div>
 
@@ -549,34 +549,31 @@ CompoundAssignmentExpression</text>
 <div class="rule" id="r-expr.if.intro"><a class="rule-link" href="#r-expr.if.intro" title="expr.if.intro"><span>[expr<wbr>.if<wbr>.intro]</span></a>
 </div>
 
-<p>The syntax of an <code>if</code> expression is a sequence of one or more condition operands separated by <code>&amp;&amp;</code>,
-followed by a consequent block, any number of <code>else if</code> conditions and blocks, and an optional trailing <code>else</code> block.</p>
+<p><code>if</code> 表达式的 语法格式 是一个或多个由 <code>&amp;&amp;</code> 分隔的条件操作数序列，后跟一个结果块、任意数量的 <code>else if</code> 条件和块，以及一个可选的尾随 <code>else</code> 块。</p>
 <div class="rule" id="r-expr.if.condition"><a class="rule-link" href="#r-expr.if.condition" title="expr.if.condition"><span>[expr<wbr>.if<wbr>.condition]</span></a>
 </div>
 
-<p>Condition operands must be either an <a href="../expressions.html#grammar-Expression">Expression</a> with a <a href="../types/boolean.html">boolean type</a> or a conditional <code>let</code> match.</p>
+<p>条件操作数必须是具有 <a href="../types/boolean.html">布尔类型</a> 的 <a href="../expressions.html#grammar-Expression">表达式</a> 或条件 <code>let</code> 匹配。</p>
 <div class="rule" id="r-expr.if.condition-true"><a class="rule-link" href="#r-expr.if.condition-true" title="expr.if.condition-true"><span>[expr<wbr>.if<wbr>.condition-true]</span></a>
 </div>
 
-<p>If all of the condition operands evaluate to <code>true</code> and all of the <code>let</code> patterns successfully match their <a href="../glossary.html#scrutinee">scrutinee</a>s,
-the consequent block is executed and any subsequent <code>else if</code> or <code>else</code> block is skipped.</p>
+<p>如果所有条件操作数求值结果均为 <code>true</code>，且所有 <code>let</code> 模式都成功匹配其 <a href="../glossary.html#scrutinee">待匹配值</a>，则执行结果块，并跳过任何后续的 <code>else if</code> 或 <code>else</code> 块。</p>
 <div class="rule" id="r-expr.if.else-if"><a class="rule-link" href="#r-expr.if.else-if" title="expr.if.else-if"><span>[expr<wbr>.if<wbr>.else-if]</span></a>
 </div>
 
-<p>If any condition operand evaluates to <code>false</code> or any <code>let</code> pattern does not match its scrutinee,
-the consequent block is skipped and any subsequent <code>else if</code> condition is evaluated.</p>
+<p>如果任何条件操作数求值为 <code>false</code> 或任何 <code>let</code> 模式未匹配其待匹配值，则跳过结果块，并对任何后续的 <code>else if</code> 条件求值。</p>
 <div class="rule" id="r-expr.if.else"><a class="rule-link" href="#r-expr.if.else" title="expr.if.else"><span>[expr<wbr>.if<wbr>.else]</span></a>
 </div>
 
-<p>If all <code>if</code> and <code>else if</code> conditions evaluate to <code>false</code> then any <code>else</code> block is executed.</p>
+<p>如果所有 <code>if</code> 和 <code>else if</code> 条件求值结果均为 <code>false</code> ，则执行任何 <code>else</code> 块。</p>
 <div class="rule" id="r-expr.if.result"><a class="rule-link" href="#r-expr.if.result" title="expr.if.result"><span>[expr<wbr>.if<wbr>.result]</span></a>
 </div>
 
-<p>An <code>if</code> expression evaluates to the same value as the executed block, or <code>()</code> if no block is evaluated.</p>
+<p>一个 <code>if</code> 表达式求值为所执行块的相同值，如果没有块被执行，则求值为 <code>()</code>。</p>
 <div class="rule" id="r-expr.if.type"><a class="rule-link" href="#r-expr.if.type" title="expr.if.type"><span>[expr<wbr>.if<wbr>.type]</span></a>
 </div>
 
-<p>An <code>if</code> expression must have the same type in all situations.</p>
+<p>在一个 <code>if</code> 表达式中，所有情况下的类型必须相同。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let x = 3;
@@ -588,7 +585,7 @@ the consequent block is skipped and any subsequent <code>else if</code> conditio
     println!("x is something else");
 }
 
-// `if` can be used as an expression.
+// `if` 可以用作表达式。
 let y = if 12 * 15 &gt; 150 {
     "Bigger"
 } else {
@@ -599,25 +596,25 @@ assert_eq!(y, "Bigger");
 <div class="rule" id="r-expr.if.let"><a class="rule-link" href="#r-expr.if.let" title="expr.if.let"><span>[expr<wbr>.if<wbr>.let]</span></a>
 </div>
 
-<h2 id="if-let-patterns"><a class="header" href="#if-let-patterns"><code>if let</code> patterns</a></h2>
+<h2 id="if-let模式"><a class="header" href="#if-let模式"><code>if let</code>模式</a></h2>
 <div class="rule" id="r-expr.if.let.intro"><a class="rule-link" href="#r-expr.if.let.intro" title="expr.if.let.intro"><span>[expr<wbr>.if<wbr>.let<wbr>.intro]</span></a>
 </div>
 
-<p><code>let</code> patterns in an <code>if</code> condition allow binding new variables into scope when the pattern matches successfully.</p>
-<p>The following examples illustrate bindings using <code>let</code> patterns:</p>
+<p><code>if</code> 条件中的 <code>let</code> 模式允许在模式匹配成功时将新变量绑定到作用域中。</p>
+<p>以下示例演示了使用 <code>let</code> 模式进行的绑定：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let dish = ("Ham", "Eggs");
 
-// This body will be skipped because the pattern is refuted.
+// 此主体将被跳过，因为模式被反驳了。
 if let ("Bacon", b) = dish {
     println!("Bacon is served with {}", b);
 } else {
-    // This block is evaluated instead.
+    // 改为对该块求值。
     println!("No bacon will be served");
 }
 
-// This body will execute.
+// 此主体将执行。
 if let ("Ham", b) = dish {
     println!("Ham is served with {}", b);
 }
@@ -629,8 +626,7 @@ if let _ = 5 {
 <div class="rule" id="r-expr.if.let.or-pattern"><a class="rule-link" href="#r-expr.if.let.or-pattern" title="expr.if.let.or-pattern"><span>[expr<wbr>.if<wbr>.let<wbr>.or-pattern]</span></a>
 </div>
 
-<p>Multiple patterns may be specified with the <code>|</code> operator.
-This has the same semantics as with <code>|</code> in <a href="match-expr.html"><code>match</code> expressions</a>:</p>
+<p>可以使用 <code>|</code> 运算符指定多个模式。这与 <a href="match-expr.html"><code>match</code> 表达式</a> 中的 <code>|</code> 具有相同的语义：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum E {
@@ -646,21 +642,20 @@ if let E::X(n) | E::Y(n) = v {
 <div class="rule" id="r-expr.if.chains"><a class="rule-link" href="#r-expr.if.chains" title="expr.if.chains"><span>[expr<wbr>.if<wbr>.chains]</span></a>
 </div>
 
-<h2 id="chains-of-conditions"><a class="header" href="#chains-of-conditions">Chains of conditions</a></h2>
+<h2 id="条件链"><a class="header" href="#条件链">条件链</a></h2>
 <div class="rule" id="r-expr.if.chains.intro"><a class="rule-link" href="#r-expr.if.chains.intro" title="expr.if.chains.intro"><span>[expr<wbr>.if<wbr>.chains<wbr>.intro]</span></a>
 </div>
 
-<p>Multiple condition operands can be separated with <code>&amp;&amp;</code>.</p>
+<p>多个条件操作数可以用 <code>&amp;&amp;</code> 分隔。</p>
 <div class="rule" id="r-expr.if.chains.order"><a class="rule-link" href="#r-expr.if.chains.order" title="expr.if.chains.order"><span>[expr<wbr>.if<wbr>.chains<wbr>.order]</span></a>
 </div>
 
-<p>Similar to a <code>&amp;&amp;</code> <a href="operator-expr.html#grammar-LazyBooleanExpression">LazyBooleanExpression</a>, each operand is evaluated from left-to-right until an operand evaluates as <code>false</code> or a <code>let</code> match fails,
-in which case the subsequent operands are not evaluated.</p>
+<p>类似于 <code>&amp;&amp;</code> <a href="operator-expr.html#grammar-LazyBooleanExpression">惰性布尔表达式</a>，每个操作数从左到右求值，直到某个操作数求值为 <code>false</code> 或 <code>let</code> 匹配失败，此时后续操作数将不再求值。</p>
 <div class="rule" id="r-expr.if.chains.bindings"><a class="rule-link" href="#r-expr.if.chains.bindings" title="expr.if.chains.bindings"><span>[expr<wbr>.if<wbr>.chains<wbr>.bindings]</span></a>
 </div>
 
-<p>The bindings of each pattern are put into scope to be available for the next condition operand and the consequent block.</p>
-<p>The following is an example of chaining multiple expressions, mixing <code>let</code> bindings and boolean expressions, and with expressions able to reference pattern bindings from previous expressions:</p>
+<p>每个模式的绑定都会被放入作用域中，以便后续的条件操作数和结果块使用。</p>
+<p>以下是一个链接多个表达式的示例，混合了 <code>let</code> 绑定和布尔表达式，并且表达式能够引用之前表达式中的模式绑定：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn single() {
@@ -674,7 +669,7 @@ in which case the subsequent operands are not evaluated.</p>
     }
 }
 <span class="boring">}</span></code></pre>
-<p>The above is equivalent to the following without using chains of conditions:</p>
+<p>在不使用条件链的情况下，上述代码等效于：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn nested() {
@@ -692,14 +687,13 @@ in which case the subsequent operands are not evaluated.</p>
 <div class="rule" id="r-expr.if.chains.or"><a class="rule-link" href="#r-expr.if.chains.or" title="expr.if.chains.or"><span>[expr<wbr>.if<wbr>.chains<wbr>.or]</span></a>
 </div>
 
-<p>If any condition operand is a <code>let</code> pattern, then none of the condition operands can be a <code>||</code> <a href="operator-expr.html#r-expr.bool-logic">lazy boolean operator expression</a> due to ambiguity and precedence with the <code>let</code> scrutinee.
-If a <code>||</code> expression is needed, then parentheses can be used. For example:</p>
+<p>如果任何条件操作数是 <code>let</code> 模式，由于与 <code>let</code> 待匹配值存在歧义和优先级关系，任何条件操作数都不能是 <code>||</code> <a href="operator-expr.html#r-expr.bool-logic">惰性布尔运算符表达式</a>。如果需要 <code>||</code> 表达式，可以使用括号。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let foo = Some(123);
 </span><span class="boring">let condition1 = true;
 </span><span class="boring">let condition2 = false;
-</span>// Parentheses are required here.
+</span>// 此处需要括号。
 if let Some(x) = foo &amp;&amp; (condition1 || condition2) { /*...*/ }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-expr.if.edition2024"><a class="rule-link" href="#r-expr.if.edition2024" title="expr.if.edition2024"><span>[expr<wbr>.if<wbr>.edition2024]</span></a>
@@ -709,7 +703,7 @@ if let Some(x) = foo &amp;&amp; (condition1 || condition2) { /*...*/ }
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2024</span> 版次差异</p>
 
-<p>Before the 2024 edition, let chains are not supported. That is, the <a href="if-expr.html#grammar-LetChain">LetChain</a> grammar is not allowed in an <code>if</code> expression.</p>
+<p>在 2024 版次之前，不支持 let 链。也就是说，<code>if</code> 表达式中不允许使用 <a href="if-expr.html#grammar-LetChain">LetChain</a> 语法。</p>
 </blockquote>
 </div>
 

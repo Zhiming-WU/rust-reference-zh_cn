@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-be189161.js"></script>
+        <script src="toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-expr"><a class="rule-link" href="#r-expr" title="expr"><span>[expr]</span></a>
 </div>
 
-<h1 id="expressions"><a class="header" href="#expressions">Expressions</a></h1>
+<h1 id="表达式"><a class="header" href="#表达式">表达式</a></h1>
 <div class="rule" id="r-expr.syntax"><a class="rule-link" href="#r-expr.syntax" title="expr.syntax"><span>[expr<wbr>.syntax]</span></a>
 </div>
 
@@ -605,120 +605,116 @@ MatchExpression</text>
 <div class="rule" id="r-expr.intro"><a class="rule-link" href="#r-expr.intro" title="expr.intro"><span>[expr<wbr>.intro]</span></a>
 </div>
 
-<p>An expression may have two roles: it always produces a <em>value</em>, and it may have <em>effects</em> (otherwise known as “side effects”).</p>
+<p>一个表达式可能有两种角色：它总是产生一个 <em>值</em>，并且可能产生 <em>副作用</em> 。</p>
 <div class="rule" id="r-expr.evaluation"><a class="rule-link" href="#r-expr.evaluation" title="expr.evaluation"><span>[expr<wbr>.evaluation]</span></a>
 </div>
 
-<p>An expression <em>evaluates to</em> a value, and has effects during <em>evaluation</em>.</p>
+<p>表达式 <em>求值为</em> 一个值，并在 <em>求值</em> 过程中产生副作用。</p>
 <div class="rule" id="r-expr.operands"><a class="rule-link" href="#r-expr.operands" title="expr.operands"><span>[expr<wbr>.operands]</span></a>
 </div>
 
-<p>Many expressions contain sub-expressions, called the <em>operands</em> of the expression.</p>
+<p>许多表达式包含子表达式，称为该表达式的 <em>操作数</em>。</p>
 <div class="rule" id="r-expr.behavior"><a class="rule-link" href="#r-expr.behavior" title="expr.behavior"><span>[expr<wbr>.behavior]</span></a>
 </div>
 
-<p>The meaning of each kind of expression dictates several things:</p>
+<p>每种表达式的含义决定了几件事：</p>
 <ul>
-<li>Whether or not to evaluate the operands when evaluating the expression</li>
-<li>The order in which to evaluate the operands</li>
-<li>How to combine the operands’ values to obtain the value of the expression</li>
+<li>在对表达式求值时是否对操作数求值</li>
+<li>对操作数求值的顺序</li>
+<li>如何组合操作数的值以获得表达式的值</li>
 </ul>
 <div class="rule" id="r-expr.structure"><a class="rule-link" href="#r-expr.structure" title="expr.structure"><span>[expr<wbr>.structure]</span></a>
 </div>
 
-<p>In this way, the structure of expressions dictates the structure of execution.
-Blocks are just another kind of expression, so blocks, statements, expressions, and blocks again can recursively nest inside each other to an arbitrary depth.</p>
+<p>通过这种方式，表达式的结构决定了执行的结构。块只是另一种表达式，因此块、语句、表达式以及再次嵌套的块可以递归地相互嵌套到任意深度。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>We give names to the operands of expressions so that we may discuss them, but these names are not stable and may be changed.</p>
+<p>我们给表达式的操作数命名以便于讨论，但这些名称并不稳定，可能会被更改。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-expr.precedence"><a class="rule-link" href="#r-expr.precedence" title="expr.precedence"><span>[expr<wbr>.precedence]</span></a>
 </div>
 
-<h2 id="expression-precedence"><a class="header" href="#expression-precedence">Expression precedence</a></h2>
-<p>The precedence of Rust operators and expressions is ordered as follows, going from strong to weak.
-Binary Operators at the same precedence level are grouped in the order given by their associativity.</p>
+<h2 id="表达式优先级"><a class="header" href="#表达式优先级">表达式优先级</a></h2>
+<p>Rust 运算符和表达式的优先级按以下顺序排列，从强到弱。同一优先级水平的二元运算符按其结合性给出的顺序进行分组。</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Operator/Expression</th><th>Associativity</th></tr>
+<tr><th>运算符/表达式</th><th>结合性</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="expressions/path-expr.html#r-expr.path">Paths</a></td><td></td></tr>
-<tr><td><a href="expressions/method-call-expr.html#r-expr.method">Method calls</a></td><td></td></tr>
-<tr><td><a href="expressions/field-expr.html#r-expr.field">Field expressions</a></td><td>left to right</td></tr>
-<tr><td><a href="expressions/call-expr.html#r-expr.call">Function calls</a>, <a href="expressions/array-expr.html#r-expr.array.index">array indexing</a></td><td></td></tr>
+<tr><td><a href="expressions/path-expr.html#r-expr.path">路径</a></td><td></td></tr>
+<tr><td><a href="expressions/method-call-expr.html#r-expr.method">方法调用</a></td><td></td></tr>
+<tr><td><a href="expressions/field-expr.html#r-expr.field">字段表达式</a></td><td>从左到右</td></tr>
+<tr><td><a href="expressions/call-expr.html#r-expr.call">函数调用</a>, <a href="expressions/array-expr.html#r-expr.array.index">数组索引</a></td><td></td></tr>
 <tr><td><a href="expressions/operator-expr.html#r-expr.try"><code>?</code></a></td><td></td></tr>
-<tr><td>Unary <a href="expressions/operator-expr.html#r-expr.negate"><code>-</code></a> <a href="expressions/operator-expr.html#r-expr.negate"><code>!</code></a> <a href="expressions/operator-expr.html#r-expr.deref"><code>*</code></a> <a href="expressions/operator-expr.html#r-expr.operator.borrow">borrow</a></td><td></td></tr>
-<tr><td><a href="expressions/operator-expr.html#r-expr.as"><code>as</code></a></td><td>left to right</td></tr>
-<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>*</code></a> <a href="expressions/operator-expr.html#r-expr.arith-logic"><code>/</code></a> <a href="expressions/operator-expr.html#r-expr.arith-logic"><code>%</code></a></td><td>left to right</td></tr>
-<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>+</code></a> <a href="expressions/operator-expr.html#r-expr.arith-logic"><code>-</code></a></td><td>left to right</td></tr>
-<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>&lt;&lt;</code></a> <a href="expressions/operator-expr.html#r-expr.arith-logic"><code>&gt;&gt;</code></a></td><td>left to right</td></tr>
-<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>&amp;</code></a></td><td>left to right</td></tr>
-<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>^</code></a></td><td>left to right</td></tr>
-<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>|</code></a></td><td>left to right</td></tr>
-<tr><td><a href="expressions/operator-expr.html#r-expr.cmp"><code>==</code></a> <a href="expressions/operator-expr.html#r-expr.cmp"><code>!=</code></a> <a href="expressions/operator-expr.html#r-expr.cmp"><code>&lt;</code></a> <a href="expressions/operator-expr.html#r-expr.cmp"><code>&gt;</code></a> <a href="expressions/operator-expr.html#r-expr.cmp"><code>&lt;=</code></a> <a href="expressions/operator-expr.html#r-expr.cmp"><code>&gt;=</code></a></td><td>Require parentheses</td></tr>
-<tr><td><a href="expressions/operator-expr.html#r-expr.bool-logic"><code>&amp;&amp;</code></a></td><td>left to right</td></tr>
-<tr><td><a href="expressions/operator-expr.html#r-expr.bool-logic"><code>||</code></a></td><td>left to right</td></tr>
-<tr><td><a href="expressions/range-expr.html#r-expr.range"><code>..</code></a> <a href="expressions/range-expr.html#r-expr.range"><code>..=</code></a></td><td>Require parentheses</td></tr>
-<tr><td><a href="expressions/operator-expr.html#r-expr.assign"><code>=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>+=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>-=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>*=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>/=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>%=</code></a> <br> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>&amp;=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>|=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>^=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>&lt;&lt;=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>&gt;&gt;=</code></a></td><td>right to left</td></tr>
-<tr><td><a href="expressions/return-expr.html#r-expr.return"><code>return</code></a> <a href="expressions/loop-expr.html#r-expr.loop.break"><code>break</code></a> <a href="expressions/closure-expr.html#r-expr.closure">closures</a></td><td></td></tr>
+<tr><td>一元 <a href="expressions/operator-expr.html#r-expr.negate"><code>-</code></a> <a href="expressions/operator-expr.html#r-expr.negate"><code>!</code></a> <a href="expressions/operator-expr.html#r-expr.deref"><code>*</code></a> <a href="expressions/operator-expr.html#r-expr.operator.borrow">借用</a></td><td></td></tr>
+<tr><td><a href="expressions/operator-expr.html#r-expr.as"><code>as</code></a></td><td>从左到右</td></tr>
+<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>*</code></a> <a href="expressions/operator-expr.html#r-expr.arith-logic"><code>/</code></a> <a href="expressions/operator-expr.html#r-expr.arith-logic"><code>%</code></a></td><td>从左到右</td></tr>
+<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>+</code></a> <a href="expressions/operator-expr.html#r-expr.arith-logic"><code>-</code></a></td><td>从左到右</td></tr>
+<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>&lt;&lt;</code></a> <a href="expressions/operator-expr.html#r-expr.arith-logic"><code>&gt;&gt;</code></a></td><td>从左到右</td></tr>
+<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>&amp;</code></a></td><td>从左到右</td></tr>
+<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>^</code></a></td><td>从左到右</td></tr>
+<tr><td><a href="expressions/operator-expr.html#r-expr.arith-logic"><code>|</code></a></td><td>从左到右</td></tr>
+<tr><td><a href="expressions/operator-expr.html#r-expr.cmp"><code>==</code></a> <a href="expressions/operator-expr.html#r-expr.cmp"><code>!=</code></a> <a href="expressions/operator-expr.html#r-expr.cmp"><code>&lt;</code></a> <a href="expressions/operator-expr.html#r-expr.cmp"><code>&gt;</code></a> <a href="expressions/operator-expr.html#r-expr.cmp"><code>&lt;=</code></a> <a href="expressions/operator-expr.html#r-expr.cmp"><code>&gt;=</code></a></td><td>需要括号</td></tr>
+<tr><td><a href="expressions/operator-expr.html#r-expr.bool-logic"><code>&amp;&amp;</code></a></td><td>从左到右</td></tr>
+<tr><td><a href="expressions/operator-expr.html#r-expr.bool-logic"><code>||</code></a></td><td>从左到右</td></tr>
+<tr><td><a href="expressions/range-expr.html#r-expr.range"><code>..</code></a> <a href="expressions/range-expr.html#r-expr.range"><code>..=</code></a></td><td>需要括号</td></tr>
+<tr><td><a href="expressions/operator-expr.html#r-expr.assign"><code>=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>+=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>-=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>*=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>/=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>%=</code></a> <br> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>&amp;=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>|=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>^=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>&lt;&lt;=</code></a> <a href="expressions/operator-expr.html#r-expr.compound-assign"><code>&gt;&gt;=</code></a></td><td>从右到左</td></tr>
+<tr><td><a href="expressions/return-expr.html#r-expr.return"><code>return</code></a> <a href="expressions/loop-expr.html#r-expr.loop.break"><code>break</code></a> <a href="expressions/closure-expr.html#r-expr.closure">闭包</a></td><td></td></tr>
 </tbody>
 </table>
 </div>
 <div class="rule" id="r-expr.operand-order"><a class="rule-link" href="#r-expr.operand-order" title="expr.operand-order"><span>[expr<wbr>.operand-order]</span></a>
 </div>
 
-<h2 id="evaluation-order-of-operands"><a class="header" href="#evaluation-order-of-operands">Evaluation order of operands</a></h2>
+<h2 id="操作数的求值顺序"><a class="header" href="#操作数的求值顺序">操作数的求值顺序</a></h2>
 <div class="rule" id="r-expr.operand-order.default"><a class="rule-link" href="#r-expr.operand-order.default" title="expr.operand-order.default"><span>[expr<wbr>.operand-order<wbr>.default]</span></a>
 </div>
 
-<p>The following list of expressions all evaluate their operands the same way, as described after the list.
-Other expressions either don’t take operands or evaluate them conditionally as described on their respective pages.</p>
+<p>以下表达式列表都以相同的方式对其操作数求值，如列表后所述。其他表达式要么不接受操作数，要么根据其各自页面的描述有条件地对其求值。</p>
 <ul>
-<li>Dereference expression</li>
-<li>Error propagation expression</li>
-<li>Negation expression</li>
-<li>Arithmetic and logical binary operators</li>
-<li>Comparison operators</li>
-<li>Type cast expression</li>
-<li>Grouped expression</li>
-<li>Array expression</li>
-<li>Await expression</li>
-<li>Index expression</li>
-<li>Tuple expression</li>
-<li>Tuple index expression</li>
-<li>Struct expression</li>
-<li>Call expression</li>
-<li>Method call expression</li>
-<li>Field expression</li>
-<li>Break expression</li>
-<li>Range expression</li>
-<li>Return expression</li>
+<li>解引用表达式</li>
+<li>错误传播表达式</li>
+<li>取反表达式</li>
+<li>算术和逻辑二元运算符</li>
+<li>比较运算符</li>
+<li>类型转换表达式</li>
+<li>分组表达式</li>
+<li>数组表达式</li>
+<li>Await 表达式</li>
+<li>索引表达式</li>
+<li>元组表达式</li>
+<li>元组索引表达式</li>
+<li>结构体表达式</li>
+<li>调用表达式</li>
+<li>方法调用表达式</li>
+<li>字段表达式</li>
+<li>Break 表达式</li>
+<li>范围表达式</li>
+<li>返回表达式</li>
 </ul>
 <div class="rule" id="r-expr.operand-order.operands-before-primary"><a class="rule-link" href="#r-expr.operand-order.operands-before-primary" title="expr.operand-order.operands-before-primary"><span>[expr<wbr>.operand-order<wbr>.operands-before-primary]</span></a>
 </div>
 
-<p>The operands of these expressions are evaluated prior to applying the effects of the expression.
-Expressions taking multiple operands are evaluated left to right as written in the source code.</p>
+<p>这些表达式的操作数在应用表达式的效果之前进行求值。接受多个操作数的表达式按照源代码中编写的顺序从左到右进行求值。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Which subexpressions are the operands of an expression is determined by expression precedence as per the previous section.</p>
+<p>哪些子表达式是表达式的操作数，由前一节所述的表达式优先级决定。</p>
 </blockquote>
 </div>
 
-<p>For example, the two <code>next</code> method calls will always be called in the same order:</p>
+<p>例如，两个 <code>next</code> 方法调用将始终按相同的顺序调用：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span><span class="boring">// Using vec instead of array to avoid references
-</span><span class="boring">// since there is no stable owned array iterator
-</span><span class="boring">// at the time this example was written.
+</span><span class="boring">// 使用 vec 而不是数组来避免引用，
+</span><span class="boring">// 因为在编写此示例时
+</span><span class="boring">// 还没有稳定的所有权数组迭代器。
 </span>let mut one_two = vec![1, 2].into_iter();
 assert_eq!(
     (1, 2),
@@ -729,160 +725,150 @@ assert_eq!(
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Since this is applied recursively, these expressions are also evaluated from innermost to outermost, ignoring siblings until there are no inner subexpressions.</p>
+<p>由于这是递归应用的，因此这些表达式也从最内层向最外层求值，忽略同级表达式，直到没有内部子表达式。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-expr.place-value"><a class="rule-link" href="#r-expr.place-value" title="expr.place-value"><span>[expr<wbr>.place-value]</span></a>
 </div>
 
-<h2 id="place-expressions-and-value-expressions"><a class="header" href="#place-expressions-and-value-expressions">Place expressions and value expressions</a></h2>
+<h2 id="位置表达式和值表达式"><a class="header" href="#位置表达式和值表达式">位置表达式和值表达式</a></h2>
 <div class="rule" id="r-expr.place-value.intro"><a class="rule-link" href="#r-expr.place-value.intro" title="expr.place-value.intro"><span>[expr<wbr>.place-value<wbr>.intro]</span></a>
 </div>
 
-<p>Expressions are divided into two main categories: place expressions and value expressions;
-there is also a third, minor category of expressions called assignee expressions.
-Within each expression, operands may likewise occur in either place context or value context.
-The evaluation of an expression depends both on its own category and the context it occurs within.</p>
+<p>表达式分为两个主要类别：位置表达式和值表达式；还有第三个较小的表达式类别，称为被赋值者表达式。在每个表达式中，操作数同样可能出现在位置环境或值环境中。表达式的求值取决于其自身的类别以及它所处的环境。</p>
 <div class="rule" id="r-expr.place-value.place-memory-location"><a class="rule-link" href="#r-expr.place-value.place-memory-location" title="expr.place-value.place-memory-location"><span>[expr<wbr>.place-value<wbr>.place-memory-location]</span></a>
 </div>
 
-<p>A <em>place expression</em> is an expression that represents a memory location.</p>
+<p><em>位置表达式</em> 是代表内存位置的表达式。</p>
 <div class="rule" id="r-expr.place-value.place-expr-kinds"><a class="rule-link" href="#r-expr.place-value.place-expr-kinds" title="expr.place-value.place-expr-kinds"><span>[expr<wbr>.place-value<wbr>.place-expr-kinds]</span></a>
 </div>
 
-<p>These expressions are <a href="expressions/path-expr.html">paths</a> which refer to local variables, <a href="items/static-items.html">static variables</a>, <a href="expressions/operator-expr.html#the-dereference-operator">dereferences</a> (<code>*expr</code>), <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">array indexing</a> expressions (<code>expr[expr]</code>), <a href="expressions/field-expr.html">field</a> references (<code>expr.f</code>) and parenthesized place expressions.</p>
+<p>这些表达式是引用局部变量的 <a href="expressions/path-expr.html">路径</a>、<a href="items/static-items.html">静态变量</a>、<a href="expressions/operator-expr.html#the-dereference-operator">解引用</a> (<code>*expr</code>)、<a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a> 表达式 (<code>expr[expr]</code>)、<a href="expressions/field-expr.html">字段</a> 引用 (<code>expr.f</code>) 以及括号括起来的位置表达式。</p>
 <div class="rule" id="r-expr.place-value.value-expr-kinds"><a class="rule-link" href="#r-expr.place-value.value-expr-kinds" title="expr.place-value.value-expr-kinds"><span>[expr<wbr>.place-value<wbr>.value-expr-kinds]</span></a>
 </div>
 
-<p>All other expressions are value expressions.</p>
+<p>所有其他表达式都是值表达式。</p>
 <div class="rule" id="r-expr.place-value.value-result"><a class="rule-link" href="#r-expr.place-value.value-result" title="expr.place-value.value-result"><span>[expr<wbr>.place-value<wbr>.value-result]</span></a>
 </div>
 
-<p>A <em>value expression</em> is an expression that represents an actual value.</p>
+<p><em>值表达式</em> 是代表实际值的表达式。</p>
 <div class="rule" id="r-expr.place-value.place-context"><a class="rule-link" href="#r-expr.place-value.place-context" title="expr.place-value.place-context"><span>[expr<wbr>.place-value<wbr>.place-context]</span></a>
 </div>
 
-<p>The following contexts are <em>place expression</em> contexts:</p>
+<p>以下环境是 <em>位置表达式</em> 环境：</p>
 <ul>
-<li>The left operand of a <a href="expressions/operator-expr.html#compound-assignment-expressions">compound assignment</a> expression.</li>
-<li>The operand of a unary <a href="expressions/operator-expr.html#borrow-operators">borrow</a>, <a href="expressions/operator-expr.html#raw-borrow-operators">raw borrow</a> or <a href="expressions/operator-expr.html#the-dereference-operator">dereference</a> operator.</li>
-<li>The operand of a field expression.</li>
-<li>The indexed operand of an array indexing expression.</li>
-<li>The operand of any <a href="#implicit-borrows">implicit borrow</a>.</li>
-<li>The initializer of a <a href="statements.html#let-statements">let statement</a>.</li>
-<li>The <a href="glossary.html#scrutinee">scrutinee</a> of an <a href="expressions/if-expr.html#if-let-patterns"><code>if let</code></a>, <a href="expressions/match-expr.html"><code>match</code></a>, or <a href="expressions/loop-expr.html#while-let-patterns"><code>while let</code></a>
-expression.</li>
-<li>The base of a <a href="expressions/struct-expr.html#functional-update-syntax">functional update</a> struct expression.</li>
+<li><a href="expressions/operator-expr.html#compound-assignment-expressions">复合赋值</a> 表达式的左操作数。</li>
+<li>一元 <a href="expressions/operator-expr.html#borrow-operators">借用</a>、<a href="expressions/operator-expr.html#raw-borrow-operators">原始借用</a> 或 <a href="expressions/operator-expr.html#the-dereference-operator">解引用</a> 运算符的操作数。</li>
+<li>字段表达式的操作数。</li>
+<li>数组索引表达式的被索引操作数。</li>
+<li>任何 <a href="#implicit-borrows">隐式借用</a> 的操作数。</li>
+<li><a href="statements.html#let-statements">let 语句</a> 的初始化器。</li>
+<li><a href="expressions/if-expr.html#if-let-patterns"><code>if let</code></a>、<a href="expressions/match-expr.html"><code>match</code></a> 或 <a href="expressions/loop-expr.html#while-let-patterns"><code>while let</code></a> 表达式的 <a href="glossary.html#scrutinee">审查对象</a>。</li>
+<li><a href="expressions/struct-expr.html#functional-update-syntax">函数式更新</a> 结构体 表达式的基准。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Historically, place expressions were called <em>lvalues</em> and value expressions were called <em>rvalues</em>.</p>
+<p>在历史上，位置表达式被称为 <em>左值 (lvalues)</em>，而值表达式被称为 <em>右值 (rvalues)</em>。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-expr.place-value.assignee"><a class="rule-link" href="#r-expr.place-value.assignee" title="expr.place-value.assignee"><span>[expr<wbr>.place-value<wbr>.assignee]</span></a>
 </div>
 
-<p>An <em>assignee expression</em> is an expression that appears in the left operand of an <a href="expressions/operator-expr.html#assignment-expressions">assignment</a> expression.
-Explicitly, the assignee expressions are:</p>
+<p><em>被赋值者表达式</em> 是出现在 <a href="expressions/operator-expr.html#assignment-expressions">赋值</a> 表达式左操作数中的表达式。显式地，被赋值者表达式有：</p>
 <ul>
-<li>Place expressions.</li>
-<li><a href="expressions/underscore-expr.html">Underscores</a>.</li>
-<li><a href="expressions/tuple-expr.html">Tuples</a> of assignee expressions.</li>
-<li><a href="expressions/array-expr.html#r-expr.array.index">Slices</a> of assignee expressions.</li>
-<li><a href="items/structs.html#r-items.struct.tuple">Tuple structs</a> of assignee expressions.</li>
-<li><a href="expressions/struct-expr.html#r-expr.struct">Structs</a> of assignee expressions (with optionally named
-fields).</li>
-<li><a href="items/structs.html#r-items.struct.unit">Unit structs</a></li>
+<li>位置表达式。</li>
+<li><a href="expressions/underscore-expr.html">下划线</a>。</li>
+<li>被赋值者表达式的 <a href="expressions/tuple-expr.html">元组</a>。</li>
+<li>被赋值者表达式的 <a href="expressions/array-expr.html#r-expr.array.index">切片</a>。</li>
+<li>被赋值者表达式的 <a href="items/structs.html#r-items.struct.tuple">元组结构体</a>。</li>
+<li>被赋值者表达式的 <a href="expressions/struct-expr.html#r-expr.struct">结构体</a>（带有可选命名字段）。</li>
+<li><a href="items/structs.html#r-items.struct.unit">单元结构体</a></li>
 </ul>
 <div class="rule" id="r-expr.place-value.parenthesis"><a class="rule-link" href="#r-expr.place-value.parenthesis" title="expr.place-value.parenthesis"><span>[expr<wbr>.place-value<wbr>.parenthesis]</span></a>
 </div>
 
-<p>Arbitrary parenthesisation is permitted inside assignee expressions.</p>
+<p>在被赋值者表达式内部允许使用任意括号。</p>
 <div class="rule" id="r-expr.move"><a class="rule-link" href="#r-expr.move" title="expr.move"><span>[expr<wbr>.move]</span></a>
 </div>
 
-<h3 id="moved-and-copied-types"><a class="header" href="#moved-and-copied-types">Moved and copied types</a></h3>
+<h3 id="移动和复制类型"><a class="header" href="#移动和复制类型">移动和复制类型</a></h3>
 <div class="rule" id="r-expr.move.intro"><a class="rule-link" href="#r-expr.move.intro" title="expr.move.intro"><span>[expr<wbr>.move<wbr>.intro]</span></a>
 </div>
 
-<p>When a place expression is evaluated in a value expression context, or is bound by value in a pattern, it denotes the value held <em>in</em> that memory location.</p>
+<p>当位置表达式在值表达式环境中求值，或在模式中通过值绑定时，它表示该内存位置中 <em>持有</em> 的值。</p>
 <div class="rule" id="r-expr.move.copy"><a class="rule-link" href="#r-expr.move.copy" title="expr.move.copy"><span>[expr<wbr>.move<wbr>.copy]</span></a>
 </div>
 
-<p>If the type of that value implements <a href="special-types-and-traits.html#copy"><code>Copy</code></a>, then the value will be copied.</p>
+<p>如果该值的类型实现了 <a href="special-types-and-traits.html#copy"><code>Copy</code></a>，那么该值将被复制。</p>
 <div class="rule" id="r-expr.move.requires-sized"><a class="rule-link" href="#r-expr.move.requires-sized" title="expr.move.requires-sized"><span>[expr<wbr>.move<wbr>.requires-sized]</span></a>
 </div>
 
-<p>In the remaining situations, if that type is <a href="special-types-and-traits.html#sized"><code>Sized</code></a>, then it may be possible to move the value.</p>
+<p>在其余情况下，如果该类型是 <a href="special-types-and-traits.html#sized"><code>Sized</code></a>，则可能会移动该值。</p>
 <div class="rule" id="r-expr.move.movable-place"><a class="rule-link" href="#r-expr.move.movable-place" title="expr.move.movable-place"><span>[expr<wbr>.move<wbr>.movable-place]</span></a>
 </div>
 
-<p>Only the following place expressions may be moved out of:</p>
+<p>只有以下位置表达式可以被移出：</p>
 <ul>
-<li><a href="variables.html">Variables</a> which are not currently borrowed.</li>
-<li><a href="#temporaries">Temporary values</a>.</li>
-<li><a href="expressions/field-expr.html">Fields</a> of a place expression which can be moved out of and don’t implement <a href="special-types-and-traits.html#drop"><code>Drop</code></a>.</li>
-<li>The result of <a href="expressions/operator-expr.html#the-dereference-operator">dereferencing</a> an expression with type <a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> and that can also be moved out of.</li>
+<li>当前未被借用的 <a href="variables.html">变量</a>。</li>
+<li><a href="#temporaries">临时值</a>。</li>
+<li>可以移出且未实现 <a href="special-types-and-traits.html#drop"><code>Drop</code></a> 的位置表达式的 <a href="expressions/field-expr.html">字段</a>。</li>
+<li><a href="expressions/operator-expr.html#the-dereference-operator">解引用</a> 类型为 <a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> 且也可以被移出的表达式的结果。</li>
 </ul>
 <div class="rule" id="r-expr.move.deinitialization"><a class="rule-link" href="#r-expr.move.deinitialization" title="expr.move.deinitialization"><span>[expr<wbr>.move<wbr>.deinitialization]</span></a>
 </div>
 
-<p>After moving out of a place expression that evaluates to a local variable, the location is deinitialized and cannot be read from again until it is reinitialized.</p>
+<p>在移出一个求值为局部变量的位置表达式后，该位置将被去初始化，并且在重新初始化之前不能再次从中读取。</p>
 <div class="rule" id="r-expr.move.place-invalid"><a class="rule-link" href="#r-expr.move.place-invalid" title="expr.move.place-invalid"><span>[expr<wbr>.move<wbr>.place-invalid]</span></a>
 </div>
 
-<p>In all other cases, trying to use a place expression in a value expression context is an error.</p>
+<p>在所有其他情况下，尝试在值表达式环境中使用位置表达式都会报错。</p>
 <div class="rule" id="r-expr.mut"><a class="rule-link" href="#r-expr.mut" title="expr.mut"><span>[expr<wbr>.mut]</span></a>
 </div>
 
-<h3 id="mutability"><a class="header" href="#mutability">Mutability</a></h3>
+<h3 id="可变性"><a class="header" href="#可变性">可变性</a></h3>
 <div class="rule" id="r-expr.mut.intro"><a class="rule-link" href="#r-expr.mut.intro" title="expr.mut.intro"><span>[expr<wbr>.mut<wbr>.intro]</span></a>
 </div>
 
-<p>For a place expression to be <a href="expressions/operator-expr.html#assignment-expressions">assigned</a> to, mutably <a href="expressions/operator-expr.html#borrow-operators">borrowed</a>, <a href="#implicit-borrows">implicitly mutably borrowed</a>, or bound to a pattern containing <code>ref mut</code>, it must be <em>mutable</em>.
-We call these <em>mutable place expressions</em>.
-In contrast, other place expressions are called <em>immutable place expressions</em>.</p>
+<p>为了使位置表达式能被 <a href="expressions/operator-expr.html#assignment-expressions">赋值</a>、可变 <a href="expressions/operator-expr.html#borrow-operators">借用</a>、<a href="#implicit-borrows">隐式可变借用</a> 或绑定到包含 <code>ref mut</code> 的模式，它必须是 <em>可变的</em>。我们称这些为 <em>可变位置表达式</em>。相比之下，其他位置表达式称为 <em>不可变位置表达式</em>。</p>
 <div class="rule" id="r-expr.mut.valid-places"><a class="rule-link" href="#r-expr.mut.valid-places" title="expr.mut.valid-places"><span>[expr<wbr>.mut<wbr>.valid-places]</span></a>
 </div>
 
-<p>The following expressions can be mutable place expression contexts:</p>
+<p>以下表达式可以是可变位置表达式环境：</p>
 <ul>
-<li>Mutable <a href="variables.html">variables</a> which are not currently borrowed.</li>
-<li><a href="items/static-items.html#mutable-statics">Mutable <code>static</code> items</a>.</li>
-<li><a href="#temporaries">Temporary values</a>.</li>
-<li><a href="expressions/field-expr.html">Fields</a>: this evaluates the subexpression in a mutable place expression context.</li>
-<li><a href="expressions/operator-expr.html#the-dereference-operator">Dereferences</a> of a <code>*mut T</code> pointer.</li>
-<li>Dereference of a variable, or field of a variable, with type <code>&amp;mut T</code>.
-Note: This is an exception to the requirement of the next rule.</li>
-<li>Dereferences of a type that implements <code>DerefMut</code>:
-this then requires that the value being dereferenced is evaluated in a mutable place expression context.</li>
-<li><a href="expressions/array-expr.html#array-and-slice-indexing-expressions">Array indexing</a> of a type that implements <code>IndexMut</code>:
-this then evaluates the value being indexed, but not the index, in mutable place expression context.</li>
+<li>当前未被借用的可变 <a href="variables.html">变量</a>。</li>
+<li><a href="items/static-items.html#mutable-statics">可变 <code>static</code> 项</a>。</li>
+<li><a href="#temporaries">临时值</a>。</li>
+<li><a href="expressions/field-expr.html">字段</a>：这在可变位置表达式环境中对子表达式求值。</li>
+<li><code>*mut T</code> 指针的 <a href="expressions/operator-expr.html#the-dereference-operator">解引用</a>。</li>
+<li>类型为 <code>&amp;mut T</code> 的变量或变量字段的解引用。
+注意：这是下一条规则要求的例外。</li>
+<li>实现了 <code>DerefMut</code> 的类型的解引用：
+这随后要求被解引用的值在可变位置表达式环境中求值。</li>
+<li>实现了 <code>IndexMut</code> 的类型的 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a>：
+这随后在可变位置表达式环境中对被索引的值（而非索引本身）求值。</li>
 </ul>
 <div class="rule" id="r-expr.temporary"><a class="rule-link" href="#r-expr.temporary" title="expr.temporary"><span>[expr<wbr>.temporary]</span></a>
 </div>
 
-<h3 id="temporaries"><a class="header" href="#temporaries">Temporaries</a></h3>
-<p>When using a value expression in most place expression contexts, a temporary unnamed memory location is created and initialized to that value.
-The expression evaluates to that location instead, except if <a href="destructors.html#constant-promotion">promoted</a> to a <code>static</code>.
-The <a href="destructors.html#drop-scopes">drop scope</a> of the temporary is usually the end of the enclosing statement.</p>
+<h3 id="临时变量"><a class="header" href="#临时变量">临时变量</a></h3>
+<p>在大多数位置表达式环境中使用值表达式时，会创建一个临时的未命名内存位置并将其初始化为该值。该表达式求值为该位置，除非被 <a href="destructors.html#constant-promotion">提升</a> 为 <code>static</code>。临时变量的 <a href="destructors.html#drop-scopes">销毁范围</a> 通常是封闭语句的末尾。</p>
 <div class="rule" id="r-expr.super-macros"><a class="rule-link" href="#r-expr.super-macros" title="expr.super-macros"><span>[expr<wbr>.super-macros]</span></a>
 </div>
 
-<h3 id="super-macros"><a class="header" href="#super-macros">Super macros</a></h3>
+<h3 id="超级宏"><a class="header" href="#超级宏">超级宏</a></h3>
 <div class="rule" id="r-expr.super-macros.intro"><a class="rule-link" href="#r-expr.super-macros.intro" title="expr.super-macros.intro"><span>[expr<wbr>.super-macros<wbr>.intro]</span></a>
 </div>
 
-<p>Certain built-in macros may create <a href="expressions.html#r-expr.temporary">temporaries</a> whose <a href="destructors.html#r-destructors.scope.temporary">scopes</a> may be <a href="destructors.html#r-destructors.scope.lifetime-extension">extended</a>. These temporaries are <em>super temporaries</em> and these macros are <em>super macros</em>. <a href="macros.html#r-macro.invocation">Invocations</a> of these macros are <em>super macro call expressions</em>. Arguments to these macros may be <em>super operands</em>.</p>
+<p>某些内置宏可能会创建 <a href="expressions.html#r-expr.temporary">临时变量</a>，其 <a href="destructors.html#r-destructors.scope.temporary">作用域</a> 可能会被 <a href="destructors.html#r-destructors.scope.lifetime-extension">延长</a>。这些临时变量是 <em>超级临时变量</em>，而这些宏是 <em>超级宏</em>。这些宏的 <a href="macros.html#r-macro.invocation">调用</a> 是 <em>超级宏调用表达式</em>。这些宏的参数可能是 <em>超级操作数</em>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>When a super macro call expression is an <a href="destructors.html#r-destructors.scope.lifetime-extension.exprs">extending expression</a>, its super operands are <a href="destructors.html#r-destructors.scope.lifetime-extension.exprs">extending expressions</a> and the <a href="destructors.html#r-destructors.scope.temporary">scopes</a> of the super temporaries are <a href="destructors.html#r-destructors.scope.lifetime-extension">extended</a>. See <a href="destructors.html#r-destructors.scope.lifetime-extension.exprs">destructors.scope.lifetime-extension.exprs</a>.</p>
+<p>当超级宏调用表达式是一个 <a href="destructors.html#r-destructors.scope.lifetime-extension.exprs">延长表达式</a> 时，它的超级操作数也是 <a href="destructors.html#r-destructors.scope.lifetime-extension.exprs">延长表达式</a>，并且超级临时变量的 <a href="destructors.html#r-destructors.scope.temporary">作用域</a> 会被 <a href="destructors.html#r-destructors.scope.lifetime-extension">延长</a>。参见 <a href="destructors.html#r-destructors.scope.lifetime-extension.exprs">destructors.scope.lifetime-extension.exprs</a>。</p>
 </blockquote>
 </div>
 
@@ -893,39 +879,38 @@ The <a href="destructors.html#drop-scopes">drop scope</a> of the temporary is us
 <div class="rule" id="r-expr.super-macros.format_args.super-operands"><a class="rule-link" href="#r-expr.super-macros.format_args.super-operands" title="expr.super-macros.format_args.super-operands"><span>[expr<wbr>.super-macros<wbr>.format_args<wbr>.super-operands]</span></a>
 </div>
 
-<p>Except for the format string argument, all arguments passed to <a href="../core/macro.format_args.html"><code>format_args!</code></a> are <em>super operands</em>.</p>
+<p>除了格式化字符串参数外，传递给 <a href="../core/macro.format_args.html"><code>format_args!</code></a> 的所有参数都是 <em>超级操作数</em>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() -&gt; String { String::from("") }
-</span>// Due to the call being an extending expression and the argument
-// being a super operand, the inner block is an extending expression,
-// so the scope of the temporary created in its trailing expression
-// is extended.
+</span>// 由于调用是一个延长表达式且参数是一个超级操作数，
+// 内部块是一个延长表达式，
+// 因此在其尾部表达式中创建的临时变量的作用域被延长了。
 let _ = format_args!("{}", { &amp;temp() }); // OK
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-expr.super-macros.format_args.super-temporaries"><a class="rule-link" href="#r-expr.super-macros.format_args.super-temporaries" title="expr.super-macros.format_args.super-temporaries"><span>[expr<wbr>.super-macros<wbr>.format_args<wbr>.super-temporaries]</span></a>
 </div>
 
-<p>The super operands of <a href="../core/macro.format_args.html"><code>format_args!</code></a> are <a href="expressions.html#r-expr.implicit-borrow">implicitly borrowed</a> and are therefore <a href="expressions.html#r-expr.place-value">place expression contexts</a>. When a <a href="expressions.html#r-expr.place-value">value expression</a> is passed as an argument, it creates a <em>super temporary</em>.</p>
+<p><a href="../core/macro.format_args.html"><code>format_args!</code></a> 的超级操作数是 <a href="expressions.html#r-expr.implicit-borrow">隐式借用</a> 的，因此是 <a href="expressions.html#r-expr.place-value">位置表达式环境</a>。当 <a href="expressions.html#r-expr.place-value">值表达式</a> 被作为参数传递时，它会创建一个 <em>超级临时变量</em>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() -&gt; String { String::from("") }
 </span>let x = format_args!("{}", temp());
-x; // &lt;-- The temporary is extended, allowing use here.
+x; // &lt;-- 临时变量被延长，允许在此处使用。
 <span class="boring">}</span></code></pre>
-<p>The expansion of a call to <a href="../core/macro.format_args.html"><code>format_args!</code></a> sometimes creates other internal <em>super temporaries</em>.</p>
+<p><a href="../core/macro.format_args.html"><code>format_args!</code></a> 调用的展开有时会创建其他内部 <em>超级临时变量</em>。</p>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = {
-    // This call creates an internal temporary.
+    // 此调用创建一个内部临时变量。
     let x = format_args!("{:?}", 0);
-    x // &lt;-- The temporary is extended, allowing its use here.
-}; // &lt;-- The temporary is dropped here.
-x; // ERROR
+    x // &lt;-- 临时变量被延长，允许在此处使用。
+}; // &lt;-- 临时变量在此处被销毁。
+x; // 错误
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// This call doesn't create an internal temporary.
+</span>// 此调用不创建内部临时变量。
 let x = { let x = format_args!("{}", 0); x };
 x; // OK
 <span class="boring">}</span></code></pre>
@@ -933,7 +918,7 @@ x; // OK
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The details of when <a href="../core/macro.format_args.html"><code>format_args!</code></a> does or does not create internal temporaries are currently unspecified.</p>
+<p>关于 <a href="../core/macro.format_args.html"><code>format_args!</code></a> 何时会或不会创建内部临时变量的细节目前尚未指定。</p>
 </blockquote>
 </div>
 
@@ -944,36 +929,35 @@ x; // OK
 <div class="rule" id="r-expr.super-macros.pin.super-operands"><a class="rule-link" href="#r-expr.super-macros.pin.super-operands" title="expr.super-macros.pin.super-operands"><span>[expr<wbr>.super-macros<wbr>.pin<wbr>.super-operands]</span></a>
 </div>
 
-<p>The argument to <a href="../core/pin/macro.pin.html"><code>pin!</code></a> is a <em>super operand</em>.</p>
+<p><a href="../core/pin/macro.pin.html"><code>pin!</code></a> 的参数是 <em>超级操作数</em>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::pin::pin;
 </span><span class="boring">fn temp() {}
-</span>// As above for `format_args!`.
+</span>// 同上 `format_args!`。
 let _ = pin!({ &amp;temp() }); // OK
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-expr.super-macros.pin.super-temporaries"><a class="rule-link" href="#r-expr.super-macros.pin.super-temporaries" title="expr.super-macros.pin.super-temporaries"><span>[expr<wbr>.super-macros<wbr>.pin<wbr>.super-temporaries]</span></a>
 </div>
 
-<p>The argument to <a href="../core/pin/macro.pin.html"><code>pin!</code></a> is a <a href="expressions.html#r-expr.place-value">value expression context</a> and creates a <em>super temporary</em>.</p>
+<p><a href="../core/pin/macro.pin.html"><code>pin!</code></a> 的参数是 <a href="expressions.html#r-expr.place-value">值表达式环境</a>，并创建一个 <em>超级临时变量</em>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::pin::pin;
 </span><span class="boring">fn temp() {}
-</span>// The argument is evaluated into a super temporary.
+</span>// 参数被求值为超级临时变量。
 let x = pin!(temp());
-// The temporary is extended, allowing its use here.
+// 临时变量被延长，允许在此处使用。
 x; // OK
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-expr.implicit-borrow"><a class="rule-link" href="#r-expr.implicit-borrow" title="expr.implicit-borrow"><span>[expr<wbr>.implicit-borrow]</span></a>
 </div>
 
-<h3 id="implicit-borrows"><a class="header" href="#implicit-borrows">Implicit borrows</a></h3>
+<h3 id="隐式借用"><a class="header" href="#隐式借用">隐式借用</a></h3>
 <div class="rule" id="r-expr.implicit-borrow-intro"><a class="rule-link" href="#r-expr.implicit-borrow-intro" title="expr.implicit-borrow-intro"><span>[expr<wbr>.implicit-borrow-intro]</span></a>
 </div>
 
-<p>Certain expressions will treat an expression as a place expression by implicitly borrowing it.
-For example, it is possible to compare two unsized <a href="types/slice.html">slices</a> for equality directly, because the <code>==</code> operator implicitly borrows its operands:</p>
+<p>某些表达式会通过隐式借用将一个表达式视为位置表达式。例如，可以直接比较两个无固定大小的 <a href="types/slice.html">切片</a> 是否相等，因为 <code>==</code> 运算符会隐式借用其操作数：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let c = [1, 2, 3];
@@ -984,50 +968,49 @@ let b: &amp;[i32];
 </span><span class="boring">b = &amp;d;
 </span>// ...
 *a == *b;
-// Equivalent form:
+// 等效形式：
 ::std::cmp::PartialEq::eq(&amp;*a, &amp;*b);
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-expr.implicit-borrow.application"><a class="rule-link" href="#r-expr.implicit-borrow.application" title="expr.implicit-borrow.application"><span>[expr<wbr>.implicit-borrow<wbr>.application]</span></a>
 </div>
 
-<p>Implicit borrows may be taken in the following expressions:</p>
+<p>隐式借用可能会在以下表达式中发生：</p>
 <ul>
-<li>Left operand in <a href="expressions/method-call-expr.html">method-call</a> expressions.</li>
-<li>Left operand in <a href="expressions/field-expr.html">field</a> expressions.</li>
-<li>Left operand in <a href="expressions/call-expr.html">call expressions</a>.</li>
-<li>Left operand in <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">array indexing</a> expressions.</li>
-<li>Operand of the <a href="expressions/operator-expr.html#the-dereference-operator">dereference operator</a> (<code>*</code>).</li>
-<li>Operands of <a href="expressions/operator-expr.html#comparison-operators">comparison</a>.</li>
-<li>Left operands of the <a href="expressions/operator-expr.html#compound-assignment-expressions">compound assignment</a>.</li>
-<li>Arguments to <a href="../core/macro.format_args.html"><code>format_args!</code></a> except the format string.</li>
+<li><a href="expressions/method-call-expr.html">方法调用</a> 表达式中的左操作数。</li>
+<li><a href="expressions/field-expr.html">字段</a> 表达式中的左操作数。</li>
+<li><a href="expressions/call-expr.html">调用表达式</a> 中的左操作数。</li>
+<li><a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a> 表达式中的左操作数。</li>
+<li><a href="expressions/operator-expr.html#the-dereference-operator">解引用运算符</a> (<code>*</code>) 的操作数。</li>
+<li><a href="expressions/operator-expr.html#comparison-operators">比较</a> 的操作数。</li>
+<li><a href="expressions/operator-expr.html#compound-assignment-expressions">复合赋值</a> 的左操作数。</li>
+<li>除了格式字符串之外传递给 <a href="../core/macro.format_args.html"><code>format_args!</code></a> 的参数。</li>
 </ul>
 <div class="rule" id="r-expr.overload"><a class="rule-link" href="#r-expr.overload" title="expr.overload"><span>[expr<wbr>.overload]</span></a>
 </div>
 
-<h2 id="overloading-traits"><a class="header" href="#overloading-traits">Overloading traits</a></h2>
-<p>Many of the following operators and expressions can also be overloaded for other types using traits in <code>std::ops</code> or <code>std::cmp</code>.
-These traits also exist in <code>core::ops</code> and <code>core::cmp</code> with the same names.</p>
+<h2 id="重载特型"><a class="header" href="#重载特型">重载特型</a></h2>
+<p>许多以下运算符和表达式也可以使用 <code>std::ops</code> 或 <code>std::cmp</code> 中的 特型 对其他类型进行重载。这些 特型 在 <code>core::ops</code> 和 <code>core::cmp</code> 中也以相同的名称存在。</p>
 <div class="rule" id="r-expr.attr"><a class="rule-link" href="#r-expr.attr" title="expr.attr"><span>[expr<wbr>.attr]</span></a>
 </div>
 
-<h2 id="expression-attributes"><a class="header" href="#expression-attributes">Expression attributes</a></h2>
+<h2 id="表达式属性"><a class="header" href="#表达式属性">表达式属性</a></h2>
 <div class="rule" id="r-expr.attr.restriction"><a class="rule-link" href="#r-expr.attr.restriction" title="expr.attr.restriction"><span>[expr<wbr>.attr<wbr>.restriction]</span></a>
 </div>
 
-<p><a href="attributes.html">Outer attributes</a> before an expression are allowed only in a few specific cases:</p>
+<p>表达式前的 <a href="attributes.html">外部属性</a> 仅在少数特定情况下允许：</p>
 <ul>
-<li>Before an expression used as a <a href="statements.html">statement</a>.</li>
-<li>Elements of <a href="expressions/array-expr.html">array expressions</a>, <a href="expressions/tuple-expr.html">tuple expressions</a>, <a href="expressions/call-expr.html">call expressions</a>, and tuple-style <a href="expressions/struct-expr.html">struct</a> expressions.</li>
-<li>The tail expression of <a href="expressions/block-expr.html">block expressions</a>.</li>
+<li>在用作 <a href="statements.html">语句</a> 的表达式之前。</li>
+<li><a href="expressions/array-expr.html">数组表达式</a>、<a href="expressions/tuple-expr.html">元组表达式</a>、<a href="expressions/call-expr.html">调用表达式</a> 以及元组风格 <a href="expressions/struct-expr.html">结构体</a> 表达式的元素。</li>
+<li><a href="expressions/block-expr.html">块表达式</a> 的尾部表达式。</li>
 </ul>
 <!-- Keep list in sync with block-expr.md -->
 <div class="rule" id="r-expr.attr.never-before"><a class="rule-link" href="#r-expr.attr.never-before" title="expr.attr.never-before"><span>[expr<wbr>.attr<wbr>.never-before]</span></a>
 </div>
 
-<p>They are never allowed before:</p>
+<p>在以下情况前绝不允许：</p>
 <ul>
-<li><a href="expressions/range-expr.html">Range</a> expressions.</li>
-<li>Binary operator expressions (<a href="expressions/operator-expr.html#grammar-ArithmeticOrLogicalExpression">ArithmeticOrLogicalExpression</a>, <a href="expressions/operator-expr.html#grammar-ComparisonExpression">ComparisonExpression</a>, <a href="expressions/operator-expr.html#grammar-LazyBooleanExpression">LazyBooleanExpression</a>, <a href="expressions/operator-expr.html#grammar-TypeCastExpression">TypeCastExpression</a>, <a href="expressions/operator-expr.html#grammar-AssignmentExpression">AssignmentExpression</a>, <a href="expressions/operator-expr.html#grammar-CompoundAssignmentExpression">CompoundAssignmentExpression</a>).</li>
+<li><a href="expressions/range-expr.html">范围</a> 表达式。</li>
+<li>二元运算符表达式（<a href="expressions/operator-expr.html#grammar-ArithmeticOrLogicalExpression">ArithmeticOrLogicalExpression</a>, <a href="expressions/operator-expr.html#grammar-ComparisonExpression">ComparisonExpression</a>, <a href="expressions/operator-expr.html#grammar-LazyBooleanExpression">LazyBooleanExpression</a>, <a href="expressions/operator-expr.html#grammar-TypeCastExpression">TypeCastExpression</a>, <a href="expressions/operator-expr.html#grammar-AssignmentExpression">AssignmentExpression</a>, <a href="expressions/operator-expr.html#grammar-CompoundAssignmentExpression">CompoundAssignmentExpression</a>）。</li>
 </ul>
 
                     </main>

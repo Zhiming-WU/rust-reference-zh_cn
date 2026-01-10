@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a8128a0.js";
+            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-be189161.js"></script>
+        <script src="toc-874e84b7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,55 +181,44 @@
                         <div class="rule" id="r-names"><a class="rule-link" href="#r-names" title="names"><span>[names]</span></a>
 </div>
 
-<h1 id="names"><a class="header" href="#names">Names</a></h1>
+<h1 id="名称"><a class="header" href="#名称">名称</a></h1>
 <div class="rule" id="r-names.intro"><a class="rule-link" href="#r-names.intro" title="names.intro"><span>[names<wbr>.intro]</span></a>
 </div>
 
-<p>An <em>entity</em> is a language construct that can be referred to in some way within
-the source program, usually via a <a href="paths.html">path</a>. Entities include <a href="types.html">types</a>, <a href="items.html">items</a>,
-<a href="items/generics.html">generic parameters</a>, <a href="patterns.html">variable bindings</a>, <a href="expressions/loop-expr.html#loop-labels">loop labels</a>, <a href="tokens.html#生命周期和循环标签">lifetimes</a>,
-<a href="expressions/field-expr.html">fields</a>, <a href="attributes.html">attributes</a>, and <a href="attributes/diagnostics.html#lint-check-attributes">lints</a>.</p>
-<p>A <em>declaration</em> is a syntactical construct that can introduce a <em>name</em> to
-refer to an entity. Entity names are valid within a <a href="names/scopes.html"><em>scope</em></a> — a region of
-source text where that name may be referenced.</p>
-<p>Some entities are <a href="#explicitly-declared-entities">explicitly declared</a> in the
-source code, and some are <a href="#implicitly-declared-entities">implicitly declared</a>
-as part of the language or compiler extensions.</p>
-<p><a href="paths.html"><em>Paths</em></a> are used to refer to an entity, possibly in another module or type.</p>
-<p>Lifetimes and loop labels use a <a href="tokens.html#生命周期和循环标签">dedicated syntax</a> using a
-leading quote.</p>
-<p>Names are segregated into different <a href="names/namespaces.html"><em>namespaces</em></a>, allowing entities in
-different namespaces to share the same name without conflict.</p>
-<p><a href="names/name-resolution.html"><em>Name resolution</em></a> is the compile-time process of tying paths, identifiers,
-and labels to entity declarations.</p>
-<p>Access to certain names may be restricted based on their <a href="visibility-and-privacy.html"><em>visibility</em></a>.</p>
+<p>一个 <em>实体(entity)</em> 是一种语言结构，它在源程序中可以以某种方式被引用，通常是通过 <a href="paths.html">路径</a> 。实体包括 <a href="types.html">类型</a> 、 <a href="items.html">项</a> 、 <a href="items/generics.html">泛型参数</a> 、 <a href="patterns.html">变量绑定</a> 、 <a href="expressions/loop-expr.html#loop-labels">循环标签</a> 、 <a href="tokens.html#生命周期和循环标签">生命周期</a> 、 <a href="expressions/field-expr.html">字段</a> 、 <a href="attributes.html">属性</a> 以及 <a href="attributes/diagnostics.html#lint-check-attributes">lint</a> 。</p>
+<p>一个 <em>声明(declaration)</em> 是一种语法结构，它可以引入一个 <em>名称(name)</em> 来引用实体。实体名称在 <a href="names/scopes.html"><em>作用域</em></a> 内有效 — 即该名称可以被引用的源文本区域。</p>
+<p>某些实体在源码中被 <a href="#explicitly-declared-entities">显式声明</a> ，而某些实体作为语言或编译器扩展的一部分被 <a href="#implicitly-declared-entities">隐式声明</a> 。</p>
+<p><a href="paths.html"><em>路径</em></a> 用于引用实体，可能是在另一个模块或类型中。</p>
+<p>生命周期和循环标签使用一种 <a href="tokens.html#生命周期和循环标签">专用语法</a> ，带有一个前导引号。</p>
+<p>名称被隔离在不同的 <a href="names/namespaces.html"><em>命名空间</em></a> 中，允许不同命名空间中的实体共享相同的名称而不会发生冲突。</p>
+<p><a href="names/name-resolution.html"><em>名称解析</em></a> 是将路径、标识符和标签绑定到实体声明的编译时过程。</p>
+<p>对某些名称的访问可能会基于它们的 <a href="visibility-and-privacy.html"><em>可见性</em></a> 受到限制。</p>
 <div class="rule" id="r-names.explicit"><a class="rule-link" href="#r-names.explicit" title="names.explicit"><span>[names<wbr>.explicit]</span></a>
 </div>
 
-<h2 id="explicitly-declared-entities"><a class="header" href="#explicitly-declared-entities">Explicitly declared entities</a></h2>
+<h2 id="显式声明的实体"><a class="header" href="#显式声明的实体">显式声明的实体</a></h2>
 <div class="rule" id="r-names.explicit.list"><a class="rule-link" href="#r-names.explicit.list" title="names.explicit.list"><span>[names<wbr>.explicit<wbr>.list]</span></a>
 </div>
 
-<p>Entities that explicitly introduce a name in the source code are:</p>
+<p>在源码中显式引入名称的实体有：</p>
 <div class="rule" id="r-names.explicit.item-decl"><a class="rule-link" href="#r-names.explicit.item-decl" title="names.explicit.item-decl"><span>[names<wbr>.explicit<wbr>.item-decl]</span></a>
 </div>
 
 <ul>
-<li><a href="items.html">Items</a>:
+<li><a href="items.html">项</a> ：
 <ul>
-<li><a href="items/modules.html">Module declarations</a></li>
-<li><a href="items/extern-crates.html">External crate declarations</a></li>
-<li><a href="items/use-declarations.html">Use declarations</a></li>
-<li><a href="items/functions.html">Function declarations</a> and <a href="items/functions.html#function-parameters">function parameters</a></li>
-<li><a href="items/type-aliases.html">Type aliases</a></li>
-<li><a href="items/structs.html">struct</a>, <a href="items/unions.html">union</a>, <a href="items/enumerations.html">enum</a>, enum variant declarations, and their named
-fields</li>
-<li><a href="items/constant-items.html">Constant item declarations</a></li>
-<li><a href="items/static-items.html">Static item declarations</a></li>
-<li><a href="items/traits.html">Trait item declarations</a> and their <a href="items/associated-items.html">associated items</a></li>
-<li><a href="items/external-blocks.html">External block items</a></li>
-<li><a href="macros-by-example.html"><code>macro_rules</code> declarations</a> and <a href="macros-by-example.html#元变量">matcher metavariables</a></li>
-<li><a href="items/implementations.html">Implementation</a> associated items</li>
+<li><a href="items/modules.html">模块声明</a></li>
+<li><a href="items/extern-crates.html">外部 crate 声明</a></li>
+<li><a href="items/use-declarations.html">使用声明</a></li>
+<li><a href="items/functions.html">函数声明</a> 和 <a href="items/functions.html#function-parameters">函数参数</a></li>
+<li><a href="items/type-aliases.html">类型别名</a></li>
+<li><a href="items/structs.html">结构体</a> 、 <a href="items/unions.html">联合体</a> 、 <a href="items/enumerations.html">枚举</a> 、枚举变体声明以及它们的具名字段</li>
+<li><a href="items/constant-items.html">常量项声明</a></li>
+<li><a href="items/static-items.html">静态项声明</a></li>
+<li><a href="items/traits.html">特型项声明</a> 和它们的 <a href="items/associated-items.html">关联项</a></li>
+<li><a href="items/external-blocks.html">外部块项</a></li>
+<li><a href="macros-by-example.html"><code>macro_rules</code> 声明</a> 和 <a href="macros-by-example.html#元变量">匹配器元变量</a></li>
+<li><a href="items/implementations.html">实现</a> 关联项</li>
 </ul>
 </li>
 </ul>
@@ -237,14 +226,14 @@ fields</li>
 </div>
 
 <ul>
-<li><a href="expressions.html">Expressions</a>:
+<li><a href="expressions.html">表达式</a> ：
 <ul>
-<li><a href="expressions/closure-expr.html">Closure</a> parameters</li>
-<li><a href="expressions/loop-expr.html#while-let-patterns"><code>while let</code></a> pattern bindings</li>
-<li><a href="expressions/loop-expr.html#iterator-loops"><code>for</code></a> pattern bindings</li>
-<li><a href="expressions/if-expr.html#if-let-patterns"><code>if let</code></a> pattern bindings</li>
-<li><a href="expressions/match-expr.html"><code>match</code></a> pattern bindings</li>
-<li><a href="expressions/loop-expr.html#loop-labels">Loop labels</a></li>
+<li><a href="expressions/closure-expr.html">闭包</a> 参数</li>
+<li><a href="expressions/loop-expr.html#while-let-patterns"><code>while let</code></a> 模式绑定</li>
+<li><a href="expressions/loop-expr.html#iterator-loops"><code>for</code></a> 模式绑定</li>
+<li><a href="expressions/if-expr.html#if-let-patterns"><code>if let</code></a> 模式绑定</li>
+<li><a href="expressions/match-expr.html"><code>match</code></a> 模式绑定</li>
+<li><a href="expressions/loop-expr.html#loop-labels">循环标签</a></li>
 </ul>
 </li>
 </ul>
@@ -252,57 +241,55 @@ fields</li>
 </div>
 
 <ul>
-<li><a href="items/generics.html">Generic parameters</a></li>
+<li><a href="items/generics.html">泛型参数</a></li>
 </ul>
 <div class="rule" id="r-names.explicit.higher-ranked-bounds"><a class="rule-link" href="#r-names.explicit.higher-ranked-bounds" title="names.explicit.higher-ranked-bounds"><span>[names<wbr>.explicit<wbr>.higher-ranked-bounds]</span></a>
 </div>
 
 <ul>
-<li><a href="trait-bounds.html#higher-ranked-trait-bounds">Higher ranked trait bounds</a></li>
+<li><a href="trait-bounds.html#higher-ranked-trait-bounds">高阶特型界限</a></li>
 </ul>
 <div class="rule" id="r-names.explicit.binding"><a class="rule-link" href="#r-names.explicit.binding" title="names.explicit.binding"><span>[names<wbr>.explicit<wbr>.binding]</span></a>
 </div>
 
 <ul>
-<li><a href="statements.html#let-statements"><code>let</code> statement</a> pattern bindings</li>
+<li><a href="statements.html#let-statements"><code>let</code> 语句</a> 模式绑定</li>
 </ul>
 <div class="rule" id="r-names.explicit.macro_use"><a class="rule-link" href="#r-names.explicit.macro_use" title="names.explicit.macro_use"><span>[names<wbr>.explicit<wbr>.macro_use]</span></a>
 </div>
 
 <ul>
-<li>The <a href="macros-by-example.html#macro_use属性"><code>macro_use</code> attribute</a> can introduce macro names from another crate</li>
+<li><a href="macros-by-example.html#macro_use属性"><code>macro_use</code> 属性</a> 可以引入来自另一个 crate 的宏名称</li>
 </ul>
 <div class="rule" id="r-names.explicit.macro_export"><a class="rule-link" href="#r-names.explicit.macro_export" title="names.explicit.macro_export"><span>[names<wbr>.explicit<wbr>.macro_export]</span></a>
 </div>
 
 <ul>
-<li>The <a href="macros-by-example.html#macro_export属性"><code>macro_export</code> attribute</a> can introduce an alias for the macro into the crate root</li>
+<li><a href="macros-by-example.html#macro_export属性"><code>macro_export</code> 属性</a> 可以为宏向 crate 根部引入一个别名</li>
 </ul>
 <div class="rule" id="r-names.explicit.macro-invocation"><a class="rule-link" href="#r-names.explicit.macro-invocation" title="names.explicit.macro-invocation"><span>[names<wbr>.explicit<wbr>.macro-invocation]</span></a>
 </div>
 
-<p>Additionally, <a href="macros.html#宏调用">macro invocations</a> and <a href="attributes.html">attributes</a> can introduce names by
-expanding to one of the above items.</p>
+<p>此外， <a href="macros.html#宏调用">宏调用</a> 和 <a href="attributes.html">属性</a> 可以通过展开为上述项之一来引入名称。</p>
 <div class="rule" id="r-names.implicit"><a class="rule-link" href="#r-names.implicit" title="names.implicit"><span>[names<wbr>.implicit]</span></a>
 </div>
 
-<h2 id="implicitly-declared-entities"><a class="header" href="#implicitly-declared-entities">Implicitly declared entities</a></h2>
+<h2 id="隐式声明的实体"><a class="header" href="#隐式声明的实体">隐式声明的实体</a></h2>
 <div class="rule" id="r-names.implicit.list"><a class="rule-link" href="#r-names.implicit.list" title="names.implicit.list"><span>[names<wbr>.implicit<wbr>.list]</span></a>
 </div>
 
-<p>The following entities are implicitly defined by the language, or are
-introduced by compiler options and extensions:</p>
+<p>以下实体由语言隐式定义，或由编译器选项和扩展引入：</p>
 <div class="rule" id="r-names.implicit.primitive-types"><a class="rule-link" href="#r-names.implicit.primitive-types" title="names.implicit.primitive-types"><span>[names<wbr>.implicit<wbr>.primitive-types]</span></a>
 </div>
 
 <ul>
-<li><a href="names/preludes.html#language-prelude">Language prelude</a>:
+<li><a href="names/preludes.html#language-prelude">语言预导入</a> ：
 <ul>
-<li><a href="types/boolean.html">Boolean type</a> — <code>bool</code></li>
-<li><a href="types/textual.html">Textual types</a> — <code>char</code> and <code>str</code></li>
-<li><a href="types/numeric.html#integer-types">Integer types</a> — <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>i128</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>u128</code></li>
-<li><a href="types/numeric.html#machine-dependent-integer-types">Machine-dependent integer types</a> — <code>usize</code> and <code>isize</code></li>
-<li><a href="types/numeric.html#floating-point-types">floating-point types</a> — <code>f32</code> and <code>f64</code></li>
+<li><a href="types/boolean.html">布尔类型</a> — <code>bool</code></li>
+<li><a href="types/textual.html">文本类型</a> — <code>char</code> 和 <code>str</code></li>
+<li><a href="types/numeric.html#integer-types">整数类型</a> — <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>i128</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>u128</code></li>
+<li><a href="types/numeric.html#machine-dependent-integer-types">机器相关整数类型</a> — <code>usize</code> 和 <code>isize</code></li>
+<li><a href="types/numeric.html#floating-point-types">浮点类型</a> — <code>f32</code> 和 <code>f64</code></li>
 </ul>
 </li>
 </ul>
@@ -310,55 +297,54 @@ introduced by compiler options and extensions:</p>
 </div>
 
 <ul>
-<li><a href="attributes.html#built-in-attributes-index">Built-in attributes</a></li>
+<li><a href="attributes.html#built-in-attributes-index">内置属性</a></li>
 </ul>
 <div class="rule" id="r-names.implicit.prelude"><a class="rule-link" href="#r-names.implicit.prelude" title="names.implicit.prelude"><span>[names<wbr>.implicit<wbr>.prelude]</span></a>
 </div>
 
 <ul>
-<li><a href="names/preludes.html#standard-library-prelude">Standard library prelude</a> items, attributes, and macros</li>
+<li><a href="names/preludes.html#standard-library-prelude">标准库预导入</a> 项、属性和宏</li>
 </ul>
 <div class="rule" id="r-names.implicit.stdlib"><a class="rule-link" href="#r-names.implicit.stdlib" title="names.implicit.stdlib"><span>[names<wbr>.implicit<wbr>.stdlib]</span></a>
 </div>
 
 <ul>
-<li><a href="names/preludes.html#extern-prelude">Standard library</a> crates in the root module</li>
+<li>根模块中的 <a href="names/preludes.html#extern-prelude">标准库</a> crate</li>
 </ul>
 <div class="rule" id="r-names.implicit.extern-prelude"><a class="rule-link" href="#r-names.implicit.extern-prelude" title="names.implicit.extern-prelude"><span>[names<wbr>.implicit<wbr>.extern-prelude]</span></a>
 </div>
 
 <ul>
-<li><a href="names/preludes.html#extern-prelude">External crates</a> linked by the compiler</li>
+<li>由编译器链接的 <a href="names/preludes.html#extern-prelude">外部 crate</a></li>
 </ul>
 <div class="rule" id="r-names.implicit.tool-attributes"><a class="rule-link" href="#r-names.implicit.tool-attributes" title="names.implicit.tool-attributes"><span>[names<wbr>.implicit<wbr>.tool-attributes]</span></a>
 </div>
 
 <ul>
-<li><a href="attributes.html#tool-attributes">Tool attributes</a></li>
+<li><a href="attributes.html#tool-attributes">工具属性</a></li>
 </ul>
 <div class="rule" id="r-names.implicit.lints"><a class="rule-link" href="#r-names.implicit.lints" title="names.implicit.lints"><span>[names<wbr>.implicit<wbr>.lints]</span></a>
 </div>
 
 <ul>
-<li><a href="attributes/diagnostics.html#lint-check-attributes">Lints</a> and <a href="attributes/diagnostics.html#tool-lint-attributes">tool lint attributes</a></li>
+<li><a href="attributes/diagnostics.html#lint-check-attributes">lint</a> 和 <a href="attributes/diagnostics.html#tool-lint-attributes">工具 lint 属性</a></li>
 </ul>
 <div class="rule" id="r-names.implicit.derive-helpers"><a class="rule-link" href="#r-names.implicit.derive-helpers" title="names.implicit.derive-helpers"><span>[names<wbr>.implicit<wbr>.derive-helpers]</span></a>
 </div>
 
 <ul>
-<li><a href="procedural-macros.html#派生宏辅助属性">Derive helper attributes</a> are valid within an item without being explicitly imported</li>
+<li><a href="procedural-macros.html#派生宏辅助属性">派生辅助属性</a> 在项内有效，无需显式导入</li>
 </ul>
 <div class="rule" id="r-names.implicit.lifetime-static"><a class="rule-link" href="#r-names.implicit.lifetime-static" title="names.implicit.lifetime-static"><span>[names<wbr>.implicit<wbr>.lifetime-static]</span></a>
 </div>
 
 <ul>
-<li>The <a href="keywords.html#弱关键字"><code>'static</code></a> lifetime</li>
+<li><a href="keywords.html#弱关键字"><code>'static</code></a> 生命周期</li>
 </ul>
 <div class="rule" id="r-names.implicit.root"><a class="rule-link" href="#r-names.implicit.root" title="names.implicit.root"><span>[names<wbr>.implicit<wbr>.root]</span></a>
 </div>
 
-<p>Additionally, the crate root module does not have a name, but can be referred
-to with certain <a href="paths.html#path-qualifiers">path qualifiers</a> or aliases.</p>
+<p>此外，crate 根模块没有名称，但可以使用某些 <a href="paths.html#path-qualifiers">路径限定符</a> 或别名来引用。</p>
 
                     </main>
 
