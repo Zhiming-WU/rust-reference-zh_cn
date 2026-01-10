@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -383,7 +383,7 @@ assert_eq!(5, five);
 <div class="rule" id="r-expr.block.value"><a class="rule-link" href="#r-expr.block.value" title="expr.block.value"><span>[expr<wbr>.block<wbr>.value]</span></a>
 </div>
 
-<p>块始终是 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式</a> ，并在值表达式语境中对最后一个操作数求值。</p>
+<p>块始终是 <a href="../expressions.html#位置表达式和值表达式">值表达式</a> ，并在值表达式语境中对最后一个操作数求值。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
@@ -610,7 +610,7 @@ BlockExpression</text>
 <div class="rule" id="r-expr.block.const.generic-params"><a class="rule-link" href="#r-expr.block.const.generic-params" title="expr.block.const.generic-params"><span>[expr<wbr>.block<wbr>.const<wbr>.generic-params]</span></a>
 </div>
 
-<p>const 块能够引用作用域内的泛型参数，这与 <a href="../glossary.html#free-item">自由</a> 常量项不同。
+<p>const 块能够引用作用域内的泛型参数，这与 <a href="../glossary.html#自由项">自由</a> 常量项不同。
 它们被脱糖为在作用域内带有泛型参数的常量项（类似于关联常量，但没有它们与之关联的 特型 或类型）。
 例如，这段代码：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
@@ -738,7 +738,7 @@ BlockExpression</text>
 
 <p>在以下情况下，允许在块表达式的左大括号后直接使用 <a href="../attributes.html">内部属性</a> ：</p>
 <ul>
-<li><a href="../items/functions.html">函数</a> 和 <a href="../items/associated-items.html#methods">方法</a> 体。</li>
+<li><a href="../items/functions.html">函数</a> 和 <a href="../items/associated-items.html#方法">方法</a> 体。</li>
 <li>循环体（ <a href="loop-expr.html#infinite-loops"><code>loop</code></a> 、 <a href="loop-expr.html#predicate-loops"><code>while</code></a> 和 <a href="loop-expr.html#iterator-loops"><code>for</code></a> ）。</li>
 <li>用作 <a href="../statements.html">语句</a> 的块表达式。</li>
 <li>作为 <a href="array-expr.html">数组表达式</a> 、 <a href="tuple-expr.html">元组表达式</a> 、

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-type.tuple"><a class="rule-link" href="#r-type.tuple" title="type.tuple"><span>[type<wbr>.tuple]</span></a>
 </div>
 
-<h1 id="tuple-types"><a class="header" href="#tuple-types">Tuple types</a></h1>
+<h1 id="元组类型"><a class="header" href="#元组类型">元组类型</a></h1>
 <div class="rule" id="r-type.tuple.syntax"><a class="rule-link" href="#r-type.tuple.syntax" title="type.tuple.syntax"><span>[type<wbr>.tuple<wbr>.syntax]</span></a>
 </div>
 
@@ -277,55 +277,45 @@ Type</text>
 <div class="rule" id="r-type.tuple.intro"><a class="rule-link" href="#r-type.tuple.intro" title="type.tuple.intro"><span>[type<wbr>.tuple<wbr>.intro]</span></a>
 </div>
 
-<p><em>Tuple types</em> are a family of structural types<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup> for heterogeneous lists of other types.</p>
-<p>The syntax for a tuple type is a parenthesized, comma-separated list of types.</p>
+<p><em>元组类型</em> 是一系列用于存放其它类型的异构列表的 结构化类型 <sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup>。</p>
+<p>元组类型的语法是一个括号括起来的、逗号分隔的类型列表。</p>
 <div class="rule" id="r-type.tuple.restriction"><a class="rule-link" href="#r-type.tuple.restriction" title="type.tuple.restriction"><span>[type<wbr>.tuple<wbr>.restriction]</span></a>
 </div>
 
-<p>1-ary tuples require a comma after their element type to be disambiguated with a <a href="../types.html#parenthesized-types">parenthesized type</a>.</p>
+<p>一元元组要求在其元素类型后加一个逗号，以便与 <a href="../types.html#parenthesized-types">括号括起来的类型</a> 区分开来。</p>
 <div class="rule" id="r-type.tuple.field-number"><a class="rule-link" href="#r-type.tuple.field-number" title="type.tuple.field-number"><span>[type<wbr>.tuple<wbr>.field-number]</span></a>
 </div>
 
-<p>A tuple type has a number of fields equal to the length of the list of types.
-This number of fields determines the <em>arity</em> of the tuple.
-A tuple with <code>n</code> fields is called an <em>n-ary tuple</em>.
-For example, a tuple with 2 fields is a 2-ary tuple.</p>
+<p>元组类型的字段数量等于类型列表的长度。此字段数量决定了元组的 <em>元数</em> 。具有 <code>n</code> 个字段的元组被称为 <em>n 元元组</em> 。例如，具有 2 个字段的元组是 2 元元组。</p>
 <div class="rule" id="r-type.tuple.field-name"><a class="rule-link" href="#r-type.tuple.field-name" title="type.tuple.field-name"><span>[type<wbr>.tuple<wbr>.field-name]</span></a>
 </div>
 
-<p>Fields of tuples are named using increasing numeric names matching their position in the list of types.
-The first field is <code>0</code>.
-The second field is <code>1</code>.
-And so on.
-The type of each field is the type of the same position in the tuple’s list of types.</p>
+<p>元组的字段使用与其在类型列表中的位置匹配的递增数字名称命名。第一个字段是 <code>0</code> 。第二个字段是 <code>1</code> 。依此类推。每个字段的类型是元组类型列表中相同位置的类型。</p>
 <div class="rule" id="r-type.tuple.unit"><a class="rule-link" href="#r-type.tuple.unit" title="type.tuple.unit"><span>[type<wbr>.tuple<wbr>.unit]</span></a>
 </div>
 
-<p>For convenience and historical reasons, the tuple type with no fields (<code>()</code>) is often called <em>unit</em> or <em>the unit type</em>.
-Its one value is also called <em>unit</em> or <em>the unit value</em>.</p>
-<p>Some examples of tuple types:</p>
+<p>由于便利和历史原因，没有字段的元组类型 ( <code>()</code> ) 通常被称为 <em>unit</em> 或 <em>unit 类型</em> 。它的唯一值也被称为 <em>unit</em> 或 <em>unit 值</em> 。</p>
+<p>一些元组类型的示例：</p>
 <ul>
 <li><code>()</code> (unit)</li>
-<li><code>(i32,)</code> (1-ary tuple)</li>
+<li><code>(i32,)</code> (一元元组)</li>
 <li><code>(f64, f64)</code></li>
 <li><code>(String, i32)</code></li>
-<li><code>(i32, String)</code> (different type from the previous example)</li>
+<li><code>(i32, String)</code> (与上一个示例不同的类型)</li>
 <li><code>(i32, f64, Vec&lt;String&gt;, Option&lt;bool&gt;)</code></li>
 </ul>
 <div class="rule" id="r-type.tuple.constructor"><a class="rule-link" href="#r-type.tuple.constructor" title="type.tuple.constructor"><span>[type<wbr>.tuple<wbr>.constructor]</span></a>
 </div>
 
-<p>Values of this type are constructed using a <a href="../expressions/tuple-expr.html#tuple-expressions">tuple expression</a>.
-Furthermore, various expressions will produce the unit value if there is no other meaningful value for it to evaluate to.</p>
+<p>此类型的值是使用 <a href="../expressions/tuple-expr.html#tuple-expressions">元组表达式</a> 构造的。此外，如果没有其他有意义的值可以求值，各种表达式都将产生 unit 值。</p>
 <div class="rule" id="r-type.tuple.access"><a class="rule-link" href="#r-type.tuple.access" title="type.tuple.access"><span>[type<wbr>.tuple<wbr>.access]</span></a>
 </div>
 
-<p>Tuple fields can be accessed by either a <a href="../expressions/tuple-expr.html#tuple-indexing-expressions">tuple index expression</a> or <a href="../patterns.html#tuple-patterns">pattern matching</a>.</p>
+<p>元组字段可以通过 <a href="../expressions/tuple-expr.html#tuple-indexing-expressions">元组索引表达式</a> 或 <a href="../patterns.html#tuple-patterns">模式匹配</a> 来访问。</p>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-1">
-<p>Structural types are always equivalent if their internal types are equivalent.
-For a nominal version of tuples, see <a href="./struct.html">tuple structs</a>. <a href="#fr-1-1">↩</a></p>
+<p>如果 结构化类型 的内部类型等效，则它们始终等效。对于元组的标称版本，请参阅 <a href="./struct.html">元组结构体</a> 。 <a href="#fr-1-1">↩</a></p>
 </li>
 </ol>
 

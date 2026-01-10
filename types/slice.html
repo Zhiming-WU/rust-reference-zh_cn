@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-type.slice"><a class="rule-link" href="#r-type.slice" title="type.slice"><span>[type<wbr>.slice]</span></a>
 </div>
 
-<h1 id="slice-types"><a class="header" href="#slice-types">Slice types</a></h1>
+<h1 id="切片类型"><a class="header" href="#切片类型">切片类型</a></h1>
 <div class="rule" id="r-type.slice.syntax"><a class="rule-link" href="#r-type.slice.syntax" title="type.slice.syntax"><span>[type<wbr>.slice<wbr>.syntax]</span></a>
 </div>
 
@@ -236,32 +236,29 @@ Type</text>
 <div class="rule" id="r-type.slice.intro"><a class="rule-link" href="#r-type.slice.intro" title="type.slice.intro"><span>[type<wbr>.slice<wbr>.intro]</span></a>
 </div>
 
-<p>A slice is a <a href="../dynamically-sized-types.html">dynamically sized type</a> representing a ‘view’ into a sequence of
-elements of type <code>T</code>. The slice type is written as <code>[T]</code>.</p>
+<p>切片是一种 <a href="../dynamically-sized-types.html">动态大小类型</a> ，表示一个 T 类型元素序列的 ‘视图’ 。切片类型写作 <code>[T]</code> 。</p>
 <div class="rule" id="r-type.slice.unsized"><a class="rule-link" href="#r-type.slice.unsized" title="type.slice.unsized"><span>[type<wbr>.slice<wbr>.unsized]</span></a>
 </div>
 
-<p>Slice types are generally used through pointer types. For example:</p>
+<p>切片类型通常通过指针类型使用。例如：</p>
 <ul>
-<li><code>&amp;[T]</code>: a ‘shared slice’, often just called a ‘slice’. It doesn’t own the
-data it points to; it borrows it.</li>
-<li><code>&amp;mut [T]</code>: a ‘mutable slice’. It mutably borrows the data it points to.</li>
-<li><code>Box&lt;[T]&gt;</code>: a ‘boxed slice’</li>
+<li><code>&amp;[T]</code>: 一个 ‘共享切片’ ，通常只被称为 ‘切片’ 。它不拥有它指向的数据；它借用它。</li>
+<li><code>&amp;mut [T]</code>: 一个 ‘可变切片’ 。它可变地借用它指向的数据。</li>
+<li><code>Box&lt;[T]&gt;</code>: 一个 ‘装箱切片’</li>
 </ul>
-<p>Examples:</p>
+<p>示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// A heap-allocated array, coerced to a slice
+</span>// 一个堆分配的数组， 隐式类型转换 为切片
 let boxed_array: Box&lt;[i32]&gt; = Box::new([1, 2, 3]);
 
-// A (shared) slice into an array
+// 一个指向数组的 (共享) 切片
 let slice: &amp;[i32] = &amp;boxed_array[..];
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-type.slice.safe"><a class="rule-link" href="#r-type.slice.safe" title="type.slice.safe"><span>[type<wbr>.slice<wbr>.safe]</span></a>
 </div>
 
-<p>All elements of slices are always initialized, and access to a slice is always
-bounds-checked in safe methods and operators.</p>
+<p>切片的所有元素总是被初始化的，并且在安全方法和运算符中访问切片总是会进行边界检查。</p>
 
                     </main>
 

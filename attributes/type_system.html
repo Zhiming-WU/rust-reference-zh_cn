@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -264,7 +264,7 @@ match message {
 
 <p>在定义它的 crate 之外，无法构造非详尽类型：</p>
 <ul>
-<li>非详尽变体（ <a href="../items/structs.html">结构体</a> 或 <a href="../items/enumerations.html">枚举变体</a> ）不能使用 <a href="../expressions/struct-expr.html#grammar-StructExpression">结构体表达式</a> 构造（包括使用 <a href="../expressions/struct-expr.html#functional-update-syntax">功能性更新语法格式</a> ）。</li>
+<li>非详尽变体（ <a href="../items/structs.html">结构体</a> 或 <a href="../items/enumerations.html">枚举变体</a> ）不能使用 <a href="../expressions/struct-expr.html#grammar-StructExpression">结构体表达式</a> 构造（包括使用 <a href="../expressions/struct-expr.html#函数式更新语法">功能性更新语法格式</a> ）。</li>
 <li><a href="../items/structs.html">单元结构体</a> 隐式定义的同名常量，或 <a href="../items/structs.html">元组结构体</a> 的同名构造函数，其 <a href="../visibility-and-privacy.html">可见性</a> 不大于 <code>pub(crate)</code> 。
 也就是说，如果结构体的可见性是 <code>pub</code> ，那么常量或构造函数的可见性就是 <code>pub(crate)</code> ，否则这两个 <a href="../items.html#grammar-Item">项</a> 的可见性相同（就像没有 <code>#[non_exhaustive]</code> 的情况一样）。</li>
 <li><a href="../items/enumerations.html">枚举</a> 实例可以被构造。</li>

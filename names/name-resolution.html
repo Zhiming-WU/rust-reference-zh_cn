@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,32 +181,32 @@
                         <div class="rule" id="r-names.resolution"><a class="rule-link" href="#r-names.resolution" title="names.resolution"><span>[names<wbr>.resolution]</span></a>
 </div>
 
-<h1 id="name-resolution"><a class="header" href="#name-resolution">Name resolution</a></h1>
+<h1 id="名称解析"><a class="header" href="#名称解析">名称解析</a></h1>
 <div class="rule" id="r-names.resolution.intro"><a class="rule-link" href="#r-names.resolution.intro" title="names.resolution.intro"><span>[names<wbr>.resolution<wbr>.intro]</span></a>
 </div>
 
-<p><em>Name resolution</em> is the process of tying paths and other identifiers to the declarations of those entities. Names are segregated into different <a href="../names/namespaces.html">namespaces</a>, allowing entities in different namespaces to share the same name without conflict. Each name is valid within a <a href="../names/scopes.html">scope</a>, or a region of source text where that name may be referenced. Access to a name may be restricted based on its <a href="../visibility-and-privacy.html">visibility</a>.</p>
-<p>Name resolution is split into three stages throughout the compilation process. The first stage, <em>expansion-time resolution</em>, resolves all <a href="../items/use-declarations.html"><code>use</code> declarations</a> and <a href="../macros.html#宏调用">macro invocations</a>. The second stage, <em>primary resolution</em>, resolves all names that have not yet been resolved and that do not depend on type information to resolve. The last stage, <em>type-relative resolution</em>, resolves the remaining names once type information is available.</p>
+<p><em>名称解析</em> 是将路径和其他标识符绑定到这些实体的声明的过程。名称被分隔到不同的 <a href="../names/namespaces.html">命名空间</a> 中，允许不同命名空间中的实体在没有冲突的情况下共享相同的名称。每个名称在 <a href="../names/scopes.html">作用域</a>（即可以引用该名称的源代码区域）内有效。对名称的访问可能会根据其 <a href="../visibility-and-privacy.html">可见性</a> 受到限制。</p>
+<p>在整个编译过程中，名称解析分为三个阶段。第一个阶段， * 展开时解析 *，解析所有的 <a href="../items/use-declarations.html"><code>use</code> 声明</a> 和 <a href="../macros.html#宏调用">宏调用</a>。第二个阶段， * 初级解析 *，解析所有尚未解析且不依赖于类型信息来解析的名称。最后一个阶段， * 类型相关解析 *，一旦类型信息可用，就解析剩余的名称。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Expansion-time resolution is also known as <em>early resolution</em>. Primary resolution is also known as <em>late resolution</em>.</p>
+<p>展开时解析 也被称为 * 早期解析 *。 初级解析 也被称为 * 晚期解析 *。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-names.resolution.general"><a class="rule-link" href="#r-names.resolution.general" title="names.resolution.general"><span>[names<wbr>.resolution<wbr>.general]</span></a>
 </div>
 
-<h2 id="general"><a class="header" href="#general">General</a></h2>
+<h2 id="通用"><a class="header" href="#通用">通用</a></h2>
 <div class="rule" id="r-names.resolution.general.intro"><a class="rule-link" href="#r-names.resolution.general.intro" title="names.resolution.general.intro"><span>[names<wbr>.resolution<wbr>.general<wbr>.intro]</span></a>
 </div>
 
-<p>The rules within this section apply to all stages of name resolution.</p>
+<p>本节中的规则适用于名称解析的所有阶段。</p>
 <div class="rule" id="r-names.resolution.general.scopes"><a class="rule-link" href="#r-names.resolution.general.scopes" title="names.resolution.general.scopes"><span>[names<wbr>.resolution<wbr>.general<wbr>.scopes]</span></a>
 </div>
 
-<h3 id="scopes"><a class="header" href="#scopes">Scopes</a></h3>
+<h3 id="作用域"><a class="header" href="#作用域">作用域</a></h3>
 <div class="rule" id="r-names.resolution.general.scopes.intro"><a class="rule-link" href="#r-names.resolution.general.scopes.intro" title="names.resolution.general.scopes.intro"><span>[names<wbr>.resolution<wbr>.general<wbr>.scopes<wbr>.intro]</span></a>
 </div>
 
@@ -214,39 +214,39 @@
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This is a placeholder for future expansion about resolution of names within various scopes.</p>
+<p>这是未来关于各种作用域内名称解析扩展的占位符。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-names.resolution.expansion"><a class="rule-link" href="#r-names.resolution.expansion" title="names.resolution.expansion"><span>[names<wbr>.resolution<wbr>.expansion]</span></a>
 </div>
 
-<h2 id="expansion-time-name-resolution"><a class="header" href="#expansion-time-name-resolution">Expansion-time name resolution</a></h2>
+<h2 id="展开时名称解析"><a class="header" href="#展开时名称解析">展开时名称解析</a></h2>
 <div class="rule" id="r-names.resolution.expansion.intro"><a class="rule-link" href="#r-names.resolution.expansion.intro" title="names.resolution.expansion.intro"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.intro]</span></a>
 </div>
 
-<p>Expansion-time name resolution is the stage of name resolution necessary to complete macro expansion and fully generate a crate’s <a href="../glossary.html#r-glossary.ast">AST</a>. This stage requires the resolution of macro invocations and <code>use</code> declarations. Resolving <code>use</code> declarations is required for macro invocations that resolve via <a href="../macros.html#r-macro.invocation.name-resolution">path-based scope</a>. Resolving macro invocations is required in order to expand them.</p>
+<p>展开时名称解析是完成宏展开并完全生成 crate 的 <a href="../glossary.html#r-glossary.ast">AST</a> 所必需的名称解析阶段。此阶段需要解析宏调用和 <code>use</code> 声明。解析 <code>use</code> 声明是解析通过 <a href="../macros.html#r-macro.invocation.name-resolution">基于路径的作用域</a> 的宏调用所必需的。为了展开宏调用，必须先解析它们。</p>
 <div class="rule" id="r-names.resolution.expansion.unresolved-invocations"><a class="rule-link" href="#r-names.resolution.expansion.unresolved-invocations" title="names.resolution.expansion.unresolved-invocations"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.unresolved-invocations]</span></a>
 </div>
 
-<p>After expansion-time name resolution, the AST must not contain any unexpanded macro invocations. Every macro invocation resolves to a valid definition that exists in the final AST or in an external crate.</p>
+<p>在展开时名称解析之后， <a href="../glossary.html#r-glossary.ast">AST</a> 不得包含任何未展开的宏调用。每个宏调用都必须解析为存在于最终 <a href="../glossary.html#r-glossary.ast">AST</a> 中或外部 crate 中的有效定义。</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>m!(); // ERROR: Cannot find macro `m` in this scope.
+</span>m!(); // 错误：在此作用域内找不到宏 `m`。
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-names.resolution.expansion.expansion-order-stability"><a class="rule-link" href="#r-names.resolution.expansion.expansion-order-stability" title="names.resolution.expansion.expansion-order-stability"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.expansion-order-stability]</span></a>
 </div>
 
-<p>The resolution of names must be stable. After expansion, names in the fully expanded AST must resolve to the same definition regardless of the order in which macros are expanded and imports are resolved.</p>
+<p>名称的解析必须是稳定的。展开后，完全展开的 <a href="../glossary.html#r-glossary.ast">AST</a> 中的名称必须解析为相同的定义，无论宏展开和导入解析的顺序如何。</p>
 <div class="rule" id="r-names.resolution.expansion.speculation"><a class="rule-link" href="#r-names.resolution.expansion.speculation" title="names.resolution.expansion.speculation"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.speculation]</span></a>
 </div>
 
-<p>All name resolution candidates selected during macro expansion are considered speculative. Once the crate has been fully expanded, all speculative import resolutions are validated to ensure that macro expansion did not introduce any new ambiguities.</p>
+<p>宏展开期间选择的所有名称解析候选者都被视为推测性的。一旦 crate 被完全展开，所有的推测性导入解析都会被验证，以确保宏展开没有引入任何新的歧义。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Due to the iterative nature of macro expansion, this causes so-called time traveling ambiguities, such as when a macro or glob import introduces an item that is ambiguous with its own base path.</p>
+<p>由于宏展开的迭代性质，这会导致所谓的时空穿越歧义，例如当宏或通配符导入引入了一个与其自身基路径歧义的项时。</p>
 <pre class="playground"><code class="language-rust compile_fail E0659 edition2024"><span class="boring">fn main() {}
 </span>macro_rules! f {
     () =&gt; {
@@ -258,16 +258,13 @@
 f!();
 
 const _: () = {
-    // Initially, we speculatively resolve `m` to the module in
-    // the crate root.
+    // 最初，我们将 `m` 推测性地解析为 crate 根中的模块。
     //
-    // Expansion of `f` introduces a second `m` module inside this
-    // body.
+    // `f` 的展开在此体内部引入了第二个 `m` 模块。
     //
-    // Expansion-time resolution finalizes resolutions by re-
-    // resolving all imports and macro invocations, sees the
-    // introduced ambiguity and reports it as an error.
-    m::f!(); // ERROR: `m` is ambiguous.
+    // 展开时解析通过重新解析所有导入和宏调用来完成解析，
+    // 发现引入的歧义并将其作为错误报告。
+    m::f!(); // 错误：`m` 存在歧义。
 };</code></pre>
 </blockquote>
 </div>
@@ -275,11 +272,11 @@ const _: () = {
 <div class="rule" id="r-names.resolution.expansion.imports"><a class="rule-link" href="#r-names.resolution.expansion.imports" title="names.resolution.expansion.imports"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.imports]</span></a>
 </div>
 
-<h3 id="imports"><a class="header" href="#imports">Imports</a></h3>
+<h3 id="导入"><a class="header" href="#导入">导入</a></h3>
 <div class="rule" id="r-names.resolution.expansion.imports.intro"><a class="rule-link" href="#r-names.resolution.expansion.imports.intro" title="names.resolution.expansion.imports.intro"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.imports<wbr>.intro]</span></a>
 </div>
 
-<p>All <code>use</code> declarations are fully resolved during this stage of resolution. <a href="name-resolution.html#r-names.resolution.type-relative">Type-relative paths</a> cannot be resolved at this stage and will produce an error.</p>
+<p>所有的 <code>use</code> 声明都在此解析阶段被完全解析。 <a href="name-resolution.html#r-names.resolution.type-relative">类型相关路径</a> 在此阶段无法解析，并将产生错误。</p>
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod m {
@@ -291,15 +288,15 @@ const _: () = {
     }
 }
 
-// Valid imports resolved at expansion-time:
-use m::C; // OK.
-use m::E; // OK.
-use m::A; // OK.
-use m::E::V; // OK.
+// 在展开时解析的有效导入：
+use m::C; // OK。
+use m::E; // OK。
+use m::A; // OK。
+use m::E::V; // OK。
 
-// Valid expressions resolved during type-relative resolution:
-let _ = m::A::V; // OK.
-let _ = m::E::C; // OK.
+// 在类型相关解析期间解析的有效表达式：
+let _ = m::A::V; // OK。
+let _ = m::E::C; // OK。
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0432 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -311,14 +308,14 @@ let _ = m::E::C; // OK.
 </span><span class="boring">        pub const C: () = ();
 </span><span class="boring">    }
 </span><span class="boring">}
-</span>// Invalid type-relative imports that can't resolve at expansion-time:
-use m::A::V; // ERROR: Unresolved import `m::A::V`.
-use m::E::C; // ERROR: Unresolved import `m::E::C`.
+</span>// 在展开时无法解析的无效类型相关导入：
+use m::A::V; // 错误：未解析的导入 `m::A::V`。
+use m::E::C; // 错误：未解析的导入 `m::E::C`。
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-names.resolution.expansion.imports.shadowing"><a class="rule-link" href="#r-names.resolution.expansion.imports.shadowing" title="names.resolution.expansion.imports.shadowing"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.imports<wbr>.shadowing]</span></a>
 </div>
 
-<p>Names introduced via <code>use</code> declarations in an <a href="#r-names.resolution.general.scopes">outer scope</a> are shadowed by candidates in the same namespace with the same name from an inner scope except where otherwise restricted by <a href="#r-names.resolution.expansion.imports.ambiguity">name resolution ambiguities</a>.</p>
+<p>除了受 <a href="#r-names.resolution.expansion.imports.ambiguity">名称解析歧义</a> 限制的情况外，通过 <a href="#r-names.resolution.general.scopes">外部作用域</a> 中的 <code>use</code> 声明引入的名称会被内部作用域中同一命名空间内同名的候选者遮蔽。</p>
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub mod m1 {
@@ -333,13 +330,12 @@ pub mod m2 {
     }
 }
 
-// This introduces the name `ambig` in the outer scope.
+// 这在外部作用域中引入了名称 `ambig`。
 use m1::ambig;
 const _: () = {
-    // This shadows `ambig` in the inner scope.
+    // 这在内部作用域中遮蔽了 `ambig`。
     use m2::ambig;
-    // The inner candidate is selected here
-    // as the resolution of `ambig`.
+    // 这里的 `ambig` 解析选择内部候选者。
     use ambig::C;
     assert!(C == 2);
 };
@@ -347,23 +343,23 @@ const _: () = {
 <div class="rule" id="r-names.resolution.expansion.imports.shadowing.shared-scope"><a class="rule-link" href="#r-names.resolution.expansion.imports.shadowing.shared-scope" title="names.resolution.expansion.imports.shadowing.shared-scope"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.imports<wbr>.shadowing<wbr>.shared-scope]</span></a>
 </div>
 
-<p>Shadowing of names introduced via <code>use</code> declarations within a single scope is permitted in the following situations:</p>
+<p>在单个作用域内，允许对通过 <code>use</code> 声明引入的名称进行遮蔽的情况如下：</p>
 <ul>
-<li><a href="../items/use-declarations.html#r-items.use.glob.shadowing"><code>use</code> glob shadowing</a></li>
-<li><a href="../macros-by-example.html#r-macro.decl.scope.textual.shadow">Macro textual scope shadowing</a></li>
+<li><a href="../items/use-declarations.html#r-items.use.glob.shadowing"><code>use</code> 通配符遮蔽</a></li>
+<li><a href="../macros-by-example.html#r-macro.decl.scope.textual.shadow">宏文本作用域遮蔽</a></li>
 </ul>
 <div class="rule" id="r-names.resolution.expansion.imports.ambiguity"><a class="rule-link" href="#r-names.resolution.expansion.imports.ambiguity" title="names.resolution.expansion.imports.ambiguity"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.imports<wbr>.ambiguity]</span></a>
 </div>
 
-<h4 id="ambiguities"><a class="header" href="#ambiguities">Ambiguities</a></h4>
+<h4 id="歧义"><a class="header" href="#歧义">歧义</a></h4>
 <div class="rule" id="r-names.resolution.expansion.imports.ambiguity.intro"><a class="rule-link" href="#r-names.resolution.expansion.imports.ambiguity.intro" title="names.resolution.expansion.imports.ambiguity.intro"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.imports<wbr>.ambiguity<wbr>.intro]</span></a>
 </div>
 
-<p>There are certain situations during expansion-time resolution where there are multiple macro definitions, <code>use</code> declarations, or modules an import or macro invocation’s name could refer to where the compiler cannot consistently determine which candidate should shadow the other. Shadowing cannot be permitted in these situations and the compiler instead emits ambiguity errors.</p>
+<p>在展开时解析期间，某些情况下存在多个宏定义、 <code>use</code> 声明或模块，导入或宏调用的名称可能指向这些定义、声明或模块，而编译器无法始终如一地确定哪个候选者应该遮蔽另一个。在这些情况下不允许遮蔽，编译器会发出歧义错误。</p>
 <div class="rule" id="r-names.resolution.expansion.imports.ambiguity.glob-vs-glob"><a class="rule-link" href="#r-names.resolution.expansion.imports.ambiguity.glob-vs-glob" title="names.resolution.expansion.imports.ambiguity.glob-vs-glob"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.imports<wbr>.ambiguity<wbr>.glob-vs-glob]</span></a>
 </div>
 
-<p>Names may not be resolved through ambiguous glob imports. Glob imports are allowed to import conflicting names in the same namespace as long as the name is not used. Names with conflicting candidates from ambiguous glob imports may still be shadowed by non-glob imports and used without producing an error. The errors occur at time of use, not time of import.</p>
+<p>名称不能通过有歧义的通配符导入来解析。通配符导入允许在同一命名空间中导入冲突的名称，只要不使用该名称即可。具有来自歧义通配符导入的冲突候选者的名称仍然可以被非通配符导入遮蔽，并在不产生错误的情况下使用。错误发生在使用的时刻，而不是导入的时刻。</p>
 <pre class="playground"><code class="language-rust compile_fail E0659 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod m1 {
@@ -374,15 +370,13 @@ mod m2 {
     pub struct Ambig;
 }
 
-// OK: This brings conficting names in the same namespace into scope
-// but they have not been used yet.
+// OK：这将同一命名空间中冲突的名称引入作用域，但尚未被使用。
 use m1::*;
 use m2::*;
 
 const _: () = {
-    // The error happens when the name with the conflicting candidates
-    // is used.
-    let x = Ambig; // ERROR: `Ambig` is ambiguous.
+    // 当使用具有冲突候选者的名称时发生错误。
+    let x = Ambig; // 错误：`Ambig` 存在歧义。
 }
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
@@ -396,48 +390,45 @@ const _: () = {
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">use m1::*;
-</span><span class="boring">use m2::*; // OK: No name conflict.
+</span><span class="boring">use m2::*; // OK：没有名称冲突。
 </span>const _: () = {
-    // This is permitted, since resolution is not through the
-    // ambiguous globs.
+    // 这是允许的，因为解析不是通过歧义通配符进行的。
     struct Ambig;
-    let x = Ambig; // OK.
+    let x = Ambig; // OK。
 };
 <span class="boring">}</span></code></pre>
-<p>Multiple glob imports are allowed to import the same name, and that name is allowed to be used if the imports are of the same item (following reexports). The visibility of the name is the maximum visibility of the imports.</p>
+<p>允许通过多个通配符导入导入相同的名称，如果导入的是同一个项（遵循重导出），则允许使用该名称。该名称的可见性是这些导入中的最大可见性。</p>
 <pre class="playground"><code class="language-rust no_run edition2024">mod m1 {
     pub struct Ambig;
 }
 
 mod m2 {
-    // This reexports the same `Ambig` item from a second module.
+    // 这从第二个模块重导出同一个 `Ambig` 项。
     pub use super::m1::Ambig;
 }
 
 mod m3 {
-    // These both import the same `Ambig`.
+    // 这两者都导入同一个 `Ambig`。
     //
-    // The visibility of `Ambig` is `pub` because that is the
-    // maximum visibility between these two `use` declarations.
+    // `Ambig` 的可见性是 `pub`，因为这是这两个 `use` 声明之间的最大可见性。
     pub use super::m1::*;
     use super::m2::*;
 }
 
 mod m4 {
-    // `Ambig` can be used through the `m3` globs and still has
-    // `pub` visibility.
+    // `Ambig` 可以通过 `m3` 的通配符使用，且仍然具有 `pub` 可见性。
     pub use crate::m3::Ambig;
 }
 
 const _: () = {
-    // Therefore, we can use it here.
-    let _ = m4::Ambig; // OK.
+    // 因此，我们可以在这里使用它。
+    let _ = m4::Ambig; // OK。
 };
 <span class="boring">fn main() {}</span></code></pre>
 <div class="rule" id="r-names.resolution.expansion.imports.ambiguity.glob-vs-outer"><a class="rule-link" href="#r-names.resolution.expansion.imports.ambiguity.glob-vs-outer" title="names.resolution.expansion.imports.ambiguity.glob-vs-outer"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.imports<wbr>.ambiguity<wbr>.glob-vs-outer]</span></a>
 </div>
 
-<p>Names in imports and macro invocations may not be resolved through glob imports when there is another candidate available in an <a href="#r-names.resolution.general.scopes">outer scope</a>.</p>
+<p>当在 <a href="#r-names.resolution.general.scopes">外部作用域</a> 中有另一个可用候选者时，导入和宏调用中的名称不能通过通配符导入来解析。</p>
 <pre class="playground"><code class="language-rust compile_fail E0659 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod glob {
@@ -446,21 +437,21 @@ const _: () = {
     }
 }
 
-// Outer `ambig` candidate.
+// 外部 `ambig` 候选者。
 pub mod ambig {
     pub struct Name;
 }
 
 const _: () = {
-    // Cannot resolve `ambig` through this glob
-    // because of the outer `ambig` candidate above.
+    // 无法通过此通配符解析 `ambig`，
+    // 因为上方有外部 `ambig` 候选者。
     use glob::*;
-    use ambig::Name; // ERROR: `ambig` is ambiguous.
+    use ambig::Name; // 错误：`ambig` 存在歧义。
 };
 <span class="boring">}</span></code></pre>
 <pre class="playground"><code class="language-rust compile_fail E0659 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// As above, but with macros.
+</span>// 如上，但使用宏。
 pub mod m {
     macro_rules! f {
         () =&gt; {};
@@ -478,14 +469,14 @@ use m::f as ambig;
 
 const _: () = {
     use glob::*;
-    ambig!(); // ERROR: `ambig` is ambiguous.
+    ambig!(); // 错误：`ambig` 存在歧义。
 };
 <span class="boring">}</span></code></pre>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>These ambiguity errors are specific to expansion-time resolution. Having multiple candidates available for a given name during later stages of resolution is not considered an error. So long as none of the imports themselves are ambiguous, there will always be a single unambiguous closest resolution.</p>
+<p>这些歧义错误特定于展开时解析。在解析的后续阶段，为一个给定的名称提供多个候选者不被视为错误。只要导入本身没有歧义，就总是会有一个唯一的、无歧义的最近解析。</p>
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod glob {
@@ -501,7 +492,7 @@ use outer::AMBIG;
 const C: () = {
     use glob::*;
     assert!(AMBIG == 1);
-    //      ^---- This `AMBIG` is resolved during primary resolution.
+    //      ^---- 这个 `AMBIG` 在初级解析期间解析。
 };
 <span class="boring">}</span></code></pre>
 </blockquote>
@@ -510,63 +501,60 @@ const C: () = {
 <div class="rule" id="r-names.resolution.expansion.imports.ambiguity.path-vs-textual-macro"><a class="rule-link" href="#r-names.resolution.expansion.imports.ambiguity.path-vs-textual-macro" title="names.resolution.expansion.imports.ambiguity.path-vs-textual-macro"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.imports<wbr>.ambiguity<wbr>.path-vs-textual-macro]</span></a>
 </div>
 
-<p>Names may not be resolved through ambiguous macro reexports. Macro reexports are ambiguous when they would shadow a textual macro candidate for the same name in an <a href="#r-names.resolution.general.scopes">outer scope</a>.</p>
+<p>名称不能通过有歧义的宏重导出进行解析。当宏重导出会遮蔽 <a href="#r-names.resolution.general.scopes">外部作用域</a> 中同名的文本宏候选者时，宏重导出即具有歧义。</p>
 <pre class="playground"><code class="language-rust compile_fail E0659 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// Textual macro candidate.
+</span>// 文本宏候选者。
 macro_rules! ambig {
     () =&gt; {}
 }
 
-// Path-based macro candidate.
+// 基于路径的宏候选者。
 macro_rules! path_based {
     () =&gt; {}
 }
 
 pub fn f() {
-    // This reexport of the `path_based` macro definition
-    // as `ambig` may not shadow the `ambig` macro definition
-    // which is resolved via textual macro scope.
+    // 将 `path_based` 宏定义重导出为 `ambig` 
+    // 不得遮蔽通过文本宏作用域解析的 `ambig` 宏定义。
     use path_based as ambig;
-    ambig!(); // ERROR: `ambig` is ambiguous.
+    ambig!(); // 错误：`ambig` 存在歧义。
 }
 <span class="boring">}</span></code></pre>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This restriction is needed due to implementation details in the compiler,
-specifically the current scope visitation logic and the complexity of supporting
-this behavior. This ambiguity error may be removed in the future.</p>
+<p>这种限制是由于编译器中的实现细节而需要的，特别是当前的作用域访问逻辑和支持此行为的复杂性。此歧义错误可能会在未来被移除。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-names.resolution.expansion.macros"><a class="rule-link" href="#r-names.resolution.expansion.macros" title="names.resolution.expansion.macros"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.macros]</span></a>
 </div>
 
-<h3 id="macros"><a class="header" href="#macros">Macros</a></h3>
+<h3 id="宏"><a class="header" href="#宏">宏</a></h3>
 <div class="rule" id="r-names.resolution.expansion.macros.intro"><a class="rule-link" href="#r-names.resolution.expansion.macros.intro" title="names.resolution.expansion.macros.intro"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.macros<wbr>.intro]</span></a>
 </div>
 
-<p>Macros are resolved by iterating through the available scopes to find the available candidates. Macros are split into two sub-namespaces, one for function-like macros, and the other for attributes and derives. Resolution candidates from the incorrect sub-namespace are ignored.</p>
+<p>宏通过遍历可用作用域来查找可用候选者进行解析。宏被分为两个子命名空间，一个用于类函数宏，另一个用于属性和派生宏。来自错误子命名空间的解析候选者将被忽略。</p>
 <div class="rule" id="r-names.resolution.expansion.macros.visitation-order"><a class="rule-link" href="#r-names.resolution.expansion.macros.visitation-order" title="names.resolution.expansion.macros.visitation-order"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.macros<wbr>.visitation-order]</span></a>
 </div>
 
-<p>The available scope kinds are visited in the following order. Each of these scope kinds represent one or more scopes.</p>
+<p>可用作用域种类的访问顺序如下。这些作用域种类中的每一个都代表一个或多个作用域。</p>
 <ul>
-<li><a href="../procedural-macros.html#r-macro.proc.derive.attributes">Derive helpers</a></li>
-<li><a href="../macros-by-example.html#r-macro.decl.scope.textual">Textual scope macros</a></li>
-<li><a href="../macros.html#r-macro.invocation.name-resolution">Path-based scope macros</a></li>
-<li><a href="./preludes.html#r-names.preludes.macro_use"><code>macro_use</code> prelude</a></li>
-<li><a href="./preludes.html#r-names.preludes.std">Standard library prelude</a></li>
-<li><a href="./preludes.html#r-names.preludes.lang">Builtin attributes</a></li>
+<li><a href="../procedural-macros.html#r-macro.proc.derive.attributes">派生辅助属性</a></li>
+<li><a href="../macros-by-example.html#r-macro.decl.scope.textual">文本作用域宏</a></li>
+<li><a href="../macros.html#r-macro.invocation.name-resolution">基于路径的作用域宏</a></li>
+<li><a href="./preludes.html#r-names.preludes.macro_use"><code>macro_use</code> 预导入</a></li>
+<li><a href="./preludes.html#r-names.preludes.std">标准库预导入</a></li>
+<li><a href="./preludes.html#r-names.preludes.lang">内置属性</a></li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>The compiler will attempt to resolve derive helpers that are used before their associated macro introduces them into scope. This scope is visited after the scope for resolving derive helper candidates that are correctly in scope. This behavior is slated for removal.</p>
-<p>For more info see <a href="../procedural-macros.html#r-macro.proc.derive.attributes.scope">derive helper scope</a>.</p>
+<p>编译器将尝试解析在其关联宏将其引入作用域之前使用的派生辅助属性。此作用域在访问已正确处于作用域内的派生辅助候选者的作用域之后被访问。此行为计划被移除。</p>
+<p>更多信息请参见 <a href="../procedural-macros.html#r-macro.proc.derive.attributes.scope">派生辅助属性作用域</a>。</p>
 </blockquote>
 </div>
 
@@ -574,9 +562,7 @@ this behavior. This ambiguity error may be removed in the future.</p>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This visitation order may change in the future, such as interleaving the
-visitation of textual and path-based scope candidates based on their lexical
-scopes.</p>
+<p>此访问顺序将来可能会改变，例如根据文本和基于路径的作用域候选者的词法作用域来交替访问它们。</p>
 </blockquote>
 </div>
 
@@ -584,22 +570,22 @@ scopes.</p>
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>Starting in edition 2018 the <code>#[macro_use]</code> prelude is not visited when <a href="preludes.html#r-names.preludes.no_implicit_prelude"><code>#[no_implicit_prelude]</code></a> is present.</p>
+<p>从 2018 版次开始，当存在 <a href="preludes.html#r-names.preludes.no_implicit_prelude"><code>#[no_implicit_prelude]</code></a> 时，不会访问 <code>#[macro_use]</code> 预导入。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-names.resolution.expansion.macros.reserved-names"><a class="rule-link" href="#r-names.resolution.expansion.macros.reserved-names" title="names.resolution.expansion.macros.reserved-names"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.macros<wbr>.reserved-names]</span></a>
 </div>
 
-<p>The names <code>cfg</code> and <code>cfg_attr</code> are reserved in the macro attribute <a href="../names/namespaces.html#r-names.namespaces.sub-namespaces">sub-namespace</a>.</p>
+<p>名称 <code>cfg</code> 和 <code>cfg_attr</code> 在宏属性 <a href="../names/namespaces.html#r-names.namespaces.sub-namespaces">子命名空间</a> 中被保留。</p>
 <div class="rule" id="r-names.resolution.expansion.macros.ambiguity"><a class="rule-link" href="#r-names.resolution.expansion.macros.ambiguity" title="names.resolution.expansion.macros.ambiguity"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.macros<wbr>.ambiguity]</span></a>
 </div>
 
-<h4 id="ambiguities-1"><a class="header" href="#ambiguities-1">Ambiguities</a></h4>
+<h4 id="歧义-1"><a class="header" href="#歧义-1">歧义</a></h4>
 <div class="rule" id="r-names.resolution.expansion.macros.ambiguity.more-expanded-vs-outer"><a class="rule-link" href="#r-names.resolution.expansion.macros.ambiguity.more-expanded-vs-outer" title="names.resolution.expansion.macros.ambiguity.more-expanded-vs-outer"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.macros<wbr>.ambiguity<wbr>.more-expanded-vs-outer]</span></a>
 </div>
 
-<p>Names may not be resolved through ambiguous candidates inside of macro expansions. Candidates inside of macro expansions are ambiguous when they would shadow a candidate for the same name from outside of the first candidate’s macro expansion and the invocation of the name being resolved is also from outside of the first candidate’s macro expansion.</p>
+<p>名称不能通过宏展开内部的歧义候选者进行解析。当宏展开内部的候选者会遮蔽来自第一个候选者宏展开外部的同名候选者，且正在解析的名称调用也来自第一个候选者宏展开外部时，宏展开内部的候选者即具有歧义。</p>
 <pre class="playground"><code class="language-rust compile_fail E0659 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! define_ambig {
@@ -610,28 +596,24 @@ scopes.</p>
     }
 }
 
-// Introduce outer candidate definition for `ambig` macro invocation.
+// 为 `ambig` 宏调用引入外部候选者定义。
 macro_rules! ambig {
     () =&gt; {}
 }
 
-// Introduce a second candidate definition for `ambig` inside of a
-// macro expansion.
+// 在宏展开内部引入第二个 `ambig` 候选者定义。
 define_ambig!();
 
-// The definition of `ambig` from the second invocation
-// of `define_ambig` is the innermost canadidate.
+// 来自 `define_ambig` 第二次调用的 `ambig` 定义是最内部的候选者。
 //
-// The definition of `ambig` from the first invocation of
-// `define_ambig` is the second candidate.
+// 来自 `define_ambig` 第一次调用的 `ambig` 定义是第二个候选者。
 //
-// The compiler checks that the first candidate is inside of a macro
-// expansion, that the second candidate is not from within the same
-// macro expansion, and that the name being resolved is not from
-// within the same macro expansion.
-ambig!(); // ERROR: `ambig` is ambiguous.
+// 编译器检查第一个候选者是否在宏展开内部，
+// 第二个候选者是否不在同一个宏展开内部，
+// 以及正在解析的名称是否不在同一个宏展开内部。
+ambig!(); // 错误：`ambig` 存在歧义。
 <span class="boring">}</span></code></pre>
-<p>The reverse is not considered ambiguous.</p>
+<p>反过来则不被视为歧义。</p>
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">macro_rules! define_ambig {
@@ -641,16 +623,15 @@ ambig!(); // ERROR: `ambig` is ambiguous.
 </span><span class="boring">        }
 </span><span class="boring">    }
 </span><span class="boring">}
-</span>// Swap order of definitions.
+</span>// 交换定义顺序。
 define_ambig!();
 macro_rules! ambig {
     () =&gt; {}
 }
-// The innermost candidate is now less expanded so it may shadow more
-// the macro expanded definition above it.
+// 最内部的候选者现在展开程度较低，因此它可以遮蔽其上方的宏展开定义。
 ambig!();
 <span class="boring">}</span></code></pre>
-<p>Nor is it ambiguous if the invocation being resolved is within the innermost candidate’s expansion.</p>
+<p>如果正在解析的调用在最内部候选者的展开范围内，也不是歧义。</p>
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! ambig {
@@ -659,20 +640,19 @@ ambig!();
 
 macro_rules! define_and_invoke_ambig {
     () =&gt; {
-        // Define innermost candidate.
+        // 定义最内部候选者。
         macro_rules! ambig {
             () =&gt; {}
         }
 
-        // Invocation of `ambig` is in the same expansion as the
-        // innermost candidate.
+        // `ambig` 的调用与最内部候选者在同一个展开中。
         ambig!(); // OK
     }
 }
 
 define_and_invoke_ambig!();
 <span class="boring">}</span></code></pre>
-<p>It doesn’t matter if both definitions come from invocations of the same macro; the outermost candidate is still considered “less expanded” because it is not within the expansion containing the innermost candidate’s definition.</p>
+<p>即使两个定义都来自同一个宏的调用，这也没有关系；最外部的候选者仍然被视为 “展开较少”，因为它不在包含最内部候选者定义的展开范围内。</p>
 <pre class="playground"><code class="language-rust compile_fail E0659 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">macro_rules! define_ambig {
@@ -684,9 +664,9 @@ define_and_invoke_ambig!();
 </span><span class="boring">}
 </span>define_ambig!();
 define_ambig!();
-ambig!(); // ERROR: `ambig` is ambiguous.
+ambig!(); // 错误：`ambig` 存在歧义。
 <span class="boring">}</span></code></pre>
-<p>This also applies to imports so long as the innermost candidate for the name is from within a macro expansion.</p>
+<p>这也适用于导入，只要名称的最内部候选者来自宏展开。</p>
 <pre class="playground"><code class="language-rust compile_fail E0659 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>macro_rules! define_ambig {
@@ -702,22 +682,21 @@ mod ambig {
 }
 
 const _: () = {
-    // Introduce innermost candidate for
-    // `ambig` mod in this macro expansion.
+    // 在此宏展开中引入 `ambig` 模块的最内部候选者。
     define_ambig!();
-    use ambig::Name; // ERROR: `ambig` is ambiguous.
+    use ambig::Name; // 错误：`ambig` 存在歧义。
 };
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-names.resolution.expansion.macros.ambiguity.built-in-attr"><a class="rule-link" href="#r-names.resolution.expansion.macros.ambiguity.built-in-attr" title="names.resolution.expansion.macros.ambiguity.built-in-attr"><span>[names<wbr>.resolution<wbr>.expansion<wbr>.macros<wbr>.ambiguity<wbr>.built-in-attr]</span></a>
 </div>
 
-<p>User-defined attributes or derive macros may not shadow built-in non-macro attributes (e.g. inline).</p>
+<p>用户定义的属性或派生宏不得遮蔽内置的非宏属性（例如 inline）。</p>
 <!-- ignore: test doesn't support proc-macro -->
 <pre><code class="language-rust ignore">// with-helper/src/lib.rs
 <span class="boring">use proc_macro::TokenStream;
 </span>#[proc_macro_derive(WithHelperAttr, attributes(non_exhaustive))]
 //                                             ^^^^^^^^^^^^^^
-//                                   User-defined attribute candidate.
+//                                   用户定义的属性候选者。
 // ...
 <span class="boring">pub fn derive_with_helper_attr(_item: TokenStream) -&gt; TokenStream {
 </span><span class="boring">    TokenStream::new()
@@ -725,20 +704,20 @@ const _: () = {
 <!-- ignore: requires external crates -->
 <pre><code class="language-rust ignore">// src/lib.rs
 #[derive(with_helper::WithHelperAttr)]
-#[non_exhaustive] // ERROR: `non_exhaustive` is ambiguous.
+#[non_exhaustive] // 错误：`non_exhaustive` 存在歧义。
 struct S;</code></pre>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This applies regardless of the name the built-in attribute is a candidate for:</p>
+<p>无论内置属性是哪个名称的候选者，这都适用：</p>
 <!-- ignore: test doesn't support proc-macro -->
 <pre><code class="language-rust ignore">// with-helper/src/lib.rs
 <span class="boring">use proc_macro::TokenStream;
 </span><span class="boring">
 </span>#[proc_macro_derive(WithHelperAttr, attributes(helper))]
 //                                             ^^^^^^
-//                                 User-defined attribute candidate.
+//                                 用户定义的属性候选者。
 // ...
 <span class="boring">pub fn derive_with_helper_attr(_item: TokenStream) -&gt; TokenStream {
 </span><span class="boring">    TokenStream::new()
@@ -746,10 +725,10 @@ struct S;</code></pre>
 <!-- ignore: requires external crates -->
 <pre><code class="language-rust ignore">// src/lib.rs
 use inline as helper;
-//            ^----- Built-in attribute candidate via reexport.
+//            ^----- 通过重导出的内置属性候选者。
 
 #[derive(with_helper::WithHelperAttr)]
-#[helper] // ERROR: `helper` is ambiguous.
+#[helper] // 错误：`helper` 存在歧义。
 struct S;</code></pre>
 </blockquote>
 </div>
@@ -757,24 +736,24 @@ struct S;</code></pre>
 <div class="rule" id="r-names.resolution.primary"><a class="rule-link" href="#r-names.resolution.primary" title="names.resolution.primary"><span>[names<wbr>.resolution<wbr>.primary]</span></a>
 </div>
 
-<h2 id="primary-name-resolution"><a class="header" href="#primary-name-resolution">Primary name resolution</a></h2>
+<h2 id="初级名称解析"><a class="header" href="#初级名称解析">初级名称解析</a></h2>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This is a placeholder for future expansion about primary name resolution.</p>
+<p>这是未来关于初级名称解析扩展的占位符。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-names.resolution.type-relative"><a class="rule-link" href="#r-names.resolution.type-relative" title="names.resolution.type-relative"><span>[names<wbr>.resolution<wbr>.type-relative]</span></a>
 </div>
 
-<h2 id="type-relative-resolution"><a class="header" href="#type-relative-resolution">Type-relative resolution</a></h2>
+<h2 id="类型相关解析"><a class="header" href="#类型相关解析">类型相关解析</a></h2>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>This is a placeholder for future expansion about type-dependent resolution.</p>
+<p>这是未来关于类型依赖解析扩展的占位符。</p>
 </blockquote>
 </div>
 

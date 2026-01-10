@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,37 +181,31 @@
                         <div class="rule" id="r-type.enum"><a class="rule-link" href="#r-type.enum" title="type.enum"><span>[type<wbr>.enum]</span></a>
 </div>
 
-<h1 id="enumerated-types"><a class="header" href="#enumerated-types">Enumerated types</a></h1>
+<h1 id="枚举类型"><a class="header" href="#枚举类型">枚举类型</a></h1>
 <div class="rule" id="r-type.enum.intro"><a class="rule-link" href="#r-type.enum.intro" title="type.enum.intro"><span>[type<wbr>.enum<wbr>.intro]</span></a>
 </div>
 
-<p>An <em>enumerated type</em> is a nominal, heterogeneous disjoint union type, denoted
-by the name of an <a href="../items/enumerations.html"><code>enum</code> item</a>. <sup class="footnote-reference" id="fr-enumtype-1"><a href="#footnote-enumtype">1</a></sup></p>
+<p>一个 <em>枚举类型</em> 是一种标称的、异构的离散联合类型，由 <a href="../items/enumerations.html"><code>enum</code> 项</a> 的名称表示。<sup class="footnote-reference" id="fr-enumtype-1"><a href="#footnote-enumtype">1</a></sup></p>
 <div class="rule" id="r-type.enum.declaration"><a class="rule-link" href="#r-type.enum.declaration" title="type.enum.declaration"><span>[type<wbr>.enum<wbr>.declaration]</span></a>
 </div>
 
-<p>An <a href="../items/enumerations.html"><code>enum</code> item</a> declares both the type and a number of <em>variants</em>, each of
-which is independently named and has the syntax of a struct, tuple struct or
-unit-like struct.</p>
+<p>一个 <a href="../items/enumerations.html"><code>enum</code> 项</a> 声明了该类型以及若干 <em>变体</em> ，每个变体都有独立的名称，并且具有 结构体 、元组结构体或类单元结构体的 语法格式 。</p>
 <div class="rule" id="r-type.enum.constructor"><a class="rule-link" href="#r-type.enum.constructor" title="type.enum.constructor"><span>[type<wbr>.enum<wbr>.constructor]</span></a>
 </div>
 
-<p>New instances of an <code>enum</code> can be constructed with a <a href="../expressions/struct-expr.html">struct expression</a>.</p>
+<p><code>enum</code> 的新实例可以通过 <a href="../expressions/struct-expr.html">结构体表达式</a> 构造。</p>
 <div class="rule" id="r-type.enum.value"><a class="rule-link" href="#r-type.enum.value" title="type.enum.value"><span>[type<wbr>.enum<wbr>.value]</span></a>
 </div>
 
-<p>Any <code>enum</code> value consumes as much memory as the largest variant for its
-corresponding <code>enum</code> type, as well as the size needed to store a discriminant.</p>
+<p>任何 <code>enum</code> 值消耗的内存与其对应的 <code>enum</code> 类型中最大的 变体 一样多，外加存储判别式所需的大小。</p>
 <div class="rule" id="r-type.enum.name"><a class="rule-link" href="#r-type.enum.name" title="type.enum.name"><span>[type<wbr>.enum<wbr>.name]</span></a>
 </div>
 
-<p>Enum types cannot be denoted <em>structurally</em> as types, but must be denoted by
-named reference to an <a href="../items/enumerations.html"><code>enum</code> item</a>.</p>
+<p>枚举类型不能作为类型在 <em>结构上</em> 被表示，而必须通过对 <a href="../items/enumerations.html"><code>enum</code> 项</a> 的命名引用来表示。</p>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-enumtype">
-<p>The <code>enum</code> type is analogous to a <code>data</code> constructor declaration in
-Haskell, or a <em>pick ADT</em> in Limbo. <a href="#fr-enumtype-1">↩</a></p>
+<p><code>enum</code> 类型类似于 Haskell 中的 <code>data</code> 构造函数声明，或 Limbo 中的 <em>pick ADT</em> 。 <a href="#fr-enumtype-1">↩</a></p>
 </li>
 </ol>
 

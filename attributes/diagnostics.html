@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -229,7 +229,7 @@
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>通过 <code>rustc -W help</code> 可以找到 <code>rustc</code> 支持的 lint 检查，以及它们的默认设置，并记录在 <a href="../../rustc/lints/index.html">rustc book</a> 中。</p>
+<p>通过 <code>rustc -W help</code> 可以找到 <code>rustc</code> 支持的 lint 检查，以及它们的默认设置，并记录在 <a href="https://doc.rust-lang.org/rustc/lints/index.html">rustc book</a> 中。</p>
 </blockquote>
 </div>
 
@@ -290,7 +290,7 @@ pub mod m3 {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> 允许在 <a href="../../rustc/lints/levels.html#via-compiler-flag">命令行</a> 上设置 lint 级别，并且还支持对报告的 lint <a href="../../rustc/lints/levels.html#capping-lints">设置上限</a>。</p>
+<p><code>rustc</code> 允许在 <a href="https://doc.rust-lang.org/rustc/lints/levels.html#via-compiler-flag">命令行</a> 上设置 lint 级别，并且还支持对报告的 lint <a href="https://doc.rust-lang.org/rustc/lints/levels.html#capping-lints">设置上限</a>。</p>
 </blockquote>
 </div>
 
@@ -505,7 +505,7 @@ fn foo() {
 <div class="rule" id="r-attributes.diagnostic.deprecated.allowed-positions"><a class="rule-link" href="#r-attributes.diagnostic.deprecated.allowed-positions" title="attributes.diagnostic.deprecated.allowed-positions"><span>[attributes<wbr>.diagnostic<wbr>.deprecated<wbr>.allowed-positions]</span></a>
 </div>
 
-<p><code>deprecated</code> 属性可以应用于任何 <a href="../items.html">项</a>、<a href="../items/traits.html">特型项</a>、<a href="../items/enumerations.html">枚举变体</a>、<a href="../items/structs.html">结构体字段</a>、<a href="../items/external-blocks.html">外部块项</a> 或 <a href="../macros-by-example.html">宏定义</a>。它不能应用于 <a href="../items/implementations.html#trait-implementations">特型实现项</a>。当应用于包含其他 项 的 项 （例如 <a href="../items/modules.html">模块</a> 或 <a href="../items/implementations.html">实现</a>）时，所有子 项 都继承弃用属性。</p>
+<p><code>deprecated</code> 属性可以应用于任何 <a href="../items.html">项</a>、<a href="../items/traits.html">特型项</a>、<a href="../items/enumerations.html">枚举变体</a>、<a href="../items/structs.html">结构体字段</a>、<a href="../items/external-blocks.html">外部块项</a> 或 <a href="../macros-by-example.html">宏定义</a>。它不能应用于 <a href="../items/implementations.html#特型实现">特型实现项</a>。当应用于包含其他 项 的 项 （例如 <a href="../items/modules.html">模块</a> 或 <a href="../items/implementations.html">实现</a>）时，所有子 项 都继承弃用属性。</p>
 <p>这里有一个例子：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -534,7 +534,7 @@ pub fn bar() {}
 <div class="rule" id="r-attributes.diagnostics.must_use.type"><a class="rule-link" href="#r-attributes.diagnostics.must_use.type" title="attributes.diagnostics.must_use.type"><span>[attributes<wbr>.diagnostics<wbr>.must_use<wbr>.type]</span></a>
 </div>
 
-<p>当用于用户定义的复合类型时，如果 <a href="../statements.html#expression-statements">表达式语句</a> 的 <a href="../expressions.html">表达式</a> 具有该类型，则 <code>unused_must_use</code> lint 被违反。</p>
+<p>当用于用户定义的复合类型时，如果 <a href="../statements.html#表达式语句">表达式语句</a> 的 <a href="../expressions.html">表达式</a> 具有该类型，则 <code>unused_must_use</code> lint 被违反。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[must_use]
@@ -552,7 +552,7 @@ MustUse::new();
 <div class="rule" id="r-attributes.diagnostics.must_use.fn"><a class="rule-link" href="#r-attributes.diagnostics.must_use.fn" title="attributes.diagnostics.must_use.fn"><span>[attributes<wbr>.diagnostics<wbr>.must_use<wbr>.fn]</span></a>
 </div>
 
-<p>当用于函数时，如果 <a href="../statements.html#expression-statements">表达式语句</a> 的 <a href="../expressions.html">表达式</a> 是对该函数的 <a href="../expressions/call-expr.html">调用表达式</a>，则 <code>unused_must_use</code> lint 被违反。</p>
+<p>当用于函数时，如果 <a href="../statements.html#表达式语句">表达式语句</a> 的 <a href="../expressions.html">表达式</a> 是对该函数的 <a href="../expressions/call-expr.html">调用表达式</a>，则 <code>unused_must_use</code> lint 被违反。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[must_use]
@@ -564,7 +564,7 @@ five();
 <div class="rule" id="r-attributes.diagnostics.must_use.trait"><a class="rule-link" href="#r-attributes.diagnostics.must_use.trait" title="attributes.diagnostics.must_use.trait"><span>[attributes<wbr>.diagnostics<wbr>.must_use<wbr>.trait]</span></a>
 </div>
 
-<p>当用于 <a href="../items/traits.html">特型声明</a> 时，如果 <a href="../statements.html#expression-statements">表达式语句</a> 对一个返回该 特型 的 <a href="../types/impl-trait.html">impl trait</a> 或 <a href="../types/trait-object.html">dyn trait</a> 的函数的 <a href="../expressions/call-expr.html">调用表达式</a> 被未使用，则违反 <code>unused_must_use</code> lint。</p>
+<p>当用于 <a href="../items/traits.html">特型声明</a> 时，如果 <a href="../statements.html#表达式语句">表达式语句</a> 对一个返回该 特型 的 <a href="../types/impl-trait.html">impl trait</a> 或 <a href="../types/trait-object.html">dyn trait</a> 的函数的 <a href="../expressions/call-expr.html">调用表达式</a> 被未使用，则违反 <code>unused_must_use</code> lint。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[must_use]
@@ -626,7 +626,7 @@ match true {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>当有意丢弃一个必须使用的值时，习惯上使用带有 <code>_</code> 模式的 <a href="../statements.html#let-statements">let 语句</a>。</p>
+<p>当有意丢弃一个必须使用的值时，习惯上使用带有 <code>_</code> 模式的 <a href="../statements.html#let语句">let 语句</a>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[must_use]
@@ -754,7 +754,7 @@ fn main() {
 <div class="rule" id="r-attributes.diagnostic.do_not_recommend.allowed-positions"><a class="rule-link" href="#r-attributes.diagnostic.do_not_recommend.allowed-positions" title="attributes.diagnostic.do_not_recommend.allowed-positions"><span>[attributes<wbr>.diagnostic<wbr>.do_not_recommend<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>该属性应放置在 <a href="../items/implementations.html#trait-implementations">特型实现项</a> 上，尽管放置在其他位置不是错误。</p>
+<p>该属性应放置在 <a href="../items/implementations.html#特型实现">特型实现项</a> 上，尽管放置在其他位置不是错误。</p>
 <div class="rule" id="r-attributes.diagnostic.do_not_recommend.syntax"><a class="rule-link" href="#r-attributes.diagnostic.do_not_recommend.syntax" title="attributes.diagnostic.do_not_recommend.syntax"><span>[attributes<wbr>.diagnostic<wbr>.do_not_recommend<wbr>.syntax]</span></a>
 </div>
 

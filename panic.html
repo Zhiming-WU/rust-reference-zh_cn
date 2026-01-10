@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-874e84b7.js"></script>
+        <script src="toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -276,7 +276,7 @@ fn panic(info: &amp;PanicInfo) -&gt; ! {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>链接 <code>std</code> 时使用的恐慌处理器可以通过 <a href="../rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 命令行标志设置。大多数 target 的默认值是 <code>unwind</code>。</p>
+<p>链接 <code>std</code> 时使用的恐慌处理器可以通过 <a href="https://doc.rust-lang.org/rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 命令行标志设置。大多数 target 的默认值是 <code>unwind</code>。</p>
 <p>标准库的恐慌行为可以在运行时使用 <a href="../std/panicking/fn.set_hook.html"><code>std::panic::set_hook</code></a> 函数进行修改。</p>
 </blockquote>
 </div>
@@ -297,7 +297,7 @@ fn panic(info: &amp;PanicInfo) -&gt; ! {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>恐慌策略可以在 <code>rustc</code> 中使用 <a href="../rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 命令行标志进行选择。</p>
+<p>恐慌策略可以在 <code>rustc</code> 中使用 <a href="https://doc.rust-lang.org/rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 命令行标志进行选择。</p>
 <p>当生成二进制文件、dylib、cdylib 或 staticlib 且链接 <code>std</code> 时， <code>-C panic</code> 命令行标志也会影响使用哪个 <a href="#the-panic_handler-attribute">恐慌处理器</a>。</p>
 </blockquote>
 </div>

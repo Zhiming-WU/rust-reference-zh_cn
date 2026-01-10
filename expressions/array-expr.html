@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -356,7 +356,7 @@ Expression</text>
 <div class="rule" id="r-expr.array.length-restriction"><a class="rule-link" href="#r-expr.array.length-restriction" title="expr.array.length-restriction"><span>[expr<wbr>.array<wbr>.length-restriction]</span></a>
 </div>
 
-<p>长度操作数必须是一个 <a href="../items/generics.html#r-items.generics.const.inferred">推断常量</a> 或者是一个 <code>usize</code> 类型的 <a href="../const_eval.html#constant-expressions">常量表达式</a>（例如 <a href="../tokens.html#字面量">字面量</a> 或 <a href="../items/constant-items.html">常量 项</a>）。</p>
+<p>长度操作数必须是一个 <a href="../items/generics.html#r-items.generics.const.inferred">推断常量</a> 或者是一个 <code>usize</code> 类型的 <a href="../const_eval.html#常量表达式">常量表达式</a>（例如 <a href="../tokens.html#字面量">字面量</a> 或 <a href="../items/constant-items.html">常量 项</a>）。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>const C: usize = 1;
@@ -471,7 +471,7 @@ Expression</text>
 </div>
 
 <p><a href="../types/array.html">数组</a> 和 <a href="../types/slice.html">切片</a> 类型的值可以通过在它们后面编写一个由方括号括起来的 <code>usize</code> 类型表达式（索引）来进行索引。
-当数组是可变的时，生成的 <a href="../expressions.html#place-expressions-and-value-expressions">内存位置</a> 可以被赋值。</p>
+当数组是可变的时，生成的 <a href="../expressions.html#位置表达式和值表达式">内存位置</a> 可以被赋值。</p>
 <div class="rule" id="r-expr.array.index.trait"><a class="rule-link" href="#r-expr.array.index.trait" title="expr.array.index.trait"><span>[expr<wbr>.array<wbr>.index<wbr>.trait]</span></a>
 </div>
 
@@ -484,7 +484,7 @@ Expression</text>
 <div class="rule" id="r-expr.array.index.const"><a class="rule-link" href="#r-expr.array.index.const" title="expr.array.index.const"><span>[expr<wbr>.array<wbr>.index<wbr>.const]</span></a>
 </div>
 
-<p>数组访问是一个 <a href="../const_eval.html#constant-expressions">常量表达式</a>，因此可以使用常量索引值在编译时检查边界。
+<p>数组访问是一个 <a href="../const_eval.html#常量表达式">常量表达式</a>，因此可以使用常量索引值在编译时检查边界。
 否则将在运行时执行检查，如果失败，将使线程处于 <a href="../panic.html"> <em>恐慌</em> 状态</a>。</p>
 <pre class="playground"><code class="language-rust should_panic edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {

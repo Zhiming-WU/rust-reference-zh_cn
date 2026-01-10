@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,34 +181,27 @@
                         <div class="rule" id="r-type.union"><a class="rule-link" href="#r-type.union" title="type.union"><span>[type<wbr>.union]</span></a>
 </div>
 
-<h1 id="union-types"><a class="header" href="#union-types">Union types</a></h1>
+<h1 id="联合体类型"><a class="header" href="#联合体类型">联合体类型</a></h1>
 <div class="rule" id="r-type.union.intro"><a class="rule-link" href="#r-type.union.intro" title="type.union.intro"><span>[type<wbr>.union<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>union type</em> is a nominal, heterogeneous C-like union, denoted by the name of
-a <a href="../items/unions.html"><code>union</code> item</a>.</p>
+<p>一个 <em>联合体 类型</em> 是一种标称的、异构的类 C 联合体，由 <a href="../items/unions.html"><code>union</code> 项</a> 的名称表示。</p>
 <div class="rule" id="r-type.union.access"><a class="rule-link" href="#r-type.union.access" title="type.union.access"><span>[type<wbr>.union<wbr>.access]</span></a>
 </div>
 
-<p>Unions have no notion of an “active field”. Instead, every union access
-transmutes parts of the content of the union to the type of the accessed field.</p>
+<p>联合体 没有 “active field” 的概念。相反，每次对 联合体 的访问都会将 联合体 内容的一部分转录为被访问字段的类型。</p>
 <div class="rule" id="r-type.union.safety"><a class="rule-link" href="#r-type.union.safety" title="type.union.safety"><span>[type<wbr>.union<wbr>.safety]</span></a>
 </div>
 
-<p>Since transmutes can cause unexpected or undefined behaviour, <code>unsafe</code> is
-required to read from a union field.</p>
+<p>由于转录可能导致意外或未定义的行为，因此从 联合体 字段中读取数据需要 <code>unsafe</code> 。</p>
 <div class="rule" id="r-type.union.constraint"><a class="rule-link" href="#r-type.union.constraint" title="type.union.constraint"><span>[type<wbr>.union<wbr>.constraint]</span></a>
 </div>
 
-<p>Union field types are also restricted to a
-subset of types which ensures that they never need dropping. See the <a href="../items/unions.html">item</a>
-documentation for further details.</p>
+<p>联合体 字段类型也被限制为类型的一个子集，以确保它们永远不需要丢弃。有关更多详细信息，请参阅 <a href="../items/unions.html">项</a> 文档。</p>
 <div class="rule" id="r-type.union.layout"><a class="rule-link" href="#r-type.union.layout" title="type.union.layout"><span>[type<wbr>.union<wbr>.layout]</span></a>
 </div>
 
-<p>The memory layout of a <code>union</code> is undefined by default (in particular, fields do
-<em>not</em> have to be at offset 0), but the <code>#[repr(...)]</code> attribute can be used to
-fix a layout.</p>
+<p>默认情况下， <code>union</code> 的内存布局是未定义的（特别是，字段 <em>不</em> 一定要在偏移量 0 处），但 <code>#[repr(...)]</code> 属性可以用来固定布局。</p>
 
                     </main>
 

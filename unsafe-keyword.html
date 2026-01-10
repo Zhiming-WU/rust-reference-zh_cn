@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-874e84b7.js"></script>
+        <script src="toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -194,12 +194,12 @@
 </li>
 <li>它用于标记程序员 <em>断言</em> 满足了在其他地方定义的安全条件的代码。
 <ul>
-<li>这包括 <code>unsafe {}</code>、<code>unsafe impl</code>、不带 <a href="../rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> 的 <code>unsafe fn</code>、<code>unsafe extern</code> 和 <code>#[unsafe(attr)]</code>。</li>
+<li>这包括 <code>unsafe {}</code>、<code>unsafe impl</code>、不带 <a href="https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> 的 <code>unsafe fn</code>、<code>unsafe extern</code> 和 <code>#[unsafe(attr)]</code>。</li>
 </ul>
 </li>
 </ul>
 <p>下面将讨论这些情况。
-请参阅 <a href="../std/keyword.unsafe.html">关键字</a> 文档中的一些示例。</p>
+请参阅 <a href="https://doc.rust-lang.org/std/keyword.unsafe.html">关键字</a> 文档中的一些示例。</p>
 <div class="rule" id="r-unsafe.positions"><a class="rule-link" href="#r-unsafe.positions" title="unsafe.positions"><span>[unsafe<wbr>.positions]</span></a>
 </div>
 
@@ -227,7 +227,7 @@
 <div class="rule" id="r-unsafe.fn.safety"><a class="rule-link" href="#r-unsafe.fn.safety" title="unsafe.fn.safety"><span>[unsafe<wbr>.fn<wbr>.safety]</span></a>
 </div>
 
-<p>此类函数必须带有 <code>unsafe</code> 关键字前缀，且只能从 <code>unsafe</code> 块内部调用，或者在没有启用 <a href="../rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> lint 的 <code>unsafe fn</code> 内部调用。</p>
+<p>此类函数必须带有 <code>unsafe</code> 关键字前缀，且只能从 <code>unsafe</code> 块内部调用，或者在没有启用 <a href="https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> lint 的 <code>unsafe fn</code> 内部调用。</p>
 <div class="rule" id="r-unsafe.block"><a class="rule-link" href="#r-unsafe.block" title="unsafe.block"><span>[unsafe<wbr>.block]</span></a>
 </div>
 
@@ -240,7 +240,7 @@
 </div>
 
 <p>默认情况下，不安全函数的主体也被认为是一个不安全块；
-这可以通过启用 <a href="../rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> lint 来更改。</p>
+这可以通过启用 <a href="https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> lint 来更改。</p>
 <p>通过将操作放入不安全块中，程序员声明他们已经负责满足该块内所有操作的额外安全条件。</p>
 <p>不安全块是不安全函数的逻辑对等物：
 不安全函数定义了调用者必须遵守的证明义务，而不安全块则表示块内调用的函数或操作的所有相关证明义务都已履行。

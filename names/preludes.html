@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>预导入模块 - Rust语言参考手册</title>
+        <title>预导入 - Rust语言参考手册</title>
 
 
         <!-- Custom HTML head -->
@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,43 +181,39 @@
                         <div class="rule" id="r-names.preludes"><a class="rule-link" href="#r-names.preludes" title="names.preludes"><span>[names<wbr>.preludes]</span></a>
 </div>
 
-<h1 id="preludes"><a class="header" href="#preludes">Preludes</a></h1>
+<h1 id="预导入"><a class="header" href="#预导入">预导入</a></h1>
 <div class="rule" id="r-names.preludes.intro"><a class="rule-link" href="#r-names.preludes.intro" title="names.preludes.intro"><span>[names<wbr>.preludes<wbr>.intro]</span></a>
 </div>
 
-<p>A <em>prelude</em> is a collection of names that are automatically brought into scope
-of every module in a crate.</p>
-<p>These prelude names are not part of the module itself: they are implicitly
-queried during <a href="name-resolution.html">name resolution</a>. For example, even though something like
-<a href="../../alloc/boxed/struct.Box.html"><code>Box</code></a> is in scope in every module, you cannot refer to it as <code>self::Box</code>
-because it is not a member of the current module.</p>
+<p>一个 <em>预导入</em> 是自动引入到 crate 中每个模块作用域的名称集合。</p>
+<p>这些 预导入 名称本身不是模块的一部分：它们在 <a href="name-resolution.html">名称解析</a> 期间被隐式查询。例如，尽管像 <a href="../../alloc/boxed/struct.Box.html"><code>Box</code></a> 这样的东西在每个模块的作用域内，你也不能将其引用为 <code>self::Box</code>，因为它不是当前模块的成员。</p>
 <div class="rule" id="r-names.preludes.kinds"><a class="rule-link" href="#r-names.preludes.kinds" title="names.preludes.kinds"><span>[names<wbr>.preludes<wbr>.kinds]</span></a>
 </div>
 
-<p>There are several different preludes:</p>
+<p>有几种不同的 预导入：</p>
 <ul>
-<li><a href="preludes.html#r-names.preludes.std">Standard library prelude</a></li>
-<li><a href="#extern-prelude">Extern prelude</a></li>
-<li><a href="#language-prelude">Language prelude</a></li>
-<li><a href="#macro_use-prelude"><code>macro_use</code> prelude</a></li>
-<li><a href="#tool-prelude">Tool prelude</a></li>
+<li><a href="preludes.html#r-names.preludes.std">标准库预导入</a></li>
+<li><a href="#extern-prelude">外部预导入</a></li>
+<li><a href="#language-prelude">语言预导入</a></li>
+<li><a href="#macro_use-prelude"><code>macro_use</code> 预导入</a></li>
+<li><a href="#tool-prelude">工具预导入</a></li>
 </ul>
 <div class="rule" id="r-names.preludes.std"><a class="rule-link" href="#r-names.preludes.std" title="names.preludes.std"><span>[names<wbr>.preludes<wbr>.std]</span></a>
 </div>
 
-<h2 id="standard-library-prelude"><a class="header" href="#standard-library-prelude">Standard library prelude</a></h2>
+<h2 id="标准库预导入"><a class="header" href="#标准库预导入">标准库预导入</a></h2>
 <div class="rule" id="r-names.preludes.std.intro"><a class="rule-link" href="#r-names.preludes.std.intro" title="names.preludes.std.intro"><span>[names<wbr>.preludes<wbr>.std<wbr>.intro]</span></a>
 </div>
 
-<p>Each crate has a standard library prelude, which consists of the names from a single standard library module.</p>
+<p>每个 crate 都有一个标准库预导入，它由单个标准库模块中的名称组成。</p>
 <div class="rule" id="r-names.preludes.std.module"><a class="rule-link" href="#r-names.preludes.std.module" title="names.preludes.std.module"><span>[names<wbr>.preludes<wbr>.std<wbr>.module]</span></a>
 </div>
 
-<p>The module used depends on the crate’s edition, and on whether the <a href="#the-no_std-attribute"><code>no_std</code> attribute</a> is applied to the crate:</p>
+<p>所使用的模块取决于 crate 的 版次，以及是否对 crate 应用了 <a href="#the-no_std-attribute"><code>no_std</code> 属性</a>：</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Edition</th><th><code>no_std</code> not applied</th><th><code>no_std</code> applied</th></tr>
+<tr><th>版次</th><th>未应用 <code>no_std</code></th><th>已应用 <code>no_std</code></th></tr>
 </thead>
 <tbody>
 <tr><td>2015</td><td><a href="../../std/prelude/rust_2015/index.html"><code>std::prelude::rust_2015</code></a></td><td><a href="../../core/prelude/rust_2015/index.html"><code>core::prelude::rust_2015</code></a></td></tr>
@@ -231,29 +227,27 @@ because it is not a member of the current module.</p>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><a href="../../std/prelude/rust_2015/index.html"><code>std::prelude::rust_2015</code></a> and <a href="../../std/prelude/rust_2018/index.html"><code>std::prelude::rust_2018</code></a> have the same contents as <a href="../../std/prelude/v1/index.html"><code>std::prelude::v1</code></a>.</p>
-<p><a href="../../core/prelude/rust_2015/index.html"><code>core::prelude::rust_2015</code></a> and <a href="../../core/prelude/rust_2018/index.html"><code>core::prelude::rust_2018</code></a> have the same contents as <a href="../../core/prelude/v1/index.html"><code>core::prelude::v1</code></a>.</p>
+<p><a href="../../std/prelude/rust_2015/index.html"><code>std::prelude::rust_2015</code></a> 和 <a href="../../std/prelude/rust_2018/index.html"><code>std::prelude::rust_2018</code></a> 的内容与 <a href="../../std/prelude/v1/index.html"><code>std::prelude::v1</code></a> 相同。</p>
+<p><a href="../../core/prelude/rust_2015/index.html"><code>core::prelude::rust_2015</code></a> 和 <a href="../../core/prelude/rust_2018/index.html"><code>core::prelude::rust_2018</code></a> 的内容与 <a href="../../core/prelude/v1/index.html"><code>core::prelude::v1</code></a> 相同。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-names.preludes.extern"><a class="rule-link" href="#r-names.preludes.extern" title="names.preludes.extern"><span>[names<wbr>.preludes<wbr>.extern]</span></a>
 </div>
 
-<h2 id="extern-prelude"><a class="header" href="#extern-prelude">Extern prelude</a></h2>
+<h2 id="外部预导入"><a class="header" href="#外部预导入">外部预导入</a></h2>
 <div class="rule" id="r-names.preludes.extern.intro"><a class="rule-link" href="#r-names.preludes.extern.intro" title="names.preludes.extern.intro"><span>[names<wbr>.preludes<wbr>.extern<wbr>.intro]</span></a>
 </div>
 
-<p>External crates imported with <a href="../items/extern-crates.html"><code>extern crate</code></a> in the root module or provided
-to the compiler (as with the <code>--extern</code> flag with <code>rustc</code>) are added to the
-<em>extern prelude</em>. If imported with an alias such as <code>extern crate orig_name as new_name</code>, then the symbol <code>new_name</code> is instead added to the prelude.</p>
+<p>在根模块中使用 <a href="../items/extern-crates.html"><code>extern crate</code></a> 导入或提供给编译器（如使用 <code>rustc</code> 的 <code>--extern</code> 标志）的外部 crate 会被添加到 <em>外部预导入</em> 中。如果使用别名导入（如 <code>extern crate orig_name as new_name</code>），那么符号 <code>new_name</code> 将被添加到 预导入 中。</p>
 <div class="rule" id="r-names.preludes.extern.core"><a class="rule-link" href="#r-names.preludes.extern.core" title="names.preludes.extern.core"><span>[names<wbr>.preludes<wbr>.extern<wbr>.core]</span></a>
 </div>
 
-<p>The <a href="../../core/index.html"><code>core</code></a> crate is always added to the extern prelude.</p>
+<p><a href="../../core/index.html"><code>core</code></a> crate 总是被添加到 外部预导入 中。</p>
 <div class="rule" id="r-names.preludes.extern.std"><a class="rule-link" href="#r-names.preludes.extern.std" title="names.preludes.extern.std"><span>[names<wbr>.preludes<wbr>.extern<wbr>.std]</span></a>
 </div>
 
-<p>The <a href="../../std/index.html"><code>std</code></a> crate is added as long as the <a href="#the-no_std-attribute"><code>no_std</code> attribute</a> is not specified in the crate root.</p>
+<p>只要在 crate 根中没有指定 <a href="#the-no_std-attribute"><code>no_std</code> 属性</a>，<a href="../../std/index.html"><code>std</code></a> crate 就会被添加。</p>
 <div class="rule" id="r-names.preludes.extern.edition2018"><a class="rule-link" href="#r-names.preludes.extern.edition2018" title="names.preludes.extern.edition2018"><span>[names<wbr>.preludes<wbr>.extern<wbr>.edition2018]</span></a>
 </div>
 
@@ -261,8 +255,8 @@ to the compiler (as with the <code>--extern</code> flag with <code>rustc</code>)
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>In the 2015 edition, crates in the extern prelude cannot be referenced via <a href="../items/use-declarations.html">use declarations</a>, so it is generally standard practice to include <code>extern crate</code> declarations to bring them into scope.</p>
-<p>Beginning in the 2018 edition, <a href="../items/use-declarations.html">use declarations</a> can reference crates in the extern prelude, so it is considered unidiomatic to use <code>extern crate</code>.</p>
+<p>在 2015 版次中，外部预导入中的 crate 不能通过 <a href="../items/use-declarations.html">use 声明</a> 引用，因此通常的标准做法是包含 <code>extern crate</code> 声明来将它们引入作用域。</p>
+<p>从 2018 版次开始，<a href="../items/use-declarations.html">use 声明</a> 可以引用 外部预导入 中的 crate，因此使用 <code>extern crate</code> 被认为是不符合习惯的。</p>
 </blockquote>
 </div>
 
@@ -270,13 +264,13 @@ to the compiler (as with the <code>--extern</code> flag with <code>rustc</code>)
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Additional crates that ship with <code>rustc</code>, such as <a href="../../alloc/index.html"><code>alloc</code></a>, and <a href="../../test/index.html"><code>test</code></a>, are not automatically included with the <code>--extern</code> flag when using Cargo. They must be brought into scope with an <code>extern crate</code> declaration, even in the 2018 edition.</p>
+<p>随 <code>rustc</code> 一起提供的其他 crate，例如 <a href="../../alloc/index.html"><code>alloc</code></a> 和 <a href="../../test/index.html"><code>test</code></a>，在使用 Cargo 时不会通过 <code>--extern</code> 标志自动包含。即使在 2018 版次中，也必须通过 <code>extern crate</code> 声明将它们引入作用域。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>extern crate alloc;
 use alloc::rc::Rc;
 <span class="boring">}</span></code></pre>
-<p>Cargo does bring in <code>proc_macro</code> to the extern prelude for proc-macro crates only.</p>
+<p>Cargo 仅会为过程宏 crate 将 <code>proc_macro</code> 引入 外部预导入。</p>
 </blockquote>
 </div>
 
@@ -288,11 +282,11 @@ alloc/test limitation.
 <div class="rule" id="r-names.preludes.extern.no_std"><a class="rule-link" href="#r-names.preludes.extern.no_std" title="names.preludes.extern.no_std"><span>[names<wbr>.preludes<wbr>.extern<wbr>.no_std]</span></a>
 </div>
 
-<h3 id="the-no_std-attribute"><a class="header" href="#the-no_std-attribute">The <code>no_std</code> attribute</a></h3>
+<h3 id="no_std属性"><a class="header" href="#no_std属性">no_std属性</a></h3>
 <div class="rule" id="r-names.preludes.extern.no_std.intro"><a class="rule-link" href="#r-names.preludes.extern.no_std.intro" title="names.preludes.extern.no_std.intro"><span>[names<wbr>.preludes<wbr>.extern<wbr>.no_std<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>no_std</code> <a href="../attributes.html#r-attributes">attribute</a></em> causes the <a href="../../std/index.html"><code>std</code></a> crate to not be linked automatically, the <a href="preludes.html#r-names.preludes.std">standard library prelude</a> to instead use the <code>core</code> prelude, and the <a href="#macro_use-prelude"><code>macro_use</code> prelude</a> to instead use the macros exported from the <code>core</code> crate.</p>
+<p><em><code>no_std</code> <a href="../attributes.html#r-attributes">属性</a></em> 会导致 <a href="../../std/index.html"><code>std</code></a> crate 不被自动链接，<a href="preludes.html#r-names.preludes.std">标准库预导入</a> 转而使用 <code>core</code> 预导入，且 <a href="#macro_use-prelude"><code>macro_use</code> 预导入</a> 转而使用从 <code>core</code> crate 导出的宏。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -306,7 +300,7 @@ alloc/test limitation.
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>Using <code>no_std</code> is useful when either the crate is targeting a platform that does not support the standard library or is purposefully not using the capabilities of the standard library. Those capabilities are mainly dynamic memory allocation (e.g. <code>Box</code> and <code>Vec</code>) and file and network capabilities (e.g. <code>std::fs</code> and <code>std::io</code>).</p>
+<p>当 crate 的目标平台不支持标准库，或者是有意不使用标准库的功能时，使用 <code>no_std</code> 很有用。这些功能主要是动态内存分配（例如 <code>Box</code> 和 <code>Vec</code>）以及文件和网络功能（例如 <code>std::fs</code> 和 <code>std::io</code>）。</p>
 </blockquote>
 </div>
 
@@ -314,38 +308,38 @@ alloc/test limitation.
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>警告</p>
 
-<p>Using <code>no_std</code> does not prevent the standard library from being linked. It is still valid to write <code>extern crate std</code> in the crate or in one of its dependencies; this will cause the compiler to link the <code>std</code> crate into the program.</p>
+<p>使用 <code>no_std</code> 并不阻止链接标准库。在 crate 或其依赖项之一中编写 <code>extern crate std</code> 仍然是有效的；这将导致编译器将 <code>std</code> crate 链接到程序中。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-names.preludes.extern.no_std.syntax"><a class="rule-link" href="#r-names.preludes.extern.no_std.syntax" title="names.preludes.extern.no_std.syntax"><span>[names<wbr>.preludes<wbr>.extern<wbr>.no_std<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>no_std</code> attribute uses the <a href="../attributes.html#grammar-MetaWord">MetaWord</a> syntax.</p>
+<p><code>no_std</code> 属性使用 <a href="../attributes.html#grammar-MetaWord">MetaWord</a> 语法格式。</p>
 <div class="rule" id="r-names.preludes.extern.no_std.allowed-positions"><a class="rule-link" href="#r-names.preludes.extern.no_std.allowed-positions" title="names.preludes.extern.no_std.allowed-positions"><span>[names<wbr>.preludes<wbr>.extern<wbr>.no_std<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>no_std</code> attribute may only be applied to the crate root.</p>
+<p><code>no_std</code> 属性只能应用于 crate 根。</p>
 <div class="rule" id="r-names.preludes.extern.no_std.duplicates"><a class="rule-link" href="#r-names.preludes.extern.no_std.duplicates" title="names.preludes.extern.no_std.duplicates"><span>[names<wbr>.preludes<wbr>.extern<wbr>.no_std<wbr>.duplicates]</span></a>
 </div>
 
-<p>The <code>no_std</code> attribute may be used any number of times on a form.</p>
+<p><code>no_std</code> 属性可以在一个形式上使用任意次数。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> lints against any use following the first.</p>
+<p><code>rustc</code> 会对第一次之后的任何使用发出 lint。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-names.preludes.extern.no_std.module"><a class="rule-link" href="#r-names.preludes.extern.no_std.module" title="names.preludes.extern.no_std.module"><span>[names<wbr>.preludes<wbr>.extern<wbr>.no_std<wbr>.module]</span></a>
 </div>
 
-<p>The <code>no_std</code> attribute changes the <a href="preludes.html#r-names.preludes.std">standard library prelude</a> to use the <code>core</code> prelude instead of the <code>std</code> prelude.</p>
+<p><code>no_std</code> 属性将 <a href="preludes.html#r-names.preludes.std">标准库预导入</a> 更改为使用 <code>core</code> 预导入而不是 <code>std</code> 预导入。</p>
 <div class="rule" id="r-names.preludes.extern.no_std.macro_use"><a class="rule-link" href="#r-names.preludes.extern.no_std.macro_use" title="names.preludes.extern.no_std.macro_use"><span>[names<wbr>.preludes<wbr>.extern<wbr>.no_std<wbr>.macro_use]</span></a>
 </div>
 
-<p>By default, all macros exported from the <code>std</code> crate are added to the <a href="#macro_use-prelude"><code>macro_use</code> prelude</a>. If the <code>no_std</code> attribute is specified, then all macros exported from the <code>core</code> crate are placed into the <a href="#macro_use-prelude"><code>macro_use</code> prelude</a> instead.</p>
+<p>默认情况下，从 <code>std</code> crate 导出的所有宏都会被添加到 <a href="#macro_use-prelude"><code>macro_use</code> 预导入</a> 中。如果指定了 <code>no_std</code> 属性，那么从 <code>core</code> crate 导出的所有宏将转而被放入 <a href="#macro_use-prelude"><code>macro_use</code> 预导入</a> 中。</p>
 <div class="rule" id="r-names.preludes.extern.no_std.edition2018"><a class="rule-link" href="#r-names.preludes.extern.no_std.edition2018" title="names.preludes.extern.no_std.edition2018"><span>[names<wbr>.preludes<wbr>.extern<wbr>.no_std<wbr>.edition2018]</span></a>
 </div>
 
@@ -353,79 +347,76 @@ alloc/test limitation.
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>Before the 2018 edition, <code>std</code> is injected into the crate root by default. If <code>no_std</code> is specified, <code>core</code> is injected instead. Starting with the 2018 edition, regardless of <code>no_std</code> being specified, neither is injected into the crate root.</p>
+<p>在 2018 版次之前，<code>std</code> 默认注入到 crate 根中。如果指定了 <code>no_std</code>，则注入 <code>core</code> 代替。从 2018 版次开始，无论是否指定 <code>no_std</code>，都不会将两者注入到 crate 根中。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-names.preludes.lang"><a class="rule-link" href="#r-names.preludes.lang" title="names.preludes.lang"><span>[names<wbr>.preludes<wbr>.lang]</span></a>
 </div>
 
-<h2 id="language-prelude"><a class="header" href="#language-prelude">Language prelude</a></h2>
+<h2 id="语言预导入"><a class="header" href="#语言预导入">语言预导入</a></h2>
 <div class="rule" id="r-names.preludes.lang.intro"><a class="rule-link" href="#r-names.preludes.lang.intro" title="names.preludes.lang.intro"><span>[names<wbr>.preludes<wbr>.lang<wbr>.intro]</span></a>
 </div>
 
-<p>The language prelude includes names of types and attributes that are built-in
-to the language. The language prelude is always in scope.</p>
+<p>语言预导入包含了语言内置的类型和属性名称。语言预导入始终在作用域内。</p>
 <div class="rule" id="r-names.preludes.lang.entities"><a class="rule-link" href="#r-names.preludes.lang.entities" title="names.preludes.lang.entities"><span>[names<wbr>.preludes<wbr>.lang<wbr>.entities]</span></a>
 </div>
 
-<p>It includes the following:</p>
+<p>它包含以下内容：</p>
 <ul>
-<li><a href="namespaces.html">Type namespace</a>
+<li><a href="namespaces.html">类型命名空间</a>
 <ul>
-<li><a href="../types/boolean.html">Boolean type</a> — <code>bool</code></li>
-<li><a href="../types/textual.html">Textual types</a> — <code>char</code> and <code>str</code></li>
-<li><a href="../types/numeric.html#integer-types">Integer types</a> — <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>i128</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>u128</code></li>
-<li><a href="../types/numeric.html#machine-dependent-integer-types">Machine-dependent integer types</a> — <code>usize</code> and <code>isize</code></li>
-<li><a href="../types/numeric.html#floating-point-types">floating-point types</a> — <code>f32</code> and <code>f64</code></li>
+<li><a href="../types/boolean.html">布尔类型</a> — <code>bool</code></li>
+<li><a href="../types/textual.html">文本类型</a> — <code>char</code> 和 <code>str</code></li>
+<li><a href="../types/numeric.html#integer-types">整数类型</a> — <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>i128</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>u128</code></li>
+<li><a href="../types/numeric.html#machine-dependent-integer-types">平台相关整数类型</a> — <code>usize</code> 和 <code>isize</code></li>
+<li><a href="../types/numeric.html#floating-point-types">浮点类型</a> — <code>f32</code> 和 <code>f64</code></li>
 </ul>
 </li>
-<li><a href="namespaces.html">Macro namespace</a>
+<li><a href="namespaces.html">宏命名空间</a>
 <ul>
-<li><a href="../attributes.html#built-in-attributes-index">Built-in attributes</a></li>
-<li><a href="../attributes/derive.html#r-attributes.derive.built-in">Built-in derive macros</a></li>
+<li><a href="../attributes.html#built-in-attributes-index">内置属性</a></li>
+<li><a href="../attributes/derive.html#r-attributes.derive.built-in">内置派生宏</a></li>
 </ul>
 </li>
 </ul>
 <div class="rule" id="r-names.preludes.macro_use"><a class="rule-link" href="#r-names.preludes.macro_use" title="names.preludes.macro_use"><span>[names<wbr>.preludes<wbr>.macro_use]</span></a>
 </div>
 
-<h2 id="macro_use-prelude"><a class="header" href="#macro_use-prelude"><code>macro_use</code> prelude</a></h2>
+<h2 id="macro_use预导入"><a class="header" href="#macro_use预导入"><code>macro_use</code>预导入</a></h2>
 <div class="rule" id="r-names.preludes.macro_use.intro"><a class="rule-link" href="#r-names.preludes.macro_use.intro" title="names.preludes.macro_use.intro"><span>[names<wbr>.preludes<wbr>.macro_use<wbr>.intro]</span></a>
 </div>
 
-<p>The <code>macro_use</code> prelude includes macros from external crates that were
-imported by the <a href="../macros-by-example.html#macro_use属性"><code>macro_use</code> attribute</a> applied to an <a href="../items/extern-crates.html"><code>extern crate</code></a>.</p>
+<p><code>macro_use</code> 预导入包含了从应用了 <a href="../macros-by-example.html#macro_use属性"><code>macro_use</code> 属性</a> 的 <a href="../items/extern-crates.html"><code>extern crate</code></a> 导入的外部 crate 中的宏。</p>
 <div class="rule" id="r-names.preludes.tool"><a class="rule-link" href="#r-names.preludes.tool" title="names.preludes.tool"><span>[names<wbr>.preludes<wbr>.tool]</span></a>
 </div>
 
-<h2 id="tool-prelude"><a class="header" href="#tool-prelude">Tool prelude</a></h2>
+<h2 id="工具预导入"><a class="header" href="#工具预导入">工具预导入</a></h2>
 <div class="rule" id="r-names.preludes.tool.intro"><a class="rule-link" href="#r-names.preludes.tool.intro" title="names.preludes.tool.intro"><span>[names<wbr>.preludes<wbr>.tool<wbr>.intro]</span></a>
 </div>
 
-<p>The tool prelude includes tool names for external tools in the <a href="namespaces.html">type
-namespace</a>. See the <a href="../attributes.html#tool-attributes">tool attributes</a> section for more details.</p>
+<p>工具预导入包含了 <a href="namespaces.html">类型命名空间</a> 中外部工具的工具名称。有关更多详细信息，请参阅 <a href="../attributes.html#tool-attributes">工具属性</a> 部分。</p>
 <!-- template:attributes -->
 <div class="rule" id="r-names.preludes.no_implicit_prelude"><a class="rule-link" href="#r-names.preludes.no_implicit_prelude" title="names.preludes.no_implicit_prelude"><span>[names<wbr>.preludes<wbr>.no_implicit_prelude]</span></a>
 </div>
 
-<h2 id="the-no_implicit_prelude-attribute"><a class="header" href="#the-no_implicit_prelude-attribute">The <code>no_implicit_prelude</code> attribute</a></h2>
+<h2 id="no_implicit_prelude属性"><a class="header" href="#no_implicit_prelude属性">no_implicit_prelude属性</a></h2>
 <div class="rule" id="r-names.preludes.no_implicit_prelude.intro"><a class="rule-link" href="#r-names.preludes.no_implicit_prelude.intro" title="names.preludes.no_implicit_prelude.intro"><span>[names<wbr>.preludes<wbr>.no_implicit_prelude<wbr>.intro]</span></a>
 </div>
 
-<p>The <em><code>no_implicit_prelude</code> <a href="../attributes.html">attribute</a></em> is used to prevent implicit preludes from being brought into scope.</p>
+<p><em><code>no_implicit_prelude</code> <a href="../attributes.html">属性</a></em> 用于防止隐式 预导入 被引入作用域。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
 
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// The attribute can be applied to the crate root to affect
-// all modules.
+</span>// 该属性可以应用于 crate 根以影响
+// 所有模块。
 #![no_implicit_prelude]
 
-// Or it can be applied to a module to only affect that module
-// and its descendants.
+// 或者它可以应用于一个模块，仅影响该模块
+// 及其后代。
 #[no_implicit_prelude]
 mod example {
     // ...
@@ -437,39 +428,39 @@ mod example {
 <div class="rule" id="r-names.preludes.no_implicit_prelude.syntax"><a class="rule-link" href="#r-names.preludes.no_implicit_prelude.syntax" title="names.preludes.no_implicit_prelude.syntax"><span>[names<wbr>.preludes<wbr>.no_implicit_prelude<wbr>.syntax]</span></a>
 </div>
 
-<p>The <code>no_implicit_prelude</code> attribute uses the <a href="../attributes.html#grammar-MetaWord">MetaWord</a> syntax.</p>
+<p><code>no_implicit_prelude</code> 属性使用 <a href="../attributes.html#grammar-MetaWord">MetaWord</a> 语法格式。</p>
 <div class="rule" id="r-names.preludes.no_implicit_prelude.allowed-positions"><a class="rule-link" href="#r-names.preludes.no_implicit_prelude.allowed-positions" title="names.preludes.no_implicit_prelude.allowed-positions"><span>[names<wbr>.preludes<wbr>.no_implicit_prelude<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>The <code>no_implicit_prelude</code> attribute may only be applied to the crate or to a module.</p>
+<p><code>no_implicit_prelude</code> 属性只能应用于 crate 或模块。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> ignores use in other positions but lints against it. This may become an error in the future.</p>
+<p><code>rustc</code> 会忽略在其他位置的使用，但会对其发出 lint。这在未来可能会变成一个错误。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-names.preludes.no_implicit_prelude.duplicates"><a class="rule-link" href="#r-names.preludes.no_implicit_prelude.duplicates" title="names.preludes.no_implicit_prelude.duplicates"><span>[names<wbr>.preludes<wbr>.no_implicit_prelude<wbr>.duplicates]</span></a>
 </div>
 
-<p>The <code>no_implicit_prelude</code> attribute may be used any number of times on a form.</p>
+<p><code>no_implicit_prelude</code> 属性可以在一个形式上使用任意次数。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> lints against any use following the first.</p>
+<p><code>rustc</code> 会对第一次之后的任何使用发出 lint。</p>
 </blockquote>
 </div>
 
 <div class="rule" id="r-names.preludes.no_implicit_prelude.excluded-preludes"><a class="rule-link" href="#r-names.preludes.no_implicit_prelude.excluded-preludes" title="names.preludes.no_implicit_prelude.excluded-preludes"><span>[names<wbr>.preludes<wbr>.no_implicit_prelude<wbr>.excluded-preludes]</span></a>
 </div>
 
-<p>The <code>no_implicit_prelude</code> attribute prevents the <a href="preludes.html#r-names.preludes.std">standard library prelude</a>, <a href="#extern-prelude">extern prelude</a>, <a href="#macro_use-prelude"><code>macro_use</code> prelude</a>, and the <a href="#tool-prelude">tool prelude</a> from being brought into scope for the module and its descendants.</p>
+<p><code>no_implicit_prelude</code> 属性阻止 <a href="preludes.html#r-names.preludes.std">标准库预导入</a>、<a href="#extern-prelude">外部预导入</a>、<a href="#macro_use-prelude"><code>macro_use</code> 预导入</a> 和 <a href="#tool-prelude">工具预导入</a> 被引入到该模块及其后代的作用域中。</p>
 <div class="rule" id="r-names.preludes.no_implicit_prelude.lang"><a class="rule-link" href="#r-names.preludes.no_implicit_prelude.lang" title="names.preludes.no_implicit_prelude.lang"><span>[names<wbr>.preludes<wbr>.no_implicit_prelude<wbr>.lang]</span></a>
 </div>
 
-<p>The <code>no_implicit_prelude</code> attribute does not affect the <a href="#language-prelude">language prelude</a>.</p>
+<p><code>no_implicit_prelude</code> 属性不影响 <a href="#language-prelude">语言预导入</a>。</p>
 <div class="rule" id="r-names.preludes.no_implicit_prelude.edition2018"><a class="rule-link" href="#r-names.preludes.no_implicit_prelude.edition2018" title="names.preludes.no_implicit_prelude.edition2018"><span>[names<wbr>.preludes<wbr>.no_implicit_prelude<wbr>.edition2018]</span></a>
 </div>
 
@@ -477,7 +468,7 @@ mod example {
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
-<p>In the 2015 edition, the <code>no_implicit_prelude</code> attribute does not affect the <a href="#macro_use-prelude"><code>macro_use</code> prelude</a>, and all macros exported from the standard library are still included in the <code>macro_use</code> prelude. Starting in the 2018 edition, the attribute does remove the <code>macro_use</code> prelude.</p>
+<p>在 2015 版次中，<code>no_implicit_prelude</code> 属性不影响 <a href="#macro_use-prelude"><code>macro_use</code> 预导入</a>，并且从标准库导出的所有宏仍包含在 <code>macro_use</code> 预导入中。从 2018 版次开始，该属性确实会移除 <code>macro_use</code> 预导入。</p>
 </blockquote>
 </div>
 

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -555,7 +555,7 @@ Expression</text>
 <div class="rule" id="r-expr.operator.borrow.result"><a class="rule-link" href="#r-expr.operator.borrow.result" title="expr.operator.borrow.result"><span>[expr<wbr>.operator<wbr>.borrow<wbr>.result]</span></a>
 </div>
 
-<p>当应用于 <a href="../expressions.html#place-expressions-and-value-expressions">位置表达式</a> 时，此表达式会产生一个指向该值所引用的位置的引用（指针）。</p>
+<p>当应用于 <a href="../expressions.html#位置表达式和值表达式">位置表达式</a> 时，此表达式会产生一个指向该值所引用的位置的引用（指针）。</p>
 <div class="rule" id="r-expr.operator.borrow.lifetime"><a class="rule-link" href="#r-expr.operator.borrow.lifetime" title="expr.operator.borrow.lifetime"><span>[expr<wbr>.operator<wbr>.borrow<wbr>.lifetime]</span></a>
 </div>
 
@@ -569,7 +569,7 @@ Expression</text>
 <div class="rule" id="r-expr.operator.borrow.temporary"><a class="rule-link" href="#r-expr.operator.borrow.temporary" title="expr.operator.borrow.temporary"><span>[expr<wbr>.operator<wbr>.borrow<wbr>.temporary]</span></a>
 </div>
 
-<p>如果 <code>&amp;</code> 或 <code>&amp;mut</code> 运算符应用于 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式</a> ，则会创建一个 <a href="../expressions.html#temporaries">临时值</a> 。</p>
+<p>如果 <code>&amp;</code> 或 <code>&amp;mut</code> 运算符应用于 <a href="../expressions.html#位置表达式和值表达式">值表达式</a> ，则会创建一个 <a href="../expressions.html#temporaries">临时值</a> 。</p>
 <p>这些运算符不能被重载。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -710,7 +710,7 @@ Expression</text>
 <div class="rule" id="r-expr.deref.mut"><a class="rule-link" href="#r-expr.deref.mut" title="expr.deref.mut"><span>[expr<wbr>.deref<wbr>.mut]</span></a>
 </div>
 
-<p>如果表达式的类型是 <code>&amp;mut T</code> 或 <code>*mut T</code> ，并且是局部变量、局部变量的（嵌套）字段或可变 <a href="../expressions.html#place-expressions-and-value-expressions">位置表达式</a> ，则可以对产生的内存位置进行赋值。</p>
+<p>如果表达式的类型是 <code>&amp;mut T</code> 或 <code>*mut T</code> ，并且是局部变量、局部变量的（嵌套）字段或可变 <a href="../expressions.html#位置表达式和值表达式">位置表达式</a> ，则可以对产生的内存位置进行赋值。</p>
 <div class="rule" id="r-expr.deref.safety"><a class="rule-link" href="#r-expr.deref.safety" title="expr.deref.safety"><span>[expr<wbr>.deref<wbr>.safety]</span></a>
 </div>
 
@@ -997,7 +997,7 @@ Expression</text>
 
 <p>下表总结了它们在原始类型上的行为，以及用于为其他类型重载这些运算符的 特型 。
 请记住，有符号整数始终使用补码表示。
-所有这些运算符的操作数都在 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式语境</a> 中求值，因此会被移动或复制。</p>
+所有这些运算符的操作数都在 <a href="../expressions.html#位置表达式和值表达式">值表达式语境</a> 中求值，因此会被移动或复制。</p>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -1312,7 +1312,7 @@ Expression</text>
 
 <p>下表总结了算术和逻辑二元运算符在原始类型上的行为，以及用于为其他类型重载这些运算符的 特型 。
 请记住，有符号整数始终使用补码表示。
-所有这些运算符的操作数都在 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式语境</a> 中求值，因此会被移动或复制。</p>
+所有这些运算符的操作数都在 <a href="../expressions.html#位置表达式和值表达式">值表达式语境</a> 中求值，因此会被移动或复制。</p>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -1551,7 +1551,7 @@ Expression</text>
 <div class="rule" id="r-expr.cmp.place"><a class="rule-link" href="#r-expr.cmp.place" title="expr.cmp.place"><span>[expr<wbr>.cmp<wbr>.place]</span></a>
 </div>
 
-<p>与上面的算术和逻辑运算符不同，这些运算符隐式地对其操作数进行共享借用，并在 <a href="../expressions.html#place-expressions-and-value-expressions">位置表达式语境</a> 中对它们求值：</p>
+<p>与上面的算术和逻辑运算符不同，这些运算符隐式地对其操作数进行共享借用，并在 <a href="../expressions.html#位置表达式和值表达式">位置表达式语境</a> 中对它们求值：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">let a = 1;
@@ -2110,11 +2110,11 @@ Expression</text>
 <div class="rule" id="r-expr.assign.assignee"><a class="rule-link" href="#r-expr.assign.assignee" title="expr.assign.assignee"><span>[expr<wbr>.assign<wbr>.assignee]</span></a>
 </div>
 
-<p>赋值表达式由一个 <a href="../expressions.html#mutability">可变</a> <a href="../expressions.html#place-expressions-and-value-expressions">赋值目标表达式</a> （即 <em>赋值目标操作数</em> ），后跟一个等号（ <code>=</code> ）和一个 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式</a> （即 <em>被赋值操作数</em> ）组成。</p>
+<p>赋值表达式由一个 <a href="../expressions.html#mutability">可变</a> <a href="../expressions.html#位置表达式和值表达式">赋值目标表达式</a> （即 <em>赋值目标操作数</em> ），后跟一个等号（ <code>=</code> ）和一个 <a href="../expressions.html#位置表达式和值表达式">值表达式</a> （即 <em>被赋值操作数</em> ）组成。</p>
 <div class="rule" id="r-expr.assign.behavior-basic"><a class="rule-link" href="#r-expr.assign.behavior-basic" title="expr.assign.behavior-basic"><span>[expr<wbr>.assign<wbr>.behavior-basic]</span></a>
 </div>
 
-<p>在其最基本的形式中，赋值目标表达式是一个 <a href="../expressions.html#place-expressions-and-value-expressions">位置表达式</a> ，我们首先讨论这种情况。</p>
+<p>在其最基本的形式中，赋值目标表达式是一个 <a href="../expressions.html#位置表达式和值表达式">位置表达式</a> ，我们首先讨论这种情况。</p>
 <div class="rule" id="r-expr.assign.behavior-destructuring"><a class="rule-link" href="#r-expr.assign.behavior-destructuring" title="expr.assign.behavior-destructuring"><span>[expr<wbr>.assign<wbr>.behavior-destructuring]</span></a>
 </div>
 
@@ -2178,7 +2178,7 @@ x = y;
 </div>
 
 <p>与使用 <code>let</code> 的解构声明相反，由于语法歧义，模式不能出现在赋值语句的左侧。
-相反，对应于模式的一组表达式被指定为 <a href="../expressions.html#place-expressions-and-value-expressions">赋值目标表达式</a> ，并允许出现在赋值语句的左侧。
+相反，对应于模式的一组表达式被指定为 <a href="../expressions.html#位置表达式和值表达式">赋值目标表达式</a> ，并允许出现在赋值语句的左侧。
 赋值目标表达式随后被脱糖为模式匹配，后跟顺序赋值。</p>
 <div class="rule" id="r-expr.assign.destructure.irrefutable"><a class="rule-link" href="#r-expr.assign.destructure.irrefutable" title="expr.assign.destructure.irrefutable"><span>[expr<wbr>.assign<wbr>.destructure<wbr>.irrefutable]</span></a>
 </div>
@@ -2608,7 +2608,7 @@ Expression</text>
 x += 1;
 assert!(x == 6);
 <span class="boring">}</span></code></pre>
-<p>复合赋值的语法是一个 <a href="../expressions.html#mutability">可变</a> <a href="../expressions.html#place-expressions-and-value-expressions">位置表达式</a> （即 <em>被赋值操作数</em> ），然后是一个由运算符后跟 <code>=</code> 组成的单个 词法单元 （无空格），最后是一个 <a href="../expressions.html#place-expressions-and-value-expressions">值表达式</a> （即 <em>修改操作数</em> ）。</p>
+<p>复合赋值的语法是一个 <a href="../expressions.html#mutability">可变</a> <a href="../expressions.html#位置表达式和值表达式">位置表达式</a> （即 <em>被赋值操作数</em> ），然后是一个由运算符后跟 <code>=</code> 组成的单个 词法单元 （无空格），最后是一个 <a href="../expressions.html#位置表达式和值表达式">值表达式</a> （即 <em>修改操作数</em> ）。</p>
 <div class="rule" id="r-expr.compound-assign.place"><a class="rule-link" href="#r-expr.compound-assign.place" title="expr.compound-assign.place"><span>[expr<wbr>.compound-assign<wbr>.place]</span></a>
 </div>
 

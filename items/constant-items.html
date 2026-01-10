@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -279,7 +279,7 @@ Expression</text>
 <div class="rule" id="r-items.const.intro"><a class="rule-link" href="#r-items.const.intro" title="items.const.intro"><span>[items<wbr>.const<wbr>.intro]</span></a>
 </div>
 
-<p><em>常量项</em>  是一个可选命名的  <a href="../const_eval.html#constant-expressions">常量值</a> ，它不与程序中特定的内存位置相关联。</p>
+<p><em>常量项</em>  是一个可选命名的  <a href="../const_eval.html#常量表达式">常量值</a> ，它不与程序中特定的内存位置相关联。</p>
 <div class="rule" id="r-items.const.behavior"><a class="rule-link" href="#r-items.const.behavior" title="items.const.behavior"><span>[items<wbr>.const<wbr>.behavior]</span></a>
 </div>
 
@@ -348,7 +348,7 @@ fn create_and_drop_zero_with_destructor() {
 <div class="rule" id="r-items.const.unnamed.intro"><a class="rule-link" href="#r-items.const.unnamed.intro" title="items.const.unnamed.intro"><span>[items<wbr>.const<wbr>.unnamed<wbr>.intro]</span></a>
 </div>
 
-<p>与  <a href="../items/associated-items.html#associated-constants">关联常量</a>  不同， <a href="../glossary.html#free-item">自由</a>  常量可以通过使用下划线代替名称来保持匿名。例如：</p>
+<p>与  <a href="../items/associated-items.html#associated-constants">关联常量</a>  不同， <a href="../glossary.html#自由项">自由</a>  常量可以通过使用下划线代替名称来保持匿名。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>const _: () =  { struct _SameNameTwice; };
@@ -375,7 +375,7 @@ m!(const _: () = (););
 </div>
 
 <h2 id="求值"><a class="header" href="#求值">求值</a></h2>
-<p><a href="../glossary.html#free-item">自由</a>  常量始终在编译时  <a href="../const_eval.html">求值</a>  以暴露 恐慌。即使在未使用的函数中也会发生这种情况：</p>
+<p><a href="../glossary.html#自由项">自由</a>  常量始终在编译时  <a href="../const_eval.html">求值</a>  以暴露 恐慌。即使在未使用的函数中也会发生这种情况：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// 编译时恐慌

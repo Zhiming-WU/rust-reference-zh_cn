@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-19dcf0ad.js";
+            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-874e84b7.js"></script>
+        <script src="../toc-99e7fd87.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                         <div class="rule" id="r-type.fn-pointer"><a class="rule-link" href="#r-type.fn-pointer" title="type.fn-pointer"><span>[type<wbr>.fn-pointer]</span></a>
 </div>
 
-<h1 id="function-pointer-types"><a class="header" href="#function-pointer-types">Function pointer types</a></h1>
+<h1 id="函数指针类型"><a class="header" href="#函数指针类型">函数指针类型</a></h1>
 <div class="rule" id="r-type.fn-pointer.syntax"><a class="rule-link" href="#r-type.fn-pointer.syntax" title="type.fn-pointer.syntax"><span>[type<wbr>.fn-pointer<wbr>.syntax]</span></a>
 </div>
 
@@ -610,8 +610,8 @@ OuterAttribute</text>
 <div class="rule" id="r-type.fn-pointer.intro"><a class="rule-link" href="#r-type.fn-pointer.intro" title="type.fn-pointer.intro"><span>[type<wbr>.fn-pointer<wbr>.intro]</span></a>
 </div>
 
-<p>A function pointer type, written using the <code>fn</code> keyword, refers to a function whose identity is not necessarily known at compile-time.</p>
-<p>An example where <code>Binop</code> is defined as a function pointer type:</p>
+<p>一个函数指针类型，使用 <code>fn</code> 关键字编写，指向一个在编译时身份不一定确定的函数。</p>
+<p>一个将 <code>Binop</code> 定义为函数指针类型的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn add(x: i32, y: i32) -&gt; i32 {
@@ -627,22 +627,20 @@ x = bo(5,7);
 <div class="rule" id="r-type.fn-pointer.coercion"><a class="rule-link" href="#r-type.fn-pointer.coercion" title="type.fn-pointer.coercion"><span>[type<wbr>.fn-pointer<wbr>.coercion]</span></a>
 </div>
 
-<p>Function pointers can be created via a coercion from both <a href="function-item.html">function items</a> and non-capturing, non-async <a href="closure.html">closures</a>.</p>
+<p>函数指针可以通过来自 <a href="function-item.html">函数项</a> 以及非捕获、非异步的 <a href="closure.html">闭包</a> 的 <a href="type-coercions.html">隐式类型转换</a> 来创建。</p>
 <div class="rule" id="r-type.fn-pointer.qualifiers"><a class="rule-link" href="#r-type.fn-pointer.qualifiers" title="type.fn-pointer.qualifiers"><span>[type<wbr>.fn-pointer<wbr>.qualifiers]</span></a>
 </div>
 
-<p>The <code>unsafe</code> qualifier indicates that the type’s value is an <a href="../unsafe-keyword.html">unsafe
-function</a>, and the <code>extern</code> qualifier indicates it is an <a href="../items/functions.html#extern-function-qualifier">extern function</a>.</p>
+<p><code>unsafe</code> 限定符表示该类型的值是一个 <a href="../unsafe-keyword.html">不安全函数</a> ，而 <code>extern</code> 限定符表示它是一个 <a href="../items/functions.html#extern-function-qualifier">外部函数</a> 。</p>
 <div class="rule" id="r-type.fn-pointer.constraint-variadic"><a class="rule-link" href="#r-type.fn-pointer.constraint-variadic" title="type.fn-pointer.constraint-variadic"><span>[type<wbr>.fn-pointer<wbr>.constraint-variadic]</span></a>
 </div>
 
-<p>For the function to be variadic, its <code>extern</code> ABI must be one of those listed in <a href="../items/external-blocks.html#r-items.extern.variadic.conventions">items.extern.variadic.conventions</a>.</p>
+<p>要使函数成为变长参数函数，其 <code>extern</code> ABI 必须是 <a href="../items/external-blocks.html#r-items.extern.variadic.conventions">items.extern.variadic.conventions</a> 中列出的之一。</p>
 <div class="rule" id="r-type.fn-pointer.attributes"><a class="rule-link" href="#r-type.fn-pointer.attributes" title="type.fn-pointer.attributes"><span>[type<wbr>.fn-pointer<wbr>.attributes]</span></a>
 </div>
 
-<h2 id="attributes-on-function-pointer-parameters"><a class="header" href="#attributes-on-function-pointer-parameters">Attributes on function pointer parameters</a></h2>
-<p>Attributes on function pointer parameters follow the same rules and
-restrictions as <a href="../items/functions.html#attributes-on-function-parameters">regular function parameters</a>.</p>
+<h2 id="函数指针参数上的属性"><a class="header" href="#函数指针参数上的属性">函数指针参数上的属性</a></h2>
+<p>函数指针参数上的属性遵循与 <a href="../items/functions.html#attributes-on-function-parameters">常规函数参数</a> 相同的规则和限制。</p>
 
                     </main>
 
