@@ -124,11 +124,11 @@ r[expr.array.index.trait-impl]
 [array]: ../types/array.md
 [const generic argument]: items.generics.const.argument
 [const block expression]: expr.block.const
-[constant expression]: ../const_eval.md#constant-expressions
+[constant expression]: ../const_eval.md#常量表达式
 [constant item]: ../items/constant-items.md
 [inferred const]: items.generics.const.inferred
 [literal]: ../tokens.md#字面量
-[memory location]: ../expressions.md#place-expressions-and-value-expressions
+[memory location]: ../expressions.md#位置表达式和值表达式
 [panic]: ../panic.md
 [path]: path-expr.md
 [slice]: ../types/slice.md

@@ -276,7 +276,7 @@ r[items.impl.attributes]
 [`deprecated`]: ../attributes/diagnostics.md#the-deprecated-attribute
 [`doc`]: https://doc.rust-lang.org/rustdoc/the-doc-attribute.html
 [generic parameters]: generics.md
-[methods]: associated-items.md#methods
+[methods]: associated-items.md#方法
 [path]: ../paths.md
 [the lint check attributes]: ../attributes/diagnostics.md#lint-check-attributes
 [Unsafe traits]: traits.md#unsafe-traits

@@ -207,7 +207,7 @@ r[undefined.validity.undef]
 [Rustonomicon]: ../nomicon/index.html
 [`NonNull<T>`]: core::ptr::NonNull
 [`NonZero<T>`]: core::num::NonZero
-[place expression context]: expressions.md#place-expressions-and-value-expressions
+[place expression context]: expressions.md#位置表达式和值表达式
 [rules]: inline-assembly.md#rules-for-inline-assembly
 [points to]: #pointed-to-bytes
 [pointed to]: #pointed-to-bytes

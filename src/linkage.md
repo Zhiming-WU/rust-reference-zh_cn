@@ -7,7 +7,7 @@ r[link]
 r[link.intro]
 编译器支持静态和动态链接 crate 的多种方法。本节将探讨链接 crate 的各种方法，有关原生库的更多信息可以在 [本书的 FFI 章节][ffi] 中找到。
 
-[ffi]: ../book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code
+[ffi]: https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code
 
 r[link.type]
 在一次编译会话中，编译器可以通过使用命令行标志或 `crate_type` 属性生成多个产物。如果指定了一个或多个命令行标志，则所有的 `crate_type` 属性都将被忽略，而只构建通过命令行指定的产物。
@@ -176,8 +176,8 @@ r[link.unwinding.prohibited]
 > 为了保证无论链接时使用何种恐慌运行时，库都是健全的 (and linkable with `rustc`) ，可以使用 [`ffi_unwind_calls` lint] 。该 lint 会标记对 `-unwind` 外部函数或函数指针的任何调用。
 
 [`cfg` attribute `target_feature` option]: conditional-compilation.md#target_feature
-[`ffi_unwind_calls` lint]: ../rustc/lints/listing/allowed-by-default.html#ffi-unwind-calls
+[`ffi_unwind_calls` lint]: https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#ffi-unwind-calls
 [configuration option]: conditional-compilation.md
 [procedural macros]: procedural-macros.md
-[panic strategy]: panic.md#panic-strategy
-[`-C panic`]: ../rustc/codegen-options/index.html#panic
+[panic strategy]: panic.md#恐慌策略
+[`-C panic`]: https://doc.rust-lang.org/rustc/codegen-options/index.html#panic

@@ -166,8 +166,8 @@ r[expr.match.attributes.inner]
 [Inner attributes]: ../attributes.md
 [lint check attributes]: ../attributes/diagnostics.md#lint-check-attributes
 [pattern]: ../patterns.md
-[place expression]: ../expressions.md#place-expressions-and-value-expressions
+[place expression]: ../expressions.md#位置表达式和值表达式
 [Range Expression]: range-expr.md
 [Range Pattern]: ../patterns.md#range-patterns
 [scrutinee]: ../glossary.md#scrutinee
-[value expression]: ../expressions.md#place-expressions-and-value-expressions
+[value expression]: ../expressions.md#位置表达式和值表达式

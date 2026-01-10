@@ -46,4 +46,4 @@ assert_eq!( a.f (), "The method f");
 assert_eq!((a.f)(), "The field f");
 ```
 
-[place]: ../expressions.md#place-expressions-and-value-expressions
+[place]: ../expressions.md#位置表达式和值表达式

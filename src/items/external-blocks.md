@@ -23,7 +23,7 @@ r[items.extern.intro]
 外部块提供在当前 crate 中未  *定义*  而是  *声明*  的 项 的声明，是 Rust 外部函数接口 (FFI) 的基础。这些类似于未经检查的导入。
 
 r[items.extern.allowed-kinds]
-外部块中允许两种 项  *声明* ： [函数][functions] 和 [静态项][statics]。
+外部块中允许两种 项 *声明* ： [函数][functions] 和 [静态项][statics]。
 
 r[items.extern.safety]
 仅允许在 [`unsafe` 上下文][`unsafe` context] 中调用在外部块中声明的 不安全 函数或访问 不安全 静态项。
@@ -454,12 +454,12 @@ r[items.extern.attributes.fn-parameters]
 [PE Format]: https://learn.microsoft.com/windows/win32/debug/pe-format#import-name-type
 [UEFI]: https://uefi.org/specifications
 [WebAssembly module]: https://webassembly.github.io/spec/core/syntax/modules.html
-[`bundle` documentation for rustc]: ../../rustc/command-line-arguments.html#linking-modifiers-bundle
+[`bundle` documentation for rustc]: https://doc.rust-lang.org/rustc/command-line-arguments.html#linking-modifiers-bundle
 [`dylib` versus `raw-dylib`]: #dylib-versus-raw-dylib
 [`extern fn`]: items.fn.extern
 [`unsafe` context]: ../unsafe-keyword.md
-[`verbatim` documentation for rustc]: ../../rustc/command-line-arguments.html#linking-modifiers-verbatim
-[`whole-archive` documentation for rustc]: ../../rustc/command-line-arguments.html#linking-modifiers-whole-archive
+[`verbatim` documentation for rustc]: https://doc.rust-lang.org/rustc/command-line-arguments.html#linking-modifiers-verbatim
+[`whole-archive` documentation for rustc]: https://doc.rust-lang.org/rustc/command-line-arguments.html#linking-modifiers-whole-archive
 [attributes]: ../attributes.md
 [functions]: functions.md
 [regular function parameters]: functions.md#attributes-on-function-parameters

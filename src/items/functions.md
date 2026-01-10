@@ -418,7 +418,7 @@ fn foo_oof(#[some_inert_attribute] arg: u8) {
 [`no_mangle`]: ../abi.md#the-no_mangle-attribute
 [built-in attributes]: ../attributes.md#built-in-attributes-index
 [trait item]: traits.md
-[method]: associated-items.md#methods
+[method]: associated-items.md#方法
 [associated function]: associated-items.md#associated-functions-and-methods
 [implementation]: implementations.md
 [value namespace]: ../names/namespaces.md

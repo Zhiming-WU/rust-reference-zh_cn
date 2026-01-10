@@ -511,7 +511,7 @@ r[expr.literal.bool.result]
 [String continuation escape]: #string-continuation-escapes
 [String continuation escapes]: #string-continuation-escapes
 [boolean type]: ../types/boolean.md
-[constant expression]: ../const_eval.md#constant-expressions
+[constant expression]: ../const_eval.md#常量表达式
 [CStr]: core::ffi::CStr
 [floating-point types]: ../types/numeric.md#floating-point-types
 [lint check]: ../attributes/diagnostics.md#lint-check-attributes

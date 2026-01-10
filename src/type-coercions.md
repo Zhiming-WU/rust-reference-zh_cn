@@ -280,7 +280,7 @@ fn foo() -> i32 {
 [RFC 401]: https://github.com/rust-lang/rfcs/blob/master/text/0401-coercions.md
 [RFC 1558]: https://github.com/rust-lang/rfcs/blob/master/text/1558-closure-to-fn-coercion.md
 [subtype]: subtyping.md
-[dyn compatible]: items/traits.md#dyn-compatibility
+[dyn compatible]: items/traits.md#dyn兼容性
 [type cast operator]: expressions/operator-expr.md#type-cast-expressions
 [`Unsize`]: std::marker::Unsize
 [`CoerceUnsized`]: std::ops::CoerceUnsized

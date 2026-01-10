@@ -286,10 +286,10 @@ fn is_unix_platform() -> bool {
 [call expressions]: call-expr.md
 [capture modes]: ../types/closure.md#capture-modes
 [constant items]: ../items/constant-items.md
-[free item]: ../glossary.md#free-item
+[free item]: ../glossary.md#自由项
 [function]: ../items/functions.md
 [inner attributes]: ../attributes.md
-[method]: ../items/associated-items.md#methods
+[method]: ../items/associated-items.md#方法
 [mutable reference]: ../types/pointer.md#mutables-references-
 [scopes]: ../names/scopes.md
 [shared references]: ../types/pointer.md#shared-references-
@@ -299,5 +299,5 @@ fn is_unix_platform() -> bool {
 [the lint check attributes]: ../attributes/diagnostics.md#lint-check-attributes
 [tuple expressions]: tuple-expr.md
 [unsafe operations]: ../unsafety.md
-[value expressions]: ../expressions.md#place-expressions-and-value-expressions
+[value expressions]: ../expressions.md#位置表达式和值表达式
 [Loops and other breakable expressions]: expr.loop.block-labels

@@ -110,8 +110,8 @@ fn unused_generic_function<T>() {
 
 [const_eval]: ../const_eval.md
 [associated constant]: ../items/associated-items.md#associated-constants
-[constant value]: ../const_eval.md#constant-expressions
-[free]: ../glossary.md#free-item
+[constant value]: ../const_eval.md#常量表达式
+[free]: ../glossary.md#自由项
 [static lifetime elision]: ../lifetime-elision.md#const-and-static-elision
 [trait definition]: traits.md
 [underscore imports]: use-declarations.md#下划线导入

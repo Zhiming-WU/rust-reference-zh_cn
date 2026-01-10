@@ -29,4 +29,4 @@ r[type.array.index]
 > [`Vec<T>`] 标准库类型提供了一种堆分配的可调大小数组类型。
 
 [`usize`]: numeric.md#machine-dependent-integer-types
-[constant expression]: ../const_eval.md#constant-expressions
+[constant expression]: ../const_eval.md#常量表达式

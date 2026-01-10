@@ -134,9 +134,9 @@
 - [Rust运行时](runtime.md)
 
 - [附录](appendices.md)
-    - [文法概述](grammar.md)
+    - [文法总结](grammar.md)
     - [语法索引](syntax-index.md)
-    - [宏follow-set歧义形式化规范](macro-ambiguity.md)
+    - [宏后继集歧义形式化规范](macro-ambiguity.md)
     - [影响](influences.md)
     - [测试总结](test-summary.md)
     - [词汇表](glossary.md)

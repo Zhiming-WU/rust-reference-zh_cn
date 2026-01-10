@@ -606,24 +606,24 @@ error[E0277]: 特型 边界 `&str: AsExpression<Integer>` 未满足
 [dyn trait]: ../types/trait-object.md
 [enum variant]: ../items/enumerations.md
 [enum]: ../items/enumerations.md
-[expression statement]: ../statements.md#expression-statements
+[expression statement]: ../statements.md#表达式语句
 [expression]: ../expressions.md
 [external block item]: ../items/external-blocks.md
 [functions]: ../items/functions.md
 [impl trait]: ../types/impl-trait.md
 [implementation]: ../items/implementations.md
 [item]: ../items.md
-[let statement]: ../statements.md#let-statements
+[let statement]: ../statements.md#let语句
 [macro definition]: ../macros-by-example.md
 [module]: ../items/modules.md
-[rustc book]: ../../rustc/lints/index.html
-[rustc-lint-caps]: ../../rustc/lints/levels.html#capping-lints
-[rustc-lint-cli]: ../../rustc/lints/levels.html#via-compiler-flag
+[rustc book]: https://doc.rust-lang.org/rustc/lints/index.html
+[rustc-lint-caps]: https://doc.rust-lang.org/rustc/lints/levels.html#capping-lints
+[rustc-lint-cli]: https://doc.rust-lang.org/rustc/lints/levels.html#via-compiler-flag
 [rustdoc]: ../../rustdoc/lints.html
 [struct field]: ../items/structs.md
 [struct]: ../items/structs.md
 [trait declaration]: ../items/traits.md
 [trait item]: ../items/traits.md
-[trait-impl]: ../items/implementations.md#trait-implementations
+[trait-impl]: ../items/implementations.md#特型实现
 [traits]: ../items/traits.md
 [union]: ../items/unions.md

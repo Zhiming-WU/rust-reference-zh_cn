@@ -370,7 +370,7 @@ fn main() {
 [bounds]: ../trait-bounds.md
 [trait object]: ../types/trait-object.md
 [associated items]: associated-items.md
-[method]: associated-items.md#methods
+[method]: associated-items.md#方法
 [supertraits]: #父特型
 [implementations]: implementations.md
 [generics]: generics.md

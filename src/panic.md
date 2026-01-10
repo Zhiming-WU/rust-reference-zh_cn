@@ -139,7 +139,7 @@ r[panic.unwind.ffi.catch-foreign]
 r[panic.unwind.ffi.dispose-panic]
 目前对于外部运行时尝试处理或重新抛出 Rust `panic` 负载时的行为没有任何保证。换句话说，起源于 Rust 运行时的展开必须要么导致进程终止，要么被同一个运行时捕获。
 
-[`-C panic`]: ../rustc/codegen-options/index.html#panic
+[`-C panic`]: https://doc.rust-lang.org/rustc/codegen-options/index.html#panic
 [`no_std`]: names/preludes.md#the-no_std-attribute
 [`PanicInfo`]: core::panic::PanicInfo
 [array indexing]: expressions/array-expr.md#array-and-slice-indexing-expressions

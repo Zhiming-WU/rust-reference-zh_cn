@@ -78,6 +78,6 @@ let d: String = x.f3;           // 移出 x.f3
 [method call expression]: method-call-expr.md
 [mutable]: ../expressions.md#mutability
 [parenthesized expression]: grouped-expr.md
-[place expression]: ../expressions.md#place-expressions-and-value-expressions
+[place expression]: ../expressions.md#位置表达式和值表达式
 [struct]: ../items/structs.md
 [union]: ../items/unions.md

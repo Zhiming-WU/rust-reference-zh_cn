@@ -136,7 +136,7 @@ r[items.static.alternate]
 
 [constant]: constant-items.md
 [`drop`]: ../destructors.md
-[constant expression]: ../const_eval.md#constant-expressions
+[constant expression]: ../const_eval.md#常量表达式
 [external block]: external-blocks.md
 [interior mutable]: ../interior-mutability.md
 [value namespace]: ../names/namespaces.md

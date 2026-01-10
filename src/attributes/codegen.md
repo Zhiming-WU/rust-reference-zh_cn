@@ -739,16 +739,16 @@ r[attributes.codegen.instruction_set.arm]
 - 对于 `arm::a32` ("ARM")，它将为 0。
 - 对于 `arm::t32` ("Thumb")，它将为 1。
 
-[`-C target-cpu`]: ../../rustc/codegen-options/index.html#target-cpu
-[`-C target-feature`]: ../../rustc/codegen-options/index.html#target-feature
+[`-C target-cpu`]: https://doc.rust-lang.org/rustc/codegen-options/index.html#target-cpu
+[`-C target-feature`]: https://doc.rust-lang.org/rustc/codegen-options/index.html#target-feature
 [`export_name`]: abi.export_name
-[`is_aarch64_feature_detected`]: ../../std/arch/macro.is_aarch64_feature_detected.html
-[`is_x86_feature_detected`]: ../../std/arch/macro.is_x86_feature_detected.html
+[`is_aarch64_feature_detected`]: https://doc.rust-lang.org/std/arch/macro.is_aarch64_feature_detected.html
+[`is_x86_feature_detected`]: https://doc.rust-lang.org/std/arch/macro.is_x86_feature_detected.html
 [`Location`]: core::panic::Location
 [`naked_asm!`]: ../inline-assembly.md
 [`no_mangle`]: abi.no_mangle
 [`target_feature` conditional compilation option]: ../conditional-compilation.md#target_feature
-[`unused_variables`]: ../../rustc/lints/listing/warn-by-default.html#unused-variables
+[`unused_variables`]: https://doc.rust-lang.org/rustc/lints/listing/warn-by-default.html#unused-variables
 [associated functions]: items.associated.fn
 [async blocks]: expr.block.async
 [async closure]: expr.closure.async

@@ -98,6 +98,6 @@ r[expr.method.edition2021]
 [disambiguate call]: call-expr.md#disambiguating-function-calls
 [disambiguating function call syntax]: call-expr.md#disambiguating-function-calls
 [dereference]: operator-expr.md#the-dereference-operator
-[methods]: ../items/associated-items.md#methods
+[methods]: ../items/associated-items.md#方法
 [unsized coercion]: ../type-coercions.md#unsized-coercions
 [`IntoIterator`]: std::iter::IntoIterator

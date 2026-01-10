@@ -334,7 +334,7 @@ enum E {
 
 [`C` representation]: ../type-layout.md#the-c-representation
 [call expression]: ../expressions/call-expr.md
-[constant expression]: ../const_eval.md#constant-expressions
+[constant expression]: ../const_eval.md#常量表达式
 [enumerated type]: ../types/enum.md
 [Field-less enums]: #field-less-enum
 [never type]: ../types/never.md

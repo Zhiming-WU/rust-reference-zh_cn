@@ -94,8 +94,8 @@ assert_eq!(point.1, 0.0);
 [field access expressions]: ./field-expr.html#field-access-expressions
 [operands]: ../expressions.md
 [parenthetical expression]: grouped-expr.md
-[place expression]: ../expressions.md#place-expressions-and-value-expressions
+[place expression]: ../expressions.md#位置表达式和值表达式
 [slice pattern]: ../patterns.md#slice-patterns
 [tuple type]: ../types/tuple.md
 [tuple struct]: ../types/struct.md
-[value expression]: ../expressions.md#place-expressions-and-value-expressions
+[value expression]: ../expressions.md#位置表达式和值表达式

@@ -374,7 +374,7 @@ impl ImplExample {
 [Loop labels]: ../expressions/loop-expr.md#loop-labels
 [Macros By Example]: ../macros-by-example.md
 [match guard]: ../expressions/match-expr.md#match-guards
-[methods]: ../items/associated-items.md#methods
+[methods]: ../items/associated-items.md#方法
 [module]: ../items/modules.md
 [name resolution]: name-resolution.md
 [namespace]: namespaces.md

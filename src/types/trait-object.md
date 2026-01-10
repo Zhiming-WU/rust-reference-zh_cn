@@ -81,6 +81,6 @@ r[type.trait-object.lifetime-bounds]
 
 [auto traits]: ../special-types-and-traits.md#auto-traits
 [defaults]: ../lifetime-elision.md#default-trait-object-lifetimes
-[dyn compatible]: ../items/traits.md#dyn-compatibility
+[dyn compatible]: ../items/traits.md#dyn兼容性
 [dynamically sized types]: ../dynamically-sized-types.md
 [supertraits]: ../items/traits.md#supertraits

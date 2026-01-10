@@ -34,8 +34,8 @@ let slice_reverse = <[i32]>::reverse;
 r[expr.path.const]
 关联常量的求值方式与 [`const` 块][`const` blocks] 相同。
 
-[place expressions]: ../expressions.md#place-expressions-and-value-expressions
-[value expressions]: ../expressions.md#place-expressions-and-value-expressions
+[place expressions]: ../expressions.md#位置表达式和值表达式
+[value expressions]: ../expressions.md#位置表达式和值表达式
 [path]: ../paths.md
 [`static mut`]: ../items/static-items.md#mutable-statics
 [`unsafe` block]: block-expr.md#unsafe-blocks

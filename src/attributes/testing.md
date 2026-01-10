@@ -184,4 +184,4 @@ r[attributes.testing.should_panic.return]
 [`test` conditional compilation option]: ../conditional-compilation.md#test
 [attributes]: ../attributes.md
 [`ExitCode`]: std::process::ExitCode
-[free functions]: ../glossary.md#free-item
+[free functions]: ../glossary.md#自由项

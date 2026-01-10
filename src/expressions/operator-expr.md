@@ -1078,12 +1078,12 @@ r[expr.compound-assign.result]
 [logical or]: ../types/boolean.md#logical-or
 [logical xor]: ../types/boolean.md#logical-xor
 [mutable]: ../expressions.md#mutability
-[place expression]: ../expressions.md#place-expressions-and-value-expressions
-[assignee expression]: ../expressions.md#place-expressions-and-value-expressions
+[place expression]: ../expressions.md#位置表达式和值表达式
+[assignee expression]: ../expressions.md#位置表达式和值表达式
 [undefined behavior]: ../behavior-considered-undefined.md
 [unit]: ../types/tuple.md
 [Unit-only enums]: ../items/enumerations.md#unit-only-enum
-[value expression]: ../expressions.md#place-expressions-and-value-expressions
+[value expression]: ../expressions.md#位置表达式和值表达式
 [temporary lifetime extension]: destructors.scope.lifetime-extension
 [temporary scope]: destructors.scope.temporary
 [temporary value]: ../expressions.md#temporaries

@@ -192,6 +192,6 @@ let _ = EnumWithNonExhaustiveVariants::First as u8;
 [`match`]: ../expressions/match-expr.md
 [attributes]: ../attributes.md
 [enum]: ../items/enumerations.md
-[functional update syntax]: ../expressions/struct-expr.md#functional-update-syntax
+[functional update syntax]: ../expressions/struct-expr.md#函数式更新语法
 [struct]: ../items/structs.md
 [visibility]: ../visibility-and-privacy.md

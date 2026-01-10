@@ -284,7 +284,7 @@ struct Foo<#[my_flexible_clone(unbounded)] H> {
 [attributes]: ../attributes.md
 [block]: ../expressions/block-expr.md
 [const contexts]: ../const_eval.md#const-context
-[const expression]: ../const_eval.md#constant-expressions
+[const expression]: ../const_eval.md#常量表达式
 [const generic argument]: items.generics.const.argument
 [const item]: constant-items.md
 [enumerations]: enumerations.md

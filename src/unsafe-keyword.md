@@ -80,9 +80,9 @@ r[unsafe.impl]
 
 不安全特型实现是不安全特型的逻辑对等物：不安全特型定义了实现必须遵守的证明义务，而不安全实现则表示所有相关的证明义务都已履行。
 
-[keyword]: ../std/keyword.unsafe.html
+[keyword]: https://doc.rust-lang.org/std/keyword.unsafe.html
 [`get_unchecked`]: slice::get_unchecked
-[`unsafe_op_in_unsafe_fn`]: ../rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn
+[`unsafe_op_in_unsafe_fn`]: https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn
 
 r[unsafe.extern]
 ## 不安全外部块 (`unsafe extern`)

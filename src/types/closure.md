@@ -74,7 +74,7 @@ r[type.closure.capture.precedence]
 
 [moving the value]: ../expressions.md#moved-and-copied-types
 [mutable reference]: pointer.md#mutable-references-mut
-[place expression]: ../expressions.md#place-expressions-and-value-expressions
+[place expression]: ../expressions.md#位置表达式和值表达式
 [shared reference]: pointer.md#references--and-mut
 
 r[type.closure.capture.copy]

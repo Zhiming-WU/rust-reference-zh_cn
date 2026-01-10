@@ -221,7 +221,7 @@ r[attributes.debugger.collapse_debuginfo.default]
 > [!NOTE]
 > `rustc` 有一个 [`-C collapse-macro-debuginfo`] CLI 选项，可以覆盖默认行为以及任何 `#[collapse_debuginfo]` 属性的值。
 
-[`-C collapse-macro-debuginfo`]: ../../rustc/codegen-options/index.html#collapse-macro-debuginfo
+[`-C collapse-macro-debuginfo`]: https://doc.rust-lang.org/rustc/codegen-options/index.html#collapse-macro-debuginfo
 [`macro_rules` definition]: ../macros-by-example.md
 [attribute]: ../attributes.md
 [module]: ../items/modules.md

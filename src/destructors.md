@@ -598,7 +598,7 @@ r[destructors.process-termination]
 [lazy boolean expression]: expressions/operator-expr.md#lazy-boolean-operators
 [non-unwinding ABI boundary]: items/functions.md#unwinding
 [panic]: panic.md
-[place context]: expressions.md#place-expressions-and-value-expressions
+[place context]: expressions.md#位置表达式和值表达式
 [promoted]: destructors.md#constant-promotion
 [scrutinee]: glossary.md#scrutinee
 [statement]: statements.md
