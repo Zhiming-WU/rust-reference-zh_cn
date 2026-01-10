@@ -1,5 +1,5 @@
 r[expr.match]
-# `match` expressions
+# `match`表达式
 
 r[expr.match.syntax]
 ```grammar,expressions
@@ -22,28 +22,28 @@ MatchArmGuard -> `if` Expression
 <!-- TODO: The exception above isn't accurate, see https://github.com/rust-lang/reference/issues/569 -->
 
 r[expr.match.intro]
-A *`match` expression* branches on a pattern.
-The exact form of matching that occurs depends on the [pattern].
+一个  *`match` 表达式* 根据模式进行分支。
+发生的精确匹配形式取决于 [模式][pattern]。
 
 r[expr.match.scrutinee]
-A `match` expression has a *[scrutinee] expression*, which is the value to compare to the patterns.
+一个 `match` 表达式有一个  *[待匹配值][scrutinee] 表达式* ，它是要与模式进行比较的值。
 
 r[expr.match.scrutinee-constraint]
-The scrutinee expression and the patterns must have the same type.
+待匹配值表达式和模式必须具有相同的类型。
 
 r[expr.match.scrutinee-behavior]
-A `match` behaves differently depending on whether or not the scrutinee expression is a [place expression or value expression][place expression].
+`match` 的行为根据待匹配值表达式是 [位置表达式或值表达式][place expression] 而有所不同。
 
 r[expr.match.scrutinee-value]
-If the scrutinee expression is a [value expression], it is first evaluated into a temporary location, and the resulting value is sequentially compared to the patterns in the arms until a match is found.
-The first arm with a matching pattern is chosen as the branch target of the `match`, any variables bound by the pattern are assigned to local variables in the arm's block, and control enters the block.
+如果待匹配值表达式是一个 [值表达式][value expression]，它首先被求值为一个临时位置，并将结果值按顺序与各个臂中的模式进行比较，直到找到匹配项。
+第一个具有匹配模式的臂被选为 `match` 的分支目标，由该模式绑定的任何变量都会赋值给该臂所在块中的局部变量，然后控制流进入该块。
 
 r[expr.match.scrutinee-place]
-When the scrutinee expression is a [place expression], the match does not allocate a temporary location;
-however, a by-value binding may copy or move from the memory location.
-When possible, it is preferable to match on place expressions, as the lifetime of these matches inherits the lifetime of the place expression rather than being restricted to the inside of the match.
+当待匹配值表达式是一个 [位置表达式][place expression] 时，匹配不会分配临时位置；
+然而，按值绑定可能会从内存位置进行复制或移动。
+在可能的情况下，首选对位置表达式进行匹配，因为这些匹配的生命周期继承自位置表达式的生命周期，而不是被限制在匹配内部。
 
-An example of a `match` expression:
+`match` 表达式的一个示例：
 
 ```rust
 let x = 1;
@@ -59,14 +59,14 @@ match x {
 ```
 
 r[expr.match.pattern-vars]
-Variables bound within the pattern are scoped to the match guard and the arm's expression.
+在模式内绑定的变量的作用域仅限于匹配守卫和该臂的表达式。
 
 r[expr.match.pattern-var-binding]
-The [binding mode] (move, copy, or reference) depends on the pattern.
+ [绑定模式][binding mode] （移动、复制或引用）取决于模式。
 
 r[expr.match.or-pattern]
-Multiple match patterns may be joined with the `|` operator.
-Each pattern will be tested in left-to-right sequence until a successful match is found.
+多个匹配模式可以用 `|` 运算符连接。
+每个模式将按从左到右的顺序进行测试，直到找到成功的匹配。
 
 ```rust
 let x = 9;
@@ -78,7 +78,7 @@ let message = match x {
 
 assert_eq!(message, "a few");
 
-// Demonstration of pattern match order.
+// 演示模式匹配顺序。
 struct S(i32, i32);
 
 match S(1, 2) {
@@ -88,29 +88,29 @@ match S(1, 2) {
 ```
 
 > [!NOTE]
-> The `2..=9` is a [Range Pattern], not a [Range Expression]. Thus, only those types of ranges supported by range patterns can be used in match arms.
+> `2..=9` 是一个 [范围模式][Range Pattern] ，而不是一个 [范围表达式][Range Expression]。因此，只有范围模式支持的那些类型的范围才能在匹配臂中使用。
 
 r[expr.match.or-patterns-restriction]
-Every binding in each `|` separated pattern must appear in all of the patterns in the arm.
+在每个由 `|` 分隔的模式中的每个绑定必须出现在该臂的所有模式中。
 
 r[expr.match.binding-restriction]
-Every binding of the same name must have the same type, and have the same binding mode.
+具有相同名称的每个绑定必须具有相同的类型，并具有相同的绑定模式。
 
 r[expr.match.guard]
-## Match guards
+## 匹配臂守卫
 
 r[expr.match.guard.intro]
-Match arms can accept _match guards_ to further refine the criteria for matching a case.
+匹配臂可以接受  *匹配臂守卫*  以进一步细化匹配情况的准则。
 
 r[expr.match.guard.type]
-Pattern guards appear after the pattern and consist of a `bool`-typed expression following the `if` keyword.
+模式守卫出现在模式之后，由 `if` 关键字后跟一个 `bool` 类型的表达式组成。
 
 r[expr.match.guard.behavior]
-When the pattern matches successfully, the pattern guard expression is executed.
-If the expression evaluates to true, the pattern is successfully matched against.
+当模式匹配成功时，将执行模式守卫表达式。
+如果表达式求值为真，则模式匹配成功。
 
 r[expr.match.guard.next]
-Otherwise, the next pattern, including other matches with the `|` operator in the same arm, is tested.
+否则，将测试下一个模式，包括同一臂中由 `|` 运算符连接的其他匹配。
 
 ```rust
 # let maybe_digit = Some(0);
@@ -124,7 +124,7 @@ let message = match maybe_digit {
 ```
 
 > [!NOTE]
-> Multiple matches using the `|` operator can cause the pattern guard and the side effects it has to execute multiple times. For example:
+> 使用 `|` 运算符进行多次匹配可能会导致模式守卫及其产生的副作用执行多次。例如：
 >
 > ```rust
 > # use std::cell::Cell;
@@ -137,28 +137,28 @@ let message = match maybe_digit {
 > ```
 
 r[expr.match.guard.bound-variables]
-A pattern guard may refer to the variables bound within the pattern they follow.
+模式守卫可以引用它们所跟随的模式中绑定的变量。
 
 r[expr.match.guard.shared-ref]
-Before evaluating the guard, a shared reference is taken to the part of the scrutinee the variable matches on.
-While evaluating the guard, this shared reference is then used when accessing the variable.
+在求值守卫之前，会对变量匹配的待匹配值部分进行共享引用。
+在求值守卫期间，访问该变量时将使用此共享引用。
 
 r[expr.match.guard.value]
-Only when the guard evaluates to true is the value moved, or copied, from the scrutinee into the variable.
-This allows shared borrows to be used inside guards without moving out of the scrutinee in case guard fails to match.
+只有当守卫求值为真时，值才会从待匹配值移动或复制到变量中。
+这允许在守卫内部使用共享借用，而不会在守卫匹配失败的情况下从待匹配值中移出。
 
 r[expr.match.guard.no-mutation]
-Moreover, by holding a shared reference while evaluating the guard, mutation inside guards is also prevented.
+此外，通过在求值守卫时持有共享引用，还可以防止在守卫内部进行修改。
 
 r[expr.match.attributes]
-## Attributes on match arms
+## 匹配臂上的属性
 
 r[expr.match.attributes.outer]
-Outer attributes are allowed on match arms.
-The only attributes that have meaning on match arms are [`cfg`] and the [lint check attributes].
+匹配臂上允许使用外部属性。
+在匹配臂上有意义的属性只有 [`cfg`] 和 [lint 检查属性][lint check attributes]。
 
 r[expr.match.attributes.inner]
-[Inner attributes] are allowed directly after the opening brace of the match expression in the same expression contexts as [attributes on block expressions].
+ [内部属性][Inner attributes] 被允许直接放在匹配表达式的左大括号之后，其所在的表达式上下文与 [块表达式上的属性][attributes on block expressions] 相同。
 
 [`cfg`]: ../conditional-compilation.md
 [attributes on block expressions]: block-expr.md#attributes-on-block-expressions

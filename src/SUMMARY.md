@@ -96,9 +96,9 @@
     - [动态大小类型](dynamically-sized-types.md)
     - [类型布局](type-layout.md)
     - [内部可变性](interior-mutability.md)
-    - [子类型与变体](subtyping.md)
+    - [子类型与变型](subtyping.md)
     - [特型与生命周期约束](trait-bounds.md)
-    - [类型强制转换](type-coercions.md)
+    - [类型隐式转换](type-coercions.md)
     - [析构函数](destructors.md)
     - [生命周期省略](lifetime-elision.md)
 

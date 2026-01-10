@@ -1,33 +1,26 @@
 r[destructors]
-# Destructors
+# 析构函数
 
 r[destructors.intro]
-When an [initialized]&#32;[variable] or [temporary] goes out of
-[scope](#drop-scopes), its *destructor* is run or it is *dropped*. [Assignment]
-also runs the destructor of its left-hand operand, if it's initialized. If a
-variable has been partially initialized, only its initialized fields are
-dropped.
+当一个 [已初始化][initialized]&#32;[变量][variable] 或 [临时变量][temporary] 离开 [作用域](#drop-scopes) 时，其 *析构函数* 会被运行，或者说它被 *销毁(dropped)*。 [赋值][Assignment] 也会运行其左侧操作数（如果已初始化）的析构函数。如果一个变量已被部分初始化，则仅销毁其已初始化的字段。
 
 r[destructors.operation]
-The destructor of a type `T` consists of:
+类型 `T` 的析构函数由以下部分组成：
 
-1. If `T: Drop`, calling [`<T as core::ops::Drop>::drop`](core::ops::Drop::drop)
-2. Recursively running the destructor of all of its fields.
-    * The fields of a [struct] are dropped in declaration order.
-    * The fields of the active [enum variant] are dropped in declaration order.
-    * The fields of a [tuple] are dropped in order.
-    * The elements of an [array] or owned [slice] are dropped from the
-      first element to the last.
-    * The variables that a [closure] captures by move are dropped in an
-      unspecified order.
-    * [Trait objects] run the destructor of the underlying type.
-    * Other types don't result in any further drops.
+1. 如果 `T: Drop`，则调用 [`<T as core::ops::Drop>::drop`](core::ops::Drop::drop)
+2. 递归运行其所有字段的析构函数。
+    * [结构体][struct] 的字段按声明顺序销毁。
+    * 活跃 [枚举变体][enum variant] 的字段按声明顺序销毁。
+    * [元组][tuple] 的字段按顺序销毁。
+    * [数组][array] 或拥有所有权的 [切片][slice] 的元素从第一个元素到最后一个元素依次销毁。
+    * [闭包][closure] 通过移动(move)捕获的变量按未指定的顺序销毁。
+    * [特型对象][Trait objects] 运行底层类型的析构函数。
+    * 其他类型不会导致进一步的销毁操作。
 
 r[destructors.drop_in_place]
-If a destructor must be run manually, such as when implementing your own smart
-pointer, [`core::ptr::drop_in_place`] can be used.
+如果必须手动运行析构函数（例如在实现自己的智能指针时），可以使用 [`core::ptr::drop_in_place`] 。
 
-Some examples:
+一些示例：
 
 ```rust
 struct PrintOnDrop(&'static str);
@@ -39,108 +32,91 @@ impl Drop for PrintOnDrop {
 }
 
 let mut overwritten = PrintOnDrop("drops when overwritten");
-overwritten = PrintOnDrop("drops when scope ends");
+overwritten = PrintOnDrop("drops when scope ends"); // 覆盖时销毁
 
 let tuple = (PrintOnDrop("Tuple first"), PrintOnDrop("Tuple second"));
 
 let moved;
-// No destructor run on assignment.
+// 赋值时不运行析构函数。
 moved = PrintOnDrop("Drops when moved");
-// Drops now, but is then uninitialized.
+// 现在销毁，但之后变为未初始化状态。
 moved;
 
-// Uninitialized does not drop.
+// 未初始化不会销毁。
 let uninitialized: PrintOnDrop;
 
-// After a partial move, only the remaining fields are dropped.
+// 部分移动后，仅销毁剩余字段。
 let mut partial_move = (PrintOnDrop("first"), PrintOnDrop("forgotten"));
-// Perform a partial move, leaving only `partial_move.0` initialized.
+// 执行部分移动，仅保留 `partial_move.0` 为初始化状态。
 core::mem::forget(partial_move.1);
-// When partial_move's scope ends, only the first field is dropped.
+// 当 partial_move 的作用域结束时，仅销毁第一个字段。
 ```
 
 r[destructors.scope]
-## Drop scopes
+## 销毁作用域
 
 r[destructors.scope.intro]
-Each variable or temporary is associated to a *drop scope*. When control flow
-leaves a drop scope all variables associated to that scope are dropped in
-reverse order of declaration (for variables) or creation (for temporaries).
+每个变量或临时变量都与一个 *销毁作用域* 相关联。当控制流离开销毁作用域时，与该作用域相关的所有变量都将按声明（对于变量）或创建（对于临时变量）的逆序进行销毁。
 
 r[destructors.scope.desugaring]
-Drop scopes can be determined by replacing [`for`], [`if`], and [`while`]
-expressions with equivalent expressions using [`match`], [`loop`] and
-`break`.
+可以通过使用 [`match`] 、 [`loop`] 和 `break` 将 [`for`] 、 [`if`] 和 [`while`] 表达式替换为等效表达式来确定销毁作用域。
 
 r[destructors.scope.operators]
-Overloaded operators are not distinguished from built-in operators and [binding
-modes] are not considered.
+重载运算符与内置运算符不作区分，且不考虑 [绑定模式][binding modes] 。
 
 r[destructors.scope.list]
-Given a function, or closure, there are drop scopes for:
+给定一个函数或闭包，存在以下销毁作用域：
 
 r[destructors.scope.function]
-* The entire function
+* 整个函数
 
 r[destructors.scope.statement]
-* Each [statement]
+* 每个 [语句][statement]
 
 r[destructors.scope.expression]
-* Each [expression]
+* 每个 [表达式][expression]
 
 r[destructors.scope.block]
-* Each block, including the function body
-    * In the case of a [block expression], the scope for the block and the
-      expression are the same scope.
+* 每个块，包括函数体
+    * 在 [块表达式][block expression] 的情况下，块的作用域和表达式的作用域是同一个作用域。
 
 r[destructors.scope.match-arm]
-* Each arm of a `match` expression
+* `match` 表达式的每个分支(arm)
 
 r[destructors.scope.nesting]
-Drop scopes are nested within one another as follows. When multiple scopes are
-left at once, such as when returning from a function, variables are dropped
-from the inside outwards.
+销毁作用域按如下方式相互嵌套。当同时离开多个作用域时（例如从函数返回时），变量按从内向外的顺序销毁。
 
 r[destructors.scope.nesting.function]
-* The entire function scope is the outer most scope.
+* 整个函数作用域是最外层作用域。
 
 r[destructors.scope.nesting.function-body]
-* The function body block is contained within the scope of the entire function.
+* 函数体块包含在整个函数的作用域内。
 
 r[destructors.scope.nesting.expr-statement]
-* The parent of the expression in an expression statement is the scope of the
-  statement.
+* 表达式语句中表达式的父作用域是该语句的作用域。
 
 r[destructors.scope.nesting.let-initializer]
-* The parent of the initializer of a [`let` statement] is the `let` statement's
-  scope.
+* [`let` 语句][`let` statement] 的初始化器的父作用域是该 `let` 语句的作用域。
 
 r[destructors.scope.nesting.statement]
-* The parent of a statement scope is the scope of the block that contains the
-  statement.
+* 语句作用域的父作用域是包含该语句的块的作用域。
 
 r[destructors.scope.nesting.match-guard]
-* The parent of the expression for a `match` guard is the scope of the arm that
-  the guard is for.
+* `match` 守卫(guard)表达式的父作用域是该守卫所属分支的作用域。
 
 r[destructors.scope.nesting.match-arm]
-* The parent of the expression after the `=>` in a `match` expression is the
-  scope of the arm that it's in.
+* `match` 表达式中 `=>` 之后表达式的父作用域是该表达式所属分支的作用域。
 
 r[destructors.scope.nesting.match]
-* The parent of the arm scope is the scope of the `match` expression that it
-  belongs to.
+* 分支作用域的父作用域是该分支所属 `match` 表达式的作用域。
 
 r[destructors.scope.nesting.other]
-* The parent of all other scopes is the scope of the immediately enclosing
-  expression.
+* 所有其他作用域的父作用域是直接包围它们的表达式的作用域。
 
 r[destructors.scope.params]
-### Scopes of function parameters
+### 函数参数的作用域
 
-All function parameters are in the scope of the entire function body, so are
-dropped last when evaluating the function. Each actual function parameter is
-dropped after any bindings introduced in that parameter's pattern.
+所有函数参数都在整个函数体的作用域内，因此在评估函数时最后被销毁。每个实际的函数参数都在该参数模式中引入的任何绑定之后被销毁。
 
 ```rust
 # struct PrintOnDrop(&'static str);
@@ -149,13 +125,13 @@ dropped after any bindings introduced in that parameter's pattern.
 #         println!("drop({})", self.0);
 #     }
 # }
-// Drops `y`, then the second parameter, then `x`, then the first parameter
+// 先销毁 `y`，然后是第二个参数，接着是 `x`，最后是第一个参数
 fn patterns_in_parameters(
     (x, _): (PrintOnDrop, PrintOnDrop),
     (_, y): (PrintOnDrop, PrintOnDrop),
 ) {}
 
-// drop order is 3 2 0 1
+// 销毁顺序是 3 2 0 1
 patterns_in_parameters(
     (PrintOnDrop("0"), PrintOnDrop("1")),
     (PrintOnDrop("2"), PrintOnDrop("3")),
@@ -163,13 +139,10 @@ patterns_in_parameters(
 ```
 
 r[destructors.scope.bindings]
-### Scopes of local variables
+### 局部变量的作用域
 
 r[destructors.scope.bindings.intro]
-Local variables declared in a `let` statement are associated to the scope of
-the block that contains the `let` statement. Local variables declared in a
-`match` expression are associated to the arm scope of the `match` arm that they
-are declared in.
+在 `let` 语句中声明的局部变量与包含该 `let` 语句的块的作用域相关联。在 `match` 表达式中声明的局部变量与它们所声明的 `match` 分支作用域相关联。
 
 ```rust
 # struct PrintOnDrop(&'static str);
@@ -186,7 +159,7 @@ let declared_last = PrintOnDrop("Dropped first in outer scope");
 ```
 
 r[destructors.scope.bindings.patterns]
-Variables in patterns are dropped in reverse order of declaration within the pattern.
+模式中的变量按模式内声明顺序的逆序销毁。
 
 ```rust
 # struct PrintOnDrop(&'static str);
@@ -202,7 +175,7 @@ let (declared_first, declared_last) = (
 ```
 
 r[destructors.scope.bindings.or-patterns]
-For the purpose of drop order, [or-patterns] declare bindings in the order given by the first subpattern.
+出于销毁顺序的目的， [或模式][or-patterns] 按第一个子模式给出的顺序声明绑定。
 
 ```rust
 # struct PrintOnDrop(&'static str);
@@ -211,28 +184,25 @@ For the purpose of drop order, [or-patterns] declare bindings in the order given
 #         println!("drop({})", self.0);
 #     }
 # }
-// Drops `x` before `y`.
+// 先销毁 `x` 后销毁 `y`。
 fn or_pattern_drop_order<T>(
     (Ok([x, y]) | Err([y, x])): Result<[T; 2], [T; 2]>
-//   ^^^^^^^^^^   ^^^^^^^^^^^ This is the second subpattern.
+//   ^^^^^^^^^^   ^^^^^^^^^^^ 这是第二个子模式。
 //   |
-//   This is the first subpattern.
+//   这是第一个子模式。
 //
-//   In the first subpattern, `x` is declared before `y`. Since it is
-//   the first subpattern, that is the order used even if the second
-//   subpattern, where the bindings are declared in the opposite
-//   order, is matched.
+//   在第一个子模式中，`x` 在 `y` 之前声明。由于它是
+//   第一个子模式，即使匹配的是第二个子模式（其中绑定的声明顺序相反），
+//   也会使用该顺序。
 ) {}
 
-// Here we match the first subpattern, and the drops happen according
-// to the declaration order in the first subpattern.
+// 这里我们匹配第一个子模式，销毁按第一个子模式中的声明顺序发生。
 or_pattern_drop_order(Ok([
     PrintOnDrop("Declared first, dropped last"),
     PrintOnDrop("Declared last, dropped first"),
 ]));
 
-// Here we match the second subpattern, and the drops still happen
-// according to the declaration order in the first subpattern.
+// 这里我们匹配第二个子模式，销毁仍按第一个子模式中的声明顺序发生。
 or_pattern_drop_order(Err([
     PrintOnDrop("Declared last, dropped first"),
     PrintOnDrop("Declared first, dropped last"),
@@ -240,40 +210,36 @@ or_pattern_drop_order(Err([
 ```
 
 r[destructors.scope.temporary]
-### Temporary scopes
+### 临时作用域
 
 r[destructors.scope.temporary.intro]
-The *temporary scope* of an expression is the scope that is used for the
-temporary variable that holds the result of that expression when used in a
-[place context], unless it is [promoted].
+表达式的 *临时作用域* 是指当表达式用于 [位置上下文][place context] 时，用于持有该表达式结果的临时变量的作用域，除非该表达式被 [提升][promoted] 。
 
 r[destructors.scope.temporary.enclosing]
-Apart from lifetime extension, the temporary scope of an expression is the
-smallest scope that contains the expression and is one of the following:
+除生命周期延长外，表达式的临时作用域是包含该表达式的最小作用域，且为以下之一：
 
-* The entire function.
-* A statement.
-* The body of an [`if`], [`while`] or [`loop`] expression.
-* The `else` block of an `if` expression.
-* The non-pattern matching condition expression of an `if` or `while` expression,
-  or a `match` guard.
-* The body expression for a match arm.
-* Each operand of a [lazy boolean expression].
-* The pattern-matching condition(s) and consequent body of [`if`] ([destructors.scope.temporary.edition2024]).
-* The pattern-matching condition and loop body of [`while`].
-* The entirety of the tail expression of a block ([destructors.scope.temporary.edition2024]).
+* 整个函数。
+* 一个语句。
+* [`if`] 、 [`while`] 或 [`loop`] 表达式的体部。
+* `if` 表达式的 `else` 块。
+* `if` 或 `while` 表达式中非模式匹配的条件表达式，或 `match` 守卫。
+* match 分支的体表达式。
+* [惰性布尔表达式][lazy boolean expression] 的每个操作数。
+* [`if`] 的模式匹配条件及随后的体部 ([destructors.scope.temporary.edition2024])。
+* [`while`] 的模式匹配条件和循环体。
+* 块的尾随表达式的整体 ([destructors.scope.temporary.edition2024])。
 
 > [!NOTE]
-> The [scrutinee] of a `match` expression is not a temporary scope, so temporaries in the scrutinee can be dropped after the `match` expression. For example, the temporary for `1` in `match 1 { ref mut z => z };` lives until the end of the statement.
+> `match` 表达式的 [受查表达式][scrutinee] 不是临时作用域，因此受查表达式中的临时变量可以在 `match` 表达式之后销毁。例如， `match 1 { ref mut z => z };` 中 `1` 的临时变量存活到语句结束。
 
 > [!NOTE]
-> The desugaring of a [destructuring assignment] restricts the temporary scope of its assigned value operand (the RHS). For details, see [expr.assign.destructure.tmp-scopes].
+> [解构赋值][destructuring assignment] 的脱糖限制了其赋值操作数（右侧值）的临时作用域。有关详细信息，请参阅 [expr.assign.destructure.tmp-scopes] 。
 
 r[destructors.scope.temporary.edition2024]
 > [!EDITION-2024]
-> The 2024 edition added two new temporary scope narrowing rules: `if let` temporaries are dropped before the `else` block, and temporaries of tail expressions of blocks are dropped immediately after the tail expression is evaluated.
+> 2024 版次增加了两条新的临时作用域收窄规则： `if let` 临时变量在 `else` 块之前销毁，块的尾随表达式的临时变量在尾随表达式评估后立即销毁。
 
-Some examples:
+一些示例：
 
 ```rust
 # #![allow(irrefutable_let_patterns)]
@@ -285,9 +251,9 @@ Some examples:
 # }
 let local_var = PrintOnDrop("local var");
 
-// Dropped once the condition has been evaluated
+// 一旦条件评估完毕就会被销毁
 if PrintOnDrop("If condition").0 == "If condition" {
-    // Dropped at the end of the block
+    // 在块结束时销毁
     PrintOnDrop("If body").0
 } else {
     unreachable!()
@@ -295,45 +261,41 @@ if PrintOnDrop("If condition").0 == "If condition" {
 
 if let "if let scrutinee" = PrintOnDrop("if let scrutinee").0 {
     PrintOnDrop("if let consequent").0
-    // `if let consequent` dropped here
+    // `if let consequent` 在此处销毁
 }
-// `if let scrutinee` is dropped here
+// `if let scrutinee` 在此处销毁
 else {
     PrintOnDrop("if let else").0
-    // `if let else` dropped here
+    // `if let else` 在此处销毁
 };
 
 while let x = PrintOnDrop("while let scrutinee").0 {
     PrintOnDrop("while let loop body").0;
     break;
-    // `while let loop body` dropped here.
-    // `while let scrutinee` dropped here.
+    // `while let loop body` 在此处销毁。
+    // `while let scrutinee` 在此处销毁。
 }
 
-// Dropped before the first ||
+// 在第一个 || 之前销毁
 (PrintOnDrop("first operand").0 == ""
-// Dropped before the )
+// 在 ) 之前销毁
 || PrintOnDrop("second operand").0 == "")
-// Dropped before the ;
+// 在 ; 之前销毁
 || PrintOnDrop("third operand").0 == "";
 
-// Scrutinee is dropped at the end of the function, before local variables
-// (because this is the tail expression of the function body block).
+// 受查表达式在函数结束时、局部变量之前销毁
+// （因为这是函数体块的尾随表达式）。
 match PrintOnDrop("Matched value in final expression") {
-    // Dropped once the condition has been evaluated
+    // 一旦条件评估完毕就会被销毁
     _ if PrintOnDrop("guard condition").0 == "" => (),
     _ => (),
 }
 ```
 
 r[destructors.scope.operands]
-### Operands
+### 操作数
 
-Temporaries are also created to hold the result of operands to an expression
-while the other operands are evaluated. The temporaries are associated to the
-scope of the expression with that operand. Since the temporaries are moved from
-once the expression is evaluated, dropping them has no effect unless one of the
-operands to an expression breaks out of the expression, returns, or [panics][panic].
+在评估表达式的其他操作数时，也会创建临时变量来持有该表达式的操作数结果。这些临时变量与具有该操作数的表达式的作用域相关联。由于一旦表达式评估完毕，临时变量就会被移走，因此销毁它们没有影响，除非表达式的一个操作数跳出了表达式、返回或发生了 [恐慌][panic] 。
 
 ```rust
 # struct PrintOnDrop(&'static str);
@@ -343,7 +305,7 @@ operands to an expression breaks out of the expression, returns, or [panics][pan
 #     }
 # }
 loop {
-    // Tuple expression doesn't finish evaluating so operands drop in reverse order
+    // 元组表达式未完成评估，因此操作数按逆序销毁
     (
         PrintOnDrop("Outer tuple first"),
         PrintOnDrop("Outer tuple second"),
@@ -358,156 +320,140 @@ loop {
 ```
 
 r[destructors.scope.const-promotion]
-### Constant promotion
+### 常量提升
 
-Promotion of a value expression to a `'static` slot occurs when the expression
-could be written in a constant and borrowed, and that borrow could be dereferenced
-where
-the expression was originally written, without changing the runtime behavior.
-That is, the promoted expression can be evaluated at compile-time and the
-resulting value does not contain [interior mutability] or [destructors] (these
-properties are determined based on the value where possible, e.g. `&None`
-always has the type `&'static Option<_>`, as it contains nothing disallowed).
+当一个值表达式可以写在常量中并被借用，且该借用可以在表达式最初编写的地方被解引用而不会改变运行时行为时，就会发生将该表达式提升到 `'static` 槽位的操作。也就是说，被提升的表达式可以在编译时评估，且结果值不包含 [内部可变性][interior mutability] 或 [析构函数][destructors] （这些属性尽可能根据值来确定，例如 `&None` 始终具有类型 `&'static Option<_>` ，因为它不包含任何被禁止的内容）。
 
 r[destructors.scope.lifetime-extension]
-### Temporary lifetime extension
+### 临时生命周期延长
 
 > [!NOTE]
-> The exact rules for temporary lifetime extension are subject to change. This is describing the current behavior only.
+> 临时生命周期延长的具体规则可能会发生变化。此处仅描述当前行为。
 
 r[destructors.scope.lifetime-extension.let]
-The temporary scopes for expressions in `let` statements are sometimes
-*extended* to the scope of the block containing the `let` statement. This is
-done when the usual temporary scope would be too small, based on certain
-syntactic rules. For example:
+在 `let` 语句中，表达式的临时作用域有时会 *延长* 到包含该 `let` 语句的块的作用域。根据某些语法规则，当通常的临时作用域太小时会执行此操作。例如：
 
 ```rust
 let x = &mut 0;
-// Usually a temporary would be dropped by now, but the temporary for `0` lives
-// to the end of the block.
+// 通常临时变量现在已经被销毁了，但 `0` 的临时变量
+// 存活到块结束。
 println!("{}", x);
 ```
 
 r[destructors.scope.lifetime-extension.static]
-Lifetime extension also applies to `static` and `const` items, where it
-makes temporaries live until the end of the program. For example:
+生命周期延长也适用于 `static` 和 `const` 项 ，这使得临时变量存活到程序结束。例如：
 
 ```rust
 const C: &Vec<i32> = &Vec::new();
-// Usually this would be a dangling reference as the `Vec` would only
-// exist inside the initializer expression of `C`, but instead the
-// borrow gets lifetime-extended so it effectively has `'static` lifetime.
+// 通常这将是一个悬空引用，因为 `Vec` 仅存在于 `C` 的
+// 初始化表达式内部，但这里的借用被延长了生命周期，
+// 因此它实际上具有 `'static` 生命周期。
 println!("{:?}", C);
 ```
 
 r[destructors.scope.lifetime-extension.sub-expressions]
-If a [borrow], [dereference][dereference expression], [field][field expression], or [tuple indexing expression] has an extended temporary scope, then so does its operand. If an [indexing expression] has an extended temporary scope, then the indexed expression also has an extended temporary scope.
+如果 [借用][borrow] 、 [解引用表达式][dereference expression] 、 [字段表达式][field expression] 或 [元组索引表达式][tuple indexing expression] 具有延长的临时作用域，则其操作数也具有。如果 [索引表达式][indexing expression] 具有延长的临时作用域，则被索引的表达式也具有延长的临时作用域。
 
 r[destructors.scope.lifetime-extension.patterns]
-#### Extending based on patterns
+#### 基于模式的延长
 
 r[destructors.scope.lifetime-extension.patterns.extending]
-An *extending pattern* is either:
+一个 *延长模式* 是以下之一：
 
-* An [identifier pattern] that binds by reference or mutable reference.
+* 通过引用或可变引用绑定的 [标识符模式][identifier pattern] 。
 
   ```rust
   # fn temp() {}
-  let ref x = temp(); // Binds by reference.
+  let ref x = temp(); // 通过引用绑定。
   # x;
-  let ref mut x = temp(); // Binds by mutable reference.
+  let ref mut x = temp(); // 通过可变引用绑定。
   # x;
   ```
 
-* A [struct][struct pattern], [tuple][tuple pattern], [tuple struct][tuple struct pattern], [slice][slice pattern], or [or-pattern][or-patterns] where at least one of the direct subpatterns is an extending pattern.
+* [结构体模式][struct pattern] 、 [元组模式][tuple pattern] 、 [元组结构体模式][tuple struct pattern] 、 [切片模式][slice pattern] 或 [或模式][or-patterns] ，其中至少一个直接子模式是延长模式。
 
   ```rust
   # use core::sync::atomic::{AtomicU64, Ordering::Relaxed};
   # static X: AtomicU64 = AtomicU64::new(0);
   struct W<T>(T);
   # impl<T> Drop for W<T> { fn drop(&mut self) { X.fetch_add(1, Relaxed); } }
-  let W { 0: ref x } = W(()); // Struct pattern.
+  let W { 0: ref x } = W(()); // 结构体模式。
   # x;
-  let W(ref x) = W(()); // Tuple struct pattern.
+  let W(ref x) = W(()); // 元组结构体模式。
   # x;
-  let (W(ref x),) = (W(()),); // Tuple pattern.
+  let (W(ref x),) = (W(()),); // 元组模式。
   # x;
-  let [W(ref x), ..] = [W(())]; // Slice pattern.
+  let [W(ref x), ..] = [W(())]; // 切片模式。
   # x;
-  let (Ok(W(ref x)) | Err(&ref x)) = Ok(W(())); // Or pattern.
+  let (Ok(W(ref x)) | Err(&ref x)) = Ok(W(())); // 或模式。
   # x;
   //
-  // All of the temporaries above are still live here.
+  // 以上所有临时变量在这里仍然存活。
   # assert_eq!(0, X.load(Relaxed));
   ```
 
-So `ref x`, `V(ref x)` and `[ref x, y]` are all extending patterns, but `x`, `&ref x` and `&(ref x,)` are not.
+因此 `ref x` 、 `V(ref x)` 和 `[ref x, y]` 都是延长模式，但 `x` 、 `&ref x` 和 `&(ref x,)` 则不是。
 
 r[destructors.scope.lifetime-extension.patterns.let]
-If the pattern in a `let` statement is an extending pattern then the temporary
-scope of the initializer expression is extended.
+如果 `let` 语句中的模式是延长模式，则初始化器表达式的临时作用域将被延长。
 
 ```rust
 # fn temp() {}
-// This is an extending pattern, so the temporary scope is extended.
-let ref x = *&temp(); // OK
+// 这是一个延长模式，因此临时作用域被延长。
+let ref x = *&temp(); // 正常
 # x;
 ```
 
 ```rust,compile_fail,E0716
 # fn temp() {}
-// This is neither an extending pattern nor an extending expression,
-// so the temporary is dropped at the semicolon.
-let &ref x = *&&temp(); // ERROR
+// 这既不是延长模式也不是延长表达式，
+// 因此临时变量在分号处销毁。
+let &ref x = *&&temp(); // 错误
 # x;
 ```
 
 ```rust
 # fn temp() {}
-// This is not an extending pattern but it is an extending expression,
-// so the temporary lives beyond the `let` statement.
-let &ref x = &*&temp(); // OK
+// 这不是延长模式，但它是一个延长表达式，
+// 因此临时变量存活超过了 `let` 语句。
+let &ref x = &*&temp(); // 正常
 # x;
 ```
 
 r[destructors.scope.lifetime-extension.exprs]
-#### Extending based on expressions
+#### 基于表达式的延长
 
 r[destructors.scope.lifetime-extension.exprs.extending]
-For a let statement with an initializer, an *extending expression* is an
-expression which is one of the following:
+对于带有初始化器的 let 语句， *延长表达式* 是以下表达式之一：
 
-* The initializer expression.
-* The operand of an extending [borrow] expression.
-* The [super operands] of an extending [super macro call] expression.
-* The operand(s) of an extending [array][array expression], [cast][cast
-  expression], [braced struct][struct expression], or [tuple][tuple expression]
-  expression.
-* The arguments to an extending [tuple struct] or [tuple enum variant] constructor expression.
-* The final expression of an extending [block expression] except for an [async block expression].
-* The final expression of an extending [`if`] expression's consequent, `else if`, or `else` block.
-* An arm expression of an extending [`match`] expression.
+* 初始化器表达式。
+* 延长 [借用][borrow] 表达式的操作数。
+* 延长 [超级宏调用][super macro call] 表达式的 [超级操作数][super operands] 。
+* 延长 [数组表达式][array expression] 、 [转换表达式][cast expression] 、 [大括号结构体表达式][struct expression] 或 [元组表达式][tuple expression] 的操作数。
+* 延长 [元组结构体][tuple struct] 或 [元组枚举变体][tuple enum variant] 构造器表达式的参数。
+* 延长 [块表达式][block expression] 的最终表达式（异步块表达式 [async block expression] 除外）。
+* 延长 [`if`] 表达式的 `consequent` 、 `else if` 或 `else` 块的最终表达式。
+* 延长 [`match`] 表达式的分支表达式。
 
 > [!NOTE]
-> The desugaring of a [destructuring assignment] makes its assigned value operand (the RHS) an extending expression within a newly-introduced block. For details, see [expr.assign.destructure.tmp-ext].
+> [解构赋值][destructuring assignment] 的脱糖使其赋值操作数（右侧值）成为新引入块内的延长表达式。有关详细信息，请参阅 [expr.assign.destructure.tmp-ext] 。
 
-So the borrow expressions in `&mut 0`, `(&1, &mut 2)`, and `Some(&mut 3)`
-are all extending expressions. The borrows in `&0 + &1` and `f(&mut 0)` are not.
+因此 `&mut 0` 、 `(&1, &mut 2)` 和 `Some(&mut 3)` 中的借用表达式都是延长表达式。而 `&0 + &1` 和 `f(&mut 0)` 中的借用则不是。
 
 r[destructors.scope.lifetime-extension.exprs.borrows]
-The operand of an extending [borrow] expression has its [temporary scope] [extended].
+延长 [借用][borrow] 表达式的操作数其 [临时作用域][temporary scope] 被 [延长][extended] 。
 
 r[destructors.scope.lifetime-extension.exprs.super-macros]
-The [super temporaries] of an extending [super macro call] expression have their [scopes][temporary scopes] [extended].
+延长 [超级宏调用][super macro call] 表达式的 [超级临时变量][super temporaries] 其 [作用域][temporary scopes] 被 [延长][extended] 。
 
 > [!NOTE]
-> `rustc` does not treat [array repeat operands] of extending [array] expressions as extending expressions. Whether it should is an open question.
+> `rustc` 不将延长 [数组][array] 表达式的 [数组重复操作数][array repeat operands] 视为延长表达式。是否应该这样做是一个悬而未决的问题。
 >
-> For details, see [Rust issue #146092](https://github.com/rust-lang/rust/issues/146092).
+> 有关详细信息，请参阅 [Rust issue #146092](https://github.com/rust-lang/rust/issues/146092) 。
 
-#### Examples
+#### 示例
 
-Here are some examples where expressions have extended temporary scopes:
+以下是表达式具有延长临时作用域的一些示例：
 
 ```rust,edition2024
 # use core::pin::pin;
@@ -516,49 +462,48 @@ Here are some examples where expressions have extended temporary scopes:
 # #[derive(Debug)] struct S;
 # impl Drop for S { fn drop(&mut self) { X.fetch_add(1, Relaxed); } }
 # const fn temp() -> S { S }
-let x = &temp(); // Operand of borrow.
+let x = &temp(); // 借用的操作数。
 # x;
-let x = &raw const *&temp(); // Operand of raw borrow.
+let x = &raw const *&temp(); // 原生借用的操作数。
 # assert_eq!(X.load(Relaxed), 0);
-let x = &temp() as &dyn Send; // Operand of cast.
+let x = &temp() as &dyn Send; // 转换的操作数。
 # x;
-let x = (&*&temp(),); // Operand of tuple constructor.
+let x = (&*&temp(),); // 元组构造器的操作数。
 # x;
 struct W<T>(T);
-let x = W(&temp()); // Argument to tuple struct constructor.
+let x = W(&temp()); // 元组结构体构造器的参数。
 # x;
-let x = Some(&temp()); // Argument to tuple enum variant constructor.
+let x = Some(&temp()); // 元组枚举变体构造器的参数。
 # x;
-let x = { [Some(&temp())] }; // Final expr of block.
+let x = { [Some(&temp())] }; // 块的最终表达式。
 # x;
-let x = const { &temp() }; // Final expr of `const` block.
+let x = const { &temp() }; // `const` 块的最终表达式。
 # x;
-let x = unsafe { &temp() }; // Final expr of `unsafe` block.
+let x = unsafe { &temp() }; // `unsafe` 块的最终表达式。
 # x;
 let x = if true { &temp() } else { &temp() };
 //              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//           Final exprs of `if`/`else` blocks.
+//           `if`/`else` 块的最终表达式。
 # x;
-let x = match () { _ => &temp() }; // `match` arm expression.
+let x = match () { _ => &temp() }; // `match` 分支表达式。
 # x;
-let x = pin!(temp()); // Super operand of super macro call expression.
+let x = pin!(temp()); // 超级宏调用表达式的超级操作数。
 # x;
-let x = pin!({ &mut temp() }); // As above.
+let x = pin!({ &mut temp() }); // 同上。
 # x;
-let x = format_args!("{:?}", temp()); // As above.
+let x = format_args!("{:?}", temp()); // 同上。
 # x;
 //
-// All of the temporaries above are still live here.
+// 以上所有临时变量在这里仍然存活。
 # assert_eq!(0, X.load(Relaxed));
 ```
 
-Here are some examples where expressions don't have extended temporary scopes:
+以下是表达式不具有延长临时作用域的一些示例：
 
 ```rust,compile_fail,E0716
 # fn temp() {}
-// Arguments to function calls are not extending expressions. The
-// temporary is dropped at the semicolon.
-let x = core::convert::identity(&temp()); // ERROR
+// 函数调用的参数不是延长表达式。临时变量在分号处销毁。
+let x = core::convert::identity(&temp()); // 错误
 # x;
 ```
 
@@ -566,83 +511,80 @@ let x = core::convert::identity(&temp()); // ERROR
 # fn temp() {}
 # trait Use { fn use_temp(&self) -> &Self { self } }
 # impl Use for () {}
-// Receivers of method calls are not extending expressions.
-let x = (&temp()).use_temp(); // ERROR
+// 方法调用的接收者不是延长表达式。
+let x = (&temp()).use_temp(); // 错误
 # x;
 ```
 
 ```rust,compile_fail,E0716
 # fn temp() {}
-// Scrutinees of match expressions are not extending expressions.
-let x = match &temp() { x => x }; // ERROR
+// match 表达式的受查表达式不是延长表达式。
+let x = match &temp() { x => x }; // 错误
 # x;
 ```
 
 ```rust,compile_fail,E0515
 # fn temp() {}
-// Final expressions of `async` blocks are not extending expressions.
-let x = async { &temp() }; // ERROR
+// `async` 块的最终表达式不是延长表达式。
+let x = async { &temp() }; // 错误
 # x;
 ```
 
 ```rust,compile_fail,E0515
 # fn temp() {}
-// Final expressions of closures are not extending expressions.
-let x = || &temp(); // ERROR
+// 闭包的最终表达式不是延长表达式。
+let x = || &temp(); // 错误
 # x;
 ```
 
 ```rust,compile_fail,E0716
 # fn temp() {}
-// Operands of loop breaks are not extending expressions.
-let x = loop { break &temp() }; // ERROR
+// 循环 break 的操作数不是延长表达式。
+let x = loop { break &temp() }; // 错误
 # x;
 ```
 
 ```rust,compile_fail,E0716
 # fn temp() {}
-// Operands of breaks to labels are not extending expressions.
-let x = 'a: { break 'a &temp() }; // ERROR
+// 带有标签的 break 的操作数不是延长表达式。
+let x = 'a: { break 'a &temp() }; // 错误
 # x;
 ```
 
 ```rust,edition2024,compile_fail,E0716
 # use core::pin::pin;
 # fn temp() {}
-// The argument to `pin!` is only an extending expression if the call
-// is an extending expression. Since it's not, the inner block is not
-// an extending expression, so the temporaries in its trailing
-// expression are dropped immediately.
-pin!({ &temp() }); // ERROR
+// 仅当调用是延长表达式时，`pin!` 的参数才是延长表达式。
+// 由于它不是，内部块不是延长表达式，因此其尾随表达式中的
+// 临时变量会立即销毁。
+pin!({ &temp() }); // 错误
 ```
 
 ```rust,edition2024,compile_fail,E0716
 # fn temp() {}
-// As above.
-format_args!("{:?}", { &temp() }); // ERROR
+// 同上。
+format_args!("{:?}", { &temp() }); // 错误
 ```
 
 r[destructors.forget]
-## Not running destructors
+## 不运行析构函数
 
 r[destructors.manually-suppressing]
-### Manually suppressing destructors
+### 手动抑制析构函数
 
-[`core::mem::forget`] can be used to prevent the destructor of a variable from being run,
-and [`core::mem::ManuallyDrop`] provides a wrapper to prevent a
-variable or field from being dropped automatically.
+[`core::mem::forget`] 可用于防止运行变量的析构函数，而 [`core::mem::ManuallyDrop`] 提供了一个包装器来防止变量或字段被自动销毁。
 
 > [!NOTE]
-> Preventing a destructor from being run via [`core::mem::forget`] or other means is safe even if it has a type that isn't `'static`. Besides the places where destructors are guaranteed to run as defined by this document, types may *not* safely rely on a destructor being run for soundness.
+> 通过 [`core::mem::forget`] 或其他手段防止析构函数运行是安全的，即使它的类型不是 `'static` 。除了本文档定义的保证运行析构函数的地方外，为了健全性，类型 *不可* 安全地依赖于析构函数的运行。
 
 r[destructors.process-termination]
-### Process termination without unwinding
+### 无需展开的进程终止
 
-There are some ways to terminate the process without [unwinding], in which case destructors will not be run.
+有一些方法可以在不进行 [展开][unwinding] 的情况下终止进程，在这种情况下将不运行析构函数。
 
-The standard library provides [`std::process::exit`] and [`std::process::abort`] to do this explicitly. Additionally, if the [panic handler][panic.panic_handler.std] is set to `abort`, panicking will always terminate the process without destructors being run.
+标准库提供了 [`std::process::exit`] 和 [`std::process::abort`] 来显式执行此操作。此外，如果 [恐慌处理器][panic.panic_handler.std] 设置为 `abort` ，发生恐慌时将始终终止进程而不运行析构函数。
 
-There is one additional case to be aware of: when a panic reaches a [non-unwinding ABI boundary], either no destructors will run, or all destructors up until the ABI boundary will run.
+还有一个需要注意的情况：当恐慌达到 [非展开 ABI 边界][non-unwinding ABI boundary] 时，要么不运行任何析构函数，要么运行直到该 ABI 边界为止的所有析构函数。
 
 [Assignment]: expressions/operator-expr.md#assignment-expressions
 [binding modes]: patterns.md#binding-modes

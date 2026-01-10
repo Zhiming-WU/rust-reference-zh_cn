@@ -1,5 +1,5 @@
 r[bound]
-# Trait and lifetime bounds
+# 特型和生命周期界限
 
 r[bound.syntax]
 ```grammar,miscellaneous
@@ -31,29 +31,18 @@ UseBoundGenericArg ->
 ```
 
 r[bound.intro]
-[Trait] and lifetime bounds provide a way for [generic items][generic] to
-restrict which types and lifetimes are used as their parameters. Bounds can be
-provided on any type in a [where clause]. There are also shorter forms for
-certain common cases:
+`[特型][Trait]` 和生命周期界限为 `[泛型项][generic]` 提供了一种限制哪些类型和生命周期可以用作其参数的方法。可以在 `[where 子句][where clause]` 中的任何类型上提供界限。对于某些常见情况，也有较短的形式：
 
-* Bounds written after declaring a [generic parameter][generic]:
-  `fn f<A: Copy>() {}` is the same as `fn f<A>() where A: Copy {}`.
-* In trait declarations as [supertraits]: `trait Circle : Shape {}` is
-  equivalent to `trait Circle where Self : Shape {}`.
-* In trait declarations as bounds on [associated types]:
-  `trait A { type B: Copy; }` is equivalent to
-  `trait A where Self::B: Copy { type B; }`.
+* 在声明 `[泛型参数][generic]` 后编写的界限：`fn f<A: Copy>() {}` 与 `fn f<A>() where A: Copy {}` 相同。
+* 在特型声明中作为 `[父特型][supertraits]` ：`trait Circle : Shape {}` 等同于 `trait Circle where Self : Shape {}` 。
+* 在特型声明中作为 `[关联类型][associated types]` 上的界限：`trait A { type B: Copy; }` 等同于 `trait A where Self::B: Copy { type B; }` 。
 
 r[bound.satisfaction]
-Bounds on an item must be satisfied when using the item. When type checking and
-borrow checking a generic item, the bounds can be used to determine that a
-trait is implemented for a type. For example, given `Ty: Trait`
+使用 项 时必须满足其上的界限。在对泛型 项 进行类型检查和借用检查时，界限可用于确定某个类型是否实现了某个特型。例如，给定 `Ty: Trait`
 
-* In the body of a generic function, methods from `Trait` can be called on `Ty`
-  values. Likewise associated constants on the `Trait` can be used.
-* Associated types from `Trait` can be used.
-* Generic functions and types with a `T: Trait` bounds can be used with `Ty`
-  being used for `T`.
+* 在泛型函数的函数体中，可以在 `Ty` 值上调用来自 `Trait` 的方法。同样，也可以使用 `Trait` 上的关联常量。
+* 可以使用来自 `Trait` 的关联类型。
+* 具有 `T: Trait` 界限的泛型函数和类型可以使用 `Ty` 作为 `T` 。
 
 ```rust
 # type Surface = i32;
@@ -63,43 +52,40 @@ trait Shape {
 }
 
 fn draw_twice<T: Shape>(surface: Surface, sh: T) {
-    sh.draw(surface);           // Can call method because T: Shape
+    sh.draw(surface);           // 可以调用方法，因为 T: Shape
     sh.draw(surface);
 }
 
 fn copy_and_draw_twice<T: Copy>(surface: Surface, sh: T) where T: Shape {
-    let shape_copy = sh;        // doesn't move sh because T: Copy
-    draw_twice(surface, sh);    // Can use generic function because T: Shape
+    let shape_copy = sh;        // 不会移动 sh，因为 T: Copy
+    draw_twice(surface, sh);    // 可以使用泛型函数，因为 T: Shape
 }
 
 struct Figure<S: Shape>(S, S);
 
 fn name_figure<U: Shape>(
-    figure: Figure<U>,          // Type Figure<U> is well-formed because U: Shape
+    figure: Figure<U>,          // 类型 Figure<U> 是良构的，因为 U: Shape
 ) {
     println!(
         "Figure of two {}",
-        U::name(),              // Can use associated function
+        U::name(),              // 可以使用关联函数
     );
 }
 ```
 
 r[bound.trivial]
-Bounds that don't use the item's parameters or [higher-ranked lifetimes] are checked when the item is defined.
-It is an error for such a bound to be false.
+不使用 项 的参数或 `[高阶生命周期][higher-ranked lifetimes]` 的界限会在定义 项 时进行检查。此类界限若为假则是错误的。
 
 r[bound.special]
-[`Copy`], [`Clone`], and [`Sized`] bounds are also checked for certain generic types when using the item, even if the use does not provide a concrete type.
-It is an error to have `Copy` or `Clone` as a bound on a mutable reference, [trait object], or [slice].
-It is an error to have `Sized` as a bound on a trait object or slice.
+在使用 项 时，还会检查某些泛型类型的 `[`Copy`]` 、 `[`Clone`]` 和 `[`Sized`]` 界限，即使该使用并未提供具体类型。在可变引用、 `[特型对象][trait object]` 或 `[切片][slice]` 上将 `Copy` 或 `Clone` 作为界限是错误的。在特型对象或切片上将 `Sized` 作为界限是错误的。
 
 ```rust,compile_fail
 struct A<'a, T>
 where
-    i32: Default,           // Allowed, but not useful
-    i32: Iterator,          // Error: `i32` is not an iterator
-    &'a mut T: Copy,        // (at use) Error: the trait bound is not satisfied
-    [T]: Sized,             // (at use) Error: size cannot be known at compilation
+    i32: Default,           // 允许，但没用
+    i32: Iterator,          // 错误：`i32` 不是迭代器
+    &'a mut T: Copy,        // （使用时）错误：特型界限未满足
+    [T]: Sized,             // （使用时）错误：大小在编译时无法确定
 {
     f: &'a T,
 }
@@ -107,37 +93,34 @@ struct UsesA<'a, T>(A<'a, T>);
 ```
 
 r[bound.trait-object]
-Trait and lifetime bounds are also used to name [trait objects].
+特型和生命周期界限也用于命名 `[特型对象][trait objects]` 。
 
 r[bound.sized]
 ## `?Sized`
 
-`?` is only used to relax the implicit [`Sized`] trait bound for [type parameters] or [associated types].
-`?Sized` may not be used as a bound for other types.
+`?` 仅用于放宽针对 `[类型参数][type parameters]` 或 `[关联类型][associated types]` 的隐式 `[`Sized`]` 特型界限。 `?Sized` 不可用作其他类型的界限。
 
 r[bound.lifetime]
-## Lifetime bounds
+## 生命周期界限
 
 r[bound.lifetime.intro]
-Lifetime bounds can be applied to types or to other lifetimes.
+生命周期界限可以应用于类型或其他生命周期。
 
 r[bound.lifetime.outlive-lifetime]
-The bound `'a: 'b` is usually read as `'a` *outlives* `'b`.
-`'a: 'b` means that `'a` lasts at least as long as `'b`, so a reference `&'a ()` is valid whenever `&'b ()` is valid.
+界限 `'a: 'b` 通常读作 `'a` *长于* `'b` 。 `'a: 'b` 表示 `'a` 的持续时间至少与 `'b` 一样长，因此只要 `&'b ()` 有效，引用 `&'a ()` 就是有效的。
 
 ```rust
 fn f<'a, 'b>(x: &'a i32, mut y: &'b i32) where 'a: 'b {
-    y = x;                      // &'a i32 is a subtype of &'b i32 because 'a: 'b
-    let r: &'b &'a i32 = &&0;   // &'b &'a i32 is well formed because 'a: 'b
+    y = x;                      // &'a i32 是 &'b i32 的子类型，因为 'a: 'b
+    let r: &'b &'a i32 = &&0;   // &'b &'a i32 是良构的，因为 'a: 'b
 }
 ```
 
 r[bound.lifetime.outlive-type]
-`T: 'a` means that all lifetime parameters of `T` outlive `'a`.
-For example, if `'a` is an unconstrained lifetime parameter, then `i32: 'static` and `&'static str: 'a` are satisfied, but `Vec<&'a ()>: 'static` is not.
+`T: 'a` 表示 `T` 的所有生命周期参数都 *长于* `'a` 。例如，如果 `'a` 是一个不受约束的生命周期参数，则 `i32: 'static` 和 `&'static str: 'a` 被满足，但 `Vec<&'a ()>: 'static` 不满足。
 
 r[bound.higher-ranked]
-## Higher-ranked trait bounds
+## 高阶特型界限
 
 r[bound.higher-ranked.syntax]
 ```grammar,miscellaneous
@@ -145,9 +128,7 @@ ForLifetimes -> `for` GenericParams
 ```
 
 r[bound.higher-ranked.intro]
-Trait bounds may be *higher ranked* over lifetimes. These bounds specify a bound
-that is true *for all* lifetimes. For example, a bound such as `for<'a> &'a T:
-PartialEq<i32>` would require an implementation like
+特型界限可以是生命周期上的 *高阶* 界限。这些界限指定了 *对于所有* 生命周期都成立的界限。例如，像 `for<'a> &'a T: PartialEq<i32>` 这样的界限需要类似如下的实现
 
 ```rust
 # struct T;
@@ -157,9 +138,9 @@ impl<'a> PartialEq<i32> for &'a T {
 }
 ```
 
-and could then be used to compare a `&'a T` with any lifetime to an `i32`.
+并可用于将具有任何生命周期的 `&'a T` 与 `i32` 进行比较。
 
-Only a higher-ranked bound can be used here, because the lifetime of the reference is shorter than any possible lifetime parameter on the function:
+此处只能使用高阶界限，因为引用的生命周期比函数上任何可能的生命周期参数都要短：
 
 ```rust
 fn call_on_ref_zero<F>(f: F) where for<'a> F: Fn(&'a i32) {
@@ -169,10 +150,7 @@ fn call_on_ref_zero<F>(f: F) where for<'a> F: Fn(&'a i32) {
 ```
 
 r[bound.higher-ranked.trait]
-Higher-ranked lifetimes may also be specified just before the trait: the only
-difference is the [scope][hrtb-scopes] of the lifetime parameter, which extends only to the
-end of the following trait instead of the whole bound. This function is
-equivalent to the last one.
+高阶生命周期也可以紧接在特型之前指定：唯一的区别是生命周期参数的 [作用域][hrtb-scopes] ，它仅延伸到后续特型的末尾，而不是整个界限。此函数等同于上一个函数。
 
 ```rust
 fn call_on_ref_zero<F>(f: F) where F: for<'a> Fn(&'a i32) {
@@ -182,29 +160,26 @@ fn call_on_ref_zero<F>(f: F) where F: for<'a> Fn(&'a i32) {
 ```
 
 r[bound.implied]
-## Implied bounds
+## 隐含界限
 
 r[bound.implied.intro]
-Lifetime bounds required for types to be well-formed are sometimes inferred.
+类型为良构所需的生命周期界限有时会被推断出来。
 
 ```rust
 fn requires_t_outlives_a<'a, T>(x: &'a T) {}
 ```
 
-The type parameter `T` is required to outlive `'a` for the type `&'a T` to be well-formed.
-This is inferred because the function signature contains the type `&'a T` which is
-only valid if `T: 'a` holds.
+要求类型参数 `T` *长于* `'a` ，以便 `&'a T` 类型是良构的。这是被推断出来的，因为函数签名包含类型 `&'a T` ，该类型仅在 `T: 'a` 成立时才有效。
 
 r[bound.implied.context]
-Implied bounds are added for all parameters and outputs of functions. Inside of `requires_t_outlives_a`
-you can assume `T: 'a` to hold even if you don't explicitly specify this:
+隐含界限会被添加到函数的所有参数和输出中。在 `requires_t_outlives_a` 内部，即使没有显式指定，也可以假设 `T: 'a` 成立：
 
 ```rust
 fn requires_t_outlives_a_not_implied<'a, T: 'a>() {}
 
 fn requires_t_outlives_a<'a, T>(x: &'a T) {
-    // This compiles, because `T: 'a` is implied by
-    // the reference type `&'a T`.
+    // 这可以编译，因为 `T: 'a` 是由
+    // 引用类型 `&'a T` 隐含的。
     requires_t_outlives_a_not_implied::<'a, T>();
 }
 ```
@@ -212,57 +187,55 @@ fn requires_t_outlives_a<'a, T>(x: &'a T) {
 ```rust,compile_fail,E0309
 # fn requires_t_outlives_a_not_implied<'a, T: 'a>() {}
 fn not_implied<'a, T>() {
-    // This errors, because `T: 'a` is not implied by
-    // the function signature.
+    // 这会报错，因为 `T: 'a` 不是由
+    // 函数签名隐含的。
     requires_t_outlives_a_not_implied::<'a, T>();
 }
 ```
 
 r[bound.implied.trait]
-Only lifetime bounds are implied, trait bounds still have to be explicitly added.
-The following example therefore causes an error:
+只有生命周期界限是隐含的，特型界限仍必须显式添加。因此，以下示例会导致错误：
 
 ```rust,compile_fail,E0277
 use std::fmt::Debug;
 struct IsDebug<T: Debug>(T);
-// error[E0277]: `T` doesn't implement `Debug`
+// 错误[E0277]：`T` 未实现 `Debug`
 fn doesnt_specify_t_debug<T>(x: IsDebug<T>) {}
 ```
 
 r[bound.implied.def]
-Lifetime bounds are also inferred for type definitions and impl blocks for any type:
+对于任何类型的类型定义和 impl 块，也会推断出生命周期界限：
 
 ```rust
 struct Struct<'a, T> {
-    // This requires `T: 'a` to be well-formed
-    // which is inferred by the compiler.
+    // 这要求 `T: 'a` 是良构的，
+    // 由编译器推断。
     field: &'a T,
 }
 
 enum Enum<'a, T> {
-    // This requires `T: 'a` to be well-formed,
-    // which is inferred by the compiler.
+    // 这要求 `T: 'a` 是良构的，
+    // 由编译器推断。
     //
-    // Note that `T: 'a` is required even when only
-    // using `Enum::OtherVariant`.
+    // 注意，即使仅使用
+    // `Enum::OtherVariant`，也要求 `T: 'a`。
     SomeVariant(&'a T),
     OtherVariant,
 }
 
 trait Trait<'a, T: 'a> {}
 
-// This would error because `T: 'a` is not implied by any type
-// in the impl header.
+// 这会报错，因为 `T: 'a` 未由 impl 标题中的任何类型隐含。
 //     impl<'a, T> Trait<'a, T> for () {}
 
-// This compiles as `T: 'a` is implied by the self type `&'a T`.
+// 这可以编译，因为 `T: 'a` 是由 self 类型 `&'a T` 隐含的。
 impl<'a, T> Trait<'a, T> for &'a T {}
 ```
 
 r[bound.use]
-## Use bounds
+## 使用界限
 
-Certain bounds lists may include a `use<..>` bound to control which generic parameters are captured by the `impl Trait` [abstract return type].  See [precise capturing] for more details.
+某些界限列表可能包含 `use<..>` 界限，以控制哪些泛型参数会被 `impl Trait` [抽象返回类型][abstract return type] 捕获。有关更多详细信息，请参阅 [精确捕获][precise capturing] 。
 
 [abstract return type]: types/impl-trait.md#abstract-return-types
 [arrays]: types/array.md

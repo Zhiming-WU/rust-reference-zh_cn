@@ -1,5 +1,5 @@
 r[expr.placeholder]
-# `_` expressions
+# `_`表达式
 
 r[expr.placeholder.syntax]
 ```grammar,expressions
@@ -7,16 +7,15 @@ UnderscoreExpression -> `_`
 ```
 
 r[expr.placeholder.intro]
-Underscore expressions, denoted with the symbol `_`, are used to signify a
-placeholder in a destructuring assignment.
+下划线表达式由符号 `_` 表示，用于在解构赋值中表示占位符。
 
 r[expr.placeholder.lhs-assignment-only]
-They may only appear in the left-hand side of an assignment.
+它们只能出现在赋值语句的左侧。
 
 r[expr.placeholder.pattern]
-Note that this is distinct from the [wildcard pattern](../patterns.md#wildcard-pattern).
+请注意，这与 [通配符模式](../patterns.md#wildcard-pattern) 不同。
 
-Examples of `_` expressions:
+`_` 表达式的示例：
 
 ```rust
 let p = (1, 2);
@@ -30,11 +29,11 @@ struct Position {
 
 Position { x: a, y: _ } = Position{ x: 2, y: 3 };
 
-// unused result, assignment to `_` used to declare intent and remove a warning
+// 未使用的结果，赋值给 `_` 用于声明意图并消除警告
 _ = 2 + 2;
-// triggers unused_must_use warning
+// 触发 unused_must_use 警告
 // 2 + 2;
 
-// equivalent technique using a wildcard pattern in a let-binding
+// 在 let 绑定中使用通配符模式的等效技术
 let _ = 2 + 2;
 ```

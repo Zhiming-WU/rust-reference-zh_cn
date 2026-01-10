@@ -1,5 +1,5 @@
 r[expr.range]
-# Range expressions
+# 范围表达式
 
 r[expr.range.syntax]
 ```grammar,expressions
@@ -25,18 +25,18 @@ RangeToInclusiveExpr -> `..=` Expression
 ```
 
 r[expr.range.behavior]
-The `..` and `..=` operators will construct an object of one of the `std::ops::Range` (or `core::ops::Range`) variants, according to the following table:
+`..` 和 `..=` 运算符将根据下表构造 `std::ops::Range` (或 `core::ops::Range`) 变体之一的对象：
 
-| Production             | Syntax        | Type                         | Range                 |
+| 产生式 | 语法格式 | 类型 | 范围 |
 |------------------------|---------------|------------------------------|-----------------------|
-| [RangeExpr]            | start`..`end  | [std::ops::Range]            | start &le; x &lt; end |
-| [RangeFromExpr]        | start`..`     | [std::ops::RangeFrom]        | start &le; x          |
-| [RangeToExpr]          | `..`end       | [std::ops::RangeTo]          |            x &lt; end |
-| [RangeFullExpr]        | `..`          | [std::ops::RangeFull]        |            -          |
-| [RangeInclusiveExpr]   | start`..=`end | [std::ops::RangeInclusive]   | start &le; x &le; end |
-| [RangeToInclusiveExpr] | `..=`end      | [std::ops::RangeToInclusive] |            x &le; end |
+| [范围表达式][RangeExpr] | start`..`end | [std::ops::Range] | start &le; x &lt; end |
+| [左闭范围表达式][RangeFromExpr] | start`..` | [std::ops::RangeFrom] | start &le; x |
+| [右开范围表达式][RangeToExpr] | `..`end | [std::ops::RangeTo] | x &lt; end |
+| [全范围表达式][RangeFullExpr] | `..` | [std::ops::RangeFull] | - |
+| [闭范围表达式][RangeInclusiveExpr] | start`..=`end | [std::ops::RangeInclusive] | start &le; x &le; end |
+| [右闭范围表达式][RangeToInclusiveExpr] | `..=`end | [std::ops::RangeToInclusive] | x &le; end |
 
-Examples:
+示例：
 
 ```rust
 1..2;   // std::ops::Range
@@ -48,7 +48,7 @@ Examples:
 ```
 
 r[expr.range.equivalence]
-The following expressions are equivalent.
+以下表达式是等价的。
 
 ```rust
 let x = std::ops::Range {start: 0, end: 10};
@@ -58,7 +58,7 @@ assert_eq!(x, y);
 ```
 
 r[expr.range.for]
-Ranges can be used in `for` loops:
+范围可以用于 `for` 循环：
 
 ```rust
 for i in 1..11 {

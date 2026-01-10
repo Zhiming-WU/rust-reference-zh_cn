@@ -1,5 +1,5 @@
 r[expr.closure]
-# Closure expressions
+# 闭包表达式
 
 r[expr.closure.syntax]
 ```grammar,expressions
@@ -14,53 +14,53 @@ ClosureParameters -> ClosureParam (`,` ClosureParam)* `,`?
 ClosureParam -> OuterAttribute* PatternNoTopAlt ( `:` Type )?
 ```
 
-[^cl-async-edition]: The `async` qualifier is not allowed in the 2015 edition.
+[^cl-async-edition]: `async` 限定符在 2015 版次中不允许使用。
 
 r[expr.closure.intro]
-A *closure expression*, also known as a lambda expression or a lambda, defines a [closure type] and evaluates to a value of that type.
-The syntax for a closure expression is an optional `async` keyword, an optional `move` keyword, then a pipe-symbol-delimited (`|`) comma-separated list of [patterns], called the *closure parameters* each optionally followed by a `:` and a type, then an optional `->` and type, called the *return type*, and then an expression, called the *closure body operand*.
+一个 *闭包表达式* ，也称为 lambda 表达式或 lambda，定义了一个 [闭包类型][closure type] 并求值为该类型的一个值。
+闭包表达式的 语法格式 是一个可选的 `async` 关键字，一个可选的 `move` 关键字，然后是由管道符号（`|`）分隔的逗号分隔的 [模式][patterns] 列表（称为 *闭包参数* ），每个参数后面可以可选地跟着 `:` 和一个类型，然后是一个可选的 `->` 和一个类型（称为 *返回类型* ），最后是一个表达式（称为 *闭包体操作数* ）。
 
 r[expr.closure.param-type]
-The optional type after each pattern is a type annotation for the pattern.
+每个模式后的可选类型是该模式的类型标注。
 
 r[expr.closure.explicit-type-body]
-If there is a return type, the closure body must be a [block].
+如果有返回类型，闭包体必须是一个 [块][block]。
 
 r[expr.closure.parameter-restriction]
-A closure expression denotes a function that maps a list of parameters onto the expression that follows the parameters.
-Just like a [`let` binding], the closure parameters are irrefutable [patterns], whose type annotation is optional and will be inferred from context if not given.
+闭包表达式表示一个函数，它将参数列表映射到参数之后的表达式上。
+就像 [`let` 绑定][`let` binding] 一样，闭包参数是不可反驳的 [模式][patterns]，其类型标注是可选的，如果未给出，将从上下文中推导。
 
 r[expr.closure.unique-type]
-Each closure expression has a unique, anonymous type.
+每个闭包表达式都有一个唯一的、匿名的类型。
 
 r[expr.closure.captures]
-Significantly, closure expressions _capture their environment_, which regular [function definitions] do not.
+重要的是，闭包表达式会 _捕获其环境_ ，而普通的 [函数定义][function definitions] 则不会。
 
 r[expr.closure.capture-inference]
-Without the `move` keyword, the closure expression [infers how it captures each variable from its environment](../types/closure.md#capture-modes), preferring to capture by shared reference, effectively borrowing all outer variables mentioned inside the closure's body.
+如果没有 `move` 关键字，闭包表达式会 [推导它如何从其环境中捕获每个变量](../types/closure.md#capture-modes)，优先通过共享引用进行捕获，从而实际上借用了闭包体内提到的所有外部变量。
 
 r[expr.closure.capture-mut-ref]
-If needed the compiler will infer that instead mutable references should be taken, or that the values should be moved or copied (depending on their type) from the environment.
+如果需要，编译器将推导应该采用可变引用，或者应该从环境中移动或复制值（取决于它们的类型）。
 
 r[expr.closure.capture-move]
-A closure can be forced to capture its environment by copying or moving values by prefixing it with the `move` keyword.
-This is often used to ensure that the closure's lifetime is `'static`.
+通过在闭包前加上 `move` 关键字，可以强制闭包通过复制或移动值来捕获其环境。
+这通常用于确保闭包的生命周期是 `'static`。
 
 r[expr.closure.trait-impl]
-## Closure trait implementations
+## 闭包特型实现
 
-Which traits the closure type implement depends on how variables are captured, the types of the captured variables, and the presence of `async`.
-See the [call traits and coercions] chapter for how and when a closure implements `Fn`, `FnMut`, and `FnOnce`.
-The closure type implements [`Send`] and [`Sync`] if the type of every captured variable also implements the trait.
+闭包类型实现哪些特型取决于变量如何被捕获、被捕获变量的类型以及 `async` 的存在。
+有关闭包如何以及何时实现 `Fn`、`FnMut` 和 `FnOnce`，请参见 [调用特型与强转][call traits and coercions] 章节。
+如果每个被捕获变量的类型也都实现了该特型，则闭包类型就会实现 [`Send`] 和 [`Sync`][`Sync`]。
 
 r[expr.closure.async]
-## Async closures
+## Async闭包
 
 r[expr.closure.async.intro]
-Closures marked with the `async` keyword indicate that they are asynchronous in an analogous way to an [async function][items.fn.async].
+带有 `async` 关键字标记的闭包表示它们是异步的，其方式类似于 [异步函数][items.fn.async]。
 
 r[expr.closure.async.future]
-Calling the async closure does not perform any work, but instead evaluates to a value that implements [`Future`] that corresponds to the computation of the body of the closure.
+调用 Async 闭包不会执行任何工作，而是求值为一个实现了 [`Future`] 的值，该值对应于闭包体的计算。
 
 ```rust
 async fn takes_async_callback(f: impl AsyncFn(u64)) {
@@ -78,11 +78,11 @@ async fn example() {
 
 r[expr.closure.async.edition2018]
 > [!EDITION-2018]
-> Async closures are only available beginning with Rust 2018.
+> Async 闭包仅从 Rust 2018 版次开始可用。
 
-## Example
+## 示例
 
-In this example, we define a function `ten_times` that takes a higher-order function argument, and we then call it with a closure expression as an argument, followed by a closure expression that moves values from its environment.
+在此示例中，我们定义了一个函数 `ten_times`，它接受一个高阶函数参数，然后我们使用闭包表达式作为参数来调用它，随后是一个从其环境移动值的闭包表达式。
 
 ```rust
 fn ten_times<F>(f: F) where F: Fn(i32) {
@@ -92,17 +92,17 @@ fn ten_times<F>(f: F) where F: Fn(i32) {
 }
 
 ten_times(|j| println!("hello, {}", j));
-// With type annotations
+// 带有类型标注
 ten_times(|j: i32| -> () { println!("hello, {}", j) });
 
 let word = "konnichiwa".to_owned();
 ten_times(move |j| println!("{}, {}", word, j));
 ```
 
-## Attributes on closure parameters
+## 闭包参数上的属性
 
 r[expr.closure.param-attributes]
-Attributes on closure parameters follow the same rules and restrictions as [regular function parameters].
+闭包参数上的属性遵循与 [普通函数参数][regular function parameters] 相同的规则和限制。
 
 [`let` binding]: ../statements.md#let-statements
 [`Send`]: ../special-types-and-traits.md#send

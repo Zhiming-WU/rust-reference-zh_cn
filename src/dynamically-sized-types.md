@@ -1,36 +1,28 @@
 r[dynamic-sized]
-# Dynamically sized types
+# 动态大小类型
 
 r[dynamic-sized.intro]
-Most types have a fixed size that is known at compile time and implement the trait [`Sized`][sized]. A type with a size that is known only at run-time is called a _dynamically sized type_ (_DST_) or, informally, an unsized type.  [Slices], [trait objects], and [str] are examples of <abbr title="dynamically sized types">DSTs</abbr>.
+大多数类型在编译时具有固定的大小，并实现了 [`Sized`][sized] 特型。大小仅在运行时已知的类型被称为 _动态大小类型_ (_DST_) ，或者非正式地称为不定长类型。 [切片][Slices]、 [特型对象][trait objects] 和 [str] 是 <abbr title="dynamically sized types">DST</abbr> 的示例。
 
 r[dynamic-sized.restriction]
-Such types can only be used in certain cases:
+这类类型只能在某些情况下使用：
 
 r[dynamic-sized.pointer-types]
-* [Pointer types] to <abbr title="dynamically sized types">DSTs</abbr> are
-  sized but have twice the size of pointers to sized types
-    * Pointers to slices and `str` also store the number of elements.
-    * Pointers to trait objects also store a pointer to a vtable.
+* 指向 <abbr title="dynamically sized types">DST</abbr> 的 [指针类型][Pointer types] 是定长的，但其大小是定长类型指针的两倍
+    * 指向切片和 `str` 的指针还存储了元素的数量。
+    * 指向特型对象的指针还存储了一个指向 vtable 的指针。
 
 r[dynamic-sized.question-sized]
-* <abbr title="dynamically sized types">DSTs</abbr> can be provided as
-  type arguments to generic type parameters having the special `?Sized` bound.
-  They can also be used for associated type definitions when the corresponding associated type declaration has a `?Sized` bound.
-  By default, any type parameter or associated type has a `Sized` bound, unless it is relaxed using `?Sized`.
+* <abbr title="dynamically sized types">DST</abbr> 可以作为具有特殊 `?Sized` 边界的泛型类型参数的类型参数提供。当相应的关联类型声明具有 `?Sized` 边界时，它们也可以用于关联类型定义。默认情况下，任何类型参数或关联类型都具有 `Sized` 边界，除非使用 `?Sized` 将其放宽。
 
 r[dynamic-sized.trait-impl]
-* Traits may be implemented for <abbr title="dynamically sized
-  types">DSTs</abbr>.
-  Unlike with generic type parameters, `Self: ?Sized` is the default in trait definitions.
+* 可以为 <abbr title="dynamically sized types">DST</abbr> 实现特型。与泛型类型参数不同，在特型定义中 `Self: ?Sized` 是默认的。
 
 r[dynamic-sized.struct-field]
-* Structs may contain a <abbr title="dynamically sized type">DST</abbr> as the
-  last field; this makes the struct itself a
-  <abbr title="dynamically sized type">DST</abbr>.
+* 结构体可以将 <abbr title="dynamically sized type">DST</abbr> 作为其最后一个字段；这使得结构体本身也成为一个 <abbr title="dynamically sized type">DST</abbr> 。
 
 > [!NOTE]
-> [Variables], function parameters, [const] items, and [static] items must be `Sized`.
+> [变量][Variables]、 函数参数、 [常量][const] 项 和 [静态][static] 项 必须是 `Sized` 的。
 
 [sized]: special-types-and-traits.md#sized
 [Slices]: types/slice.md
