@@ -1,5 +1,5 @@
 r[abi]
-# 应用二进制接口 (ABI)
+# 应用二进制接口(ABI)
 
 r[abi.intro]
 本节记录了影响 crate 编译输出 ABI 的特性。

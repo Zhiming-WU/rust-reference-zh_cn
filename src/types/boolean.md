@@ -1,57 +1,50 @@
 r[type.bool]
-# Boolean type
+# 布尔类型
 
 ```rust
 let b: bool = true;
 ```
 
 r[type.bool.intro]
-The *boolean type* or *bool* is a primitive data type that can take on one of
-two values, called *true* and *false*.
+ * 布尔类型 * 或 * bool * 是一种原始数据类型，可以取两个值之一，称为 * true * 和 * false * 。
 
 r[type.bool.literal]
-Values of this type may be created using a [literal expression] using the
-keywords `true` and `false` corresponding to the value of the same name.
+该类型的值可以使用 [字面量表达式][literal expression] 创建，使用对应于同名值的关键字 `true` 和 `false` 。
 
 r[type.bool.namespace]
-This type is a part of the [language prelude] with the [name] `bool`.
+该类型是 [语言预导入][language prelude] 的一部分， [名称][name] 为 `bool` 。
 
 r[type.bool.layout]
-An object with the boolean type has a [size and alignment] of 1 each.
+布尔类型的对象其 [大小和对齐][size and alignment] 均为 1 。
 
 r[type.bool.repr]
-The value false has the bit pattern `0x00` and the value true has the bit pattern
-`0x01`. It is [undefined behavior] for an object with the boolean type to have
-any other bit pattern.
+值 false 的位模式为 `0x00` ，值 true 的位模式为 `0x01` 。布尔类型的对象具有任何其他位模式都是 [未定义行为][undefined behavior] 。
 
 r[type.bool.usage]
-The boolean type is the type of many operands in various [expressions]:
+布尔类型是各种 [表达式][expressions] 中许多操作数的类型：
 
 r[type.bool.usage-condition]
-* The condition operand in [if expressions] and [while expressions]
+* [if 表达式][if expressions] 和 [while 表达式][while expressions] 中的条件操作数
 
 r[type.bool.usage-lazy-operator]
-* The operands in [lazy boolean operator expressions][lazy]
+* [惰性布尔运算符表达式][lazy] 中的操作数
 
 > [!NOTE]
-> The boolean type acts similarly to but is not an [enumerated type]. In practice, this mostly means that constructors are not associated to the type (e.g. `bool::true`).
+> 布尔类型的作用类似于但不是 [枚举类型][enumerated type] 。在实践中，这主要意味着构造函数不与类型相关联 (例如 `bool::true`) 。
 
 r[type.bool.traits]
-Like all primitives, the boolean type [implements][p-impl] the
-[traits][p-traits] [`Clone`][p-clone], [`Copy`][p-copy], [`Sized`][p-sized],
-[`Send`][p-send], and [`Sync`][p-sync].
+与所有原始类型一样，布尔类型 [实现][p-impl] 了 [特型][p-traits] [`Clone`][p-clone]、 [`Copy`][p-copy]、 [`Sized`][p-sized]、 [`Send`][p-send] 和 [`Sync`][p-sync] 。
 
 > [!NOTE]
-> See the [standard library docs](bool) for library operations.
+> 有关库操作，请参阅 [标准库文档](bool) 。
 
 r[type.bool.expr]
-## Operations on boolean values
+## 布尔值的运算
 
-When using certain operator expressions with a boolean type for its operands,
-they evaluate using the rules of [boolean logic].
+当对布尔类型的操作数使用某些运算符表达式时，它们按照 [布尔逻辑][boolean logic] 的规则进行求值。
 
 r[type.bool.expr.not]
-### Logical not
+### 逻辑非
 
 | `b` | [`!b`][op-not] |
 |- | - |
@@ -59,7 +52,7 @@ r[type.bool.expr.not]
 | `false` | `true` |
 
 r[type.bool.expr.or]
-### Logical or
+### 逻辑或
 
 | `a` | `b` | [`a \| b`][op-or] |
 |- | - | - |
@@ -69,17 +62,17 @@ r[type.bool.expr.or]
 | `false` | `false` | `false` |
 
 r[type.bool.expr.and]
-### Logical and
+### 逻辑与
 
 | `a` | `b` | [`a & b`][op-and] |
 |- | - | - |
 | `true` | `true` | `true` |
-| `true` | `false` | `false` |
+| `true` | `false" | `false` |
 | `false` | `true` | `false` |
 | `false` | `false` | `false` |
 
 r[type.bool.expr.xor]
-### Logical xor
+### 逻辑异或
 
 | `a` | `b` | [`a ^ b`][op-xor] |
 |- | - | - |
@@ -89,7 +82,7 @@ r[type.bool.expr.xor]
 | `false` | `false` | `false` |
 
 r[type.bool.expr.cmp]
-### Comparisons
+### 比较
 
 r[type.bool.expr.cmp.eq]
 | `a` | `b` | [`a == b`][op-compare] |
@@ -108,23 +101,21 @@ r[type.bool.expr.cmp.greater]
 | `false` | `false` | `false` |
 
 r[type.bool.expr.cmp.not-eq]
-* `a != b` is the same as `!(a == b)`
+* `a != b` 与 `!(a == b)` 相同
 
 r[type.bool.expr.cmp.greater-eq]
-* `a >= b` is the same as `a == b | a > b`
+* `a >= b` 与 `a == b | a > b` 相同
 
 r[type.bool.expr.cmp.less]
-* `a < b` is the same as `!(a >= b)`
+* `a < b` 与 `!(a >= b)` 相同
 
 r[type.bool.expr.cmp.less-eq]
-* `a <= b` is the same as `a == b | a < b`
+* `a <= b` 与 `a == b | a < b` 相同
 
 r[type.bool.validity]
-## Bit validity
+## 位有效性
 
-The single byte of a `bool` is guaranteed to be initialized (in other words,
-`transmute::<bool, u8>(...)` is always sound -- but since some bit patterns
-are invalid `bool`s, the inverse is not always sound).
+`bool` 的单个字节保证被初始化 (换句话说， `transmute::<bool, u8>(...)` 总是健全的 -- 但由于某些位模式是无效的 `bool` ，其反向操作并不总是健全的) 。
 
 [boolean logic]: https://en.wikipedia.org/wiki/Boolean_algebra
 [enumerated type]: enum.md

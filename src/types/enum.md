@@ -1,28 +1,22 @@
 r[type.enum]
-# Enumerated types
+# 枚举类型
 
 r[type.enum.intro]
-An *enumerated type* is a nominal, heterogeneous disjoint union type, denoted
-by the name of an [`enum` item]. [^enumtype]
+一个 *枚举类型* 是一种标称的、异构的离散联合类型，由 [`enum` 项][`enum` item] 的名称表示。[^enumtype]
 
 r[type.enum.declaration]
-An [`enum` item] declares both the type and a number of *variants*, each of
-which is independently named and has the syntax of a struct, tuple struct or
-unit-like struct.
+一个 [`enum` 项][`enum` item] 声明了该类型以及若干 *变体* ，每个变体都有独立的名称，并且具有 结构体 、元组结构体或类单元结构体的 语法格式 。
 
 r[type.enum.constructor]
-New instances of an `enum` can be constructed with a [struct expression].
+`enum` 的新实例可以通过 [结构体表达式][struct expression] 构造。
 
 r[type.enum.value]
-Any `enum` value consumes as much memory as the largest variant for its
-corresponding `enum` type, as well as the size needed to store a discriminant.
+任何 `enum` 值消耗的内存与其对应的 `enum` 类型中最大的 变体 一样多，外加存储判别式所需的大小。
 
 r[type.enum.name]
-Enum types cannot be denoted *structurally* as types, but must be denoted by
-named reference to an [`enum` item].
+枚举类型不能作为类型在 *结构上* 被表示，而必须通过对 [`enum` 项][`enum` item] 的命名引用来表示。
 
-[^enumtype]: The `enum` type is analogous to a `data` constructor declaration in
-             Haskell, or a *pick ADT* in Limbo.
+[^enumtype]: `enum` 类型类似于 Haskell 中的 `data` 构造函数声明，或 Limbo 中的 *pick ADT* 。
 
 [`enum` item]: ../items/enumerations.md
 [struct expression]: ../expressions/struct-expr.md

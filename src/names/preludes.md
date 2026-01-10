@@ -1,34 +1,30 @@
 r[names.preludes]
-# Preludes
+# 预导入
 
 r[names.preludes.intro]
-A *prelude* is a collection of names that are automatically brought into scope
-of every module in a crate.
+一个 *预导入* 是自动引入到 crate 中每个模块作用域的名称集合。
 
-These prelude names are not part of the module itself: they are implicitly
-queried during [name resolution]. For example, even though something like
-[`Box`] is in scope in every module, you cannot refer to it as `self::Box`
-because it is not a member of the current module.
+这些 预导入 名称本身不是模块的一部分：它们在 [名称解析][name resolution] 期间被隐式查询。例如，尽管像 [`Box`] 这样的东西在每个模块的作用域内，你也不能将其引用为 `self::Box`，因为它不是当前模块的成员。
 
 r[names.preludes.kinds]
-There are several different preludes:
+有几种不同的 预导入：
 
-- [Standard library prelude]
-- [Extern prelude]
-- [Language prelude]
-- [`macro_use` prelude]
-- [Tool prelude]
+- [标准库预导入][Standard library prelude]
+- [外部预导入][Extern prelude]
+- [语言预导入][Language prelude]
+- [`macro_use` 预导入][`macro_use` prelude]
+- [工具预导入][Tool prelude]
 
 r[names.preludes.std]
-## Standard library prelude
+## 标准库预导入
 
 r[names.preludes.std.intro]
-Each crate has a standard library prelude, which consists of the names from a single standard library module.
+每个 crate 都有一个标准库预导入，它由单个标准库模块中的名称组成。
 
 r[names.preludes.std.module]
-The module used depends on the crate's edition, and on whether the [`no_std` attribute] is applied to the crate:
+所使用的模块取决于 crate 的 版次，以及是否对 crate 应用了 [`no_std` 属性][`no_std` attribute]：
 
-Edition | `no_std` not applied        | `no_std` applied
+版次 | 未应用 `no_std` | 已应用 `no_std`
 --------| --------------------------- | ----------------------------
 2015    | [`std::prelude::rust_2015`] | [`core::prelude::rust_2015`]
 2018    | [`std::prelude::rust_2018`] | [`core::prelude::rust_2018`]
@@ -36,40 +32,37 @@ Edition | `no_std` not applied        | `no_std` applied
 2024    | [`std::prelude::rust_2024`] | [`core::prelude::rust_2024`]
 
 > [!NOTE]
-> [`std::prelude::rust_2015`] and [`std::prelude::rust_2018`] have the same contents as [`std::prelude::v1`].
+> [`std::prelude::rust_2015`] 和 [`std::prelude::rust_2018`] 的内容与 [`std::prelude::v1`] 相同。
 >
-> [`core::prelude::rust_2015`] and [`core::prelude::rust_2018`] have the same contents as [`core::prelude::v1`].
+> [`core::prelude::rust_2015`] 和 [`core::prelude::rust_2018`] 的内容与 [`core::prelude::v1`] 相同。
 
 r[names.preludes.extern]
-## Extern prelude
+## 外部预导入
 
 r[names.preludes.extern.intro]
-External crates imported with [`extern crate`] in the root module or provided
-to the compiler (as with the `--extern` flag with `rustc`) are added to the
-*extern prelude*. If imported with an alias such as `extern crate orig_name as
-new_name`, then the symbol `new_name` is instead added to the prelude.
+在根模块中使用 [`extern crate`] 导入或提供给编译器（如使用 `rustc` 的 `--extern` 标志）的外部 crate 会被添加到 *外部预导入* 中。如果使用别名导入（如 `extern crate orig_name as new_name`），那么符号 `new_name` 将被添加到 预导入 中。
 
 r[names.preludes.extern.core]
-The [`core`] crate is always added to the extern prelude.
+[`core`] crate 总是被添加到 外部预导入 中。
 
 r[names.preludes.extern.std]
-The [`std`] crate is added as long as the [`no_std` attribute] is not specified in the crate root.
+只要在 crate 根中没有指定 [`no_std` 属性][`no_std` attribute]，[`std`] crate 就会被添加。
 
 r[names.preludes.extern.edition2018]
 > [!EDITION-2018]
-> In the 2015 edition, crates in the extern prelude cannot be referenced via [use declarations], so it is generally standard practice to include `extern crate` declarations to bring them into scope.
+> 在 2015 版次中，外部预导入中的 crate 不能通过 [use 声明][use declarations] 引用，因此通常的标准做法是包含 `extern crate` 声明来将它们引入作用域。
 >
-> Beginning in the 2018 edition, [use declarations] can reference crates in the extern prelude, so it is considered unidiomatic to use `extern crate`.
+> 从 2018 版次开始，[use 声明][use declarations] 可以引用 外部预导入 中的 crate，因此使用 `extern crate` 被认为是不符合习惯的。
 
 > [!NOTE]
-> Additional crates that ship with `rustc`, such as [`alloc`], and [`test`](mod@test), are not automatically included with the `--extern` flag when using Cargo. They must be brought into scope with an `extern crate` declaration, even in the 2018 edition.
+> 随 `rustc` 一起提供的其他 crate，例如 [`alloc`] 和 [`test`](mod@test)，在使用 Cargo 时不会通过 `--extern` 标志自动包含。即使在 2018 版次中，也必须通过 `extern crate` 声明将它们引入作用域。
 >
 > ```rust
 > extern crate alloc;
 > use alloc::rc::Rc;
 > ```
 >
-> Cargo does bring in `proc_macro` to the extern prelude for proc-macro crates only.
+> Cargo 仅会为过程宏 crate 将 `proc_macro` 引入 外部预导入。
 
 <!--
 See https://github.com/rust-lang/rust/issues/57288 for more about the
@@ -78,10 +71,10 @@ alloc/test limitation.
 
 <!-- template:attributes -->
 r[names.preludes.extern.no_std]
-### The `no_std` attribute
+### no_std属性
 
 r[names.preludes.extern.no_std.intro]
-The *`no_std` [attribute][attributes]* causes the [`std`] crate to not be linked automatically, the [standard library prelude] to instead use the `core` prelude, and the [`macro_use` prelude] to instead use the macros exported from the `core` crate.
+*`no_std` [属性][attributes]* 会导致 [`std`] crate 不被自动链接，[标准库预导入][standard library prelude] 转而使用 `core` 预导入，且 [`macro_use` 预导入][`macro_use` prelude] 转而使用从 `core` crate 导出的宏。
 
 > [!EXAMPLE]
 > <!-- ignore: test infrastructure can't handle no_std -->
@@ -90,82 +83,79 @@ The *`no_std` [attribute][attributes]* causes the [`std`] crate to not be linked
 > ```
 
 > [!NOTE]
-> Using `no_std` is useful when either the crate is targeting a platform that does not support the standard library or is purposefully not using the capabilities of the standard library. Those capabilities are mainly dynamic memory allocation (e.g. `Box` and `Vec`) and file and network capabilities (e.g. `std::fs` and `std::io`).
+> 当 crate 的目标平台不支持标准库，或者是有意不使用标准库的功能时，使用 `no_std` 很有用。这些功能主要是动态内存分配（例如 `Box` 和 `Vec`）以及文件和网络功能（例如 `std::fs` 和 `std::io`）。
 
 > [!WARNING]
-> Using `no_std` does not prevent the standard library from being linked. It is still valid to write `extern crate std` in the crate or in one of its dependencies; this will cause the compiler to link the `std` crate into the program.
+> 使用 `no_std` 并不阻止链接标准库。在 crate 或其依赖项之一中编写 `extern crate std` 仍然是有效的；这将导致编译器将 `std` crate 链接到程序中。
 
 r[names.preludes.extern.no_std.syntax]
-The `no_std` attribute uses the [MetaWord] syntax.
+`no_std` 属性使用 [MetaWord] 语法格式。
 
 r[names.preludes.extern.no_std.allowed-positions]
-The `no_std` attribute may only be applied to the crate root.
+`no_std` 属性只能应用于 crate 根。
 
 r[names.preludes.extern.no_std.duplicates]
-The `no_std` attribute may be used any number of times on a form.
+`no_std` 属性可以在一个形式上使用任意次数。
 
 > [!NOTE]
-> `rustc` lints against any use following the first.
+> `rustc` 会对第一次之后的任何使用发出 lint。
 
 r[names.preludes.extern.no_std.module]
-The `no_std` attribute changes the [standard library prelude] to use the `core` prelude instead of the `std` prelude.
+`no_std` 属性将 [标准库预导入][standard library prelude] 更改为使用 `core` 预导入而不是 `std` 预导入。
 
 r[names.preludes.extern.no_std.macro_use]
-By default, all macros exported from the `std` crate are added to the [`macro_use` prelude]. If the `no_std` attribute is specified, then all macros exported from the `core` crate are placed into the [`macro_use` prelude] instead.
+默认情况下，从 `std` crate 导出的所有宏都会被添加到 [`macro_use` 预导入][`macro_use` prelude] 中。如果指定了 `no_std` 属性，那么从 `core` crate 导出的所有宏将转而被放入 [`macro_use` 预导入][`macro_use` prelude] 中。
 
 r[names.preludes.extern.no_std.edition2018]
 > [!EDITION-2018]
-> Before the 2018 edition, `std` is injected into the crate root by default. If `no_std` is specified, `core` is injected instead. Starting with the 2018 edition, regardless of `no_std` being specified, neither is injected into the crate root.
+> 在 2018 版次之前，`std` 默认注入到 crate 根中。如果指定了 `no_std`，则注入 `core` 代替。从 2018 版次开始，无论是否指定 `no_std`，都不会将两者注入到 crate 根中。
 
 r[names.preludes.lang]
-## Language prelude
+## 语言预导入
 
 r[names.preludes.lang.intro]
-The language prelude includes names of types and attributes that are built-in
-to the language. The language prelude is always in scope.
+语言预导入包含了语言内置的类型和属性名称。语言预导入始终在作用域内。
 
 r[names.preludes.lang.entities]
-It includes the following:
+它包含以下内容：
 
-* [Type namespace]
-    * [Boolean type] --- `bool`
-    * [Textual types] --- `char` and `str`
-    * [Integer types] --- `i8`, `i16`, `i32`, `i64`, `i128`, `u8`, `u16`, `u32`, `u64`, `u128`
-    * [Machine-dependent integer types] --- `usize` and `isize`
-    * [floating-point types] --- `f32` and `f64`
-* [Macro namespace]
-    * [Built-in attributes]
-    * [Built-in derive macros][attributes.derive.built-in]
+* [类型命名空间][Type namespace]
+    * [布尔类型][Boolean type] --- `bool`
+    * [文本类型][Textual types] --- `char` 和 `str`
+    * [整数类型][Integer types] --- `i8`, `i16`, `i32`, `i64`, `i128`, `u8`, `u16`, `u32`, `u64`, `u128`
+    * [平台相关整数类型][Machine-dependent integer types] --- `usize` 和 `isize`
+    * [浮点类型][floating-point types] --- `f32` 和 `f64`
+* [宏命名空间][Macro namespace]
+    * [内置属性][Built-in attributes]
+    * [内置派生宏][attributes.derive.built-in]
 
 r[names.preludes.macro_use]
-## `macro_use` prelude
+## `macro_use`预导入
 
 r[names.preludes.macro_use.intro]
-The `macro_use` prelude includes macros from external crates that were
-imported by the [`macro_use` attribute] applied to an [`extern crate`].
+`macro_use` 预导入包含了从应用了 [`macro_use` 属性][`macro_use` attribute] 的 [`extern crate`] 导入的外部 crate 中的宏。
 
 r[names.preludes.tool]
-## Tool prelude
+## 工具预导入
 
 r[names.preludes.tool.intro]
-The tool prelude includes tool names for external tools in the [type
-namespace]. See the [tool attributes] section for more details.
+工具预导入包含了 [类型命名空间][type namespace] 中外部工具的工具名称。有关更多详细信息，请参阅 [工具属性][tool attributes] 部分。
 
 <!-- template:attributes -->
 r[names.preludes.no_implicit_prelude]
-## The `no_implicit_prelude` attribute
+## no_implicit_prelude属性
 
 r[names.preludes.no_implicit_prelude.intro]
-The *`no_implicit_prelude` [attribute]* is used to prevent implicit preludes from being brought into scope.
+*`no_implicit_prelude` [属性][attribute]* 用于防止隐式 预导入 被引入作用域。
 
 > [!EXAMPLE]
 > ```rust
-> // The attribute can be applied to the crate root to affect
-> // all modules.
+> // 该属性可以应用于 crate 根以影响
+> // 所有模块。
 > #![no_implicit_prelude]
 >
-> // Or it can be applied to a module to only affect that module
-> // and its descendants.
+> // 或者它可以应用于一个模块，仅影响该模块
+> // 及其后代。
 > #[no_implicit_prelude]
 > mod example {
 >     // ...
@@ -173,29 +163,29 @@ The *`no_implicit_prelude` [attribute]* is used to prevent implicit preludes fro
 > ```
 
 r[names.preludes.no_implicit_prelude.syntax]
-The `no_implicit_prelude` attribute uses the [MetaWord] syntax.
+`no_implicit_prelude` 属性使用 [MetaWord] 语法格式。
 
 r[names.preludes.no_implicit_prelude.allowed-positions]
-The `no_implicit_prelude` attribute may only be applied to the crate or to a module.
+`no_implicit_prelude` 属性只能应用于 crate 或模块。
 
 > [!NOTE]
-> `rustc` ignores use in other positions but lints against it. This may become an error in the future.
+> `rustc` 会忽略在其他位置的使用，但会对其发出 lint。这在未来可能会变成一个错误。
 
 r[names.preludes.no_implicit_prelude.duplicates]
-The `no_implicit_prelude` attribute may be used any number of times on a form.
+`no_implicit_prelude` 属性可以在一个形式上使用任意次数。
 
 > [!NOTE]
-> `rustc` lints against any use following the first.
+> `rustc` 会对第一次之后的任何使用发出 lint。
 
 r[names.preludes.no_implicit_prelude.excluded-preludes]
-The `no_implicit_prelude` attribute prevents the [standard library prelude], [extern prelude], [`macro_use` prelude], and the [tool prelude] from being brought into scope for the module and its descendants.
+`no_implicit_prelude` 属性阻止 [标准库预导入][standard library prelude]、[外部预导入][extern prelude]、[`macro_use` 预导入][`macro_use` prelude] 和 [工具预导入][tool prelude] 被引入到该模块及其后代的作用域中。
 
 r[names.preludes.no_implicit_prelude.lang]
-The `no_implicit_prelude` attribute does not affect the [language prelude].
+`no_implicit_prelude` 属性不影响 [语言预导入][language prelude]。
 
 r[names.preludes.no_implicit_prelude.edition2018]
 > [!EDITION-2018]
-> In the 2015 edition, the `no_implicit_prelude` attribute does not affect the [`macro_use` prelude], and all macros exported from the standard library are still included in the `macro_use` prelude. Starting in the 2018 edition, the attribute does remove the `macro_use` prelude.
+> 在 2015 版次中，`no_implicit_prelude` 属性不影响 [`macro_use` 预导入][`macro_use` prelude]，并且从标准库导出的所有宏仍包含在 `macro_use` 预导入中。从 2018 版次开始，该属性确实会移除 `macro_use` 预导入。
 
 [`extern crate`]: ../items/extern-crates.md
 [`macro_use` attribute]: ../macros-by-example.md#macro_use属性

@@ -1,8 +1,7 @@
 r[type.generic]
-# Type parameters
+# 类型参数
 
-Within the body of an item that has type parameter declarations, the names of
-its type parameters are types:
+在具有类型参数声明的 项 的主体内，其类型参数的名称就是类型：
 
 ```rust
 fn to_vec<A: Clone>(xs: &[A]) -> Vec<A> {
@@ -16,5 +15,4 @@ fn to_vec<A: Clone>(xs: &[A]) -> Vec<A> {
 }
 ```
 
-Here, `first` has type `A`, referring to `to_vec`'s `A` type parameter; and
-`rest` has type `Vec<A>`, a vector with element type `A`.
+这里， first 的类型为 A ，引用了 to_vec 的 A 类型参数；而 rest 的类型为 Vec<A> ，这是一个元素类型为 A 的向量。

@@ -107,7 +107,7 @@
 - [名称](names.md)
     - [命名空间](names/namespaces.md)
     - [作用域](names/scopes.md)
-    - [预导入模块](names/preludes.md)
+    - [预导入](names/preludes.md)
     - [路径](paths.md)
     - [名称解析](names/name-resolution.md)
     - [可见性与私有性](visibility-and-privacy.md)
@@ -129,7 +129,7 @@
 
 - [常量求值](const_eval.md)
 
-- [应用程序二进制接口](abi.md)
+- [应用程序二进制接口(ABI)](abi.md)
 
 - [Rust运行时](runtime.md)
 

@@ -1,48 +1,48 @@
 r[names.resolution]
-# Name resolution
+# 名称解析
 
 r[names.resolution.intro]
-_Name resolution_ is the process of tying paths and other identifiers to the declarations of those entities. Names are segregated into different [namespaces], allowing entities in different namespaces to share the same name without conflict. Each name is valid within a [scope], or a region of source text where that name may be referenced. Access to a name may be restricted based on its [visibility].
+_名称解析_ 是将路径和其他标识符绑定到这些实体的声明的过程。名称被分隔到不同的 [命名空间][namespaces] 中，允许不同命名空间中的实体在没有冲突的情况下共享相同的名称。每个名称在 [作用域][scope]（即可以引用该名称的源代码区域）内有效。对名称的访问可能会根据其 [可见性][visibility] 受到限制。
 
-Name resolution is split into three stages throughout the compilation process. The first stage, *expansion-time resolution*, resolves all [`use` declarations] and [macro invocations]. The second stage, *primary resolution*, resolves all names that have not yet been resolved and that do not depend on type information to resolve. The last stage, *type-relative resolution*, resolves the remaining names once type information is available.
+在整个编译过程中，名称解析分为三个阶段。第一个阶段， * 展开时解析 *，解析所有的 [`use` 声明][`use` declarations] 和 [宏调用][macro invocations]。第二个阶段， * 初级解析 *，解析所有尚未解析且不依赖于类型信息来解析的名称。最后一个阶段， * 类型相关解析 *，一旦类型信息可用，就解析剩余的名称。
 
 > [!NOTE]
-> Expansion-time resolution is also known as *early resolution*. Primary resolution is also known as *late resolution*.
+> 展开时解析 也被称为 * 早期解析 *。 初级解析 也被称为 * 晚期解析 *。
 
 r[names.resolution.general]
-## General
+## 通用
 
 r[names.resolution.general.intro]
-The rules within this section apply to all stages of name resolution.
+本节中的规则适用于名称解析的所有阶段。
 
 r[names.resolution.general.scopes]
-### Scopes
+### 作用域
 
 r[names.resolution.general.scopes.intro]
 > [!NOTE]
-> This is a placeholder for future expansion about resolution of names within various scopes.
+> 这是未来关于各种作用域内名称解析扩展的占位符。
 
 r[names.resolution.expansion]
-## Expansion-time name resolution
+## 展开时名称解析
 
 r[names.resolution.expansion.intro]
-Expansion-time name resolution is the stage of name resolution necessary to complete macro expansion and fully generate a crate's [AST]. This stage requires the resolution of macro invocations and `use` declarations. Resolving `use` declarations is required for macro invocations that resolve via [path-based scope]. Resolving macro invocations is required in order to expand them.
+展开时名称解析是完成宏展开并完全生成 crate 的 [AST] 所必需的名称解析阶段。此阶段需要解析宏调用和 `use` 声明。解析 `use` 声明是解析通过 [基于路径的作用域][path-based scope] 的宏调用所必需的。为了展开宏调用，必须先解析它们。
 
 r[names.resolution.expansion.unresolved-invocations]
-After expansion-time name resolution, the AST must not contain any unexpanded macro invocations. Every macro invocation resolves to a valid definition that exists in the final AST or in an external crate.
+在展开时名称解析之后， [AST] 不得包含任何未展开的宏调用。每个宏调用都必须解析为存在于最终 [AST] 中或外部 crate 中的有效定义。
 
 ```rust,compile_fail
-m!(); // ERROR: Cannot find macro `m` in this scope.
+m!(); // 错误：在此作用域内找不到宏 `m`。
 ```
 
 r[names.resolution.expansion.expansion-order-stability]
-The resolution of names must be stable. After expansion, names in the fully expanded AST must resolve to the same definition regardless of the order in which macros are expanded and imports are resolved.
+名称的解析必须是稳定的。展开后，完全展开的 [AST] 中的名称必须解析为相同的定义，无论宏展开和导入解析的顺序如何。
 
 r[names.resolution.expansion.speculation]
-All name resolution candidates selected during macro expansion are considered speculative. Once the crate has been fully expanded, all speculative import resolutions are validated to ensure that macro expansion did not introduce any new ambiguities.
+宏展开期间选择的所有名称解析候选者都被视为推测性的。一旦 crate 被完全展开，所有的推测性导入解析都会被验证，以确保宏展开没有引入任何新的歧义。
 
 > [!NOTE]
-> Due to the iterative nature of macro expansion, this causes so-called time traveling ambiguities, such as when a macro or glob import introduces an item that is ambiguous with its own base path.
+> 由于宏展开的迭代性质，这会导致所谓的时空穿越歧义，例如当宏或通配符导入引入了一个与其自身基路径歧义的项时。
 >
 > ```rust,compile_fail,E0659
 > # fn main() {}
@@ -56,23 +56,20 @@ All name resolution candidates selected during macro expansion are considered sp
 > f!();
 >
 > const _: () = {
->     // Initially, we speculatively resolve `m` to the module in
->     // the crate root.
+>     // 最初，我们将 `m` 推测性地解析为 crate 根中的模块。
 >     //
->     // Expansion of `f` introduces a second `m` module inside this
->     // body.
+>     // `f` 的展开在此体内部引入了第二个 `m` 模块。
 >     //
->     // Expansion-time resolution finalizes resolutions by re-
->     // resolving all imports and macro invocations, sees the
->     // introduced ambiguity and reports it as an error.
->     m::f!(); // ERROR: `m` is ambiguous.
+>     // 展开时解析通过重新解析所有导入和宏调用来完成解析，
+>     // 发现引入的歧义并将其作为错误报告。
+>     m::f!(); // 错误：`m` 存在歧义。
 > };
 > ```
 
 r[names.resolution.expansion.imports]
-### Imports
+### 导入
 r[names.resolution.expansion.imports.intro]
-All `use` declarations are fully resolved during this stage of resolution. [Type-relative paths] cannot be resolved at this stage and will produce an error.
+所有的 `use` 声明都在此解析阶段被完全解析。 [类型相关路径][type-relative paths] 在此阶段无法解析，并将产生错误。
 
 ```rust,no_run
 mod m {
@@ -84,15 +81,15 @@ mod m {
     }
 }
 
-// Valid imports resolved at expansion-time:
-use m::C; // OK.
-use m::E; // OK.
-use m::A; // OK.
-use m::E::V; // OK.
+// 在展开时解析的有效导入：
+use m::C; // OK。
+use m::E; // OK。
+use m::A; // OK。
+use m::E::V; // OK。
 
-// Valid expressions resolved during type-relative resolution:
-let _ = m::A::V; // OK.
-let _ = m::E::C; // OK.
+// 在类型相关解析期间解析的有效表达式：
+let _ = m::A::V; // OK。
+let _ = m::E::C; // OK。
 ```
 
 ```rust,compile_fail,E0432
@@ -104,13 +101,13 @@ let _ = m::E::C; // OK.
 #         pub const C: () = ();
 #     }
 # }
-// Invalid type-relative imports that can't resolve at expansion-time:
-use m::A::V; // ERROR: Unresolved import `m::A::V`.
-use m::E::C; // ERROR: Unresolved import `m::E::C`.
+// 在展开时无法解析的无效类型相关导入：
+use m::A::V; // 错误：未解析的导入 `m::A::V`。
+use m::E::C; // 错误：未解析的导入 `m::E::C`。
 ```
 
 r[names.resolution.expansion.imports.shadowing]
-Names introduced via `use` declarations in an [outer scope] are shadowed by candidates in the same namespace with the same name from an inner scope except where otherwise restricted by [name resolution ambiguities].
+除了受 [名称解析歧义][name resolution ambiguities] 限制的情况外，通过 [外部作用域][outer scope] 中的 `use` 声明引入的名称会被内部作用域中同一命名空间内同名的候选者遮蔽。
 
 ```rust,no_run
 pub mod m1 {
@@ -125,32 +122,31 @@ pub mod m2 {
     }
 }
 
-// This introduces the name `ambig` in the outer scope.
+// 这在外部作用域中引入了名称 `ambig`。
 use m1::ambig;
 const _: () = {
-    // This shadows `ambig` in the inner scope.
+    // 这在内部作用域中遮蔽了 `ambig`。
     use m2::ambig;
-    // The inner candidate is selected here
-    // as the resolution of `ambig`.
+    // 这里的 `ambig` 解析选择内部候选者。
     use ambig::C;
     assert!(C == 2);
 };
 ```
 
 r[names.resolution.expansion.imports.shadowing.shared-scope]
-Shadowing of names introduced via `use` declarations within a single scope is permitted in the following situations:
+在单个作用域内，允许对通过 `use` 声明引入的名称进行遮蔽的情况如下：
 
-- [`use` glob shadowing]
-- [Macro textual scope shadowing]
+- [`use` 通配符遮蔽][`use` glob shadowing]
+- [宏文本作用域遮蔽][macro textual scope shadowing]
 
 r[names.resolution.expansion.imports.ambiguity]
-#### Ambiguities
+#### 歧义
 
 r[names.resolution.expansion.imports.ambiguity.intro]
-There are certain situations during expansion-time resolution where there are multiple macro definitions, `use` declarations, or modules an import or macro invocation's name could refer to where the compiler cannot consistently determine which candidate should shadow the other. Shadowing cannot be permitted in these situations and the compiler instead emits ambiguity errors.
+在展开时解析期间，某些情况下存在多个宏定义、 `use` 声明或模块，导入或宏调用的名称可能指向这些定义、声明或模块，而编译器无法始终如一地确定哪个候选者应该遮蔽另一个。在这些情况下不允许遮蔽，编译器会发出歧义错误。
 
 r[names.resolution.expansion.imports.ambiguity.glob-vs-glob]
-Names may not be resolved through ambiguous glob imports. Glob imports are allowed to import conflicting names in the same namespace as long as the name is not used. Names with conflicting candidates from ambiguous glob imports may still be shadowed by non-glob imports and used without producing an error. The errors occur at time of use, not time of import.
+名称不能通过有歧义的通配符导入来解析。通配符导入允许在同一命名空间中导入冲突的名称，只要不使用该名称即可。具有来自歧义通配符导入的冲突候选者的名称仍然可以被非通配符导入遮蔽，并在不产生错误的情况下使用。错误发生在使用的时刻，而不是导入的时刻。
 
 ```rust,compile_fail,E0659
 mod m1 {
@@ -161,15 +157,13 @@ mod m2 {
     pub struct Ambig;
 }
 
-// OK: This brings conficting names in the same namespace into scope
-// but they have not been used yet.
+// OK：这将同一命名空间中冲突的名称引入作用域，但尚未被使用。
 use m1::*;
 use m2::*;
 
 const _: () = {
-    // The error happens when the name with the conflicting candidates
-    // is used.
-    let x = Ambig; // ERROR: `Ambig` is ambiguous.
+    // 当使用具有冲突候选者的名称时发生错误。
+    let x = Ambig; // 错误：`Ambig` 存在歧义。
 }
 ```
 
@@ -183,16 +177,15 @@ const _: () = {
 # }
 #
 # use m1::*;
-# use m2::*; // OK: No name conflict.
+# use m2::*; // OK：没有名称冲突。
 const _: () = {
-    // This is permitted, since resolution is not through the
-    // ambiguous globs.
+    // 这是允许的，因为解析不是通过歧义通配符进行的。
     struct Ambig;
-    let x = Ambig; // OK.
+    let x = Ambig; // OK。
 };
 ```
 
-Multiple glob imports are allowed to import the same name, and that name is allowed to be used if the imports are of the same item (following reexports). The visibility of the name is the maximum visibility of the imports.
+允许通过多个通配符导入导入相同的名称，如果导入的是同一个项（遵循重导出），则允许使用该名称。该名称的可见性是这些导入中的最大可见性。
 
 ```rust,no_run
 mod m1 {
@@ -200,34 +193,32 @@ mod m1 {
 }
 
 mod m2 {
-    // This reexports the same `Ambig` item from a second module.
+    // 这从第二个模块重导出同一个 `Ambig` 项。
     pub use super::m1::Ambig;
 }
 
 mod m3 {
-    // These both import the same `Ambig`.
+    // 这两者都导入同一个 `Ambig`。
     //
-    // The visibility of `Ambig` is `pub` because that is the
-    // maximum visibility between these two `use` declarations.
+    // `Ambig` 的可见性是 `pub`，因为这是这两个 `use` 声明之间的最大可见性。
     pub use super::m1::*;
     use super::m2::*;
 }
 
 mod m4 {
-    // `Ambig` can be used through the `m3` globs and still has
-    // `pub` visibility.
+    // `Ambig` 可以通过 `m3` 的通配符使用，且仍然具有 `pub` 可见性。
     pub use crate::m3::Ambig;
 }
 
 const _: () = {
-    // Therefore, we can use it here.
-    let _ = m4::Ambig; // OK.
+    // 因此，我们可以在这里使用它。
+    let _ = m4::Ambig; // OK。
 };
 # fn main() {}
 ```
 
 r[names.resolution.expansion.imports.ambiguity.glob-vs-outer]
-Names in imports and macro invocations may not be resolved through glob imports when there is another candidate available in an [outer scope].
+当在 [外部作用域][outer scope] 中有另一个可用候选者时，导入和宏调用中的名称不能通过通配符导入来解析。
 
 ```rust,compile_fail,E0659
 mod glob {
@@ -236,21 +227,21 @@ mod glob {
     }
 }
 
-// Outer `ambig` candidate.
+// 外部 `ambig` 候选者。
 pub mod ambig {
     pub struct Name;
 }
 
 const _: () = {
-    // Cannot resolve `ambig` through this glob
-    // because of the outer `ambig` candidate above.
+    // 无法通过此通配符解析 `ambig`，
+    // 因为上方有外部 `ambig` 候选者。
     use glob::*;
-    use ambig::Name; // ERROR: `ambig` is ambiguous.
+    use ambig::Name; // 错误：`ambig` 存在歧义。
 };
 ```
 
 ```rust,compile_fail,E0659
-// As above, but with macros.
+// 如上，但使用宏。
 pub mod m {
     macro_rules! f {
         () => {};
@@ -268,12 +259,12 @@ use m::f as ambig;
 
 const _: () = {
     use glob::*;
-    ambig!(); // ERROR: `ambig` is ambiguous.
+    ambig!(); // 错误：`ambig` 存在歧义。
 };
 ```
 
 > [!NOTE]
-> These ambiguity errors are specific to expansion-time resolution. Having multiple candidates available for a given name during later stages of resolution is not considered an error. So long as none of the imports themselves are ambiguous, there will always be a single unambiguous closest resolution.
+> 这些歧义错误特定于展开时解析。在解析的后续阶段，为一个给定的名称提供多个候选者不被视为错误。只要导入本身没有歧义，就总是会有一个唯一的、无歧义的最近解析。
 >
 > ```rust,no_run
 > mod glob {
@@ -289,75 +280,70 @@ const _: () = {
 > const C: () = {
 >     use glob::*;
 >     assert!(AMBIG == 1);
->     //      ^---- This `AMBIG` is resolved during primary resolution.
+>     //      ^---- 这个 `AMBIG` 在初级解析期间解析。
 > };
 > ```
 
 r[names.resolution.expansion.imports.ambiguity.path-vs-textual-macro]
-Names may not be resolved through ambiguous macro reexports. Macro reexports are ambiguous when they would shadow a textual macro candidate for the same name in an [outer scope].
+名称不能通过有歧义的宏重导出进行解析。当宏重导出会遮蔽 [外部作用域][outer scope] 中同名的文本宏候选者时，宏重导出即具有歧义。
 
 ```rust,compile_fail,E0659
-// Textual macro candidate.
+// 文本宏候选者。
 macro_rules! ambig {
     () => {}
 }
 
-// Path-based macro candidate.
+// 基于路径的宏候选者。
 macro_rules! path_based {
     () => {}
 }
 
 pub fn f() {
-    // This reexport of the `path_based` macro definition
-    // as `ambig` may not shadow the `ambig` macro definition
-    // which is resolved via textual macro scope.
+    // 将 `path_based` 宏定义重导出为 `ambig` 
+    // 不得遮蔽通过文本宏作用域解析的 `ambig` 宏定义。
     use path_based as ambig;
-    ambig!(); // ERROR: `ambig` is ambiguous.
+    ambig!(); // 错误：`ambig` 存在歧义。
 }
 ```
 
 > [!NOTE]
-> This restriction is needed due to implementation details in the compiler,
-> specifically the current scope visitation logic and the complexity of supporting
-> this behavior. This ambiguity error may be removed in the future.
+> 这种限制是由于编译器中的实现细节而需要的，特别是当前的作用域访问逻辑和支持此行为的复杂性。此歧义错误可能会在未来被移除。
 
 r[names.resolution.expansion.macros]
-### Macros
+### 宏
 
 r[names.resolution.expansion.macros.intro]
-Macros are resolved by iterating through the available scopes to find the available candidates. Macros are split into two sub-namespaces, one for function-like macros, and the other for attributes and derives. Resolution candidates from the incorrect sub-namespace are ignored.
+宏通过遍历可用作用域来查找可用候选者进行解析。宏被分为两个子命名空间，一个用于类函数宏，另一个用于属性和派生宏。来自错误子命名空间的解析候选者将被忽略。
 
 r[names.resolution.expansion.macros.visitation-order]
-The available scope kinds are visited in the following order. Each of these scope kinds represent one or more scopes.
+可用作用域种类的访问顺序如下。这些作用域种类中的每一个都代表一个或多个作用域。
 
-* [Derive helpers]
-* [Textual scope macros]
-* [Path-based scope macros]
-* [`macro_use` prelude]
-* [Standard library prelude]
-* [Builtin attributes]
+* [派生辅助属性][Derive helpers]
+* [文本作用域宏][Textual scope macros]
+* [基于路径的作用域宏][Path-based scope macros]
+* [`macro_use` 预导入][`macro_use` prelude]
+* [标准库预导入][Standard library prelude]
+* [内置属性][Builtin attributes]
 
 > [!NOTE]
-> The compiler will attempt to resolve derive helpers that are used before their associated macro introduces them into scope. This scope is visited after the scope for resolving derive helper candidates that are correctly in scope. This behavior is slated for removal.
+> 编译器将尝试解析在其关联宏将其引入作用域之前使用的派生辅助属性。此作用域在访问已正确处于作用域内的派生辅助候选者的作用域之后被访问。此行为计划被移除。
 >
-> For more info see [derive helper scope].
+> 更多信息请参见 [派生辅助属性作用域][derive helper scope]。
 
 > [!NOTE]
-> This visitation order may change in the future, such as interleaving the
-> visitation of textual and path-based scope candidates based on their lexical
-> scopes.
+> 此访问顺序将来可能会改变，例如根据文本和基于路径的作用域候选者的词法作用域来交替访问它们。
 
 > [!EDITION-2018]
-> Starting in edition 2018 the `#[macro_use]` prelude is not visited when [`#[no_implicit_prelude]`][names.preludes.no_implicit_prelude] is present.
+> 从 2018 版次开始，当存在 [`#[no_implicit_prelude]`][names.preludes.no_implicit_prelude] 时，不会访问 `#[macro_use]` 预导入。
 
 r[names.resolution.expansion.macros.reserved-names]
-The names `cfg` and `cfg_attr` are reserved in the macro attribute [sub-namespace].
+名称 `cfg` 和 `cfg_attr` 在宏属性 [子命名空间][sub-namespace] 中被保留。
 
 r[names.resolution.expansion.macros.ambiguity]
-#### Ambiguities
+#### 歧义
 
 r[names.resolution.expansion.macros.ambiguity.more-expanded-vs-outer]
-Names may not be resolved through ambiguous candidates inside of macro expansions. Candidates inside of macro expansions are ambiguous when they would shadow a candidate for the same name from outside of the first candidate's macro expansion and the invocation of the name being resolved is also from outside of the first candidate's macro expansion.
+名称不能通过宏展开内部的歧义候选者进行解析。当宏展开内部的候选者会遮蔽来自第一个候选者宏展开外部的同名候选者，且正在解析的名称调用也来自第一个候选者宏展开外部时，宏展开内部的候选者即具有歧义。
 
 ```rust,compile_fail,E0659
 macro_rules! define_ambig {
@@ -368,29 +354,25 @@ macro_rules! define_ambig {
     }
 }
 
-// Introduce outer candidate definition for `ambig` macro invocation.
+// 为 `ambig` 宏调用引入外部候选者定义。
 macro_rules! ambig {
     () => {}
 }
 
-// Introduce a second candidate definition for `ambig` inside of a
-// macro expansion.
+// 在宏展开内部引入第二个 `ambig` 候选者定义。
 define_ambig!();
 
-// The definition of `ambig` from the second invocation
-// of `define_ambig` is the innermost canadidate.
+// 来自 `define_ambig` 第二次调用的 `ambig` 定义是最内部的候选者。
 //
-// The definition of `ambig` from the first invocation of
-// `define_ambig` is the second candidate.
+// 来自 `define_ambig` 第一次调用的 `ambig` 定义是第二个候选者。
 //
-// The compiler checks that the first candidate is inside of a macro
-// expansion, that the second candidate is not from within the same
-// macro expansion, and that the name being resolved is not from
-// within the same macro expansion.
-ambig!(); // ERROR: `ambig` is ambiguous.
+// 编译器检查第一个候选者是否在宏展开内部，
+// 第二个候选者是否不在同一个宏展开内部，
+// 以及正在解析的名称是否不在同一个宏展开内部。
+ambig!(); // 错误：`ambig` 存在歧义。
 ```
 
-The reverse is not considered ambiguous.
+反过来则不被视为歧义。
 
 ```rust,no_run
 # macro_rules! define_ambig {
@@ -400,17 +382,16 @@ The reverse is not considered ambiguous.
 #         }
 #     }
 # }
-// Swap order of definitions.
+// 交换定义顺序。
 define_ambig!();
 macro_rules! ambig {
     () => {}
 }
-// The innermost candidate is now less expanded so it may shadow more
-// the macro expanded definition above it.
+// 最内部的候选者现在展开程度较低，因此它可以遮蔽其上方的宏展开定义。
 ambig!();
 ```
 
-Nor is it ambiguous if the invocation being resolved is within the innermost candidate's expansion.
+如果正在解析的调用在最内部候选者的展开范围内，也不是歧义。
 
 ```rust,no_run
 macro_rules! ambig {
@@ -419,13 +400,12 @@ macro_rules! ambig {
 
 macro_rules! define_and_invoke_ambig {
     () => {
-        // Define innermost candidate.
+        // 定义最内部候选者。
         macro_rules! ambig {
             () => {}
         }
 
-        // Invocation of `ambig` is in the same expansion as the
-        // innermost candidate.
+        // `ambig` 的调用与最内部候选者在同一个展开中。
         ambig!(); // OK
     }
 }
@@ -433,7 +413,7 @@ macro_rules! define_and_invoke_ambig {
 define_and_invoke_ambig!();
 ```
 
-It doesn't matter if both definitions come from invocations of the same macro; the outermost candidate is still considered "less expanded" because it is not within the expansion containing the innermost candidate's definition.
+即使两个定义都来自同一个宏的调用，这也没有关系；最外部的候选者仍然被视为 “展开较少”，因为它不在包含最内部候选者定义的展开范围内。
 
 ```rust,compile_fail,E0659
 # macro_rules! define_ambig {
@@ -445,10 +425,10 @@ It doesn't matter if both definitions come from invocations of the same macro; t
 # }
 define_ambig!();
 define_ambig!();
-ambig!(); // ERROR: `ambig` is ambiguous.
+ambig!(); // 错误：`ambig` 存在歧义。
 ```
 
-This also applies to imports so long as the innermost candidate for the name is from within a macro expansion.
+这也适用于导入，只要名称的最内部候选者来自宏展开。
 
 ```rust,compile_fail,E0659
 macro_rules! define_ambig {
@@ -464,15 +444,14 @@ mod ambig {
 }
 
 const _: () = {
-    // Introduce innermost candidate for
-    // `ambig` mod in this macro expansion.
+    // 在此宏展开中引入 `ambig` 模块的最内部候选者。
     define_ambig!();
-    use ambig::Name; // ERROR: `ambig` is ambiguous.
+    use ambig::Name; // 错误：`ambig` 存在歧义。
 };
 ```
 
 r[names.resolution.expansion.macros.ambiguity.built-in-attr]
-User-defined attributes or derive macros may not shadow built-in non-macro attributes (e.g. inline).
+用户定义的属性或派生宏不得遮蔽内置的非宏属性（例如 inline）。
 
 <!-- ignore: test doesn't support proc-macro -->
 ```rust,ignore
@@ -480,7 +459,7 @@ User-defined attributes or derive macros may not shadow built-in non-macro attri
 # use proc_macro::TokenStream;
 #[proc_macro_derive(WithHelperAttr, attributes(non_exhaustive))]
 //                                             ^^^^^^^^^^^^^^
-//                                   User-defined attribute candidate.
+//                                   用户定义的属性候选者。
 // ...
 # pub fn derive_with_helper_attr(_item: TokenStream) -> TokenStream {
 #     TokenStream::new()
@@ -491,12 +470,12 @@ User-defined attributes or derive macros may not shadow built-in non-macro attri
 ```rust,ignore
 // src/lib.rs
 #[derive(with_helper::WithHelperAttr)]
-#[non_exhaustive] // ERROR: `non_exhaustive` is ambiguous.
+#[non_exhaustive] // 错误：`non_exhaustive` 存在歧义。
 struct S;
 ```
 
 > [!NOTE]
-> This applies regardless of the name the built-in attribute is a candidate for:
+> 无论内置属性是哪个名称的候选者，这都适用：
 >
 > <!-- ignore: test doesn't support proc-macro -->
 > ```rust,ignore
@@ -505,7 +484,7 @@ struct S;
 > #
 > #[proc_macro_derive(WithHelperAttr, attributes(helper))]
 > //                                             ^^^^^^
-> //                                 User-defined attribute candidate.
+> //                                 用户定义的属性候选者。
 > // ...
 > # pub fn derive_with_helper_attr(_item: TokenStream) -> TokenStream {
 > #     TokenStream::new()
@@ -516,22 +495,22 @@ struct S;
 > ```rust,ignore
 > // src/lib.rs
 > use inline as helper;
-> //            ^----- Built-in attribute candidate via reexport.
+> //            ^----- 通过重导出的内置属性候选者。
 >
 > #[derive(with_helper::WithHelperAttr)]
-> #[helper] // ERROR: `helper` is ambiguous.
+> #[helper] // 错误：`helper` 存在歧义。
 > struct S;
 > ```
 
 r[names.resolution.primary]
-## Primary name resolution
+## 初级名称解析
 > [!NOTE]
-> This is a placeholder for future expansion about primary name resolution.
+> 这是未来关于初级名称解析扩展的占位符。
 
 r[names.resolution.type-relative]
-## Type-relative resolution
+## 类型相关解析
 > [!NOTE]
-> This is a placeholder for future expansion about type-dependent resolution.
+> 这是未来关于类型依赖解析扩展的占位符。
 
 [AST]: glossary.ast
 [Builtin attributes]: ./preludes.md#r-names.preludes.lang

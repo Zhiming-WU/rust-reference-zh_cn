@@ -1,5 +1,5 @@
 r[type.trait-object]
-# Trait objects
+# 特型对象
 
 r[type.trait-object.syntax]
 ```grammar,types
@@ -9,24 +9,18 @@ TraitObjectTypeOneBound -> `dyn`? TraitBound
 ```
 
 r[type.trait-object.intro]
-A *trait object* is an opaque value of another type that implements a set of
-traits. The set of traits is made up of a [dyn compatible] *base trait* plus any
-number of [auto traits].
+一个 *特型对象* 是实现了的一组特型的另一种类型的不透明值。这组特型由一个 [dyn 兼容][dyn compatible] 的 *基础特型* 加上任意数量的 [自动特型][auto traits] 组成。
 
 r[type.trait-object.impls]
-Trait objects implement the base trait, its auto traits, and any [supertraits]
-of the base trait.
+特型对象实现了基础特型、其自动特型以及基础特型的任何 [超特型][supertraits] 。
 
 r[type.trait-object.name]
-Trait objects are written as the keyword `dyn` followed by a set of trait
-bounds, but with the following restrictions on the trait bounds.
+特型对象写作关键字 `dyn` 后跟一组特型界限，但对特型界限有以下限制。
 
 r[type.trait-object.constraint]
-There may not be more than one non-auto trait, no more than one
-lifetime, and opt-out bounds (e.g. `?Sized`) are not allowed. Furthermore,
-paths to traits may be parenthesized.
+非自动特型不得超过一个，生命周期不得超过一个，且不允许退出界限（例如 `?Sized` ）。此外，特型路径可以用括号括起来。
 
-For example, given a trait `Trait`, the following are all trait objects:
+例如，给定一个特型 `Trait` ，以下都是特型对象：
 
 * `dyn Trait`
 * `dyn Trait + Send`
@@ -39,39 +33,26 @@ For example, given a trait `Trait`, the following are all trait objects:
 
 r[type.trait-object.syntax-edition2021]
 > [!EDITION-2021]
-> Before the 2021 edition, the `dyn` keyword may be omitted.
+> 在 2021 版次 之前， `dyn` 关键字可以省略。
 
 r[type.trait-object.syntax-edition2018]
 > [!EDITION-2018]
-> In the 2015 edition, if the first bound of the trait object is a path that starts with `::`, then the `dyn` will be treated as a part of the path. The first path can be put in parenthesis to get around this. As such, if you want a trait object with the trait `::your_module::Trait`, you should write it as `dyn (::your_module::Trait)`.
+> 在 2015 版次 中，如果特型对象的第一个界限是以 `::` 开头的路径，那么 `dyn` 将被视为路径的一部分。可以将第一个路径放在括号中来解决这个问题。因此，如果你想要一个具有 `::your_module::Trait` 特型的特型对象，你应该写成 `dyn (::your_module::Trait)` 。
 >
-> Beginning in the 2018 edition, `dyn` is a true keyword and is not allowed in paths, so the parentheses are not necessary.
+> 从 2018 版次 开始， `dyn` 是一个真正的关键字，不允许出现在路径中，因此括号不是必需的。
 
 r[type.trait-object.alias]
-Two trait object types alias each other if the base traits alias each other and
-if the sets of auto traits are the same and the lifetime bounds are the same.
-For example, `dyn Trait + Send + UnwindSafe` is the same as
-`dyn Trait + UnwindSafe + Send`.
+如果基础特型互为别名，且自动特型集合相同，生命周期界限也相同，则两个特型对象类型互为别名。例如， `dyn Trait + Send + UnwindSafe` 与 `dyn Trait + UnwindSafe + Send` 相同。
 
 r[type.trait-object.unsized]
-Due to the opaqueness of which concrete type the value is of, trait objects are
-[dynamically sized types]. Like all
-<abbr title="dynamically sized types">DSTs</abbr>, trait objects are used
-behind some type of pointer; for example `&dyn SomeTrait` or
-`Box<dyn SomeTrait>`. Each instance of a pointer to a trait object includes:
+由于值属于哪种具体类型是不透明的，特型对象是 [动态大小类型][dynamically sized types] 。像所有 <abbr title="dynamically sized types">DST</abbr> 一样，特型对象在某种类型的指针后面使用；例如 `&dyn SomeTrait` 或 `Box<dyn SomeTrait>` 。特型对象指针的每个实例包括：
 
- - a pointer to an instance of a type `T` that implements `SomeTrait`
- - a _virtual method table_, often just called a _vtable_, which contains, for
-   each method of `SomeTrait` and its [supertraits] that `T` implements, a
-   pointer to `T`'s implementation (i.e. a function pointer).
+ - 一个指向实现了 `SomeTrait` 的类型 `T` 实例的指针
+ - 一个 *虚方法表* ，通常简称为 *vtable* ，其中包含 `T` 针对 `SomeTrait` 及其 [超特型][supertraits] 的每个方法的实现指针（即函数指针）。
 
-The purpose of trait objects is to permit "late binding" of methods. Calling a
-method on a trait object results in virtual dispatch at runtime: that is, a
-function pointer is loaded from the trait object vtable and invoked indirectly.
-The actual implementation for each vtable entry can vary on an object-by-object
-basis.
+特型对象的目的是允许方法的 “后期绑定” 。在特型对象上调用方法会导致运行时的虚拟分派：即从特型对象 vtable 中加载函数指针并间接调用。每个 vtable 条目的实际实现可以因对象而异。
 
-An example of a trait object:
+一个特型对象的例子：
 
 ```rust
 trait Printable {
@@ -91,16 +72,12 @@ fn main() {
 }
 ```
 
-In this example, the trait `Printable` occurs as a trait object in both the
-type signature of `print`, and the cast expression in `main`.
+在这个例子中，特型 `Printable` 在 `print` 的类型签名和 `main` 中的类型转换表达式中都作为特型对象出现。
 
 r[type.trait-object.lifetime-bounds]
-## Trait object lifetime bounds
+## 特型对象生命周期界限
 
-Since a trait object can contain references, the lifetimes of those references
-need to be expressed as part of the trait object. This lifetime is written as
-`Trait + 'a`. There are [defaults] that allow this lifetime to usually be
-inferred with a sensible choice.
+由于特型对象可以包含引用，这些引用的生命周期需要作为特型对象的一部分来表达。该生命周期写为 `Trait + 'a` 。有一些 [默认值][defaults] 允许通常以合理的选择推断此生命周期。
 
 [auto traits]: ../special-types-and-traits.md#auto-traits
 [defaults]: ../lifetime-elision.md#default-trait-object-lifetimes

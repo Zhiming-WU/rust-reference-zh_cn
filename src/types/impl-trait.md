@@ -9,69 +9,68 @@ ImplTraitTypeOneBound -> `impl` TraitBound
 ```
 
 r[type.impl-trait.intro]
-`impl Trait` provides ways to specify unnamed but concrete types that
-implement a specific trait.
-It can appear in two sorts of places: argument position (where it can act as an anonymous type parameter to functions), and return position (where it can act as an abstract return type).
+`impl Trait` 提供了指定实现了特定特型的未命名但具体类型的方法。
+它可以出现在两类地方：参数位置（在这里它可以作为函数的匿名泛型参数）和返回位置（在这里它可以作为抽象返回类型）。
 
 ```rust
 trait Trait {}
 # impl Trait for () {}
 
-// argument position: anonymous type parameter
+// 参数位置：匿名类型参数
 fn foo(arg: impl Trait) {
 }
 
-// return position: abstract return type
+// 返回位置：抽象返回类型
 fn bar() -> impl Trait {
 }
 ```
 r[type.impl-trait.param]
-## Anonymous type parameters
+## 匿名类型参数
 
 > [!NOTE]
-> This is often called "impl Trait in argument position". (The term "parameter" is more correct here, but "impl Trait in argument position" is the phrasing used during the development of this feature, and it remains in parts of the implementation.)
+> 这通常被称为 “参数位置的 impl Trait” 。（术语 “parameter” 在这里更准确，但 “参数位置的 impl Trait” 是该特性开发期间使用的措辞，并且在实现的某些部分中仍然保留。）
 
 r[type.impl-trait.param.intro]
-Functions can use `impl` followed by a set of trait bounds to declare a parameter as having an anonymous type.
-The caller must provide a type that satisfies the bounds declared by the anonymous type parameter, and the function can only use the methods available through the trait bounds of the anonymous type parameter.
+函数可以使用 `impl` 后跟一组特型界限来声明一个具有匿名类型的参数。
+调用者必须提供一个满足匿名类型参数所声明的界限的类型，并且函数只能使用通过匿名类型参数的特型界限可用的方法。
 
-For example, these two forms are almost equivalent:
+例如，这两种形式几乎是等价的：
 
 ```rust
 trait Trait {}
 
-// generic type parameter
+// 泛型类型参数
 fn with_generic_type<T: Trait>(arg: T) {
 }
 
-// impl Trait in argument position
+// 参数位置的 impl Trait
 fn with_impl_trait(arg: impl Trait) {
 }
 ```
 
 r[type.impl-trait.param.generic]
-That is, `impl Trait` in argument position is syntactic sugar for a generic type parameter like `<T: Trait>`, except that the type is anonymous and doesn't appear in the [GenericParams] list.
+也就是说，参数位置的 `impl Trait` 是类似于 `<T: Trait>` 的泛型类型参数的语法糖，只是该类型是匿名的，并且不会出现在 [GenericParams] 列表中。
 
 > [!NOTE]
-> For function parameters, generic type parameters and `impl Trait` are not exactly equivalent. With a generic parameter such as `<T: Trait>`, the caller has the option to explicitly specify the generic argument for `T` at the call site using [GenericArgs], for example, `foo::<usize>(1)`. Changing a parameter from either one to the other can constitute a breaking change for the callers of a function, since this changes the number of generic arguments.
+> 对于函数参数，泛型类型参数和 `impl Trait` 并不完全等价。对于像 `<T: Trait>` 这样的泛型参数，调用者可以选择在调用处使用 [GenericArgs] 显式指定 `T` 的泛型参数，例如 `foo::<usize>(1)` 。将参数从其中一种形式更改为另一种形式可能会对函数的调用者构成破坏性变更，因为这改变了泛型参数的数量。
 
 r[type.impl-trait.return]
-## Abstract return types
+## 抽象返回类型
 
 > [!NOTE]
-> This is often called "impl Trait in return position".
+> 这通常被称为 “返回位置的 impl Trait” 。
 
 r[type.impl-trait.return.intro]
-Functions can use `impl Trait` to return an abstract return type.
-These types stand in for another concrete type where the caller may only use the methods declared by the specified `Trait`.
+函数可以使用 `impl Trait` 来返回一个抽象返回类型。
+这些类型代表另一个具体类型，调用者只能使用由指定的 `Trait` 声明的方法。
 
 r[type.impl-trait.return.constraint-body]
-Each possible return value from the function must resolve to the same concrete type.
+函数中每个可能的返回值必须解析为相同的具体类型。
 
-`impl Trait` in return position allows a function to return an unboxed abstract type.
-This is particularly useful with [closures] and iterators.
-For example, closures have a unique, un-writable type.
-Previously, the only way to return a closure from a function was to use a [trait object]:
+返回位置的 `impl Trait` 允许函数返回一个非装箱（unboxed）的抽象类型。
+这在 [闭包][closures] 和迭代器中特别有用。
+例如，闭包具有唯一的、不可写的类型。
+以前，从函数返回闭包的唯一方法是使用 [特型对象][trait object] ：
 
 ```rust
 fn returns_closure() -> Box<dyn Fn(i32) -> i32> {
@@ -79,10 +78,10 @@ fn returns_closure() -> Box<dyn Fn(i32) -> i32> {
 }
 ```
 
-This could incur performance penalties from heap allocation and dynamic dispatch.
-It wasn't possible to fully specify the type of the closure, only to use the `Fn` trait.
-That means that the trait object is necessary.
-However, with `impl Trait`, it is possible to write this more simply:
+这可能会因堆分配和动态分派而产生性能损失。
+当时无法完全指定闭包的类型，只能使用 `Fn` 特型。
+这意味着特型对象是必需的。
+然而，通过 `impl Trait` ，可以更简单地编写：
 
 ```rust
 fn returns_closure() -> impl Fn(i32) -> i32 {
@@ -90,68 +89,68 @@ fn returns_closure() -> impl Fn(i32) -> i32 {
 }
 ```
 
-which also avoids the drawbacks of using a boxed trait object.
+这也避免了使用装箱特型对象的缺点。
 
-Similarly, the concrete types of iterators could become very complex, incorporating the types of all previous iterators in a chain.
-Returning `impl Iterator` means that a function only exposes the `Iterator` trait as a bound on its return type, instead of explicitly specifying all of the other iterator types involved.
+类似地，迭代器的具体类型可能会变得非常复杂，包含链中所有先前迭代器的类型。
+返回 `impl Iterator` 意味着函数只将其返回类型暴露为 `Iterator` 特型界限，而不是显式指定涉及的所有其他迭代器类型。
 
 r[type.impl-trait.return-in-trait]
-## Return-position `impl Trait` in traits and trait implementations
+## 特型和特型实现中的返回位置 `impl Trait`
 
 r[type.impl-trait.return-in-trait.intro]
-Functions in traits may also use `impl Trait` as a syntax for an anonymous associated type.
+特型中的函数也可以使用 `impl Trait` 作为匿名关联类型的语法。
 
 r[type.impl-trait.return-in-trait.desugaring]
-Every `impl Trait` in the return type of an associated function in a trait is desugared to an anonymous associated type. The return type that appears in the implementation's function signature is used to determine the value of the associated type.
+特型中关联函数的返回类型里的每个 `impl Trait` 都会被脱糖为一个匿名的关联类型。出现在实现函数的签名中的返回类型用于确定该关联类型的值。
 
 r[type.impl-trait.generic-captures]
-## Capturing
+## 捕获
 
-Behind each return-position `impl Trait` abstract type is some hidden concrete type.  For this concrete type to use a generic parameter, that generic parameter must be *captured* by the abstract type.
+每个返回位置的 `impl Trait` 抽象类型背后都有一些隐藏的具体类型。为了让这个具体类型使用泛型参数，该泛型参数必须被抽象类型 *捕获* 。
 
 r[type.impl-trait.generic-capture.auto]
-## Automatic capturing
+## 自动捕获
 
 r[type.impl-trait.generic-capture.auto.intro]
-Return-position `impl Trait` abstract types automatically capture all in-scope generic parameters, including generic type, const, and lifetime parameters (including higher-ranked ones).
+返回位置的 `impl Trait` 抽象类型会自动捕获所有作用域内的泛型参数，包括泛型类型、常量和生命周期参数（包括高阶参数）。
 
 r[type.impl-trait.generic-capture.edition2024]
 > [!EDITION-2024]
-> Before the 2024 edition, on free functions and on associated functions and methods of inherent impls, generic lifetime parameters that do not appear in the bounds of the abstract return type are not automatically captured.
+> 在 2024 版次 之前，在自由函数以及固有实现的关联函数和方法上，未出现在抽象返回类型界限中的泛型生命周期参数不会被自动捕获。
 
 r[type.impl-trait.generic-capture.precise]
-## Precise capturing
+## 精确捕获
 
 r[type.impl-trait.generic-capture.precise.use]
-The set of generic parameters captured by a return-position `impl Trait` abstract type may be explicitly controlled with a [`use<..>` bound].  If present, only the generic parameters listed in the `use<..>` bound will be captured.  E.g.:
+由返回位置 `impl Trait` 抽象类型捕获的泛型参数集合可以通过 [`use<..>` 界限][`use<..>` bound] 进行显式控制。如果存在，则仅捕获 `use<..>` 界限中列出的泛型参数。例如：
 
 ```rust
 fn capture<'a, 'b, T>(x: &'a (), y: T) -> impl Sized + use<'a, T> {
   //                                      ~~~~~~~~~~~~~~~~~~~~~~~
-  //                                     Captures `'a` and `T` only.
+  //                                     仅捕获 `'a` 和 `T` 。
   (x, y)
 }
 ```
 
 r[type.impl-trait.generic-capture.precise.constraint-single]
-Currently, only one `use<..>` bound may be present in a bounds list, all in-scope type and const generic parameters must be included, and all lifetime parameters that appear in other bounds of the abstract type must be included.
+目前，界限列表中只能出现一个 `use<..>` 界限，必须包含所有作用域内的类型和常量泛型参数，并且必须包含出现在抽象类型其他界限中的所有生命周期参数。
 
 r[type.impl-trait.generic-capture.precise.constraint-lifetime]
-Within the `use<..>` bound, any lifetime parameters present must appear before all type and const generic parameters, and the elided lifetime (`'_`) may be present if it is otherwise allowed to appear within the `impl Trait` return type.
+在 `use<..>` 界限内，任何存在的生命周期参数必须出现在所有类型和常量泛型参数之前，并且如果省略生命周期 (`'_`) 被允许出现在 `impl Trait` 返回类型中，则它可以存在。
 
 r[type.impl-trait.generic-capture.precise.constraint-param-impl-trait]
-Because all in-scope type parameters must be included by name, a `use<..>` bound may not be used in the signature of items that use argument-position `impl Trait`, as those items have anonymous type parameters in scope.
+因为所有作用域内的类型参数都必须按名称包含，所以 `use<..>` 界限不能用于使用了参数位置 `impl Trait` 的项的签名中，因为这些项的作用域内有匿名类型参数。
 
 r[type.impl-trait.generic-capture.precise.constraint-in-trait]
-Any `use<..>` bound that is present in an associated function in a trait definition must include all generic parameters of the trait, including the implicit `Self` generic type parameter of the trait.
+特型定义中关联函数中存在的任何 `use<..>` 界限必须包含特型的所有泛型参数，包括特型隐式的 `Self` 泛型类型参数。
 
-## Differences between generics and `impl Trait` in return position
+## 泛型和返回位置 `impl Trait` 之间的区别
 
-In argument position, `impl Trait` is very similar in semantics to a generic type parameter.
-However, there are significant differences between the two in return position.
-With `impl Trait`, unlike with a generic type parameter, the function chooses the return type, and the caller cannot choose the return type.
+在参数位置， `impl Trait` 在语义上与泛型类型参数非常相似。
+然而，两者在返回位置有显著区别。
+使用 `impl Trait` ，与泛型类型参数不同，函数选择返回类型，而调用者不能选择返回类型。
 
-The function:
+函数：
 
 ```rust
 # trait Trait {}
@@ -161,9 +160,9 @@ fn foo<T: Trait>() -> T {
 }
 ```
 
-allows the caller to determine the return type, `T`, and the function returns that type.
+允许调用者确定返回类型 `T` ，并且函数返回该类型。
 
-The function:
+函数：
 
 ```rust
 # trait Trait {}
@@ -173,14 +172,14 @@ fn foo() -> impl Trait {
 }
 ```
 
-doesn't allow the caller to determine the return type.
-Instead, the function chooses the return type, but only promises that it will implement `Trait`.
+不允许调用者确定返回类型。
+相反，函数选择返回类型，但只承诺它将实现 `Trait` 。
 
 r[type.impl-trait.constraint]
-## Limitations
+## 限制
 
-`impl Trait` can only appear as a parameter or return type of a non-`extern` function.
-It cannot be the type of a `let` binding, field type, or appear inside a type alias.
+`impl Trait` 只能作为非 `extern` 函数的参数或返回类型出现。
+它不能作为 `let` 绑定的类型、字段类型，或出现在类型别名中。
 
 [`use<..>` bound]: ../trait-bounds.md#use-bounds
 [closures]: closure.md

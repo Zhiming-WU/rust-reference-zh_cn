@@ -1,41 +1,29 @@
 r[type.text]
-# Textual types
+# 文本类型
 
 r[type.text.intro]
-The types `char` and `str` hold textual data.
+`char` 和 `str` 类型保存文本数据。
 
 r[type.text.char-value]
-A value of type `char` is a [Unicode scalar value] (i.e. a code point that is
-not a surrogate), represented as a 32-bit unsigned word in the 0x0000 to 0xD7FF
-or 0xE000 to 0x10FFFF range.
+`char` 类型的值是一个 [Unicode 标量值][Unicode scalar value] （即不是代理对（surrogate）的码位），表示为 0x0000 到 0xD7FF 或 0xE000 到 0x10FFFF 范围内的 32 位无符号字。
 
 r[type.text.char-precondition]
-It is immediate [undefined behavior] to create a
-`char` that falls outside this range. A `[char]` is effectively a UCS-4 / UTF-32
-string of length 1.
+创建一个超出此范围的 `char` 会立即导致 [未定义行为][undefined behavior] 。 `[char]` 实际上是一个长度为 1 的 UCS-4 / UTF-32 字符串。
 
 r[type.text.str-value]
-A value of type `str` is represented the same way as `[u8]`, a slice of
-8-bit unsigned bytes. However, the Rust standard library makes extra assumptions
-about `str`: methods working on `str` assume and ensure that the data in there
-is valid UTF-8. Calling a `str` method with a non-UTF-8 buffer can cause
-[undefined behavior] now or in the future.
+`str` 类型的值的表示方式与 `[u8]` 相同，即 8 位无符号字节的切片。然而，Rust 标准库对 `str` 做了额外的假设：在 `str` 上操作的方法假定并确保其中的数据是有效的 UTF-8。使用非 UTF-8 缓冲区调用 `str` 方法可能会在现在或将来导致 [未定义行为][undefined behavior] 。
 
 r[type.text.str-unsized]
-Since `str` is a [dynamically sized type], it can only be instantiated through a
-pointer type, such as `&str`. The layout of `&str` is the same as the layout of
-`&[u8]`.
+由于 `str` 是 [动态大小类型][dynamically sized type] ，它只能通过指针类型实例化，例如 `&str` 。 `&str` 的布局与 `&[u8]` 的布局相同。
 
 r[type.text.layout]
-## Layout and bit validity
+## 布局和位有效性
 
 r[type.layout.char-layout]
-`char` is guaranteed to have the same size and alignment as `u32` on all platforms.
+`char` 在所有平台上保证具有与 `u32` 相同的大小和对齐。
 
 r[type.layout.char-validity]
-Every byte of a `char` is guaranteed to be initialized (in other words,
-`transmute::<char, [u8; size_of::<char>()]>(...)` is always sound -- but since
-some bit patterns are invalid `char`s, the inverse is not always sound).
+`char` 的每个字节都保证被初始化（换句话说， `transmute::<char, [u8; size_of::<char>()]>(...)` 总是健全的——但由于某些位模式是无效的 `char` ，反向操作并不总是健全的）。
 
 [Unicode scalar value]: http://www.unicode.org/glossary/#unicode_scalar_value
 [undefined behavior]: ../behavior-considered-undefined.md
