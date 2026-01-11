@@ -2,7 +2,7 @@ r[expr.placeholder]
 # `_`表达式
 
 r[expr.placeholder.syntax]
-```grammar,expressions
+```grammar,表达式
 UnderscoreExpression -> `_`
 ```
 

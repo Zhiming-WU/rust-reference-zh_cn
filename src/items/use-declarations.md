@@ -5,7 +5,7 @@ r[items.use]
 # use声明
 
 r[items.use.syntax]
-```grammar,items
+```grammar,项
 UseDeclaration -> `use` UseTree `;`
 
 UseTree ->

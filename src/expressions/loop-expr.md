@@ -2,7 +2,7 @@ r[expr.loop]
 # 循环及其他可中断表达式
 
 r[expr.loop.syntax]
-```grammar,expressions
+```grammar,表达式
 LoopExpression ->
     LoopLabel? (
         InfiniteLoopExpression
@@ -33,7 +33,7 @@ r[expr.loop.infinite]
 ## 无限循环
 
 r[expr.loop.infinite.syntax]
-```grammar,expressions
+```grammar,表达式
 InfiniteLoopExpression -> `loop` BlockExpression
 ```
 
@@ -51,7 +51,7 @@ r[expr.loop.while]
 ## 谓词循环
 
 r[expr.loop.while.grammar]
-```grammar,expressions
+```grammar,表达式
 PredicateLoopExpression -> `while` Conditions BlockExpression
 ```
 
@@ -165,7 +165,7 @@ r[expr.loop.for]
 ## 迭代器循环
 
 r[expr.loop.for.syntax]
-```grammar,expressions
+```grammar,表达式
 IteratorLoopExpression ->
     `for` Pattern `in` Expression _except [StructExpression]_ BlockExpression
 ```
@@ -240,7 +240,7 @@ r[expr.loop.label]
 ## 循环标签
 
 r[expr.loop.label.syntax]
-```grammar,expressions
+```grammar,表达式
 LoopLabel -> LIFETIME_OR_LABEL `:`
 ```
 
@@ -270,7 +270,7 @@ r[expr.loop.break]
 ## `break`表达式
 
 r[expr.loop.break.syntax]
-```grammar,expressions
+```grammar,表达式
 BreakExpression -> `break` LIFETIME_OR_LABEL? Expression?
 ```
 
@@ -308,7 +308,7 @@ r[expr.loop.block-labels]
 ## 标签块表达式
 
 r[expr.loop.block-labels.syntax]
-```grammar,expressions
+```grammar,表达式
 LabelBlockExpression -> BlockExpression
 ```
 
@@ -344,7 +344,7 @@ r[expr.loop.continue]
 ## `continue`表达式
 
 r[expr.loop.continue.syntax]
-```grammar,expressions
+```grammar,表达式
 ContinueExpression -> `continue` LIFETIME_OR_LABEL?
 ```
 

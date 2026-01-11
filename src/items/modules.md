@@ -2,7 +2,7 @@ r[items.mod]
 # 模块
 
 r[items.mod.syntax]
-```grammar,items
+```grammar,项
 Module ->
       `unsafe`? `mod` IDENTIFIER `;`
     | `unsafe`? `mod` IDENTIFIER `{`

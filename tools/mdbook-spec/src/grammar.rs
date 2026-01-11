@@ -153,7 +153,7 @@ fn render_names(
 }
 
 pub fn is_summary(chapter: &Chapter) -> bool {
-    chapter.name == "Grammar summary"
+    chapter.name == "语法总结"
 }
 
 /// Inserts the summary of all grammar rules into the grammar summary chapter.
@@ -170,7 +170,7 @@ pub fn insert_summary(grammar: &Grammar, chapter: &Chapter, diag: &mut Diagnosti
     for category in categories {
         let mut chars = category.chars();
         let cap = chars.next().unwrap().to_uppercase().collect::<String>() + chars.as_str();
-        write!(grammar_summary, "\n## {cap} summary\n\n").unwrap();
+        write!(grammar_summary, "\n## {cap} 总结\n\n").unwrap();
         let names: Vec<_> = grammar
             .name_order
             .iter()

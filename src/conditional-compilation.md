@@ -5,7 +5,7 @@ r[cfg]
 # 条件编译
 
 r[cfg.syntax]
-```grammar,configuration
+```grammar,配置
 ConfigurationPredicate ->
       ConfigurationOption
     | ConfigurationAll
@@ -333,7 +333,7 @@ r[cfg.attr.intro]
 r[cfg.attr.syntax]
 `cfg`属性的语法是：
 
-```grammar,configuration
+```grammar,配置
 @root CfgAttribute -> `cfg` `(` ConfigurationPredicate `)`
 ```
 
@@ -382,7 +382,7 @@ r[cfg.cfg_attr.intro]
 r[cfg.cfg_attr.syntax]
 `cfg_attr`属性的语法是：
 
-```grammar,configuration
+```grammar,配置
 @root CfgAttrAttribute -> `cfg_attr` `(` ConfigurationPredicate `,` CfgAttrs? `)`
 
 CfgAttrs -> Attr (`,` Attr)* `,`?

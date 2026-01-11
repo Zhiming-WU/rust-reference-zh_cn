@@ -2,7 +2,7 @@ r[patterns]
 # 模式
 
 r[patterns.syntax]
-```grammar,patterns
+```grammar,模式
 Pattern -> `|`? PatternNoTopAlt  ( `|` PatternNoTopAlt )*
 
 PatternNoTopAlt ->
@@ -138,7 +138,7 @@ r[patterns.literal]
 ## 字面量模式
 
 r[patterns.literal.syntax]
-```grammar,patterns
+```grammar,模式
 LiteralPattern -> `-`? LiteralExpression
 ```
 
@@ -168,7 +168,7 @@ r[patterns.ident]
 ## 标识符模式
 
 r[patterns.ident.syntax]
-```grammar,patterns
+```grammar,模式
 IdentifierPattern -> `ref`? `mut`? IDENTIFIER ( `@` PatternNoTopAlt )?
 ```
 
@@ -375,7 +375,7 @@ r[patterns.wildcard]
 ## 通配符模式
 
 r[patterns.wildcard.syntax]
-```grammar,patterns
+```grammar,模式
 WildcardPattern -> `_`
 ```
 
@@ -424,7 +424,7 @@ r[patterns.rest]
 ## 剩余模式
 
 r[patterns.rest.syntax]
-```grammar,patterns
+```grammar,模式
 RestPattern -> `..`
 ```
 
@@ -483,7 +483,7 @@ r[patterns.range]
 ## 范围模式
 
 r[patterns.range.syntax]
-```grammar,patterns
+```grammar,模式
 RangePattern ->
       RangeExclusivePattern
     | RangeInclusivePattern
@@ -687,7 +687,7 @@ r[patterns.ref]
 ## 引用模式
 
 r[patterns.ref.syntax]
-```grammar,patterns
+```grammar,模式
 ReferencePattern -> (`&`|`&&`) `mut`? PatternWithoutRange
 ```
 
@@ -718,7 +718,7 @@ r[patterns.struct]
 ## 结构体模式
 
 r[patterns.struct.syntax]
-```grammar,patterns
+```grammar,模式
 StructPattern ->
     PathInExpression `{`
         StructPatternElements?
@@ -836,7 +836,7 @@ r[patterns.tuple-struct]
 ## 元组结构体模式
 
 r[patterns.tuple-struct.syntax]
-```grammar,patterns
+```grammar,模式
 TupleStructPattern -> PathInExpression `(` TupleStructItems? `)`
 
 TupleStructItems -> Pattern ( `,` Pattern )* `,`?
@@ -893,7 +893,7 @@ r[patterns.tuple]
 ## 元组模式
 
 r[patterns.tuple.syntax]
-```grammar,patterns
+```grammar,模式
 TuplePattern -> `(` TuplePatternItems? `)`
 
 TuplePatternItems ->
@@ -926,7 +926,7 @@ r[patterns.paren]
 ## 分组模式
 
 r[patterns.paren.syntax]
-```grammar,patterns
+```grammar,模式
 GroupedPattern -> `(` Pattern `)`
 ```
 
@@ -946,7 +946,7 @@ r[patterns.slice]
 ## 切片模式
 
 r[patterns.slice.syntax]
-```grammar,patterns
+```grammar,模式
 SlicePattern -> `[` SlicePatternItems? `]`
 
 SlicePatternItems -> Pattern (`,` Pattern)* `,`?
@@ -987,7 +987,7 @@ r[patterns.path]
 ## 路径模式
 
 r[patterns.path.syntax]
-```grammar,patterns
+```grammar,模式
 PathPattern -> PathExpression
 ```
 

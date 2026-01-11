@@ -2,7 +2,7 @@ r[expr.match]
 # `match`表达式
 
 r[expr.match.syntax]
-```grammar,expressions
+```grammar,表达式
 MatchExpression ->
     `match` Scrutinee `{`
         InnerAttribute*

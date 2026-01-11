@@ -2,7 +2,7 @@ r[expr.field]
 # 字段访问表达式
 
 r[expr.field.syntax]
-```grammar,expressions
+```grammar,表达式
 FieldExpression -> Expression `.` IDENTIFIER
 ```
 

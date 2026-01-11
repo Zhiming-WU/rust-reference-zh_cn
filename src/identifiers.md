@@ -5,7 +5,7 @@ r[ident]
 # 标识符
 
 r[ident.syntax]
-```grammar,lexer
+```grammar,词法分析器
 IDENTIFIER_OR_KEYWORD -> ( XID_Start | `_` ) XID_Continue*
 
 XID_Start -> <`XID_Start` defined by Unicode>

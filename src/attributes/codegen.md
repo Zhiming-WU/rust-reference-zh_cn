@@ -28,7 +28,7 @@ r[attributes.codegen.inline.intro]
 r[attributes.codegen.inline.syntax]
 `inline` 属性的 语法格式 如下：
 
-```grammar,attributes
+```grammar,属性
 @root InlineAttribute ->
       `inline` `(` `always` `)`
     | `inline` `(` `never` `)`

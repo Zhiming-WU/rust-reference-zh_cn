@@ -2,7 +2,7 @@ r[expr.range]
 # 范围表达式
 
 r[expr.range.syntax]
-```grammar,expressions
+```grammar,表达式
 RangeExpression ->
       RangeExpr
     | RangeFromExpr

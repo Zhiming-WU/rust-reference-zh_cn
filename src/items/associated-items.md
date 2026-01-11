@@ -2,7 +2,7 @@ r[items.associated]
 # 关联项
 
 r[items.associated.syntax]
-```grammar,items
+```grammar,项
 AssociatedItem ->
     OuterAttribute* (
         MacroInvocationSemi

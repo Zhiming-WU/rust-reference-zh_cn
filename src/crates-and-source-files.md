@@ -5,7 +5,7 @@ r[crate]
 # Crate与源文件
 
 r[crate.syntax]
-```grammar,items
+```grammar,项
 @root Crate ->
     InnerAttribute*
     Item*

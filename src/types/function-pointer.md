@@ -2,7 +2,7 @@ r[type.fn-pointer]
 # 函数指针类型
 
 r[type.fn-pointer.syntax]
-```grammar,types
+```grammar,类型
 BareFunctionType ->
     ForLifetimes? FunctionTypeQualifiers `fn`
        `(` FunctionParametersMaybeNamedVariadic? `)` BareFunctionReturnType?

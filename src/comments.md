@@ -5,7 +5,7 @@ r[comments]
 # 注释
 
 r[comments.syntax]
-```grammar,lexer
+```grammar,词法分析器
 @root LINE_COMMENT ->
       `//` (~[`/` `!` LF] | `//`) ~LF*
     | `//`

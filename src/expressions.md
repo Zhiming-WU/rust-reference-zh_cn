@@ -2,7 +2,7 @@ r[expr]
 # 表达式
 
 r[expr.syntax]
-```grammar,expressions
+```grammar,表达式
 Expression ->
       ExpressionWithoutBlock
     | ExpressionWithBlock

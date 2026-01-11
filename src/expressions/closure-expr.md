@@ -2,7 +2,7 @@ r[expr.closure]
 # 闭包表达式
 
 r[expr.closure.syntax]
-```grammar,expressions
+```grammar,表达式
 ClosureExpression ->
     `async`?[^cl-async-edition]
     `move`?

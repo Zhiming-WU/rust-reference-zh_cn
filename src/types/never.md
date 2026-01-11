@@ -2,7 +2,7 @@ r[type.never]
 # Never类型
 
 r[type.never.syntax]
-```grammar,types
+```grammar,类型
 NeverType -> `!`
 ```
 

@@ -2,7 +2,7 @@ r[items.generics]
 # 泛型参数
 
 r[items.generics.syntax]
-```grammar,items
+```grammar,项
 GenericParams -> `<` ( GenericParam (`,` GenericParam)* `,`? )? `>`
 
 GenericParam -> OuterAttribute* ( LifetimeParam | TypeParam | ConstParam )
@@ -229,7 +229,7 @@ r[items.generics.where]
 ## Where子句
 
 r[items.generics.where.syntax]
-```grammar,items
+```grammar,项
 WhereClause -> `where` ( WhereClauseItem `,` )* WhereClauseItem?
 
 WhereClauseItem ->

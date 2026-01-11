@@ -2,7 +2,7 @@ r[items]
 # 项
 
 r[items.syntax]
-```grammar,items
+```grammar,项
 Item ->
     OuterAttribute* ( VisItem | MacroItem )
 

@@ -2,7 +2,7 @@ r[items.struct]
 # 结构体
 
 r[items.struct.syntax]
-```grammar,items
+```grammar,项
 Struct ->
       StructStruct
     | TupleStruct

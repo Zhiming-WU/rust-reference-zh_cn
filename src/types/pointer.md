@@ -9,7 +9,7 @@ r[type.pointer.reference]
 ## 引用 (`&` 和 `&mut`)
 
 r[type.pointer.reference.syntax]
-```grammar,types
+```grammar,类型
 ReferenceType -> `&` Lifetime? `mut`? TypeNoBounds
 ```
 
@@ -44,7 +44,7 @@ r[type.pointer.raw]
 ## 裸指针 (`*const` 和 `*mut`)
 
 r[type.pointer.raw.syntax]
-```grammar,types
+```grammar,类型
 RawPointerType -> `*` ( `mut` | `const` ) TypeNoBounds
 ```
 

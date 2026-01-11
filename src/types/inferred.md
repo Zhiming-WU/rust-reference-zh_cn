@@ -2,7 +2,7 @@ r[type.inferred]
 # 推断类型
 
 r[type.inferred.syntax]
-```grammar,types
+```grammar,类型
 InferredType -> `_`
 ```
 

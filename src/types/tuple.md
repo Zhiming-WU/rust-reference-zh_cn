@@ -2,7 +2,7 @@ r[type.tuple]
 # 元组类型
 
 r[type.tuple.syntax]
-```grammar,types
+```grammar,类型
 TupleType ->
       `(` `)`
     | `(` ( Type `,` )+ Type? `)`

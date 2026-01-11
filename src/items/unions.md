@@ -2,7 +2,7 @@ r[items.union]
 # 联合体
 
 r[items.union.syntax]
-```grammar,items
+```grammar,项
 Union ->
     `union` IDENTIFIER GenericParams? WhereClause? `{` StructFields? `}`
 ```

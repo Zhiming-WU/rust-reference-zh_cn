@@ -134,7 +134,7 @@
 - [Rust运行时](runtime.md)
 
 - [附录](appendices.md)
-    - [文法总结](grammar.md)
+    - [语法总结](grammar.md)
     - [语法索引](syntax-index.md)
     - [宏后继集歧义形式化规范](macro-ambiguity.md)
     - [影响](influences.md)

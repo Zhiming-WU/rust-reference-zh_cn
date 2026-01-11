@@ -2,7 +2,7 @@ r[type.slice]
 # 切片类型
 
 r[type.slice.syntax]
-```grammar,types
+```grammar,类型
 SliceType -> `[` Type `]`
 ```
 

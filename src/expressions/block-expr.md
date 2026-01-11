@@ -2,7 +2,7 @@ r[expr.block]
 # 块表达式
 
 r[expr.block.syntax]
-```grammar,expressions
+```grammar,表达式
 BlockExpression ->
     `{`
         InnerAttribute*
@@ -92,7 +92,7 @@ r[expr.block.async]
 ## `async`块
 
 r[expr.block.async.syntax]
-```grammar,expressions
+```grammar,表达式
 AsyncBlockExpression -> `async` `move`? BlockExpression
 ```
 
@@ -159,7 +159,7 @@ r[expr.block.const]
 ## `const`块
 
 r[expr.block.const.syntax]
-```grammar,expressions
+```grammar,表达式
 ConstBlockExpression -> `const` BlockExpression
 ```
 
@@ -223,7 +223,7 @@ r[expr.block.unsafe]
 ## `unsafe`块
 
 r[expr.block.unsafe.syntax]
-```grammar,expressions
+```grammar,表达式
 UnsafeBlockExpression -> `unsafe` BlockExpression
 ```
 

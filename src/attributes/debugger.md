@@ -193,7 +193,7 @@ r[attributes.debugger.collapse_debuginfo.intro]
 r[attributes.debugger.collapse_debuginfo.syntax]
 `collapse_debuginfo` 属性的 语法格式 是：
 
-```grammar,attributes
+```grammar,属性
 @root CollapseDebuginfoAttribute -> `collapse_debuginfo` `(` CollapseDebuginfoOption `)`
 
 CollapseDebuginfoOption ->

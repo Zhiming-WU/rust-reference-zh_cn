@@ -5,7 +5,7 @@ r[lex.whitespace]
 # 空白字符
 
 r[whitespace.syntax]
-```grammar,lexer
+```grammar,词法分析器
 @root WHITESPACE ->
       U+0009 // 水平制表符，`'\t'`
     | U+000A // 换行符，`'\n'`

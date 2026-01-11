@@ -170,7 +170,7 @@ impl Preprocessor for Spec {
             ch.content = self.rule_link_references(&ch, &rules);
             ch.content = self.auto_link_references(&ch, &rules);
             ch.content = self.render_rule_definitions(&ch.content, &tests, &git_ref);
-            if ch.name == "Test summary" {
+            if ch.name == "测试总结" {
                 ch.content = ch.content.replace("{{summary-table}}", &summary_table);
             }
             if grammar::is_summary(ch) {

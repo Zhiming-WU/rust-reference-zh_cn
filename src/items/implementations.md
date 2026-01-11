@@ -2,7 +2,7 @@ r[items.impl]
 # 实现
 
 r[items.impl.syntax]
-```grammar,items
+```grammar,项
 Implementation -> InherentImpl | TraitImpl
 
 InherentImpl ->

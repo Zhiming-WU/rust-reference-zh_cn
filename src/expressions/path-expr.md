@@ -2,7 +2,7 @@ r[expr.path]
 # 路径表达式
 
 r[expr.path.syntax]
-```grammar,expressions
+```grammar,表达式
 PathExpression ->
       PathInExpression
     | QualifiedPathInExpression

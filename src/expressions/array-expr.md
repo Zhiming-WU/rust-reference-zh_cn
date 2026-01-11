@@ -4,7 +4,7 @@ r[expr.array]
 ## 数组表达式
 
 r[expr.array.syntax]
-```grammar,expressions
+```grammar,表达式
 ArrayExpression -> `[` ArrayElements? `]`
 
 ArrayElements ->
@@ -78,7 +78,7 @@ r[expr.array.index]
 ## 数组和切片索引表达式
 
 r[expr.array.index.syntax]
-```grammar,expressions
+```grammar,表达式
 IndexExpression -> Expression `[` Expression `]`
 ```
 

@@ -2,7 +2,7 @@ r[type.trait-object]
 # 特型对象
 
 r[type.trait-object.syntax]
-```grammar,types
+```grammar,类型
 TraitObjectType -> `dyn`? TypeParamBounds
 
 TraitObjectTypeOneBound -> `dyn`? TraitBound

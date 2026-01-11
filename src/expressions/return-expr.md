@@ -2,7 +2,7 @@ r[expr.return]
 # `return`表达式
 
 r[expr.return.syntax]
-```grammar,expressions
+```grammar,表达式
 ReturnExpression -> `return` Expression?
 ```
 

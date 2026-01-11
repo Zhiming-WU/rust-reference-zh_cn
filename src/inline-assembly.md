@@ -47,7 +47,7 @@ r[asm.syntax]
 
 下面的语法指定了可以传递给 `asm!`、`global_asm!` 和 `naked_asm!` 宏的参数。
 
-```grammar,assembly
+```grammar,汇编
 @root AsmArgs -> AsmAttrFormatString (`,` AsmAttrFormatString)* (`,` AsmAttrOperand)* `,`?
 
 FormatString -> STRING_LITERAL | RAW_STRING_LITERAL | MacroInvocation

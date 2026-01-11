@@ -2,7 +2,7 @@ r[items.type]
 # 类型别名
 
 r[items.type.syntax]
-```grammar,items
+```grammar,项
 TypeAlias ->
     `type` IDENTIFIER GenericParams? ( `:` TypeParamBounds )?
         WhereClause?

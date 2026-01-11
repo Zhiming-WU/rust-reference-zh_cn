@@ -2,7 +2,7 @@ r[lex.token]
 # 词法单元
 
 r[lex.token.syntax]
-```grammar,lexer
+```grammar,词法分析器
 Token ->
       RESERVED_TOKEN
     | RAW_IDENTIFIER
@@ -111,7 +111,7 @@ r[lex.token.literal.literal.suffix.intro]
 后缀是紧跟在字面量主要部分（无中间空白）后面的一串字符，其形式与非原始[标识符][identifier]或[关键字][Keywords]相同。
 
 r[lex.token.literal.suffix.syntax]
-```grammar,lexer
+```grammar,词法分析器
 SUFFIX -> IDENTIFIER_OR_KEYWORD _except `_`_
 
 SUFFIX_NO_E -> SUFFIX _not beginning with `e` or `E`_
@@ -143,7 +143,7 @@ r[lex.token.literal.char]
 #### 字符字面量
 
 r[lex.token.literal.char.syntax]
-```grammar,lexer
+```grammar,词法分析器
 CHAR_LITERAL ->
     `'`
         ( ~[`'` `\` LF CR TAB] | QUOTE_ESCAPE | ASCII_ESCAPE | UNICODE_ESCAPE )
@@ -168,7 +168,7 @@ r[lex.token.literal.str]
 #### 字符串字面量
 
 r[lex.token.literal.str.syntax]
-```grammar,lexer
+```grammar,词法分析器
 STRING_LITERAL ->
     `"` (
         ~[`"` `\` CR]
@@ -212,7 +212,7 @@ r[lex.token.literal.str-raw]
 #### 原始字符串字面量
 
 r[lex.token.literal.str-raw.syntax]
-```grammar,lexer
+```grammar,词法分析器
 RAW_STRING_LITERAL -> `r` RAW_STRING_CONTENT SUFFIX?
 
 RAW_STRING_CONTENT ->
@@ -248,7 +248,7 @@ r[lex.token.byte]
 #### 字节字面量
 
 r[lex.token.byte.syntax]
-```grammar,lexer
+```grammar,词法分析器
 BYTE_LITERAL ->
     `b'` ( ASCII_FOR_CHAR | BYTE_ESCAPE )  `'` SUFFIX?
 
@@ -267,7 +267,7 @@ r[lex.token.str-byte]
 #### 字节字符串字面量
 
 r[lex.token.str-byte.syntax]
-```grammar,lexer
+```grammar,词法分析器
 BYTE_STRING_LITERAL ->
     `b"` ( ASCII_FOR_STRING | BYTE_ESCAPE | STRING_CONTINUE )* `"` SUFFIX?
 
@@ -300,7 +300,7 @@ r[lex.token.str-byte-raw]
 #### 原始字节字符串字面量
 
 r[lex.token.str-byte-raw.syntax]
-```grammar,lexer
+```grammar,词法分析器
 RAW_BYTE_STRING_LITERAL ->
     `br` RAW_BYTE_STRING_CONTENT SUFFIX?
 
@@ -340,7 +340,7 @@ r[lex.token.str-c]
 #### C字符串字面量
 
 r[lex.token.str-c.syntax]
-```grammar,lexer
+```grammar,词法分析器
 C_STRING_LITERAL ->
     `c"` (
         ~[`"` `\` CR NUL]
@@ -396,7 +396,7 @@ r[lex.token.str-c-raw]
 #### 原始C字符串字面量
 
 r[lex.token.str-c-raw.syntax]
-```grammar,lexer
+```grammar,词法分析器
 RAW_C_STRING_LITERAL ->
     `cr` RAW_C_STRING_CONTENT SUFFIX?
 
@@ -440,7 +440,7 @@ r[lex.token.literal.int]
 #### 整数字面量
 
 r[lex.token.literal.int.syntax]
-```grammar,lexer
+```grammar,词法分析器
 INTEGER_LITERAL ->
     ( BIN_LITERAL | OCT_LITERAL | HEX_LITERAL | DEC_LITERAL ) SUFFIX_NO_E?
 
@@ -528,7 +528,7 @@ r[lex.token.literal.int.tuple-field]
 #### 元组[项][item]索引
 
 r[lex.token.literal.int.tuple-field.syntax]
-```grammar,lexer
+```grammar,词法分析器
 TUPLE_INDEX -> DEC_LITERAL | BIN_LITERAL | OCT_LITERAL | HEX_LITERAL
 ```
 
@@ -555,7 +555,7 @@ r[lex.token.literal.float]
 #### 浮点数字面量
 
 r[lex.token.literal.float.syntax]
-```grammar,lexer
+```grammar,词法分析器
 FLOAT_LITERAL ->
       DEC_LITERAL (`.` DEC_LITERAL)? FLOAT_EXPONENT SUFFIX?
     | DEC_LITERAL `.` DEC_LITERAL SUFFIX_NO_E?
@@ -604,7 +604,7 @@ r[lex.token.literal.reserved]
 #### 类似于数字字面量的保留形式
 
 r[lex.token.literal.reserved.syntax]
-```grammar,lexer
+```grammar,词法分析器
 RESERVED_NUMBER ->
       BIN_LITERAL [`2`-`9`]
     | OCT_LITERAL [`8`-`9`]
@@ -654,7 +654,7 @@ r[lex.token.life]
 ## 生命周期和循环标签
 
 r[lex.token.life.syntax]
-```grammar,lexer
+```grammar,词法分析器
 LIFETIME_TOKEN ->
       RAW_LIFETIME
     | `'` IDENTIFIER_OR_KEYWORD _not immediately followed by `'`_
@@ -692,7 +692,7 @@ r[lex.token.punct.intro]
 标点符号词法单元用作运算符、分隔符和语法格式的其他部分。
 
 r[lex.token.punct.syntax]
-```grammar,lexer
+```grammar,词法分析器
 PUNCTUATION ->
       `...`
     | `..=`
@@ -769,7 +769,7 @@ r[lex.token.reserved.intro]
 几种词法单元形式被保留以备将来使用或避免混淆。源输入匹配其中一种形式是错误的。
 
 r[lex.token.reserved.syntax]
-```grammar,lexer
+```grammar,词法分析器
 RESERVED_TOKEN ->
       RESERVED_GUARDED_STRING_LITERAL
     | RESERVED_NUMBER
@@ -786,7 +786,7 @@ r[lex.token.reserved-prefix]
 ## 保留前缀
 
 r[lex.token.reserved-prefix.syntax]
-```grammar,lexer
+```grammar,词法分析器
 RESERVED_TOKEN_DOUBLE_QUOTE ->
     IDENTIFIER_OR_KEYWORD _except `b` or `c` or `r` or `br` or `cr`_ `"`
 
@@ -844,7 +844,7 @@ r[lex.token.reserved-guards]
 ## 保留的守卫
 
 r[lex.token.reserved-guards.syntax]
-```grammar,lexer
+```grammar,词法分析器
 RESERVED_GUARDED_STRING_LITERAL -> `#`+ STRING_LITERAL
 
 RESERVED_POUNDS -> `#`{2..}

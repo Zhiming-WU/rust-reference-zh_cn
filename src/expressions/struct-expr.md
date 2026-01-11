@@ -2,7 +2,7 @@ r[expr.struct]
 # 结构体表达式
 
 r[expr.struct.syntax]
-```grammar,expressions
+```grammar,表达式
 StructExpression ->
     PathInExpression `{` (StructExprFields | StructBase)? `}`
 

@@ -2,7 +2,7 @@ r[vis]
 # 可见性和私有性
 
 r[vis.syntax]
-```grammar,items
+```grammar,项
 Visibility ->
       `pub`
     | `pub` `(` `crate` `)`

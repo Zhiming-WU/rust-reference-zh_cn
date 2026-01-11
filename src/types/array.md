@@ -2,7 +2,7 @@ r[type.array]
 # 数组类型
 
 r[type.array.syntax]
-```grammar,types
+```grammar,类型
 ArrayType -> `[` Type `;` Expression `]`
 ```
 

@@ -2,7 +2,7 @@ r[expr.await]
 # `await`表达式
 
 r[expr.await.syntax]
-```grammar,expressions
+```grammar,表达式
 AwaitExpression -> Expression `.` `await`
 ```
 

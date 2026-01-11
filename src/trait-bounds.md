@@ -2,7 +2,7 @@ r[bound]
 # 特型和生命周期界限
 
 r[bound.syntax]
-```grammar,miscellaneous
+```grammar,杂项
 TypeParamBounds -> TypeParamBound ( `+` TypeParamBound )* `+`?
 
 TypeParamBound -> Lifetime | TraitBound | UseBound
@@ -123,7 +123,7 @@ r[bound.higher-ranked]
 ## 高阶特型界限
 
 r[bound.higher-ranked.syntax]
-```grammar,miscellaneous
+```grammar,杂项
 ForLifetimes -> `for` GenericParams
 ```
 

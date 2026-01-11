@@ -2,7 +2,7 @@ r[items.extern]
 # 外部块
 
 r[items.extern.syntax]
-```grammar,items
+```grammar,项
 ExternBlock ->
     `unsafe`?[^unsafe-2024] `extern` Abi? `{`
         InnerAttribute*

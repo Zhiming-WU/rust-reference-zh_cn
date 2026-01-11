@@ -2,7 +2,7 @@ r[type.impl-trait]
 # Impl trait
 
 r[type.impl-trait.syntax]
-```grammar,types
+```grammar,类型
 ImplTraitType -> `impl` TypeParamBounds
 
 ImplTraitTypeOneBound -> `impl` TraitBound

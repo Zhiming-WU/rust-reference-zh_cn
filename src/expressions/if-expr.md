@@ -2,7 +2,7 @@ r[expr.if]
 # `if`表达式
 
 r[expr.if.syntax]
-```grammar,expressions
+```grammar,表达式
 IfExpression ->
     `if` Conditions BlockExpression
     (`else` ( BlockExpression | IfExpression ) )?

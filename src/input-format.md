@@ -5,7 +5,7 @@ r[input]
 # 输入格式
 
 r[input.syntax]
-```grammar,lexer
+```grammar,词法分析器
 @root CHAR -> <a Unicode scalar value>
 
 NUL -> U+0000

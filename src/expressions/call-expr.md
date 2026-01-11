@@ -2,7 +2,7 @@ r[expr.call]
 # 调用表达式
 
 r[expr.call.syntax]
-```grammar,expressions
+```grammar,表达式
 CallExpression -> Expression `(` CallParams? `)`
 
 CallParams -> Expression ( `,` Expression )* `,`?

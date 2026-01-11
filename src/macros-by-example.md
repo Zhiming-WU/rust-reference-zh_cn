@@ -5,7 +5,7 @@ r[macro.decl]
 # 声明宏
 
 r[macro.decl.syntax]
-```grammar,macros
+```grammar,宏
 MacroRulesDefinition ->
     `macro_rules` `!` IDENTIFIER MacroRulesDef
 

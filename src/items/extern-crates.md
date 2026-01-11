@@ -2,7 +2,7 @@ r[items.extern-crate]
 # extern crate 声明
 
 r[items.extern-crate.syntax]
-```grammar,items
+```grammar,项
 ExternCrate -> `extern` `crate` CrateRef AsClause? `;`
 
 CrateRef -> IDENTIFIER | `self`

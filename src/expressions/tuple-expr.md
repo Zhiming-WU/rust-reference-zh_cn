@@ -4,7 +4,7 @@ r[expr.tuple]
 ## 元组表达式
 
 r[expr.tuple.syntax]
-```grammar,expressions
+```grammar,表达式
 TupleExpression -> `(` TupleElements? `)`
 
 TupleElements -> ( Expression `,` )+ Expression?
@@ -45,7 +45,7 @@ r[expr.tuple-index]
 ## 元组索引表达式
 
 r[expr.tuple-index.syntax]
-```grammar,expressions
+```grammar,表达式
 TupleIndexingExpression -> Expression `.` TUPLE_INDEX
 ```
 

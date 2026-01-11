@@ -2,7 +2,7 @@ r[attributes]
 # 属性
 
 r[attributes.syntax]
-```grammar,attributes
+```grammar,属性
 InnerAttribute -> `#` `!` `[` Attr `]`
 
 OuterAttribute -> `#` `[` Attr `]`
@@ -100,7 +100,7 @@ r[attributes.meta.intro]
 “元项”是大多数 [内置属性][built-in attributes] 用于 [Attr] 规则的 语法格式。它具有以下语法：
 
 r[attributes.meta.syntax]
-```grammar,attributes
+```grammar,属性
 @root MetaItem ->
       SimplePath
     | SimplePath `=` Expression
@@ -143,7 +143,7 @@ r[attributes.meta.builtin]
 各种内置属性使用元项语法的不同子集来指定它们的输入。以下语法规则展示了一些常用形式：
 
 r[attributes.meta.builtin.syntax]
-```grammar,attributes
+```grammar,属性
 @root MetaWord ->
     IDENTIFIER
 

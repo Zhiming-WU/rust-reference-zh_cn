@@ -2,7 +2,7 @@ r[items.enum]
 # 枚举
 
 r[items.enum.syntax]
-```grammar,items
+```grammar,项
 Enumeration ->
     `enum` IDENTIFIER GenericParams? WhereClause? `{` EnumVariants? `}`
 

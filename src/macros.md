@@ -16,7 +16,7 @@ r[macro.invocation]
 ## 宏调用
 
 r[macro.invocation.syntax]
-```grammar,macros
+```grammar,宏
 MacroInvocation ->
     SimplePath `!` DelimTokenTree
 

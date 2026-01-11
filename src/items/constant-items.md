@@ -2,7 +2,7 @@ r[items.const]
 # 常量项
 
 r[items.const.syntax]
-```grammar,items
+```grammar,项
 ConstantItem ->
     `const` ( IDENTIFIER | `_` ) `:` Type ( `=` Expression )? `;`
 ```

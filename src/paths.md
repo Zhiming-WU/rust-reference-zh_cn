@@ -18,7 +18,7 @@ r[paths.simple]
 ### 简单路径
 
 r[paths.simple.syntax]
-```grammar,paths
+```grammar,路径
 SimplePath ->
     `::`? SimplePathSegment (`::` SimplePathSegment)*
 
@@ -41,7 +41,7 @@ r[paths.expr]
 ### 表达式中的路径
 
 r[paths.expr.syntax]
-```grammar,paths
+```grammar,路径
 PathInExpression ->
     `::`? PathExprSegment (`::` PathExprSegment)*
 
@@ -118,7 +118,7 @@ r[paths.qualified]
 ## 限定路径
 
 r[paths.qualified.syntax]
-```grammar,paths
+```grammar,路径
 QualifiedPathInExpression -> QualifiedPathType (`::` PathExprSegment)+
 
 QualifiedPathType -> `<` Type (`as` TypePath)? `>`
@@ -151,7 +151,7 @@ r[paths.type]
 ### 类型中的路径
 
 r[paths.type.syntax]
-```grammar,paths
+```grammar,路径
 TypePath -> `::`? TypePathSegment (`::` TypePathSegment)*
 
 TypePathSegment -> PathIdentSegment (`::`? (GenericArgs | TypePathFn))?

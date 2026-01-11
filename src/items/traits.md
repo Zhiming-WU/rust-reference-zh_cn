@@ -2,7 +2,7 @@ r[items.traits]
 # 特型
 
 r[items.traits.syntax]
-```grammar,items
+```grammar,项
 Trait ->
     `unsafe`? `trait` IDENTIFIER GenericParams? ( `:` TypeParamBounds? )? WhereClause?
     `{`

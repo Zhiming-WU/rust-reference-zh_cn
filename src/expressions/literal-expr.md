@@ -2,7 +2,7 @@ r[expr.literal]
 # 字面量表达式
 
 r[expr.literal.syntax]
-```grammar,expressions
+```grammar,表达式
 LiteralExpression ->
       CHAR_LITERAL
     | STRING_LITERAL

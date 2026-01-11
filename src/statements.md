@@ -2,7 +2,7 @@ r[statement]
 # 语句
 
 r[statement.syntax]
-```grammar,statements
+```grammar,语句
 Statement ->
       `;`
     | Item
@@ -53,7 +53,7 @@ r[statement.let]
 ### `let`语句
 
 r[statement.let.syntax]
-```grammar,statements
+```grammar,语句
 LetStatement ->
     OuterAttribute* `let` PatternNoTopAlt ( `:` Type )?
     (
@@ -92,7 +92,7 @@ r[statement.expr]
 ## 表达式语句
 
 r[statement.expr.syntax]
-```grammar,statements
+```grammar,语句
 ExpressionStatement ->
       ExpressionWithoutBlock `;`
     | ExpressionWithBlock `;`?

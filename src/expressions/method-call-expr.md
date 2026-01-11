@@ -2,7 +2,7 @@ r[expr.method]
 # 方法调用表达式
 
 r[expr.method.syntax]
-```grammar,expressions
+```grammar,表达式
 MethodCallExpression -> Expression `.` PathExprSegment `(`CallParams? `)`
 ```
 

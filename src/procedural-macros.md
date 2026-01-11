@@ -156,7 +156,7 @@ r[macro.proc.derive.intro]
 r[macro.proc.derive.syntax]
 `proc_macro_derive`属性的语法格式是：
 
-```grammar,attributes
+```grammar,属性
 @root ProcMacroDeriveAttribute ->
     `proc_macro_derive` `(` DeriveMacroName ( `,` DeriveMacroAttributes )? `,`? `)`
 

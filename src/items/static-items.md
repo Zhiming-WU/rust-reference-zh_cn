@@ -2,7 +2,7 @@ r[items.static]
 # 静态项
 
 r[items.static.syntax]
-```grammar,items
+```grammar,项
 StaticItem ->
     ItemSafety?[^extern-safety] `static` `mut`? IDENTIFIER `:` Type ( `=` Expression )? `;`
 ```

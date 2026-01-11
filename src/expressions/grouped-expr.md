@@ -2,7 +2,7 @@ r[expr.paren]
 # 分组表达式
 
 r[expr.paren.syntax]
-```grammar,expressions
+```grammar,表达式
 GroupedExpression -> `(` Expression `)`
 ```
 

@@ -2,7 +2,7 @@ r[items.fn]
 # 函数
 
 r[items.fn.syntax]
-```grammar,items
+```grammar,项
 Function ->
     FunctionQualifiers `fn` IDENTIFIER GenericParams?
         `(` FunctionParameters? `)`

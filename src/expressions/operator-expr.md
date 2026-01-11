@@ -2,7 +2,7 @@ r[expr.operator]
 # 运算符表达式
 
 r[expr.operator.syntax]
-```grammar,expressions
+```grammar,表达式
 OperatorExpression ->
       BorrowExpression
     | DereferenceExpression
@@ -56,7 +56,7 @@ r[expr.operator.borrow]
 ## 借用运算符
 
 r[expr.operator.borrow.syntax]
-```grammar,expressions
+```grammar,表达式
 BorrowExpression ->
       (`&`|`&&`) Expression
     | (`&`|`&&`) `mut` Expression
@@ -162,7 +162,7 @@ r[expr.deref]
 ## 解引用运算符
 
 r[expr.deref.syntax]
-```grammar,expressions
+```grammar,表达式
 DereferenceExpression -> `*` Expression
 ```
 
@@ -193,7 +193,7 @@ r[expr.try]
 ## try传播表达式
 
 r[expr.try.syntax]
-```grammar,expressions
+```grammar,表达式
 TryPropagationExpression -> Expression `?`
 ```
 
@@ -314,7 +314,7 @@ r[expr.negate]
 ## 求负运算符
 
 r[expr.negate.syntax]
-```grammar,expressions
+```grammar,表达式
 NegationExpression ->
       `-` Expression
     | `!` Expression
@@ -348,7 +348,7 @@ r[expr.arith-logic]
 ## 算术和逻辑二元运算符
 
 r[expr.arith-logic.syntax]
-```grammar,expressions
+```grammar,表达式
 ArithmeticOrLogicalExpression ->
       Expression `+` Expression
     | Expression `-` Expression
@@ -410,7 +410,7 @@ r[expr.cmp]
 ## 比较运算符
 
 r[expr.cmp.syntax]
-```grammar,expressions
+```grammar,表达式
 ComparisonExpression ->
       Expression `==` Expression
     | Expression `!=` Expression
@@ -469,7 +469,7 @@ r[expr.bool-logic]
 ## 惰性布尔运算符
 
 r[expr.bool-logic.syntax]
-```grammar,expressions
+```grammar,表达式
 LazyBooleanExpression ->
       Expression `||` Expression
     | Expression `&&` Expression
@@ -492,7 +492,7 @@ r[expr.as]
 ## 类型转换表达式
 
 r[expr.as.syntax]
-```grammar,expressions
+```grammar,表达式
 TypeCastExpression -> Expression `as` TypeNoBounds
 ```
 
@@ -741,7 +741,7 @@ r[expr.assign]
 ## 赋值表达式
 
 r[expr.assign.syntax]
-```grammar,expressions
+```grammar,表达式
 AssignmentExpression -> Expression `=` Expression
 ```
 
@@ -931,7 +931,7 @@ r[expr.compound-assign]
 ## 复合赋值表达式
 
 r[expr.compound-assign.syntax]
-```grammar,expressions
+```grammar,表达式
 CompoundAssignmentExpression ->
       Expression `+=` Expression
     | Expression `-=` Expression

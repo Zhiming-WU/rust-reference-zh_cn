@@ -41,7 +41,7 @@ r[type.name]
 ## 类型表达式
 
 r[type.name.syntax]
-```grammar,types
+```grammar,类型
 Type ->
       TypeNoBounds
     | ImplTraitType
@@ -99,7 +99,7 @@ r[type.name.parenthesized]
 ### 括号类型
 
 r[type.name.parenthesized.syntax]
-```grammar,types
+```grammar,类型
 ParenthesizedType -> `(` Type `)`
 ```
 
