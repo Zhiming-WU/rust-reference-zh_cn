@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/names.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[names]
 # 名称
 
@@ -113,52 +116,52 @@ r[names.implicit.root]
 [*scope*]: names/scopes.md
 [*visibility*]: visibility-and-privacy.md
 [`'static`]: keywords.md#弱关键字
-[`for`]: expressions/loop-expr.md#iterator-loops
-[`if let`]: expressions/if-expr.md#if-let-patterns
-[`let` statement]: statements.md#let-statements
+[`for`]: expressions/loop-expr.md#迭代器循环
+[`if let`]: expressions/if-expr.md#if-let模式
+[`let` statement]: statements.md#let语句
 [`macro_export` attribute]: macros-by-example.md#macro_export属性
 [`macro_rules` declarations]: macros-by-example.md
 [`macro_use` attribute]: macros-by-example.md#macro_use属性
 [`match`]: expressions/match-expr.md
-[`while let`]: expressions/loop-expr.md#while-let-patterns
+[`while let`]: expressions/loop-expr.md#while-let模式
 [associated items]: items/associated-items.md
 [attributes]: attributes.md
 [Boolean type]: types/boolean.md
-[Built-in attributes]: attributes.md#built-in-attributes-index
+[Built-in attributes]: attributes.md#内置属性索引
 [Closure]: expressions/closure-expr.md
 [Constant item declarations]: items/constant-items.md
 [Derive helper attributes]: procedural-macros.md#派生宏辅助属性
 [enum]: items/enumerations.md
 [Expressions]: expressions.md
-[extern-prelude]: names/preludes.md#extern-prelude
+[extern-prelude]: names/preludes.md#外部预导入
 [External block items]: items/external-blocks.md
 [External crate declarations]: items/extern-crates.md
 [fields]: expressions/field-expr.md
-[floating-point types]: types/numeric.md#floating-point-types
+[floating-point types]: types/numeric.md#浮点类型
 [Function declarations]: items/functions.md
-[function parameters]: items/functions.md#function-parameters
+[function parameters]: items/functions.md#函数参数
 [Generic parameters]: items/generics.md
-[Higher ranked trait bounds]: trait-bounds.md#higher-ranked-trait-bounds
+[Higher ranked trait bounds]: trait-bounds.md#高阶特型界限
 [Implementation]: items/implementations.md
-[Integer types]: types/numeric.md#integer-types
+[Integer types]: types/numeric.md#整数类型
 [Items]: items.md
-[Language prelude]: names/preludes.md#language-prelude
+[Language prelude]: names/preludes.md#语言预导入
 [lifetimes-and-loop-labels]: tokens.md#生命周期和循环标签
 [lifetimes]: tokens.md#生命周期和循环标签
-[Lints]: attributes/diagnostics.md#lint-check-attributes
-[Loop labels]: expressions/loop-expr.md#loop-labels
-[Machine-dependent integer types]: types/numeric.md#machine-dependent-integer-types
+[Lints]: attributes/diagnostics.md#lint检查属性
+[Loop labels]: expressions/loop-expr.md#循环标签
+[Machine-dependent integer types]: types/numeric.md#平台相关整数类型
 [macro invocations]: macros.md#宏调用
 [matcher metavariables]: macros-by-example.md#元变量
 [Module declarations]: items/modules.md
 [path]: paths.md
 [path qualifiers]: paths.md#path-qualifiers
-[Standard library prelude]: names/preludes.md#standard-library-prelude
+[Standard library prelude]: names/preludes.md#标准库预导入
 [Static item declarations]: items/static-items.md
 [struct]: items/structs.md
 [Textual types]: types/textual.md
-[Tool attributes]: attributes.md#tool-attributes
-[tool lint attributes]: attributes/diagnostics.md#tool-lint-attributes
+[Tool attributes]: attributes.md#工具属性
+[tool lint attributes]: attributes/diagnostics.md#工具lint属性
 [Trait item declarations]: items/traits.md
 [Type aliases]: items/type-aliases.md
 [types]: types.md

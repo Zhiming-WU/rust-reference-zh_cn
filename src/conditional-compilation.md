@@ -247,7 +247,7 @@ r[cfg.target_has_atomic.general]
 键值选项，为目标支持原子加载、存储和比较并交换操作的每个位宽设置。
 
 r[cfg.target_has_atomic.stdlib]
-当此cfg存在时，所有稳定的[`core::sync::atomic`](https://doc.rust-lang.org/core/sync/atomic/index.html)API都可用于相关的原子位宽。
+当此cfg存在时，所有稳定的[`core::sync::atomic`]API都可用于相关的原子位宽。
 
 r[cfg.target_has_atomic.values]
 可能的值：
@@ -267,7 +267,7 @@ r[cfg.test]
 r[cfg.debug_assertions]
 ### `debug_assertions`
 
-默认情况下在没有优化的情况下编译时启用。这可用于在开发中启用额外的调试代码，但在生产中不启用。例如，它控制标准库的[`debug_assert!`](https://doc.rust-lang.org/core/macro.debug_assert.html)宏的行为。
+默认情况下在没有优化的情况下编译时启用。这可用于在开发中启用额外的调试代码，但在生产中不启用。例如，它控制标准库的[`debug_assert!`]宏的行为。
 
 r[cfg.proc_macro]
 ### `proc_macro`
@@ -286,7 +286,7 @@ r[cfg.panic.values]
 *   `"abort"`
 *   `"unwind"`
 
-[panic strategy]: panic.md#panic-strategy
+[panic strategy]: panic.md#恐慌策略
 
 ## 条件编译的形式
 
@@ -438,8 +438,8 @@ println!("I'm running on a {} machine!", machine_kind);
 ```
 
 [Testing]: attributes/testing.md
-[`--cfg`]: https://doc.rust-lang.org/rustc/command-line-arguments.html#--cfg-configure-the-compilation-environment
-[`--test`]: https://doc.rust-lang.org/rustc/command-line-arguments.html#--test-build-a-test-harness
+[`--cfg`]: ../rustc/command-line-arguments.html#--cfg-configure-the-compilation-environment
+[`--test`]: ../rustc/command-line-arguments.html#--test-build-a-test-harness
 [`cfg`]: #cfg属性
 [`cfg` macro]: #cfg宏
 [`cfg_attr`]: #cfg_attr属性
@@ -448,6 +448,6 @@ println!("I'm running on a {} machine!", machine_kind);
 [`target_feature` attribute]: attributes/codegen.md#the-target_feature-attribute
 [attribute]: attributes.md
 [attributes]: attributes.md
-[cargo-feature]: https://doc.rust-lang.org/cargo/reference/features.html
+[cargo-feature]: ../cargo/reference/features.html
 [crate type]: linkage.md
-[static C runtime]: linkage.md#static-and-dynamic-c-runtimes
+[static C runtime]: linkage.md#静态和动态c运行时

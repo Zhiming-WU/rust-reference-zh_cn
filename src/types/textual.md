@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types/textual.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type.text]
 # 文本类型
 

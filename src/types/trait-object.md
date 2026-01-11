@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types/trait-object.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type.trait-object]
 # 特型对象
 
@@ -80,7 +83,7 @@ r[type.trait-object.lifetime-bounds]
 由于特型对象可以包含引用，这些引用的生命周期需要作为特型对象的一部分来表达。该生命周期写为 `Trait + 'a` 。有一些 [默认值][defaults] 允许通常以合理的选择推断此生命周期。
 
 [auto traits]: ../special-types-and-traits.md#auto-traits
-[defaults]: ../lifetime-elision.md#default-trait-object-lifetimes
+[defaults]: ../lifetime-elision.md#默认特型对象生命周期
 [dyn compatible]: ../items/traits.md#dyn兼容性
 [dynamically sized types]: ../dynamically-sized-types.md
-[supertraits]: ../items/traits.md#supertraits
+[supertraits]: ../items/traits.md#父特型

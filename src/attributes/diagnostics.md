@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/attributes/diagnostics.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[attributes.diagnostics]
 # 诊断属性
 
@@ -616,9 +619,9 @@ error[E0277]: 特型 边界 `&str: AsExpression<Integer>` 未满足
 [let statement]: ../statements.md#let语句
 [macro definition]: ../macros-by-example.md
 [module]: ../items/modules.md
-[rustc book]: https://doc.rust-lang.org/rustc/lints/index.html
-[rustc-lint-caps]: https://doc.rust-lang.org/rustc/lints/levels.html#capping-lints
-[rustc-lint-cli]: https://doc.rust-lang.org/rustc/lints/levels.html#via-compiler-flag
+[rustc book]: ../../rustc/lints/index.html
+[rustc-lint-caps]: ../../rustc/lints/levels.html#capping-lints
+[rustc-lint-cli]: ../../rustc/lints/levels.html#via-compiler-flag
 [rustdoc]: ../../rustdoc/lints.html
 [struct field]: ../items/structs.md
 [struct]: ../items/structs.md

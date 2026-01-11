@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/attributes/testing.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[attributes.testing]
 # 测试属性
 
@@ -5,7 +8,7 @@ r[attributes.testing]
 
 <!-- template:attributes -->
 r[attributes.testing.test]
-## `test` 属性
+## `test`属性
 
 r[attributes.testing.test.intro]
 *`test` [属性][attributes]* 将一个函数标记为要作为测试执行。
@@ -71,7 +74,7 @@ r[attributes.testing.test.success]
 
 <!-- template:attributes -->
 r[attributes.testing.ignore]
-## `ignore` 属性
+## `ignore`属性
 
 r[attributes.testing.ignore.intro]
 *`ignore` [属性][attributes]* 可以与 [`test` 属性][attributes.testing.test] 一起使用，以告知测试工具不要将该函数作为测试执行。
@@ -120,7 +123,7 @@ r[attributes.testing.ignore.behavior]
 
 <!-- template:attributes -->
 r[attributes.testing.should_panic]
-## `should_panic` 属性
+## `should_panic`属性
 
 r[attributes.testing.should_panic.intro]
 *`should_panic` [属性][attributes]* 会使测试仅在应用该属性的 [测试函数][attributes.testing.test] 发生 恐慌 时才通过。

@@ -1,5 +1,8 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/trait-bounds.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[bound]
-# 特型和生命周期界限
+# 特型与生命周期界限
 
 r[bound.syntax]
 ```grammar,杂项
@@ -233,21 +236,21 @@ impl<'a, T> Trait<'a, T> for &'a T {}
 ```
 
 r[bound.use]
-## 使用界限
+## `use`界限
 
 某些界限列表可能包含 `use<..>` 界限，以控制哪些泛型参数会被 `impl Trait` [抽象返回类型][abstract return type] 捕获。有关更多详细信息，请参阅 [精确捕获][precise capturing] 。
 
-[abstract return type]: types/impl-trait.md#abstract-return-types
+[abstract return type]: types/impl-trait.md#抽象返回类型
 [arrays]: types/array.md
-[associated types]: items/associated-items.md#associated-types
-[hrtb-scopes]: names/scopes.md#higher-ranked-trait-bound-scopes
-[supertraits]: items/traits.md#supertraits
+[associated types]: items/associated-items.md#关联类型
+[hrtb-scopes]: names/scopes.md#高阶特型界限作用域
+[supertraits]: items/traits.md#父特型
 [generic]: items/generics.md
 [higher-ranked lifetimes]: #higher-ranked-trait-bounds
-[precise capturing]: types/impl-trait.md#precise-capturing
+[precise capturing]: types/impl-trait.md#精确捕获
 [slice]: types/slice.md
-[Trait]: items/traits.md#trait-bounds
+[Trait]: items/traits.md#特型界限
 [trait object]: types/trait-object.md
 [trait objects]: types/trait-object.md
 [type parameters]: types/parameters.md
-[where clause]: items/generics.md#where-clauses
+[where clause]: items/generics.md#where子句

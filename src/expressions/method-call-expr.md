@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/method-call-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.method]
 # 方法调用表达式
 
@@ -95,9 +98,9 @@ r[expr.method.edition2021]
 [visible]: ../visibility-and-privacy.md
 [array type]: ../types/array.md
 [trait objects]: ../types/trait-object.md
-[disambiguate call]: call-expr.md#disambiguating-function-calls
-[disambiguating function call syntax]: call-expr.md#disambiguating-function-calls
-[dereference]: operator-expr.md#the-dereference-operator
+[disambiguate call]: call-expr.md#消除函数调用歧义
+[disambiguating function call syntax]: call-expr.md#消除函数调用歧义
+[dereference]: operator-expr.md#解引用运算符
 [methods]: ../items/associated-items.md#方法
-[unsized coercion]: ../type-coercions.md#unsized-coercions
+[unsized coercion]: ../type-coercions.md#非定长转换
 [`IntoIterator`]: std::iter::IntoIterator

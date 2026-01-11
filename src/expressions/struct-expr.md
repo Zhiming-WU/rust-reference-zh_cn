@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/struct-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.struct]
 # 结构体表达式
 
@@ -145,12 +148,12 @@ Point3d { x, y: y_value, z };
 ```
 
 [enum variant]: ../items/enumerations.md
-[if let]: if-expr.md#if-let-patterns
-[if]: if-expr.md#if-expressions
+[if let]: if-expr.md#if-let模式
+[if]: if-expr.md#if表达式
 [loop]: loop-expr.md
 [match]: match-expr.md
 [parentheses]: grouped-expr.md
 [struct]: ../items/structs.md
 [union]: ../items/unions.md
 [visible]: ../visibility-and-privacy.md
-[scrutinee]: ../glossary.md#scrutinee
+[scrutinee]: ../glossary.md#审查值

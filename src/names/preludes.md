@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/names/preludes.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[names.preludes]
 # 预导入
 
@@ -193,17 +196,17 @@ r[names.preludes.no_implicit_prelude.edition2018]
 [`no_std` attribute]: #the-no_std-attribute
 [attribute]: ../attributes.md
 [Boolean type]: ../types/boolean.md
-[Built-in attributes]: ../attributes.md#built-in-attributes-index
+[Built-in attributes]: ../attributes.md#内置属性索引
 [extern prelude]: #extern-prelude
-[floating-point types]: ../types/numeric.md#floating-point-types
-[Integer types]: ../types/numeric.md#integer-types
+[floating-point types]: ../types/numeric.md#浮点类型
+[Integer types]: ../types/numeric.md#整数类型
 [Language prelude]: #language-prelude
-[Machine-dependent integer types]: ../types/numeric.md#machine-dependent-integer-types
+[Machine-dependent integer types]: ../types/numeric.md#平台相关整数类型
 [Macro namespace]: namespaces.md
 [name resolution]: name-resolution.md
 [standard library prelude]: names.preludes.std
 [Textual types]: ../types/textual.md
-[tool attributes]: ../attributes.md#tool-attributes
+[tool attributes]: ../attributes.md#工具属性
 [Tool prelude]: #tool-prelude
 [Type namespace]: namespaces.md
 [use declarations]: ../items/use-declarations.md

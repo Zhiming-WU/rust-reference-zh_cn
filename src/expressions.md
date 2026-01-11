@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr]
 # 表达式
 
@@ -372,43 +375,43 @@ r[expr.attr.never-before]
 
 [`Copy`]:               special-types-and-traits.md#copy
 [`Drop`]:               special-types-and-traits.md#drop
-[`if let`]:             expressions/if-expr.md#if-let-patterns
+[`if let`]:             expressions/if-expr.md#if-let模式
 [`format_args!`]:       core::format_args
 [`pin!`]:               core::pin::pin
 [`Sized`]:              special-types-and-traits.md#sized
-[`while let`]:          expressions/loop-expr.md#while-let-patterns
+[`while let`]:          expressions/loop-expr.md#while-let模式
 [array expressions]:    expressions/array-expr.md
-[array indexing]:       expressions/array-expr.md#array-and-slice-indexing-expressions
-[assign]:               expressions/operator-expr.md#assignment-expressions
+[array indexing]:       expressions/array-expr.md#数组和切片索引表达式
+[assign]:               expressions/operator-expr.md#赋值表达式
 [block expressions]:    expressions/block-expr.md
-[borrow]:               expressions/operator-expr.md#borrow-operators
+[borrow]:               expressions/operator-expr.md#借用运算符
 [call expressions]:     expressions/call-expr.md
-[comparison]:           expressions/operator-expr.md#comparison-operators
-[compound assignment]:  expressions/operator-expr.md#compound-assignment-expressions
-[deref]:                expressions/operator-expr.md#the-dereference-operator
+[comparison]:           expressions/operator-expr.md#比较运算符
+[compound assignment]:  expressions/operator-expr.md#复合赋值表达式
+[deref]:                expressions/operator-expr.md#解引用运算符
 [destructors]:          destructors.md
-[drop scope]:           destructors.md#drop-scopes
+[drop scope]:           destructors.md#销毁作用域
 [extended]:             destructors.scope.lifetime-extension
 [extending expression]: destructors.scope.lifetime-extension.exprs
 [extending expressions]: destructors.scope.lifetime-extension.exprs
 [field]:                expressions/field-expr.md
-[functional update]:    expressions/struct-expr.md#functional-update-syntax
+[functional update]:    expressions/struct-expr.md#函数式更新语法
 [implicit borrow]:      #implicit-borrows
 [implicitly borrowed]:  expr.implicit-borrow
 [implicitly mutably borrowed]: #implicit-borrows
 [interior mutability]:  interior-mutability.md
-[let statement]:        statements.md#let-statements
+[let statement]:        statements.md#let语句
 [macro invocations]:    macro.invocation
 [match]:                expressions/match-expr.md
 [method-call]:          expressions/method-call-expr.md
-[Mutable `static` items]: items/static-items.md#mutable-statics
+[Mutable `static` items]: items/static-items.md#可变静态项
 [Outer attributes]:     attributes.md
 [paths]:                expressions/path-expr.md
 [place expression contexts]: expr.place-value
-[promoted]:             destructors.md#constant-promotion
+[promoted]:             destructors.md#常量提升
 [Range]:                expressions/range-expr.md
-[raw borrow]:           expressions/operator-expr.md#raw-borrow-operators
-[scrutinee]:            glossary.md#scrutinee
+[raw borrow]:           expressions/operator-expr.md#原始借用运算符
+[scrutinee]:            glossary.md#审查值
 [slice]:                types/slice.md
 [statement]:            statements.md
 [static variables]:     items/static-items.md

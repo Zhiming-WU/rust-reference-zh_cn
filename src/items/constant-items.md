@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/constant-items.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.const]
 # 常量项
 
@@ -109,10 +112,10 @@ fn unused_generic_function<T>() {
 ```
 
 [const_eval]: ../const_eval.md
-[associated constant]: ../items/associated-items.md#associated-constants
+[associated constant]: ../items/associated-items.md#关联常量
 [constant value]: ../const_eval.md#常量表达式
 [free]: ../glossary.md#自由项
-[static lifetime elision]: ../lifetime-elision.md#const-and-static-elision
+[static lifetime elision]: ../lifetime-elision.md#const和static省略
 [trait definition]: traits.md
 [underscore imports]: use-declarations.md#下划线导入
 [`Copy`]: ../special-types-and-traits.md#copy

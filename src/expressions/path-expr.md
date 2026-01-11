@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/path-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.path]
 # 路径表达式
 
@@ -37,6 +40,6 @@ r[expr.path.const]
 [place expressions]: ../expressions.md#位置表达式和值表达式
 [value expressions]: ../expressions.md#位置表达式和值表达式
 [path]: ../paths.md
-[`static mut`]: ../items/static-items.md#mutable-statics
-[`unsafe` block]: block-expr.md#unsafe-blocks
-[`const` blocks]: block-expr.md#const-blocks
+[`static mut`]: ../items/static-items.md#可变静态项
+[`unsafe` block]: block-expr.md#unsafe块
+[`const` blocks]: block-expr.md#const块

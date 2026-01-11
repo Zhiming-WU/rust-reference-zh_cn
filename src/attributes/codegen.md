@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/attributes/codegen.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[attributes.codegen]
 # 代码生成属性
 
@@ -5,7 +8,7 @@ r[attributes.codegen]
 
 <!-- template:attributes -->
 r[attributes.codegen.inline]
-### `inline`属性
+## `inline`属性
 
 r[attributes.codegen.inline.intro]
 *`inline` [属性][attribute]* 建议是将所修饰函数代码的副本放置在调用者中，而不是生成对函数的调用。
@@ -85,7 +88,7 @@ r[attributes.codegen.inline.externally-exported]
 
 <!-- template:attributes -->
 r[attributes.codegen.cold]
-### `cold`属性
+## `cold`属性
 
 r[attributes.codegen.cold.intro]
 *`cold` [属性][attribute]* 建议所修饰的函数不太可能被调用，这可能有助于编译器生成更好的代码。
@@ -739,16 +742,16 @@ r[attributes.codegen.instruction_set.arm]
 - 对于 `arm::a32` ("ARM")，它将为 0。
 - 对于 `arm::t32` ("Thumb")，它将为 1。
 
-[`-C target-cpu`]: https://doc.rust-lang.org/rustc/codegen-options/index.html#target-cpu
-[`-C target-feature`]: https://doc.rust-lang.org/rustc/codegen-options/index.html#target-feature
+[`-C target-cpu`]: ../../rustc/codegen-options/index.html#target-cpu
+[`-C target-feature`]: ../../rustc/codegen-options/index.html#target-feature
 [`export_name`]: abi.export_name
-[`is_aarch64_feature_detected`]: https://doc.rust-lang.org/std/arch/macro.is_aarch64_feature_detected.html
-[`is_x86_feature_detected`]: https://doc.rust-lang.org/std/arch/macro.is_x86_feature_detected.html
+[`is_aarch64_feature_detected`]: ../../std/arch/macro.is_aarch64_feature_detected.html
+[`is_x86_feature_detected`]: ../../std/arch/macro.is_x86_feature_detected.html
 [`Location`]: core::panic::Location
 [`naked_asm!`]: ../inline-assembly.md
 [`no_mangle`]: abi.no_mangle
 [`target_feature` conditional compilation option]: ../conditional-compilation.md#target_feature
-[`unused_variables`]: https://doc.rust-lang.org/rustc/lints/listing/warn-by-default.html#unused-variables
+[`unused_variables`]: ../../rustc/lints/listing/warn-by-default.html#unused-variables
 [associated functions]: items.associated.fn
 [async blocks]: expr.block.async
 [async closure]: expr.closure.async
@@ -759,7 +762,7 @@ r[attributes.codegen.instruction_set.arm]
 [closures]: expr.closure
 [default definition]: items.traits.associated-item-decls
 [free functions]: items.fn
-[function body]: ../items/functions.md#function-body
+[function body]: ../items/functions.md#函数主体
 [functions]: ../items/functions.md
 [inherent impl]: items.impl.inherent
 [rust-abi]: ../items/external-blocks.md#abi

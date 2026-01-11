@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/return-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.return]
 # `return`表达式
 

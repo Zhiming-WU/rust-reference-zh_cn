@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/operator-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.operator]
 # 运算符表达式
 
@@ -179,7 +182,7 @@ r[expr.deref.safety]
 对原始指针进行解引用需要 `unsafe` 。
 
 r[expr.deref.traits]
-在 [不可变位置表达式语境](../expressions.md#mutability) 中，对于非指针类型， `*x` 等价于 `*std::ops::Deref::deref(&x)` ；在可变位置表达式语境中，等价于 `*std::ops::DerefMut::deref_mut(&mut x)` 。
+在 [不可变位置表达式语境](../expressions.md#可变性) 中，对于非指针类型， `*x` 等价于 `*std::ops::Deref::deref(&x)` ；在可变位置表达式语境中，等价于 `*std::ops::DerefMut::deref_mut(&mut x)` 。
 
 ```rust
 let x = &7;
@@ -1065,19 +1068,19 @@ r[expr.compound-assign.result]
 
 [`Try`]: core::ops::Try
 [autoref]: expr.method.candidate-receivers-refs
-[copies or moves]: ../expressions.md#moved-and-copied-types
+[copies or moves]: ../expressions.md#移动和复制类型
 [dropping]: ../destructors.md
 [eval order test]: https://github.com/rust-lang/rust/blob/1.58.0/src/test/ui/expr/compound-assignment/eval-order.rs
-[explicit discriminants]: ../items/enumerations.md#explicit-discriminants
+[explicit discriminants]: ../items/enumerations.md#显式判别值
 [extending expression]: destructors.scope.lifetime-extension.exprs
 [field-less enums]: ../items/enumerations.md#field-less-enum
 [grouped expression]: grouped-expr.md
-[literal expression]: literal-expr.md#integer-literal-expressions
-[logical and]: ../types/boolean.md#logical-and
-[logical not]: ../types/boolean.md#logical-not
-[logical or]: ../types/boolean.md#logical-or
-[logical xor]: ../types/boolean.md#logical-xor
-[mutable]: ../expressions.md#mutability
+[literal expression]: literal-expr.md#整数字面量表达式
+[logical and]: ../types/boolean.md#逻辑与
+[logical not]: ../types/boolean.md#逻辑非
+[logical or]: ../types/boolean.md#逻辑或
+[logical xor]: ../types/boolean.md#逻辑异或
+[mutable]: ../expressions.md#可变性
 [place expression]: ../expressions.md#位置表达式和值表达式
 [assignee expression]: ../expressions.md#位置表达式和值表达式
 [undefined behavior]: ../behavior-considered-undefined.md
@@ -1086,7 +1089,7 @@ r[expr.compound-assign.result]
 [value expression]: ../expressions.md#位置表达式和值表达式
 [temporary lifetime extension]: destructors.scope.lifetime-extension
 [temporary scope]: destructors.scope.temporary
-[temporary value]: ../expressions.md#temporaries
+[temporary value]: ../expressions.md#临时变量
 [float-float]: https://github.com/rust-lang/rust/issues/15536
 [Function pointer]: ../types/function-pointer.md
 [Function item]: ../types/function-item.md

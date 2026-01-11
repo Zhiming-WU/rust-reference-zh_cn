@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/statements.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[statement]
 # 语句
 
@@ -151,6 +154,6 @@ r[statement.attribute]
 [variables]: variables.md
 [outer attributes]: attributes.md
 [`cfg`]: conditional-compilation.md
-[the lint check attributes]: attributes/diagnostics.md#lint-check-attributes
+[the lint check attributes]: attributes/diagnostics.md#lint检查属性
 [pattern]: patterns.md
 [scope]: names/scopes.md

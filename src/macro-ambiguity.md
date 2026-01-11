@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/macro-ambiguity.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[macro.ambiguity]
 # 附录：宏后继集歧义形式化规范
 

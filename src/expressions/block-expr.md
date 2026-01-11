@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/block-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.block]
 # 块表达式
 
@@ -278,25 +281,25 @@ fn is_unix_platform() -> bool {
 
 [`await` expressions]: await-expr.md
 [`cfg`]: ../conditional-compilation.md
-[`for`]: loop-expr.md#iterator-loops
-[`loop`]: loop-expr.md#infinite-loops
-[`unsafe` blocks]: ../unsafe-keyword.md#unsafe-blocks-unsafe-
-[`while`]: loop-expr.md#predicate-loops
+[`for`]: loop-expr.md#迭代器循环
+[`loop`]: loop-expr.md#无限循环
+[`unsafe` blocks]: ../unsafe-keyword.md#不安全块unsafe-
+[`while`]: loop-expr.md#谓词循环
 [array expressions]: array-expr.md
 [call expressions]: call-expr.md
-[capture modes]: ../types/closure.md#capture-modes
+[capture modes]: ../types/closure.md#捕获模式
 [constant items]: ../items/constant-items.md
 [free item]: ../glossary.md#自由项
 [function]: ../items/functions.md
 [inner attributes]: ../attributes.md
 [method]: ../items/associated-items.md#方法
-[mutable reference]: ../types/pointer.md#mutables-references-
+[mutable reference]: ../types/pointer.md#可变引用mut
 [scopes]: ../names/scopes.md
-[shared references]: ../types/pointer.md#shared-references-
+[shared references]: ../types/pointer.md#共享引用
 [statement]: ../statements.md
 [statements]: ../statements.md
 [struct]: struct-expr.md
-[the lint check attributes]: ../attributes/diagnostics.md#lint-check-attributes
+[the lint check attributes]: ../attributes/diagnostics.md#lint检查属性
 [tuple expressions]: tuple-expr.md
 [unsafe operations]: ../unsafety.md
 [value expressions]: ../expressions.md#位置表达式和值表达式

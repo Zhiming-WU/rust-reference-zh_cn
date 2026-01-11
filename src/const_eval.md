@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/const_eval.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[const-eval]
 # 常量求值
 
@@ -280,51 +283,51 @@ r[const-eval.const-fn.type-restrictions]
 常量函数的参数类型和返回类型仅限于那些与常量上下文兼容的类型。
 <!-- TODO: 定义类型限制。 -->
 
-[arithmetic]:           expressions/operator-expr.md#arithmetic-and-logical-binary-operators
+[arithmetic]:           expressions/operator-expr.md#算术和逻辑二元运算符
 [array expressions]:    expressions/array-expr.md
-[array indexing]:       expressions/array-expr.md#array-and-slice-indexing-expressions
-[array indexing]:       expressions/array-expr.md#array-and-slice-indexing-expressions
+[array indexing]:       expressions/array-expr.md#数组和切片索引表达式
+[array indexing]:       expressions/array-expr.md#数组和切片索引表达式
 [array type length expressions]: types/array.md
-[assignment expressions]: expressions/operator-expr.md#assignment-expressions
-[async]:                items/functions.md#async-functions
-[compound assignment expressions]: expressions/operator-expr.md#compound-assignment-expressions
+[assignment expressions]: expressions/operator-expr.md#赋值表达式
+[async]:                items/functions.md#async函数
+[compound assignment expressions]: expressions/operator-expr.md#复合赋值表达式
 [block expressions]:    expressions/block-expr.md
-[borrow]:               expressions/operator-expr.md#borrow-operators
-[cast]:                 expressions/operator-expr.md#type-cast-expressions
+[borrow]:               expressions/operator-expr.md#借用运算符
+[cast]:                 expressions/operator-expr.md#类型转换表达式
 [closure expressions]:  expressions/closure-expr.md
-[comparison]:           expressions/operator-expr.md#comparison-operators
-[const block]:          expressions/block-expr.md#const-blocks
-[const functions]:      items/functions.md#const-functions
-[const generic argument]: items/generics.md#const-generics
-[const generic parameters]: items/generics.md#const-generics
+[comparison]:           expressions/operator-expr.md#比较运算符
+[const block]:          expressions/block-expr.md#const块
+[const functions]:      items/functions.md#const函数
+[const generic argument]: items/generics.md#常量泛型
+[const generic parameters]: items/generics.md#常量泛型
 [constant expressions]: #constant-expressions
 [constants]:            items/constant-items.md
 [Const parameters]:     items/generics.md
 [dereference expression]: expr.deref
 [dereference expressions]: expr.deref
 [destructors]:          destructors.md
-[enum discriminants]:   items/enumerations.md#discriminants
-[expression statements]: statements.md#expression-statements
+[enum discriminants]:   items/enumerations.md#判别值
+[expression statements]: statements.md#表达式语句
 [expressions]:          expressions.md
-[`extern` statics]:     items/external-blocks.md#statics
+[`extern` statics]:     items/external-blocks.md#静态项
 [field]:                expressions/field-expr.md
 [functions]:            items/functions.md
 [grouped]:              expressions/grouped-expr.md
 [interior mutability]:  interior-mutability.md
-[if]:                   expressions/if-expr.md#if-expressions
-[lazy boolean]:         expressions/operator-expr.md#lazy-boolean-operators
-[let statements]:       statements.md#let-statements
+[if]:                   expressions/if-expr.md#if表达式
+[lazy boolean]:         expressions/operator-expr.md#惰性布尔运算符
+[let statements]:       statements.md#let语句
 [literals]:             expressions/literal-expr.md
-[logical]:              expressions/operator-expr.md#arithmetic-and-logical-binary-operators
-[loop]:                 expressions/loop-expr.md#infinite-loops
+[logical]:              expressions/operator-expr.md#算术和逻辑二元运算符
+[loop]:                 expressions/loop-expr.md#无限循环
 [match]:                expressions/match-expr.md
-[negation]:             expressions/operator-expr.md#negation-operators
-[overflow]:             expressions/operator-expr.md#overflow
+[negation]:             expressions/operator-expr.md#求负运算符
+[overflow]:             expressions/operator-expr.md#溢出
 [paths]:                expressions/path-expr.md
 [patterns]:             patterns.md
 [place expression]:     expr.place-value.place-memory-location
-[promoted expression]:  destructors.md#constant-promotion
-[promoted]:             destructors.md#constant-promotion
+[promoted expression]:  destructors.md#常量提升
+[promoted]:             destructors.md#常量提升
 [range expressions]:    expressions/range-expr.md
 [slice]:                types/slice.md
 [statics]:              items/static-items.md
@@ -333,4 +336,4 @@ r[const-eval.const-fn.type-restrictions]
 [tuple enum variant]:   items/enumerations.md
 [tuple expressions]:    expressions/tuple-expr.md
 [tuple struct]:         items/structs.md
-[while]:                expressions/loop-expr.md#predicate-loops
+[while]:                expressions/loop-expr.md#谓词循环

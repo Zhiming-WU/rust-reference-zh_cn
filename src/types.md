@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type]
 # 类型
 
@@ -144,8 +147,8 @@ let a: List<i32> = List::Cons(7, Box::new(List::Cons(13, Box::new(List::Nil))));
 [Macros]: macros.md
 [Numeric]: types/numeric.md
 [Parentheses]: #parenthesized-types
-[Raw pointers]: types/pointer.md#raw-pointers-const-and-mut
-[References]: types/pointer.md#shared-references-
+[Raw pointers]: types/pointer.md#裸指针const和mut
+[References]: types/pointer.md#共享引用
 [Slice]: types/slice.md
 [Struct]: types/struct.md
 [Textual]: types/textual.md
@@ -161,9 +164,9 @@ let a: List<i32> = List::Cons(7, Box::new(List::Cons(13, Box::new(List::Nil))));
 [item]: items.md
 [never]: types/never.md
 [pointer types]: types/pointer.md
-[raw pointer]: types/pointer.md#raw-pointers-const-and-mut
-[reference type]: types/pointer.md#shared-references-
-[reference]: types/pointer.md#shared-references-
+[raw pointer]: types/pointer.md#裸指针const和mut
+[reference type]: types/pointer.md#共享引用
+[reference]: types/pointer.md#共享引用
 [structs]: types/struct.md
 [trait]: types/trait-object.md
 [tuples]: types/tuple.md

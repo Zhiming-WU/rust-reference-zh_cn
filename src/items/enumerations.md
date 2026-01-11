@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/enumerations.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.enum]
 # 枚举
 
@@ -332,16 +335,16 @@ enum E {
 }
 ```
 
-[`C` representation]: ../type-layout.md#the-c-representation
+[`C` representation]: ../type-layout.md#c表示法
 [call expression]: ../expressions/call-expr.md
 [constant expression]: ../const_eval.md#常量表达式
 [enumerated type]: ../types/enum.md
 [Field-less enums]: #field-less-enum
 [never type]: ../types/never.md
-[numeric cast]: ../expressions/operator-expr.md#semantics
+[numeric cast]: ../expressions/operator-expr.md#语义
 [path expression]: ../expressions/path-expr.md
-[primitive representation]: ../type-layout.md#primitive-representations
-[`Rust` representation]: ../type-layout.md#the-rust-representation
+[primitive representation]: ../type-layout.md#原语表示法
+[`Rust` representation]: ../type-layout.md#rust表示法
 [struct expression]: ../expressions/struct-expr.md
 [struct]: structs.md
 [type namespace]: ../names/namespaces.md

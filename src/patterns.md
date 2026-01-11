@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/patterns.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[patterns]
 # 模式
 
@@ -67,7 +70,7 @@ r[patterns.usage]
 模式用于：
 
 r[patterns.let]
-* [`let` 声明](statements.md#let-statements)
+* [`let` 声明](statements.md#let语句)
 
 r[patterns.param]
 * [函数](items/functions.md) 和 [闭包](expressions/closure-expr.md) 参数
@@ -79,10 +82,10 @@ r[patterns.if-let]
 * [`if let` 表达式](expressions/if-expr.md)
 
 r[patterns.while-let]
-* [`while let` 表达式](expressions/loop-expr.md#while-let-patterns)
+* [`while let` 表达式](expressions/loop-expr.md#while-let模式)
 
 r[patterns.for]
-* [`for` 表达式](expressions/loop-expr.md#iterator-loops)
+* [`for` 表达式](expressions/loop-expr.md#迭代器循环)
 
 r[patterns.destructure]
 ## 解构
@@ -1105,14 +1108,14 @@ r[patterns.precedence]
 [literals]: expressions/literal-expr.md
 [literal expression]: expressions/literal-expr.md
 [name resolution]: names/name-resolution.md
-[negating]: expressions/operator-expr.md#negation-operators
+[negating]: expressions/operator-expr.md#求负运算符
 [path]: expressions/path-expr.md
-[pattern matching on unions]: items/unions.md#pattern-matching-on-unions
+[pattern matching on unions]: items/unions.md#在联合体上进行模式匹配
 [range expressions]: expressions/range-expr.md
 [scope]: names/scopes.md
 [structs]: items/structs.md
 [tuples]: types/tuple.md
-[scrutinee]: glossary.md#scrutinee
+[scrutinee]: glossary.md#审查值
 [tuple-like enum variant]: items.enum.tuple-expr
 [type coercions]: type-coercions.md
 [type namespace]: names.namespaces.kinds

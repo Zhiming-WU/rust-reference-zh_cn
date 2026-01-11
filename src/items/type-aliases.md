@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/type-aliases.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.type]
 # 类型别名
 
@@ -46,8 +49,8 @@ r[items.type.associated-impl]
 r[items.type.deprecated]
 在  [特型实现][trait impl]  的类型别名中，等号之前的 Where 子句（如 `type TypeAlias<T> where T: Foo = Bar<T>`）已被弃用。等号之后的 Where 子句（如 `type TypeAlias<T> = Bar<T> where T: Foo`）是首选。
 
-[associated type]: associated-items.md#associated-types
-[trait impl]: implementations.md#trait-implementations
+[associated type]: associated-items.md#关联类型
+[trait impl]: implementations.md#特型实现
 [trait]: traits.md
 [type namespace]: ../names/namespaces.md
 [type]: ../types.md

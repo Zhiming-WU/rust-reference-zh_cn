@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items]
 # 项
 
@@ -79,7 +82,7 @@ r[items.name-resolution]
 [enumeration definitions]: items/enumerations.md
 [function definitions]: items/functions.md
 [implementations]: items/implementations.md
-[item scopes]: names/scopes.md#item-scopes
+[item scopes]: names/scopes.md#项作用域
 [modules]: items/modules.md
 [name resolution]: names/name-resolution.md
 [paths]: paths.md

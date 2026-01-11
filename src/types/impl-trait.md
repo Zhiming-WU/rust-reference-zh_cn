@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types/impl-trait.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type.impl-trait]
 # Impl trait
 
@@ -181,6 +184,6 @@ r[type.impl-trait.constraint]
 `impl Trait` 只能作为非 `extern` 函数的参数或返回类型出现。
 它不能作为 `let` 绑定的类型、字段类型，或出现在类型别名中。
 
-[`use<..>` bound]: ../trait-bounds.md#use-bounds
+[`use<..>` bound]: ../trait-bounds.md#use界限
 [closures]: closure.md
 [trait object]: trait-object.md

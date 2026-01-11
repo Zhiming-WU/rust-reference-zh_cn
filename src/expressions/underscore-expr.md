@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/underscore-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.placeholder]
 # `_`表达式
 
@@ -13,7 +16,7 @@ r[expr.placeholder.lhs-assignment-only]
 它们只能出现在赋值语句的左侧。
 
 r[expr.placeholder.pattern]
-请注意，这与 [通配符模式](../patterns.md#wildcard-pattern) 不同。
+请注意，这与 [通配符模式](../patterns.md#通配符模式) 不同。
 
 `_` 表达式的示例：
 

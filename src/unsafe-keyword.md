@@ -1,5 +1,8 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/unsafe-keyword.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[unsafe]
-# `unsafe` 关键字
+# `unsafe`关键字
 
 r[unsafe.intro]
 `unsafe` 关键字用于创建或履行证明某事是安全的义务。具体来说：
@@ -24,7 +27,7 @@ r[unsafe.positions]
 - 不安全属性 (`#[unsafe(attr)]`)
 
 r[unsafe.fn]
-## 不安全函数 (`unsafe fn`)
+## 不安全函数(`unsafe fn`)
 
 r[unsafe.fn.intro]
 不安全函数是在所有上下文和/或所有可能的输入下都不安全的函数。
@@ -36,7 +39,7 @@ r[unsafe.fn.safety]
 此类函数必须带有 `unsafe` 关键字前缀，且只能从 `unsafe` 块内部调用，或者在没有启用 [`unsafe_op_in_unsafe_fn`] lint 的 `unsafe fn` 内部调用。
 
 r[unsafe.block]
-## 不安全块 (`unsafe {}`)
+## 不安全块(`unsafe {}`)
 
 r[unsafe.block.intro]
 代码块可以带有 `unsafe` 关键字前缀，以允许使用 [不安全性][Unsafety] 一章中定义的各种不安全操作，例如调用其他不安全函数或解引用原始指针。
@@ -63,7 +66,7 @@ Rust 的类型系统是对动态安全要求的保守近似，因此在某些情
 [Unsafety]: unsafety.md
 
 r[unsafe.trait]
-## 不安全特型 (`unsafe trait`)
+## 不安全特型(`unsafe trait`)
 
 r[unsafe.trait.intro]
 不安全特型是附带额外安全条件的特型，这些条件必须由该特型的 *实现* 遵守。
@@ -73,19 +76,19 @@ r[unsafe.trait.safety]
 此类特型必须带有 `unsafe` 关键字前缀，且只能由 `unsafe impl` 块实现。
 
 r[unsafe.impl]
-## 不安全特型实现 (`unsafe impl`)
+## 不安全特型实现(`unsafe impl`)
 
 在实现不安全特型时，实现需要带有 `unsafe` 关键字前缀。
 通过编写 `unsafe impl`，程序员声明他们已经负责满足特型所要求的额外安全条件。
 
 不安全特型实现是不安全特型的逻辑对等物：不安全特型定义了实现必须遵守的证明义务，而不安全实现则表示所有相关的证明义务都已履行。
 
-[keyword]: https://doc.rust-lang.org/std/keyword.unsafe.html
+[keyword]: ../std/keyword.unsafe.html
 [`get_unchecked`]: slice::get_unchecked
-[`unsafe_op_in_unsafe_fn`]: https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn
+[`unsafe_op_in_unsafe_fn`]: ../rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn
 
 r[unsafe.extern]
-## 不安全外部块 (`unsafe extern`)
+## 不安全外部块(`unsafe extern`)
 
 声明 [外部块][external block] 的程序员必须确保其中包含的项的签名是正确的。如果不这样做，可能会导致未定义行为。通过编写 `unsafe extern` 来表明这一义务已经履行。
 
@@ -96,7 +99,7 @@ r[unsafe.extern.edition2024]
 [external block]: items/external-blocks.md
 
 r[unsafe.attribute]
-## 不安全属性 (`#[unsafe(attr)]`)
+## 不安全属性(`#[unsafe(attr)]`)
 
 [不安全属性][unsafe attribute] 是指在使用该属性时必须遵守额外安全条件的属性。编译器无法检查这些条件是否已得到遵守。为了断言它们已得到遵守，这些属性必须包装在 `unsafe(..)` 中，例如 `#[unsafe(no_mangle)]`。
 

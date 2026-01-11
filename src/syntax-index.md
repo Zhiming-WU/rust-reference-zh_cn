@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/syntax-index.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 # 语法索引
 
 本附录提供了 词法单元 和常见形式的索引，并附有这些元素定义的链接。

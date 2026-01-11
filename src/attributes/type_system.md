@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/attributes/type_system.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[attributes.type-system]
 # 类型系统属性
 

@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types/function-pointer.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type.fn-pointer]
 # 函数指针类型
 
@@ -57,7 +60,7 @@ r[type.fn-pointer.attributes]
 
 [`extern`]: ../items/external-blocks.md
 [closures]: closure.md
-[extern function]: ../items/functions.md#extern-function-qualifier
+[extern function]: ../items/functions.md#extern函数限定符
 [function items]: function-item.md
 [unsafe function]: ../unsafe-keyword.md
-[regular function parameters]: ../items/functions.md#attributes-on-function-parameters
+[regular function parameters]: ../items/functions.md#函数参数上的属性

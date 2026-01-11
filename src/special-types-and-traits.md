@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/special-types-and-traits.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[lang-types]
 # 特殊类型和特型
 
@@ -187,28 +190,28 @@ r[lang-types.sized.relaxation]
 [`Unpin`]: std::marker::Unpin
 
 [Arrays]: types/array.md
-[associated types]: items/associated-items.md#associated-types
+[associated types]: items/associated-items.md#关联类型
 [call expressions]: expressions/call-expr.md
-[deref coercions]: type-coercions.md#coercion-types
-[dereference operator]: expressions/operator-expr.md#the-dereference-operator
+[deref coercions]: type-coercions.md#转换类型
+[dereference operator]: expressions/operator-expr.md#解引用运算符
 [destructor]: destructors.md
 [drop check]: ../nomicon/dropck.html
 [dynamically sized type]: dynamically-sized-types.md
 [Function pointers]: types/function-pointer.md
 [Function items]: types/function-item.md
 [implementation items]: items/implementations.md
-[indexing expressions]: expressions/array-expr.md#array-and-slice-indexing-expressions
+[indexing expressions]: expressions/array-expr.md#数组和切片索引表达式
 [interior mutability]: interior-mutability.md
 [main function]: crates-and-source-files.md#main函数
-[Methods]: items/associated-items.md#associated-functions-and-methods
+[Methods]: items/associated-items.md#关联函数和方法
 [method resolution]: expressions/method-call-expr.md
 [operators]: expressions/operator-expr.md
-[orphan rules]: items/implementations.md#trait-implementation-coherence
+[orphan rules]: items/implementations.md#特型实现一致性
 [`static` items]: items/static-items.md
-[test functions]: attributes/testing.md#the-test-attribute
+[test functions]: attributes/testing.md#test属性
 [the standard library]: std
 [trait object]: types/trait-object.md
 [Tuples]: types/tuple.md
 [Type parameters]: types/parameters.md
-[variance]: subtyping.md#variance
+[variance]: subtyping.md#变型
 [Closures]: types/closure.md

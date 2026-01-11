@@ -1,8 +1,11 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/variables.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[variable]
 # 变量
 
 r[variable.intro]
-一个 变量 是 栈帧 的一个组成部分，它可以是一个具名函数 参数，一个匿名 [临时量](expressions.md#temporaries)，或者一个具名 局部变量。
+一个 变量 是 栈帧 的一个组成部分，它可以是一个具名函数 参数，一个匿名 [临时量](expressions.md#临时变量)，或者一个具名 局部变量。
 
 r[variable.local]
 一个 局部变量 （或 栈-局部 分配）直接持有值，在 栈内存 中分配。该值是 栈帧 的一部分。
@@ -36,4 +39,4 @@ fn initialization_example() {
 }
 ```
 
-[`if` expression]: expressions/if-expr.md#if-expressions
+[`if` expression]: expressions/if-expr.md#if表达式

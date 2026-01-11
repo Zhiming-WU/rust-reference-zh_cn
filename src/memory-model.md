@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/memory-model.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[memory]
 # 内存模型
 

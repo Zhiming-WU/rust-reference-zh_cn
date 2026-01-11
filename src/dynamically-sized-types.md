@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/dynamically-sized-types.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[dynamic-sized]
 # 动态大小类型
 

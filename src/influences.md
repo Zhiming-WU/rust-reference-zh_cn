@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/influences.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 # 影响
 
 Rust 并非一种特别原创的语言，其设计元素来自广泛的来源。其中一些列举如下（包括后来已被移除的元素）：

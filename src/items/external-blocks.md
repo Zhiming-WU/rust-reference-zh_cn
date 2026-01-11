@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/external-blocks.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.extern]
 # 外部块
 
@@ -454,17 +457,17 @@ r[items.extern.attributes.fn-parameters]
 [PE Format]: https://learn.microsoft.com/windows/win32/debug/pe-format#import-name-type
 [UEFI]: https://uefi.org/specifications
 [WebAssembly module]: https://webassembly.github.io/spec/core/syntax/modules.html
-[`bundle` documentation for rustc]: https://doc.rust-lang.org/rustc/command-line-arguments.html#linking-modifiers-bundle
+[`bundle` documentation for rustc]: ../../rustc/command-line-arguments.html#linking-modifiers-bundle
 [`dylib` versus `raw-dylib`]: #dylib-versus-raw-dylib
 [`extern fn`]: items.fn.extern
 [`unsafe` context]: ../unsafe-keyword.md
-[`verbatim` documentation for rustc]: https://doc.rust-lang.org/rustc/command-line-arguments.html#linking-modifiers-verbatim
-[`whole-archive` documentation for rustc]: https://doc.rust-lang.org/rustc/command-line-arguments.html#linking-modifiers-whole-archive
+[`verbatim` documentation for rustc]: ../../rustc/command-line-arguments.html#linking-modifiers-verbatim
+[`whole-archive` documentation for rustc]: ../../rustc/command-line-arguments.html#linking-modifiers-whole-archive
 [attributes]: ../attributes.md
 [functions]: functions.md
-[regular function parameters]: functions.md#attributes-on-function-parameters
+[regular function parameters]: functions.md#函数参数上的属性
 [statics]: static-items.md
-[unwind-behavior]: functions.md#unwinding
+[unwind-behavior]: functions.md#展开
 [value namespace]: ../names/namespaces.md
 [win32 api]: https://learn.microsoft.com/en-us/windows/win32/api/
 [`link_ordinal`]: items.extern.attributes.link_ordinal

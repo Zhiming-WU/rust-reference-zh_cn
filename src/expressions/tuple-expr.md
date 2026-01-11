@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/tuple-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.tuple]
 # 元组和元组索引表达式
 
@@ -88,14 +91,14 @@ assert_eq!(point.1, 0.0);
 > [!NOTE]
 > 尽管数组和切片也有元素，你必须使用 [数组或切片索引表达式][array or slice indexing expression] 或 [切片模式][slice pattern] 来访问它们的元素。
 
-[array or slice indexing expression]: array-expr.md#array-and-slice-indexing-expressions
+[array or slice indexing expression]: array-expr.md#数组和切片索引表达式
 [call expression]: ./call-expr.md
 [decimal literal]: ../tokens.md#整数字面量
 [field access expressions]: ./field-expr.html#field-access-expressions
 [operands]: ../expressions.md
 [parenthetical expression]: grouped-expr.md
 [place expression]: ../expressions.md#位置表达式和值表达式
-[slice pattern]: ../patterns.md#slice-patterns
+[slice pattern]: ../patterns.md#切片模式
 [tuple type]: ../types/tuple.md
 [tuple struct]: ../types/struct.md
 [value expression]: ../expressions.md#位置表达式和值表达式

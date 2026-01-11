@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/implementations.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.impl]
 # 实现
 
@@ -191,7 +194,7 @@ r[items.impl.generics.usage]
 
 * 实现的 特型（如果存在）
 * 实现类型
-* 作为包含另一个约束实现的参数的类型的 [绑定][bounds] 中的 [关联类型][associated type]
+* 作为包含另一个约束实现的参数的类型的 [界限][bounds] 中的 [关联类型][associated type]
 
 r[items.impl.generics.constrain]
 类型参数和常量参数必须始终约束实现。如果生命周期在关联类型中使用，则生命周期必须约束实现。
@@ -214,7 +217,7 @@ impl<T> Trait for GenericStruct<T> { /* ... */ }
 // 同样地，N 通过作为 ConstGenericStruct 的参数来产生约束
 impl<const N: usize> Trait for ConstGenericStruct<N> { /* ... */ }
 
-// T 通过作为类型 U 的绑定中的关联类型来产生约束，而 U 本身是约束该特型的泛型参数。
+// T 通过作为类型 U 的界限中的关联类型来产生约束，而 U 本身是约束该特型的泛型参数。
 impl<T, U> GenericTrait<U> for u32 where U: HasAssocType<Ty = T> { /* ... */ }
 
 // 与前一个类似，除了类型是 (U, isize)。U 出现在包含 T 的类型内部，而不是该类型本身。
@@ -237,10 +240,10 @@ impl<T> Struct {
     fn uses_t(t: &T) { /* ... */ }
 }
 
-// T 在 U 的绑定中被用作关联类型，但 U 并不产生约束。
+// T 在 U 的界限中被用作关联类型，但 U 并不产生约束。
 impl<T, U> Struct where U: HasAssocType<Ty = T> { /* ... */ }
 
-// T 在绑定中使用，但不是作为关联类型使用，因此它不产生约束。
+// T 在界限中使用，但不是作为关联类型使用，因此它不产生约束。
 impl<T, U> GenericTrait<U> for u32 where U: GenericTrait<T> {}
 ```
 
@@ -267,20 +270,20 @@ r[items.impl.attributes]
 实现可以在 `impl` 关键字之前包含外部 [属性][attributes]，并在包含关联项的大括号内包含内部 [属性][attributes]。内部属性必须位于任何关联项之前。此处有意义的属性是 [`cfg`]、[`deprecated`]、[`doc`] 和 [lint 检查属性][the lint check attributes]。
 
 [trait]: traits.md
-[associated constants]: associated-items.md#associated-constants
-[associated functions]: associated-items.md#associated-functions-and-methods
-[associated type]: associated-items.md#associated-types
+[associated constants]: associated-items.md#关联常量
+[associated functions]: associated-items.md#关联函数和方法
+[associated type]: associated-items.md#关联类型
 [attributes]: ../attributes.md
 [bounds]: ../trait-bounds.md
 [`cfg`]: ../conditional-compilation.md
-[`deprecated`]: ../attributes/diagnostics.md#the-deprecated-attribute
-[`doc`]: https://doc.rust-lang.org/rustdoc/the-doc-attribute.html
+[`deprecated`]: ../attributes/diagnostics.md#deprecated属性
+[`doc`]: ../../rustdoc/the-doc-attribute.html
 [generic parameters]: generics.md
 [methods]: associated-items.md#方法
 [path]: ../paths.md
-[the lint check attributes]: ../attributes/diagnostics.md#lint-check-attributes
-[Unsafe traits]: traits.md#unsafe-traits
-[local trait]: ../glossary.md#local-trait
-[local type]: ../glossary.md#local-type
-[fundamental types]: ../glossary.md#fundamental-type-constructors
-[uncovered type]: ../glossary.md#uncovered-type
+[the lint check attributes]: ../attributes/diagnostics.md#lint检查属性
+[Unsafe traits]: traits.md#不安全特型
+[local trait]: ../glossary.md#局部特型
+[local type]: ../glossary.md#局部类型
+[fundamental types]: ../glossary.md#基本类型构造器
+[uncovered type]: ../glossary.md#未覆盖类型

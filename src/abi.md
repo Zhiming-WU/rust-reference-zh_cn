@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/abi.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[abi]
 # 应用二进制接口(ABI)
 
@@ -121,7 +124,7 @@ r[abi.export_name.edition2024]
 
 [`static` items]: items/static-items.md
 [attribute]: attributes.md
-[extern functions]: items/functions.md#extern-function-qualifier
+[extern functions]: items/functions.md#extern函数限定符
 [external blocks]: items/external-blocks.md
 [function]: items/functions.md
 [item]: items.md

@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/unions.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.union]
 # 联合体
 
@@ -46,7 +49,7 @@ r[items.union.fieldless]
 编译器不接受没有任何字段的 联合体，但宏可以接受。
 
 r[items.union.init]
-## 初始化 联合体
+## 初始化联合体
 
 r[items.union.init.intro]
  联合体 类型的值可以使用与 结构体 类型相同的 语法格式 创建，不同之处在于它必须恰好指定一个字段：
@@ -68,7 +71,7 @@ let f = unsafe { u.f1 };
 ```
 
 r[items.union.fields]
-## 读写 联合体 字段
+## 读写联合体字段
 
 r[items.union.fields.intro]
  联合体 没有“活动字段”的概念。相反，每次对 联合体 的访问只是将存储解释为用于访问的字段的类型。
@@ -100,7 +103,7 @@ r[items.union.fields.write-safety]
 相比之下，对 联合体 字段的写入是安全的，因为它们只是覆盖任意数据，不会导致 未定义行为。（注意，联合体 字段类型永远不会有 drop glue，因此 联合体 字段写入永远不会隐式地 drop 任何内容。）
 
 r[items.union.pattern]
-## 在 联合体 上进行模式匹配
+## 在联合体上进行模式匹配
 
 r[items.union.pattern.intro]
 另一种访问 联合体 字段的方法是使用模式匹配。
@@ -155,7 +158,7 @@ fn is_zero(v: Value) -> bool {
 ```
 
 r[items.union.ref]
-## 指向 联合体 字段的引用
+## 指向联合体字段的引用
 
 r[items.union.ref.intro]
 由于 联合体 字段共享公共存储，获得对 联合体 一个字段的写访问权可能会获得对其所有其余字段的写访问权。
@@ -183,8 +186,8 @@ fn test() {
 r[items.union.ref.usage]
 如你所见，在许多方面（除了布局、安全性和所有权），联合体 的行为与 结构体 完全相同，这在很大程度上是由于继承了 结构体 的 语法格式 形状。对于 Rust 语言中许多未提及的方面也是如此（如私有性、名称解析、类型推导、 泛型 、 特型 实现、固有实现、一致性、模式检查等等）。
 
-[`transmute`]: https://doc.rust-lang.org/core/intrinsics/fn.transmute.html
+[`transmute`]: std::mem::transmute
 [boolean type]: ../types/boolean.md
-[the C representation]: ../type-layout.md#reprc-unions
+[the C representation]: ../type-layout.md#reprc联合体
 [type namespace]: ../names/namespaces.md
 [undefined behavior]: ../behavior-considered-undefined.md

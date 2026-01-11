@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/lifetime-elision.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[lifetime-elision]
 # 生命周期省略
 
@@ -165,7 +168,7 @@ impl<'a> dyn Bar<'a> + 'a {}
 ```
 
 r[lifetime-elision.const-static]
-## `const`和 `static`省略
+## `const`和`static`省略
 
 r[lifetime-elision.const-static.implicit-static]
 引用类型的 [常量][constant] 和 [静态][static] 声明除非指定了显式生命周期，否则都具有 *隐式* `'static` 生命周期。因此，上面涉及 `'static` 的常量声明可以在不写生命周期的情况下编写。

@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/visibility-and-privacy.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[vis]
 # 可见性和私有性
 

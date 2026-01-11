@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/match-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.match]
 # `match`表达式
 
@@ -161,13 +164,13 @@ r[expr.match.attributes.inner]
  [内部属性][Inner attributes] 被允许直接放在匹配表达式的左大括号之后，其所在的表达式上下文与 [块表达式上的属性][attributes on block expressions] 相同。
 
 [`cfg`]: ../conditional-compilation.md
-[attributes on block expressions]: block-expr.md#attributes-on-block-expressions
-[binding mode]: ../patterns.md#binding-modes
+[attributes on block expressions]: block-expr.md#块表达式上的属性
+[binding mode]: ../patterns.md#绑定模式
 [Inner attributes]: ../attributes.md
-[lint check attributes]: ../attributes/diagnostics.md#lint-check-attributes
+[lint check attributes]: ../attributes/diagnostics.md#lint检查属性
 [pattern]: ../patterns.md
 [place expression]: ../expressions.md#位置表达式和值表达式
 [Range Expression]: range-expr.md
-[Range Pattern]: ../patterns.md#range-patterns
-[scrutinee]: ../glossary.md#scrutinee
+[Range Pattern]: ../patterns.md#范围模式
+[scrutinee]: ../glossary.md#审查值
 [value expression]: ../expressions.md#位置表达式和值表达式

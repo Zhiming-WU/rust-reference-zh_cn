@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/if-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.if]
 # `if`表达式
 
@@ -174,4 +177,4 @@ r[expr.if.edition2024]
 
 [`match` expressions]: match-expr.md
 [boolean type]: ../types/boolean.md
-[scrutinee]: ../glossary.md#scrutinee
+[scrutinee]: ../glossary.md#审查值

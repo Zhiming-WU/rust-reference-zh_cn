@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/modules.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.mod]
 # 模块
 
@@ -128,13 +131,13 @@ r[items.mod.attributes.supported]
 对模块有意义的内置属性有 [`cfg`][`cfg`]、[`deprecated`][`deprecated`]、[`doc`][`doc`]、[lint 检查属性][the lint check attributes]、[`path`][`path`] 以及 [`no_implicit_prelude`][`no_implicit_prelude`]。模块也接受宏属性。
 
 [`cfg`]: ../conditional-compilation.md
-[`deprecated`]: ../attributes/diagnostics.md#the-deprecated-attribute
-[`doc`]: https://doc.rust-lang.org/rustdoc/the-doc-attribute.html
+[`deprecated`]: ../attributes/diagnostics.md#deprecated属性
+[`doc`]: ../../rustdoc/the-doc-attribute.html
 [`no_implicit_prelude`]: ../names/preludes.md#the-no_implicit_prelude-attribute
 [`path`]: #path属性
 [attribute]: ../attributes.md
 [items]: ../items.md
 [module path]: ../paths.md
 [scopes chapter]: ../names/scopes.md
-[the lint check attributes]: ../attributes/diagnostics.md#lint-check-attributes
+[the lint check attributes]: ../attributes/diagnostics.md#lint检查属性
 [type namespace]: ../names/namespaces.md

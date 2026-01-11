@@ -29,7 +29,7 @@ Rust 每六周发布一个新的语言版本。
 
 同样，本书通常不记录 `rustc` 作为工具或 Cargo 的具体细节。
 `rustc` 有自己的 [书籍][rustc book]。
-Cargo 有一本 [书籍][cargo book]，其中包含一份 [参考资料][cargo reference]。
+Cargo 有一本 [书籍][cargo book]，其中包含一份 [参考手册][cargo reference]。
 还有一些页面，例如 [链接][linkage]，也是描述 `rustc` 的工作方式。
 
 本书也仅作为稳定版 Rust 中可用功能的参考。
@@ -129,18 +129,18 @@ r[example.rule.label]
 了解人们最常使用本书做什么有助于我们将注意力集中在使这些部分尽善尽美上。
 当然，如果您发现任何错误或非规范性但未明确指出的内容，也请 [提交问题][github issues]。
 
-[book]: https://doc.rust-lang.org/book/index.html
+[book]: ../book/index.html
 [github issues]: https://github.com/rust-lang/reference/issues
-[standard library]: https://doc.rust-lang.org/std/index.html
+[standard library]: std
 [the Rust Reference repository]: https://github.com/rust-lang/reference/
 [Unstable Book]: https://doc.rust-lang.org/nightly/unstable-book/
-[cargo book]: https://doc.rust-lang.org/cargo/index.html
-[cargo reference]: https://doc.rust-lang.org/cargo/reference/index.html
+[cargo book]: ../cargo/index.html
+[cargo reference]: ../cargo/reference/index.html
 [example rule]: example.rule.label
 [expressions chapter]: expressions.html
 [file an issue]: https://github.com/rust-lang/reference/issues
 [lifetime of temporaries]: expressions.html#temporaries
 [linkage]: linkage.html
-[rustc book]: https://doc.rust-lang.org/rustc/index.html
+[rustc book]: ../rustc/index.html
 [Notation]: notation.md
 [Zulip]: https://rust-lang.zulipchat.com/#narrow/stream/237824-t-lang.2Fdoc

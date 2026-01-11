@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/attributes/limits.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 # 限制
 
 以下 [属性][attributes] 影响编译时限制。

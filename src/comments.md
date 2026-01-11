@@ -137,4 +137,4 @@ pub mod outer_module {
 }
 ```
 
-[`doc` attributes]: https://doc.rust-lang.org/rustdoc/the-doc-attribute.html
+[`doc` attributes]: ../rustdoc/the-doc-attribute.html

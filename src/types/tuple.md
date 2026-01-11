@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types/tuple.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type.tuple]
 # 元组类型
 
@@ -42,8 +45,8 @@ r[type.tuple.access]
 
 [^1]: 如果 结构化类型 的内部类型等效，则它们始终等效。对于元组的标称版本，请参阅 [元组结构体][tuple structs] 。
 
-[parenthesized type]: ../types.md#parenthesized-types
-[pattern matching]: ../patterns.md#tuple-patterns
-[tuple expression]: ../expressions/tuple-expr.md#tuple-expressions
-[tuple index expression]: ../expressions/tuple-expr.md#tuple-indexing-expressions
+[parenthesized type]: ../types.md#括号类型
+[pattern matching]: ../patterns.md#元组模式
+[tuple expression]: ../expressions/tuple-expr.md#元组表达式
+[tuple index expression]: ../expressions/tuple-expr.md#元组索引表达式
 [tuple structs]: ./struct.md

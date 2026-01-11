@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/literal-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.literal]
 # 字面量表达式
 
@@ -513,14 +516,14 @@ r[expr.literal.bool.result]
 [boolean type]: ../types/boolean.md
 [constant expression]: ../const_eval.md#常量表达式
 [CStr]: core::ffi::CStr
-[floating-point types]: ../types/numeric.md#floating-point-types
-[lint check]: ../attributes/diagnostics.md#lint-check-attributes
+[floating-point types]: ../types/numeric.md#浮点类型
+[lint check]: ../attributes/diagnostics.md#lint检查属性
 [literal tokens]: ../tokens.md#字面量
-[numeric cast]: operator-expr.md#numeric-cast
+[numeric cast]: operator-expr.md#数值转换
 [numeric types]: ../types/numeric.md
 [suffix]: ../tokens.md#后缀
-[negation operator]: operator-expr.md#negation-operators
-[overflow]: operator-expr.md#overflow
+[negation operator]: operator-expr.md#求负运算符
+[overflow]: operator-expr.md#溢出
 [textual types]: ../types/textual.md
 [Unicode scalar value]: http://www.unicode.org/glossary/#unicode_scalar_value
 [Unicode scalar values]: http://www.unicode.org/glossary/#unicode_scalar_value

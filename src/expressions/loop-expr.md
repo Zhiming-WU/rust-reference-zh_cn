@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/loop-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.loop]
 # 循环及其他可中断表达式
 
@@ -388,9 +391,9 @@ r[expr.loop.break-value.loop]
 在 `loop` 有关联 `break` 的情况下，它不被认为是发散的，并且 `loop` 必须具有与每个 `break` 表达式兼容的类型。
 没有表达式的 `break` 被认为等同于带有表达式 `()` 的 `break`。
 
-[`if` condition chains]: if-expr.md#chains-of-conditions
+[`if` condition chains]: if-expr.md#条件链
 [`if` expressions]: if-expr.md
 [`match` expression]: match-expr.md
 [boolean type]: ../types/boolean.md
-[scrutinee]: ../glossary.md#scrutinee
-[temporary values]: ../expressions.md#temporaries
+[scrutinee]: ../glossary.md#审查值
+[temporary values]: ../expressions.md#临时变量

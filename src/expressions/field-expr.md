@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/field-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.field]
 # 字段访问表达式
 
@@ -76,7 +79,7 @@ let d: String = x.f3;           // 移出 x.f3
 [identifier]: ../identifiers.md
 [call expression]: call-expr.md
 [method call expression]: method-call-expr.md
-[mutable]: ../expressions.md#mutability
+[mutable]: ../expressions.md#可变性
 [parenthesized expression]: grouped-expr.md
 [place expression]: ../expressions.md#位置表达式和值表达式
 [struct]: ../items/structs.md

@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/panic.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[panic]
 # 恐慌
 
@@ -11,7 +14,7 @@ r[panic.control]
 还有一些语言特性提供了一定程度的恐慌行为控制：
 
 *  [_恐慌处理器 (panic handler)_][panic handler] 定义了恐慌的行为。
-* [FFI ABI](items/functions.md#unwinding) 可能会改变恐慌的行为。
+* [FFI ABI](items/functions.md#展开) 可能会改变恐慌的行为。
 
 > [!NOTE]
 > 标准库提供了通过 [panic! 宏][panic!] 显式引发恐慌的能力。
@@ -139,12 +142,12 @@ r[panic.unwind.ffi.catch-foreign]
 r[panic.unwind.ffi.dispose-panic]
 目前对于外部运行时尝试处理或重新抛出 Rust `panic` 负载时的行为没有任何保证。换句话说，起源于 Rust 运行时的展开必须要么导致进程终止，要么被同一个运行时捕获。
 
-[`-C panic`]: https://doc.rust-lang.org/rustc/codegen-options/index.html#panic
+[`-C panic`]: ../rustc/codegen-options/index.html#panic
 [`no_std`]: names/preludes.md#the-no_std-attribute
 [`PanicInfo`]: core::panic::PanicInfo
-[array indexing]: expressions/array-expr.md#array-and-slice-indexing-expressions
+[array indexing]: expressions/array-expr.md#数组和切片索引表达式
 [attribute]: attributes.md
 [destructors]: destructors.md
 [panic handler]: #the-panic_handler-attribute
 [runtime]: runtime.md
-[unwind-abi]: items/functions.md#unwinding
+[unwind-abi]: items/functions.md#展开

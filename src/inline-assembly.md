@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/inline-assembly.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[asm]
 # 内联汇编
 
@@ -134,7 +137,7 @@ core::arch::naked_asm!("/* {} */", const 0);
 # }
 ```
 
-[naked functions]: attributes/codegen.md#the-naked-attribute
+[naked functions]: attributes/codegen.md#naked属性
 
 r[asm.scope.global_asm]
 使用 `global_asm!` 宏，汇编代码在全局作用域内发出，位于函数之外。这可用于使用汇编代码手写整个函数，通常可以更自由地使用任意寄存器和汇编指令。

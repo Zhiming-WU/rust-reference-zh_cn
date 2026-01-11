@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/paths.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[paths]
 # 路径
 
@@ -469,13 +472,13 @@ mod without { // crate::without
 [items]: items.md
 [literal]: expressions/literal-expr.md
 [use declarations]: items/use-declarations.md
-[`Self` scope]: names/scopes.md#self-scope
+[`Self` scope]: names/scopes.md#self作用域
 [`use`]: items/use-declarations.md
 [attributes]: attributes.md
 [const generic argument]: items.generics.const.argument
 [enumeration]: items/enumerations.md
 [expressions]: expressions.md
-[extern prelude]: names/preludes.md#extern-prelude
+[extern prelude]: names/preludes.md#外部预导入
 [implementation]: items/implementations.md
 [inferred const]: items.generics.const.inferred
 [macro transcribers]: macros-by-example.md
@@ -483,7 +486,7 @@ mod without { // crate::without
 [mbe]: macros-by-example.md
 [patterns]: patterns.md
 [struct]: items/structs.md
-[trait implementations]: items/implementations.md#trait-implementations
+[trait implementations]: items/implementations.md#特型实现
 [trait]: items/traits.md
 [traits]: items/traits.md
 [types]: types.md

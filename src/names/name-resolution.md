@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/names/name-resolution.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[names.resolution]
 # 名称解析
 
@@ -519,7 +522,7 @@ r[names.resolution.type-relative]
 [Path-based scope macros]: ../macros.md#r-macro.invocation.name-resolution
 [Standard library prelude]: ./preludes.md#r-names.preludes.std
 [Textual scope macros]: ../macros-by-example.md#r-macro.decl.scope.textual
-[`let` bindings]: ../statements.md#let-statements
+[`let` bindings]: ../statements.md#let语句
 [`macro_use` prelude]: ./preludes.md#r-names.preludes.macro_use
 [`use` declarations]: ../items/use-declarations.md
 [`use` glob shadowing]: ../items/use-declarations.md#r-items.use.glob.shadowing

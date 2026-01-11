@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types/closure.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type.closure]
 # 闭包类型
 
@@ -72,10 +75,10 @@ r[type.closure.capture.precedence]
 来自环境的位置表达式按与捕获值在闭包体内的使用方式相兼容的第一种模式进行捕获。
 该模式不受闭包周围代码的影响，例如相关变量或字段的生命周期，或者闭包本身的生命周期。
 
-[moving the value]: ../expressions.md#moved-and-copied-types
-[mutable reference]: pointer.md#mutable-references-mut
+[moving the value]: ../expressions.md#移动和复制类型
+[mutable reference]: pointer.md#可变引用mut
 [place expression]: ../expressions.md#位置表达式和值表达式
-[shared reference]: pointer.md#references--and-mut
+[shared reference]: pointer.md#引用和mut
 
 r[type.closure.capture.copy]
 ### `Copy`值
@@ -127,9 +130,9 @@ c();
 
 [field access]: ../expressions/field-expr.md
 [pattern destructuring]: patterns.destructure
-[tuple index]: ../expressions/tuple-expr.md#tuple-indexing-expressions
-[dereference]: ../expressions/operator-expr.md#the-dereference-operator
-[array or slice index]: ../expressions/array-expr.md#array-and-slice-indexing-expressions
+[tuple index]: ../expressions/tuple-expr.md#元组索引表达式
+[dereference]: ../expressions/operator-expr.md#解引用运算符
+[array or slice index]: ../expressions/array-expr.md#数组和切片索引表达式
 
 r[type.closure.capture.precision.shared-prefix]
 ### 共享前缀
@@ -284,7 +287,7 @@ let c = || {
 };
 ```
 
-[wildcard pattern]: ../patterns.md#wildcard-pattern
+[wildcard pattern]: ../patterns.md#通配符模式
 
 r[type.closure.capture.precision.discriminants]
 ### 为读取判别式而捕获
@@ -545,7 +548,7 @@ c();
 ```
 
 [undefined behavior]: ../behavior-considered-undefined.md
-[the `packed` representation]: ../type-layout.md#the-alignment-modifiers
+[the `packed` representation]: ../type-layout.md#对齐修饰符
 
 r[type.closure.capture.precision.box-deref]
 ### `Box`与其他`Deref`实现

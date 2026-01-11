@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/attributes.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[attributes]
 # 属性
 
@@ -291,36 +294,36 @@ r[attributes.builtin]
 [Doc comments]: comments.md#文档注释
 [ECMA-334]: https://www.ecma-international.org/publications-and-standards/standards/ecma-334/
 [ECMA-335]: https://www.ecma-international.org/publications-and-standards/standards/ecma-335/
-[Expression Attributes]: expressions.md#expression-attributes
+[Expression Attributes]: expressions.md#表达式属性
 [The Rustdoc Book]: ../rustdoc/the-doc-attribute.html
 [The Unstable Book]: ../unstable-book/index.html
-[`allow`]: attributes/diagnostics.md#lint-check-attributes
+[`allow`]: attributes/diagnostics.md#lint检查属性
 [`automatically_derived`]: attributes/derive.md#the-automatically_derived-attribute
 [`cfg_attr`]: conditional-compilation.md#cfg_attr属性
 [`cfg`]: conditional-compilation.md#cfg属性
-[`cold`]: attributes/codegen.md#the-cold-attribute
+[`cold`]: attributes/codegen.md#cold属性
 [`collapse_debuginfo`]: attributes/debugger.md#the-collapse_debuginfo-attribute
 [`crate_name`]: crates-and-source-files.md#crate_name属性
 [`crate_type`]: linkage.md
 [`debugger_visualizer`]: attributes/debugger.md#the-debugger_visualizer-attribute
-[`deny`]: attributes/diagnostics.md#lint-check-attributes
-[`deprecated`]: attributes/diagnostics.md#the-deprecated-attribute
+[`deny`]: attributes/diagnostics.md#lint检查属性
+[`deprecated`]: attributes/diagnostics.md#deprecated属性
 [`derive`]: attributes/derive.md
 [`export_name`]: abi.md#the-export_name-attribute
-[`expect`]: attributes/diagnostics.md#lint-check-attributes
-[`forbid`]: attributes/diagnostics.md#lint-check-attributes
+[`expect`]: attributes/diagnostics.md#lint检查属性
+[`forbid`]: attributes/diagnostics.md#lint检查属性
 [`global_allocator`]: runtime.md#the-global_allocator-attribute
-[`ignore`]: attributes/testing.md#the-ignore-attribute
-[`inline`]: attributes/codegen.md#the-inline-attribute
+[`ignore`]: attributes/testing.md#ignore属性
+[`inline`]: attributes/codegen.md#inline属性
 [`instruction_set`]: attributes/codegen.md#the-instruction_set-attribute
 [`link_name`]: items/external-blocks.md#the-link_name-attribute
 [`link_ordinal`]: items/external-blocks.md#the-link_ordinal-attribute
 [`link_section`]: abi.md#the-link_section-attribute
-[`link`]: items/external-blocks.md#the-link-attribute
+[`link`]: items/external-blocks.md#link属性
 [`macro_export`]: macros-by-example.md#macro_export属性
 [`macro_use`]: macros-by-example.md#macro_use属性
 [`must_use`]: attributes/diagnostics.md#the-must_use-attribute
-[`naked`]: attributes/codegen.md#the-naked-attribute
+[`naked`]: attributes/codegen.md#naked属性
 [`no_builtins`]: attributes/codegen.md#the-no_builtins-attribute
 [`no_implicit_prelude`]: names/preludes.md#the-no_implicit_prelude-attribute
 [`no_link`]: items/extern-crates.md#the-no_link-attribute
@@ -329,26 +332,26 @@ r[attributes.builtin]
 [`no_std`]: names/preludes.md#the-no_std-attribute
 [`non_exhaustive`]: attributes/type_system.md#the-non_exhaustive-attribute
 [`panic_handler`]: panic.md#the-panic_handler-attribute
-[`path`]: items/modules.md#the-path-attribute
+[`path`]: items/modules.md#path属性
 [`proc_macro_attribute`]: procedural-macros.md#proc_macro_attribute属性
 [`proc_macro_derive`]: macro.proc.derive
 [`proc_macro`]: procedural-macros.md#proc_macro属性
 [`recursion_limit`]: attributes/limits.md#the-recursion_limit-attribute
-[`repr`]: type-layout.md#representations
+[`repr`]: type-layout.md#表示法
 [`should_panic`]: attributes/testing.md#the-should_panic-attribute
 [`target_feature`]: attributes/codegen.md#the-target_feature-attribute
-[`test`]: attributes/testing.md#the-test-attribute
+[`test`]: attributes/testing.md#test属性
 [`track_caller`]: attributes/codegen.md#the-track_caller-attribute
 [`type_length_limit`]: attributes/limits.md#the-type_length_limit-attribute
-[`used`]: abi.md#the-used-attribute
-[`warn`]: attributes/diagnostics.md#lint-check-attributes
+[`used`]: abi.md#used属性
+[`warn`]: attributes/diagnostics.md#lint检查属性
 [`windows_subsystem`]: runtime.md#the-windows_subsystem-attribute
 [attribute macros]: procedural-macros.md#proc_macro_attribute属性
 [block expressions]: expressions/block-expr.md
 [built-in attributes]: #built-in-attributes-index
 [derive macro helper attributes]: procedural-macros.md#派生宏辅助属性
 [enum]: items/enumerations.md
-[expression statement]: statements.md#expression-statements
+[expression statement]: statements.md#表达式语句
 [external blocks]: items/external-blocks.md
 [functions]: items/functions.md
 [generics]: items/generics.md
@@ -358,7 +361,7 @@ r[attributes.builtin]
 [modules]: items/modules.md
 [statements]: statements.md
 [struct]: items/structs.md
-[tool prelude]: names/preludes.md#tool-prelude
+[tool prelude]: names/preludes.md#工具预导入
 [union]: items/unions.md
 [closure]: expressions/closure-expr.md
 [function pointer]: types/function-pointer.md

@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/unsafety.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[safety]
 # 不安全性
 
@@ -35,8 +38,8 @@ r[safety.unsafe-attribute]
 
 [`extern`]: items/external-blocks.md
 [`union`]: items/unions.md
-[mutable]: items/static-items.md#mutable-statics
+[mutable]: items/static-items.md#可变静态项
 [external]: items/external-blocks.md
 [raw pointer]: types/pointer.md
-[unsafe trait]: items/traits.md#unsafe-traits
+[unsafe trait]: items/traits.md#不安全特型
 [unsafe attribute]: attributes.md

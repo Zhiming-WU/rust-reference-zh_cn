@@ -385,7 +385,7 @@ r[macro.proc.token.doc-comment]
 [`$crate`]: macro.decl.hygiene.crate
 [`Delimiter::None`]: proc_macro::Delimiter::None
 [`Group`]: proc_macro::Group
-[`TokenStream`]: https://doc.rust-lang.org/proc_macro/struct.TokenStream.html
+[`TokenStream`]: proc_macro::TokenStream
 [`TokenTree`s]: proc_macro::TokenTree
 [`derive` attribute]: attributes/derive.md
 [`extern` blocks]: items/external-blocks.md
@@ -400,7 +400,7 @@ r[macro.proc.token.doc-comment]
 [expressions]: expressions.md
 [function]: items/functions.md
 [implementations]: items/implementations.md
-[inert]: attributes.md#active-and-inert-attributes
+[inert]: attributes.md#活跃属性和惰性属性
 [item]: items.md
 [items]: items.md
 [macro namespace]: names/namespaces.md
@@ -410,6 +410,6 @@ r[macro.proc.token.doc-comment]
 [statements]: statements.md
 [struct]: items/structs.md
 [trait definitions]: items/traits.md
-[type expressions]: types.md#type-expressions
+[type expressions]: types.md#类型表达式
 [type]: types.md
 [union]: items/unions.md

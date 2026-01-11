@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/tokens.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[lex.token]
 # 词法单元
 
@@ -863,15 +866,15 @@ r[lex.token.reserved-guards.edition2024]
 > [!EDITION-2024]
 > 在2024版次之前，词法分析器会接受保留的守卫，并将其解释为多个词法单元。例如，`#"foo"#`形式被解释为三个词法单元。`##`被解释为两个词法单元。
 
-[Floating-point literal expressions]: expressions/literal-expr.md#floating-point-literal-expressions
+[Floating-point literal expressions]: expressions/literal-expr.md#浮点数字面量表达式
 [identifier]: identifiers.md
-[Integer literal expressions]: expressions/literal-expr.md#integer-literal-expressions
+[Integer literal expressions]: expressions/literal-expr.md#整数字面量表达式
 [keywords]: keywords.md
 [literal expressions]: expressions/literal-expr.md
 [loop labels]: expressions/loop-expr.md
 [macros]: macros-by-example.md
-[String continuation escapes]: expressions/literal-expr.md#string-continuation-escapes
-[syntax index]: syntax-index.md#operators-and-punctuation
+[String continuation escapes]: expressions/literal-expr.md#字符串续行转义
+[syntax index]: syntax-index.md#运算符和标点符号
 [tuple structs]: items/structs.md
 [tuple enum variants]: items/enumerations.md
 [tuples]: types/tuple.md

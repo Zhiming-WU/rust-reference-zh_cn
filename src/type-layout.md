@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/type-layout.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[layout]
 # 类型布局
 
@@ -551,7 +554,7 @@ r[layout.repr.transparent.constraint-exclusive]
 [field-less enums]: items/enumerations.md#field-less-enum
 [fn-abi-compatibility]: ../core/primitive.fn.md#abi-compatibility
 [enumerations]: items/enumerations.md
-[zero-variant enums]: items/enumerations.md#zero-variant-enums
+[zero-variant enums]: items/enumerations.md#零变体枚举
 [undefined behavior]: behavior-considered-undefined.md
 [`PhantomData<T>`]: special-types-and-traits.md#phantomdatat
 [`Rust`]: #rust表示法

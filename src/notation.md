@@ -46,8 +46,8 @@ r[notation.grammar.visualizations]
 
 在每个语法块下方都有一个按钮，用于切换[语法格式图][syntax diagram]的显示。一个方形元素是一个非终结规则，一个圆角矩形是一个终结符。
 
-[binary operators]: expressions/operator-expr.md#arithmetic-and-logical-binary-operators
+[binary operators]: expressions/operator-expr.md#算术和逻辑二元运算符
 [keywords]: keywords.md
 [syntax diagram]: https://en.wikipedia.org/wiki/Syntax_diagram
 [tokens]: tokens.md
-[unary operators]: expressions/operator-expr.md#borrow-operators
+[unary operators]: expressions/operator-expr.md#借用运算符

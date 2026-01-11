@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/functions.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.fn]
 # 函数
 
@@ -121,7 +124,7 @@ r[items.fn.generics.param-names]
 在函数签名和主体内部，类型参数的名称可以用作类型名称。
 
 r[items.fn.generics.param-bounds]
-可以为类型参数指定 [特型][Trait] 绑定，以允许在该类型的值上调用具有该 特型 的方法。这是使用 `where` 语法指定的：
+可以为类型参数指定 [特型][Trait] 界限，以允许在该类型的值上调用具有该 特型 的方法。这是使用 `where` 语法指定的：
 
 ```rust
 # use std::fmt::Debug;
@@ -212,7 +215,7 @@ let fptr: extern "C" fn() -> i32 = new_i32;
 ```
 
 r[items.fn.extern.unwind]
-### 展开(Unwinding)
+### 展开
 
 r[items.fn.extern.unwind.intro]
 大多数 ABI 字符串有两种变体，一种带有 `-unwind` 后缀，另一种没有。`Rust` ABI 总是允许展开，因此没有 `Rust-unwind` ABI。ABI 的选择与运行时的 [恐慌处理器][panic handler] 一起决定了从函数中展开时的行为。
@@ -240,7 +243,7 @@ r[items.fn.extern.abort]
 
 [forced-unwinding]: https://rust-lang.github.io/rfcs/2945-c-unwind-abi.html#forced-unwinding
 [panic handler]: ../panic.md#the-panic_handler-attribute
-[panic-ffi]: ../panic.md#unwinding-across-ffi-boundaries
+[panic-ffi]: ../panic.md#展开-across-ffi-boundaries
 [panicking]: ../panic.md
 [undefined behavior]: ../behavior-considered-undefined.md
 
@@ -292,7 +295,7 @@ r[items.fn.async.lifetime-capture]
 r[items.fn.async.param-capture]
 - 主体中的 [`async move` 块][async-blocks] 捕获了所有函数参数，包括那些未使用或绑定到 `_` 模式的参数。这确保了函数参数的销毁顺序与函数非 async 时相同，不同之处在于销毁发生在返回的 future 被完全 await 之后。
 
-[async-blocks]: ../expressions/block-expr.md#async-blocks
+[async-blocks]: ../expressions/block-expr.md#async块
 [`impl Future`]: ../types/impl-trait.md
 
 [`impl Future`]: ../types/impl-trait.md
@@ -391,36 +394,36 @@ fn foo_oof(#[some_inert_attribute] arg: u8) {
 }
 ```
 
-[const contexts]: ../const_eval.md#const-context
-[const functions]: ../const_eval.md#const-functions
+[const contexts]: ../const_eval.md#常量上下文
+[const functions]: ../const_eval.md#常量函数
 [external block]: external-blocks.md
 [path]: ../paths.md
 [block]: ../expressions/block-expr.md
 [variables]: ../variables.md
-[type]: ../types.md#type-expressions
+[type]: ../types.md#类型表达式
 [unit type]: ../types/tuple.md
 [*function item type*]: ../types/function-item.md
 [Trait]: traits.md
 [attributes]: ../attributes.md
 [`cfg`]: ../conditional-compilation.md#cfg属性
 [`cfg_attr`]: ../conditional-compilation.md#cfg_attr属性
-[lint check attributes]: ../attributes/diagnostics.md#lint-check-attributes
+[lint check attributes]: ../attributes/diagnostics.md#lint检查属性
 [procedural macro attributes]: macro.proc.attribute
 [testing attributes]: ../attributes/testing.md
-[`cold`]: ../attributes/codegen.md#the-cold-attribute
-[`inline`]: ../attributes/codegen.md#the-inline-attribute
-[`deprecated`]: ../attributes/diagnostics.md#the-deprecated-attribute
+[`cold`]: ../attributes/codegen.md#cold属性
+[`inline`]: ../attributes/codegen.md#inline属性
+[`deprecated`]: ../attributes/diagnostics.md#deprecated属性
 [`doc`]: ../../rustdoc/the-doc-attribute.html
 [`must_use`]: ../attributes/diagnostics.md#the-must_use-attribute
 [patterns]: ../patterns.md
 [`export_name`]: ../abi.md#the-export_name-attribute
 [`link_section`]: ../abi.md#the-link_section-attribute
 [`no_mangle`]: ../abi.md#the-no_mangle-attribute
-[built-in attributes]: ../attributes.md#built-in-attributes-index
+[built-in attributes]: ../attributes.md#内置属性索引
 [trait item]: traits.md
 [method]: associated-items.md#方法
-[associated function]: associated-items.md#associated-functions-and-methods
+[associated function]: associated-items.md#关联函数和方法
 [implementation]: implementations.md
 [value namespace]: ../names/namespaces.md
-[variadic function]: external-blocks.md#variadic-functions
+[variadic function]: external-blocks.md#变长参数函数
 [`extern` block]: external-blocks.md

@@ -376,7 +376,7 @@ r[items.use.restrictions.variant]
 [`macro_rules`]: ../macros-by-example.md
 [`self`]: ../paths.md#self
 [associated items]: associated-items.md
-[extern prelude]: ../names/preludes.md#extern-prelude
+[extern prelude]: ../names/preludes.md#外部预导入
 [generic parameters]: generics.md
 [items]: ../items.md
 [local variables]: ../variables.md
@@ -384,6 +384,6 @@ r[items.use.restrictions.variant]
 [namespace]: ../names/namespaces.md
 [namespaces]: ../names/namespaces.md
 [paths]: ../paths.md
-[tool attributes]: ../attributes.md#tool-attributes
+[tool attributes]: ../attributes.md#工具属性
 [type alias]: type-aliases.md
 [type namespace]: ../names/namespaces.md

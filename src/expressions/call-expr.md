@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/call-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.call]
 # 调用表达式
 
@@ -105,6 +108,6 @@ fn main() {
 [RFC 132]: https://github.com/rust-lang/rfcs/blob/master/text/0132-ufcs.md
 [`default()`]: std::default::Default::default
 [`size_of()`]: std::mem::size_of
-[automatically dereferenced]: field-expr.md#automatic-dereferencing
+[automatically dereferenced]: field-expr.md#自动解引用
 [fully-qualified syntax]: ../paths.md#qualified-paths
 [non-function types]: ../types/function-item.md

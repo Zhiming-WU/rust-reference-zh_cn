@@ -290,6 +290,7 @@ fn relative_url(url: &str, chapter: &Chapter) -> String {
         format!("{dots}{url_path}")
     } else {
         url.to_string()
+            .replace("doc.rust-lang.org/nightly/", "doc.rust-lang.org/")
     }
 }
 

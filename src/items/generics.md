@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/generics.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.generics]
 # 泛型参数
 
@@ -45,7 +48,7 @@ r[items.generics.invalid-lifetimes]
 `'_` 和 `'static` 不是有效的 生命周期参数 名称。
 
 r[items.generics.const]
-### 常量泛型
+## 常量泛型
 
 r[items.generics.const.intro]
  *常量泛型参数 (Const generic parameters)*  允许 项 对常量值进行泛型化。
@@ -210,7 +213,7 @@ impl<const N: usize> Unconstrained {}
 ```
 
 r[items.generics.const.exhaustiveness]
-在解析 特型绑定 义务时，确定绑定是否满足时不考虑 常量参数 所有实现的  *完备性 (exhaustiveness)* 。例如，在下文中，即使实现了 `bool` 类型所有可能的常量值，但 特型绑定 未满足仍然是一个错误：
+在解析 特型界限 义务时，确定界限是否满足时不考虑 常量参数 所有实现的  *完备性 (exhaustiveness)* 。例如，在下文中，即使实现了 `bool` 类型所有可能的常量值，但 特型界限 未满足仍然是一个错误：
 
 ```rust,compile_fail
 struct Foo<const B: bool>;
@@ -221,7 +224,7 @@ impl Bar for Foo<false> {}
 fn needs_bar(_: impl Bar) {}
 fn generic<const B: bool>() {
     let v = Foo::<B>;
-    needs_bar(v); // 错误：特型绑定 `Foo<B>: Bar` 未满足
+    needs_bar(v); // 错误：特型界限 `Foo<B>: Bar` 未满足
 }
 ```
 
@@ -242,7 +245,7 @@ TypeBoundWhereClauseItem -> ForLifetimes? Type `:` TypeParamBounds?
 ```
 
 r[items.generics.where.intro]
- *Where 子句*  提供了另一种指定类型和生命周期参数绑定的方法，以及一种为非类型参数的类型指定绑定的方法。
+ *Where 子句*  提供了另一种指定类型和生命周期参数界限的方法，以及一种为非类型参数的类型指定界限的方法。
 
 r[items.generics.where.higher-ranked-lifetimes]
 `for` 关键字可用于引入 [高阶生命周期][higher-ranked lifetimes]。它只允许 [LifetimeParam] 参数。
@@ -251,8 +254,8 @@ r[items.generics.where.higher-ranked-lifetimes]
 struct A<T>
 where
     T: Iterator,            // 也可以使用 A<T: Iterator>
-    T::Item: Copy,          // 关联类型上的绑定
-    String: PartialEq<T>,   // 在 `String` 上的绑定，使用类型参数
+    T::Item: Copy,          // 关联类型上的界限
+    String: PartialEq<T>,   // 在 `String` 上的界限，使用类型参数
     i32: Default,           // 允许，但没什么用
 {
     f: T,
@@ -279,29 +282,29 @@ struct Foo<#[my_flexible_clone(unbounded)] H> {
 [array repeat expression]: ../expressions/array-expr.md
 [arrays]: ../types/array.md
 [slices]: ../types/slice.md
-[associated const]: associated-items.md#associated-constants
-[associated type]: associated-items.md#associated-types
+[associated const]: associated-items.md#关联常量
+[associated type]: associated-items.md#关联类型
 [attributes]: ../attributes.md
 [block]: ../expressions/block-expr.md
-[const contexts]: ../const_eval.md#const-context
+[const contexts]: ../const_eval.md#常量上下文
 [const expression]: ../const_eval.md#常量表达式
 [const generic argument]: items.generics.const.argument
 [const item]: constant-items.md
 [enumerations]: enumerations.md
 [functions]: functions.md
 [function pointers]: ../types/function-pointer.md
-[generic implementations]: implementations.md#generic-implementations
-[generic parameter scopes]: ../names/scopes.md#generic-parameter-scopes
-[higher-ranked lifetimes]: ../trait-bounds.md#higher-ranked-trait-bounds
+[generic implementations]: implementations.md#泛型实现
+[generic parameter scopes]: ../names/scopes.md#泛型参数作用域
+[higher-ranked lifetimes]: ../trait-bounds.md#高阶特型界限
 [implementations]: implementations.md
 [inferred const]: items.generics.const.inferred
-[item declarations]: ../statements.md#item-declarations
+[item declarations]: ../statements.md#项声明
 [item]: ../items.md
 [literal]: ../expressions/literal-expr.md
 [path]: ../paths.md
 [path expression]: ../expressions/path-expr.md
-[raw pointers]: ../types/pointer.md#raw-pointers-const-and-mut
-[references]: ../types/pointer.md#shared-references-
+[raw pointers]: ../types/pointer.md#裸指针const和mut
+[references]: ../types/pointer.md#共享引用
 [structs]: structs.md
 [tuples]: ../types/tuple.md
 [trait object]: ../types/trait-object.md

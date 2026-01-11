@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/behavior-considered-undefined.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[undefined]
 # 被视为未定义的行为
 
@@ -208,12 +211,12 @@ r[undefined.validity.undef]
 [`NonNull<T>`]: core::ptr::NonNull
 [`NonZero<T>`]: core::num::NonZero
 [place expression context]: expressions.md#位置表达式和值表达式
-[rules]: inline-assembly.md#rules-for-inline-assembly
+[rules]: inline-assembly.md#内联汇编规则
 [points to]: #pointed-to-bytes
 [pointed to]: #pointed-to-bytes
 [project-field]: expressions/field-expr.md
-[project-tuple]: expressions/tuple-expr.md#tuple-indexing-expressions
-[project-slice]: expressions/array-expr.md#array-and-slice-indexing-expressions
-[unwinding-ffi]: panic.md#unwinding-across-ffi-boundaries
-[const-promoted]: destructors.md#constant-promotion
-[lifetime-extended]: destructors.md#temporary-lifetime-extension
+[project-tuple]: expressions/tuple-expr.md#元组索引表达式
+[project-slice]: expressions/array-expr.md#数组和切片索引表达式
+[unwinding-ffi]: panic.md#展开-across-ffi-boundaries
+[const-promoted]: destructors.md#常量提升
+[lifetime-extended]: destructors.md#临时生命周期延长

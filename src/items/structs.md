@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/structs.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.struct]
 # 结构体
 
@@ -67,7 +70,7 @@ let c = [Cookie, Cookie {}, Cookie, Cookie {}];
 r[items.struct.layout]
 结构体 的精确内存布局并未指定。可以使用  [`repr` 属性][`repr` attribute]  指定特定的布局。
 
-[`repr` attribute]: ../type-layout.md#representations
+[`repr` attribute]: ../type-layout.md#表示法
 [constant]: constant-items.md
 [struct type]: ../types/struct.md
 [tuple type]: ../types/tuple.md

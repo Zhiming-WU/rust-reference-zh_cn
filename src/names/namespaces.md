@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/names/namespaces.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[names.namespaces]
 # 命名空间
 
@@ -116,42 +119,42 @@ r[names.namespaces.sub-namespaces.intro]
 
 [`cfg` attribute]: ../conditional-compilation.md#cfg属性
 [`cfg` macro]: ../conditional-compilation.md#cfg宏
-[`for`]: ../expressions/loop-expr.md#iterator-loops
-[`if let`]: ../expressions/if-expr.md#if-let-patterns
-[`let`]: ../statements.md#let-statements
+[`for`]: ../expressions/loop-expr.md#迭代器循环
+[`if let`]: ../expressions/if-expr.md#if-let模式
+[`let`]: ../statements.md#let语句
 [`macro_rules` declarations]: ../macros-by-example.md
 [`match`]: ../expressions/match-expr.md
 [`Self` constructors]: ../paths.md#self-1
 [`Self` type]: ../paths.md#self-1
 [`use` import]: ../items/use-declarations.md
-[`while let`]: ../expressions/loop-expr.md#while-let-patterns
-[Associated const declarations]: ../items/associated-items.md#associated-constants
-[Associated function declarations]: ../items/associated-items.md#associated-functions-and-methods
-[Associated type declarations]: ../items/associated-items.md#associated-types
+[`while let`]: ../expressions/loop-expr.md#while-let模式
+[Associated const declarations]: ../items/associated-items.md#关联常量
+[Associated function declarations]: ../items/associated-items.md#关联函数和方法
+[Associated type declarations]: ../items/associated-items.md#关联类型
 [Attribute macros]: ../procedural-macros.md#proc_macro_attribute属性
 [attributes]: ../attributes.md
 [bang-style macros]: ../macros.md
 [Block labels]: expr.loop.block-labels
 [boolean]: ../types/boolean.md
-[Built-in attributes]: ../attributes.md#built-in-attributes-index
+[Built-in attributes]: ../attributes.md#内置属性索引
 [closure parameters]: ../expressions/closure-expr.md
 [closure]: ../expressions/closure-expr.md
 [Constant item declarations]: ../items/constant-items.md
 [Derive macro helpers]: ../procedural-macros.md#派生宏辅助属性
 [Derive macros]: macro.proc.derive
-[entity]: ../glossary.md#entity
+[entity]: ../glossary.md#实体
 [Enum variant constructors]: ../items/enumerations.md
 [enum]: ../items/enumerations.md
 [External crate declarations]: ../items/extern-crates.md
-[External crate prelude]: preludes.md#extern-prelude
+[External crate prelude]: preludes.md#外部预导入
 [field expression]: ../expressions/field-expr.md
 [Function declarations]: ../items/functions.md
-[function parameters]: ../items/functions.md#function-parameters
+[function parameters]: ../items/functions.md#函数参数
 [Function-like procedural macros]: ../procedural-macros.md#proc_macro属性
-[Generic const parameters]: ../items/generics.md#const-generics
+[Generic const parameters]: ../items/generics.md#常量泛型
 [Generic lifetime parameters]: ../items/generics.md
 [Generic type parameters]: ../items/generics.md
-[Loop labels]: ../expressions/loop-expr.md#loop-labels
+[Loop labels]: ../expressions/loop-expr.md#循环标签
 [Module declarations]: ../items/modules.md
 [name resolution]: name-resolution.md
 [names]: ../names.md
@@ -160,8 +163,8 @@ r[names.namespaces.sub-namespaces.intro]
 [Struct constructors]: ../items/structs.md
 [Struct]: ../items/structs.md
 [textual]: ../types/textual.md
-[Tool attribute modules]: ../attributes.md#tool-attributes
-[Tool attributes]: ../attributes.md#tool-attributes
+[Tool attribute modules]: ../attributes.md#工具属性
+[Tool attributes]: ../attributes.md#工具属性
 [Trait item declarations]: ../items/traits.md
 [Type aliases]: ../items/type-aliases.md
 [union]: ../items/unions.md

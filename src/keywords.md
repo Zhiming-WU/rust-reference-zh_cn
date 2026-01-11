@@ -147,7 +147,7 @@ r[lex.keywords.weak.dyn.edition2018]
 [items]: items.md
 [Variables]: variables.md
 [Type parameters]: types/parameters.md
-[loop labels]: expressions/loop-expr.md#loop-labels
+[loop labels]: expressions/loop-expr.md#循环标签
 [Macros]: macros.md
 [attributes]: attributes.md
 [Macro placeholders]: macros-by-example.md
@@ -155,7 +155,7 @@ r[lex.keywords.weak.dyn.edition2018]
 [union]: items/unions.md
 [variants]: items/enumerations.md
 [`dyn`]: types/trait-object.md
-[loop label]: expressions/loop-expr.md#loop-labels
+[loop label]: expressions/loop-expr.md#循环标签
 [generic lifetime parameter]: items/generics.md
 [external blocks]: items/external-blocks.md
-[raw borrow operators]: expressions/operator-expr.md#raw-borrow-operators
+[raw borrow operators]: expressions/operator-expr.md#原始借用运算符

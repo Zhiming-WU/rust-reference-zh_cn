@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/destructors.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[destructors]
 # 析构函数
 
@@ -586,24 +589,24 @@ r[destructors.process-termination]
 
 还有一个需要注意的情况：当恐慌达到 [非展开 ABI 边界][non-unwinding ABI boundary] 时，要么不运行任何析构函数，要么运行直到该 ABI 边界为止的所有析构函数。
 
-[Assignment]: expressions/operator-expr.md#assignment-expressions
-[binding modes]: patterns.md#binding-modes
+[Assignment]: expressions/operator-expr.md#赋值表达式
+[binding modes]: patterns.md#绑定模式
 [closure]: types/closure.md
 [destructors]: destructors.md
 [destructuring assignment]: expr.assign.destructure
 [expression]: expressions.md
-[identifier pattern]: patterns.md#identifier-patterns
-[initialized]: glossary.md#initialized
+[identifier pattern]: patterns.md#标识符模式
+[initialized]: glossary.md#已初始化
 [interior mutability]: interior-mutability.md
-[lazy boolean expression]: expressions/operator-expr.md#lazy-boolean-operators
-[non-unwinding ABI boundary]: items/functions.md#unwinding
+[lazy boolean expression]: expressions/operator-expr.md#惰性布尔运算符
+[non-unwinding ABI boundary]: items/functions.md#展开
 [panic]: panic.md
 [place context]: expressions.md#位置表达式和值表达式
-[promoted]: destructors.md#constant-promotion
-[scrutinee]: glossary.md#scrutinee
+[promoted]: destructors.md#常量提升
+[scrutinee]: glossary.md#审查值
 [statement]: statements.md
-[temporary]: expressions.md#temporaries
-[unwinding]: panic.md#unwinding
+[temporary]: expressions.md#临时变量
+[unwinding]: panic.md#展开
 [variable]: variables.md
 
 [array]: types/array.md
@@ -613,38 +616,38 @@ r[destructors.process-termination]
 [Trait objects]: types/trait-object.md
 [tuple]: types/tuple.md
 
-[or-patterns]: patterns.md#or-patterns
-[slice pattern]: patterns.md#slice-patterns
-[struct pattern]: patterns.md#struct-patterns
-[tuple pattern]: patterns.md#tuple-patterns
-[tuple struct pattern]: patterns.md#tuple-struct-patterns
+[or-patterns]: patterns.md#或模式
+[slice pattern]: patterns.md#切片模式
+[struct pattern]: patterns.md#结构体模式
+[tuple pattern]: patterns.md#元组模式
+[tuple struct pattern]: patterns.md#元组结构体模式
 [tuple struct]: type.struct.tuple
 [tuple enum variant]: type.enum.declaration
 
-[array expression]: expressions/array-expr.md#array-expressions
+[array expression]: expressions/array-expr.md#数组表达式
 [array repeat operands]: expr.array.repeat-operand
 [async block expression]: expr.block.async
 [block expression]: expressions/block-expr.md
 [borrow]: expr.operator.borrow
-[cast expression]: expressions/operator-expr.md#type-cast-expressions
-[dereference expression]: expressions/operator-expr.md#the-dereference-operator
+[cast expression]: expressions/operator-expr.md#类型转换表达式
+[dereference expression]: expressions/operator-expr.md#解引用运算符
 [extended]: destructors.scope.lifetime-extension
 [field expression]: expressions/field-expr.md
-[indexing expression]: expressions/array-expr.md#array-and-slice-indexing-expressions
+[indexing expression]: expressions/array-expr.md#数组和切片索引表达式
 [struct expression]: expressions/struct-expr.md
 [super macro call]: expr.super-macros
 [super operands]: expr.super-macros
 [super temporaries]: expr.super-macros
 [temporary scope]: destructors.scope.temporary
 [temporary scopes]: destructors.scope.temporary
-[tuple expression]: expressions/tuple-expr.md#tuple-expressions
-[tuple indexing expression]: expressions/tuple-expr.md#tuple-indexing-expressions
+[tuple expression]: expressions/tuple-expr.md#元组表达式
+[tuple indexing expression]: expressions/tuple-expr.md#元组索引表达式
 
-[`for`]: expressions/loop-expr.md#iterator-loops
-[`if let`]: expressions/if-expr.md#if-let-patterns
-[`if`]: expressions/if-expr.md#if-expressions
-[`let` statement]: statements.md#let-statements
-[`loop`]: expressions/loop-expr.md#infinite-loops
+[`for`]: expressions/loop-expr.md#迭代器循环
+[`if let`]: expressions/if-expr.md#if-let模式
+[`if`]: expressions/if-expr.md#if表达式
+[`let` statement]: statements.md#let语句
+[`loop`]: expressions/loop-expr.md#无限循环
 [`match`]: expressions/match-expr.md
-[`while let`]: expressions/loop-expr.md#while-let-patterns
-[`while`]: expressions/loop-expr.md#predicate-loops
+[`while let`]: expressions/loop-expr.md#while-let模式
+[`while`]: expressions/loop-expr.md#谓词循环

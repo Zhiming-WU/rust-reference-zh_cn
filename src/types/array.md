@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types/array.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type.array]
 # 数组类型
 
@@ -28,5 +31,5 @@ r[type.array.index]
 > [!NOTE]
 > [`Vec<T>`] 标准库类型提供了一种堆分配的可调大小数组类型。
 
-[`usize`]: numeric.md#machine-dependent-integer-types
+[`usize`]: numeric.md#平台相关整数类型
 [constant expression]: ../const_eval.md#常量表达式

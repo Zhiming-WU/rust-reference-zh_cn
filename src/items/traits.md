@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/traits.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.traits]
 # 特型
 
@@ -14,9 +17,9 @@ Trait ->
 r[items.traits.intro]
 一个 _特型_ 描述了一个类型可以实现的抽象接口。此接口由 [关联项][associated items] 组成，共有三种：
 
-- [函数](associated-items.md#associated-functions-and-methods)
-- [类型](associated-items.md#associated-types)
-- [常量](associated-items.md#associated-constants)
+- [函数](associated-items.md#关联函数和方法)
+- [类型](associated-items.md#关联类型)
+- [常量](associated-items.md#关联常量)
 
 r[items.traits.namespace]
 特型 声明在它所在的模块或块的 [类型命名空间][type namespace] 中定义了一个 特型。
@@ -48,9 +51,9 @@ r[items.traits.const-fn]
 特型 函数不允许是 [`const`]。
 
 r[items.traits.bounds]
-## 特型绑定
+## 特型界限
 
-泛型 项 可以使用 特型 作为其 类型参数 的 [绑定][bounds]。
+泛型 项 可以使用特型作为其类型参数的 [界限][bounds] 。
 
 r[items.traits.generic]
 ## 泛型特型
@@ -99,12 +102,12 @@ r[items.traits.dyn-compatible.associated-functions]
         * 不具有 不透明返回类型；即，
             * 不是 `async fn`（它具有隐藏的 `Future` 类型）。
             * 不具有 返回位置 `impl Trait` 类型 (`fn example(&self) -> impl Trait`)。
-        * 不具有 `where Self: Sized` 绑定（`Self` 的 接收者 类型 (即 `self`) 隐含了这一点）。
+        * 不具有 `where Self: Sized` 界限（`Self` 的 接收者 类型 (即 `self`) 隐含了这一点）。
     * 明确的不可分派函数要求：
-        * 具有 `where Self: Sized` 绑定（`Self` 的 接收者 类型 (即 `self`) 隐含了这一点）。
+        * 具有 `where Self: Sized` 界限（`Self` 的 接收者 类型 (即 `self`) 隐含了这一点）。
 
 r[items.traits.dyn-compatible.async-traits]
-* [`AsyncFn`](https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFn.html)、[`AsyncFnMut`](https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFnMut.html) 和 [`AsyncFnOnce`](https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFnOnce.html) 特型 不是 dyn 兼容的。
+* [`AsyncFn`]、[`AsyncFnMut`] 和 [`AsyncFnOnce`] 特型 不是 dyn 兼容的。
 
 > [!NOTE]
 > 这个概念以前被称为 *对象安全 (object safety)* 。
@@ -195,10 +198,10 @@ r[items.traits.supertraits]
 ## 父特型
 
 r[items.traits.supertraits.intro]
-**父特型 (Supertraits)** 是指为了让某个类型实现特定 特型 而必须先为该类型实现的 特型。此外，任何被 特型 绑定的 [泛型][generics] 或 [特型对象][trait object] 都可以访问其 父特型 的 关联项。
+**父特型 (Supertraits)** 是指为了让某个类型实现特定 特型 而必须先为该类型实现的 特型。此外，任何被 特型 限界的 [泛型][generics] 或 [特型对象][trait object] 都可以访问其 父特型 的 关联项。
 
 r[items.traits.supertraits.decl]
-父特型 通过 特型 的 `Self` 类型上的 特型绑定 来声明，并以此类推，包括那些 特型绑定 中声明的 特型 的 父特型。 特型 成为其自身的 父特型 是一个错误。
+父特型 通过 特型 的 `Self` 类型上的 特型界限 来声明，并以此类推，包括那些 特型界限 中声明的 特型 的 父特型。 特型 成为其自身的 父特型 是一个错误。
 
 r[items.traits.supertraits.subtrait]
 拥有 父特型 的 特型 被称为其 父特型 的 **子特型 (subtrait)** 。
@@ -366,7 +369,7 @@ fn main() {
 }
 ```
 
-[WildcardPattern]: ../patterns.md#wildcard-pattern
+[WildcardPattern]: ../patterns.md#通配符模式
 [bounds]: ../trait-bounds.md
 [trait object]: ../types/trait-object.md
 [associated items]: associated-items.md
@@ -374,16 +377,16 @@ fn main() {
 [supertraits]: #父特型
 [implementations]: implementations.md
 [generics]: generics.md
-[where clauses]: generics.md#where-clauses
-[generic functions]: functions.md#generic-functions
+[where clauses]: generics.md#where子句
+[generic functions]: functions.md#泛型函数
 [unsafe]: ../unsafety.md
-[trait implementation]: implementations.md#trait-implementations
+[trait implementation]: implementations.md#特型实现
 [`Send`]: ../special-types-and-traits.md#send
 [`Sync`]: ../special-types-and-traits.md#sync
 [`Arc<Self>`]: ../special-types-and-traits.md#arct
 [`Box<Self>`]: ../special-types-and-traits.md#boxt
 [`Pin<P>`]: ../special-types-and-traits.md#pinp
 [`Rc<Self>`]: ../special-types-and-traits.md#rct
-[`async`]: functions.md#async-functions
-[`const`]: functions.md#const-functions
+[`async`]: functions.md#async函数
+[`const`]: functions.md#const函数
 [type namespace]: ../names/namespaces.md

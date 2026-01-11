@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/await-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.await]
 # `await`表达式
 
@@ -54,15 +57,15 @@ match operand.into_future() {
 
 其中 `yield` 伪代码返回 `Poll::Pending`，并且在重新调用时从该点恢复执行。变量 `current_context` 是指从异步环境中获取的上下文。
 
-[`async fn`]: ../items/functions.md#async-functions
-[`async` closure]: closure-expr.md#async-closures
-[`async` block]: block-expr.md#async-blocks
+[`async fn`]: ../items/functions.md#async函数
+[`async` closure]: closure-expr.md#async闭包
+[`async` block]: block-expr.md#async块
 [`Context`]: std::task::Context
 [`future::poll`]: std::future::Future::poll
 [`pin::new_unchecked`]: std::pin::Pin::new_unchecked
 [`poll::Pending`]: std::task::Poll::Pending
 [`poll::Ready`]: std::task::Poll::Ready
-[async context]: ../expressions/block-expr.md#async-context
+[async context]: ../expressions/block-expr.md#async语境
 [future]: std::future::Future
 [`IntoFuture`]: std::future::IntoFuture
 [`IntoFuture::into_future`]: std::future::IntoFuture::into_future

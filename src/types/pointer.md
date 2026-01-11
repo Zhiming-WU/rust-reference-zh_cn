@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types/pointer.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type.pointer]
 # 指针类型
 
@@ -6,7 +9,7 @@ r[type.pointer.intro]
 它们可以被移动或复制，存储进数据 结构体 中，并从函数中返回。
 
 r[type.pointer.reference]
-## 引用 (`&` 和 `&mut`)
+## 引用(`&`和`&mut`)
 
 r[type.pointer.reference.syntax]
 ```grammar,类型
@@ -14,7 +17,7 @@ ReferenceType -> `&` Lifetime? `mut`? TypeNoBounds
 ```
 
 r[type.pointer.reference.shared]
-### 共享引用 (`&`)
+### 共享引用(`&`)
 
 r[type.pointer.reference.shared.intro]
 共享引用指向由其他值拥有的内存。
@@ -31,7 +34,7 @@ r[type.pointer.reference.shared.copy]
 释放引用对它所指向的值没有影响，但引用一个 [临时值][temporary value] 会在引用本身的作用域内使其保持存活。
 
 r[type.pointer.reference.mut]
-### 可变引用 (`&mut`)
+### 可变引用(`&mut`)
 
 r[type.pointer.reference.mut.intro]
 可变引用指向由其他值拥有的内存。
@@ -41,7 +44,7 @@ r[type.pointer.reference.mut.copy]
 可变引用（尚未被借用的）是访问其指向的值的唯一方式，因此它不是 `Copy` 的。
 
 r[type.pointer.raw]
-## 裸指针 (`*const` 和 `*mut`)
+## 裸指针(`*const`和`*mut`)
 
 r[type.pointer.raw.syntax]
 ```grammar,类型
@@ -91,4 +94,4 @@ r[type.pointer.validity.raw]
 [Interior mutability]: ../interior-mutability.md
 [`unsafe` operation]: ../unsafety.md
 [dynamically sized types]: ../dynamically-sized-types.md
-[temporary value]: ../expressions.md#temporaries
+[temporary value]: ../expressions.md#临时变量

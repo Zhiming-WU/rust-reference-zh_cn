@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types/boolean.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type.bool]
 # 布尔类型
 
@@ -120,16 +123,16 @@ r[type.bool.validity]
 [boolean logic]: https://en.wikipedia.org/wiki/Boolean_algebra
 [enumerated type]: enum.md
 [expressions]: ../expressions.md
-[if expressions]: ../expressions/if-expr.md#if-expressions
-[language prelude]: ../names/preludes.md#language-prelude
-[lazy]: ../expressions/operator-expr.md#lazy-boolean-operators
+[if expressions]: ../expressions/if-expr.md#if表达式
+[language prelude]: ../names/preludes.md#语言预导入
+[lazy]: ../expressions/operator-expr.md#惰性布尔运算符
 [literal expression]: ../expressions/literal-expr.md
 [name]: ../names.md
-[op-and]: ../expressions/operator-expr.md#arithmetic-and-logical-binary-operators
-[op-compare]: ../expressions/operator-expr.md#comparison-operators
-[op-not]: ../expressions/operator-expr.md#negation-operators
-[op-or]: ../expressions/operator-expr.md#arithmetic-and-logical-binary-operators
-[op-xor]: ../expressions/operator-expr.md#arithmetic-and-logical-binary-operators
+[op-and]: ../expressions/operator-expr.md#算术和逻辑二元运算符
+[op-compare]: ../expressions/operator-expr.md#比较运算符
+[op-not]: ../expressions/operator-expr.md#求负运算符
+[op-or]: ../expressions/operator-expr.md#算术和逻辑二元运算符
+[op-xor]: ../expressions/operator-expr.md#算术和逻辑二元运算符
 [p-clone]: ../special-types-and-traits.md#clone
 [p-copy]: ../special-types-and-traits.md#copy
 [p-impl]: ../items/implementations.md
@@ -137,6 +140,6 @@ r[type.bool.validity]
 [p-sized]: ../special-types-and-traits.md#sized
 [p-sync]: ../special-types-and-traits.md#sync
 [p-traits]: ../items/traits.md
-[size and alignment]: ../type-layout.md#size-and-alignment
+[size and alignment]: ../type-layout.md#大小和对齐
 [undefined behavior]: ../behavior-considered-undefined.md
-[while expressions]: ../expressions/loop-expr.md#predicate-loops
+[while expressions]: ../expressions/loop-expr.md#谓词循环

@@ -129,17 +129,17 @@ crate名称不能为空，并且只能包含[Unicode字母数字][Unicode alphan
 
 [^cratesourcefile]: 一个crate在某种程度上类似于ECMA-335 CLI模型中的*assembly*，SML/NJ Compilation Manager中的 *库(library)*，Owens和Flatt模块系统中的 *单元(unit)*，或Mesa中的 *配置(configuration)*。
 
-[Unicode alphanumeric]: https://doc.rust-lang.org/std/primitive.char.html#method.is_alphanumeric
+[Unicode alphanumeric]: char::is_alphanumeric
 [`!`]: types/never.md
-[`ExitCode`]: https://doc.rust-lang.org/std/process/struct.ExitCode.html
-[`Infallible`]: https://doc.rust-lang.org/core/convert/enum.Infallible.html
-[`Termination`]: https://doc.rust-lang.org/std/process/trait.Termination.html
+[`ExitCode`]: std::process::ExitCode
+[`Infallible`]: std::convert::Infallible
+[`Termination`]: std::process::Termination
 [attribute]: attributes.md
 [attributes]: attributes.md
 [function]: items/functions.md
 [module]: items/modules.md
 [module path]: paths.md
-[panic-docs]: panic.md#unwinding-across-ffi-boundaries
+[panic-docs]: panic.md#展开-across-ffi-boundaries
 [shebang]: input-format.md#shebang移除
 [trait or lifetime bounds]: trait-bounds.md
-[where clauses]: items/generics.md#where-clauses
+[where clauses]: items/generics.md#where子句

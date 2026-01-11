@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types/struct.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type.struct]
 # 结构体类型
 
@@ -21,6 +24,6 @@ r[type.struct.unit]
 
 [^structtype]: 结构体 类型类似于 C 中的 结构体 类型、ML 系列的 *记录* 类型或 Lisp 系列的 *结构体* 类型。
 
-[`repr` attribute]: ../type-layout.md#representations
+[`repr` attribute]: ../type-layout.md#表示法
 [struct expression]: ../expressions/struct-expr.md
 [visibility modifiers]: ../visibility-and-privacy.md

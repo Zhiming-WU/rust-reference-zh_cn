@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/static-items.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.static]
 # 静态项
 
@@ -31,7 +34,7 @@ r[items.static.safety]
 对 静态项 的所有访问都是安全的，但对 静态项 有一些限制：
 
 r[items.static.sync]
-* 类型必须具有 [`Sync`](https://doc.rust-lang.org/core/marker/trait.Sync.html) 特型 绑定以允许线程安全访问。
+* 类型必须具有 [`Sync`](std::marker::Sync) 特型 界限以允许线程安全访问。
 
 r[items.static.init.omission]
 初始化表达式在 [外部块][external block] 中必须省略，而在自由 静态项 中必须提供。
@@ -140,4 +143,4 @@ r[items.static.alternate]
 [external block]: external-blocks.md
 [interior mutable]: ../interior-mutability.md
 [value namespace]: ../names/namespaces.md
-[promoteds]: ../destructors.md#constant-promotion
+[promoteds]: ../destructors.md#常量提升

@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/type-coercions.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[coerce]
 # 隐式类型转换
 
@@ -281,8 +284,8 @@ fn foo() -> i32 {
 [RFC 1558]: https://github.com/rust-lang/rfcs/blob/master/text/1558-closure-to-fn-coercion.md
 [subtype]: subtyping.md
 [dyn compatible]: items/traits.md#dyn兼容性
-[type cast operator]: expressions/operator-expr.md#type-cast-expressions
+[type cast operator]: expressions/operator-expr.md#类型转换表达式
 [`Unsize`]: std::marker::Unsize
 [`CoerceUnsized`]: std::ops::CoerceUnsized
 [method-call expressions]: expressions/method-call-expr.md
-[supertraits]: items/traits.md#supertraits
+[supertraits]: items/traits.md#父特型

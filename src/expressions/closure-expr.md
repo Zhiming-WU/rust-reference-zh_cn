@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/expressions/closure-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[expr.closure]
 # 闭包表达式
 
@@ -37,7 +40,7 @@ r[expr.closure.captures]
 重要的是，闭包表达式会 _捕获其环境_ ，而普通的 [函数定义][function definitions] 则不会。
 
 r[expr.closure.capture-inference]
-如果没有 `move` 关键字，闭包表达式会 [推导它如何从其环境中捕获每个变量](../types/closure.md#capture-modes)，优先通过共享引用进行捕获，从而实际上借用了闭包体内提到的所有外部变量。
+如果没有 `move` 关键字，闭包表达式会 [推导它如何从其环境中捕获每个变量](../types/closure.md#捕获模式)，优先通过共享引用进行捕获，从而实际上借用了闭包体内提到的所有外部变量。
 
 r[expr.closure.capture-mut-ref]
 如果需要，编译器将推导应该采用可变引用，或者应该从环境中移动或复制值（取决于它们的类型）。
@@ -104,12 +107,12 @@ ten_times(move |j| println!("{}, {}", word, j));
 r[expr.closure.param-attributes]
 闭包参数上的属性遵循与 [普通函数参数][regular function parameters] 相同的规则和限制。
 
-[`let` binding]: ../statements.md#let-statements
+[`let` binding]: ../statements.md#let语句
 [`Send`]: ../special-types-and-traits.md#send
 [`Sync`]: ../special-types-and-traits.md#sync
 [block]: block-expr.md
-[call traits and coercions]: ../types/closure.md#call-traits-and-coercions
+[call traits and coercions]: ../types/closure.md#调用特型与隐式类型转换
 [closure type]: ../types/closure.md
 [function definitions]: ../items/functions.md
 [patterns]: ../patterns.md
-[regular function parameters]: ../items/functions.md#attributes-on-function-parameters
+[regular function parameters]: ../items/functions.md#函数参数上的属性

@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/associated-items.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.associated]
 # 关联项
 
@@ -207,7 +210,7 @@ r[items.associated.type.restrictions]
 关联类型不能在 [固有实现][inherent implementations] 中定义，也不能在 特型 中给出默认实现。
 
 r[items.associated.type.decl]
- *关联类型声明*  为关联类型定义声明一个签名。它的写法有以下形式之一，其中 `Assoc` 是关联类型的名称，`Params` 是以逗号分隔的类型、生命周期或常量参数列表，`Bounds` 是以加号分隔的关联类型必须满足的特型绑定列表，而 `WhereBounds` 是以逗号分隔的参数必须满足的绑定列表：
+ *关联类型声明*  为关联类型定义声明一个签名。它的写法有以下形式之一，其中 `Assoc` 是关联类型的名称，`Params` 是以逗号分隔的类型、生命周期或常量参数列表，`Bounds` 是以加号分隔的关联类型必须满足的特型界限列表，而 `WhereBounds` 是以逗号分隔的参数必须满足的界限列表：
 
 <!-- ignore: illustrative example forms -->
 ```rust,ignore
@@ -223,10 +226,10 @@ r[items.associated.type.name]
 标识符是声明的类型别名的名称。
 
 r[items.associated.type.impl-fulfillment]
-可选的 特型 绑定必须由类型别名的实现满足。
+可选的特型界限必须由类型别名的实现满足。
 
 r[items.associated.type.sized]
-关联类型上有一个隐式的 [`Sized`][`Sized`] 绑定，可以使用特殊的 `?Sized` 绑定来放宽。
+关联类型上有一个隐式的 [`Sized`][`Sized`] 界限，可以使用特殊的 `?Sized` 界限来放宽。
 
 r[items.associated.type.def]
  *关联类型定义*  为 特型 在类型上的实现定义了一个类型别名。
@@ -364,10 +367,10 @@ trait LendingIterator {
 }
 ```
 
-在上面 `next` 函数中，由于 `&'a mut self` 的隐含绑定，我们可以证明 `Self: 'a`；因此，我们必须在 GAT 自身上写下等效的绑定：`where Self: 'x`。
+在上面 `next` 函数中，由于 `&'a mut self` 的隐含界限，我们可以证明 `Self: 'a`；因此，我们必须在 GAT 自身上写下等效的界限：`where Self: 'x`。
 
 r[items.associated.type.generic-where-clause.intersection]
-当 特型 中有多个函数使用该 GAT 时，将使用来自不同函数的绑定的  *交集 (intersection)* ，而不是并集。
+当 特型 中有多个函数使用该 GAT 时，将使用来自不同函数的界限的  *交集 (intersection)* ，而不是并集。
 
 ```rust
 trait Check<T> {
@@ -377,10 +380,10 @@ trait Check<T> {
 }
 ```
 
-在这个例子中，`type Checker<'a>;` 上不需要任何绑定。虽然我们知道在 `create_checker` 上 `T: 'a`，但在 `do_check` 上我们并不知道这一点。但是，如果 `do_check` 被注释掉，那么 `Checker` 上就需要 `where T: 'x` 绑定。
+在这个例子中，`type Checker<'a>;` 上不需要任何界限。虽然我们知道在 `create_checker` 上 `T: 'a`，但在 `do_check` 上我们并不知道这一点。但是，如果 `do_check` 被注释掉，那么 `Checker` 上就需要 `where T: 'x` 界限。
 
 r[items.associated.type.generic-where-clause.forward]
-关联类型上的绑定也会传播必需的 where 子句。
+关联类型上的界限也会传播必需的 where 子句。
 
 ```rust
 trait Iterable {
@@ -390,10 +393,10 @@ trait Iterable {
 }
 ```
 
-这里，由于 `iter` 的缘故，`Item` 上需要 `where Self: 'a`。然而，由于 `Item` 被用于 `Iterator` 的绑定中，`where Self: 'a` 子句在那里也是必需的。
+这里，由于 `iter` 的缘故，`Item` 上需要 `where Self: 'a`。然而，由于 `Item` 被用于 `Iterator` 的界限中，`where Self: 'a` 子句在那里也是必需的。
 
 r[items.associated.type.generic-where-clause.static]
-最后，在 特型 中的 GAT 上显式使用的任何 `'static` 都不计入必需绑定。
+最后，在 特型 中的 GAT 上显式使用的任何 `'static` 都不计入必需界限。
 
 ```rust
 trait StaticReturn {
@@ -497,18 +500,18 @@ fn main() {
 [`Sized`]: ../special-types-and-traits.md#sized
 [traits]: traits.md
 [type aliases]: type-aliases.md
-[inherent implementations]: implementations.md#inherent-implementations
+[inherent implementations]: implementations.md#固有实现
 [identifier]: ../identifiers.md
-[identifier pattern]: ../patterns.md#identifier-patterns
+[identifier pattern]: ../patterns.md#标识符模式
 [implementations]: implementations.md
-[type]: ../types.md#type-expressions
+[type]: ../types.md#类型表达式
 [constants]: constant-items.md
 [constant item]: constant-items.md
 [functions]: functions.md
 [function item]: ../types/function-item.md
 [method call operator]: ../expressions/method-call-expr.md
 [path]: ../paths.md
-[regular function parameters]: functions.md#attributes-on-function-parameters
+[regular function parameters]: functions.md#函数参数上的属性
 [generic parameters]: generics.md
-[where clauses]: generics.md#where-clauses
+[where clauses]: generics.md#where子句
 [constant evaluation]: ../const_eval.md

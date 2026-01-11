@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/items/extern-crates.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[items.extern-crate]
 # extern crate 声明
 
@@ -94,7 +97,7 @@ r[items.extern-crate.no_link.duplicates]
 [identifier]: ../identifiers.md
 [RFC 940]: https://github.com/rust-lang/rfcs/blob/master/text/0940-hyphens-considered-harmful.md
 [`macro_use` attribute]: ../macros-by-example.md#macro_use属性
-[extern prelude]: ../names/preludes.md#extern-prelude
+[extern prelude]: ../names/preludes.md#外部预导入
 [`macro_use` prelude]: ../names/preludes.md#macro_use-prelude
 [`crate_name` attributes]: ../crates-and-source-files.md#crate_name属性
 [type namespace]: ../names/namespaces.md

@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/interior-mutability.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[interior-mut]
 # 内部可变性
 
@@ -25,5 +28,5 @@ r[interior-mut.ref-cell]
 r[interior-mut.atomic]
 [`std::sync::atomic`] 模块包含了一些包装值的类型，这些值只能通过原子操作访问，从而允许该值在线程间共享和修改。
 
-[shared reference]: types/pointer.md#shared-references-
+[shared reference]: types/pointer.md#共享引用
 [ub]: behavior-considered-undefined.md

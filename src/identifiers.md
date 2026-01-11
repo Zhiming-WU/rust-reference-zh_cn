@@ -78,7 +78,7 @@ r[ident.raw.reserved]
 
 [`extern crate`]: items/extern-crates.md
 [`no_mangle`]: abi.md#the-no_mangle-attribute
-[`path` attribute]: items/modules.md#the-path-attribute
+[`path` attribute]: items/modules.md#path属性
 [`XID_Continue`]: http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Continue%3A%5D&abb=on&g=&i=
 [`XID_Start`]:  http://unicode.org/cldr/utility/list-unicodeset.jsp?a=%5B%3AXID_Start%3A%5D&abb=on&g=&i=
 [external blocks]: items/external-blocks.md

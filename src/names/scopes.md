@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/names/scopes.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[names.scopes]
 # 作用域
 
@@ -336,26 +339,26 @@ impl ImplExample {
 ```
 
 [`derive` attribute]: ../attributes/derive.md
-[`for` loop]: ../expressions/loop-expr.md#iterator-loops
-[`for`]: ../expressions/loop-expr.md#iterator-loops
-[`if let`]: ../expressions/if-expr.md#if-let-patterns
-[`while let`]: ../expressions/loop-expr.md#while-let-patterns
-[`let` statement]: ../statements.md#let-statements
+[`for` loop]: ../expressions/loop-expr.md#迭代器循环
+[`for`]: ../expressions/loop-expr.md#迭代器循环
+[`if let`]: ../expressions/if-expr.md#if-let模式
+[`while let`]: ../expressions/loop-expr.md#while-let模式
+[`let` statement]: ../statements.md#let语句
 [`macro_export`]: ../macros-by-example.md#macro_export属性
 [`macro_use` prelude]: preludes.md#macro_use-prelude
 [`macro_use`]: ../macros-by-example.md#macro_use属性
 [`match` arms]: ../expressions/match-expr.md
 [`Self`]: ../paths.md#self-1
-[Associated consts]: ../items/associated-items.md#associated-constants
+[Associated consts]: ../items/associated-items.md#关联常量
 [associated items]: ../items/associated-items.md
 [Asterisk glob imports]: ../items/use-declarations.md
-[async blocks]: ../expressions/block-expr.md#async-blocks
+[async blocks]: ../expressions/block-expr.md#async块
 [call expressions]: ../expressions/call-expr.md
 [Closure parameter]: ../expressions/closure-expr.md
 [closures]: ../expressions/closure-expr.md
-[const arguments]: ../items/generics.md#const-generics
-[const contexts]: ../const_eval.md#const-context
-[Const generic parameters]: ../items/generics.md#const-generics
+[const arguments]: ../items/generics.md#常量泛型
+[const contexts]: ../const_eval.md#常量上下文
+[Const generic parameters]: ../items/generics.md#常量泛型
 [Const items]: ../items/constant-items.md
 [Constant]: ../items/constant-items.md
 [Derive macro helper attributes]: ../procedural-macros.md#派生宏辅助属性
@@ -363,17 +366,17 @@ impl ImplExample {
 [entity]: ../names.md
 [enum]: ../items/enumerations.mdr
 [enums]: ../items/enumerations.md
-[Extern prelude]: preludes.md#extern-prelude
-[Function parameter]: ../items/functions.md#function-parameters
-[hrtb]: ../trait-bounds.md#higher-ranked-trait-bounds
+[Extern prelude]: preludes.md#外部预导入
+[Function parameter]: ../items/functions.md#函数参数
+[hrtb]: ../trait-bounds.md#高阶特型界限
 [Impl trait]: ../types/impl-trait.md
 [implementation]: ../items/implementations.md
 [items]: ../items.md
-[Language prelude]: preludes.md#language-prelude
+[Language prelude]: preludes.md#语言预导入
 [loop expression]: ../expressions/loop-expr.md
-[Loop labels]: ../expressions/loop-expr.md#loop-labels
+[Loop labels]: ../expressions/loop-expr.md#循环标签
 [Macros By Example]: ../macros-by-example.md
-[match guard]: ../expressions/match-expr.md#match-guards
+[match guard]: ../expressions/match-expr.md#匹配臂守卫
 [methods]: ../items/associated-items.md#方法
 [module]: ../items/modules.md
 [name resolution]: name-resolution.md
@@ -382,12 +385,12 @@ impl ImplExample {
 [pattern]: ../patterns.md
 [placeholder lifetime]: ../lifetime-elision.md
 [preludes]: preludes.md
-[Standard library prelude]: preludes.md#standard-library-prelude
+[Standard library prelude]: preludes.md#标准库预导入
 [statement]: ../statements.md
 [Static items]: ../items/static-items.md
 [static]: ../items/static-items.md
 [struct]: ../items/structs.md
 [structs]: ../items/structs.md
-[Tool prelude]: preludes.md#tool-prelude
+[Tool prelude]: preludes.md#工具预导入
 [trait]: ../items/traits.md
 [union]: ../items/unions.md

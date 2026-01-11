@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/types/numeric.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 r[type.numeric]
 # 数值类型
 
@@ -55,4 +58,4 @@ r[type.numeric.validity]
 
 对于每个数值类型 `T` ， `T` 的位有效性等同于 `[u8; size_of::<T>()]` 的位有效性。未初始化的字节不是有效的 `u8` 。
 
-[type cast expressions]: ../expressions/operator-expr.md#type-cast-expressions
+[type cast expressions]: ../expressions/operator-expr.md#类型转换表达式

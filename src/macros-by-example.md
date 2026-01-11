@@ -730,7 +730,7 @@ r[macro.decl.follow-set.repetition]
 [block labels]: expr.loop.block-labels
 [delimiters]: tokens.md#分隔符
 [formal specification]: macro-ambiguity.md
-[loop labels]: expressions/loop-expr.md#loop-labels
+[loop labels]: expressions/loop-expr.md#循环标签
 [name resolution ambiguities]: names/name-resolution.md#r-names.resolution.expansion.imports.ambiguity
 [token]: tokens.md
 [use declaration re-export]: items/use-declarations.md#use可见性

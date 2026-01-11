@@ -1,3 +1,6 @@
+<!-- https://github.com/rust-lang/reference/blob/master/src/behavior-not-considered-unsafe.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+
 # 不被视为 `unsafe` 的行为
 
 Rust 编译器不认为以下行为是 _不安全_ 的，尽管程序员可能（应该）发现它们是不受欢迎的、意外的或错误的。
