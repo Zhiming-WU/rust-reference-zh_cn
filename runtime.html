@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-runtime"><a class="rule-link" href="#r-runtime" title="runtime"><span>[runtime]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/runtime.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-runtime"><a class="rule-link" href="#r-runtime" title="runtime"><span>[runtime]</span></a>
 </div>
 
 <h1 id="rust-运行时"><a class="header" href="#rust-运行时">Rust 运行时</a></h1>
@@ -191,7 +193,7 @@
 <div class="rule" id="r-runtime.global_allocator.intro"><a class="rule-link" href="#r-runtime.global_allocator.intro" title="runtime.global_allocator.intro"><span>[runtime<wbr>.global_allocator<wbr>.intro]</span></a>
 </div>
 
-<p><em>global_allocator <a href="attributes.html#r-attributes">属性</a></em> 选择一个 <a href="../std/alloc/index.html">内存分配器</a>。</p>
+<p><em>global_allocator <a href="attributes.html#r-attributes">属性</a></em> 选择一个 <a href="https://doc.rust-lang.org/std/alloc/index.html">内存分配器</a>。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -225,7 +227,7 @@ static GLOBAL: MyAllocator = MyAllocator;
 <div class="rule" id="r-runtime.global_allocator.allowed-positions"><a class="rule-link" href="#r-runtime.global_allocator.allowed-positions" title="runtime.global_allocator.allowed-positions"><span>[runtime<wbr>.global_allocator<wbr>.allowed-positions]</span></a>
 </div>
 
-<p>global_allocator 属性只能应用于其类型实现了 <a href="../core/alloc/global/trait.GlobalAlloc.html"><code>GlobalAlloc</code></a> 特型 的 <a href="items/static-items.html">静态项</a>。</p>
+<p>global_allocator 属性只能应用于其类型实现了 <a href="https://doc.rust-lang.org/core/alloc/global/trait.GlobalAlloc.html"><code>GlobalAlloc</code></a> 特型 的 <a href="items/static-items.html">静态项</a>。</p>
 <div class="rule" id="r-runtime.global_allocator.duplicates"><a class="rule-link" href="#r-runtime.global_allocator.duplicates" title="runtime.global_allocator.duplicates"><span>[runtime<wbr>.global_allocator<wbr>.duplicates]</span></a>
 </div>
 
@@ -237,7 +239,7 @@ static GLOBAL: MyAllocator = MyAllocator;
 <div class="rule" id="r-runtime.global_allocator.stdlib"><a class="rule-link" href="#r-runtime.global_allocator.stdlib" title="runtime.global_allocator.stdlib"><span>[runtime<wbr>.global_allocator<wbr>.stdlib]</span></a>
 </div>
 
-<p>global_allocator 属性从 <a href="../core/prelude/v1/index.html">标准库预导入</a> 中导出。</p>
+<p>global_allocator 属性从 <a href="https://doc.rust-lang.org/core/prelude/v1/index.html">标准库预导入</a> 中导出。</p>
 <!-- template:attributes -->
 <div class="rule" id="r-runtime.windows_subsystem"><a class="rule-link" href="#r-runtime.windows_subsystem" title="runtime.windows_subsystem"><span>[runtime<wbr>.windows_subsystem]</span></a>
 </div>

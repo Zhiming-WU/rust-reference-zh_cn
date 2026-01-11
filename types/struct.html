@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type.struct"><a class="rule-link" href="#r-type.struct" title="type.struct"><span>[type<wbr>.struct]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types/struct.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type.struct"><a class="rule-link" href="#r-type.struct" title="type.struct"><span>[type<wbr>.struct]</span></a>
 </div>
 
 <h1 id="结构体类型"><a class="header" href="#结构体类型">结构体类型</a></h1>
@@ -193,7 +195,7 @@
 <div class="rule" id="r-type.struct.layout"><a class="rule-link" href="#r-type.struct.layout" title="type.struct.layout"><span>[type<wbr>.struct<wbr>.layout]</span></a>
 </div>
 
-<p>默认情况下， 结构体 的内存布局是未定义的，以便允许编译器进行诸如字段重排之类的优化，但它可以通过 <a href="../type-layout.html#representations"><code>repr</code> 属性</a> 固定。在任何一种情况下，字段都可以在相应的 结构体  <em>表达式</em> 中以任何顺序给出；生成的 结构体 值将始终具有相同的内存布局。</p>
+<p>默认情况下， 结构体 的内存布局是未定义的，以便允许编译器进行诸如字段重排之类的优化，但它可以通过 <a href="../type-layout.html#表示法"><code>repr</code> 属性</a> 固定。在任何一种情况下，字段都可以在相应的 结构体  <em>表达式</em> 中以任何顺序给出；生成的 结构体 值将始终具有相同的内存布局。</p>
 <div class="rule" id="r-type.struct.field-visibility"><a class="rule-link" href="#r-type.struct.field-visibility" title="type.struct.field-visibility"><span>[type<wbr>.struct<wbr>.field-visibility]</span></a>
 </div>
 

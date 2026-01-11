@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-items.type"><a class="rule-link" href="#r-items.type" title="items.type"><span>[items<wbr>.type]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/items/type-aliases.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-items.type"><a class="rule-link" href="#r-items.type" title="items.type"><span>[items<wbr>.type]</span></a>
 </div>
 
 <h1 id="类型别名"><a class="header" href="#类型别名">类型别名</a></h1>
@@ -341,19 +343,19 @@ let _ = TypeAlias(5); // 无法工作
 <div class="rule" id="r-items.type.associated-type"><a class="rule-link" href="#r-items.type.associated-type" title="items.type.associated-type"><span>[items<wbr>.type<wbr>.associated-type]</span></a>
 </div>
 
-<p>当类型别名不作为  <a href="associated-items.html#associated-types">关联类型</a>  使用时，必须包含一个  <a href="../types.html#grammar-Type">类型</a>  且不得包含 <a href="../trait-bounds.html#grammar-TypeParamBounds">TypeParamBounds</a>。</p>
+<p>当类型别名不作为  <a href="associated-items.html#关联类型">关联类型</a>  使用时，必须包含一个  <a href="../types.html#grammar-Type">类型</a>  且不得包含 <a href="../trait-bounds.html#grammar-TypeParamBounds">TypeParamBounds</a>。</p>
 <div class="rule" id="r-items.type.associated-trait"><a class="rule-link" href="#r-items.type.associated-trait" title="items.type.associated-trait"><span>[items<wbr>.type<wbr>.associated-trait]</span></a>
 </div>
 
-<p>当类型别名在  <a href="traits.html">特型</a>  中作为  <a href="associated-items.html#associated-types">关联类型</a>  使用时，不得包含  <a href="../types.html#grammar-Type">类型</a>  规范，但可以包含 <a href="../trait-bounds.html#grammar-TypeParamBounds">TypeParamBounds</a>。</p>
+<p>当类型别名在  <a href="traits.html">特型</a>  中作为  <a href="associated-items.html#关联类型">关联类型</a>  使用时，不得包含  <a href="../types.html#grammar-Type">类型</a>  规范，但可以包含 <a href="../trait-bounds.html#grammar-TypeParamBounds">TypeParamBounds</a>。</p>
 <div class="rule" id="r-items.type.associated-impl"><a class="rule-link" href="#r-items.type.associated-impl" title="items.type.associated-impl"><span>[items<wbr>.type<wbr>.associated-impl]</span></a>
 </div>
 
-<p>当类型别名在  <a href="implementations.html#trait-implementations">特型实现</a>  中作为  <a href="associated-items.html#associated-types">关联类型</a>  使用时，必须包含一个  <a href="../types.html#grammar-Type">类型</a>  规范，且不得包含 <a href="../trait-bounds.html#grammar-TypeParamBounds">TypeParamBounds</a>。</p>
+<p>当类型别名在  <a href="implementations.html#特型实现">特型实现</a>  中作为  <a href="associated-items.html#关联类型">关联类型</a>  使用时，必须包含一个  <a href="../types.html#grammar-Type">类型</a>  规范，且不得包含 <a href="../trait-bounds.html#grammar-TypeParamBounds">TypeParamBounds</a>。</p>
 <div class="rule" id="r-items.type.deprecated"><a class="rule-link" href="#r-items.type.deprecated" title="items.type.deprecated"><span>[items<wbr>.type<wbr>.deprecated]</span></a>
 </div>
 
-<p>在  <a href="implementations.html#trait-implementations">特型实现</a>  的类型别名中，等号之前的 Where 子句（如 <code>type TypeAlias&lt;T&gt; where T: Foo = Bar&lt;T&gt;</code>）已被弃用。等号之后的 Where 子句（如 <code>type TypeAlias&lt;T&gt; = Bar&lt;T&gt; where T: Foo</code>）是首选。</p>
+<p>在  <a href="implementations.html#特型实现">特型实现</a>  的类型别名中，等号之前的 Where 子句（如 <code>type TypeAlias&lt;T&gt; where T: Foo = Bar&lt;T&gt;</code>）已被弃用。等号之后的 Where 子句（如 <code>type TypeAlias&lt;T&gt; = Bar&lt;T&gt; where T: Foo</code>）是首选。</p>
 
                     </main>
 

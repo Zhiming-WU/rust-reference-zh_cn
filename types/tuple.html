@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type.tuple"><a class="rule-link" href="#r-type.tuple" title="type.tuple"><span>[type<wbr>.tuple]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types/tuple.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type.tuple"><a class="rule-link" href="#r-type.tuple" title="type.tuple"><span>[type<wbr>.tuple]</span></a>
 </div>
 
 <h1 id="元组类型"><a class="header" href="#元组类型">元组类型</a></h1>
@@ -282,7 +284,7 @@ Type</text>
 <div class="rule" id="r-type.tuple.restriction"><a class="rule-link" href="#r-type.tuple.restriction" title="type.tuple.restriction"><span>[type<wbr>.tuple<wbr>.restriction]</span></a>
 </div>
 
-<p>一元元组要求在其元素类型后加一个逗号，以便与 <a href="../types.html#parenthesized-types">括号括起来的类型</a> 区分开来。</p>
+<p>一元元组要求在其元素类型后加一个逗号，以便与 <a href="../types.html#括号类型">括号括起来的类型</a> 区分开来。</p>
 <div class="rule" id="r-type.tuple.field-number"><a class="rule-link" href="#r-type.tuple.field-number" title="type.tuple.field-number"><span>[type<wbr>.tuple<wbr>.field-number]</span></a>
 </div>
 
@@ -307,11 +309,11 @@ Type</text>
 <div class="rule" id="r-type.tuple.constructor"><a class="rule-link" href="#r-type.tuple.constructor" title="type.tuple.constructor"><span>[type<wbr>.tuple<wbr>.constructor]</span></a>
 </div>
 
-<p>此类型的值是使用 <a href="../expressions/tuple-expr.html#tuple-expressions">元组表达式</a> 构造的。此外，如果没有其他有意义的值可以求值，各种表达式都将产生 unit 值。</p>
+<p>此类型的值是使用 <a href="../expressions/tuple-expr.html#元组表达式">元组表达式</a> 构造的。此外，如果没有其他有意义的值可以求值，各种表达式都将产生 unit 值。</p>
 <div class="rule" id="r-type.tuple.access"><a class="rule-link" href="#r-type.tuple.access" title="type.tuple.access"><span>[type<wbr>.tuple<wbr>.access]</span></a>
 </div>
 
-<p>元组字段可以通过 <a href="../expressions/tuple-expr.html#tuple-indexing-expressions">元组索引表达式</a> 或 <a href="../patterns.html#tuple-patterns">模式匹配</a> 来访问。</p>
+<p>元组字段可以通过 <a href="../expressions/tuple-expr.html#元组索引表达式">元组索引表达式</a> 或 <a href="../patterns.html#元组模式">模式匹配</a> 来访问。</p>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-1">

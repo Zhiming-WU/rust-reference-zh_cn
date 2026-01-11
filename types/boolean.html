@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type.bool"><a class="rule-link" href="#r-type.bool" title="type.bool"><span>[type<wbr>.bool]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types/boolean.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type.bool"><a class="rule-link" href="#r-type.bool" title="type.bool"><span>[type<wbr>.bool]</span></a>
 </div>
 
 <h1 id="布尔类型"><a class="header" href="#布尔类型">布尔类型</a></h1>
@@ -199,11 +201,11 @@
 <div class="rule" id="r-type.bool.namespace"><a class="rule-link" href="#r-type.bool.namespace" title="type.bool.namespace"><span>[type<wbr>.bool<wbr>.namespace]</span></a>
 </div>
 
-<p>该类型是 <a href="../names/preludes.html#language-prelude">语言预导入</a> 的一部分， <a href="../names.html">名称</a> 为 <code>bool</code> 。</p>
+<p>该类型是 <a href="../names/preludes.html#语言预导入">语言预导入</a> 的一部分， <a href="../names.html">名称</a> 为 <code>bool</code> 。</p>
 <div class="rule" id="r-type.bool.layout"><a class="rule-link" href="#r-type.bool.layout" title="type.bool.layout"><span>[type<wbr>.bool<wbr>.layout]</span></a>
 </div>
 
-<p>布尔类型的对象其 <a href="../type-layout.html#size-and-alignment">大小和对齐</a> 均为 1 。</p>
+<p>布尔类型的对象其 <a href="../type-layout.html#大小和对齐">大小和对齐</a> 均为 1 。</p>
 <div class="rule" id="r-type.bool.repr"><a class="rule-link" href="#r-type.bool.repr" title="type.bool.repr"><span>[type<wbr>.bool<wbr>.repr]</span></a>
 </div>
 
@@ -216,13 +218,13 @@
 </div>
 
 <ul>
-<li><a href="../expressions/if-expr.html#if-expressions">if 表达式</a> 和 <a href="../expressions/loop-expr.html#predicate-loops">while 表达式</a> 中的条件操作数</li>
+<li><a href="../expressions/if-expr.html#if表达式">if 表达式</a> 和 <a href="../expressions/loop-expr.html#谓词循环">while 表达式</a> 中的条件操作数</li>
 </ul>
 <div class="rule" id="r-type.bool.usage-lazy-operator"><a class="rule-link" href="#r-type.bool.usage-lazy-operator" title="type.bool.usage-lazy-operator"><span>[type<wbr>.bool<wbr>.usage-lazy-operator]</span></a>
 </div>
 
 <ul>
-<li><a href="../expressions/operator-expr.html#lazy-boolean-operators">惰性布尔运算符表达式</a> 中的操作数</li>
+<li><a href="../expressions/operator-expr.html#惰性布尔运算符">惰性布尔运算符表达式</a> 中的操作数</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
@@ -240,7 +242,7 @@
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>有关库操作，请参阅 <a href="../../std/primitive.bool.html">标准库文档</a> 。</p>
+<p>有关库操作，请参阅 <a href="https://doc.rust-lang.org/std/primitive.bool.html">标准库文档</a> 。</p>
 </blockquote>
 </div>
 
@@ -256,7 +258,7 @@
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th><code>b</code></th><th><a href="../expressions/operator-expr.html#negation-operators"><code>!b</code></a></th></tr>
+<tr><th><code>b</code></th><th><a href="../expressions/operator-expr.html#求负运算符"><code>!b</code></a></th></tr>
 </thead>
 <tbody>
 <tr><td><code>true</code></td><td><code>false</code></td></tr>
@@ -271,7 +273,7 @@
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th><code>a</code></th><th><code>b</code></th><th><a href="../expressions/operator-expr.html#arithmetic-and-logical-binary-operators"><code>a | b</code></a></th></tr>
+<tr><th><code>a</code></th><th><code>b</code></th><th><a href="../expressions/operator-expr.html#算术和逻辑二元运算符"><code>a | b</code></a></th></tr>
 </thead>
 <tbody>
 <tr><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>
@@ -288,7 +290,7 @@
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th><code>a</code></th><th><code>b</code></th><th><a href="../expressions/operator-expr.html#arithmetic-and-logical-binary-operators"><code>a &amp; b</code></a></th></tr>
+<tr><th><code>a</code></th><th><code>b</code></th><th><a href="../expressions/operator-expr.html#算术和逻辑二元运算符"><code>a &amp; b</code></a></th></tr>
 </thead>
 <tbody>
 <tr><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>
@@ -305,7 +307,7 @@
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th><code>a</code></th><th><code>b</code></th><th><a href="../expressions/operator-expr.html#arithmetic-and-logical-binary-operators"><code>a ^ b</code></a></th></tr>
+<tr><th><code>a</code></th><th><code>b</code></th><th><a href="../expressions/operator-expr.html#算术和逻辑二元运算符"><code>a ^ b</code></a></th></tr>
 </thead>
 <tbody>
 <tr><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td></tr>
@@ -325,7 +327,7 @@
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th><code>a</code></th><th><code>b</code></th><th><a href="../expressions/operator-expr.html#comparison-operators"><code>a == b</code></a></th></tr>
+<tr><th><code>a</code></th><th><code>b</code></th><th><a href="../expressions/operator-expr.html#比较运算符"><code>a == b</code></a></th></tr>
 </thead>
 <tbody>
 <tr><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>
@@ -341,7 +343,7 @@
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th><code>a</code></th><th><code>b</code></th><th><a href="../expressions/operator-expr.html#comparison-operators"><code>a &gt; b</code></a></th></tr>
+<tr><th><code>a</code></th><th><code>b</code></th><th><a href="../expressions/operator-expr.html#比较运算符"><code>a &gt; b</code></a></th></tr>
 </thead>
 <tbody>
 <tr><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td></tr>

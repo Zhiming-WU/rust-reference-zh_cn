@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-names.preludes"><a class="rule-link" href="#r-names.preludes" title="names.preludes"><span>[names<wbr>.preludes]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/names/preludes.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-names.preludes"><a class="rule-link" href="#r-names.preludes" title="names.preludes"><span>[names<wbr>.preludes]</span></a>
 </div>
 
 <h1 id="预导入"><a class="header" href="#预导入">预导入</a></h1>
@@ -186,7 +188,7 @@
 </div>
 
 <p>一个 <em>预导入</em> 是自动引入到 crate 中每个模块作用域的名称集合。</p>
-<p>这些 预导入 名称本身不是模块的一部分：它们在 <a href="name-resolution.html">名称解析</a> 期间被隐式查询。例如，尽管像 <a href="../../alloc/boxed/struct.Box.html"><code>Box</code></a> 这样的东西在每个模块的作用域内，你也不能将其引用为 <code>self::Box</code>，因为它不是当前模块的成员。</p>
+<p>这些 预导入 名称本身不是模块的一部分：它们在 <a href="name-resolution.html">名称解析</a> 期间被隐式查询。例如，尽管像 <a href="https://doc.rust-lang.org/alloc/boxed/struct.Box.html"><code>Box</code></a> 这样的东西在每个模块的作用域内，你也不能将其引用为 <code>self::Box</code>，因为它不是当前模块的成员。</p>
 <div class="rule" id="r-names.preludes.kinds"><a class="rule-link" href="#r-names.preludes.kinds" title="names.preludes.kinds"><span>[names<wbr>.preludes<wbr>.kinds]</span></a>
 </div>
 
@@ -216,10 +218,10 @@
 <tr><th>版次</th><th>未应用 <code>no_std</code></th><th>已应用 <code>no_std</code></th></tr>
 </thead>
 <tbody>
-<tr><td>2015</td><td><a href="../../std/prelude/rust_2015/index.html"><code>std::prelude::rust_2015</code></a></td><td><a href="../../core/prelude/rust_2015/index.html"><code>core::prelude::rust_2015</code></a></td></tr>
-<tr><td>2018</td><td><a href="../../std/prelude/rust_2018/index.html"><code>std::prelude::rust_2018</code></a></td><td><a href="../../core/prelude/rust_2018/index.html"><code>core::prelude::rust_2018</code></a></td></tr>
-<tr><td>2021</td><td><a href="../../std/prelude/rust_2021/index.html"><code>std::prelude::rust_2021</code></a></td><td><a href="../../core/prelude/rust_2021/index.html"><code>core::prelude::rust_2021</code></a></td></tr>
-<tr><td>2024</td><td><a href="../../std/prelude/rust_2024/index.html"><code>std::prelude::rust_2024</code></a></td><td><a href="../../core/prelude/rust_2024/index.html"><code>core::prelude::rust_2024</code></a></td></tr>
+<tr><td>2015</td><td><a href="https://doc.rust-lang.org/std/prelude/rust_2015/index.html"><code>std::prelude::rust_2015</code></a></td><td><a href="https://doc.rust-lang.org/core/prelude/rust_2015/index.html"><code>core::prelude::rust_2015</code></a></td></tr>
+<tr><td>2018</td><td><a href="https://doc.rust-lang.org/std/prelude/rust_2018/index.html"><code>std::prelude::rust_2018</code></a></td><td><a href="https://doc.rust-lang.org/core/prelude/rust_2018/index.html"><code>core::prelude::rust_2018</code></a></td></tr>
+<tr><td>2021</td><td><a href="https://doc.rust-lang.org/std/prelude/rust_2021/index.html"><code>std::prelude::rust_2021</code></a></td><td><a href="https://doc.rust-lang.org/core/prelude/rust_2021/index.html"><code>core::prelude::rust_2021</code></a></td></tr>
+<tr><td>2024</td><td><a href="https://doc.rust-lang.org/std/prelude/rust_2024/index.html"><code>std::prelude::rust_2024</code></a></td><td><a href="https://doc.rust-lang.org/core/prelude/rust_2024/index.html"><code>core::prelude::rust_2024</code></a></td></tr>
 </tbody>
 </table>
 </div>
@@ -227,8 +229,8 @@
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><a href="../../std/prelude/rust_2015/index.html"><code>std::prelude::rust_2015</code></a> 和 <a href="../../std/prelude/rust_2018/index.html"><code>std::prelude::rust_2018</code></a> 的内容与 <a href="../../std/prelude/v1/index.html"><code>std::prelude::v1</code></a> 相同。</p>
-<p><a href="../../core/prelude/rust_2015/index.html"><code>core::prelude::rust_2015</code></a> 和 <a href="../../core/prelude/rust_2018/index.html"><code>core::prelude::rust_2018</code></a> 的内容与 <a href="../../core/prelude/v1/index.html"><code>core::prelude::v1</code></a> 相同。</p>
+<p><a href="https://doc.rust-lang.org/std/prelude/rust_2015/index.html"><code>std::prelude::rust_2015</code></a> 和 <a href="https://doc.rust-lang.org/std/prelude/rust_2018/index.html"><code>std::prelude::rust_2018</code></a> 的内容与 <a href="https://doc.rust-lang.org/std/prelude/v1/index.html"><code>std::prelude::v1</code></a> 相同。</p>
+<p><a href="https://doc.rust-lang.org/core/prelude/rust_2015/index.html"><code>core::prelude::rust_2015</code></a> 和 <a href="https://doc.rust-lang.org/core/prelude/rust_2018/index.html"><code>core::prelude::rust_2018</code></a> 的内容与 <a href="https://doc.rust-lang.org/core/prelude/v1/index.html"><code>core::prelude::v1</code></a> 相同。</p>
 </blockquote>
 </div>
 
@@ -243,11 +245,11 @@
 <div class="rule" id="r-names.preludes.extern.core"><a class="rule-link" href="#r-names.preludes.extern.core" title="names.preludes.extern.core"><span>[names<wbr>.preludes<wbr>.extern<wbr>.core]</span></a>
 </div>
 
-<p><a href="../../core/index.html"><code>core</code></a> crate 总是被添加到 外部预导入 中。</p>
+<p><a href="https://doc.rust-lang.org/core/index.html"><code>core</code></a> crate 总是被添加到 外部预导入 中。</p>
 <div class="rule" id="r-names.preludes.extern.std"><a class="rule-link" href="#r-names.preludes.extern.std" title="names.preludes.extern.std"><span>[names<wbr>.preludes<wbr>.extern<wbr>.std]</span></a>
 </div>
 
-<p>只要在 crate 根中没有指定 <a href="#the-no_std-attribute"><code>no_std</code> 属性</a>，<a href="../../std/index.html"><code>std</code></a> crate 就会被添加。</p>
+<p>只要在 crate 根中没有指定 <a href="#the-no_std-attribute"><code>no_std</code> 属性</a>，<a href="https://doc.rust-lang.org/std/index.html"><code>std</code></a> crate 就会被添加。</p>
 <div class="rule" id="r-names.preludes.extern.edition2018"><a class="rule-link" href="#r-names.preludes.extern.edition2018" title="names.preludes.extern.edition2018"><span>[names<wbr>.preludes<wbr>.extern<wbr>.edition2018]</span></a>
 </div>
 
@@ -264,7 +266,7 @@
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>随 <code>rustc</code> 一起提供的其他 crate，例如 <a href="../../alloc/index.html"><code>alloc</code></a> 和 <a href="../../test/index.html"><code>test</code></a>，在使用 Cargo 时不会通过 <code>--extern</code> 标志自动包含。即使在 2018 版次中，也必须通过 <code>extern crate</code> 声明将它们引入作用域。</p>
+<p>随 <code>rustc</code> 一起提供的其他 crate，例如 <a href="https://doc.rust-lang.org/alloc/index.html"><code>alloc</code></a> 和 <a href="https://doc.rust-lang.org/test/index.html"><code>test</code></a>，在使用 Cargo 时不会通过 <code>--extern</code> 标志自动包含。即使在 2018 版次中，也必须通过 <code>extern crate</code> 声明将它们引入作用域。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>extern crate alloc;
@@ -286,7 +288,7 @@ alloc/test limitation.
 <div class="rule" id="r-names.preludes.extern.no_std.intro"><a class="rule-link" href="#r-names.preludes.extern.no_std.intro" title="names.preludes.extern.no_std.intro"><span>[names<wbr>.preludes<wbr>.extern<wbr>.no_std<wbr>.intro]</span></a>
 </div>
 
-<p><em><code>no_std</code> <a href="../attributes.html#r-attributes">属性</a></em> 会导致 <a href="../../std/index.html"><code>std</code></a> crate 不被自动链接，<a href="preludes.html#r-names.preludes.std">标准库预导入</a> 转而使用 <code>core</code> 预导入，且 <a href="#macro_use-prelude"><code>macro_use</code> 预导入</a> 转而使用从 <code>core</code> crate 导出的宏。</p>
+<p><em><code>no_std</code> <a href="../attributes.html#r-attributes">属性</a></em> 会导致 <a href="https://doc.rust-lang.org/std/index.html"><code>std</code></a> crate 不被自动链接，<a href="preludes.html#r-names.preludes.std">标准库预导入</a> 转而使用 <code>core</code> 预导入，且 <a href="#macro_use-prelude"><code>macro_use</code> 预导入</a> 转而使用从 <code>core</code> crate 导出的宏。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -368,14 +370,14 @@ alloc/test limitation.
 <ul>
 <li><a href="../types/boolean.html">布尔类型</a> — <code>bool</code></li>
 <li><a href="../types/textual.html">文本类型</a> — <code>char</code> 和 <code>str</code></li>
-<li><a href="../types/numeric.html#integer-types">整数类型</a> — <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>i128</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>u128</code></li>
-<li><a href="../types/numeric.html#machine-dependent-integer-types">平台相关整数类型</a> — <code>usize</code> 和 <code>isize</code></li>
-<li><a href="../types/numeric.html#floating-point-types">浮点类型</a> — <code>f32</code> 和 <code>f64</code></li>
+<li><a href="../types/numeric.html#整数类型">整数类型</a> — <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>i128</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>u128</code></li>
+<li><a href="../types/numeric.html#平台相关整数类型">平台相关整数类型</a> — <code>usize</code> 和 <code>isize</code></li>
+<li><a href="../types/numeric.html#浮点类型">浮点类型</a> — <code>f32</code> 和 <code>f64</code></li>
 </ul>
 </li>
 <li><a href="namespaces.html">宏命名空间</a>
 <ul>
-<li><a href="../attributes.html#built-in-attributes-index">内置属性</a></li>
+<li><a href="../attributes.html#内置属性索引">内置属性</a></li>
 <li><a href="../attributes/derive.html#r-attributes.derive.built-in">内置派生宏</a></li>
 </ul>
 </li>
@@ -395,7 +397,7 @@ alloc/test limitation.
 <div class="rule" id="r-names.preludes.tool.intro"><a class="rule-link" href="#r-names.preludes.tool.intro" title="names.preludes.tool.intro"><span>[names<wbr>.preludes<wbr>.tool<wbr>.intro]</span></a>
 </div>
 
-<p>工具预导入包含了 <a href="namespaces.html">类型命名空间</a> 中外部工具的工具名称。有关更多详细信息，请参阅 <a href="../attributes.html#tool-attributes">工具属性</a> 部分。</p>
+<p>工具预导入包含了 <a href="namespaces.html">类型命名空间</a> 中外部工具的工具名称。有关更多详细信息，请参阅 <a href="../attributes.html#工具属性">工具属性</a> 部分。</p>
 <!-- template:attributes -->
 <div class="rule" id="r-names.preludes.no_implicit_prelude"><a class="rule-link" href="#r-names.preludes.no_implicit_prelude" title="names.preludes.no_implicit_prelude"><span>[names<wbr>.preludes<wbr>.no_implicit_prelude]</span></a>
 </div>

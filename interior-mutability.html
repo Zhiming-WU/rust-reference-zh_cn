@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-interior-mut"><a class="rule-link" href="#r-interior-mut" title="interior-mut"><span>[interior-mut]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/interior-mutability.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-interior-mut"><a class="rule-link" href="#r-interior-mut" title="interior-mut"><span>[interior-mut]</span></a>
 </div>
 
 <h1 id="内部可变性"><a class="header" href="#内部可变性">内部可变性</a></h1>
@@ -189,7 +191,7 @@
 <div class="rule" id="r-interior-mut.shared-ref"><a class="rule-link" href="#r-interior-mut.shared-ref" title="interior-mut.shared-ref"><span>[interior-mut<wbr>.shared-ref]</span></a>
 </div>
 
-<p>如果一个类型的内部状态可以通过指向它的 <a href="types/pointer.html#shared-references-">共享引用</a> 来改变，那么该类型就具有内部可变性。</p>
+<p>如果一个类型的内部状态可以通过指向它的 <a href="types/pointer.html#共享引用">共享引用</a> 来改变，那么该类型就具有内部可变性。</p>
 <div class="rule" id="r-interior-mut.no-constraint"><a class="rule-link" href="#r-interior-mut.no-constraint" title="interior-mut.no-constraint"><span>[interior-mut<wbr>.no-constraint]</span></a>
 </div>
 
@@ -197,7 +199,7 @@
 <div class="rule" id="r-interior-mut.unsafe-cell"><a class="rule-link" href="#r-interior-mut.unsafe-cell" title="interior-mut.unsafe-cell"><span>[interior-mut<wbr>.unsafe-cell]</span></a>
 </div>
 
-<p><a href="../core/cell/struct.UnsafeCell.html"><code>std::cell::UnsafeCell&lt;T&gt;</code></a> 类型是唯一允许禁用此要求的方式。当 <code>UnsafeCell&lt;T&gt;</code> 被不可变地起别名时，修改它包含的 <code>T</code> ，或者获取它的一个可变引用，仍然是安全的。</p>
+<p><a href="https://doc.rust-lang.org/core/cell/struct.UnsafeCell.html"><code>std::cell::UnsafeCell&lt;T&gt;</code></a> 类型是唯一允许禁用此要求的方式。当 <code>UnsafeCell&lt;T&gt;</code> 被不可变地起别名时，修改它包含的 <code>T</code> ，或者获取它的一个可变引用，仍然是安全的。</p>
 <div class="rule" id="r-interior-mut.mut-unsafe-cell"><a class="rule-link" href="#r-interior-mut.mut-unsafe-cell" title="interior-mut.mut-unsafe-cell"><span>[interior-mut<wbr>.mut-unsafe-cell]</span></a>
 </div>
 
@@ -209,11 +211,11 @@
 <div class="rule" id="r-interior-mut.ref-cell"><a class="rule-link" href="#r-interior-mut.ref-cell" title="interior-mut.ref-cell"><span>[interior-mut<wbr>.ref-cell]</span></a>
 </div>
 
-<p>例如， <a href="../core/cell/struct.RefCell.html"><code>std::cell::RefCell&lt;T&gt;</code></a> 使用运行时借用检查来确保围绕多个引用的通常规则。</p>
+<p>例如， <a href="https://doc.rust-lang.org/core/cell/struct.RefCell.html"><code>std::cell::RefCell&lt;T&gt;</code></a> 使用运行时借用检查来确保围绕多个引用的通常规则。</p>
 <div class="rule" id="r-interior-mut.atomic"><a class="rule-link" href="#r-interior-mut.atomic" title="interior-mut.atomic"><span>[interior-mut<wbr>.atomic]</span></a>
 </div>
 
-<p><a href="../core/sync/atomic/index.html"><code>std::sync::atomic</code></a> 模块包含了一些包装值的类型，这些值只能通过原子操作访问，从而允许该值在线程间共享和修改。</p>
+<p><a href="https://doc.rust-lang.org/core/sync/atomic/index.html"><code>std::sync::atomic</code></a> 模块包含了一些包装值的类型，这些值只能通过原子操作访问，从而允许该值在线程间共享和修改。</p>
 
                     </main>
 

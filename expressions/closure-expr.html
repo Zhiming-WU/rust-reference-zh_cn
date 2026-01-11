@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.closure"><a class="rule-link" href="#r-expr.closure" title="expr.closure"><span>[expr<wbr>.closure]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/closure-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.closure"><a class="rule-link" href="#r-expr.closure" title="expr.closure"><span>[expr<wbr>.closure]</span></a>
 </div>
 
 <h1 id="闭包表达式"><a class="header" href="#闭包表达式">闭包表达式</a></h1>
@@ -449,7 +451,7 @@ Type</text>
 </div>
 
 <p>闭包表达式表示一个函数，它将参数列表映射到参数之后的表达式上。
-就像 <a href="../statements.html#let-statements"><code>let</code> 绑定</a> 一样，闭包参数是不可反驳的 <a href="../patterns.html">模式</a>，其类型标注是可选的，如果未给出，将从上下文中推导。</p>
+就像 <a href="../statements.html#let语句"><code>let</code> 绑定</a> 一样，闭包参数是不可反驳的 <a href="../patterns.html">模式</a>，其类型标注是可选的，如果未给出，将从上下文中推导。</p>
 <div class="rule" id="r-expr.closure.unique-type"><a class="rule-link" href="#r-expr.closure.unique-type" title="expr.closure.unique-type"><span>[expr<wbr>.closure<wbr>.unique-type]</span></a>
 </div>
 
@@ -461,7 +463,7 @@ Type</text>
 <div class="rule" id="r-expr.closure.capture-inference"><a class="rule-link" href="#r-expr.closure.capture-inference" title="expr.closure.capture-inference"><span>[expr<wbr>.closure<wbr>.capture-inference]</span></a>
 </div>
 
-<p>如果没有 <code>move</code> 关键字，闭包表达式会 <a href="../types/closure.html#capture-modes">推导它如何从其环境中捕获每个变量</a>，优先通过共享引用进行捕获，从而实际上借用了闭包体内提到的所有外部变量。</p>
+<p>如果没有 <code>move</code> 关键字，闭包表达式会 <a href="../types/closure.html#捕获模式">推导它如何从其环境中捕获每个变量</a>，优先通过共享引用进行捕获，从而实际上借用了闭包体内提到的所有外部变量。</p>
 <div class="rule" id="r-expr.closure.capture-mut-ref"><a class="rule-link" href="#r-expr.closure.capture-mut-ref" title="expr.closure.capture-mut-ref"><span>[expr<wbr>.closure<wbr>.capture-mut-ref]</span></a>
 </div>
 
@@ -476,7 +478,7 @@ Type</text>
 
 <h2 id="闭包特型实现"><a class="header" href="#闭包特型实现">闭包特型实现</a></h2>
 <p>闭包类型实现哪些特型取决于变量如何被捕获、被捕获变量的类型以及 <code>async</code> 的存在。
-有关闭包如何以及何时实现 <code>Fn</code>、<code>FnMut</code> 和 <code>FnOnce</code>，请参见 <a href="../types/closure.html#call-traits-and-coercions">调用特型与强转</a> 章节。
+有关闭包如何以及何时实现 <code>Fn</code>、<code>FnMut</code> 和 <code>FnOnce</code>，请参见 <a href="../types/closure.html#调用特型与隐式类型转换">调用特型与强转</a> 章节。
 如果每个被捕获变量的类型也都实现了该特型，则闭包类型就会实现 <a href="../special-types-and-traits.html#send"><code>Send</code></a> 和 <a href="../special-types-and-traits.html#sync"><code>Sync</code></a>。</p>
 <div class="rule" id="r-expr.closure.async"><a class="rule-link" href="#r-expr.closure.async" title="expr.closure.async"><span>[expr<wbr>.closure<wbr>.async]</span></a>
 </div>
@@ -489,7 +491,7 @@ Type</text>
 <div class="rule" id="r-expr.closure.async.future"><a class="rule-link" href="#r-expr.closure.async.future" title="expr.closure.async.future"><span>[expr<wbr>.closure<wbr>.async<wbr>.future]</span></a>
 </div>
 
-<p>调用 Async 闭包不会执行任何工作，而是求值为一个实现了 <a href="../../core/future/future/trait.Future.html"><code>Future</code></a> 的值，该值对应于闭包体的计算。</p>
+<p>调用 Async 闭包不会执行任何工作，而是求值为一个实现了 <a href="https://doc.rust-lang.org/core/future/future/trait.Future.html"><code>Future</code></a> 的值，该值对应于闭包体的计算。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>async fn takes_async_callback(f: impl AsyncFn(u64)) {
@@ -536,7 +538,7 @@ ten_times(move |j| println!("{}, {}", word, j));
 <div class="rule" id="r-expr.closure.param-attributes"><a class="rule-link" href="#r-expr.closure.param-attributes" title="expr.closure.param-attributes"><span>[expr<wbr>.closure<wbr>.param-attributes]</span></a>
 </div>
 
-<p>闭包参数上的属性遵循与 <a href="../items/functions.html#attributes-on-function-parameters">普通函数参数</a> 相同的规则和限制。</p>
+<p>闭包参数上的属性遵循与 <a href="../items/functions.html#函数参数上的属性">普通函数参数</a> 相同的规则和限制。</p>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-cl-async-edition">

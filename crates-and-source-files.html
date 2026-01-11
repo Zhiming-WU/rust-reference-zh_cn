@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -316,7 +316,7 @@ Item</text>
 <div class="rule" id="r-crate.main.restriction"><a class="rule-link" href="#r-crate.main.restriction" title="crate.main.restriction"><span>[crate<wbr>.main<wbr>.restriction]</span></a>
 </div>
 
-<p>如果存在<code>main</code>函数，它必须不接受任何参数，不得声明任何<a href="trait-bounds.html">特型或生命周期边界</a>，不得有任何<a href="items/generics.html#where-clauses">where子句</a>，并且其返回类型必须实现<a href="https://doc.rust-lang.org/std/process/trait.Termination.html"><code>Termination</code></a>特型。</p>
+<p>如果存在<code>main</code>函数，它必须不接受任何参数，不得声明任何<a href="trait-bounds.html">特型或生命周期边界</a>，不得有任何<a href="items/generics.html#where子句">where子句</a>，并且其返回类型必须实现<a href="https://doc.rust-lang.org/std/process/trait.Termination.html"><code>Termination</code></a>特型。</p>
 <pre class="playground"><code class="language-rust edition2024">fn main() {}</code></pre>
 <pre class="playground"><code class="language-rust edition2024">fn main() -&gt; ! {
     std::process::exit(0);
@@ -359,7 +359,7 @@ use foo::bar as main;
 
 <h3 id="未捕获的外部unwinding"><a class="header" href="#未捕获的外部unwinding">未捕获的外部unwinding</a></h3>
 <p>当“外部“unwind（例如从C++代码抛出的异常，或使用不同恐慌处理器的Rust代码中的<code>panic!</code>）传播超出<code>main</code>函数时，进程将安全终止。这可能以中止的形式发生，在这种情况下，不保证会执行任何<code>Drop</code>调用，并且错误输出可能不如运行时被“原生“Rust <code>panic</code>终止时那么详细。</p>
-<p>欲了解更多信息，请参阅<a href="panic.html#unwinding-across-ffi-boundaries">恐慌文档</a>。</p>
+<p>欲了解更多信息，请参阅<a href="panic.html#展开-across-ffi-boundaries">恐慌文档</a>。</p>
 <div class="rule" id="r-crate.no_main"><a class="rule-link" href="#r-crate.no_main" title="crate.no_main"><span>[crate<wbr>.no_main]</span></a>
 </div>
 

@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-layout"><a class="rule-link" href="#r-layout" title="layout"><span>[layout]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/type-layout.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-layout"><a class="rule-link" href="#r-layout" title="layout"><span>[layout]</span></a>
 </div>
 
 <h1 id="类型布局"><a class="header" href="#类型布局">类型布局</a></h1>
@@ -199,15 +201,15 @@
 <div class="rule" id="r-layout.properties.align"><a class="rule-link" href="#r-layout.properties.align" title="layout.properties.align"><span>[layout<wbr>.properties<wbr>.align]</span></a>
 </div>
 
-<p>值的 <em>对齐方式</em> 指明了存储该值时哪些地址是有效的。对齐方式为 <code>n</code> 的值必须存储在 <code>n</code> 的倍数的地址上。例如，对齐方式为 2 的值必须存储在偶数地址上，而对齐方式为 1 的值可以存储在任何地址上。对齐方式以字节为单位，且必须至少为 1，并且始终是 2 的幂。值的对齐方式可以通过 <a href="../core/mem/fn.align_of_val.html"><code>align_of_val</code></a> 函数检查。</p>
+<p>值的 <em>对齐方式</em> 指明了存储该值时哪些地址是有效的。对齐方式为 <code>n</code> 的值必须存储在 <code>n</code> 的倍数的地址上。例如，对齐方式为 2 的值必须存储在偶数地址上，而对齐方式为 1 的值可以存储在任何地址上。对齐方式以字节为单位，且必须至少为 1，并且始终是 2 的幂。值的对齐方式可以通过 <a href="https://doc.rust-lang.org/core/mem/fn.align_of_val.html"><code>align_of_val</code></a> 函数检查。</p>
 <div class="rule" id="r-layout.properties.size"><a class="rule-link" href="#r-layout.properties.size" title="layout.properties.size"><span>[layout<wbr>.properties<wbr>.size]</span></a>
 </div>
 
-<p>值的 <em>大小</em> 是具有该 项 类型的数组中连续元素之间的字节偏移量，包括对齐填充。值的大小始终是其对齐方式的倍数。请注意，某些类型是零大小的；0 被认为是任何对齐方式的倍数（例如，在某些平台上，类型 <code>[u16; 0]</code> 的大小为 0，对齐方式为 2）。值的大小可以通过 <a href="../core/mem/fn.size_of_val.html"><code>size_of_val</code></a> 函数检查。</p>
+<p>值的 <em>大小</em> 是具有该 项 类型的数组中连续元素之间的字节偏移量，包括对齐填充。值的大小始终是其对齐方式的倍数。请注意，某些类型是零大小的；0 被认为是任何对齐方式的倍数（例如，在某些平台上，类型 <code>[u16; 0]</code> 的大小为 0，对齐方式为 2）。值的大小可以通过 <a href="https://doc.rust-lang.org/core/mem/fn.size_of_val.html"><code>size_of_val</code></a> 函数检查。</p>
 <div class="rule" id="r-layout.properties.sized"><a class="rule-link" href="#r-layout.properties.sized" title="layout.properties.sized"><span>[layout<wbr>.properties<wbr>.sized]</span></a>
 </div>
 
-<p>如果某种类型的所有值都具有相同的大小和对齐方式，且两者在编译时都是已知的，则该类型实现了 <a href="../core/marker/trait.Sized.html"><code>Sized</code></a> 特型，并且可以通过 <a href="../core/mem/fn.size_of.html"><code>size_of</code></a> 和 <a href="../core/mem/fn.align_of.html"><code>align_of</code></a> 函数进行检查。不是 <a href="../core/marker/trait.Sized.html"><code>Sized</code></a> 的类型被称为 <a href="dynamically-sized-types.html">动态大小类型</a> 。由于 <code>Sized</code> 类型的所有值都共享相同的大小和对齐方式，因此我们分别将这些共享值称为类型的大小和类型的对齐方式。</p>
+<p>如果某种类型的所有值都具有相同的大小和对齐方式，且两者在编译时都是已知的，则该类型实现了 <a href="https://doc.rust-lang.org/core/marker/trait.Sized.html"><code>Sized</code></a> 特型，并且可以通过 <a href="https://doc.rust-lang.org/core/mem/fn.size_of.html"><code>size_of</code></a> 和 <a href="https://doc.rust-lang.org/core/mem/fn.align_of.html"><code>align_of</code></a> 函数进行检查。不是 <a href="https://doc.rust-lang.org/core/marker/trait.Sized.html"><code>Sized</code></a> 的类型被称为 <a href="dynamically-sized-types.html">动态大小类型</a> 。由于 <code>Sized</code> 类型的所有值都共享相同的大小和对齐方式，因此我们分别将这些共享值称为类型的大小和类型的对齐方式。</p>
 <div class="rule" id="r-layout.primitive"><a class="rule-link" href="#r-layout.primitive" title="layout.primitive"><span>[layout<wbr>.primitive]</span></a>
 </div>
 
@@ -430,7 +432,7 @@ struct AlignedStruct {
 <div class="rule" id="r-layout.repr.c.constraint"><a class="rule-link" href="#r-layout.repr.c.constraint" title="layout.repr.c.constraint"><span>[layout<wbr>.repr<wbr>.c<wbr>.constraint]</span></a>
 </div>
 
-<p>此表示法可以应用于结构体、联合体和枚举。例外是 <a href="items/enumerations.html#zero-variant-enums">零变体枚举</a> ，对其使用 <code>C</code> 表示法会导致错误。</p>
+<p>此表示法可以应用于结构体、联合体和枚举。例外是 <a href="items/enumerations.html#零变体枚举">零变体枚举</a> ，对其使用 <code>C</code> 表示法会导致错误。</p>
 <div class="rule" id="r-layout.repr.c.struct"><a class="rule-link" href="#r-layout.repr.c.struct" title="layout.repr.c.struct"><span>[layout<wbr>.repr<wbr>.c<wbr>.struct]</span></a>
 </div>
 
@@ -480,7 +482,7 @@ struct.size = current_offset + padding_needed_for(current_offset, struct.alignme
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>警告</p>
 
-<p>为了清晰起见，此伪代码使用了一种忽略溢出问题的朴素算法。要在实际代码中执行内存布局计算，请使用 <a href="../core/alloc/layout/struct.Layout.html"><code>Layout</code></a> 。</p>
+<p>为了清晰起见，此伪代码使用了一种忽略溢出问题的朴素算法。要在实际代码中执行内存布局计算，请使用 <a href="https://doc.rust-lang.org/core/alloc/layout/struct.Layout.html"><code>Layout</code></a> 。</p>
 </blockquote>
 </div>
 
@@ -632,7 +634,7 @@ struct MyDFields;
 <div class="rule" id="r-layout.repr.primitive.constraint"><a class="rule-link" href="#r-layout.repr.primitive.constraint" title="layout.repr.primitive.constraint"><span>[layout<wbr>.repr<wbr>.primitive<wbr>.constraint]</span></a>
 </div>
 
-<p>原语表示法只能应用于枚举，并且根据枚举是否有字段而具有不同的行为。对于 <a href="items/enumerations.html#zero-variant-enums">零变体枚举</a> ，使用原语表示法是错误的。将两个原语表示法结合在一起是错误的。</p>
+<p>原语表示法只能应用于枚举，并且根据枚举是否有字段而具有不同的行为。对于 <a href="items/enumerations.html#零变体枚举">零变体枚举</a> ，使用原语表示法是错误的。将两个原语表示法结合在一起是错误的。</p>
 <div class="rule" id="r-layout.repr.primitive.enum"><a class="rule-link" href="#r-layout.repr.primitive.enum" title="layout.repr.primitive.enum"><span>[layout<wbr>.repr<wbr>.primitive<wbr>.enum]</span></a>
 </div>
 

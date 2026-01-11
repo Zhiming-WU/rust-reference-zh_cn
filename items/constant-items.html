@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-items.const"><a class="rule-link" href="#r-items.const" title="items.const"><span>[items<wbr>.const]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/items/constant-items.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-items.const"><a class="rule-link" href="#r-items.const" title="items.const"><span>[items<wbr>.const]</span></a>
 </div>
 
 <h1 id="常量项"><a class="header" href="#常量项">常量项</a></h1>
@@ -291,7 +293,7 @@ Expression</text>
 <div class="rule" id="r-items.const.static"><a class="rule-link" href="#r-items.const.static" title="items.const.static"><span>[items<wbr>.const<wbr>.static]</span></a>
 </div>
 
-<p>常量必须显式指定类型。该类型必须具有 <code>'static</code> 生命周期：初始化程序中的任何引用都必须具有 <code>'static</code> 生命周期。常量类型中的引用默认为 <code>'static</code> 生命周期；请参见  <a href="../lifetime-elision.html#const-and-static-elision">静态生命周期省略</a> 。</p>
+<p>常量必须显式指定类型。该类型必须具有 <code>'static</code> 生命周期：初始化程序中的任何引用都必须具有 <code>'static</code> 生命周期。常量类型中的引用默认为 <code>'static</code> 生命周期；请参见  <a href="../lifetime-elision.html#const和static省略">静态生命周期省略</a> 。</p>
 <div class="rule" id="r-items.const.static-temporary"><a class="rule-link" href="#r-items.const.static-temporary" title="items.const.static-temporary"><span>[items<wbr>.const<wbr>.static-temporary]</span></a>
 </div>
 
@@ -348,7 +350,7 @@ fn create_and_drop_zero_with_destructor() {
 <div class="rule" id="r-items.const.unnamed.intro"><a class="rule-link" href="#r-items.const.unnamed.intro" title="items.const.unnamed.intro"><span>[items<wbr>.const<wbr>.unnamed<wbr>.intro]</span></a>
 </div>
 
-<p>与  <a href="../items/associated-items.html#associated-constants">关联常量</a>  不同， <a href="../glossary.html#自由项">自由</a>  常量可以通过使用下划线代替名称来保持匿名。例如：</p>
+<p>与  <a href="../items/associated-items.html#关联常量">关联常量</a>  不同， <a href="../glossary.html#自由项">自由</a>  常量可以通过使用下划线代替名称来保持匿名。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>const _: () =  { struct _SameNameTwice; };

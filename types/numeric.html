@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type.numeric"><a class="rule-link" href="#r-type.numeric" title="type.numeric"><span>[type<wbr>.numeric]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types/numeric.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type.numeric"><a class="rule-link" href="#r-type.numeric" title="type.numeric"><span>[type<wbr>.numeric]</span></a>
 </div>
 
 <h1 id="数值类型"><a class="header" href="#数值类型">数值类型</a></h1>
@@ -240,7 +242,7 @@
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
 <p>虽然 <code>usize</code> 可以表示每个 * 地址 * ，但将 * 指针 * 转换为 <code>usize</code> 并不一定是可逆的操作。
-有关更多信息，请参阅 <a href="../expressions/operator-expr.html#type-cast-expressions">类型转换表达式</a>、 <a href="../../core/ptr/index.html"><code>std::ptr</code></a> 以及特别是 <a href="../../core/ptr/index.html#provenance">来源</a> 的文档。</p>
+有关更多信息，请参阅 <a href="../expressions/operator-expr.html#类型转换表达式">类型转换表达式</a>、 <a href="https://doc.rust-lang.org/core/ptr/index.html"><code>std::ptr</code></a> 以及特别是 <a href="https://doc.rust-lang.org/core/ptr/index.html#provenance">来源</a> 的文档。</p>
 </blockquote>
 </div>
 

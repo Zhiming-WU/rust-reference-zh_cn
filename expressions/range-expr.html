@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.range"><a class="rule-link" href="#r-expr.range" title="expr.range"><span>[expr<wbr>.range]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/range-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.range"><a class="rule-link" href="#r-expr.range" title="expr.range"><span>[expr<wbr>.range]</span></a>
 </div>
 
 <h1 id="范围表达式"><a class="header" href="#范围表达式">范围表达式</a></h1>
@@ -491,12 +493,12 @@ Expression</text>
 <tr><th>产生式</th><th>语法格式</th><th>类型</th><th>范围</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="range-expr.html#grammar-RangeExpr">范围表达式</a></td><td>start<code>..</code>end</td><td><a href="../../core/ops/range/struct.Range.html">std::ops::Range</a></td><td>start ≤ x &lt; end</td></tr>
-<tr><td><a href="range-expr.html#grammar-RangeFromExpr">左闭范围表达式</a></td><td>start<code>..</code></td><td><a href="../../core/ops/range/struct.RangeFrom.html">std::ops::RangeFrom</a></td><td>start ≤ x</td></tr>
-<tr><td><a href="range-expr.html#grammar-RangeToExpr">右开范围表达式</a></td><td><code>..</code>end</td><td><a href="../../core/ops/range/struct.RangeTo.html">std::ops::RangeTo</a></td><td>x &lt; end</td></tr>
-<tr><td><a href="range-expr.html#grammar-RangeFullExpr">全范围表达式</a></td><td><code>..</code></td><td><a href="../../core/ops/range/struct.RangeFull.html">std::ops::RangeFull</a></td><td>-</td></tr>
-<tr><td><a href="range-expr.html#grammar-RangeInclusiveExpr">闭范围表达式</a></td><td>start<code>..=</code>end</td><td><a href="../../core/ops/range/struct.RangeInclusive.html">std::ops::RangeInclusive</a></td><td>start ≤ x ≤ end</td></tr>
-<tr><td><a href="range-expr.html#grammar-RangeToInclusiveExpr">右闭范围表达式</a></td><td><code>..=</code>end</td><td><a href="../../core/ops/range/struct.RangeToInclusive.html">std::ops::RangeToInclusive</a></td><td>x ≤ end</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeExpr">范围表达式</a></td><td>start<code>..</code>end</td><td><a href="https://doc.rust-lang.org/core/ops/range/struct.Range.html">std::ops::Range</a></td><td>start ≤ x &lt; end</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeFromExpr">左闭范围表达式</a></td><td>start<code>..</code></td><td><a href="https://doc.rust-lang.org/core/ops/range/struct.RangeFrom.html">std::ops::RangeFrom</a></td><td>start ≤ x</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeToExpr">右开范围表达式</a></td><td><code>..</code>end</td><td><a href="https://doc.rust-lang.org/core/ops/range/struct.RangeTo.html">std::ops::RangeTo</a></td><td>x &lt; end</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeFullExpr">全范围表达式</a></td><td><code>..</code></td><td><a href="https://doc.rust-lang.org/core/ops/range/struct.RangeFull.html">std::ops::RangeFull</a></td><td>-</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeInclusiveExpr">闭范围表达式</a></td><td>start<code>..=</code>end</td><td><a href="https://doc.rust-lang.org/core/ops/range/struct.RangeInclusive.html">std::ops::RangeInclusive</a></td><td>start ≤ x ≤ end</td></tr>
+<tr><td><a href="range-expr.html#grammar-RangeToInclusiveExpr">右闭范围表达式</a></td><td><code>..=</code>end</td><td><a href="https://doc.rust-lang.org/core/ops/range/struct.RangeToInclusive.html">std::ops::RangeToInclusive</a></td><td>x ≤ end</td></tr>
 </tbody>
 </table>
 </div>

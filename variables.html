@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,14 +178,16 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-variable"><a class="rule-link" href="#r-variable" title="variable"><span>[variable]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/variables.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-variable"><a class="rule-link" href="#r-variable" title="variable"><span>[variable]</span></a>
 </div>
 
 <h1 id="变量"><a class="header" href="#变量">变量</a></h1>
 <div class="rule" id="r-variable.intro"><a class="rule-link" href="#r-variable.intro" title="variable.intro"><span>[variable<wbr>.intro]</span></a>
 </div>
 
-<p>一个 变量 是 栈帧 的一个组成部分，它可以是一个具名函数 参数，一个匿名 <a href="expressions.html#temporaries">临时量</a>，或者一个具名 局部变量。</p>
+<p>一个 变量 是 栈帧 的一个组成部分，它可以是一个具名函数 参数，一个匿名 <a href="expressions.html#临时变量">临时量</a>，或者一个具名 局部变量。</p>
 <div class="rule" id="r-variable.local"><a class="rule-link" href="#r-variable.local" title="variable.local"><span>[variable<wbr>.local]</span></a>
 </div>
 
@@ -202,7 +204,7 @@
 </div>
 
 <p>局部变量 在分配时不会被初始化。相反，整个 栈帧 上的 局部变量 会在 栈帧 进入时以未初始化状态分配。函数内的后续语句可能会或可能不会初始化 局部变量。局部变量 只能在它们通过所有可达的 控制流路径 被初始化后才能使用。</p>
-<p>在下一个示例中，<code>init_after_if</code> 在 <a href="expressions/if-expr.html#if-expressions"><code>if</code> 表达式</a> 之后被初始化，而 <code>uninit_after_if</code> 没有，因为它在 <code>else</code> 分支中未被初始化。</p>
+<p>在下一个示例中，<code>init_after_if</code> 在 <a href="expressions/if-expr.html#if表达式"><code>if</code> 表达式</a> 之后被初始化，而 <code>uninit_after_if</code> 没有，因为它在 <code>else</code> 分支中未被初始化。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn random_bool() -&gt; bool { true }

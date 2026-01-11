@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-items.generics"><a class="rule-link" href="#r-items.generics" title="items.generics"><span>[items<wbr>.generics]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/items/generics.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-items.generics"><a class="rule-link" href="#r-items.generics" title="items.generics"><span>[items<wbr>.generics]</span></a>
 </div>
 
 <h1 id="泛型参数"><a class="header" href="#泛型参数">泛型参数</a></h1>
@@ -569,11 +571,11 @@ struct EitherOrderWorks&lt;const N: bool, U&gt;(U);
 <div class="rule" id="r-items.generics.syntax.scope"><a class="rule-link" href="#r-items.generics.syntax.scope" title="items.generics.syntax.scope"><span>[items<wbr>.generics<wbr>.syntax<wbr>.scope]</span></a>
 </div>
 
-<p>泛型参数 在其声明所在的 项 定义的作用域内。它们不在函数体内部声明的 项 的作用域内，如 <a href="../statements.html#item-declarations">项声明</a> 中所述。有关更多详细信息，请参阅 <a href="../names/scopes.html#generic-parameter-scopes">泛型参数作用域</a>。</p>
+<p>泛型参数 在其声明所在的 项 定义的作用域内。它们不在函数体内部声明的 项 的作用域内，如 <a href="../statements.html#项声明">项声明</a> 中所述。有关更多详细信息，请参阅 <a href="../names/scopes.html#泛型参数作用域">泛型参数作用域</a>。</p>
 <div class="rule" id="r-items.generics.builtin-generic-types"><a class="rule-link" href="#r-items.generics.builtin-generic-types" title="items.generics.builtin-generic-types"><span>[items<wbr>.generics<wbr>.builtin-generic-types]</span></a>
 </div>
 
-<p><a href="../types/pointer.html#shared-references-">引用</a>、<a href="../types/pointer.html#raw-pointers-const-and-mut">原始指针</a>、<a href="../types/array.html">数组</a>、<a href="../types/slice.html">切片</a>、<a href="../types/tuple.html">元组</a> 和 <a href="../types/function-pointer.html">函数指针</a> 也有生命周期或类型参数，但不是通过路径语法引用的。</p>
+<p><a href="../types/pointer.html#共享引用">引用</a>、<a href="../types/pointer.html#裸指针const和mut">原始指针</a>、<a href="../types/array.html">数组</a>、<a href="../types/slice.html">切片</a>、<a href="../types/tuple.html">元组</a> 和 <a href="../types/function-pointer.html">函数指针</a> 也有生命周期或类型参数，但不是通过路径语法引用的。</p>
 <div class="rule" id="r-items.generics.invalid-lifetimes"><a class="rule-link" href="#r-items.generics.invalid-lifetimes" title="items.generics.invalid-lifetimes"><span>[items<wbr>.generics<wbr>.invalid-lifetimes]</span></a>
 </div>
 
@@ -581,7 +583,7 @@ struct EitherOrderWorks&lt;const N: bool, U&gt;(U);
 <div class="rule" id="r-items.generics.const"><a class="rule-link" href="#r-items.generics.const" title="items.generics.const"><span>[items<wbr>.generics<wbr>.const]</span></a>
 </div>
 
-<h3 id="常量泛型"><a class="header" href="#常量泛型">常量泛型</a></h3>
+<h2 id="常量泛型"><a class="header" href="#常量泛型">常量泛型</a></h2>
 <div class="rule" id="r-items.generics.const.intro"><a class="rule-link" href="#r-items.generics.const.intro" title="items.generics.const.intro"><span>[items<wbr>.generics<wbr>.const<wbr>.intro]</span></a>
 </div>
 
@@ -600,7 +602,7 @@ struct EitherOrderWorks&lt;const N: bool, U&gt;(U);
 <p>常量参数 可以用在任何可以使用 <a href="constant-items.html">常量项</a> 的地方，但在 <a href="../types.html">类型</a> 或 <a href="../expressions/array-expr.html">数组重复表达式</a> 中使用时，它必须是  <em>独立的 (standalone)</em> （如下所述）。也就是说，它们允许出现在以下位置：</p>
 <ol>
 <li>作为应用于构成相关 项 签名一部分的任何类型的常量。</li>
-<li>作为用于定义 <a href="associated-items.html#associated-constants">关联常量</a> 的常量表达式的一部分，或作为 <a href="associated-items.html#associated-types">关联类型</a> 的参数。</li>
+<li>作为用于定义 <a href="associated-items.html#关联常量">关联常量</a> 的常量表达式的一部分，或作为 <a href="associated-items.html#关联类型">关联类型</a> 的参数。</li>
 <li>作为该 项 中任何函数体内的任何运行时表达式的值。</li>
 <li>作为该 项 中任何函数体内使用的任何类型的参数。</li>
 <li>作为该 项 中任何字段类型的一部分。</li>
@@ -757,7 +759,7 @@ fn bar&lt;const N: usize&gt;() -&gt; Foo&lt;{ N }&gt; { todo!() } // ok
 <div class="rule" id="r-items.generics.const.variance"><a class="rule-link" href="#r-items.generics.const.variance" title="items.generics.const.variance"><span>[items<wbr>.generics<wbr>.const<wbr>.variance]</span></a>
 </div>
 
-<p>与类型和生命周期参数不同， 常量参数 可以在不在 参数化项 内部使用的情况下声明，但 <a href="implementations.html#generic-implementations">泛型实现</a> 中描述的 实现 除外：</p>
+<p>与类型和生命周期参数不同， 常量参数 可以在不在 参数化项 内部使用的情况下声明，但 <a href="implementations.html#泛型实现">泛型实现</a> 中描述的 实现 除外：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// ok
@@ -773,7 +775,7 @@ impl&lt;const N: usize&gt; Unconstrained {}
 <div class="rule" id="r-items.generics.const.exhaustiveness"><a class="rule-link" href="#r-items.generics.const.exhaustiveness" title="items.generics.const.exhaustiveness"><span>[items<wbr>.generics<wbr>.const<wbr>.exhaustiveness]</span></a>
 </div>
 
-<p>在解析 特型绑定 义务时，确定绑定是否满足时不考虑 常量参数 所有实现的  <em>完备性 (exhaustiveness)</em> 。例如，在下文中，即使实现了 <code>bool</code> 类型所有可能的常量值，但 特型绑定 未满足仍然是一个错误：</p>
+<p>在解析 特型界限 义务时，确定界限是否满足时不考虑 常量参数 所有实现的  <em>完备性 (exhaustiveness)</em> 。例如，在下文中，即使实现了 <code>bool</code> 类型所有可能的常量值，但 特型界限 未满足仍然是一个错误：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Foo&lt;const B: bool&gt;;
@@ -784,7 +786,7 @@ impl Bar for Foo&lt;false&gt; {}
 fn needs_bar(_: impl Bar) {}
 fn generic&lt;const B: bool&gt;() {
     let v = Foo::&lt;B&gt;;
-    needs_bar(v); // 错误：特型绑定 `Foo&lt;B&gt;: Bar` 未满足
+    needs_bar(v); // 错误：特型界限 `Foo&lt;B&gt;: Bar` 未满足
 }
 <span class="boring">}</span></code></pre>
 <div class="rule" id="r-items.generics.where"><a class="rule-link" href="#r-items.generics.where" title="items.generics.where"><span>[items<wbr>.generics<wbr>.where]</span></a>
@@ -1000,18 +1002,18 @@ TypeParamBounds</text>
 <div class="rule" id="r-items.generics.where.intro"><a class="rule-link" href="#r-items.generics.where.intro" title="items.generics.where.intro"><span>[items<wbr>.generics<wbr>.where<wbr>.intro]</span></a>
 </div>
 
-<p><em>Where 子句</em>  提供了另一种指定类型和生命周期参数绑定的方法，以及一种为非类型参数的类型指定绑定的方法。</p>
+<p><em>Where 子句</em>  提供了另一种指定类型和生命周期参数界限的方法，以及一种为非类型参数的类型指定界限的方法。</p>
 <div class="rule" id="r-items.generics.where.higher-ranked-lifetimes"><a class="rule-link" href="#r-items.generics.where.higher-ranked-lifetimes" title="items.generics.where.higher-ranked-lifetimes"><span>[items<wbr>.generics<wbr>.where<wbr>.higher-ranked-lifetimes]</span></a>
 </div>
 
-<p><code>for</code> 关键字可用于引入 <a href="../trait-bounds.html#higher-ranked-trait-bounds">高阶生命周期</a>。它只允许 <a href="generics.html#grammar-LifetimeParam">LifetimeParam</a> 参数。</p>
+<p><code>for</code> 关键字可用于引入 <a href="../trait-bounds.html#高阶特型界限">高阶生命周期</a>。它只允许 <a href="generics.html#grammar-LifetimeParam">LifetimeParam</a> 参数。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct A&lt;T&gt;
 where
     T: Iterator,            // 也可以使用 A&lt;T: Iterator&gt;
-    T::Item: Copy,          // 关联类型上的绑定
-    String: PartialEq&lt;T&gt;,   // 在 `String` 上的绑定，使用类型参数
+    T::Item: Copy,          // 关联类型上的界限
+    String: PartialEq&lt;T&gt;,   // 在 `String` 上的界限，使用类型参数
     i32: Default,           // 允许，但没什么用
 {
     f: T,

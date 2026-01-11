@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr"><a class="rule-link" href="#r-expr" title="expr"><span>[expr]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr"><a class="rule-link" href="#r-expr" title="expr"><span>[expr]</span></a>
 </div>
 
 <h1 id="表达式"><a class="header" href="#表达式">表达式</a></h1>
@@ -744,7 +746,7 @@ assert_eq!(
 <div class="rule" id="r-expr.place-value.place-expr-kinds"><a class="rule-link" href="#r-expr.place-value.place-expr-kinds" title="expr.place-value.place-expr-kinds"><span>[expr<wbr>.place-value<wbr>.place-expr-kinds]</span></a>
 </div>
 
-<p>这些表达式是引用局部变量的 <a href="expressions/path-expr.html">路径</a>、<a href="items/static-items.html">静态变量</a>、<a href="expressions/operator-expr.html#the-dereference-operator">解引用</a> (<code>*expr</code>)、<a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a> 表达式 (<code>expr[expr]</code>)、<a href="expressions/field-expr.html">字段</a> 引用 (<code>expr.f</code>) 以及括号括起来的位置表达式。</p>
+<p>这些表达式是引用局部变量的 <a href="expressions/path-expr.html">路径</a>、<a href="items/static-items.html">静态变量</a>、<a href="expressions/operator-expr.html#解引用运算符">解引用</a> (<code>*expr</code>)、<a href="expressions/array-expr.html#数组和切片索引表达式">数组索引</a> 表达式 (<code>expr[expr]</code>)、<a href="expressions/field-expr.html">字段</a> 引用 (<code>expr.f</code>) 以及括号括起来的位置表达式。</p>
 <div class="rule" id="r-expr.place-value.value-expr-kinds"><a class="rule-link" href="#r-expr.place-value.value-expr-kinds" title="expr.place-value.value-expr-kinds"><span>[expr<wbr>.place-value<wbr>.value-expr-kinds]</span></a>
 </div>
 
@@ -758,14 +760,14 @@ assert_eq!(
 
 <p>以下环境是 <em>位置表达式</em> 环境：</p>
 <ul>
-<li><a href="expressions/operator-expr.html#compound-assignment-expressions">复合赋值</a> 表达式的左操作数。</li>
-<li>一元 <a href="expressions/operator-expr.html#borrow-operators">借用</a>、<a href="expressions/operator-expr.html#raw-borrow-operators">原始借用</a> 或 <a href="expressions/operator-expr.html#the-dereference-operator">解引用</a> 运算符的操作数。</li>
+<li><a href="expressions/operator-expr.html#复合赋值表达式">复合赋值</a> 表达式的左操作数。</li>
+<li>一元 <a href="expressions/operator-expr.html#借用运算符">借用</a>、<a href="expressions/operator-expr.html#原始借用运算符">原始借用</a> 或 <a href="expressions/operator-expr.html#解引用运算符">解引用</a> 运算符的操作数。</li>
 <li>字段表达式的操作数。</li>
 <li>数组索引表达式的被索引操作数。</li>
 <li>任何 <a href="#implicit-borrows">隐式借用</a> 的操作数。</li>
-<li><a href="statements.html#let-statements">let 语句</a> 的初始化器。</li>
-<li><a href="expressions/if-expr.html#if-let-patterns"><code>if let</code></a>、<a href="expressions/match-expr.html"><code>match</code></a> 或 <a href="expressions/loop-expr.html#while-let-patterns"><code>while let</code></a> 表达式的 <a href="glossary.html#scrutinee">审查对象</a>。</li>
-<li><a href="expressions/struct-expr.html#functional-update-syntax">函数式更新</a> 结构体 表达式的基准。</li>
+<li><a href="statements.html#let语句">let 语句</a> 的初始化器。</li>
+<li><a href="expressions/if-expr.html#if-let模式"><code>if let</code></a>、<a href="expressions/match-expr.html"><code>match</code></a> 或 <a href="expressions/loop-expr.html#while-let模式"><code>while let</code></a> 表达式的 <a href="glossary.html#审查值">审查对象</a>。</li>
+<li><a href="expressions/struct-expr.html#函数式更新语法">函数式更新</a> 结构体 表达式的基准。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
@@ -778,7 +780,7 @@ assert_eq!(
 <div class="rule" id="r-expr.place-value.assignee"><a class="rule-link" href="#r-expr.place-value.assignee" title="expr.place-value.assignee"><span>[expr<wbr>.place-value<wbr>.assignee]</span></a>
 </div>
 
-<p><em>被赋值者表达式</em> 是出现在 <a href="expressions/operator-expr.html#assignment-expressions">赋值</a> 表达式左操作数中的表达式。显式地，被赋值者表达式有：</p>
+<p><em>被赋值者表达式</em> 是出现在 <a href="expressions/operator-expr.html#赋值表达式">赋值</a> 表达式左操作数中的表达式。显式地，被赋值者表达式有：</p>
 <ul>
 <li>位置表达式。</li>
 <li><a href="expressions/underscore-expr.html">下划线</a>。</li>
@@ -816,7 +818,7 @@ assert_eq!(
 <li>当前未被借用的 <a href="variables.html">变量</a>。</li>
 <li><a href="#temporaries">临时值</a>。</li>
 <li>可以移出且未实现 <a href="special-types-and-traits.html#drop"><code>Drop</code></a> 的位置表达式的 <a href="expressions/field-expr.html">字段</a>。</li>
-<li><a href="expressions/operator-expr.html#the-dereference-operator">解引用</a> 类型为 <a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> 且也可以被移出的表达式的结果。</li>
+<li><a href="expressions/operator-expr.html#解引用运算符">解引用</a> 类型为 <a href="https://doc.rust-lang.org/alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> 且也可以被移出的表达式的结果。</li>
 </ul>
 <div class="rule" id="r-expr.move.deinitialization"><a class="rule-link" href="#r-expr.move.deinitialization" title="expr.move.deinitialization"><span>[expr<wbr>.move<wbr>.deinitialization]</span></a>
 </div>
@@ -833,29 +835,29 @@ assert_eq!(
 <div class="rule" id="r-expr.mut.intro"><a class="rule-link" href="#r-expr.mut.intro" title="expr.mut.intro"><span>[expr<wbr>.mut<wbr>.intro]</span></a>
 </div>
 
-<p>为了使位置表达式能被 <a href="expressions/operator-expr.html#assignment-expressions">赋值</a>、可变 <a href="expressions/operator-expr.html#borrow-operators">借用</a>、<a href="#implicit-borrows">隐式可变借用</a> 或绑定到包含 <code>ref mut</code> 的模式，它必须是 <em>可变的</em>。我们称这些为 <em>可变位置表达式</em>。相比之下，其他位置表达式称为 <em>不可变位置表达式</em>。</p>
+<p>为了使位置表达式能被 <a href="expressions/operator-expr.html#赋值表达式">赋值</a>、可变 <a href="expressions/operator-expr.html#借用运算符">借用</a>、<a href="#implicit-borrows">隐式可变借用</a> 或绑定到包含 <code>ref mut</code> 的模式，它必须是 <em>可变的</em>。我们称这些为 <em>可变位置表达式</em>。相比之下，其他位置表达式称为 <em>不可变位置表达式</em>。</p>
 <div class="rule" id="r-expr.mut.valid-places"><a class="rule-link" href="#r-expr.mut.valid-places" title="expr.mut.valid-places"><span>[expr<wbr>.mut<wbr>.valid-places]</span></a>
 </div>
 
 <p>以下表达式可以是可变位置表达式环境：</p>
 <ul>
 <li>当前未被借用的可变 <a href="variables.html">变量</a>。</li>
-<li><a href="items/static-items.html#mutable-statics">可变 <code>static</code> 项</a>。</li>
+<li><a href="items/static-items.html#可变静态项">可变 <code>static</code> 项</a>。</li>
 <li><a href="#temporaries">临时值</a>。</li>
 <li><a href="expressions/field-expr.html">字段</a>：这在可变位置表达式环境中对子表达式求值。</li>
-<li><code>*mut T</code> 指针的 <a href="expressions/operator-expr.html#the-dereference-operator">解引用</a>。</li>
+<li><code>*mut T</code> 指针的 <a href="expressions/operator-expr.html#解引用运算符">解引用</a>。</li>
 <li>类型为 <code>&amp;mut T</code> 的变量或变量字段的解引用。
 注意：这是下一条规则要求的例外。</li>
 <li>实现了 <code>DerefMut</code> 的类型的解引用：
 这随后要求被解引用的值在可变位置表达式环境中求值。</li>
-<li>实现了 <code>IndexMut</code> 的类型的 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a>：
+<li>实现了 <code>IndexMut</code> 的类型的 <a href="expressions/array-expr.html#数组和切片索引表达式">数组索引</a>：
 这随后在可变位置表达式环境中对被索引的值（而非索引本身）求值。</li>
 </ul>
 <div class="rule" id="r-expr.temporary"><a class="rule-link" href="#r-expr.temporary" title="expr.temporary"><span>[expr<wbr>.temporary]</span></a>
 </div>
 
 <h3 id="临时变量"><a class="header" href="#临时变量">临时变量</a></h3>
-<p>在大多数位置表达式环境中使用值表达式时，会创建一个临时的未命名内存位置并将其初始化为该值。该表达式求值为该位置，除非被 <a href="destructors.html#constant-promotion">提升</a> 为 <code>static</code>。临时变量的 <a href="destructors.html#drop-scopes">销毁范围</a> 通常是封闭语句的末尾。</p>
+<p>在大多数位置表达式环境中使用值表达式时，会创建一个临时的未命名内存位置并将其初始化为该值。该表达式求值为该位置，除非被 <a href="destructors.html#常量提升">提升</a> 为 <code>static</code>。临时变量的 <a href="destructors.html#销毁作用域">销毁范围</a> 通常是封闭语句的末尾。</p>
 <div class="rule" id="r-expr.super-macros"><a class="rule-link" href="#r-expr.super-macros" title="expr.super-macros"><span>[expr<wbr>.super-macros]</span></a>
 </div>
 
@@ -879,7 +881,7 @@ assert_eq!(
 <div class="rule" id="r-expr.super-macros.format_args.super-operands"><a class="rule-link" href="#r-expr.super-macros.format_args.super-operands" title="expr.super-macros.format_args.super-operands"><span>[expr<wbr>.super-macros<wbr>.format_args<wbr>.super-operands]</span></a>
 </div>
 
-<p>除了格式化字符串参数外，传递给 <a href="../core/macro.format_args.html"><code>format_args!</code></a> 的所有参数都是 <em>超级操作数</em>。</p>
+<p>除了格式化字符串参数外，传递给 <a href="https://doc.rust-lang.org/core/macro.format_args.html"><code>format_args!</code></a> 的所有参数都是 <em>超级操作数</em>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() -&gt; String { String::from("") }
@@ -891,14 +893,14 @@ let _ = format_args!("{}", { &amp;temp() }); // OK
 <div class="rule" id="r-expr.super-macros.format_args.super-temporaries"><a class="rule-link" href="#r-expr.super-macros.format_args.super-temporaries" title="expr.super-macros.format_args.super-temporaries"><span>[expr<wbr>.super-macros<wbr>.format_args<wbr>.super-temporaries]</span></a>
 </div>
 
-<p><a href="../core/macro.format_args.html"><code>format_args!</code></a> 的超级操作数是 <a href="expressions.html#r-expr.implicit-borrow">隐式借用</a> 的，因此是 <a href="expressions.html#r-expr.place-value">位置表达式环境</a>。当 <a href="expressions.html#r-expr.place-value">值表达式</a> 被作为参数传递时，它会创建一个 <em>超级临时变量</em>。</p>
+<p><a href="https://doc.rust-lang.org/core/macro.format_args.html"><code>format_args!</code></a> 的超级操作数是 <a href="expressions.html#r-expr.implicit-borrow">隐式借用</a> 的，因此是 <a href="expressions.html#r-expr.place-value">位置表达式环境</a>。当 <a href="expressions.html#r-expr.place-value">值表达式</a> 被作为参数传递时，它会创建一个 <em>超级临时变量</em>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() -&gt; String { String::from("") }
 </span>let x = format_args!("{}", temp());
 x; // &lt;-- 临时变量被延长，允许在此处使用。
 <span class="boring">}</span></code></pre>
-<p><a href="../core/macro.format_args.html"><code>format_args!</code></a> 调用的展开有时会创建其他内部 <em>超级临时变量</em>。</p>
+<p><a href="https://doc.rust-lang.org/core/macro.format_args.html"><code>format_args!</code></a> 调用的展开有时会创建其他内部 <em>超级临时变量</em>。</p>
 <pre class="playground"><code class="language-rust compile_fail E0716 edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = {
@@ -918,7 +920,7 @@ x; // OK
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>关于 <a href="../core/macro.format_args.html"><code>format_args!</code></a> 何时会或不会创建内部临时变量的细节目前尚未指定。</p>
+<p>关于 <a href="https://doc.rust-lang.org/core/macro.format_args.html"><code>format_args!</code></a> 何时会或不会创建内部临时变量的细节目前尚未指定。</p>
 </blockquote>
 </div>
 
@@ -929,7 +931,7 @@ x; // OK
 <div class="rule" id="r-expr.super-macros.pin.super-operands"><a class="rule-link" href="#r-expr.super-macros.pin.super-operands" title="expr.super-macros.pin.super-operands"><span>[expr<wbr>.super-macros<wbr>.pin<wbr>.super-operands]</span></a>
 </div>
 
-<p><a href="../core/pin/macro.pin.html"><code>pin!</code></a> 的参数是 <em>超级操作数</em>。</p>
+<p><a href="https://doc.rust-lang.org/core/pin/macro.pin.html"><code>pin!</code></a> 的参数是 <em>超级操作数</em>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::pin::pin;
@@ -940,7 +942,7 @@ let _ = pin!({ &amp;temp() }); // OK
 <div class="rule" id="r-expr.super-macros.pin.super-temporaries"><a class="rule-link" href="#r-expr.super-macros.pin.super-temporaries" title="expr.super-macros.pin.super-temporaries"><span>[expr<wbr>.super-macros<wbr>.pin<wbr>.super-temporaries]</span></a>
 </div>
 
-<p><a href="../core/pin/macro.pin.html"><code>pin!</code></a> 的参数是 <a href="expressions.html#r-expr.place-value">值表达式环境</a>，并创建一个 <em>超级临时变量</em>。</p>
+<p><a href="https://doc.rust-lang.org/core/pin/macro.pin.html"><code>pin!</code></a> 的参数是 <a href="expressions.html#r-expr.place-value">值表达式环境</a>，并创建一个 <em>超级临时变量</em>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::pin::pin;
@@ -979,11 +981,11 @@ let b: &amp;[i32];
 <li><a href="expressions/method-call-expr.html">方法调用</a> 表达式中的左操作数。</li>
 <li><a href="expressions/field-expr.html">字段</a> 表达式中的左操作数。</li>
 <li><a href="expressions/call-expr.html">调用表达式</a> 中的左操作数。</li>
-<li><a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a> 表达式中的左操作数。</li>
-<li><a href="expressions/operator-expr.html#the-dereference-operator">解引用运算符</a> (<code>*</code>) 的操作数。</li>
-<li><a href="expressions/operator-expr.html#comparison-operators">比较</a> 的操作数。</li>
-<li><a href="expressions/operator-expr.html#compound-assignment-expressions">复合赋值</a> 的左操作数。</li>
-<li>除了格式字符串之外传递给 <a href="../core/macro.format_args.html"><code>format_args!</code></a> 的参数。</li>
+<li><a href="expressions/array-expr.html#数组和切片索引表达式">数组索引</a> 表达式中的左操作数。</li>
+<li><a href="expressions/operator-expr.html#解引用运算符">解引用运算符</a> (<code>*</code>) 的操作数。</li>
+<li><a href="expressions/operator-expr.html#比较运算符">比较</a> 的操作数。</li>
+<li><a href="expressions/operator-expr.html#复合赋值表达式">复合赋值</a> 的左操作数。</li>
+<li>除了格式字符串之外传递给 <a href="https://doc.rust-lang.org/core/macro.format_args.html"><code>format_args!</code></a> 的参数。</li>
 </ul>
 <div class="rule" id="r-expr.overload"><a class="rule-link" href="#r-expr.overload" title="expr.overload"><span>[expr<wbr>.overload]</span></a>
 </div>

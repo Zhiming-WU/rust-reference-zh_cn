@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -627,7 +627,7 @@ ConfigurationPredicate</text>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>对于<code>rustc</code>，任意设置的配置选项使用<a href="https://doc.rust-lang.org/rustc/command-line-arguments.html#--cfg-configure-the-compilation-environment"><code>--cfg</code></a>标志设置。指定目标的配置值可以使用<code>rustc --print cfg --target $TARGET</code>显示。</p>
+<p>对于<code>rustc</code>，任意设置的配置选项使用<a href="../rustc/command-line-arguments.html#--cfg-configure-the-compilation-environment"><code>--cfg</code></a>标志设置。指定目标的配置值可以使用<code>rustc --print cfg --target $TARGET</code>显示。</p>
 </blockquote>
 </div>
 
@@ -635,7 +635,7 @@ ConfigurationPredicate</text>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>键为<code>feature</code>的配置选项是<a href="https://doc.rust-lang.org/cargo/reference/features.html">Cargo</a>用于指定编译时选项和可选依赖项的约定。</p>
+<p>键为<code>feature</code>的配置选项是<a href="../cargo/reference/features.html">Cargo</a>用于指定编译时选项和可选依赖项的约定。</p>
 </blockquote>
 </div>
 
@@ -685,7 +685,7 @@ ConfigurationPredicate</text>
 <div class="rule" id="r-cfg.target_feature.crt_static"><a class="rule-link" href="#r-cfg.target_feature.crt_static" title="cfg.target_feature.crt_static"><span>[cfg<wbr>.target_feature<wbr>.crt_static]</span></a>
 </div>
 
-<p><code>target_feature</code>选项还提供了一个额外的<code>crt-static</code>特性，用于指示<a href="linkage.html#static-and-dynamic-c-runtimes">静态 C 运行时</a>是否可用。</p>
+<p><code>target_feature</code>选项还提供了一个额外的<code>crt-static</code>特性，用于指示<a href="linkage.html#静态和动态c运行时">静态 C 运行时</a>是否可用。</p>
 <div class="rule" id="r-cfg.target_os"><a class="rule-link" href="#r-cfg.target_os" title="cfg.target_os"><span>[cfg<wbr>.target_os]</span></a>
 </div>
 
@@ -848,7 +848,7 @@ ConfigurationPredicate</text>
 </div>
 
 <h3 id="test"><a class="header" href="#test"><code>test</code></a></h3>
-<p>在编译测试harness时启用。通过<code>rustc</code>使用<a href="https://doc.rust-lang.org/rustc/command-line-arguments.html#--test-build-a-test-harness"><code>--test</code></a>标志来完成。有关测试支持的更多信息，请参见<a href="attributes/testing.html">测试</a>。</p>
+<p>在编译测试harness时启用。通过<code>rustc</code>使用<a href="../rustc/command-line-arguments.html#--test-build-a-test-harness"><code>--test</code></a>标志来完成。有关测试支持的更多信息，请参见<a href="attributes/testing.html">测试</a>。</p>
 <div class="rule" id="r-cfg.debug_assertions"><a class="rule-link" href="#r-cfg.debug_assertions" title="cfg.debug_assertions"><span>[cfg<wbr>.debug_assertions]</span></a>
 </div>
 
@@ -866,7 +866,7 @@ ConfigurationPredicate</text>
 <div class="rule" id="r-cfg.panic.general"><a class="rule-link" href="#r-cfg.panic.general" title="cfg.panic.general"><span>[cfg<wbr>.panic<wbr>.general]</span></a>
 </div>
 
-<p>键值选项，根据<a href="panic.html#panic-strategy">恐慌策略</a>设置。请注意，将来可能会添加更多值。</p>
+<p>键值选项，根据<a href="panic.html#恐慌策略">恐慌策略</a>设置。请注意，将来可能会添加更多值。</p>
 <div class="rule" id="r-cfg.panic.values"><a class="rule-link" href="#r-cfg.panic.values" title="cfg.panic.values"><span>[cfg<wbr>.panic<wbr>.values]</span></a>
 </div>
 

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type.fn-pointer"><a class="rule-link" href="#r-type.fn-pointer" title="type.fn-pointer"><span>[type<wbr>.fn-pointer]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types/function-pointer.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type.fn-pointer"><a class="rule-link" href="#r-type.fn-pointer" title="type.fn-pointer"><span>[type<wbr>.fn-pointer]</span></a>
 </div>
 
 <h1 id="函数指针类型"><a class="header" href="#函数指针类型">函数指针类型</a></h1>
@@ -631,7 +633,7 @@ x = bo(5,7);
 <div class="rule" id="r-type.fn-pointer.qualifiers"><a class="rule-link" href="#r-type.fn-pointer.qualifiers" title="type.fn-pointer.qualifiers"><span>[type<wbr>.fn-pointer<wbr>.qualifiers]</span></a>
 </div>
 
-<p><code>unsafe</code> 限定符表示该类型的值是一个 <a href="../unsafe-keyword.html">不安全函数</a> ，而 <code>extern</code> 限定符表示它是一个 <a href="../items/functions.html#extern-function-qualifier">外部函数</a> 。</p>
+<p><code>unsafe</code> 限定符表示该类型的值是一个 <a href="../unsafe-keyword.html">不安全函数</a> ，而 <code>extern</code> 限定符表示它是一个 <a href="../items/functions.html#extern函数限定符">外部函数</a> 。</p>
 <div class="rule" id="r-type.fn-pointer.constraint-variadic"><a class="rule-link" href="#r-type.fn-pointer.constraint-variadic" title="type.fn-pointer.constraint-variadic"><span>[type<wbr>.fn-pointer<wbr>.constraint-variadic]</span></a>
 </div>
 
@@ -640,7 +642,7 @@ x = bo(5,7);
 </div>
 
 <h2 id="函数指针参数上的属性"><a class="header" href="#函数指针参数上的属性">函数指针参数上的属性</a></h2>
-<p>函数指针参数上的属性遵循与 <a href="../items/functions.html#attributes-on-function-parameters">常规函数参数</a> 相同的规则和限制。</p>
+<p>函数指针参数上的属性遵循与 <a href="../items/functions.html#函数参数上的属性">常规函数参数</a> 相同的规则和限制。</p>
 
                     </main>
 

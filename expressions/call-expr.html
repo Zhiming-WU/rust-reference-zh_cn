@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.call"><a class="rule-link" href="#r-expr.call" title="expr.call"><span>[expr<wbr>.call]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/call-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.call"><a class="rule-link" href="#r-expr.call" title="expr.call"><span>[expr<wbr>.call]</span></a>
 </div>
 
 <h1 id="调用表达式"><a class="header" href="#调用表达式">调用表达式</a></h1>
@@ -317,15 +319,15 @@ Expression</text>
 
 <p>对于 <a href="../types/function-item.html">非函数类型</a>，表达式 <code>f(...)</code> 会根据 函数操作数 使用以下 特型 之一的方法：</p>
 <ul>
-<li><a href="../../core/ops/function/trait.Fn.html"><code>Fn</code></a> 或 <a href="../../core/ops/async_function/trait.AsyncFn.html"><code>AsyncFn</code></a> — 共享引用。</li>
-<li><a href="../../core/ops/function/trait.FnMut.html"><code>FnMut</code></a> 或 <a href="../../core/ops/async_function/trait.AsyncFnMut.html"><code>AsyncFnMut</code></a> — 可变引用。</li>
-<li><a href="../../core/ops/function/trait.FnOnce.html"><code>FnOnce</code></a> 或 <a href="../../core/ops/async_function/trait.AsyncFnOnce.html"><code>AsyncFnOnce</code></a> — 值。</li>
+<li><a href="https://doc.rust-lang.org/core/ops/function/trait.Fn.html"><code>Fn</code></a> 或 <a href="https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFn.html"><code>AsyncFn</code></a> — 共享引用。</li>
+<li><a href="https://doc.rust-lang.org/core/ops/function/trait.FnMut.html"><code>FnMut</code></a> 或 <a href="https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFnMut.html"><code>AsyncFnMut</code></a> — 可变引用。</li>
+<li><a href="https://doc.rust-lang.org/core/ops/function/trait.FnOnce.html"><code>FnOnce</code></a> 或 <a href="https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFnOnce.html"><code>AsyncFnOnce</code></a> — 值。</li>
 </ul>
 <div class="rule" id="r-expr.call.autoref-deref"><a class="rule-link" href="#r-expr.call.autoref-deref" title="expr.call.autoref-deref"><span>[expr<wbr>.call<wbr>.autoref-deref]</span></a>
 </div>
 
 <p>如果需要，将进行自动借用。
-函数操作数 也会根据需要进行 <a href="field-expr.html#automatic-dereferencing">自动解引用</a>。</p>
+函数操作数 也会根据需要进行 <a href="field-expr.html#自动解引用">自动解引用</a>。</p>
 <p>一些 调用表达式 的示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -361,7 +363,7 @@ let name: &amp;'static str = (|| "Rust")();
 <ul>
 <li>多个作用域内的 特型 为相同类型定义了同名方法</li>
 <li>自动解引用 (Auto-<code>deref</code>) 是不希望的；例如，区分智能指针本身的方法和指针指代对象的方法</li>
-<li>不带参数的方法（如 <a href="../../core/default/trait.Default.html#tymethod.default"><code>default()</code></a>）并返回类型的属性（如 <a href="../../core/mem/fn.size_of.html"><code>size_of()</code></a>）</li>
+<li>不带参数的方法（如 <a href="https://doc.rust-lang.org/core/default/trait.Default.html#tymethod.default"><code>default()</code></a>）并返回类型的属性（如 <a href="https://doc.rust-lang.org/core/mem/fn.size_of.html"><code>size_of()</code></a>）</li>
 </ul>
 <div class="rule" id="r-expr.call.desugar.explicit-path"><a class="rule-link" href="#r-expr.call.desugar.explicit-path" title="expr.call.desugar.explicit-path"><span>[expr<wbr>.call<wbr>.desugar<wbr>.explicit-path]</span></a>
 </div>

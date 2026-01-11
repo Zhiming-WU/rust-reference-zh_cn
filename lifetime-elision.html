@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-lifetime-elision"><a class="rule-link" href="#r-lifetime-elision" title="lifetime-elision"><span>[lifetime-elision]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/lifetime-elision.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-lifetime-elision"><a class="rule-link" href="#r-lifetime-elision" title="lifetime-elision"><span>[lifetime-elision]</span></a>
 </div>
 
 <h1 id="生命周期省略"><a class="header" href="#生命周期省略">生命周期省略</a></h1>
@@ -381,7 +383,7 @@ impl&lt;'a&gt; dyn Bar&lt;'a&gt; + 'a {}
 <div class="rule" id="r-lifetime-elision.const-static"><a class="rule-link" href="#r-lifetime-elision.const-static" title="lifetime-elision.const-static"><span>[lifetime-elision<wbr>.const-static]</span></a>
 </div>
 
-<h2 id="const和-static省略"><a class="header" href="#const和-static省略"><code>const</code>和 <code>static</code>省略</a></h2>
+<h2 id="const和static省略"><a class="header" href="#const和static省略"><code>const</code>和<code>static</code>省略</a></h2>
 <div class="rule" id="r-lifetime-elision.const-static.implicit-static"><a class="rule-link" href="#r-lifetime-elision.const-static.implicit-static" title="lifetime-elision.const-static.implicit-static"><span>[lifetime-elision<wbr>.const-static<wbr>.implicit-static]</span></a>
 </div>
 

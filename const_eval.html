@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-const-eval"><a class="rule-link" href="#r-const-eval" title="const-eval"><span>[const-eval]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/const_eval.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-const-eval"><a class="rule-link" href="#r-const-eval" title="const-eval"><span>[const-eval]</span></a>
 </div>
 
 <h1 id="常量求值"><a class="header" href="#常量求值">常量求值</a></h1>
@@ -209,7 +211,7 @@
 <div class="rule" id="r-const-eval.const-expr.error"><a class="rule-link" href="#r-const-eval.const-expr.error" title="const-eval.const-expr.error"><span>[const-eval<wbr>.const-expr<wbr>.error]</span></a>
 </div>
 
-<p>如果一个值必须在编译时（即在常量上下文中）求值，那么诸如越界 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a> 或 <a href="expressions/operator-expr.html#overflow">溢出</a> 之类的行为将是编译器错误。否则，这些行为只是警告，但在运行时很可能会产生 恐慌。</p>
+<p>如果一个值必须在编译时（即在常量上下文中）求值，那么诸如越界 <a href="expressions/array-expr.html#数组和切片索引表达式">数组索引</a> 或 <a href="expressions/operator-expr.html#溢出">溢出</a> 之类的行为将是编译器错误。否则，这些行为只是警告，但在运行时很可能会产生 恐慌。</p>
 <div class="rule" id="r-const-eval.const-expr.list"><a class="rule-link" href="#r-const-eval.const-expr.list" title="const-eval.const-expr.list"><span>[const-eval<wbr>.const-expr<wbr>.list]</span></a>
 </div>
 
@@ -270,10 +272,10 @@
 <ul>
 <li><a href="expressions/block-expr.html">块表达式</a>，包括 <code>unsafe</code> 和 <code>const</code> 块。
 <ul>
-<li><a href="statements.html#let-statements">let 语句</a> 及其不可驳 <a href="patterns.html">模式</a>，包括可变绑定</li>
-<li><a href="expressions/operator-expr.html#assignment-expressions">赋值表达式</a></li>
-<li><a href="expressions/operator-expr.html#compound-assignment-expressions">复合赋值表达式</a></li>
-<li><a href="statements.html#expression-statements">表达式语句</a></li>
+<li><a href="statements.html#let语句">let 语句</a> 及其不可驳 <a href="patterns.html">模式</a>，包括可变绑定</li>
+<li><a href="expressions/operator-expr.html#赋值表达式">赋值表达式</a></li>
+<li><a href="expressions/operator-expr.html#复合赋值表达式">复合赋值表达式</a></li>
+<li><a href="statements.html#表达式语句">表达式语句</a></li>
 </ul>
 </li>
 </ul>
@@ -287,7 +289,7 @@
 </div>
 
 <ul>
-<li>索引表达式，使用 <code>usize</code> 进行 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a> 或 <a href="types/slice.html">切片</a>。</li>
+<li>索引表达式，使用 <code>usize</code> 进行 <a href="expressions/array-expr.html#数组和切片索引表达式">数组索引</a> 或 <a href="types/slice.html">切片</a>。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.range"><a class="rule-link" href="#r-const-eval.const-expr.range" title="const-eval.const-expr.range"><span>[const-eval<wbr>.const-expr<wbr>.range]</span></a>
 </div>
@@ -305,14 +307,14 @@
 </div>
 
 <ul>
-<li>用于整数和浮点类型、<code>bool</code> 和 <code>char</code> 的内建 <a href="expressions/operator-expr.html#negation-operators">取反</a>、<a href="expressions/operator-expr.html#arithmetic-and-logical-binary-operators">算术</a>、<a href="expressions/operator-expr.html#arithmetic-and-logical-binary-operators">逻辑</a>、<a href="expressions/operator-expr.html#comparison-operators">比较</a> 或 <a href="expressions/operator-expr.html#lazy-boolean-operators">惰性布尔</a> 运算符。</li>
+<li>用于整数和浮点类型、<code>bool</code> 和 <code>char</code> 的内建 <a href="expressions/operator-expr.html#求负运算符">取反</a>、<a href="expressions/operator-expr.html#算术和逻辑二元运算符">算术</a>、<a href="expressions/operator-expr.html#算术和逻辑二元运算符">逻辑</a>、<a href="expressions/operator-expr.html#比较运算符">比较</a> 或 <a href="expressions/operator-expr.html#惰性布尔运算符">惰性布尔</a> 运算符。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.borrows"><a class="rule-link" href="#r-const-eval.const-expr.borrows" title="const-eval.const-expr.borrows"><span>[const-eval<wbr>.const-expr<wbr>.borrows]</span></a>
 </div>
 
 <ul>
 <li>
-<p>所有形式的 <a href="expressions/operator-expr.html#borrow-operators">借用</a>，包括原始借用，但以下表达式的借用除外（这些表达式的临时作用域会被延长（见 <a href="destructors.html#r-destructors.scope.lifetime-extension">临时变量生命周期延长</a>）至程序结束）：</p>
+<p>所有形式的 <a href="expressions/operator-expr.html#借用运算符">借用</a>，包括原始借用，但以下表达式的借用除外（这些表达式的临时作用域会被延长（见 <a href="destructors.html#r-destructors.scope.lifetime-extension">临时变量生命周期延长</a>）至程序结束）：</p>
 <ul>
 <li>可变借用。</li>
 <li>对产生具有 <a href="interior-mutability.html">内部可变性</a> 的值的表达式的共享借用。</li>
@@ -421,7 +423,7 @@ const C: () = { let _: &amp;'static mut [u8] = &amp;mut []; };
 //               ~~~~~~~
 //           尾部表达式。
 <span class="boring">}</span></code></pre>
-<p>它们之间的区别在于，在第一种情况中，空数组被 <a href="destructors.html#constant-promotion">提升</a> 了，但它的作用域没有经历 <a href="destructors.html#r-destructors.scope.lifetime-extension">临时变量生命周期延长</a>，所以我们认为 <a href="expressions.html#r-expr.place-value.place-memory-location">位置表达式</a> 是瞬态的（即使在提升之后该位置确实存续到程序结束）。在第二种情况中，空数组临时变量的作用域确实经历了生命周期延长，因此它因为是对生命周期延长的临时变量的可变借用（从而借用了非瞬态的位置表达式）而被拒绝。</p>
+<p>它们之间的区别在于，在第一种情况中，空数组被 <a href="destructors.html#常量提升">提升</a> 了，但它的作用域没有经历 <a href="destructors.html#r-destructors.scope.lifetime-extension">临时变量生命周期延长</a>，所以我们认为 <a href="expressions.html#r-expr.place-value.place-memory-location">位置表达式</a> 是瞬态的（即使在提升之后该位置确实存续到程序结束）。在第二种情况中，空数组临时变量的作用域确实经历了生命周期延长，因此它因为是对生命周期延长的临时变量的可变借用（从而借用了非瞬态的位置表达式）而被拒绝。</p>
 <p>这种效果令人惊讶，因为在这种情况下，临时变量生命周期延长导致可编译的代码比没有它时更少。</p>
 <p>见 <a href="https://github.com/rust-lang/rust/issues/143129">issue #143129</a> 了解更多细节。</p>
 </blockquote>
@@ -463,7 +465,7 @@ const _: u8 = unsafe {
 </div>
 
 <ul>
-<li><a href="expressions/operator-expr.html#type-cast-expressions">转换</a> 表达式，除了
+<li><a href="expressions/operator-expr.html#类型转换表达式">转换</a> 表达式，除了
 <ul>
 <li>指针到地址转换以及</li>
 <li>函数指针到地址转换。</li>
@@ -474,19 +476,19 @@ const _: u8 = unsafe {
 </div>
 
 <ul>
-<li>调用 <a href="items/functions.html#const-functions">常量函数</a> 和常量方法。</li>
+<li>调用 <a href="items/functions.html#const函数">常量函数</a> 和常量方法。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.loop"><a class="rule-link" href="#r-const-eval.const-expr.loop" title="const-eval.const-expr.loop"><span>[const-eval<wbr>.const-expr<wbr>.loop]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/loop-expr.html#infinite-loops">loop</a> 和 <a href="expressions/loop-expr.html#predicate-loops">while</a> 表达式。</li>
+<li><a href="expressions/loop-expr.html#无限循环">loop</a> 和 <a href="expressions/loop-expr.html#谓词循环">while</a> 表达式。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-expr.if-match"><a class="rule-link" href="#r-const-eval.const-expr.if-match" title="const-eval.const-expr.if-match"><span>[const-eval<wbr>.const-expr<wbr>.if-match]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/if-expr.html#if-expressions">if</a> 和 <a href="expressions/match-expr.html">match</a> 表达式。</li>
+<li><a href="expressions/if-expr.html#if表达式">if</a> 和 <a href="expressions/match-expr.html">match</a> 表达式。</li>
 </ul>
 <div class="rule" id="r-const-eval.const-context"><a class="rule-link" href="#r-const-eval.const-context" title="const-eval.const-context"><span>[const-eval<wbr>.const-context]</span></a>
 </div>
@@ -516,7 +518,7 @@ const _: u8 = unsafe {
 <ul>
 <li><a href="items/constant-items.html">常量</a></li>
 <li><a href="items/static-items.html">静态项</a></li>
-<li><a href="items/enumerations.html#discriminants">枚举判别值</a></li>
+<li><a href="items/enumerations.html#判别值">枚举判别值</a></li>
 </ul>
 </li>
 </ul>
@@ -524,13 +526,13 @@ const _: u8 = unsafe {
 </div>
 
 <ul>
-<li><a href="items/generics.html#const-generics">常量泛型参数</a></li>
+<li><a href="items/generics.html#常量泛型">常量泛型参数</a></li>
 </ul>
 <div class="rule" id="r-const-eval.const-context.block"><a class="rule-link" href="#r-const-eval.const-context.block" title="const-eval.const-context.block"><span>[const-eval<wbr>.const-context<wbr>.block]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/block-expr.html#const-blocks">常量块</a></li>
+<li><a href="expressions/block-expr.html#const块">常量块</a></li>
 </ul>
 <div class="rule" id="r-const-eval.const-context.outer-generics"><a class="rule-link" href="#r-const-eval.const-context.outer-generics" title="const-eval.const-context.outer-generics"><span>[const-eval<wbr>.const-context<wbr>.outer-generics]</span></a>
 </div>
@@ -573,7 +575,7 @@ square(12);
 <div class="rule" id="r-const-eval.const-fn.async"><a class="rule-link" href="#r-const-eval.const-fn.async" title="const-eval.const-fn.async"><span>[const-eval<wbr>.const-fn<wbr>.async]</span></a>
 </div>
 
-<p>常量函数不允许是 <a href="items/functions.html#async-functions">异步</a> 的。</p>
+<p>常量函数不允许是 <a href="items/functions.html#async函数">异步</a> 的。</p>
 <div class="rule" id="r-const-eval.const-fn.type-restrictions"><a class="rule-link" href="#r-const-eval.const-fn.type-restrictions" title="const-eval.const-fn.type-restrictions"><span>[const-eval<wbr>.const-fn<wbr>.type-restrictions]</span></a>
 </div>
 

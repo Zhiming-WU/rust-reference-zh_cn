@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-items.static"><a class="rule-link" href="#r-items.static" title="items.static"><span>[items<wbr>.static]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/items/static-items.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-items.static"><a class="rule-link" href="#r-items.static" title="items.static"><span>[items<wbr>.static]</span></a>
 </div>
 
 <h1 id="静态项"><a class="header" href="#静态项">静态项</a></h1>
@@ -297,7 +299,7 @@ Expression</text>
 <div class="rule" id="r-items.static.storage-disjointness"><a class="rule-link" href="#r-items.static.storage-disjointness" title="items.static.storage-disjointness"><span>[items<wbr>.static<wbr>.storage-disjointness]</span></a>
 </div>
 
-<p>如果 <code>static</code> 的大小至少为 1 字节，则此分配与所有其他此类 <code>static</code> 分配以及堆分配和栈分配变量是不相交的。然而，不可变  <em>静态项</em>  的存储可以与自身没有唯一地址的分配重叠，例如 <a href="../destructors.html#constant-promotion">提升项</a> 和 <a href="constant-items.html"><code>const</code> 项</a>。</p>
+<p>如果 <code>static</code> 的大小至少为 1 字节，则此分配与所有其他此类 <code>static</code> 分配以及堆分配和栈分配变量是不相交的。然而，不可变  <em>静态项</em>  的存储可以与自身没有唯一地址的分配重叠，例如 <a href="../destructors.html#常量提升">提升项</a> 和 <a href="constant-items.html"><code>const</code> 项</a>。</p>
 <div class="rule" id="r-items.static.namespace"><a class="rule-link" href="#r-items.static.namespace" title="items.static.namespace"><span>[items<wbr>.static<wbr>.namespace]</span></a>
 </div>
 
@@ -318,7 +320,7 @@ Expression</text>
 </div>
 
 <ul>
-<li>类型必须具有 <a href="https://doc.rust-lang.org/core/marker/trait.Sync.html"><code>Sync</code></a> 特型 绑定以允许线程安全访问。</li>
+<li>类型必须具有 <a href="https://doc.rust-lang.org/core/marker/trait.Sync.html"><code>Sync</code></a> 特型 界限以允许线程安全访问。</li>
 </ul>
 <div class="rule" id="r-items.static.init.omission"><a class="rule-link" href="#r-items.static.init.omission" title="items.static.init.omission"><span>[items<wbr>.static<wbr>.init<wbr>.omission]</span></a>
 </div>

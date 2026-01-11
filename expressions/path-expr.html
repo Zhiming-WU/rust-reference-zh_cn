@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.path"><a class="rule-link" href="#r-expr.path" title="expr.path"><span>[expr<wbr>.path]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/path-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.path"><a class="rule-link" href="#r-expr.path" title="expr.path"><span>[expr<wbr>.path]</span></a>
 </div>
 
 <h1 id="路径表达式"><a class="header" href="#路径表达式">路径表达式</a></h1>
@@ -244,7 +246,7 @@ QualifiedPathInExpression</text>
 <div class="rule" id="r-expr.path.safety"><a class="rule-link" href="#r-expr.path.safety" title="expr.path.safety"><span>[expr<wbr>.path<wbr>.safety]</span></a>
 </div>
 
-<p>使用 <a href="../items/static-items.html#mutable-statics"><code>static mut</code></a> 变量需要一个 <a href="block-expr.html#unsafe-blocks"><code>unsafe</code> 块</a> 。</p>
+<p>使用 <a href="../items/static-items.html#可变静态项"><code>static mut</code></a> 变量需要一个 <a href="block-expr.html#unsafe块"><code>unsafe</code> 块</a> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">mod globals {
@@ -262,7 +264,7 @@ let slice_reverse = &lt;[i32]&gt;::reverse;
 <div class="rule" id="r-expr.path.const"><a class="rule-link" href="#r-expr.path.const" title="expr.path.const"><span>[expr<wbr>.path<wbr>.const]</span></a>
 </div>
 
-<p>关联常量的求值方式与 <a href="block-expr.html#const-blocks"><code>const</code> 块</a> 相同。</p>
+<p>关联常量的求值方式与 <a href="block-expr.html#const块"><code>const</code> 块</a> 相同。</p>
 
                     </main>
 

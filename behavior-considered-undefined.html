@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-undefined"><a class="rule-link" href="#r-undefined" title="undefined"><span>[undefined]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/behavior-considered-undefined.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-undefined"><a class="rule-link" href="#r-undefined" title="undefined"><span>[undefined]</span></a>
 </div>
 
 <h1 id="被视为未定义的行为"><a class="header" href="#被视为未定义的行为">被视为未定义的行为</a></h1>
@@ -215,7 +217,7 @@
 </div>
 
 <ul>
-<li>执行违反 <a href="../std/primitive.pointer.html#method.offset">in-bounds 指针算术</a> 要求的 位置投影 (place projection)。位置投影是指 <a href="expressions/field-expr.html">字段表达式</a>、<a href="expressions/tuple-expr.html#tuple-indexing-expressions">元组索引表达式</a> 或 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组/切片索引表达式</a>。</li>
+<li>执行违反 <a href="https://doc.rust-lang.org/std/primitive.pointer.html#method.offset">in-bounds 指针算术</a> 要求的 位置投影 (place projection)。位置投影是指 <a href="expressions/field-expr.html">字段表达式</a>、<a href="expressions/tuple-expr.html#元组索引表达式">元组索引表达式</a> 或 <a href="expressions/array-expr.html#数组和切片索引表达式">数组/切片索引表达式</a>。</li>
 </ul>
 <div class="rule" id="r-undefined.alias"><a class="rule-link" href="#r-undefined.alias" title="undefined.alias"><span>[undefined<wbr>.alias]</span></a>
 </div>
@@ -223,7 +225,7 @@
 <ul>
 <li>
 <p>违反指针别名规则。精确的别名规则尚未确定，但这里有一个通用原则的大纲：
-<code>&amp;T</code> 必须指向在其存续期间未被修改的内存（除了 <a href="../core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a> 内部的数据），
+<code>&amp;T</code> 必须指向在其存续期间未被修改的内存（除了 <a href="https://doc.rust-lang.org/core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a> 内部的数据），
 且 <code>&amp;mut T</code> 必须指向在其存续期间不被任何非该引用派生的指针读取或写入，且没有其他引用指向的内存。
 出于这些规则的目的，<code>Box&lt;T&gt;</code> 的处理方式类似于 <code>&amp;'static mut T</code>。
 精确的存续持续时间 (liveness duration) 尚未指定，但存在一些界限：</p>
@@ -231,7 +233,7 @@
 <li>对于引用，存续持续时间由借用检查器分配的语法生命周期作为上限；它的存续时间不能比该生命周期更 <em>长</em>。</li>
 <li>每次解引用或重新借用引用或 <code>Box</code> 时，它都被视为存续。</li>
 <li>每次将引用或 <code>Box</code> 传递给函数或从函数返回时，它都被视为存续。</li>
-<li>当引用（但不是 <code>Box</code>！）传递给函数时，它的存续时间至少与该函数调用一样长，同样，除非 <code>&amp;T</code> 包含 <a href="../core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a>。</li>
+<li>当引用（但不是 <code>Box</code>！）传递给函数时，它的存续时间至少与该函数调用一样长，同样，除非 <code>&amp;T</code> 包含 <a href="https://doc.rust-lang.org/core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a>。</li>
 </ul>
 <p>当这些类型的值作为复合类型的（嵌套）字段传递时，上述规则同样适用，但不适用于指针间接寻址后的情况。</p>
 </li>
@@ -242,8 +244,8 @@
 <ul>
 <li>
 <p>修改不可变字节。
-通过 <a href="destructors.html#constant-promotion">常量提升</a> 表达式可达的所有字节都是不可变的，以及通过 <code>static</code> 和 <code>const</code> 初始化器中已 <a href="destructors.html#temporary-lifetime-extension">生命周期延长</a> 到 <code>'static</code> 的借用可达的字节也是不可变的。
-由不可变绑定或不可变 <code>static</code> 拥有的字节是不可变的，除非这些字节是 <a href="../core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a> 的一部分。</p>
+通过 <a href="destructors.html#常量提升">常量提升</a> 表达式可达的所有字节都是不可变的，以及通过 <code>static</code> 和 <code>const</code> 初始化器中已 <a href="destructors.html#临时生命周期延长">生命周期延长</a> 到 <code>'static</code> 的借用可达的字节也是不可变的。
+由不可变绑定或不可变 <code>static</code> 拥有的字节是不可变的，除非这些字节是 <a href="https://doc.rust-lang.org/core/cell/struct.UnsafeCell.html"><code>UnsafeCell&lt;U&gt;</code></a> 的一部分。</p>
 <p>此外，由共享引用 <a href="#pointed-to-bytes">指向</a> 的字节（包括通过其他引用（共享和可变）以及 <code>Box</code> 的间接指向）都是不可变的；传递性包括存储在复合类型字段中的那些引用。</p>
 <p>修改 (mutation) 是指与任何相关字节重叠的、多于 0 字节的任何写入（即使该写入没有改变内存内容）。</p>
 </li>
@@ -276,7 +278,7 @@
 </div>
 
 <ul>
-<li>错误使用内联汇编。有关更多详细信息，请参阅编写使用内联汇编的代码时应遵守的 <a href="inline-assembly.html#rules-for-inline-assembly">规则</a>。</li>
+<li>错误使用内联汇编。有关更多详细信息，请参阅编写使用内联汇编的代码时应遵守的 <a href="inline-assembly.html#内联汇编规则">规则</a>。</li>
 </ul>
 <div class="rule" id="r-undefined.runtime"><a class="rule-link" href="#r-undefined.runtime" title="undefined.runtime"><span>[undefined<wbr>.runtime]</span></a>
 </div>
@@ -284,7 +286,7 @@
 <ul>
 <li>违反 Rust 运行时的假设。目前大多数 Rust 运行时的假设尚未明确记录。
 <ul>
-<li>对于专门与回溯相关的假设，请参阅 <a href="panic.html#unwinding-across-ffi-boundaries">恐慌文档</a>。</li>
+<li>对于专门与回溯相关的假设，请参阅 <a href="panic.html#展开-across-ffi-boundaries">恐慌文档</a>。</li>
 <li>运行时假设 Rust 栈帧在不执行该栈帧拥有的局部变量的析构函数的情况下不会被释放。这一假设可能被像 <code>longjmp</code> 这样的 C 函数违反。</li>
 </ul>
 </li>
@@ -417,7 +419,7 @@
 </div>
 
 <ul>
-<li>引用或 <a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> 必须对齐且非空，它不能是 <a href="#dangling-pointers">悬垂的</a>，且必须指向一个有效值
+<li>引用或 <a href="https://doc.rust-lang.org/alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> 必须对齐且非空，它不能是 <a href="#dangling-pointers">悬垂的</a>，且必须指向一个有效值
 （对于动态大小类型，使用由元数据确定的被指向者的实际动态类型）。
 请注意，最后一点（关于指向有效值）仍是一个有争议的话题。</li>
 </ul>
@@ -425,12 +427,12 @@
 </div>
 
 <ul>
-<li>宽引用、<a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> 或原始指针的元数据必须与 unsized tail 的类型匹配：
+<li>宽引用、<a href="https://doc.rust-lang.org/alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> 或原始指针的元数据必须与 unsized tail 的类型匹配：
 <ul>
 <li><code>dyn Trait</code> 元数据必须是编译器为 <code>Trait</code> 生成的虚表 (vtable) 指针。
 （对于原始指针，这一要求仍是一个有争议的话题。）</li>
 <li>切片 (<code>[T]</code>) 元数据必须是一个有效的 <code>usize</code>。
-此外，对于宽引用和 <a href="../alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a>，如果切片元数据使得被指向值的总大小大于 <code>isize::MAX</code>，则该元数据是无效的。</li>
+此外，对于宽引用和 <a href="https://doc.rust-lang.org/alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a>，如果切片元数据使得被指向值的总大小大于 <code>isize::MAX</code>，则该元数据是无效的。</li>
 </ul>
 </li>
 </ul>
@@ -440,7 +442,7 @@
 <ul>
 <li>
 <p>如果一个类型具有自定义的有效值范围，那么有效值必须在该范围内。
-在标准库中，这会影响 <a href="../core/ptr/non_null/struct.NonNull.html"><code>NonNull&lt;T&gt;</code></a> 和 <a href="../core/num/nonzero/struct.NonZero.html"><code>NonZero&lt;T&gt;</code></a>。</p>
+在标准库中，这会影响 <a href="https://doc.rust-lang.org/core/ptr/non_null/struct.NonNull.html"><code>NonNull&lt;T&gt;</code></a> 和 <a href="https://doc.rust-lang.org/core/num/nonzero/struct.NonZero.html"><code>NonZero&lt;T&gt;</code></a>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>

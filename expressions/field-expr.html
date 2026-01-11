@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.field"><a class="rule-link" href="#r-expr.field" title="expr.field"><span>[expr<wbr>.field]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/field-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.field"><a class="rule-link" href="#r-expr.field" title="expr.field"><span>[expr<wbr>.field]</span></a>
 </div>
 
 <h1 id="字段访问表达式"><a class="header" href="#字段访问表达式">字段访问表达式</a></h1>
@@ -242,7 +244,7 @@ IDENTIFIER</text>
 <div class="rule" id="r-expr.field.mut"><a class="rule-link" href="#r-expr.field.mut" title="expr.field.mut"><span>[expr<wbr>.field<wbr>.mut]</span></a>
 </div>
 
-<p>当操作数是 <a href="../expressions.html#mutability">可变的</a> 时，字段表达式也是可变的。</p>
+<p>当操作数是 <a href="../expressions.html#可变性">可变的</a> 时，字段表达式也是可变的。</p>
 <div class="rule" id="r-expr.field.form"><a class="rule-link" href="#r-expr.field.form" title="expr.field.form"><span>[expr<wbr>.field<wbr>.form]</span></a>
 </div>
 
@@ -281,7 +283,7 @@ foo().x;
 </div>
 
 <h2 id="自动解引用"><a class="header" href="#自动解引用">自动解引用</a></h2>
-<p>如果容器操作数的类型实现了 <a href="../special-types-and-traits.html#deref-and-derefmut"><code>Deref</code></a> 或 <a href="../special-types-and-traits.html#deref-and-derefmut"><code>DerefMut</code></a>（取决于操作数是否 <a href="../expressions.html#mutability">可变的</a>），它会被 <em>自动解引用</em> 尽可能多次，以使字段访问成为可能。
+<p>如果容器操作数的类型实现了 <a href="../special-types-and-traits.html#deref-and-derefmut"><code>Deref</code></a> 或 <a href="../special-types-and-traits.html#deref-and-derefmut"><code>DerefMut</code></a>（取决于操作数是否 <a href="../expressions.html#可变性">可变的</a>），它会被 <em>自动解引用</em> 尽可能多次，以使字段访问成为可能。
 这个过程简称为 <em>autoderef</em> 。</p>
 <div class="rule" id="r-expr.field.borrow"><a class="rule-link" href="#r-expr.field.borrow" title="expr.field.borrow"><span>[expr<wbr>.field<wbr>.borrow]</span></a>
 </div>

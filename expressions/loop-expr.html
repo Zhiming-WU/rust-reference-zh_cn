@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.loop"><a class="rule-link" href="#r-expr.loop" title="expr.loop"><span>[expr<wbr>.loop]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/loop-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.loop"><a class="rule-link" href="#r-expr.loop" title="expr.loop"><span>[expr<wbr>.loop]</span></a>
 </div>
 
 <h1 id="循环及其他可中断表达式"><a class="header" href="#循环及其他可中断表达式">循环及其他可中断表达式</a></h1>
@@ -423,7 +425,7 @@ BlockExpression</text>
 </div>
 
 <p>条件操作数必须是具有 <a href="../types/boolean.html">布尔类型</a> 的 <a href="../expressions.html#grammar-Expression">表达式</a> 或条件 <code>let</code> 匹配。
-如果所有条件操作数求值结果均为 <code>true</code>，且所有 <code>let</code> 模式都成功匹配其 <a href="../glossary.html#scrutinee">待匹配值</a>，则执行循环体块。</p>
+如果所有条件操作数求值结果均为 <code>true</code>，且所有 <code>let</code> 模式都成功匹配其 <a href="../glossary.html#审查值">待匹配值</a>，则执行循环体块。</p>
 <div class="rule" id="r-expr.loop.while.repeat"><a class="rule-link" href="#r-expr.loop.while.repeat" title="expr.loop.while.repeat"><span>[expr<wbr>.loop<wbr>.while<wbr>.repeat]</span></a>
 </div>
 
@@ -504,7 +506,7 @@ while let Some(v @ 1) | Some(v @ 2) = vals.pop() {
 <div class="rule" id="r-expr.loop.while.chains.intro"><a class="rule-link" href="#r-expr.loop.while.chains.intro" title="expr.loop.while.chains.intro"><span>[expr<wbr>.loop<wbr>.while<wbr>.chains<wbr>.intro]</span></a>
 </div>
 
-<p>多个条件操作数可以用 <code>&amp;&amp;</code> 分隔。这些与 <a href="if-expr.html#chains-of-conditions"><code>if</code> 条件链</a> 具有相同的语义和限制。</p>
+<p>多个条件操作数可以用 <code>&amp;&amp;</code> 分隔。这些与 <a href="if-expr.html#条件链"><code>if</code> 条件链</a> 具有相同的语义和限制。</p>
 <p>以下是一个链接多个表达式的示例，混合了 <code>let</code> 绑定和布尔表达式，并且表达式能够引用之前表达式中的模式绑定：</p>
 <pre class="playground"><code class="language-rust edition2024">fn main() {
     let outer_opt = Some(Some(1i32));
@@ -655,7 +657,7 @@ assert_eq!(sum, 55);
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>外部 <code>match</code> 用于确保 <code>iter_expr</code> 中的任何 <a href="../expressions.html#temporaries">临时值</a> 在循环结束前不会被丢弃。<code>next</code> 在被赋值前声明，是因为这通常能让类型推导更准确。</p>
+<p>外部 <code>match</code> 用于确保 <code>iter_expr</code> 中的任何 <a href="../expressions.html#临时变量">临时值</a> 在循环结束前不会被丢弃。<code>next</code> 在被赋值前声明，是因为这通常能让类型推导更准确。</p>
 </blockquote>
 </div>
 

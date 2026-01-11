@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -219,7 +219,7 @@ proc-macro = true
 <div class="rule" id="r-macro.proc.error"><a class="rule-link" href="#r-macro.proc.error" title="macro.proc.error"><span>[macro<wbr>.proc<wbr>.error]</span></a>
 </div>
 
-<p>过程宏有两种报告错误的方式。第一种是<a href="panic.html#r-panic">恐慌</a>。第二种是发出一个<a href="../core/macro.compile_error.html"><code>compile_error</code></a>宏调用。</p>
+<p>过程宏有两种报告错误的方式。第一种是<a href="panic.html#r-panic">恐慌</a>。第二种是发出一个<a href="https://doc.rust-lang.org/core/macro.compile_error.html"><code>compile_error</code></a>宏调用。</p>
 <div class="rule" id="r-macro.proc.proc_macro-crate"><a class="rule-link" href="#r-macro.proc.proc_macro-crate" title="macro.proc.proc_macro-crate"><span>[macro<wbr>.proc<wbr>.proc_macro-crate]</span></a>
 </div>
 
@@ -227,7 +227,7 @@ proc-macro = true
 <div class="rule" id="r-macro.proc.proc_macro-crate.intro"><a class="rule-link" href="#r-macro.proc.proc_macro-crate.intro" title="macro.proc.proc_macro-crate.intro"><span>[macro<wbr>.proc<wbr>.proc_macro-crate<wbr>.intro]</span></a>
 </div>
 
-<p>过程宏crate几乎总是会链接到编译器提供的<a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>。<a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>提供了编写过程宏所需的类型和使其更方便的工具。</p>
+<p>过程宏crate几乎总是会链接到编译器提供的<a href="https://doc.rust-lang.org/proc_macro/index.html"><code>proc_macro</code> crate</a>。<a href="https://doc.rust-lang.org/proc_macro/index.html"><code>proc_macro</code> crate</a>提供了编写过程宏所需的类型和使其更方便的工具。</p>
 <div class="rule" id="r-macro.proc.proc_macro-crate.token-stream"><a class="rule-link" href="#r-macro.proc.proc_macro-crate.token-stream" title="macro.proc.proc_macro-crate.token-stream"><span>[macro<wbr>.proc<wbr>.proc_macro-crate<wbr>.token-stream]</span></a>
 </div>
 
@@ -286,7 +286,7 @@ fn main() {
 <div class="rule" id="r-macro.proc.proc_macro.allowed-positions"><a class="rule-link" href="#r-macro.proc.proc_macro.allowed-positions" title="macro.proc.proc_macro.allowed-positions"><span>[macro<wbr>.proc<wbr>.proc_macro<wbr>.allowed-positions]</span></a>
 </div>
 
-<p><code>proc_macro</code>属性只能应用于<code>fn(TokenStream) -&gt; TokenStream</code>类型的<code>pub</code><a href="items/functions.html">函数</a>，其中<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>来自<a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>。它必须具有 <a href="items/functions.html#r-items.fn.extern">“Rust” ABI</a>。不允许使用其他函数限定符。它必须位于crate的根目录中。</p>
+<p><code>proc_macro</code>属性只能应用于<code>fn(TokenStream) -&gt; TokenStream</code>类型的<code>pub</code><a href="items/functions.html">函数</a>，其中<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>来自<a href="https://doc.rust-lang.org/proc_macro/index.html"><code>proc_macro</code> crate</a>。它必须具有 <a href="items/functions.html#r-items.fn.extern">“Rust” ABI</a>。不允许使用其他函数限定符。它必须位于crate的根目录中。</p>
 <div class="rule" id="r-macro.proc.proc_macro.duplicates"><a class="rule-link" href="#r-macro.proc.proc_macro.duplicates" title="macro.proc.proc_macro.duplicates"><span>[macro<wbr>.proc<wbr>.proc_macro<wbr>.duplicates]</span></a>
 </div>
 
@@ -307,7 +307,7 @@ fn main() {
 <li><a href="statements.html">语句</a></li>
 <li><a href="expressions.html">表达式</a></li>
 <li><a href="patterns.html">模式</a></li>
-<li><a href="types.html#type-expressions">类型表达式</a></li>
+<li><a href="types.html#类型表达式">类型表达式</a></li>
 <li><a href="items.html">项</a>位置，包括<a href="items/external-blocks.html"><code>extern</code>块</a>中的项</li>
 <li>固有和特型<a href="items/implementations.html">实现</a></li>
 <li><a href="items/traits.html">特型定义</a></li>
@@ -546,7 +546,7 @@ IDENTIFIER</text>
 <div class="rule" id="r-macro.proc.derive.allowed-positions"><a class="rule-link" href="#r-macro.proc.derive.allowed-positions" title="macro.proc.derive.allowed-positions"><span>[macro<wbr>.proc<wbr>.derive<wbr>.allowed-positions]</span></a>
 </div>
 
-<p><code>proc_macro_derive</code>属性只能应用于定义在crate根目录中，并带有<a href="items/functions.html#r-items.fn.extern">Rust ABI</a>的<code>pub</code><a href="items/functions.html">函数</a>，其<a href="types.html">类型</a>为<code>fn(TokenStream) -&gt; TokenStream</code>，其中<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>来自<a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>。该函数可以是<code>const</code>，并且可以使用<code>extern</code>显式指定 Rust ABI，但不能使用任何其他<a href="items/functions.html#grammar-FunctionQualifiers">限定符</a>（例如，它不能是<code>async</code>或<code>unsafe</code>）。</p>
+<p><code>proc_macro_derive</code>属性只能应用于定义在crate根目录中，并带有<a href="items/functions.html#r-items.fn.extern">Rust ABI</a>的<code>pub</code><a href="items/functions.html">函数</a>，其<a href="types.html">类型</a>为<code>fn(TokenStream) -&gt; TokenStream</code>，其中<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>来自<a href="https://doc.rust-lang.org/proc_macro/index.html"><code>proc_macro</code> crate</a>。该函数可以是<code>const</code>，并且可以使用<code>extern</code>显式指定 Rust ABI，但不能使用任何其他<a href="items/functions.html#grammar-FunctionQualifiers">限定符</a>（例如，它不能是<code>async</code>或<code>unsafe</code>）。</p>
 <div class="rule" id="r-macro.proc.derive.duplicates"><a class="rule-link" href="#r-macro.proc.derive.duplicates" title="macro.proc.derive.duplicates"><span>[macro<wbr>.proc<wbr>.derive<wbr>.duplicates]</span></a>
 </div>
 
@@ -566,7 +566,7 @@ IDENTIFIER</text>
 <div class="rule" id="r-macro.proc.derive.attributes.intro"><a class="rule-link" href="#r-macro.proc.derive.attributes.intro" title="macro.proc.derive.attributes.intro"><span>[macro<wbr>.proc<wbr>.derive<wbr>.attributes<wbr>.intro]</span></a>
 </div>
 
-<p>派生宏可以声明 <em>派生宏辅助属性</em> ，用于派生宏所应用的<a href="items.html">项</a>的作用域内。这些<a href="attributes.html">属性</a>是<a href="attributes.html#active-and-inert-attributes">惰性的</a>。虽然它们的目的被声明它们的宏使用，但它们可以被任何宏看到。</p>
+<p>派生宏可以声明 <em>派生宏辅助属性</em> ，用于派生宏所应用的<a href="items.html">项</a>的作用域内。这些<a href="attributes.html">属性</a>是<a href="attributes.html#活跃属性和惰性属性">惰性的</a>。虽然它们的目的被声明它们的宏使用，但它们可以被任何宏看到。</p>
 <div class="rule" id="r-macro.proc.derive.attributes.decl"><a class="rule-link" href="#r-macro.proc.derive.attributes.decl" title="macro.proc.derive.attributes.decl"><span>[macro<wbr>.proc<wbr>.derive<wbr>.attributes<wbr>.decl]</span></a>
 </div>
 
@@ -696,7 +696,7 @@ fn invoke4() {}
 <div class="rule" id="r-macro.proc.attribute.allowed-positions"><a class="rule-link" href="#r-macro.proc.attribute.allowed-positions" title="macro.proc.attribute.allowed-positions"><span>[macro<wbr>.proc<wbr>.attribute<wbr>.allowed-positions]</span></a>
 </div>
 
-<p><code>proc_macro_attribute</code>属性只能应用于<code>fn(TokenStream, TokenStream) -&gt; TokenStream</code>类型的<code>pub</code><a href="items/functions.html">函数</a>，其中<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>来自 <a href="../proc_macro/index.html"><code>proc_macro</code> crate</a>。它必须具有 <a href="items/functions.html#r-items.fn.extern">“Rust” ABI</a>。不允许使用其他函数限定符。它必须位于crate的根目录中。</p>
+<p><code>proc_macro_attribute</code>属性只能应用于<code>fn(TokenStream, TokenStream) -&gt; TokenStream</code>类型的<code>pub</code><a href="items/functions.html">函数</a>，其中<a href="https://doc.rust-lang.org/proc_macro/struct.TokenStream.html"><code>词法单元流</code></a>来自 <a href="https://doc.rust-lang.org/proc_macro/index.html"><code>proc_macro</code> crate</a>。它必须具有 <a href="items/functions.html#r-items.fn.extern">“Rust” ABI</a>。不允许使用其他函数限定符。它必须位于crate的根目录中。</p>
 <div class="rule" id="r-macro.proc.attribute.duplicates"><a class="rule-link" href="#r-macro.proc.attribute.duplicates" title="macro.proc.attribute.duplicates"><span>[macro<wbr>.proc<wbr>.attribute<wbr>.duplicates]</span></a>
 </div>
 
@@ -728,7 +728,7 @@ fn invoke4() {}
 <div class="rule" id="r-macro.proc.token.intro"><a class="rule-link" href="#r-macro.proc.token.intro" title="macro.proc.token.intro"><span>[macro<wbr>.proc<wbr>.token<wbr>.intro]</span></a>
 </div>
 
-<p>声明式<a href="macros-by-example.html"><code>macro_rules</code></a>宏和过程宏对词法单元（或更确切地说，<a href="../proc_macro/enum.TokenTree.html"><code>TokenTree</code>s</a>）使用相似但不同的定义。</p>
+<p>声明式<a href="macros-by-example.html"><code>macro_rules</code></a>宏和过程宏对词法单元（或更确切地说，<a href="https://doc.rust-lang.org/proc_macro/enum.TokenTree.html"><code>TokenTree</code>s</a>）使用相似但不同的定义。</p>
 <div class="rule" id="r-macro.proc.token.macro_rules"><a class="rule-link" href="#r-macro.proc.token.macro_rules" title="macro.proc.token.macro_rules"><span>[macro<wbr>.proc<wbr>.token<wbr>.macro_rules]</span></a>
 </div>
 
@@ -778,7 +778,7 @@ fn invoke4() {}
 <li>关键字元变量 <a href="macros-by-example.html#r-macro.decl.hygiene.crate"><code>$crate</code></a> 作为单个标识符传递。</li>
 <li>所有其他元变量替换都表示为其底层词法单元流。
 <ul>
-<li>此类词法单元流可能被包装到带分隔符的组（<a href="../proc_macro/struct.Group.html"><code>Group</code></a>）中，使用隐式分隔符（<a href="../proc_macro/enum.Delimiter.html#variant.None"><code>Delimiter::None</code></a>），当需要保留解析优先级时。</li>
+<li>此类词法单元流可能被包装到带分隔符的组（<a href="https://doc.rust-lang.org/proc_macro/struct.Group.html"><code>Group</code></a>）中，使用隐式分隔符（<a href="https://doc.rust-lang.org/proc_macro/enum.Delimiter.html#variant.None"><code>Delimiter::None</code></a>），当需要保留解析优先级时。</li>
 <li><code>tt</code>和<code>ident</code>替换永远不会被包装到此类组中，并且始终表示为其底层词法单元树。</li>
 </ul>
 </li>
@@ -790,7 +790,7 @@ fn invoke4() {}
 <ul>
 <li>标点符号在适用时会被组合成多字符运算符。</li>
 <li>与标识符连接的单引号<code>'</code>会被组合成生命周期。</li>
-<li>负字面量会被转换为两个词法单元（<code>-</code>和字面量），可能被包装到带分隔符的组（<a href="../proc_macro/struct.Group.html"><code>Group</code></a>）中，使用隐式分隔符（<a href="../proc_macro/enum.Delimiter.html#variant.None"><code>Delimiter::None</code></a>），当需要保留解析优先级时。</li>
+<li>负字面量会被转换为两个词法单元（<code>-</code>和字面量），可能被包装到带分隔符的组（<a href="https://doc.rust-lang.org/proc_macro/struct.Group.html"><code>Group</code></a>）中，使用隐式分隔符（<a href="https://doc.rust-lang.org/proc_macro/enum.Delimiter.html#variant.None"><code>Delimiter::None</code></a>），当需要保留解析优先级时。</li>
 </ul>
 <div class="rule" id="r-macro.proc.token.doc-comment"><a class="rule-link" href="#r-macro.proc.token.doc-comment" title="macro.proc.token.doc-comment"><span>[macro<wbr>.proc<wbr>.token<wbr>.doc-comment]</span></a>
 </div>

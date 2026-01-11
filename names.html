@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,14 +178,16 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-names"><a class="rule-link" href="#r-names" title="names"><span>[names]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/names.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-names"><a class="rule-link" href="#r-names" title="names"><span>[names]</span></a>
 </div>
 
 <h1 id="名称"><a class="header" href="#名称">名称</a></h1>
 <div class="rule" id="r-names.intro"><a class="rule-link" href="#r-names.intro" title="names.intro"><span>[names<wbr>.intro]</span></a>
 </div>
 
-<p>一个 <em>实体(entity)</em> 是一种语言结构，它在源程序中可以以某种方式被引用，通常是通过 <a href="paths.html">路径</a> 。实体包括 <a href="types.html">类型</a> 、 <a href="items.html">项</a> 、 <a href="items/generics.html">泛型参数</a> 、 <a href="patterns.html">变量绑定</a> 、 <a href="expressions/loop-expr.html#loop-labels">循环标签</a> 、 <a href="tokens.html#生命周期和循环标签">生命周期</a> 、 <a href="expressions/field-expr.html">字段</a> 、 <a href="attributes.html">属性</a> 以及 <a href="attributes/diagnostics.html#lint-check-attributes">lint</a> 。</p>
+<p>一个 <em>实体(entity)</em> 是一种语言结构，它在源程序中可以以某种方式被引用，通常是通过 <a href="paths.html">路径</a> 。实体包括 <a href="types.html">类型</a> 、 <a href="items.html">项</a> 、 <a href="items/generics.html">泛型参数</a> 、 <a href="patterns.html">变量绑定</a> 、 <a href="expressions/loop-expr.html#循环标签">循环标签</a> 、 <a href="tokens.html#生命周期和循环标签">生命周期</a> 、 <a href="expressions/field-expr.html">字段</a> 、 <a href="attributes.html">属性</a> 以及 <a href="attributes/diagnostics.html#lint检查属性">lint</a> 。</p>
 <p>一个 <em>声明(declaration)</em> 是一种语法结构，它可以引入一个 <em>名称(name)</em> 来引用实体。实体名称在 <a href="names/scopes.html"><em>作用域</em></a> 内有效 — 即该名称可以被引用的源文本区域。</p>
 <p>某些实体在源码中被 <a href="#explicitly-declared-entities">显式声明</a> ，而某些实体作为语言或编译器扩展的一部分被 <a href="#implicitly-declared-entities">隐式声明</a> 。</p>
 <p><a href="paths.html"><em>路径</em></a> 用于引用实体，可能是在另一个模块或类型中。</p>
@@ -210,7 +212,7 @@
 <li><a href="items/modules.html">模块声明</a></li>
 <li><a href="items/extern-crates.html">外部 crate 声明</a></li>
 <li><a href="items/use-declarations.html">使用声明</a></li>
-<li><a href="items/functions.html">函数声明</a> 和 <a href="items/functions.html#function-parameters">函数参数</a></li>
+<li><a href="items/functions.html">函数声明</a> 和 <a href="items/functions.html#函数参数">函数参数</a></li>
 <li><a href="items/type-aliases.html">类型别名</a></li>
 <li><a href="items/structs.html">结构体</a> 、 <a href="items/unions.html">联合体</a> 、 <a href="items/enumerations.html">枚举</a> 、枚举变体声明以及它们的具名字段</li>
 <li><a href="items/constant-items.html">常量项声明</a></li>
@@ -229,11 +231,11 @@
 <li><a href="expressions.html">表达式</a> ：
 <ul>
 <li><a href="expressions/closure-expr.html">闭包</a> 参数</li>
-<li><a href="expressions/loop-expr.html#while-let-patterns"><code>while let</code></a> 模式绑定</li>
-<li><a href="expressions/loop-expr.html#iterator-loops"><code>for</code></a> 模式绑定</li>
-<li><a href="expressions/if-expr.html#if-let-patterns"><code>if let</code></a> 模式绑定</li>
+<li><a href="expressions/loop-expr.html#while-let模式"><code>while let</code></a> 模式绑定</li>
+<li><a href="expressions/loop-expr.html#迭代器循环"><code>for</code></a> 模式绑定</li>
+<li><a href="expressions/if-expr.html#if-let模式"><code>if let</code></a> 模式绑定</li>
 <li><a href="expressions/match-expr.html"><code>match</code></a> 模式绑定</li>
-<li><a href="expressions/loop-expr.html#loop-labels">循环标签</a></li>
+<li><a href="expressions/loop-expr.html#循环标签">循环标签</a></li>
 </ul>
 </li>
 </ul>
@@ -247,13 +249,13 @@
 </div>
 
 <ul>
-<li><a href="trait-bounds.html#higher-ranked-trait-bounds">高阶特型界限</a></li>
+<li><a href="trait-bounds.html#高阶特型界限">高阶特型界限</a></li>
 </ul>
 <div class="rule" id="r-names.explicit.binding"><a class="rule-link" href="#r-names.explicit.binding" title="names.explicit.binding"><span>[names<wbr>.explicit<wbr>.binding]</span></a>
 </div>
 
 <ul>
-<li><a href="statements.html#let-statements"><code>let</code> 语句</a> 模式绑定</li>
+<li><a href="statements.html#let语句"><code>let</code> 语句</a> 模式绑定</li>
 </ul>
 <div class="rule" id="r-names.explicit.macro_use"><a class="rule-link" href="#r-names.explicit.macro_use" title="names.explicit.macro_use"><span>[names<wbr>.explicit<wbr>.macro_use]</span></a>
 </div>
@@ -283,13 +285,13 @@
 </div>
 
 <ul>
-<li><a href="names/preludes.html#language-prelude">语言预导入</a> ：
+<li><a href="names/preludes.html#语言预导入">语言预导入</a> ：
 <ul>
 <li><a href="types/boolean.html">布尔类型</a> — <code>bool</code></li>
 <li><a href="types/textual.html">文本类型</a> — <code>char</code> 和 <code>str</code></li>
-<li><a href="types/numeric.html#integer-types">整数类型</a> — <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>i128</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>u128</code></li>
-<li><a href="types/numeric.html#machine-dependent-integer-types">机器相关整数类型</a> — <code>usize</code> 和 <code>isize</code></li>
-<li><a href="types/numeric.html#floating-point-types">浮点类型</a> — <code>f32</code> 和 <code>f64</code></li>
+<li><a href="types/numeric.html#整数类型">整数类型</a> — <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>i128</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>u128</code></li>
+<li><a href="types/numeric.html#平台相关整数类型">机器相关整数类型</a> — <code>usize</code> 和 <code>isize</code></li>
+<li><a href="types/numeric.html#浮点类型">浮点类型</a> — <code>f32</code> 和 <code>f64</code></li>
 </ul>
 </li>
 </ul>
@@ -297,37 +299,37 @@
 </div>
 
 <ul>
-<li><a href="attributes.html#built-in-attributes-index">内置属性</a></li>
+<li><a href="attributes.html#内置属性索引">内置属性</a></li>
 </ul>
 <div class="rule" id="r-names.implicit.prelude"><a class="rule-link" href="#r-names.implicit.prelude" title="names.implicit.prelude"><span>[names<wbr>.implicit<wbr>.prelude]</span></a>
 </div>
 
 <ul>
-<li><a href="names/preludes.html#standard-library-prelude">标准库预导入</a> 项、属性和宏</li>
+<li><a href="names/preludes.html#标准库预导入">标准库预导入</a> 项、属性和宏</li>
 </ul>
 <div class="rule" id="r-names.implicit.stdlib"><a class="rule-link" href="#r-names.implicit.stdlib" title="names.implicit.stdlib"><span>[names<wbr>.implicit<wbr>.stdlib]</span></a>
 </div>
 
 <ul>
-<li>根模块中的 <a href="names/preludes.html#extern-prelude">标准库</a> crate</li>
+<li>根模块中的 <a href="names/preludes.html#外部预导入">标准库</a> crate</li>
 </ul>
 <div class="rule" id="r-names.implicit.extern-prelude"><a class="rule-link" href="#r-names.implicit.extern-prelude" title="names.implicit.extern-prelude"><span>[names<wbr>.implicit<wbr>.extern-prelude]</span></a>
 </div>
 
 <ul>
-<li>由编译器链接的 <a href="names/preludes.html#extern-prelude">外部 crate</a></li>
+<li>由编译器链接的 <a href="names/preludes.html#外部预导入">外部 crate</a></li>
 </ul>
 <div class="rule" id="r-names.implicit.tool-attributes"><a class="rule-link" href="#r-names.implicit.tool-attributes" title="names.implicit.tool-attributes"><span>[names<wbr>.implicit<wbr>.tool-attributes]</span></a>
 </div>
 
 <ul>
-<li><a href="attributes.html#tool-attributes">工具属性</a></li>
+<li><a href="attributes.html#工具属性">工具属性</a></li>
 </ul>
 <div class="rule" id="r-names.implicit.lints"><a class="rule-link" href="#r-names.implicit.lints" title="names.implicit.lints"><span>[names<wbr>.implicit<wbr>.lints]</span></a>
 </div>
 
 <ul>
-<li><a href="attributes/diagnostics.html#lint-check-attributes">lint</a> 和 <a href="attributes/diagnostics.html#tool-lint-attributes">工具 lint 属性</a></li>
+<li><a href="attributes/diagnostics.html#lint检查属性">lint</a> 和 <a href="attributes/diagnostics.html#工具lint属性">工具 lint 属性</a></li>
 </ul>
 <div class="rule" id="r-names.implicit.derive-helpers"><a class="rule-link" href="#r-names.implicit.derive-helpers" title="names.implicit.derive-helpers"><span>[names<wbr>.implicit<wbr>.derive-helpers]</span></a>
 </div>

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-names.namespaces"><a class="rule-link" href="#r-names.namespaces" title="names.namespaces"><span>[names<wbr>.namespaces]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/names/namespaces.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-names.namespaces"><a class="rule-link" href="#r-names.namespaces" title="names.namespaces"><span>[names<wbr>.namespaces]</span></a>
 </div>
 
 <h1 id="命名空间"><a class="header" href="#命名空间">命名空间</a></h1>
@@ -196,15 +198,15 @@
 <ul>
 <li><a href="../items/modules.html">模块声明</a></li>
 <li><a href="../items/extern-crates.html">外部 crate 声明</a></li>
-<li><a href="preludes.html#extern-prelude">外部 crate 预导入</a> 项</li>
+<li><a href="preludes.html#外部预导入">外部 crate 预导入</a> 项</li>
 <li><a href="../items/structs.html">结构体</a> 、 <a href="../items/unions.html">联合体</a> 、 <a href="../items/enumerations.html">枚举</a> 、枚举变体声明</li>
 <li><a href="../items/traits.html">特型项声明</a></li>
 <li><a href="../items/type-aliases.html">类型别名</a></li>
-<li><a href="../items/associated-items.html#associated-types">关联类型声明</a></li>
+<li><a href="../items/associated-items.html#关联类型">关联类型声明</a></li>
 <li>内置类型： <a href="../types/boolean.html">布尔型</a> 、 <a href="../types/numeric.html">数值型</a> 和 <a href="../types/textual.html">文本型</a></li>
 <li><a href="../items/generics.html">泛型类型参数</a></li>
 <li><a href="../paths.html#self-1"><code>Self</code> 类型</a></li>
-<li><a href="../attributes.html#tool-attributes">工具属性模块</a></li>
+<li><a href="../attributes.html#工具属性">工具属性模块</a></li>
 </ul>
 </li>
 <li>值命名空间
@@ -215,18 +217,18 @@
 <li><a href="../items/structs.html">结构体构造函数</a></li>
 <li><a href="../items/enumerations.html">枚举变体构造函数</a></li>
 <li><a href="../paths.html#self-1"><code>Self</code> 构造函数</a></li>
-<li><a href="../items/generics.html#const-generics">泛型常量参数</a></li>
-<li><a href="../items/associated-items.html#associated-constants">关联常量声明</a></li>
-<li><a href="../items/associated-items.html#associated-functions-and-methods">关联函数声明</a></li>
-<li>本地绑定 — <a href="../statements.html#let-statements"><code>let</code></a> 、 <a href="../expressions/if-expr.html#if-let-patterns"><code>if let</code></a> 、 <a href="../expressions/loop-expr.html#while-let-patterns"><code>while let</code></a> 、 <a href="../expressions/loop-expr.html#iterator-loops"><code>for</code></a> 、 <a href="../expressions/match-expr.html"><code>match</code></a> 分支、 <a href="../items/functions.html#function-parameters">函数参数</a> 、 <a href="../expressions/closure-expr.html">闭包参数</a></li>
+<li><a href="../items/generics.html#常量泛型">泛型常量参数</a></li>
+<li><a href="../items/associated-items.html#关联常量">关联常量声明</a></li>
+<li><a href="../items/associated-items.html#关联函数和方法">关联函数声明</a></li>
+<li>本地绑定 — <a href="../statements.html#let语句"><code>let</code></a> 、 <a href="../expressions/if-expr.html#if-let模式"><code>if let</code></a> 、 <a href="../expressions/loop-expr.html#while-let模式"><code>while let</code></a> 、 <a href="../expressions/loop-expr.html#迭代器循环"><code>for</code></a> 、 <a href="../expressions/match-expr.html"><code>match</code></a> 分支、 <a href="../items/functions.html#函数参数">函数参数</a> 、 <a href="../expressions/closure-expr.html">闭包参数</a></li>
 <li>捕获的 <a href="../expressions/closure-expr.html">闭包</a> 变量</li>
 </ul>
 </li>
 <li>宏命名空间
 <ul>
 <li><a href="../macros-by-example.html"><code>macro_rules</code> 声明</a></li>
-<li><a href="../attributes.html#built-in-attributes-index">内置属性</a></li>
-<li><a href="../attributes.html#tool-attributes">工具属性</a></li>
+<li><a href="../attributes.html#内置属性索引">内置属性</a></li>
+<li><a href="../attributes.html#工具属性">工具属性</a></li>
 <li><a href="../procedural-macros.html#proc_macro属性">类函数过程宏</a></li>
 <li><a href="../procedural-macros.html#r-macro.proc.derive">派生宏</a></li>
 <li><a href="../procedural-macros.html#派生宏辅助属性">派生宏辅助属性</a></li>
@@ -240,7 +242,7 @@
 </li>
 <li>标签命名空间
 <ul>
-<li><a href="../expressions/loop-expr.html#loop-labels">循环标签</a></li>
+<li><a href="../expressions/loop-expr.html#循环标签">循环标签</a></li>
 <li><a href="../expressions/loop-expr.html#r-expr.loop.block-labels">块标签</a></li>
 </ul>
 </li>

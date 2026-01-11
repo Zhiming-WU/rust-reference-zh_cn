@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,20 +178,22 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-destructors"><a class="rule-link" href="#r-destructors" title="destructors"><span>[destructors]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/destructors.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-destructors"><a class="rule-link" href="#r-destructors" title="destructors"><span>[destructors]</span></a>
 </div>
 
 <h1 id="析构函数"><a class="header" href="#析构函数">析构函数</a></h1>
 <div class="rule" id="r-destructors.intro"><a class="rule-link" href="#r-destructors.intro" title="destructors.intro"><span>[destructors<wbr>.intro]</span></a>
 </div>
 
-<p>当一个 <a href="glossary.html#initialized">已初始化</a> <a href="variables.html">变量</a> 或 <a href="expressions.html#temporaries">临时变量</a> 离开 <a href="#drop-scopes">作用域</a> 时，其 <em>析构函数</em> 会被运行，或者说它被 <em>销毁(dropped)</em>。 <a href="expressions/operator-expr.html#assignment-expressions">赋值</a> 也会运行其左侧操作数（如果已初始化）的析构函数。如果一个变量已被部分初始化，则仅销毁其已初始化的字段。</p>
+<p>当一个 <a href="glossary.html#已初始化">已初始化</a> <a href="variables.html">变量</a> 或 <a href="expressions.html#临时变量">临时变量</a> 离开 <a href="#drop-scopes">作用域</a> 时，其 <em>析构函数</em> 会被运行，或者说它被 <em>销毁(dropped)</em>。 <a href="expressions/operator-expr.html#赋值表达式">赋值</a> 也会运行其左侧操作数（如果已初始化）的析构函数。如果一个变量已被部分初始化，则仅销毁其已初始化的字段。</p>
 <div class="rule" id="r-destructors.operation"><a class="rule-link" href="#r-destructors.operation" title="destructors.operation"><span>[destructors<wbr>.operation]</span></a>
 </div>
 
 <p>类型 <code>T</code> 的析构函数由以下部分组成：</p>
 <ol>
-<li>如果 <code>T: Drop</code>，则调用 <a href="../core/ops/drop/trait.Drop.html#tymethod.drop"><code>&lt;T as core::ops::Drop&gt;::drop</code></a></li>
+<li>如果 <code>T: Drop</code>，则调用 <a href="https://doc.rust-lang.org/core/ops/drop/trait.Drop.html#tymethod.drop"><code>&lt;T as core::ops::Drop&gt;::drop</code></a></li>
 <li>递归运行其所有字段的析构函数。
 <ul>
 <li><a href="types/struct.html">结构体</a> 的字段按声明顺序销毁。</li>
@@ -207,7 +209,7 @@
 <div class="rule" id="r-destructors.drop_in_place"><a class="rule-link" href="#r-destructors.drop_in_place" title="destructors.drop_in_place"><span>[destructors<wbr>.drop_in_place]</span></a>
 </div>
 
-<p>如果必须手动运行析构函数（例如在实现自己的智能指针时），可以使用 <a href="../core/ptr/fn.drop_in_place.html"><code>core::ptr::drop_in_place</code></a> 。</p>
+<p>如果必须手动运行析构函数（例如在实现自己的智能指针时），可以使用 <a href="https://doc.rust-lang.org/core/ptr/fn.drop_in_place.html"><code>core::ptr::drop_in_place</code></a> 。</p>
 <p>一些示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -250,11 +252,11 @@ core::mem::forget(partial_move.1);
 <div class="rule" id="r-destructors.scope.desugaring"><a class="rule-link" href="#r-destructors.scope.desugaring" title="destructors.scope.desugaring"><span>[destructors<wbr>.scope<wbr>.desugaring]</span></a>
 </div>
 
-<p>可以通过使用 <a href="expressions/match-expr.html"><code>match</code></a> 、 <a href="expressions/loop-expr.html#infinite-loops"><code>loop</code></a> 和 <code>break</code> 将 <a href="expressions/loop-expr.html#iterator-loops"><code>for</code></a> 、 <a href="expressions/if-expr.html#if-expressions"><code>if</code></a> 和 <a href="expressions/loop-expr.html#predicate-loops"><code>while</code></a> 表达式替换为等效表达式来确定销毁作用域。</p>
+<p>可以通过使用 <a href="expressions/match-expr.html"><code>match</code></a> 、 <a href="expressions/loop-expr.html#无限循环"><code>loop</code></a> 和 <code>break</code> 将 <a href="expressions/loop-expr.html#迭代器循环"><code>for</code></a> 、 <a href="expressions/if-expr.html#if表达式"><code>if</code></a> 和 <a href="expressions/loop-expr.html#谓词循环"><code>while</code></a> 表达式替换为等效表达式来确定销毁作用域。</p>
 <div class="rule" id="r-destructors.scope.operators"><a class="rule-link" href="#r-destructors.scope.operators" title="destructors.scope.operators"><span>[destructors<wbr>.scope<wbr>.operators]</span></a>
 </div>
 
-<p>重载运算符与内置运算符不作区分，且不考虑 <a href="patterns.html#binding-modes">绑定模式</a> 。</p>
+<p>重载运算符与内置运算符不作区分，且不考虑 <a href="patterns.html#绑定模式">绑定模式</a> 。</p>
 <div class="rule" id="r-destructors.scope.list"><a class="rule-link" href="#r-destructors.scope.list" title="destructors.scope.list"><span>[destructors<wbr>.scope<wbr>.list]</span></a>
 </div>
 
@@ -319,7 +321,7 @@ core::mem::forget(partial_move.1);
 </div>
 
 <ul>
-<li><a href="statements.html#let-statements"><code>let</code> 语句</a> 的初始化器的父作用域是该 <code>let</code> 语句的作用域。</li>
+<li><a href="statements.html#let语句"><code>let</code> 语句</a> 的初始化器的父作用域是该 <code>let</code> 语句的作用域。</li>
 </ul>
 <div class="rule" id="r-destructors.scope.nesting.statement"><a class="rule-link" href="#r-destructors.scope.nesting.statement" title="destructors.scope.nesting.statement"><span>[destructors<wbr>.scope<wbr>.nesting<wbr>.statement]</span></a>
 </div>
@@ -418,7 +420,7 @@ let declared_last = PrintOnDrop("Dropped first in outer scope");
 <div class="rule" id="r-destructors.scope.bindings.or-patterns"><a class="rule-link" href="#r-destructors.scope.bindings.or-patterns" title="destructors.scope.bindings.or-patterns"><span>[destructors<wbr>.scope<wbr>.bindings<wbr>.or-patterns]</span></a>
 </div>
 
-<p>出于销毁顺序的目的， <a href="patterns.html#or-patterns">或模式</a> 按第一个子模式给出的顺序声明绑定。</p>
+<p>出于销毁顺序的目的， <a href="patterns.html#或模式">或模式</a> 按第一个子模式给出的顺序声明绑定。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">struct PrintOnDrop(&amp;'static str);
@@ -458,7 +460,7 @@ or_pattern_drop_order(Err([
 <div class="rule" id="r-destructors.scope.temporary.intro"><a class="rule-link" href="#r-destructors.scope.temporary.intro" title="destructors.scope.temporary.intro"><span>[destructors<wbr>.scope<wbr>.temporary<wbr>.intro]</span></a>
 </div>
 
-<p>表达式的 <em>临时作用域</em> 是指当表达式用于 <a href="expressions.html#位置表达式和值表达式">位置上下文</a> 时，用于持有该表达式结果的临时变量的作用域，除非该表达式被 <a href="destructors.html#constant-promotion">提升</a> 。</p>
+<p>表达式的 <em>临时作用域</em> 是指当表达式用于 <a href="expressions.html#位置表达式和值表达式">位置上下文</a> 时，用于持有该表达式结果的临时变量的作用域，除非该表达式被 <a href="destructors.html#常量提升">提升</a> 。</p>
 <div class="rule" id="r-destructors.scope.temporary.enclosing"><a class="rule-link" href="#r-destructors.scope.temporary.enclosing" title="destructors.scope.temporary.enclosing"><span>[destructors<wbr>.scope<wbr>.temporary<wbr>.enclosing]</span></a>
 </div>
 
@@ -466,20 +468,20 @@ or_pattern_drop_order(Err([
 <ul>
 <li>整个函数。</li>
 <li>一个语句。</li>
-<li><a href="expressions/if-expr.html#if-expressions"><code>if</code></a> 、 <a href="expressions/loop-expr.html#predicate-loops"><code>while</code></a> 或 <a href="expressions/loop-expr.html#infinite-loops"><code>loop</code></a> 表达式的体部。</li>
+<li><a href="expressions/if-expr.html#if表达式"><code>if</code></a> 、 <a href="expressions/loop-expr.html#谓词循环"><code>while</code></a> 或 <a href="expressions/loop-expr.html#无限循环"><code>loop</code></a> 表达式的体部。</li>
 <li><code>if</code> 表达式的 <code>else</code> 块。</li>
 <li><code>if</code> 或 <code>while</code> 表达式中非模式匹配的条件表达式，或 <code>match</code> 守卫。</li>
 <li>match 分支的体表达式。</li>
-<li><a href="expressions/operator-expr.html#lazy-boolean-operators">惰性布尔表达式</a> 的每个操作数。</li>
-<li><a href="expressions/if-expr.html#if-expressions"><code>if</code></a> 的模式匹配条件及随后的体部 (<a href="destructors.html#r-destructors.scope.temporary.edition2024">destructors.scope.temporary.edition2024</a>)。</li>
-<li><a href="expressions/loop-expr.html#predicate-loops"><code>while</code></a> 的模式匹配条件和循环体。</li>
+<li><a href="expressions/operator-expr.html#惰性布尔运算符">惰性布尔表达式</a> 的每个操作数。</li>
+<li><a href="expressions/if-expr.html#if表达式"><code>if</code></a> 的模式匹配条件及随后的体部 (<a href="destructors.html#r-destructors.scope.temporary.edition2024">destructors.scope.temporary.edition2024</a>)。</li>
+<li><a href="expressions/loop-expr.html#谓词循环"><code>while</code></a> 的模式匹配条件和循环体。</li>
 <li>块的尾随表达式的整体 (<a href="destructors.html#r-destructors.scope.temporary.edition2024">destructors.scope.temporary.edition2024</a>)。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>match</code> 表达式的 <a href="glossary.html#scrutinee">受查表达式</a> 不是临时作用域，因此受查表达式中的临时变量可以在 <code>match</code> 表达式之后销毁。例如， <code>match 1 { ref mut z =&gt; z };</code> 中 <code>1</code> 的临时变量存活到语句结束。</p>
+<p><code>match</code> 表达式的 <a href="glossary.html#审查值">受查表达式</a> 不是临时作用域，因此受查表达式中的临时变量可以在 <code>match</code> 表达式之后销毁。例如， <code>match 1 { ref mut z =&gt; z };</code> 中 <code>1</code> 的临时变量存活到语句结束。</p>
 </blockquote>
 </div>
 
@@ -624,7 +626,7 @@ println!("{:?}", C);
 <div class="rule" id="r-destructors.scope.lifetime-extension.sub-expressions"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.sub-expressions" title="destructors.scope.lifetime-extension.sub-expressions"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.sub-expressions]</span></a>
 </div>
 
-<p>如果 <a href="expressions/operator-expr.html#r-expr.operator.borrow">借用</a> 、 <a href="expressions/operator-expr.html#the-dereference-operator">解引用表达式</a> 、 <a href="expressions/field-expr.html">字段表达式</a> 或 <a href="expressions/tuple-expr.html#tuple-indexing-expressions">元组索引表达式</a> 具有延长的临时作用域，则其操作数也具有。如果 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">索引表达式</a> 具有延长的临时作用域，则被索引的表达式也具有延长的临时作用域。</p>
+<p>如果 <a href="expressions/operator-expr.html#r-expr.operator.borrow">借用</a> 、 <a href="expressions/operator-expr.html#解引用运算符">解引用表达式</a> 、 <a href="expressions/field-expr.html">字段表达式</a> 或 <a href="expressions/tuple-expr.html#元组索引表达式">元组索引表达式</a> 具有延长的临时作用域，则其操作数也具有。如果 <a href="expressions/array-expr.html#数组和切片索引表达式">索引表达式</a> 具有延长的临时作用域，则被索引的表达式也具有延长的临时作用域。</p>
 <div class="rule" id="r-destructors.scope.lifetime-extension.patterns"><a class="rule-link" href="#r-destructors.scope.lifetime-extension.patterns" title="destructors.scope.lifetime-extension.patterns"><span>[destructors<wbr>.scope<wbr>.lifetime-extension<wbr>.patterns]</span></a>
 </div>
 
@@ -635,7 +637,7 @@ println!("{:?}", C);
 <p>一个 <em>延长模式</em> 是以下之一：</p>
 <ul>
 <li>
-<p>通过引用或可变引用绑定的 <a href="patterns.html#identifier-patterns">标识符模式</a> 。</p>
+<p>通过引用或可变引用绑定的 <a href="patterns.html#标识符模式">标识符模式</a> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">fn temp() {}
@@ -646,7 +648,7 @@ println!("{:?}", C);
 </span><span class="boring">}</span></code></pre>
 </li>
 <li>
-<p><a href="patterns.html#struct-patterns">结构体模式</a> 、 <a href="patterns.html#tuple-patterns">元组模式</a> 、 <a href="patterns.html#tuple-struct-patterns">元组结构体模式</a> 、 <a href="patterns.html#slice-patterns">切片模式</a> 或 <a href="patterns.html#or-patterns">或模式</a> ，其中至少一个直接子模式是延长模式。</p>
+<p><a href="patterns.html#结构体模式">结构体模式</a> 、 <a href="patterns.html#元组模式">元组模式</a> 、 <a href="patterns.html#元组结构体模式">元组结构体模式</a> 、 <a href="patterns.html#切片模式">切片模式</a> 或 <a href="patterns.html#或模式">或模式</a> ，其中至少一个直接子模式是延长模式。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use core::sync::atomic::{AtomicU64, Ordering::Relaxed};
@@ -709,10 +711,10 @@ let &amp;ref x = &amp;*&amp;temp(); // 正常
 <li>初始化器表达式。</li>
 <li>延长 <a href="expressions/operator-expr.html#r-expr.operator.borrow">借用</a> 表达式的操作数。</li>
 <li>延长 <a href="expressions.html#r-expr.super-macros">超级宏调用</a> 表达式的 <a href="expressions.html#r-expr.super-macros">超级操作数</a> 。</li>
-<li>延长 <a href="expressions/array-expr.html#array-expressions">数组表达式</a> 、 <a href="expressions/operator-expr.html#type-cast-expressions">转换表达式</a> 、 <a href="expressions/struct-expr.html">大括号结构体表达式</a> 或 <a href="expressions/tuple-expr.html#tuple-expressions">元组表达式</a> 的操作数。</li>
+<li>延长 <a href="expressions/array-expr.html#数组表达式">数组表达式</a> 、 <a href="expressions/operator-expr.html#类型转换表达式">转换表达式</a> 、 <a href="expressions/struct-expr.html">大括号结构体表达式</a> 或 <a href="expressions/tuple-expr.html#元组表达式">元组表达式</a> 的操作数。</li>
 <li>延长 <a href="types/struct.html#r-type.struct.tuple">元组结构体</a> 或 <a href="types/enum.html#r-type.enum.declaration">元组枚举变体</a> 构造器表达式的参数。</li>
 <li>延长 <a href="expressions/block-expr.html">块表达式</a> 的最终表达式（异步块表达式 <a href="expressions/block-expr.html#r-expr.block.async">async block expression</a> 除外）。</li>
-<li>延长 <a href="expressions/if-expr.html#if-expressions"><code>if</code></a> 表达式的 <code>consequent</code> 、 <code>else if</code> 或 <code>else</code> 块的最终表达式。</li>
+<li>延长 <a href="expressions/if-expr.html#if表达式"><code>if</code></a> 表达式的 <code>consequent</code> 、 <code>else if</code> 或 <code>else</code> 块的最终表达式。</li>
 <li>延长 <a href="expressions/match-expr.html"><code>match</code></a> 表达式的分支表达式。</li>
 </ul>
 <div class="alert alert-note">
@@ -861,12 +863,12 @@ format_args!("{:?}", { &amp;temp() }); // 错误
 </div>
 
 <h3 id="手动抑制析构函数"><a class="header" href="#手动抑制析构函数">手动抑制析构函数</a></h3>
-<p><a href="../core/mem/fn.forget.html"><code>core::mem::forget</code></a> 可用于防止运行变量的析构函数，而 <a href="../core/mem/manually_drop/struct.ManuallyDrop.html"><code>core::mem::ManuallyDrop</code></a> 提供了一个包装器来防止变量或字段被自动销毁。</p>
+<p><a href="https://doc.rust-lang.org/core/mem/fn.forget.html"><code>core::mem::forget</code></a> 可用于防止运行变量的析构函数，而 <a href="https://doc.rust-lang.org/core/mem/manually_drop/struct.ManuallyDrop.html"><code>core::mem::ManuallyDrop</code></a> 提供了一个包装器来防止变量或字段被自动销毁。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>通过 <a href="../core/mem/fn.forget.html"><code>core::mem::forget</code></a> 或其他手段防止析构函数运行是安全的，即使它的类型不是 <code>'static</code> 。除了本文档定义的保证运行析构函数的地方外，为了健全性，类型 <em>不可</em> 安全地依赖于析构函数的运行。</p>
+<p>通过 <a href="https://doc.rust-lang.org/core/mem/fn.forget.html"><code>core::mem::forget</code></a> 或其他手段防止析构函数运行是安全的，即使它的类型不是 <code>'static</code> 。除了本文档定义的保证运行析构函数的地方外，为了健全性，类型 <em>不可</em> 安全地依赖于析构函数的运行。</p>
 </blockquote>
 </div>
 
@@ -874,9 +876,9 @@ format_args!("{:?}", { &amp;temp() }); // 错误
 </div>
 
 <h3 id="无需展开的进程终止"><a class="header" href="#无需展开的进程终止">无需展开的进程终止</a></h3>
-<p>有一些方法可以在不进行 <a href="panic.html#unwinding">展开</a> 的情况下终止进程，在这种情况下将不运行析构函数。</p>
-<p>标准库提供了 <a href="../std/process/fn.exit.html"><code>std::process::exit</code></a> 和 <a href="../std/process/fn.abort.html"><code>std::process::abort</code></a> 来显式执行此操作。此外，如果 <a href="panic.html#r-panic.panic_handler.std">恐慌处理器</a> 设置为 <code>abort</code> ，发生恐慌时将始终终止进程而不运行析构函数。</p>
-<p>还有一个需要注意的情况：当恐慌达到 <a href="items/functions.html#unwinding">非展开 ABI 边界</a> 时，要么不运行任何析构函数，要么运行直到该 ABI 边界为止的所有析构函数。</p>
+<p>有一些方法可以在不进行 <a href="panic.html#展开">展开</a> 的情况下终止进程，在这种情况下将不运行析构函数。</p>
+<p>标准库提供了 <a href="https://doc.rust-lang.org/std/process/fn.exit.html"><code>std::process::exit</code></a> 和 <a href="https://doc.rust-lang.org/std/process/fn.abort.html"><code>std::process::abort</code></a> 来显式执行此操作。此外，如果 <a href="panic.html#r-panic.panic_handler.std">恐慌处理器</a> 设置为 <code>abort</code> ，发生恐慌时将始终终止进程而不运行析构函数。</p>
+<p>还有一个需要注意的情况：当恐慌达到 <a href="items/functions.html#展开">非展开 ABI 边界</a> 时，要么不运行任何析构函数，要么运行直到该 ABI 边界为止的所有析构函数。</p>
 
                     </main>
 

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-items.fn"><a class="rule-link" href="#r-items.fn" title="items.fn"><span>[items<wbr>.fn]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/items/functions.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-items.fn"><a class="rule-link" href="#r-items.fn" title="items.fn"><span>[items<wbr>.fn]</span></a>
 </div>
 
 <h1 id="函数"><a class="header" href="#函数">函数</a></h1>
@@ -881,7 +883,7 @@ Type</text>
 <div class="rule" id="r-items.fn.signature"><a class="rule-link" href="#r-items.fn.signature" title="items.fn.signature"><span>[items<wbr>.fn<wbr>.signature]</span></a>
 </div>
 
-<p>函数可以通过参数声明一组 <em>输入</em> <a href="../variables.html"><em>变量</em></a>，调用者通过这些参数将实参传递给函数；函数还可以声明在完成后返回给调用者的值的 <em>输出</em> <a href="../types.html#type-expressions"><em>类型</em></a>。</p>
+<p>函数可以通过参数声明一组 <em>输入</em> <a href="../variables.html"><em>变量</em></a>，调用者通过这些参数将实参传递给函数；函数还可以声明在完成后返回给调用者的值的 <em>输出</em> <a href="../types.html#类型表达式"><em>类型</em></a>。</p>
 <div class="rule" id="r-items.fn.implicit-return"><a class="rule-link" href="#r-items.fn.implicit-return" title="items.fn.implicit-return"><span>[items<wbr>.fn<wbr>.implicit-return]</span></a>
 </div>
 
@@ -920,11 +922,11 @@ Type</text>
 <div class="rule" id="r-items.fn.params.self-restriction"><a class="rule-link" href="#r-items.fn.params.self-restriction" title="items.fn.params.self-restriction"><span>[items<wbr>.fn<wbr>.params<wbr>.self-restriction]</span></a>
 </div>
 
-<p>带有 self 参数的函数只能作为 <a href="traits.html">特型</a> 或 <a href="implementations.html">实现</a> 中的 <a href="associated-items.html#associated-functions-and-methods">关联函数</a> 出现。</p>
+<p>带有 self 参数的函数只能作为 <a href="traits.html">特型</a> 或 <a href="implementations.html">实现</a> 中的 <a href="associated-items.html#关联函数和方法">关联函数</a> 出现。</p>
 <div class="rule" id="r-items.fn.params.varargs"><a class="rule-link" href="#r-items.fn.params.varargs" title="items.fn.params.varargs"><span>[items<wbr>.fn<wbr>.params<wbr>.varargs]</span></a>
 </div>
 
-<p>带有 <code>...</code> 词法单元 的参数表示 <a href="external-blocks.html#variadic-functions">变参函数</a>，且只能用作 <a href="external-blocks.html">外部块</a> 函数的最后一个参数。变参参数可以有一个可选的标识符，例如 <code>args: ...</code>。</p>
+<p>带有 <code>...</code> 词法单元 的参数表示 <a href="external-blocks.html#变长参数函数">变参函数</a>，且只能用作 <a href="external-blocks.html">外部块</a> 函数的最后一个参数。变参参数可以有一个可选的标识符，例如 <code>args: ...</code>。</p>
 <div class="rule" id="r-items.fn.body"><a class="rule-link" href="#r-items.fn.body" title="items.fn.body"><span>[items<wbr>.fn<wbr>.body]</span></a>
 </div>
 
@@ -966,7 +968,7 @@ fn foo&lt;A, B&gt;(x: A, y: B) {
 <div class="rule" id="r-items.fn.generics.param-bounds"><a class="rule-link" href="#r-items.fn.generics.param-bounds" title="items.fn.generics.param-bounds"><span>[items<wbr>.fn<wbr>.generics<wbr>.param-bounds]</span></a>
 </div>
 
-<p>可以为类型参数指定 <a href="traits.html">特型</a> 绑定，以允许在该类型的值上调用具有该 特型 的方法。这是使用 <code>where</code> 语法指定的：</p>
+<p>可以为类型参数指定 <a href="traits.html">特型</a> 界限，以允许在该类型的值上调用具有该 特型 的方法。这是使用 <code>where</code> 语法指定的：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use std::fmt::Debug;
@@ -1057,7 +1059,7 @@ let fptr: extern "C" fn() -&gt; i32 = new_i32;
 <div class="rule" id="r-items.fn.extern.unwind"><a class="rule-link" href="#r-items.fn.extern.unwind" title="items.fn.extern.unwind"><span>[items<wbr>.fn<wbr>.extern<wbr>.unwind]</span></a>
 </div>
 
-<h3 id="展开unwinding"><a class="header" href="#展开unwinding">展开(Unwinding)</a></h3>
+<h3 id="展开"><a class="header" href="#展开">展开</a></h3>
 <div class="rule" id="r-items.fn.extern.unwind.intro"><a class="rule-link" href="#r-items.fn.extern.unwind.intro" title="items.fn.extern.unwind.intro"><span>[items<wbr>.fn<wbr>.extern<wbr>.unwind<wbr>.intro]</span></a>
 </div>
 
@@ -1086,12 +1088,12 @@ let fptr: extern "C" fn() -&gt; i32 = new_i32;
 </div>
 
 <p>在 <code>panic=unwind</code> 的情况下，当 恐慌 被非展开 ABI 边界转变为中止时，要么不运行任何析构函数 (<code>Drop</code> 调用)，要么运行直到 ABI 边界为止的所有析构函数。具体发生这两种行为中的哪一种是未指定的。</p>
-<p>有关跨 FFI 边界展开的其他注意事项和限制，请参阅 <a href="../panic.html#unwinding-across-ffi-boundaries">恐慌文档中的相关部分</a>。</p>
+<p>有关跨 FFI 边界展开的其他注意事项和限制，请参阅 <a href="../panic.html#展开-across-ffi-boundaries">恐慌文档中的相关部分</a>。</p>
 <div class="rule" id="r-items.fn.const"><a class="rule-link" href="#r-items.fn.const" title="items.fn.const"><span>[items<wbr>.fn<wbr>.const]</span></a>
 </div>
 
 <h2 id="const函数"><a class="header" href="#const函数">Const函数</a></h2>
-<p>有关 const 函数的定义，请参阅 <a href="../const_eval.html#const-functions">const 函数</a>。</p>
+<p>有关 const 函数的定义，请参阅 <a href="../const_eval.html#常量函数">const 函数</a>。</p>
 <div class="rule" id="r-items.fn.async"><a class="rule-link" href="#r-items.fn.async" title="items.fn.async"><span>[items<wbr>.fn<wbr>.async]</span></a>
 </div>
 
@@ -1112,7 +1114,7 @@ async unsafe fn unsafe_example() { }
 <div class="rule" id="r-items.fn.async.desugar-brief"><a class="rule-link" href="#r-items.fn.async.desugar-brief" title="items.fn.async.desugar-brief"><span>[items<wbr>.fn<wbr>.async<wbr>.desugar-brief]</span></a>
 </div>
 
-<p>一个 async 函数大致相当于一个返回 <a href="../types/impl-trait.html"><code>impl Future</code></a> 并且以 <a href="../expressions/block-expr.html#async-blocks"><code>async move</code> 块</a> 作为其主体的函数：</p>
+<p>一个 async 函数大致相当于一个返回 <a href="../types/impl-trait.html"><code>impl Future</code></a> 并且以 <a href="../expressions/block-expr.html#async块"><code>async move</code> 块</a> 作为其主体的函数：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// 源码
@@ -1143,7 +1145,7 @@ fn example&lt;'a&gt;(x: &amp;'a str) -&gt; impl Future&lt;Output = usize&gt; + '
 </div>
 
 <ul>
-<li>主体中的 <a href="../expressions/block-expr.html#async-blocks"><code>async move</code> 块</a> 捕获了所有函数参数，包括那些未使用或绑定到 <code>_</code> 模式的参数。这确保了函数参数的销毁顺序与函数非 async 时相同，不同之处在于销毁发生在返回的 future 被完全 await 之后。</li>
+<li>主体中的 <a href="../expressions/block-expr.html#async块"><code>async move</code> 块</a> 捕获了所有函数参数，包括那些未使用或绑定到 <code>_</code> 模式的参数。这确保了函数参数的销毁顺序与函数非 async 时相同，不同之处在于销毁发生在返回的 future 被完全 await 之后。</li>
 </ul>
 <div class="rule" id="r-items.fn.async.edition2018"><a class="rule-link" href="#r-items.fn.async.edition2018" title="items.fn.async.edition2018"><span>[items<wbr>.fn<wbr>.async<wbr>.edition2018]</span></a>
 </div>
@@ -1215,15 +1217,15 @@ async fn safe_example() {
 <ul>
 <li><a href="../conditional-compilation.html#cfg_attr属性"><code>cfg_attr</code></a></li>
 <li><a href="../conditional-compilation.html#cfg属性"><code>cfg</code></a></li>
-<li><a href="../attributes/codegen.html#the-cold-attribute"><code>cold</code></a></li>
-<li><a href="../attributes/diagnostics.html#the-deprecated-attribute"><code>deprecated</code></a></li>
+<li><a href="../attributes/codegen.html#cold属性"><code>cold</code></a></li>
+<li><a href="../attributes/diagnostics.html#deprecated属性"><code>deprecated</code></a></li>
 <li><a href="../../rustdoc/the-doc-attribute.html"><code>doc</code></a></li>
 <li><a href="../abi.html#the-export_name-attribute"><code>export_name</code></a></li>
-<li><a href="../attributes/codegen.html#the-inline-attribute"><code>inline</code></a></li>
+<li><a href="../attributes/codegen.html#inline属性"><code>inline</code></a></li>
 <li><a href="../abi.html#the-link_section-attribute"><code>link_section</code></a></li>
 <li><a href="../attributes/diagnostics.html#the-must_use-attribute"><code>must_use</code></a></li>
 <li><a href="../abi.html#the-no_mangle-attribute"><code>no_mangle</code></a></li>
-<li><a href="../attributes/diagnostics.html#lint-check-attributes">Lint 检查属性</a></li>
+<li><a href="../attributes/diagnostics.html#lint检查属性">Lint 检查属性</a></li>
 <li><a href="../procedural-macros.html#r-macro.proc.attribute">过程宏属性</a></li>
 <li><a href="../attributes/testing.html">测试属性</a></li>
 </ul>
@@ -1234,7 +1236,7 @@ async fn safe_example() {
 <div class="rule" id="r-items.fn.param-attributes.intro"><a class="rule-link" href="#r-items.fn.param-attributes.intro" title="items.fn.param-attributes.intro"><span>[items<wbr>.fn<wbr>.param-attributes<wbr>.intro]</span></a>
 </div>
 
-<p>函数参数允许使用 <a href="../attributes.html">外部属性</a>，允许的 <a href="../attributes.html#built-in-attributes-index">内置属性</a> 限于 <code>cfg</code>、<code>cfg_attr</code>、<code>allow</code>、<code>warn</code>、<code>deny</code> 和 <code>forbid</code>。</p>
+<p>函数参数允许使用 <a href="../attributes.html">外部属性</a>，允许的 <a href="../attributes.html#内置属性索引">内置属性</a> 限于 <code>cfg</code>、<code>cfg_attr</code>、<code>allow</code>、<code>warn</code>、<code>deny</code> 和 <code>forbid</code>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn len(

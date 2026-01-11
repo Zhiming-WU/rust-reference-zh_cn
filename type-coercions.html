@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-coerce"><a class="rule-link" href="#r-coerce" title="coerce"><span>[coerce]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/type-coercions.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-coerce"><a class="rule-link" href="#r-coerce" title="coerce"><span>[coerce]</span></a>
 </div>
 
 <h1 id="隐式类型转换"><a class="header" href="#隐式类型转换">隐式类型转换</a></h1>
@@ -189,7 +191,7 @@
 <div class="rule" id="r-coerce.as"><a class="rule-link" href="#r-coerce.as" title="coerce.as"><span>[coerce<wbr>.as]</span></a>
 </div>
 
-<p>任何允许隐式转换的转换也可以通过 <a href="expressions/operator-expr.html#type-cast-expressions">类型转换运算符</a> <code>as</code> 显式执行。</p>
+<p>任何允许隐式转换的转换也可以通过 <a href="expressions/operator-expr.html#类型转换表达式">类型转换运算符</a> <code>as</code> 显式执行。</p>
 <p>隐式转换最初在 <a href="https://github.com/rust-lang/rfcs/blob/master/text/0401-coercions.md">RFC 401</a> 中定义，并在 <a href="https://github.com/rust-lang/rfcs/blob/master/text/1558-closure-to-fn-coercion.md">RFC 1558</a> 中得到扩展。</p>
 <div class="rule" id="r-coerce.site"><a class="rule-link" href="#r-coerce.site" title="coerce.site"><span>[coerce<wbr>.site]</span></a>
 </div>
@@ -424,7 +426,7 @@ fn main() {
 <div class="rule" id="r-coerce.unsize.trait"><a class="rule-link" href="#r-coerce.unsize.trait" title="coerce.unsize.trait"><span>[coerce<wbr>.unsize<wbr>.trait]</span></a>
 </div>
 
-<p>两个 特型 <a href="../core/marker/trait.Unsize.html"><code>Unsize</code></a> 和 <a href="../core/ops/unsize/trait.CoerceUnsized.html"><code>CoerceUnsized</code></a> 被用于协助此过程并将其公开给库使用。以下转换是内置的，如果 <code>T</code> 可以通过其中之一隐式转换为 <code>U</code> ，则将提供 <code>T</code> 对 <code>Unsize&lt;U&gt;</code> 的实现：</p>
+<p>两个 特型 <a href="https://doc.rust-lang.org/core/marker/trait.Unsize.html"><code>Unsize</code></a> 和 <a href="https://doc.rust-lang.org/core/ops/unsize/trait.CoerceUnsized.html"><code>CoerceUnsized</code></a> 被用于协助此过程并将其公开给库使用。以下转换是内置的，如果 <code>T</code> 可以通过其中之一隐式转换为 <code>U</code> ，则将提供 <code>T</code> 对 <code>Unsize&lt;U&gt;</code> 的实现：</p>
 <div class="rule" id="r-coerce.unsize.slice"><a class="rule-link" href="#r-coerce.unsize.slice" title="coerce.unsize.slice"><span>[coerce<wbr>.unsize<wbr>.slice]</span></a>
 </div>
 
@@ -441,7 +443,7 @@ fn main() {
 </div>
 
 <ul>
-<li><code>dyn T</code> 到 <code>dyn U</code> ，当 <code>U</code> 是 <code>T</code> 的 <a href="items/traits.html#supertraits">父特型</a> 之一时。
+<li><code>dyn T</code> 到 <code>dyn U</code> ，当 <code>U</code> 是 <code>T</code> 的 <a href="items/traits.html#父特型">父特型</a> 之一时。
 <ul>
 <li>这允许丢弃自动特型，即允许 <code>dyn T + Auto</code> 到 <code>dyn U</code> 。</li>
 <li>如果主特型将自动特型作为父特型，则允许添加自动特型，即给定 <code>trait T: U + Send {}</code> ，允许 <code>dyn T</code> 到 <code>dyn T + Send</code> 或到 <code>dyn U + Send</code> 的隐式转换。</li>

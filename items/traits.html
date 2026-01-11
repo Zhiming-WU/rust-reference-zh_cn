@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-items.traits"><a class="rule-link" href="#r-items.traits" title="items.traits"><span>[items<wbr>.traits]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/items/traits.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-items.traits"><a class="rule-link" href="#r-items.traits" title="items.traits"><span>[items<wbr>.traits]</span></a>
 </div>
 
 <h1 id="特型"><a class="header" href="#特型">特型</a></h1>
@@ -339,9 +341,9 @@ AssociatedItem</text>
 
 <p>一个 <em>特型</em> 描述了一个类型可以实现的抽象接口。此接口由 <a href="associated-items.html">关联项</a> 组成，共有三种：</p>
 <ul>
-<li><a href="associated-items.html#associated-functions-and-methods">函数</a></li>
-<li><a href="associated-items.html#associated-types">类型</a></li>
-<li><a href="associated-items.html#associated-constants">常量</a></li>
+<li><a href="associated-items.html#关联函数和方法">函数</a></li>
+<li><a href="associated-items.html#关联类型">类型</a></li>
+<li><a href="associated-items.html#关联常量">常量</a></li>
 </ul>
 <div class="rule" id="r-items.traits.namespace"><a class="rule-link" href="#r-items.traits.namespace" title="items.traits.namespace"><span>[items<wbr>.traits<wbr>.namespace]</span></a>
 </div>
@@ -377,17 +379,17 @@ trait Example {
 <div class="rule" id="r-items.traits.const-fn"><a class="rule-link" href="#r-items.traits.const-fn" title="items.traits.const-fn"><span>[items<wbr>.traits<wbr>.const-fn]</span></a>
 </div>
 
-<p>特型 函数不允许是 <a href="functions.html#const-functions"><code>const</code></a>。</p>
+<p>特型 函数不允许是 <a href="functions.html#const函数"><code>const</code></a>。</p>
 <div class="rule" id="r-items.traits.bounds"><a class="rule-link" href="#r-items.traits.bounds" title="items.traits.bounds"><span>[items<wbr>.traits<wbr>.bounds]</span></a>
 </div>
 
-<h2 id="特型绑定"><a class="header" href="#特型绑定">特型绑定</a></h2>
-<p>泛型 项 可以使用 特型 作为其 类型参数 的 <a href="../trait-bounds.html">绑定</a>。</p>
+<h2 id="特型界限"><a class="header" href="#特型界限">特型界限</a></h2>
+<p>泛型 项 可以使用特型作为其类型参数的 <a href="../trait-bounds.html">界限</a> 。</p>
 <div class="rule" id="r-items.traits.generic"><a class="rule-link" href="#r-items.traits.generic" title="items.traits.generic"><span>[items<wbr>.traits<wbr>.generic]</span></a>
 </div>
 
 <h2 id="泛型特型"><a class="header" href="#泛型特型">泛型特型</a></h2>
-<p>可以为 特型 指定 类型参数 以使其成为 泛型。这些出现在 特型 名称之后，使用与 <a href="functions.html#generic-functions">泛型函数</a> 相同的语法。</p>
+<p>可以为 特型 指定 类型参数 以使其成为 泛型。这些出现在 特型 名称之后，使用与 <a href="functions.html#泛型函数">泛型函数</a> 相同的语法。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Seq&lt;T&gt; {
@@ -455,12 +457,12 @@ trait Example {
 <li>不具有 返回位置 <code>impl Trait</code> 类型 (<code>fn example(&amp;self) -&gt; impl Trait</code>)。</li>
 </ul>
 </li>
-<li>不具有 <code>where Self: Sized</code> 绑定（<code>Self</code> 的 接收者 类型 (即 <code>self</code>) 隐含了这一点）。</li>
+<li>不具有 <code>where Self: Sized</code> 界限（<code>Self</code> 的 接收者 类型 (即 <code>self</code>) 隐含了这一点）。</li>
 </ul>
 </li>
 <li>明确的不可分派函数要求：
 <ul>
-<li>具有 <code>where Self: Sized</code> 绑定（<code>Self</code> 的 接收者 类型 (即 <code>self</code>) 隐含了这一点）。</li>
+<li>具有 <code>where Self: Sized</code> 界限（<code>Self</code> 的 接收者 类型 (即 <code>self</code>) 隐含了这一点）。</li>
 </ul>
 </li>
 </ul>
@@ -569,11 +571,11 @@ let obj: Box&lt;dyn WithSelf&gt; = Box::new(S); // 错误：不能使用 `Self` 
 <div class="rule" id="r-items.traits.supertraits.intro"><a class="rule-link" href="#r-items.traits.supertraits.intro" title="items.traits.supertraits.intro"><span>[items<wbr>.traits<wbr>.supertraits<wbr>.intro]</span></a>
 </div>
 
-<p><strong>父特型 (Supertraits)</strong> 是指为了让某个类型实现特定 特型 而必须先为该类型实现的 特型。此外，任何被 特型 绑定的 <a href="generics.html">泛型</a> 或 <a href="../types/trait-object.html">特型对象</a> 都可以访问其 父特型 的 关联项。</p>
+<p><strong>父特型 (Supertraits)</strong> 是指为了让某个类型实现特定 特型 而必须先为该类型实现的 特型。此外，任何被 特型 限界的 <a href="generics.html">泛型</a> 或 <a href="../types/trait-object.html">特型对象</a> 都可以访问其 父特型 的 关联项。</p>
 <div class="rule" id="r-items.traits.supertraits.decl"><a class="rule-link" href="#r-items.traits.supertraits.decl" title="items.traits.supertraits.decl"><span>[items<wbr>.traits<wbr>.supertraits<wbr>.decl]</span></a>
 </div>
 
-<p>父特型 通过 特型 的 <code>Self</code> 类型上的 特型绑定 来声明，并以此类推，包括那些 特型绑定 中声明的 特型 的 父特型。 特型 成为其自身的 父特型 是一个错误。</p>
+<p>父特型 通过 特型 的 <code>Self</code> 类型上的 特型界限 来声明，并以此类推，包括那些 特型界限 中声明的 特型 的 父特型。 特型 成为其自身的 父特型 是一个错误。</p>
 <div class="rule" id="r-items.traits.supertraits.subtrait"><a class="rule-link" href="#r-items.traits.supertraits.subtrait" title="items.traits.supertraits.subtrait"><span>[items<wbr>.traits<wbr>.supertraits<wbr>.subtrait]</span></a>
 </div>
 
@@ -584,7 +586,7 @@ let obj: Box&lt;dyn WithSelf&gt; = Box::new(S); // 错误：不能使用 `Self` 
 </span>trait Shape { fn area(&amp;self) -&gt; f64; }
 trait Circle: Shape { fn radius(&amp;self) -&gt; f64; }
 <span class="boring">}</span></code></pre>
-<p>以下是相同的示例，只是使用了 <a href="generics.html#where-clauses">where 子句</a>。</p>
+<p>以下是相同的示例，只是使用了 <a href="generics.html#where子句">where 子句</a>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Shape { fn area(&amp;self) -&gt; f64; }
@@ -633,7 +635,7 @@ let nonsense = circle.radius() * circle.area();
 <div class="rule" id="r-items.traits.safety.intro"><a class="rule-link" href="#r-items.traits.safety.intro" title="items.traits.safety.intro"><span>[items<wbr>.traits<wbr>.safety<wbr>.intro]</span></a>
 </div>
 
-<p>以 <code>unsafe</code> 关键字开头的 特型 项 表示 <em>实现</em> 该 特型 可能是 <a href="../unsafety.html">不安全</a> 的。使用正确实现的 不安全特型 是安全的。 <a href="implementations.html#trait-implementations">特型实现</a> 也必须以 <code>unsafe</code> 关键字开头。</p>
+<p>以 <code>unsafe</code> 关键字开头的 特型 项 表示 <em>实现</em> 该 特型 可能是 <a href="../unsafety.html">不安全</a> 的。使用正确实现的 不安全特型 是安全的。 <a href="implementations.html#特型实现">特型实现</a> 也必须以 <code>unsafe</code> 关键字开头。</p>
 <p><a href="../special-types-and-traits.html#sync"><code>Sync</code></a> 和 <a href="../special-types-and-traits.html#send"><code>Send</code></a> 是 不安全特型 的示例。</p>
 <div class="rule" id="r-items.traits.params"><a class="rule-link" href="#r-items.traits.params" title="items.traits.params"><span>[items<wbr>.traits<wbr>.params]</span></a>
 </div>
@@ -642,7 +644,7 @@ let nonsense = circle.radius() * circle.area();
 <div class="rule" id="r-items.traits.params.patterns-no-body"><a class="rule-link" href="#r-items.traits.params.patterns-no-body" title="items.traits.params.patterns-no-body"><span>[items<wbr>.traits<wbr>.params<wbr>.patterns-no-body]</span></a>
 </div>
 
-<p>在没有函数体的 关联函数 中，参数仅允许 <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a> 或 <code>_</code> <a href="../patterns.html#wildcard-pattern">通配符模式</a>，以及 <a href="functions.html#grammar-SelfParam">Self 参数</a> 允许的形式。 <code>mut</code> <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a> 目前是允许的，但它已被弃用，将来会变成一个硬错误。</p>
+<p>在没有函数体的 关联函数 中，参数仅允许 <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a> 或 <code>_</code> <a href="../patterns.html#通配符模式">通配符模式</a>，以及 <a href="functions.html#grammar-SelfParam">Self 参数</a> 允许的形式。 <code>mut</code> <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a> 目前是允许的，但它已被弃用，将来会变成一个硬错误。</p>
 <!-- https://github.com/rust-lang/rust/issues/35203 -->
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -704,7 +706,7 @@ trait T {
 <ul>
 <li><a href="../identifiers.html#grammar-IDENTIFIER">标识符</a></li>
 <li><code>mut</code> <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a></li>
-<li><a href="../patterns.html#wildcard-pattern"><code>_</code></a></li>
+<li><a href="../patterns.html#通配符模式"><code>_</code></a></li>
 <li><code>&amp;</code> <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a></li>
 <li><code>&amp;&amp;</code> <a href="../identifiers.html#grammar-IDENTIFIER">标识符</a></li>
 </ul>

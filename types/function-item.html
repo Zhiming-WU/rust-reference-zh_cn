@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type.fn-item"><a class="rule-link" href="#r-type.fn-item" title="type.fn-item"><span>[type<wbr>.fn-item]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types/function-item.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type.fn-item"><a class="rule-link" href="#r-type.fn-item" title="type.fn-item"><span>[type<wbr>.fn-item]</span></a>
 </div>
 
 <h1 id="函数项类型"><a class="header" href="#函数项类型">函数项类型</a></h1>
@@ -224,7 +226,7 @@ let foo_ptr_2 = if want_i32 {
 </div>
 
 <p>所有函数项都实现 <a href="../special-types-and-traits.html#copy"><code>Copy</code></a>、<a href="../special-types-and-traits.html#clone"><code>Clone</code></a>、<a href="../special-types-and-traits.html#send"><code>Send</code></a> 和 <a href="../special-types-and-traits.html#sync"><code>Sync</code></a>。</p>
-<p><a href="../../core/ops/function/trait.Fn.html"><code>Fn</code></a>、<a href="../../core/ops/function/trait.FnMut.html"><code>FnMut</code></a> 和 <a href="../../core/ops/function/trait.FnOnce.html"><code>FnOnce</code></a> 都会被实现，除非函数具有以下任何一种情况：</p>
+<p><a href="https://doc.rust-lang.org/core/ops/function/trait.Fn.html"><code>Fn</code></a>、<a href="https://doc.rust-lang.org/core/ops/function/trait.FnMut.html"><code>FnMut</code></a> 和 <a href="https://doc.rust-lang.org/core/ops/function/trait.FnOnce.html"><code>FnOnce</code></a> 都会被实现，除非函数具有以下任何一种情况：</p>
 <ul>
 <li><a href="../unsafe-keyword.html#r-unsafe.fn"><code>unsafe</code></a> 限定符</li>
 <li><a href="../attributes/codegen.html#r-attributes.codegen.target_feature"><code>target_feature</code> 属性</a></li>

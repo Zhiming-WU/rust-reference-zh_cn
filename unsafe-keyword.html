@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,10 +178,12 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-unsafe"><a class="rule-link" href="#r-unsafe" title="unsafe"><span>[unsafe]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/unsafe-keyword.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-unsafe"><a class="rule-link" href="#r-unsafe" title="unsafe"><span>[unsafe]</span></a>
 </div>
 
-<h1 id="unsafe-关键字"><a class="header" href="#unsafe-关键字"><code>unsafe</code> 关键字</a></h1>
+<h1 id="unsafe关键字"><a class="header" href="#unsafe关键字"><code>unsafe</code>关键字</a></h1>
 <div class="rule" id="r-unsafe.intro"><a class="rule-link" href="#r-unsafe.intro" title="unsafe.intro"><span>[unsafe<wbr>.intro]</span></a>
 </div>
 
@@ -194,12 +196,12 @@
 </li>
 <li>它用于标记程序员 <em>断言</em> 满足了在其他地方定义的安全条件的代码。
 <ul>
-<li>这包括 <code>unsafe {}</code>、<code>unsafe impl</code>、不带 <a href="https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> 的 <code>unsafe fn</code>、<code>unsafe extern</code> 和 <code>#[unsafe(attr)]</code>。</li>
+<li>这包括 <code>unsafe {}</code>、<code>unsafe impl</code>、不带 <a href="../rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> 的 <code>unsafe fn</code>、<code>unsafe extern</code> 和 <code>#[unsafe(attr)]</code>。</li>
 </ul>
 </li>
 </ul>
 <p>下面将讨论这些情况。
-请参阅 <a href="https://doc.rust-lang.org/std/keyword.unsafe.html">关键字</a> 文档中的一些示例。</p>
+请参阅 <a href="../std/keyword.unsafe.html">关键字</a> 文档中的一些示例。</p>
 <div class="rule" id="r-unsafe.positions"><a class="rule-link" href="#r-unsafe.positions" title="unsafe.positions"><span>[unsafe<wbr>.positions]</span></a>
 </div>
 
@@ -216,22 +218,22 @@
 <div class="rule" id="r-unsafe.fn"><a class="rule-link" href="#r-unsafe.fn" title="unsafe.fn"><span>[unsafe<wbr>.fn]</span></a>
 </div>
 
-<h2 id="不安全函数-unsafe-fn"><a class="header" href="#不安全函数-unsafe-fn">不安全函数 (<code>unsafe fn</code>)</a></h2>
+<h2 id="不安全函数unsafe-fn"><a class="header" href="#不安全函数unsafe-fn">不安全函数(<code>unsafe fn</code>)</a></h2>
 <div class="rule" id="r-unsafe.fn.intro"><a class="rule-link" href="#r-unsafe.fn.intro" title="unsafe.fn.intro"><span>[unsafe<wbr>.fn<wbr>.intro]</span></a>
 </div>
 
 <p>不安全函数是在所有上下文和/或所有可能的输入下都不安全的函数。
 我们说它们具有 <em>额外安全条件</em> ，这些是所有调用者必须遵守的要求，且编译器不会检查。
-例如，<a href="../std/primitive.slice.html#method.get_unchecked"><code>get_unchecked</code></a> 具有索引必须在范围内的额外安全条件。
+例如，<a href="https://doc.rust-lang.org/std/primitive.slice.html#method.get_unchecked"><code>get_unchecked</code></a> 具有索引必须在范围内的额外安全条件。
 不安全函数应当附带说明这些额外安全条件的文档。</p>
 <div class="rule" id="r-unsafe.fn.safety"><a class="rule-link" href="#r-unsafe.fn.safety" title="unsafe.fn.safety"><span>[unsafe<wbr>.fn<wbr>.safety]</span></a>
 </div>
 
-<p>此类函数必须带有 <code>unsafe</code> 关键字前缀，且只能从 <code>unsafe</code> 块内部调用，或者在没有启用 <a href="https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> lint 的 <code>unsafe fn</code> 内部调用。</p>
+<p>此类函数必须带有 <code>unsafe</code> 关键字前缀，且只能从 <code>unsafe</code> 块内部调用，或者在没有启用 <a href="../rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> lint 的 <code>unsafe fn</code> 内部调用。</p>
 <div class="rule" id="r-unsafe.block"><a class="rule-link" href="#r-unsafe.block" title="unsafe.block"><span>[unsafe<wbr>.block]</span></a>
 </div>
 
-<h2 id="不安全块-unsafe-"><a class="header" href="#不安全块-unsafe-">不安全块 (<code>unsafe {}</code>)</a></h2>
+<h2 id="不安全块unsafe-"><a class="header" href="#不安全块unsafe-">不安全块(<code>unsafe {}</code>)</a></h2>
 <div class="rule" id="r-unsafe.block.intro"><a class="rule-link" href="#r-unsafe.block.intro" title="unsafe.block.intro"><span>[unsafe<wbr>.block<wbr>.intro]</span></a>
 </div>
 
@@ -240,7 +242,7 @@
 </div>
 
 <p>默认情况下，不安全函数的主体也被认为是一个不安全块；
-这可以通过启用 <a href="https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> lint 来更改。</p>
+这可以通过启用 <a href="../rustc/lints/listing/allowed-by-default.html#unsafe-op-in-unsafe-fn"><code>unsafe_op_in_unsafe_fn</code></a> lint 来更改。</p>
 <p>通过将操作放入不安全块中，程序员声明他们已经负责满足该块内所有操作的额外安全条件。</p>
 <p>不安全块是不安全函数的逻辑对等物：
 不安全函数定义了调用者必须遵守的证明义务，而不安全块则表示块内调用的函数或操作的所有相关证明义务都已履行。
@@ -255,7 +257,7 @@
 <div class="rule" id="r-unsafe.trait"><a class="rule-link" href="#r-unsafe.trait" title="unsafe.trait"><span>[unsafe<wbr>.trait]</span></a>
 </div>
 
-<h2 id="不安全特型-unsafe-trait"><a class="header" href="#不安全特型-unsafe-trait">不安全特型 (<code>unsafe trait</code>)</a></h2>
+<h2 id="不安全特型unsafe-trait"><a class="header" href="#不安全特型unsafe-trait">不安全特型(<code>unsafe trait</code>)</a></h2>
 <div class="rule" id="r-unsafe.trait.intro"><a class="rule-link" href="#r-unsafe.trait.intro" title="unsafe.trait.intro"><span>[unsafe<wbr>.trait<wbr>.intro]</span></a>
 </div>
 
@@ -268,14 +270,14 @@
 <div class="rule" id="r-unsafe.impl"><a class="rule-link" href="#r-unsafe.impl" title="unsafe.impl"><span>[unsafe<wbr>.impl]</span></a>
 </div>
 
-<h2 id="不安全特型实现-unsafe-impl"><a class="header" href="#不安全特型实现-unsafe-impl">不安全特型实现 (<code>unsafe impl</code>)</a></h2>
+<h2 id="不安全特型实现unsafe-impl"><a class="header" href="#不安全特型实现unsafe-impl">不安全特型实现(<code>unsafe impl</code>)</a></h2>
 <p>在实现不安全特型时，实现需要带有 <code>unsafe</code> 关键字前缀。
 通过编写 <code>unsafe impl</code>，程序员声明他们已经负责满足特型所要求的额外安全条件。</p>
 <p>不安全特型实现是不安全特型的逻辑对等物：不安全特型定义了实现必须遵守的证明义务，而不安全实现则表示所有相关的证明义务都已履行。</p>
 <div class="rule" id="r-unsafe.extern"><a class="rule-link" href="#r-unsafe.extern" title="unsafe.extern"><span>[unsafe<wbr>.extern]</span></a>
 </div>
 
-<h2 id="不安全外部块-unsafe-extern"><a class="header" href="#不安全外部块-unsafe-extern">不安全外部块 (<code>unsafe extern</code>)</a></h2>
+<h2 id="不安全外部块unsafe-extern"><a class="header" href="#不安全外部块unsafe-extern">不安全外部块(<code>unsafe extern</code>)</a></h2>
 <p>声明 <a href="items/external-blocks.html">外部块</a> 的程序员必须确保其中包含的项的签名是正确的。如果不这样做，可能会导致未定义行为。通过编写 <code>unsafe extern</code> 来表明这一义务已经履行。</p>
 <div class="rule" id="r-unsafe.extern.edition2024"><a class="rule-link" href="#r-unsafe.extern.edition2024" title="unsafe.extern.edition2024"><span>[unsafe<wbr>.extern<wbr>.edition2024]</span></a>
 </div>
@@ -291,7 +293,7 @@
 <div class="rule" id="r-unsafe.attribute"><a class="rule-link" href="#r-unsafe.attribute" title="unsafe.attribute"><span>[unsafe<wbr>.attribute]</span></a>
 </div>
 
-<h2 id="不安全属性-unsafeattr"><a class="header" href="#不安全属性-unsafeattr">不安全属性 (<code>#[unsafe(attr)]</code>)</a></h2>
+<h2 id="不安全属性unsafeattr"><a class="header" href="#不安全属性unsafeattr">不安全属性(<code>#[unsafe(attr)]</code>)</a></h2>
 <p><a href="attributes.html">不安全属性</a> 是指在使用该属性时必须遵守额外安全条件的属性。编译器无法检查这些条件是否已得到遵守。为了断言它们已得到遵守，这些属性必须包装在 <code>unsafe(..)</code> 中，例如 <code>#[unsafe(no_mangle)]</code>。</p>
 
                     </main>

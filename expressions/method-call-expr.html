@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.method"><a class="rule-link" href="#r-expr.method" title="expr.method"><span>[expr<wbr>.method]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/method-call-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.method"><a class="rule-link" href="#r-expr.method" title="expr.method"><span>[expr<wbr>.method]</span></a>
 </div>
 
 <h1 id="方法调用表达式"><a class="header" href="#方法调用表达式">方法调用表达式</a></h1>
@@ -281,7 +283,7 @@ let log_pi = pi.unwrap_or(1.0).log(2.72);
 </div>
 
 <p>第一步是构建候选接收者类型列表。
-通过重复 <a href="operator-expr.html#the-dereference-operator">解引用</a> 接收者表达式的类型来获取这些类型，将遇到的每个类型添加到列表中，最后尝试进行 <a href="../type-coercions.html#unsized-coercions">不定尺寸强制转换</a>，如果成功则添加结果类型。</p>
+通过重复 <a href="operator-expr.html#解引用运算符">解引用</a> 接收者表达式的类型来获取这些类型，将遇到的每个类型添加到列表中，最后尝试进行 <a href="../type-coercions.html#非定长转换">不定尺寸强制转换</a>，如果成功则添加结果类型。</p>
 <div class="rule" id="r-expr.method.candidate-receivers-refs"><a class="rule-link" href="#r-expr.method.candidate-receivers-refs" title="expr.method.candidate-receivers-refs"><span>[expr<wbr>.method<wbr>.candidate-receivers-refs]</span></a>
 </div>
 
@@ -330,7 +332,7 @@ fn main() {
 <div class="rule" id="r-expr.method.ambiguous-target"><a class="rule-link" href="#r-expr.method.ambiguous-target" title="expr.method.ambiguous-target"><span>[expr<wbr>.method<wbr>.ambiguous-target]</span></a>
 </div>
 
-<p>如果这导致多个可能的候选者，则是一个错误，必须将接收者 <a href="call-expr.html#disambiguating-function-calls">转换</a> 为适当的接收者类型以进行方法调用。</p>
+<p>如果这导致多个可能的候选者，则是一个错误，必须将接收者 <a href="call-expr.html#消除函数调用歧义">转换</a> 为适当的接收者类型以进行方法调用。</p>
 <div class="rule" id="r-expr.method.receiver-constraints"><a class="rule-link" href="#r-expr.method.receiver-constraints" title="expr.method.receiver-constraints"><span>[expr<wbr>.method<wbr>.receiver-constraints]</span></a>
 </div>
 
@@ -340,7 +342,7 @@ fn main() {
 </div>
 
 <p>如果到达某一步存在多个可能的方法，例如泛型方法或 特型 被视为相同，则这是一个编译器错误。
-这些情况需要使用 <a href="call-expr.html#disambiguating-function-calls">消除歧义的函数调用语法</a> 进行方法和函数调用。</p>
+这些情况需要使用 <a href="call-expr.html#消除函数调用歧义">消除歧义的函数调用语法</a> 进行方法和函数调用。</p>
 <div class="rule" id="r-expr.method.edition2021"><a class="rule-link" href="#r-expr.method.edition2021" title="expr.method.edition2021"><span>[expr<wbr>.method<wbr>.edition2021]</span></a>
 </div>
 
@@ -348,7 +350,7 @@ fn main() {
 <blockquote>
 <p class="alert-title"><span class="alert-title-edition">2021</span> 版次差异</p>
 
-<p>在 2021 版次之前，在搜索可见方法期间，如果候选接收者类型是 <a href="../types/array.html">数组类型</a>，则会忽略标准库 <a href="../../core/iter/traits/collect/trait.IntoIterator.html"><code>IntoIterator</code></a> 特型 提供的方法。</p>
+<p>在 2021 版次之前，在搜索可见方法期间，如果候选接收者类型是 <a href="../types/array.html">数组类型</a>，则会忽略标准库 <a href="https://doc.rust-lang.org/core/iter/traits/collect/trait.IntoIterator.html"><code>IntoIterator</code></a> 特型 提供的方法。</p>
 <p>为此目的使用的 版次 由代表方法名的 词法单元 决定。</p>
 <p>此特殊情况将来可能会被删除。</p>
 </blockquote>
@@ -359,7 +361,7 @@ fn main() {
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>警告</p>
 
 <p>对于 <a href="../types/trait-object.html">特型对象</a>，如果存在与 特型 方法同名的固有方法，则在尝试在方法调用表达式中调用该方法时会给出编译器错误。
-相反，你可以使用 <a href="call-expr.html#disambiguating-function-calls">消除歧义的函数调用语法</a> 来调用该方法，在这种情况下，它调用的是 特型 方法，而不是固有方法。
+相反，你可以使用 <a href="call-expr.html#消除函数调用歧义">消除歧义的函数调用语法</a> 来调用该方法，在这种情况下，它调用的是 特型 方法，而不是固有方法。
 没有办法调用固有方法。
 只要不在 特型对象 上定义与 特型 方法同名的固有方法就没事。</p>
 </blockquote>

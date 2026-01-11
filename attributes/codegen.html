@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-attributes.codegen"><a class="rule-link" href="#r-attributes.codegen" title="attributes.codegen"><span>[attributes<wbr>.codegen]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/attributes/codegen.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-attributes.codegen"><a class="rule-link" href="#r-attributes.codegen" title="attributes.codegen"><span>[attributes<wbr>.codegen]</span></a>
 </div>
 
 <h1 id="代码生成属性"><a class="header" href="#代码生成属性">代码生成属性</a></h1>
@@ -187,7 +189,7 @@
 <div class="rule" id="r-attributes.codegen.inline"><a class="rule-link" href="#r-attributes.codegen.inline" title="attributes.codegen.inline"><span>[attributes<wbr>.codegen<wbr>.inline]</span></a>
 </div>
 
-<h3 id="inline属性"><a class="header" href="#inline属性"><code>inline</code>属性</a></h3>
+<h2 id="inline属性"><a class="header" href="#inline属性"><code>inline</code>属性</a></h2>
 <div class="rule" id="r-attributes.codegen.inline.intro"><a class="rule-link" href="#r-attributes.codegen.inline.intro" title="attributes.codegen.inline.intro"><span>[attributes<wbr>.codegen<wbr>.inline<wbr>.intro]</span></a>
 </div>
 
@@ -395,7 +397,7 @@ let f = #[inline] || (); // ERROR
 <div class="rule" id="r-attributes.codegen.cold"><a class="rule-link" href="#r-attributes.codegen.cold" title="attributes.codegen.cold"><span>[attributes<wbr>.codegen<wbr>.cold]</span></a>
 </div>
 
-<h3 id="cold属性"><a class="header" href="#cold属性"><code>cold</code>属性</a></h3>
+<h2 id="cold属性"><a class="header" href="#cold属性"><code>cold</code>属性</a></h2>
 <div class="rule" id="r-attributes.codegen.cold.intro"><a class="rule-link" href="#r-attributes.codegen.cold.intro" title="attributes.codegen.cold.intro"><span>[attributes<wbr>.codegen<wbr>.cold<wbr>.intro]</span></a>
 </div>
 
@@ -464,7 +466,7 @@ pub fn example() {}
 <div class="rule" id="r-attributes.codegen.naked.body"><a class="rule-link" href="#r-attributes.codegen.naked.body" title="attributes.codegen.naked.body"><span>[attributes<wbr>.codegen<wbr>.naked<wbr>.body]</span></a>
 </div>
 
-<p><a href="../items/functions.html#function-body">函数体</a> 必须由且仅由一个 <a href="../inline-assembly.html"><code>naked_asm!</code></a> 宏调用组成。</p>
+<p><a href="../items/functions.html#函数主体">函数体</a> 必须由且仅由一个 <a href="../inline-assembly.html"><code>naked_asm!</code></a> 宏调用组成。</p>
 <div class="rule" id="r-attributes.codegen.naked.prologue-epilogue"><a class="rule-link" href="#r-attributes.codegen.naked.prologue-epilogue" title="attributes.codegen.naked.prologue-epilogue"><span>[attributes<wbr>.codegen<wbr>.naked<wbr>.prologue-epilogue]</span></a>
 </div>
 
@@ -492,7 +494,7 @@ pub fn example() {}
 <div class="rule" id="r-attributes.codegen.naked.unused-variables"><a class="rule-link" href="#r-attributes.codegen.naked.unused-variables" title="attributes.codegen.naked.unused-variables"><span>[attributes<wbr>.codegen<wbr>.naked<wbr>.unused-variables]</span></a>
 </div>
 
-<p><a href="https://doc.rust-lang.org/rustc/lints/listing/warn-by-default.html#unused-variables"><code>unused_variables</code></a> lint 在裸函数内部被抑制。</p>
+<p><a href="../../rustc/lints/listing/warn-by-default.html#unused-variables"><code>unused_variables</code></a> lint 在裸函数内部被抑制。</p>
 <div class="rule" id="r-attributes.codegen.naked.inline"><a class="rule-link" href="#r-attributes.codegen.naked.inline" title="attributes.codegen.naked.inline"><span>[attributes<wbr>.codegen<wbr>.naked<wbr>.inline]</span></a>
 </div>
 
@@ -893,12 +895,12 @@ fn bar_sse2() {
 <div class="rule" id="r-attributes.codegen.target_feature.remark-rt"><a class="rule-link" href="#r-attributes.codegen.target_feature.remark-rt" title="attributes.codegen.target_feature.remark-rt"><span>[attributes<wbr>.codegen<wbr>.target_feature<wbr>.remark-rt]</span></a>
 </div>
 
-<p>可以在运行时使用标准库中平台特定的宏检查 特性 是否启用，例如 <a href="https://doc.rust-lang.org/std/arch/macro.is_x86_feature_detected.html"><code>is_x86_feature_detected</code></a> 或 <a href="https://doc.rust-lang.org/std/arch/macro.is_aarch64_feature_detected.html"><code>is_aarch64_feature_detected</code></a>。</p>
+<p>可以在运行时使用标准库中平台特定的宏检查 特性 是否启用，例如 <a href="../../std/arch/macro.is_x86_feature_detected.html"><code>is_x86_feature_detected</code></a> 或 <a href="../../std/arch/macro.is_aarch64_feature_detected.html"><code>is_aarch64_feature_detected</code></a>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> 为每个目标和 CPU 启用了一组默认 特性。可以使用 <a href="https://doc.rust-lang.org/rustc/codegen-options/index.html#target-cpu"><code>-C target-cpu</code></a> 标志选择 CPU。可以使用 <a href="https://doc.rust-lang.org/rustc/codegen-options/index.html#target-feature"><code>-C target-feature</code></a> 标志为整个 crate 启用或禁用单个 特性。</p>
+<p><code>rustc</code> 为每个目标和 CPU 启用了一组默认 特性。可以使用 <a href="../../rustc/codegen-options/index.html#target-cpu"><code>-C target-cpu</code></a> 标志选择 CPU。可以使用 <a href="../../rustc/codegen-options/index.html#target-feature"><code>-C target-feature</code></a> 标志为整个 crate 启用或禁用单个 特性。</p>
 </blockquote>
 </div>
 
@@ -922,7 +924,7 @@ fn bar_sse2() {
 </div>
 
 <h3 id="行为"><a class="header" href="#行为">行为</a></h3>
-<p>将该属性应用于函数 <code>f</code> 允许 <code>f</code> 内的代码获取导致 <code>f</code> 被调用的“最顶层”跟踪调用的 <a href="../../core/panic/location/struct.Location.html"><code>Location</code></a> 提示。在观察点，实现的行为就像它从 <code>f</code> 的栈帧向上查找最近的 <em>未修饰</em> 函数 <code>outer</code> 的栈帧，并返回 <code>outer</code> 中跟踪调用的 <a href="../../core/panic/location/struct.Location.html"><code>Location</code></a>。</p>
+<p>将该属性应用于函数 <code>f</code> 允许 <code>f</code> 内的代码获取导致 <code>f</code> 被调用的“最顶层”跟踪调用的 <a href="https://doc.rust-lang.org/core/panic/location/struct.Location.html"><code>Location</code></a> 提示。在观察点，实现的行为就像它从 <code>f</code> 的栈帧向上查找最近的 <em>未修饰</em> 函数 <code>outer</code> 的栈帧，并返回 <code>outer</code> 中跟踪调用的 <a href="https://doc.rust-lang.org/core/panic/location/struct.Location.html"><code>Location</code></a>。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[track_caller]
@@ -934,7 +936,7 @@ fn f() {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>core</code> 提供 <a href="../../core/panic/location/struct.Location.html#method.caller"><code>core::panic::Location::caller</code></a> 用于观察调用者位置。它包装了 <code>rustc</code> 实现的 <a href="../../core/intrinsics/fn.caller_location.html"><code>core::intrinsics::caller_location</code></a> 内部函数。</p>
+<p><code>core</code> 提供 <a href="https://doc.rust-lang.org/core/panic/location/struct.Location.html#method.caller"><code>core::panic::Location::caller</code></a> 用于观察调用者位置。它包装了 <code>rustc</code> 实现的 <a href="https://doc.rust-lang.org/core/intrinsics/fn.caller_location.html"><code>core::intrinsics::caller_location</code></a> 内部函数。</p>
 </blockquote>
 </div>
 

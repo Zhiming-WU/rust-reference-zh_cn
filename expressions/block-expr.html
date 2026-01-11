@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.block"><a class="rule-link" href="#r-expr.block" title="expr.block"><span>[expr<wbr>.block]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/block-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.block"><a class="rule-link" href="#r-expr.block" title="expr.block"><span>[expr<wbr>.block]</span></a>
 </div>
 
 <h1 id="块表达式"><a class="header" href="#块表达式">块表达式</a></h1>
@@ -485,7 +487,7 @@ BlockExpression</text>
 <div class="rule" id="r-expr.block.async.future"><a class="rule-link" href="#r-expr.block.async.future" title="expr.block.async.future"><span>[expr<wbr>.block<wbr>.async<wbr>.future]</span></a>
 </div>
 
-<p>然而，闭包返回实现了一个或多个 <a href="../../core/ops/function/trait.Fn.html"><code>std::ops::Fn</code></a> 特型 的类型，而 async 块返回的类型实现了 <a href="../../core/future/future/trait.Future.html"><code>std::future::Future</code></a> 特型 。</p>
+<p>然而，闭包返回实现了一个或多个 <a href="https://doc.rust-lang.org/core/ops/function/trait.Fn.html"><code>std::ops::Fn</code></a> 特型 的类型，而 async 块返回的类型实现了 <a href="https://doc.rust-lang.org/core/future/future/trait.Future.html"><code>std::future::Future</code></a> 特型 。</p>
 <div class="rule" id="r-expr.block.async.layout-unspecified"><a class="rule-link" href="#r-expr.block.async.layout-unspecified" title="expr.block.async.layout-unspecified"><span>[expr<wbr>.block<wbr>.async<wbr>.layout-unspecified]</span></a>
 </div>
 
@@ -513,7 +515,7 @@ BlockExpression</text>
 </div>
 
 <h3 id="捕获模式"><a class="header" href="#捕获模式">捕获模式</a></h3>
-<p>async 块使用与闭包相同的 <a href="../types/closure.html#capture-modes">捕获模式</a> 从其环境中捕获变量。
+<p>async 块使用与闭包相同的 <a href="../types/closure.html#捕获模式">捕获模式</a> 从其环境中捕获变量。
 与闭包类似，当写成 <code>async { .. }</code> 时，每个变量的捕获模式将从块的内容中推导出来。
 然而， <code>async move { .. }</code> 块会将所有引用的变量移动到生成的 future 中。</p>
 <div class="rule" id="r-expr.block.async.context"><a class="rule-link" href="#r-expr.block.async.context" title="expr.block.async.context"><span>[expr<wbr>.block<wbr>.async<wbr>.context]</span></a>
@@ -709,7 +711,7 @@ BlockExpression</text>
 <div class="rule" id="r-expr.block.unsafe.intro"><a class="rule-link" href="#r-expr.block.unsafe.intro" title="expr.block.unsafe.intro"><span>[expr<wbr>.block<wbr>.unsafe<wbr>.intro]</span></a>
 </div>
 
-<p>_ 有关何时使用 <code>unsafe</code> 的更多信息，请参阅 <a href="../unsafe-keyword.html#unsafe-blocks-unsafe-">unsafe 块</a> _。</p>
+<p>_ 有关何时使用 <code>unsafe</code> 的更多信息，请参阅 <a href="../unsafe-keyword.html#不安全块unsafe-">unsafe 块</a> _。</p>
 <p>代码块可以加上 <code>unsafe</code> 关键字前缀，以允许 <a href="../unsafety.html">unsafe 操作</a> 。
 示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
@@ -739,7 +741,7 @@ BlockExpression</text>
 <p>在以下情况下，允许在块表达式的左大括号后直接使用 <a href="../attributes.html">内部属性</a> ：</p>
 <ul>
 <li><a href="../items/functions.html">函数</a> 和 <a href="../items/associated-items.html#方法">方法</a> 体。</li>
-<li>循环体（ <a href="loop-expr.html#infinite-loops"><code>loop</code></a> 、 <a href="loop-expr.html#predicate-loops"><code>while</code></a> 和 <a href="loop-expr.html#iterator-loops"><code>for</code></a> ）。</li>
+<li>循环体（ <a href="loop-expr.html#无限循环"><code>loop</code></a> 、 <a href="loop-expr.html#谓词循环"><code>while</code></a> 和 <a href="loop-expr.html#迭代器循环"><code>for</code></a> ）。</li>
 <li>用作 <a href="../statements.html">语句</a> 的块表达式。</li>
 <li>作为 <a href="array-expr.html">数组表达式</a> 、 <a href="tuple-expr.html">元组表达式</a> 、
 <a href="call-expr.html">调用表达式</a> 和元组风格 <a href="struct-expr.html">结构体</a> 表达式元素的块表达式。</li>
@@ -749,7 +751,7 @@ BlockExpression</text>
 <div class="rule" id="r-expr.block.attributes.valid"><a class="rule-link" href="#r-expr.block.attributes.valid" title="expr.block.attributes.valid"><span>[expr<wbr>.block<wbr>.attributes<wbr>.valid]</span></a>
 </div>
 
-<p>在块表达式上有意义的属性是 <a href="../conditional-compilation.html"><code>cfg</code></a> 和 <a href="../attributes/diagnostics.html#lint-check-attributes">lint 检查属性</a> 。</p>
+<p>在块表达式上有意义的属性是 <a href="../conditional-compilation.html"><code>cfg</code></a> 和 <a href="../attributes/diagnostics.html#lint检查属性">lint 检查属性</a> 。</p>
 <p>例如，此函数在 unix 平台上返回 <code>true</code> ，在其他平台上返回 <code>false</code> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {

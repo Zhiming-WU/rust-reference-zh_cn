@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type.pointer"><a class="rule-link" href="#r-type.pointer" title="type.pointer"><span>[type<wbr>.pointer]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types/pointer.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type.pointer"><a class="rule-link" href="#r-type.pointer" title="type.pointer"><span>[type<wbr>.pointer]</span></a>
 </div>
 
 <h1 id="指针类型"><a class="header" href="#指针类型">指针类型</a></h1>
@@ -190,7 +192,7 @@
 <div class="rule" id="r-type.pointer.reference"><a class="rule-link" href="#r-type.pointer.reference" title="type.pointer.reference"><span>[type<wbr>.pointer<wbr>.reference]</span></a>
 </div>
 
-<h2 id="引用--和-mut"><a class="header" href="#引用--和-mut">引用 (<code>&amp;</code> 和 <code>&amp;mut</code>)</a></h2>
+<h2 id="引用和mut"><a class="header" href="#引用和mut">引用(<code>&amp;</code>和<code>&amp;mut</code>)</a></h2>
 <div class="rule" id="r-type.pointer.reference.syntax"><a class="rule-link" href="#r-type.pointer.reference.syntax" title="type.pointer.reference.syntax"><span>[type<wbr>.pointer<wbr>.reference<wbr>.syntax]</span></a>
 </div>
 
@@ -259,7 +261,7 @@ TypeNoBounds</text>
 <div class="rule" id="r-type.pointer.reference.shared"><a class="rule-link" href="#r-type.pointer.reference.shared" title="type.pointer.reference.shared"><span>[type<wbr>.pointer<wbr>.reference<wbr>.shared]</span></a>
 </div>
 
-<h3 id="共享引用-"><a class="header" href="#共享引用-">共享引用 (<code>&amp;</code>)</a></h3>
+<h3 id="共享引用"><a class="header" href="#共享引用">共享引用(<code>&amp;</code>)</a></h3>
 <div class="rule" id="r-type.pointer.reference.shared.intro"><a class="rule-link" href="#r-type.pointer.reference.shared.intro" title="type.pointer.reference.shared.intro"><span>[type<wbr>.pointer<wbr>.reference<wbr>.shared<wbr>.intro]</span></a>
 </div>
 
@@ -276,11 +278,11 @@ TypeNoBounds</text>
 
 <p>复制引用是一个 “浅层” 操作：
 它只涉及复制指针本身，也就是说，指针是 <code>Copy</code> 的。
-释放引用对它所指向的值没有影响，但引用一个 <a href="../expressions.html#temporaries">临时值</a> 会在引用本身的作用域内使其保持存活。</p>
+释放引用对它所指向的值没有影响，但引用一个 <a href="../expressions.html#临时变量">临时值</a> 会在引用本身的作用域内使其保持存活。</p>
 <div class="rule" id="r-type.pointer.reference.mut"><a class="rule-link" href="#r-type.pointer.reference.mut" title="type.pointer.reference.mut"><span>[type<wbr>.pointer<wbr>.reference<wbr>.mut]</span></a>
 </div>
 
-<h3 id="可变引用-mut"><a class="header" href="#可变引用-mut">可变引用 (<code>&amp;mut</code>)</a></h3>
+<h3 id="可变引用mut"><a class="header" href="#可变引用mut">可变引用(<code>&amp;mut</code>)</a></h3>
 <div class="rule" id="r-type.pointer.reference.mut.intro"><a class="rule-link" href="#r-type.pointer.reference.mut.intro" title="type.pointer.reference.mut.intro"><span>[type<wbr>.pointer<wbr>.reference<wbr>.mut<wbr>.intro]</span></a>
 </div>
 
@@ -293,7 +295,7 @@ TypeNoBounds</text>
 <div class="rule" id="r-type.pointer.raw"><a class="rule-link" href="#r-type.pointer.raw" title="type.pointer.raw"><span>[type<wbr>.pointer<wbr>.raw]</span></a>
 </div>
 
-<h2 id="裸指针-const-和-mut"><a class="header" href="#裸指针-const-和-mut">裸指针 (<code>*const</code> 和 <code>*mut</code>)</a></h2>
+<h2 id="裸指针const和mut"><a class="header" href="#裸指针const和mut">裸指针(<code>*const</code>和<code>*mut</code>)</a></h2>
 <div class="rule" id="r-type.pointer.raw.syntax"><a class="rule-link" href="#r-type.pointer.raw.syntax" title="type.pointer.raw.syntax"><span>[type<wbr>.pointer<wbr>.raw<wbr>.syntax]</span></a>
 </div>
 

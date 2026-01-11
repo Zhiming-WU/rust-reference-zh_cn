@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-items.union"><a class="rule-link" href="#r-items.union" title="items.union"><span>[items<wbr>.union]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/items/unions.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-items.union"><a class="rule-link" href="#r-items.union" title="items.union"><span>[items<wbr>.union]</span></a>
 </div>
 
 <h1 id="联合体"><a class="header" href="#联合体">联合体</a></h1>
@@ -331,7 +333,7 @@ union MyUnion {
 <div class="rule" id="r-items.union.init"><a class="rule-link" href="#r-items.union.init" title="items.union.init"><span>[items<wbr>.union<wbr>.init]</span></a>
 </div>
 
-<h2 id="初始化-联合体"><a class="header" href="#初始化-联合体">初始化 联合体</a></h2>
+<h2 id="初始化联合体"><a class="header" href="#初始化联合体">初始化联合体</a></h2>
 <div class="rule" id="r-items.union.init.intro"><a class="rule-link" href="#r-items.union.init.intro" title="items.union.init.intro"><span>[items<wbr>.union<wbr>.init<wbr>.intro]</span></a>
 </div>
 
@@ -356,7 +358,7 @@ union MyUnion {
 <div class="rule" id="r-items.union.fields"><a class="rule-link" href="#r-items.union.fields" title="items.union.fields"><span>[items<wbr>.union<wbr>.fields]</span></a>
 </div>
 
-<h2 id="读写-联合体-字段"><a class="header" href="#读写-联合体-字段">读写 联合体 字段</a></h2>
+<h2 id="读写联合体字段"><a class="header" href="#读写联合体字段">读写联合体字段</a></h2>
 <div class="rule" id="r-items.union.fields.intro"><a class="rule-link" href="#r-items.union.fields.intro" title="items.union.fields.intro"><span>[items<wbr>.union<wbr>.fields<wbr>.intro]</span></a>
 </div>
 
@@ -368,11 +370,11 @@ union MyUnion {
 <div class="rule" id="r-items.union.fields.offset"><a class="rule-link" href="#r-items.union.fields.offset" title="items.union.fields.offset"><span>[items<wbr>.union<wbr>.fields<wbr>.offset]</span></a>
 </div>
 
-<p>字段可能具有非零偏移量（除非使用了  <a href="../type-layout.html#reprc-unions">C 表示</a> ）；在这种情况下，将读取从字段偏移量开始的位。</p>
+<p>字段可能具有非零偏移量（除非使用了  <a href="../type-layout.html#reprc联合体">C 表示</a> ）；在这种情况下，将读取从字段偏移量开始的位。</p>
 <div class="rule" id="r-items.union.fields.validity"><a class="rule-link" href="#r-items.union.fields.validity" title="items.union.fields.validity"><span>[items<wbr>.union<wbr>.fields<wbr>.validity]</span></a>
 </div>
 
-<p>程序员有责任确保数据在该字段的类型下是有效的。否则会导致  <a href="../behavior-considered-undefined.html">未定义行为</a> 。例如，从  <a href="../types/boolean.html">布尔类型</a>  字段中读取值 <code>3</code> 是 未定义行为。实际上，在使用  <a href="../type-layout.html#reprc-unions">C 表示</a>  的 联合体 中，先写入然后再读取，类似于从用于写入的类型到用于读取的类型的  <a href="https://doc.rust-lang.org/core/intrinsics/fn.transmute.html"><code>transmute</code></a> 。</p>
+<p>程序员有责任确保数据在该字段的类型下是有效的。否则会导致  <a href="../behavior-considered-undefined.html">未定义行为</a> 。例如，从  <a href="../types/boolean.html">布尔类型</a>  字段中读取值 <code>3</code> 是 未定义行为。实际上，在使用  <a href="../type-layout.html#reprc联合体">C 表示</a>  的 联合体 中，先写入然后再读取，类似于从用于写入的类型到用于读取的类型的  <a href="https://doc.rust-lang.org/core/intrinsics/fn.transmute.html"><code>transmute</code></a> 。</p>
 <div class="rule" id="r-items.union.fields.read-safety"><a class="rule-link" href="#r-items.union.fields.read-safety" title="items.union.fields.read-safety"><span>[items<wbr>.union<wbr>.fields<wbr>.read-safety]</span></a>
 </div>
 
@@ -394,7 +396,7 @@ union MyUnion {
 <div class="rule" id="r-items.union.pattern"><a class="rule-link" href="#r-items.union.pattern" title="items.union.pattern"><span>[items<wbr>.union<wbr>.pattern]</span></a>
 </div>
 
-<h2 id="在-联合体-上进行模式匹配"><a class="header" href="#在-联合体-上进行模式匹配">在 联合体 上进行模式匹配</a></h2>
+<h2 id="在联合体上进行模式匹配"><a class="header" href="#在联合体上进行模式匹配">在联合体上进行模式匹配</a></h2>
 <div class="rule" id="r-items.union.pattern.intro"><a class="rule-link" href="#r-items.union.pattern.intro" title="items.union.pattern.intro"><span>[items<wbr>.union<wbr>.pattern<wbr>.intro]</span></a>
 </div>
 
@@ -454,7 +456,7 @@ fn is_zero(v: Value) -&gt; bool {
 <div class="rule" id="r-items.union.ref"><a class="rule-link" href="#r-items.union.ref" title="items.union.ref"><span>[items<wbr>.union<wbr>.ref]</span></a>
 </div>
 
-<h2 id="指向-联合体-字段的引用"><a class="header" href="#指向-联合体-字段的引用">指向 联合体 字段的引用</a></h2>
+<h2 id="指向联合体字段的引用"><a class="header" href="#指向联合体字段的引用">指向联合体字段的引用</a></h2>
 <div class="rule" id="r-items.union.ref.intro"><a class="rule-link" href="#r-items.union.ref.intro" title="items.union.ref.intro"><span>[items<wbr>.union<wbr>.ref<wbr>.intro]</span></a>
 </div>
 

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.struct"><a class="rule-link" href="#r-expr.struct" title="expr.struct"><span>[expr<wbr>.struct]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/struct-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.struct"><a class="rule-link" href="#r-expr.struct" title="expr.struct"><span>[expr<wbr>.struct]</span></a>
 </div>
 
 <h1 id="结构体表达式"><a class="header" href="#结构体表达式">结构体表达式</a></h1>
@@ -559,7 +561,7 @@ drop(y_ref);
 <div class="rule" id="r-expr.struct.brace-restricted-positions"><a class="rule-link" href="#r-expr.struct.brace-restricted-positions" title="expr.struct.brace-restricted-positions"><span>[expr<wbr>.struct<wbr>.brace-restricted-positions]</span></a>
 </div>
 
-<p>结构体表达式不能直接用于 <a href="loop-expr.html">loop</a> 或 <a href="if-expr.html#if-expressions">if</a> 表达式的头部，也不能用于 <a href="if-expr.html#if-let-patterns">if let</a> 或 <a href="match-expr.html">match</a> 表达式的 <a href="../glossary.html#scrutinee">审查对象</a>。
+<p>结构体表达式不能直接用于 <a href="loop-expr.html">loop</a> 或 <a href="if-expr.html#if表达式">if</a> 表达式的头部，也不能用于 <a href="if-expr.html#if-let模式">if let</a> 或 <a href="match-expr.html">match</a> 表达式的 <a href="../glossary.html#审查值">审查对象</a>。
 然而，如果结构体表达式位于另一个表达式之内（例如在 <a href="grouped-expr.html">括号</a> 内），则可以用于这些情况。</p>
 <div class="rule" id="r-expr.struct.tuple-field"><a class="rule-link" href="#r-expr.struct.tuple-field" title="expr.struct.tuple-field"><span>[expr<wbr>.struct<wbr>.tuple-field]</span></a>
 </div>

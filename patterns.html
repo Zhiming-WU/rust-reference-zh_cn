@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-patterns"><a class="rule-link" href="#r-patterns" title="patterns"><span>[patterns]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/patterns.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-patterns"><a class="rule-link" href="#r-patterns" title="patterns"><span>[patterns]</span></a>
 </div>
 
 <h1 id="模式"><a class="header" href="#模式">模式</a></h1>
@@ -489,7 +491,7 @@ MacroInvocation</text>
 </div>
 
 <ul>
-<li><a href="statements.html#let-statements"><code>let</code> 声明</a></li>
+<li><a href="statements.html#let语句"><code>let</code> 声明</a></li>
 </ul>
 <div class="rule" id="r-patterns.param"><a class="rule-link" href="#r-patterns.param" title="patterns.param"><span>[patterns<wbr>.param]</span></a>
 </div>
@@ -513,13 +515,13 @@ MacroInvocation</text>
 </div>
 
 <ul>
-<li><a href="expressions/loop-expr.html#while-let-patterns"><code>while let</code> 表达式</a></li>
+<li><a href="expressions/loop-expr.html#while-let模式"><code>while let</code> 表达式</a></li>
 </ul>
 <div class="rule" id="r-patterns.for"><a class="rule-link" href="#r-patterns.for" title="patterns.for"><span>[patterns<wbr>.for]</span></a>
 </div>
 
 <ul>
-<li><a href="expressions/loop-expr.html#iterator-loops"><code>for</code> 表达式</a></li>
+<li><a href="expressions/loop-expr.html#迭代器循环"><code>for</code> 表达式</a></li>
 </ul>
 <div class="rule" id="r-patterns.destructure"><a class="rule-link" href="#r-patterns.destructure" title="patterns.destructure"><span>[patterns<wbr>.destructure]</span></a>
 </div>
@@ -534,7 +536,7 @@ MacroInvocation</text>
 <div class="rule" id="r-patterns.destructure.wildcard"><a class="rule-link" href="#r-patterns.destructure.wildcard" title="patterns.destructure.wildcard"><span>[patterns<wbr>.destructure<wbr>.wildcard]</span></a>
 </div>
 
-<p>在 <a href="glossary.html#scrutinee">被匹配</a> 表达式具有 结构体 、 枚举 或 元组 类型的模式中， <a href="#wildcard-pattern">通配符模式</a> (<code>_</code>) 代表 <em>单个</em> 数据字段，而 <a href="#grammar-StructPatternEtCetera">等等</a> 或 <a href="patterns.html#r-patterns.rest">剩余模式</a> (<code>..</code>) 代表特定变体的 <em>所有</em> 剩余字段。</p>
+<p>在 <a href="glossary.html#审查值">被匹配</a> 表达式具有 结构体 、 枚举 或 元组 类型的模式中， <a href="#wildcard-pattern">通配符模式</a> (<code>_</code>) 代表 <em>单个</em> 数据字段，而 <a href="#grammar-StructPatternEtCetera">等等</a> 或 <a href="patterns.html#r-patterns.rest">剩余模式</a> (<code>..</code>) 代表特定变体的 <em>所有</em> 剩余字段。</p>
 <div class="rule" id="r-patterns.destructure.named-field-shorthand"><a class="rule-link" href="#r-patterns.destructure.named-field-shorthand" title="patterns.destructure.named-field-shorthand"><span>[patterns<wbr>.destructure<wbr>.named-field-shorthand]</span></a>
 </div>
 
@@ -777,7 +779,7 @@ match x {
 <div class="rule" id="r-patterns.ident.move"><a class="rule-link" href="#r-patterns.ident.move" title="patterns.ident.move"><span>[patterns<wbr>.ident<wbr>.move]</span></a>
 </div>
 
-<p>默认情况下，标识符模式根据被匹配值是否实现了 <a href="../core/marker/trait.Copy.html">Copy</a> ，将变量绑定到被匹配值的副本或从中移动。</p>
+<p>默认情况下，标识符模式根据被匹配值是否实现了 <a href="https://doc.rust-lang.org/core/marker/trait.Copy.html">Copy</a> ，将变量绑定到被匹配值的副本或从中移动。</p>
 <div class="rule" id="r-patterns.ident.ref"><a class="rule-link" href="#r-patterns.ident.ref" title="patterns.ident.ref"><span>[patterns<wbr>.ident<wbr>.ref]</span></a>
 </div>
 
@@ -1590,7 +1592,7 @@ PathExpression</text>
 <div class="rule" id="r-patterns.range.negation"><a class="rule-link" href="#r-patterns.range.negation" title="patterns.range.negation"><span>[patterns<wbr>.range<wbr>.negation]</span></a>
 </div>
 
-<p>如果边界是一个前面带有 <code>-</code> 的字面量，则边界匹配与相应 <a href="expressions/literal-expr.html">字面量表达式</a> 相同的类型，并具有对相应字面量表达式的值进行 <a href="expressions/operator-expr.html#negation-operators">取反</a> 后的值。</p>
+<p>如果边界是一个前面带有 <code>-</code> 的字面量，则边界匹配与相应 <a href="expressions/literal-expr.html">字面量表达式</a> 相同的类型，并具有对相应字面量表达式的值进行 <a href="expressions/operator-expr.html#求负运算符">取反</a> 后的值。</p>
 <div class="rule" id="r-patterns.range.float-restriction"><a class="rule-link" href="#r-patterns.range.float-restriction" title="patterns.range.float-restriction"><span>[patterns<wbr>.range<wbr>.float-restriction]</span></a>
 </div>
 
@@ -2187,7 +2189,7 @@ StructPatternEtCetera</text>
 <div class="rule" id="r-patterns.struct.constraint-union"><a class="rule-link" href="#r-patterns.struct.constraint-union" title="patterns.struct.constraint-union"><span>[patterns<wbr>.struct<wbr>.constraint-union]</span></a>
 </div>
 
-<p>用于匹配 联合体 的 结构体 模式必须恰好指定一个字段（参见 <a href="items/unions.html#pattern-matching-on-unions">在联合体上进行模式匹配</a> ）。</p>
+<p>用于匹配 联合体 的 结构体 模式必须恰好指定一个字段（参见 <a href="items/unions.html#在联合体上进行模式匹配">在联合体上进行模式匹配</a> ）。</p>
 <div class="rule" id="r-patterns.struct.binding-shorthand"><a class="rule-link" href="#r-patterns.struct.binding-shorthand" title="patterns.struct.binding-shorthand"><span>[patterns<wbr>.struct<wbr>.binding-shorthand]</span></a>
 </div>
 
@@ -2960,7 +2962,7 @@ PathExpression</text>
 </div>
 
 <ol>
-<li>在深度 <code>d</code> 处，将 <a href="glossary.html#scrutinee">被匹配</a> 表达式 <code>e_s</code> 与模式 <code>c(p | q, ..rest)</code> 进行模式匹配的动态语义（其中 <code>c</code> 是某种构造函数， <code>p</code> 和 <code>q</code> 是任意模式， <code>rest</code> 是 <code>c</code> 中可选的任何剩余潜在因子）被定义为与 <code>c(p, ..rest) | c(q, ..rest)</code> 的动态语义相同。</li>
+<li>在深度 <code>d</code> 处，将 <a href="glossary.html#审查值">被匹配</a> 表达式 <code>e_s</code> 与模式 <code>c(p | q, ..rest)</code> 进行模式匹配的动态语义（其中 <code>c</code> 是某种构造函数， <code>p</code> 和 <code>q</code> 是任意模式， <code>rest</code> 是 <code>c</code> 中可选的任何剩余潜在因子）被定义为与 <code>c(p, ..rest) | c(q, ..rest)</code> 的动态语义相同。</li>
 </ol>
 <div class="rule" id="r-patterns.precedence"><a class="rule-link" href="#r-patterns.precedence" title="patterns.precedence"><span>[patterns<wbr>.precedence]</span></a>
 </div>

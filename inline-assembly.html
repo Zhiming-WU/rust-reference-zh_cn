@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,14 +178,16 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-asm"><a class="rule-link" href="#r-asm" title="asm"><span>[asm]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/inline-assembly.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-asm"><a class="rule-link" href="#r-asm" title="asm"><span>[asm]</span></a>
 </div>
 
 <h1 id="内联汇编"><a class="header" href="#内联汇编">内联汇编</a></h1>
 <div class="rule" id="r-asm.intro"><a class="rule-link" href="#r-asm.intro" title="asm.intro"><span>[asm<wbr>.intro]</span></a>
 </div>
 
-<p>通过 <a href="../core/arch/macro.asm.html"><code>asm!</code></a>、<a href="../core/arch/macro.naked_asm.html"><code>naked_asm!</code></a> 和 <a href="../core/arch/macro.global_asm.html"><code>global_asm!</code></a> 宏提供对内联汇编的支持。它可以用于在编译器生成的汇编输出中嵌入手写的汇编代码。</p>
+<p>通过 <a href="https://doc.rust-lang.org/core/arch/macro.asm.html"><code>asm!</code></a>、<a href="https://doc.rust-lang.org/core/arch/macro.naked_asm.html"><code>naked_asm!</code></a> 和 <a href="https://doc.rust-lang.org/core/arch/macro.global_asm.html"><code>global_asm!</code></a> 宏提供对内联汇编的支持。它可以用于在编译器生成的汇编输出中嵌入手写的汇编代码。</p>
 <div class="rule" id="r-asm.stable-targets"><a class="rule-link" href="#r-asm.stable-targets" title="asm.stable-targets"><span>[asm<wbr>.stable-targets]</span></a>
 </div>
 
@@ -1210,7 +1212,7 @@ inlateout</text>
 <div class="rule" id="r-asm.scope.naked_asm"><a class="rule-link" href="#r-asm.scope.naked_asm" title="asm.scope.naked_asm"><span>[asm<wbr>.scope<wbr>.naked_asm]</span></a>
 </div>
 
-<p>使用 <code>naked_asm!</code> 宏，汇编代码在函数作用域内发出，并构成函数的完整汇编代码。<code>naked_asm!</code> 宏仅允许在 <a href="attributes/codegen.html#the-naked-attribute">裸函数</a> 中使用。</p>
+<p>使用 <code>naked_asm!</code> 宏，汇编代码在函数作用域内发出，并构成函数的完整汇编代码。<code>naked_asm!</code> 宏仅允许在 <a href="attributes/codegen.html#naked属性">裸函数</a> 中使用。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">#[cfg(target_arch = "x86_64")] {
@@ -1234,7 +1236,7 @@ inlateout</text>
 <div class="rule" id="r-asm.ts-args.syntax"><a class="rule-link" href="#r-asm.ts-args.syntax" title="asm.ts-args.syntax"><span>[asm<wbr>.ts-args<wbr>.syntax]</span></a>
 </div>
 
-<p>汇编器模板使用与 <a href="../alloc/fmt/index.html#syntax">格式化字符串</a> 相同的语法格式（即占位符通过大括号指定）。</p>
+<p>汇编器模板使用与 <a href="https://doc.rust-lang.org/alloc/fmt/index.html#syntax">格式化字符串</a> 相同的语法格式（即占位符通过大括号指定）。</p>
 <div class="rule" id="r-asm.ts-args.order"><a class="rule-link" href="#r-asm.ts-args.order" title="asm.ts-args.order"><span>[asm<wbr>.ts-args<wbr>.order]</span></a>
 </div>
 

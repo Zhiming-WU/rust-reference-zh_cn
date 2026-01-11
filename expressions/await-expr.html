@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.await"><a class="rule-link" href="#r-expr.await" title="expr.await"><span>[expr<wbr>.await]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/await-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.await"><a class="rule-link" href="#r-expr.await" title="expr.await"><span>[expr<wbr>.await]</span></a>
 </div>
 
 <h1 id="await表达式"><a class="header" href="#await表达式"><code>await</code>表达式</a></h1>
@@ -240,22 +242,22 @@ await</text>
 <div class="rule" id="r-expr.await.construct"><a class="rule-link" href="#r-expr.await.construct" title="expr.await.construct"><span>[expr<wbr>.await<wbr>.construct]</span></a>
 </div>
 
-<p><code>await</code> 表达式的 语法格式 是一个具有实现了 <a href="../../core/future/into_future/trait.IntoFuture.html"><code>IntoFuture</code></a> 特型的类型的表达式（称为 <em>future 操作数</em>），后跟 词法单元 <code>.</code>，然后是 <code>await</code> 关键字。</p>
+<p><code>await</code> 表达式的 语法格式 是一个具有实现了 <a href="https://doc.rust-lang.org/core/future/into_future/trait.IntoFuture.html"><code>IntoFuture</code></a> 特型的类型的表达式（称为 <em>future 操作数</em>），后跟 词法单元 <code>.</code>，然后是 <code>await</code> 关键字。</p>
 <div class="rule" id="r-expr.await.allowed-positions"><a class="rule-link" href="#r-expr.await.allowed-positions" title="expr.await.allowed-positions"><span>[expr<wbr>.await<wbr>.allowed-positions]</span></a>
 </div>
 
-<p><code>await</code> 表达式仅在 <a href="../expressions/block-expr.html#async-context">异步上下文</a>（如 <a href="../items/functions.html#async-functions"><code>async fn</code></a>、<a href="closure-expr.html#async-closures"><code>async</code> 闭包</a> 或 <a href="block-expr.html#async-blocks"><code>async</code> 块</a>）中合法。</p>
+<p><code>await</code> 表达式仅在 <a href="../expressions/block-expr.html#async语境">异步上下文</a>（如 <a href="../items/functions.html#async函数"><code>async fn</code></a>、<a href="closure-expr.html#async闭包"><code>async</code> 闭包</a> 或 <a href="block-expr.html#async块"><code>async</code> 块</a>）中合法。</p>
 <div class="rule" id="r-expr.await.effects"><a class="rule-link" href="#r-expr.await.effects" title="expr.await.effects"><span>[expr<wbr>.await<wbr>.effects]</span></a>
 </div>
 
 <p>更具体地说，一个 <code>await</code> 表达式具有以下效果。</p>
 <ol>
-<li>通过在 future 操作数上调用 <a href="../../core/future/into_future/trait.IntoFuture.html#tymethod.into_future"><code>IntoFuture::into_future</code></a> 来创建一个 future。</li>
-<li>将该 future 求值为一个 <a href="../../core/future/future/trait.Future.html">future</a> <code>tmp</code>；</li>
-<li>使用 <a href="../../core/pin/struct.Pin.html#method.new_unchecked"><code>Pin::new_unchecked</code></a> 固定 <code>tmp</code>；</li>
-<li>然后通过调用 <a href="../../core/future/future/trait.Future.html#tymethod.poll"><code>Future::poll</code></a> 方法并向其传递当前 <a href="#task-context">任务上下文</a> 来轮询此固定的 future；</li>
-<li>如果对 <code>poll</code> 的调用返回 <a href="../../core/task/poll/enum.Poll.html#variant.Pending"><code>Poll::Pending</code></a>，则 future 返回 <code>Poll::Pending</code>，并挂起其状态，以便当周围的异步上下文被重新轮询时，执行返回到步骤 3；</li>
-<li>否则对 <code>poll</code> 的调用必须返回 <a href="../../core/task/poll/enum.Poll.html#variant.Ready"><code>Poll::Ready</code></a>，在这种情况下，<a href="../../core/task/poll/enum.Poll.html#variant.Ready"><code>Poll::Ready</code></a> 变体中包含的值将用作 <code>await</code> 表达式本身的结果。</li>
+<li>通过在 future 操作数上调用 <a href="https://doc.rust-lang.org/core/future/into_future/trait.IntoFuture.html#tymethod.into_future"><code>IntoFuture::into_future</code></a> 来创建一个 future。</li>
+<li>将该 future 求值为一个 <a href="https://doc.rust-lang.org/core/future/future/trait.Future.html">future</a> <code>tmp</code>；</li>
+<li>使用 <a href="https://doc.rust-lang.org/core/pin/struct.Pin.html#method.new_unchecked"><code>Pin::new_unchecked</code></a> 固定 <code>tmp</code>；</li>
+<li>然后通过调用 <a href="https://doc.rust-lang.org/core/future/future/trait.Future.html#tymethod.poll"><code>Future::poll</code></a> 方法并向其传递当前 <a href="#task-context">任务上下文</a> 来轮询此固定的 future；</li>
+<li>如果对 <code>poll</code> 的调用返回 <a href="https://doc.rust-lang.org/core/task/poll/enum.Poll.html#variant.Pending"><code>Poll::Pending</code></a>，则 future 返回 <code>Poll::Pending</code>，并挂起其状态，以便当周围的异步上下文被重新轮询时，执行返回到步骤 3；</li>
+<li>否则对 <code>poll</code> 的调用必须返回 <a href="https://doc.rust-lang.org/core/task/poll/enum.Poll.html#variant.Ready"><code>Poll::Ready</code></a>，在这种情况下，<a href="https://doc.rust-lang.org/core/task/poll/enum.Poll.html#variant.Ready"><code>Poll::Ready</code></a> 变体中包含的值将用作 <code>await</code> 表达式本身的结果。</li>
 </ol>
 <div class="rule" id="r-expr.await.edition2018"><a class="rule-link" href="#r-expr.await.edition2018" title="expr.await.edition2018"><span>[expr<wbr>.await<wbr>.edition2018]</span></a>
 </div>
@@ -272,7 +274,7 @@ await</text>
 </div>
 
 <h2 id="任务上下文"><a class="header" href="#任务上下文">任务上下文</a></h2>
-<p>任务上下文是指当异步上下文本身被轮询时提供给当前 <a href="../expressions/block-expr.html#async-context">异步上下文</a> 的 <a href="../../core/task/wake/struct.Context.html"><code>Context</code></a>。由于 <code>await</code> 表达式仅在异步上下文中合法，因此必须存在某种可用的任务上下文。</p>
+<p>任务上下文是指当异步上下文本身被轮询时提供给当前 <a href="../expressions/block-expr.html#async语境">异步上下文</a> 的 <a href="https://doc.rust-lang.org/core/task/wake/struct.Context.html"><code>Context</code></a>。由于 <code>await</code> 表达式仅在异步上下文中合法，因此必须存在某种可用的任务上下文。</p>
 <div class="rule" id="r-expr.await.desugar"><a class="rule-link" href="#r-expr.await.desugar" title="expr.await.desugar"><span>[expr<wbr>.await<wbr>.desugar]</span></a>
 </div>
 

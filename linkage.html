@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-link"><a class="rule-link" href="#r-link" title="link"><span>[link]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/linkage.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-link"><a class="rule-link" href="#r-link" title="link"><span>[link]</span></a>
 </div>
 
 <h1 id="链接"><a class="header" href="#链接">链接</a></h1>
@@ -193,7 +195,7 @@
 <div class="rule" id="r-link.intro"><a class="rule-link" href="#r-link.intro" title="link.intro"><span>[link<wbr>.intro]</span></a>
 </div>
 
-<p>编译器支持静态和动态链接 crate 的多种方法。本节将探讨链接 crate 的各种方法，有关原生库的更多信息可以在 <a href="https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code">本书的 FFI 章节</a> 中找到。</p>
+<p>编译器支持静态和动态链接 crate 的多种方法。本节将探讨链接 crate 的各种方法，有关原生库的更多信息可以在 <a href="../book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code">本书的 FFI 章节</a> 中找到。</p>
 <div class="rule" id="r-link.type"><a class="rule-link" href="#r-link.type" title="link.type"><span>[link<wbr>.type]</span></a>
 </div>
 
@@ -401,7 +403,7 @@ fn main() {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>如果您使用 <code>rustc</code> 进行链接，这些规则会自动执行。如果您 <em>不</em> 使用 <code>rustc</code> 进行链接，则必须注意确保在整个二进制文件中一致地处理展开。不使用 <code>rustc</code> 链接包括使用 <code>dlopen</code> 或类似设施，其中链接由系统运行时完成，而不涉及 <code>rustc</code>。这种情况仅在混合使用具有不同 <a href="https://doc.rust-lang.org/rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 标志的代码时才会发生，因此大多数用户无需担心这一点。</p>
+<p>如果您使用 <code>rustc</code> 进行链接，这些规则会自动执行。如果您 <em>不</em> 使用 <code>rustc</code> 进行链接，则必须注意确保在整个二进制文件中一致地处理展开。不使用 <code>rustc</code> 链接包括使用 <code>dlopen</code> 或类似设施，其中链接由系统运行时完成，而不涉及 <code>rustc</code>。这种情况仅在混合使用具有不同 <a href="../rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 标志的代码时才会发生，因此大多数用户无需担心这一点。</p>
 </blockquote>
 </div>
 
@@ -409,7 +411,7 @@ fn main() {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>为了保证无论链接时使用何种恐慌运行时，库都是健全的 (and linkable with <code>rustc</code>) ，可以使用 <a href="https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#ffi-unwind-calls"><code>ffi_unwind_calls</code> lint</a> 。该 lint 会标记对 <code>-unwind</code> 外部函数或函数指针的任何调用。</p>
+<p>为了保证无论链接时使用何种恐慌运行时，库都是健全的 (and linkable with <code>rustc</code>) ，可以使用 <a href="../rustc/lints/listing/allowed-by-default.html#ffi-unwind-calls"><code>ffi_unwind_calls</code> lint</a> 。该 lint 会标记对 <code>-unwind</code> 外部函数或函数指针的任何调用。</p>
 </blockquote>
 </div>
 

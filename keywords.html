@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -203,7 +203,7 @@
 <li><a href="variables.html">变量</a>和函数参数</li>
 <li>字段和<a href="items/enumerations.html">变体</a></li>
 <li><a href="types/parameters.html">类型参数</a></li>
-<li>生命周期参数或<a href="expressions/loop-expr.html#loop-labels">循环标签</a></li>
+<li>生命周期参数或<a href="expressions/loop-expr.html#循环标签">循环标签</a></li>
 <li><a href="macros.html">宏</a>或<a href="attributes.html">属性</a></li>
 <li><a href="macros-by-example.html">宏占位符</a></li>
 <li><a href="crates-and-source-files.html">crate</a></li>
@@ -350,7 +350,7 @@
 
 <ul>
 <li>
-<p><code>'static</code>用于静态生命周期，不能用作<a href="items/generics.html">泛型生命周期参数</a>或<a href="expressions/loop-expr.html#loop-labels">循环标签</a></p>
+<p><code>'static</code>用于静态生命周期，不能用作<a href="items/generics.html">泛型生命周期参数</a>或<a href="expressions/loop-expr.html#循环标签">循环标签</a></p>
 <pre><code class="language-compile_fail">// error[E0262]: invalid lifetime parameter name: `'static`
 fn invalid_lifetime_parameter&lt;'static&gt;(s: &amp;'static str) -&gt; &amp;'static str { s }
 </code></pre>
@@ -366,7 +366,7 @@ fn invalid_lifetime_parameter&lt;'static&gt;(s: &amp;'static str) -&gt; &amp;'st
 </div>
 
 <ul>
-<li><code>raw</code>用于<a href="expressions/operator-expr.html#raw-borrow-operators">原始借用运算符</a>，并且仅在匹配原始借用运算符形式（例如<code>&amp;raw const expr</code>或<code>&amp;raw mut expr</code>）时才作为关键字。</li>
+<li><code>raw</code>用于<a href="expressions/operator-expr.html#原始借用运算符">原始借用运算符</a>，并且仅在匹配原始借用运算符形式（例如<code>&amp;raw const expr</code>或<code>&amp;raw mut expr</code>）时才作为关键字。</li>
 </ul>
 <div class="rule" id="r-lex.keywords.weak.dyn.edition2018"><a class="rule-link" href="#r-lex.keywords.weak.dyn.edition2018" title="lex.keywords.weak.dyn.edition2018"><span>[lex<wbr>.keywords<wbr>.weak<wbr>.dyn<wbr>.edition2018]</span></a>
 </div>

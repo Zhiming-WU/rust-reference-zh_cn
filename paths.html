@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-paths"><a class="rule-link" href="#r-paths" title="paths"><span>[paths]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/paths.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-paths"><a class="rule-link" href="#r-paths" title="paths"><span>[paths]</span></a>
 </div>
 
 <h1 id="路径"><a class="header" href="#路径">路径</a></h1>
@@ -1072,7 +1074,7 @@ TypePathSegment</text>
 <div class="rule" id="r-paths.qualified.intro"><a class="rule-link" href="#r-paths.qualified.intro" title="paths.qualified.intro"><span>[paths<wbr>.qualified<wbr>.intro]</span></a>
 </div>
 
-<p>全限定路径允许消除 <a href="items/implementations.html#trait-implementations">特型实现</a> 的路径歧义，并用于指定 <a href="#canonical-paths">规范路径</a>。当用于类型规范时，它支持使用下面指定的类型语法格式。</p>
+<p>全限定路径允许消除 <a href="items/implementations.html#特型实现">特型实现</a> 的路径歧义，并用于指定 <a href="#canonical-paths">规范路径</a>。当用于类型规范时，它支持使用下面指定的类型语法格式。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct S;
@@ -1392,7 +1394,7 @@ type G = std::boxed::Box&lt;dyn std::ops::FnOnce(isize) -&gt; isize&gt;;
 <p class="alert-title"><span class="alert-title-edition">2018</span> 版次差异</p>
 
 <p>在 2015 版次中，标识符从 “crate 根”（2018 版次中的 <code>crate::</code>）开始解析，它包含各种不同的项，包括外部 crate、默认 crate（如 <code>std</code> 或 <code>core</code>）以及 crate 顶层的项（包括 <code>use</code> 导入）。</p>
-<p>从 2018 版次开始，以 <code>::</code> 开头的路径从 <a href="names/preludes.html#extern-prelude">外部预导入</a> 中的 crate 开始解析。也就是说，它们后面必须紧跟一个 crate 的名称。</p>
+<p>从 2018 版次开始，以 <code>::</code> 开头的路径从 <a href="names/preludes.html#外部预导入">外部预导入</a> 中的 crate 开始解析。也就是说，它们后面必须紧跟一个 crate 的名称。</p>
 </blockquote>
 </div>
 
@@ -1474,7 +1476,7 @@ impl S {
 <div class="rule" id="r-paths.qualifiers.type-self.scope"><a class="rule-link" href="#r-paths.qualifiers.type-self.scope" title="paths.qualifiers.type-self.scope"><span>[paths<wbr>.qualifiers<wbr>.type-self<wbr>.scope]</span></a>
 </div>
 
-<p><code>Self</code> 的作用域行为类似于泛型参数；有关更多详细信息，请参阅 <a href="names/scopes.html#self-scope"><code>Self</code> 作用域</a> 部分。</p>
+<p><code>Self</code> 的作用域行为类似于泛型参数；有关更多详细信息，请参阅 <a href="names/scopes.html#self作用域"><code>Self</code> 作用域</a> 部分。</p>
 <div class="rule" id="r-paths.qualifiers.type-self.allowed-positions"><a class="rule-link" href="#r-paths.qualifiers.type-self.allowed-positions" title="paths.qualifiers.type-self.allowed-positions"><span>[paths<wbr>.qualifiers<wbr>.type-self<wbr>.allowed-positions]</span></a>
 </div>
 
@@ -1630,7 +1632,7 @@ macro_rules! inc {
 <div class="rule" id="r-paths.canonical.trait-impl-prefix"><a class="rule-link" href="#r-paths.canonical.trait-impl-prefix" title="paths.canonical.trait-impl-prefix"><span>[paths<wbr>.canonical<wbr>.trait-impl-prefix]</span></a>
 </div>
 
-<p>对于 <a href="items/implementations.html#trait-implementations">特型实现</a>，它是正在实现的项的规范路径，后跟 <code>as</code>，再后跟该特型的规范路径，全部用 <span class="parenthetical">尖括号 (<code>&lt;&gt;</code>)</span> 包围。</p>
+<p>对于 <a href="items/implementations.html#特型实现">特型实现</a>，它是正在实现的项的规范路径，后跟 <code>as</code>，再后跟该特型的规范路径，全部用 <span class="parenthetical">尖括号 (<code>&lt;&gt;</code>)</span> 包围。</p>
 <div class="rule" id="r-paths.canonical.local-canonical-path"><a class="rule-link" href="#r-paths.canonical.local-canonical-path" title="paths.canonical.local-canonical-path"><span>[paths<wbr>.canonical<wbr>.local-canonical-path]</span></a>
 </div>
 

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-items.associated"><a class="rule-link" href="#r-items.associated" title="items.associated"><span>[items<wbr>.associated]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/items/associated-items.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-items.associated"><a class="rule-link" href="#r-items.associated" title="items.associated"><span>[items<wbr>.associated]</span></a>
 </div>
 
 <h1 id="关联项"><a class="header" href="#关联项">关联项</a></h1>
@@ -440,7 +442,7 @@ impl Example {
 <div class="rule" id="r-associated.fn.method.self-pat-mut"><a class="rule-link" href="#r-associated.fn.method.self-pat-mut" title="associated.fn.method.self-pat-mut"><span>[associated<wbr>.fn<wbr>.method<wbr>.self-pat-mut]</span></a>
 </div>
 
-<p>如果 <code>self</code> 参数带有 <code>mut</code> 前缀，它就会变成一个可变变量，类似于使用 <code>mut</code> <a href="../patterns.html#identifier-patterns">标识符模式</a> 的常规参数。例如：</p>
+<p>如果 <code>self</code> 参数带有 <code>mut</code> 前缀，它就会变成一个可变变量，类似于使用 <code>mut</code> <a href="../patterns.html#标识符模式">标识符模式</a> 的常规参数。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Changer: Sized {
@@ -500,7 +502,7 @@ let bounding_box = circle_shape.bounding_box();
 </div>
 
 <h4 id="方法参数上的属性"><a class="header" href="#方法参数上的属性">方法参数上的属性</a></h4>
-<p>方法参数上的属性遵循与 <a href="functions.html#attributes-on-function-parameters">常规函数参数</a> 相同的规则和限制。</p>
+<p>方法参数上的属性遵循与 <a href="functions.html#函数参数上的属性">常规函数参数</a> 相同的规则和限制。</p>
 <div class="rule" id="r-items.associated.type"><a class="rule-link" href="#r-items.associated.type" title="items.associated.type"><span>[items<wbr>.associated<wbr>.type]</span></a>
 </div>
 
@@ -512,11 +514,11 @@ let bounding_box = circle_shape.bounding_box();
 <div class="rule" id="r-items.associated.type.restrictions"><a class="rule-link" href="#r-items.associated.type.restrictions" title="items.associated.type.restrictions"><span>[items<wbr>.associated<wbr>.type<wbr>.restrictions]</span></a>
 </div>
 
-<p>关联类型不能在 <a href="implementations.html#inherent-implementations">固有实现</a> 中定义，也不能在 特型 中给出默认实现。</p>
+<p>关联类型不能在 <a href="implementations.html#固有实现">固有实现</a> 中定义，也不能在 特型 中给出默认实现。</p>
 <div class="rule" id="r-items.associated.type.decl"><a class="rule-link" href="#r-items.associated.type.decl" title="items.associated.type.decl"><span>[items<wbr>.associated<wbr>.type<wbr>.decl]</span></a>
 </div>
 
-<p><em>关联类型声明</em>  为关联类型定义声明一个签名。它的写法有以下形式之一，其中 <code>Assoc</code> 是关联类型的名称，<code>Params</code> 是以逗号分隔的类型、生命周期或常量参数列表，<code>Bounds</code> 是以加号分隔的关联类型必须满足的特型绑定列表，而 <code>WhereBounds</code> 是以逗号分隔的参数必须满足的绑定列表：</p>
+<p><em>关联类型声明</em>  为关联类型定义声明一个签名。它的写法有以下形式之一，其中 <code>Assoc</code> 是关联类型的名称，<code>Params</code> 是以逗号分隔的类型、生命周期或常量参数列表，<code>Bounds</code> 是以加号分隔的关联类型必须满足的特型界限列表，而 <code>WhereBounds</code> 是以逗号分隔的参数必须满足的界限列表：</p>
 <!-- ignore: illustrative example forms -->
 <pre><code class="language-rust ignore">type Assoc;
 type Assoc: Bounds;
@@ -531,11 +533,11 @@ type Assoc&lt;Params&gt;: Bounds where WhereBounds;</code></pre>
 <div class="rule" id="r-items.associated.type.impl-fulfillment"><a class="rule-link" href="#r-items.associated.type.impl-fulfillment" title="items.associated.type.impl-fulfillment"><span>[items<wbr>.associated<wbr>.type<wbr>.impl-fulfillment]</span></a>
 </div>
 
-<p>可选的 特型 绑定必须由类型别名的实现满足。</p>
+<p>可选的特型界限必须由类型别名的实现满足。</p>
 <div class="rule" id="r-items.associated.type.sized"><a class="rule-link" href="#r-items.associated.type.sized" title="items.associated.type.sized"><span>[items<wbr>.associated<wbr>.type<wbr>.sized]</span></a>
 </div>
 
-<p>关联类型上有一个隐式的 <a href="../special-types-and-traits.html#sized"><code>Sized</code></a> 绑定，可以使用特殊的 <code>?Sized</code> 绑定来放宽。</p>
+<p>关联类型上有一个隐式的 <a href="../special-types-and-traits.html#sized"><code>Sized</code></a> 界限，可以使用特殊的 <code>?Sized</code> 界限来放宽。</p>
 <div class="rule" id="r-items.associated.type.def"><a class="rule-link" href="#r-items.associated.type.def" title="items.associated.type.def"><span>[items<wbr>.associated<wbr>.type<wbr>.def]</span></a>
 </div>
 
@@ -560,7 +562,7 @@ type Assoc&lt;Params&gt; where WhereBounds = Type; // 已弃用，推荐使用�
 <div class="rule" id="r-items.associated.type.generic"><a class="rule-link" href="#r-items.associated.type.generic" title="items.associated.type.generic"><span>[items<wbr>.associated<wbr>.type<wbr>.generic]</span></a>
 </div>
 
-<p>关联类型可以包含 <a href="generics.html">泛型参数</a> 和 <a href="generics.html#where-clauses">where 子句</a>；这些通常被称为  <em>泛型关联类型 (generic associated types)</em>  或  <em>GATs</em> 。如果类型 <code>Thing</code> 具有来自 特型 <code>Trait</code> 且带有泛型 <code>&lt;'a&gt;</code> 的关联类型 <code>Item</code>，则该类型可以被命名为 <code>&lt;Thing as Trait&gt;::Item&lt;'x&gt;</code>，其中 <code>'x</code> 是作用域内的某个生命周期。在这种情况下，在 impl 上的关联类型定义中，凡是出现 <code>'a</code> 的地方都会使用 <code>'x</code>。</p>
+<p>关联类型可以包含 <a href="generics.html">泛型参数</a> 和 <a href="generics.html#where子句">where 子句</a>；这些通常被称为  <em>泛型关联类型 (generic associated types)</em>  或  <em>GATs</em> 。如果类型 <code>Thing</code> 具有来自 特型 <code>Trait</code> 且带有泛型 <code>&lt;'a&gt;</code> 的关联类型 <code>Item</code>，则该类型可以被命名为 <code>&lt;Thing as Trait&gt;::Item&lt;'x&gt;</code>，其中 <code>'x</code> 是作用域内的某个生命周期。在这种情况下，在 impl 上的关联类型定义中，凡是出现 <code>'a</code> 的地方都会使用 <code>'x</code>。</p>
 <pre class="playground"><code class="language-rust edition2024">trait AssociatedType {
     // 关联类型声明
     type Assoc;
@@ -664,11 +666,11 @@ fn main() {
     fn next&lt;'a&gt;(&amp;'a mut self) -&gt; Self::Item&lt;'a&gt;;
 }
 <span class="boring">}</span></code></pre>
-<p>在上面 <code>next</code> 函数中，由于 <code>&amp;'a mut self</code> 的隐含绑定，我们可以证明 <code>Self: 'a</code>；因此，我们必须在 GAT 自身上写下等效的绑定：<code>where Self: 'x</code>。</p>
+<p>在上面 <code>next</code> 函数中，由于 <code>&amp;'a mut self</code> 的隐含界限，我们可以证明 <code>Self: 'a</code>；因此，我们必须在 GAT 自身上写下等效的界限：<code>where Self: 'x</code>。</p>
 <div class="rule" id="r-items.associated.type.generic-where-clause.intersection"><a class="rule-link" href="#r-items.associated.type.generic-where-clause.intersection" title="items.associated.type.generic-where-clause.intersection"><span>[items<wbr>.associated<wbr>.type<wbr>.generic-where-clause<wbr>.intersection]</span></a>
 </div>
 
-<p>当 特型 中有多个函数使用该 GAT 时，将使用来自不同函数的绑定的  <em>交集 (intersection)</em> ，而不是并集。</p>
+<p>当 特型 中有多个函数使用该 GAT 时，将使用来自不同函数的界限的  <em>交集 (intersection)</em> ，而不是并集。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Check&lt;T&gt; {
@@ -677,11 +679,11 @@ fn main() {
     fn do_check(checker: Self::Checker&lt;'_&gt;);
 }
 <span class="boring">}</span></code></pre>
-<p>在这个例子中，<code>type Checker&lt;'a&gt;;</code> 上不需要任何绑定。虽然我们知道在 <code>create_checker</code> 上 <code>T: 'a</code>，但在 <code>do_check</code> 上我们并不知道这一点。但是，如果 <code>do_check</code> 被注释掉，那么 <code>Checker</code> 上就需要 <code>where T: 'x</code> 绑定。</p>
+<p>在这个例子中，<code>type Checker&lt;'a&gt;;</code> 上不需要任何界限。虽然我们知道在 <code>create_checker</code> 上 <code>T: 'a</code>，但在 <code>do_check</code> 上我们并不知道这一点。但是，如果 <code>do_check</code> 被注释掉，那么 <code>Checker</code> 上就需要 <code>where T: 'x</code> 界限。</p>
 <div class="rule" id="r-items.associated.type.generic-where-clause.forward"><a class="rule-link" href="#r-items.associated.type.generic-where-clause.forward" title="items.associated.type.generic-where-clause.forward"><span>[items<wbr>.associated<wbr>.type<wbr>.generic-where-clause<wbr>.forward]</span></a>
 </div>
 
-<p>关联类型上的绑定也会传播必需的 where 子句。</p>
+<p>关联类型上的界限也会传播必需的 where 子句。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Iterable {
@@ -690,11 +692,11 @@ fn main() {
     fn iter&lt;'a&gt;(&amp;'a self) -&gt; Self::Iterator&lt;'a&gt;;
 }
 <span class="boring">}</span></code></pre>
-<p>这里，由于 <code>iter</code> 的缘故，<code>Item</code> 上需要 <code>where Self: 'a</code>。然而，由于 <code>Item</code> 被用于 <code>Iterator</code> 的绑定中，<code>where Self: 'a</code> 子句在那里也是必需的。</p>
+<p>这里，由于 <code>iter</code> 的缘故，<code>Item</code> 上需要 <code>where Self: 'a</code>。然而，由于 <code>Item</code> 被用于 <code>Iterator</code> 的界限中，<code>where Self: 'a</code> 子句在那里也是必需的。</p>
 <div class="rule" id="r-items.associated.type.generic-where-clause.static"><a class="rule-link" href="#r-items.associated.type.generic-where-clause.static" title="items.associated.type.generic-where-clause.static"><span>[items<wbr>.associated<wbr>.type<wbr>.generic-where-clause<wbr>.static]</span></a>
 </div>
 
-<p>最后，在 特型 中的 GAT 上显式使用的任何 <code>'static</code> 都不计入必需绑定。</p>
+<p>最后，在 特型 中的 GAT 上显式使用的任何 <code>'static</code> 都不计入必需界限。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait StaticReturn {

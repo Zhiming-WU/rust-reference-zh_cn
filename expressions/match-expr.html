@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.match"><a class="rule-link" href="#r-expr.match" title="expr.match"><span>[expr<wbr>.match]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/match-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.match"><a class="rule-link" href="#r-expr.match" title="expr.match"><span>[expr<wbr>.match]</span></a>
 </div>
 
 <h1 id="match表达式"><a class="header" href="#match表达式"><code>match</code>表达式</a></h1>
@@ -509,7 +511,7 @@ Expression</text>
 <div class="rule" id="r-expr.match.scrutinee"><a class="rule-link" href="#r-expr.match.scrutinee" title="expr.match.scrutinee"><span>[expr<wbr>.match<wbr>.scrutinee]</span></a>
 </div>
 
-<p>一个 <code>match</code> 表达式有一个  <em><a href="../glossary.html#scrutinee">待匹配值</a> 表达式</em> ，它是要与模式进行比较的值。</p>
+<p>一个 <code>match</code> 表达式有一个  <em><a href="../glossary.html#审查值">待匹配值</a> 表达式</em> ，它是要与模式进行比较的值。</p>
 <div class="rule" id="r-expr.match.scrutinee-constraint"><a class="rule-link" href="#r-expr.match.scrutinee-constraint" title="expr.match.scrutinee-constraint"><span>[expr<wbr>.match<wbr>.scrutinee-constraint]</span></a>
 </div>
 
@@ -550,7 +552,7 @@ match x {
 <div class="rule" id="r-expr.match.pattern-var-binding"><a class="rule-link" href="#r-expr.match.pattern-var-binding" title="expr.match.pattern-var-binding"><span>[expr<wbr>.match<wbr>.pattern-var-binding]</span></a>
 </div>
 
-<p><a href="../patterns.html#binding-modes">绑定模式</a> （移动、复制或引用）取决于模式。</p>
+<p><a href="../patterns.html#绑定模式">绑定模式</a> （移动、复制或引用）取决于模式。</p>
 <div class="rule" id="r-expr.match.or-pattern"><a class="rule-link" href="#r-expr.match.or-pattern" title="expr.match.or-pattern"><span>[expr<wbr>.match<wbr>.or-pattern]</span></a>
 </div>
 
@@ -579,7 +581,7 @@ match S(1, 2) {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>2..=9</code> 是一个 <a href="../patterns.html#range-patterns">范围模式</a> ，而不是一个 <a href="range-expr.html">范围表达式</a>。因此，只有范围模式支持的那些类型的范围才能在匹配臂中使用。</p>
+<p><code>2..=9</code> 是一个 <a href="../patterns.html#范围模式">范围模式</a> ，而不是一个 <a href="range-expr.html">范围表达式</a>。因此，只有范围模式支持的那些类型的范围才能在匹配臂中使用。</p>
 </blockquote>
 </div>
 
@@ -667,11 +669,11 @@ assert_eq!(i.get(), 2);
 </div>
 
 <p>匹配臂上允许使用外部属性。
-在匹配臂上有意义的属性只有 <a href="../conditional-compilation.html"><code>cfg</code></a> 和 <a href="../attributes/diagnostics.html#lint-check-attributes">lint 检查属性</a>。</p>
+在匹配臂上有意义的属性只有 <a href="../conditional-compilation.html"><code>cfg</code></a> 和 <a href="../attributes/diagnostics.html#lint检查属性">lint 检查属性</a>。</p>
 <div class="rule" id="r-expr.match.attributes.inner"><a class="rule-link" href="#r-expr.match.attributes.inner" title="expr.match.attributes.inner"><span>[expr<wbr>.match<wbr>.attributes<wbr>.inner]</span></a>
 </div>
 
-<p><a href="../attributes.html">内部属性</a> 被允许直接放在匹配表达式的左大括号之后，其所在的表达式上下文与 <a href="block-expr.html#attributes-on-block-expressions">块表达式上的属性</a> 相同。</p>
+<p><a href="../attributes.html">内部属性</a> 被允许直接放在匹配表达式的左大括号之后，其所在的表达式上下文与 <a href="block-expr.html#块表达式上的属性">块表达式上的属性</a> 相同。</p>
 
                     </main>
 

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>特型与生命周期约束 - Rust语言参考手册</title>
+        <title>特型与生命周期界限 - Rust语言参考手册</title>
 
 
         <!-- Custom HTML head -->
@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,10 +178,12 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-bound"><a class="rule-link" href="#r-bound" title="bound"><span>[bound]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/trait-bounds.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-bound"><a class="rule-link" href="#r-bound" title="bound"><span>[bound]</span></a>
 </div>
 
-<h1 id="特型和生命周期界限"><a class="header" href="#特型和生命周期界限">特型和生命周期界限</a></h1>
+<h1 id="特型与生命周期界限"><a class="header" href="#特型与生命周期界限">特型与生命周期界限</a></h1>
 <div class="rule" id="r-bound.syntax"><a class="rule-link" href="#r-bound.syntax" title="bound.syntax"><span>[bound<wbr>.syntax]</span></a>
 </div>
 
@@ -836,7 +838,7 @@ GenericParams</text>
 <div class="rule" id="r-bound.higher-ranked.trait"><a class="rule-link" href="#r-bound.higher-ranked.trait" title="bound.higher-ranked.trait"><span>[bound<wbr>.higher-ranked<wbr>.trait]</span></a>
 </div>
 
-<p>高阶生命周期也可以紧接在特型之前指定：唯一的区别是生命周期参数的 <a href="names/scopes.html#higher-ranked-trait-bound-scopes">作用域</a> ，它仅延伸到后续特型的末尾，而不是整个界限。此函数等同于上一个函数。</p>
+<p>高阶生命周期也可以紧接在特型之前指定：唯一的区别是生命周期参数的 <a href="names/scopes.html#高阶特型界限作用域">作用域</a> ，它仅延伸到后续特型的末尾，而不是整个界限。此函数等同于上一个函数。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn call_on_ref_zero&lt;F&gt;(f: F) where F: for&lt;'a&gt; Fn(&amp;'a i32) {
@@ -924,8 +926,8 @@ impl&lt;'a, T&gt; Trait&lt;'a, T&gt; for &amp;'a T {}
 <div class="rule" id="r-bound.use"><a class="rule-link" href="#r-bound.use" title="bound.use"><span>[bound<wbr>.use]</span></a>
 </div>
 
-<h2 id="使用界限"><a class="header" href="#使用界限">使用界限</a></h2>
-<p>某些界限列表可能包含 <code>use&lt;..&gt;</code> 界限，以控制哪些泛型参数会被 <code>impl Trait</code> <a href="types/impl-trait.html#abstract-return-types">抽象返回类型</a> 捕获。有关更多详细信息，请参阅 <a href="types/impl-trait.html#precise-capturing">精确捕获</a> 。</p>
+<h2 id="use界限"><a class="header" href="#use界限"><code>use</code>界限</a></h2>
+<p>某些界限列表可能包含 <code>use&lt;..&gt;</code> 界限，以控制哪些泛型参数会被 <code>impl Trait</code> <a href="types/impl-trait.html#抽象返回类型">抽象返回类型</a> 捕获。有关更多详细信息，请参阅 <a href="types/impl-trait.html#精确捕获">精确捕获</a> 。</p>
 
                     </main>
 

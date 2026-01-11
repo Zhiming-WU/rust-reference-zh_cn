@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type.array"><a class="rule-link" href="#r-type.array" title="type.array"><span>[type<wbr>.array]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types/array.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type.array"><a class="rule-link" href="#r-type.array" title="type.array"><span>[type<wbr>.array]</span></a>
 </div>
 
 <h1 id="数组类型"><a class="header" href="#数组类型">数组类型</a></h1>
@@ -254,7 +256,7 @@ Expression</text>
 <div class="rule" id="r-type.array.constraint"><a class="rule-link" href="#r-type.array.constraint" title="type.array.constraint"><span>[type<wbr>.array<wbr>.constraint]</span></a>
 </div>
 
-<p>大小是一个计算结果为 <a href="numeric.html#machine-dependent-integer-types"><code>usize</code></a> 的 <a href="../const_eval.html#常量表达式">常量表达式</a> 。</p>
+<p>大小是一个计算结果为 <a href="numeric.html#平台相关整数类型"><code>usize</code></a> 的 <a href="../const_eval.html#常量表达式">常量表达式</a> 。</p>
 <p>示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -272,7 +274,7 @@ let boxed_array: Box&lt;[i32]&gt; = Box::new([1, 2, 3]);
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><a href="../../alloc/vec/struct.Vec.html"><code>Vec&lt;T&gt;</code></a> 标准库类型提供了一种堆分配的可调大小数组类型。</p>
+<p><a href="https://doc.rust-lang.org/alloc/vec/struct.Vec.html"><code>Vec&lt;T&gt;</code></a> 标准库类型提供了一种堆分配的可调大小数组类型。</p>
 </blockquote>
 </div>
 

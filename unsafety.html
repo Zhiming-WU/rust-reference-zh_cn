@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-safety"><a class="rule-link" href="#r-safety" title="safety"><span>[safety]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/unsafety.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-safety"><a class="rule-link" href="#r-safety" title="safety"><span>[safety]</span></a>
 </div>
 
 <h1 id="不安全性"><a class="header" href="#不安全性">不安全性</a></h1>
@@ -200,7 +202,7 @@
 </div>
 
 <ul>
-<li>读取或写入 <a href="items/static-items.html#mutable-statics">可变</a> 或不安全的 <a href="items/external-blocks.html">外部</a> 静态变量。</li>
+<li>读取或写入 <a href="items/static-items.html#可变静态项">可变</a> 或不安全的 <a href="items/external-blocks.html">外部</a> 静态变量。</li>
 </ul>
 <div class="rule" id="r-safety.unsafe-union-access"><a class="rule-link" href="#r-safety.unsafe-union-access" title="safety.unsafe-union-access"><span>[safety<wbr>.unsafe-union-access]</span></a>
 </div>
@@ -224,7 +226,7 @@
 </div>
 
 <ul>
-<li>实现 <a href="items/traits.html#unsafe-traits">不安全特型</a>。</li>
+<li>实现 <a href="items/traits.html#不安全特型">不安全特型</a>。</li>
 </ul>
 <div class="rule" id="r-safety.unsafe-extern"><a class="rule-link" href="#r-safety.unsafe-extern" title="safety.unsafe-extern"><span>[safety<wbr>.unsafe-extern]</span></a>
 </div>

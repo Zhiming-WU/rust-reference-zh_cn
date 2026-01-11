@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.literal"><a class="rule-link" href="#r-expr.literal" title="expr.literal"><span>[expr<wbr>.literal]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/literal-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.literal"><a class="rule-link" href="#r-expr.literal" title="expr.literal"><span>[expr<wbr>.literal]</span></a>
 </div>
 
 <h1 id="字面量表达式"><a class="header" href="#字面量表达式">字面量表达式</a></h1>
@@ -417,7 +419,7 @@ false</text>
 
 <h3 id="8位转义"><a class="header" href="#8位转义">8位转义</a></h3>
 <p>转义序列由 <code>\x</code> 后跟两个十六进制数字组成。</p>
-<p>转义值是其 <a href="http://www.unicode.org/glossary/#unicode_scalar_value">Unicode 标量值</a> 为将转义序列中的最后两个字符解释为十六进制整数的结果的字符，就像通过基数为 16 的 <a href="../../std/primitive.u8.html#method.from_str_radix"><code>u8::from_str_radix</code></a> 处理一样。</p>
+<p>转义值是其 <a href="http://www.unicode.org/glossary/#unicode_scalar_value">Unicode 标量值</a> 为将转义序列中的最后两个字符解释为十六进制整数的结果的字符，就像通过基数为 16 的 <a href="https://doc.rust-lang.org/std/primitive.u8.html#method.from_str_radix"><code>u8::from_str_radix</code></a> 处理一样。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
@@ -431,13 +433,13 @@ false</text>
 
 <h3 id="7位转义"><a class="header" href="#7位转义">7位转义</a></h3>
 <p>转义序列由 <code>\x</code> 后跟一个八进制数字，然后是一个十六进制数字组成。</p>
-<p>转义值是其 <a href="http://www.unicode.org/glossary/#unicode_scalar_value">Unicode 标量值</a> 为将转义序列中的最后两个字符解释为十六进制整数的结果的字符，就像通过基数为 16 的 <a href="../../std/primitive.u8.html#method.from_str_radix"><code>u8::from_str_radix</code></a> 处理一样。</p>
+<p>转义值是其 <a href="http://www.unicode.org/glossary/#unicode_scalar_value">Unicode 标量值</a> 为将转义序列中的最后两个字符解释为十六进制整数的结果的字符，就像通过基数为 16 的 <a href="https://doc.rust-lang.org/std/primitive.u8.html#method.from_str_radix"><code>u8::from_str_radix</code></a> 处理一样。</p>
 <div class="rule" id="r-expr.literal.escape.unicode"><a class="rule-link" href="#r-expr.literal.escape.unicode" title="expr.literal.escape.unicode"><span>[expr<wbr>.literal<wbr>.escape<wbr>.unicode]</span></a>
 </div>
 
 <h3 id="unicode-转义"><a class="header" href="#unicode-转义">Unicode 转义</a></h3>
 <p>转义序列由 <code>\u{</code>, 后跟一系列字符（每个字符都是十六进制数字或 <code>_</code> ）, 最后跟 <code>}</code> 组成。</p>
-<p>转义值是其 <a href="http://www.unicode.org/glossary/#unicode_scalar_value">Unicode 标量值</a> 为将转义序列中包含的十六进制数字解释为十六进制整数的结果的字符，就像通过基数为 16 的 <a href="../../std/primitive.u32.html#method.from_str_radix"><code>u32::from_str_radix</code></a> 处理一样。</p>
+<p>转义值是其 <a href="http://www.unicode.org/glossary/#unicode_scalar_value">Unicode 标量值</a> 为将转义序列中包含的十六进制数字解释为十六进制整数的结果的字符，就像通过基数为 16 的 <a href="https://doc.rust-lang.org/std/primitive.u32.html#method.from_str_radix"><code>u32::from_str_radix</code></a> 处理一样。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
@@ -741,7 +743,7 @@ b"\\x52"; br"\x52";                  // \x52
 <div class="rule" id="r-expr.literal.c-string.type"><a class="rule-link" href="#r-expr.literal.c-string.type" title="expr.literal.c-string.type"><span>[expr<wbr>.literal<wbr>.c-string<wbr>.type]</span></a>
 </div>
 
-<p>该表达式的类型是对标准库 <a href="../../core/ffi/c_str/struct.CStr.html">CStr</a> 类型的共享引用（具有 <code>static</code> 生命周期）。
+<p>该表达式的类型是对标准库 <a href="https://doc.rust-lang.org/core/ffi/c_str/struct.CStr.html">CStr</a> 类型的共享引用（具有 <code>static</code> 生命周期）。
 也就是说，类型是 <code>&amp;'static core::ffi::CStr</code> 。</p>
 <div class="rule" id="r-expr.literal.c-string.no-suffix"><a class="rule-link" href="#r-expr.literal.c-string.no-suffix" title="expr.literal.c-string.no-suffix"><span>[expr<wbr>.literal<wbr>.c-string<wbr>.no-suffix]</span></a>
 </div>
@@ -787,7 +789,7 @@ b"\\x52"; br"\x52";                  // \x52
 <div class="rule" id="r-expr.literal.c-string.result"><a class="rule-link" href="#r-expr.literal.c-string.result" title="expr.literal.c-string.result"><span>[expr<wbr>.literal<wbr>.c-string<wbr>.result]</span></a>
 </div>
 
-<p>该表达式的值是一个指向静态分配的 <a href="../../core/ffi/c_str/struct.CStr.html">CStr</a> 的引用，其字节数组包含表示字节，后跟一个空字节。</p>
+<p>该表达式的值是一个指向静态分配的 <a href="https://doc.rust-lang.org/core/ffi/c_str/struct.CStr.html">CStr</a> 的引用，其字节数组包含表示字节，后跟一个空字节。</p>
 <p>C 字符串字面量表达式的示例:</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -901,20 +903,20 @@ let a: u64 = 123;                  // 类型 u64
 </div>
 
 <ul>
-<li>字符串被转换为 <code>u128</code> 值，就像通过具有所选基数的 <a href="../../std/primitive.u128.html#method.from_str_radix"><code>u128::from_str_radix</code></a> 处理一样。
+<li>字符串被转换为 <code>u128</code> 值，就像通过具有所选基数的 <a href="https://doc.rust-lang.org/std/primitive.u128.html#method.from_str_radix"><code>u128::from_str_radix</code></a> 处理一样。
 如果值不适合 <code>u128</code> ，则是编译器错误。</li>
 </ul>
 <div class="rule" id="r-expr.literal.int.cast"><a class="rule-link" href="#r-expr.literal.int.cast" title="expr.literal.int.cast"><span>[expr<wbr>.literal<wbr>.int<wbr>.cast]</span></a>
 </div>
 
 <ul>
-<li><code>u128</code> 值通过 <a href="operator-expr.html#numeric-cast">数值强转</a> 转换为表达式的类型。</li>
+<li><code>u128</code> 值通过 <a href="operator-expr.html#数值转换">数值强转</a> 转换为表达式的类型。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>如果字面量的值不适合表达式的类型，最终的强转将截断该值。 <code>rustc</code> 包含一个名为 <code>overflowing_literals</code> 的 <a href="../attributes/diagnostics.html#lint-check-attributes">lint 检查</a> ，默认为 <code>deny</code> ，它会拒绝发生这种情况的表达式。</p>
+<p>如果字面量的值不适合表达式的类型，最终的强转将截断该值。 <code>rustc</code> 包含一个名为 <code>overflowing_literals</code> 的 <a href="../attributes/diagnostics.html#lint检查属性">lint 检查</a> ，默认为 <code>deny</code> ，它会拒绝发生这种情况的表达式。</p>
 </blockquote>
 </div>
 
@@ -922,7 +924,7 @@ let a: u64 = 123;                  // 类型 u64
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>例如， <code>-1i8</code> 是 <a href="operator-expr.html#negation-operators">求负运算符</a> 对字面量表达式 <code>1i8</code> 的应用，而不是单个整数字面量表达式。有关表示有符号类型的最小负值（绝对值最大）的注意事项，请参阅 <a href="operator-expr.html#overflow">溢出</a> 。</p>
+<p>例如， <code>-1i8</code> 是 <a href="operator-expr.html#求负运算符">求负运算符</a> 对字面量表达式 <code>1i8</code> 的应用，而不是单个整数字面量表达式。有关表示有符号类型的最小负值（绝对值最大）的注意事项，请参阅 <a href="operator-expr.html#溢出">溢出</a> 。</p>
 </blockquote>
 </div>
 
@@ -941,7 +943,7 @@ let a: u64 = 123;                  // 类型 u64
 <div class="rule" id="r-expr.literal.float.suffix"><a class="rule-link" href="#r-expr.literal.float.suffix" title="expr.literal.float.suffix"><span>[expr<wbr>.literal<wbr>.float<wbr>.suffix]</span></a>
 </div>
 
-<p>如果 词法单元 具有 <a href="../tokens.html#后缀">后缀</a> ，则后缀必须是 <a href="../types/numeric.html#floating-point-types">原始浮点类型</a> 之一的名称:  <code>f32</code> 或 <code>f64</code> ，并且表达式具有该类型。</p>
+<p>如果 词法单元 具有 <a href="../tokens.html#后缀">后缀</a> ，则后缀必须是 <a href="../types/numeric.html#浮点类型">原始浮点类型</a> 之一的名称:  <code>f32</code> 或 <code>f64</code> ，并且表达式具有该类型。</p>
 <div class="rule" id="r-expr.literal.float.infer"><a class="rule-link" href="#r-expr.literal.float.infer" title="expr.literal.float.infer"><span>[expr<wbr>.literal<wbr>.float<wbr>.infer]</span></a>
 </div>
 
@@ -1000,7 +1002,7 @@ let x: f64 = 2.; // 类型 f64
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>例如， <code>-1.0</code> 是 <a href="operator-expr.html#negation-operators">求负运算符</a> 对字面量表达式 <code>1.0</code> 的应用，而不是单个浮点数字面量表达式。</p>
+<p>例如， <code>-1.0</code> 是 <a href="operator-expr.html#求负运算符">求负运算符</a> 对字面量表达式 <code>1.0</code> 的应用，而不是单个浮点数字面量表达式。</p>
 </blockquote>
 </div>
 
@@ -1008,7 +1010,7 @@ let x: f64 = 2.; // 类型 f64
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>inf</code> 和 <code>NaN</code> 不是字面量 词法单元 。可以使用 <a href="../../std/primitive.f32.html#associatedconstant.INFINITY"><code>f32::INFINITY</code></a>, <a href="../../std/primitive.f64.html#associatedconstant.INFINITY"><code>f64::INFINITY</code></a>, <a href="../../std/primitive.f32.html#associatedconstant.NAN"><code>f32::NAN</code></a>, 和 <a href="../../std/primitive.f64.html#associatedconstant.NAN"><code>f64::NAN</code></a> 常量来代替字面量表达式。在 <code>rustc</code> 中，大到足以被求值为无穷大的字面量将触发 <code>overflowing_literals</code> lint 检查。</p>
+<p><code>inf</code> 和 <code>NaN</code> 不是字面量 词法单元 。可以使用 <a href="https://doc.rust-lang.org/std/primitive.f32.html#associatedconstant.INFINITY"><code>f32::INFINITY</code></a>, <a href="https://doc.rust-lang.org/std/primitive.f64.html#associatedconstant.INFINITY"><code>f64::INFINITY</code></a>, <a href="https://doc.rust-lang.org/std/primitive.f32.html#associatedconstant.NAN"><code>f32::NAN</code></a>, 和 <a href="https://doc.rust-lang.org/std/primitive.f64.html#associatedconstant.NAN"><code>f64::NAN</code></a> 常量来代替字面量表达式。在 <code>rustc</code> 中，大到足以被求值为无穷大的字面量将触发 <code>overflowing_literals</code> lint 检查。</p>
 </blockquote>
 </div>
 

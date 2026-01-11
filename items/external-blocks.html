@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-items.extern"><a class="rule-link" href="#r-items.extern" title="items.extern"><span>[items<wbr>.extern]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/items/external-blocks.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-items.extern"><a class="rule-link" href="#r-items.extern" title="items.extern"><span>[items<wbr>.extern]</span></a>
 </div>
 
 <h1 id="外部块"><a class="header" href="#外部块">外部块</a></h1>
@@ -520,7 +522,7 @@ unsafe extern "system" { /* ... */ }
 </div>
 
 <ul>
-<li><code>extern "C-unwind"</code> 和 <code>extern "system-unwind"</code> — 分别与 <code>"C"</code> 和 <code>"system"</code> 相同，但在被调用者展开（通过 恐慌 或抛出 C++ 风格异常）时具有 <a href="functions.html#unwinding">不同的行为</a>。</li>
+<li><code>extern "C-unwind"</code> 和 <code>extern "system-unwind"</code> — 分别与 <code>"C"</code> 和 <code>"system"</code> 相同，但在被调用者展开（通过 恐慌 或抛出 C++ 风格异常）时具有 <a href="functions.html#展开">不同的行为</a>。</li>
 </ul>
 <div class="rule" id="r-items.extern.abi.platform"><a class="rule-link" href="#r-items.extern.abi.platform" title="items.extern.abi.platform"><span>[items<wbr>.extern<wbr>.abi<wbr>.platform]</span></a>
 </div>
@@ -709,7 +711,7 @@ unsafe extern "system" { /* ... */ }
 <div class="rule" id="r-items.extern.abi.platform-unwind-variants"><a class="rule-link" href="#r-items.extern.abi.platform-unwind-variants" title="items.extern.abi.platform-unwind-variants"><span>[items<wbr>.extern<wbr>.abi<wbr>.platform-unwind-variants]</span></a>
 </div>
 
-<p>与 <code>"C"</code> 和 <code>"system"</code> 类似，大多数平台特定的 ABI 字符串也具有 <a href="functions.html#unwinding">对应的 <code>-unwind</code> 变体</a>；具体而言，它们是：</p>
+<p>与 <code>"C"</code> 和 <code>"system"</code> 类似，大多数平台特定的 ABI 字符串也具有 <a href="functions.html#展开">对应的 <code>-unwind</code> 变体</a>；具体而言，它们是：</p>
 <ul>
 <li><code>"aapcs-unwind"</code></li>
 <li><code>"cdecl-unwind"</code></li>
@@ -862,7 +864,7 @@ unsafe extern {
 </div>
 
 <p>此修饰符的默认值为 <code>+bundle</code>。</p>
-<p>有关此修饰符的更多实现细节，可以在 <a href="https://doc.rust-lang.org/rustc/command-line-arguments.html#linking-modifiers-bundle">rustc 的 <code>bundle</code> 文档</a> 中找到。</p>
+<p>有关此修饰符的更多实现细节，可以在 <a href="../../rustc/command-line-arguments.html#linking-modifiers-bundle">rustc 的 <code>bundle</code> 文档</a> 中找到。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.whole-archive"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.whole-archive" title="items.extern.attributes.link.modifiers.whole-archive"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.whole-archive]</span></a>
 </div>
 
@@ -879,7 +881,7 @@ unsafe extern {
 </div>
 
 <p>此修饰符的默认值为 <code>-whole-archive</code>。</p>
-<p>有关此修饰符的更多实现细节，可以在 <a href="https://doc.rust-lang.org/rustc/command-line-arguments.html#linking-modifiers-whole-archive">rustc 的 <code>whole-archive</code> 文档</a> 中找到。</p>
+<p>有关此修饰符的更多实现细节，可以在 <a href="../../rustc/command-line-arguments.html#linking-modifiers-whole-archive">rustc 的 <code>whole-archive</code> 文档</a> 中找到。</p>
 <div class="rule" id="r-items.extern.attributes.link.modifiers.verbatim"><a class="rule-link" href="#r-items.extern.attributes.link.modifiers.verbatim" title="items.extern.attributes.link.modifiers.verbatim"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.modifiers<wbr>.verbatim]</span></a>
 </div>
 
@@ -900,7 +902,7 @@ unsafe extern {
 </div>
 
 <p>此修饰符的默认值为 <code>-verbatim</code>。</p>
-<p>有关此修饰符的更多实现细节，可以在 <a href="https://doc.rust-lang.org/rustc/command-line-arguments.html#linking-modifiers-verbatim">rustc 的 <code>verbatim</code> 文档</a> 中找到。</p>
+<p>有关此修饰符的更多实现细节，可以在 <a href="../../rustc/command-line-arguments.html#linking-modifiers-verbatim">rustc 的 <code>verbatim</code> 文档</a> 中找到。</p>
 <div class="rule" id="r-items.extern.attributes.link.kind-raw-dylib"><a class="rule-link" href="#r-items.extern.attributes.link.kind-raw-dylib" title="items.extern.attributes.link.kind-raw-dylib"><span>[items<wbr>.extern<wbr>.attributes<wbr>.link<wbr>.kind-raw-dylib]</span></a>
 </div>
 
@@ -1038,7 +1040,7 @@ unsafe extern "stdcall" {
 </div>
 
 <h3 id="函数参数上的属性"><a class="header" href="#函数参数上的属性">函数参数上的属性</a></h3>
-<p>外部函数参数上的属性遵循与 <a href="functions.html#attributes-on-function-parameters">常规函数参数</a> 相同的规则和限制。</p>
+<p>外部函数参数上的属性遵循与 <a href="functions.html#函数参数上的属性">常规函数参数</a> 相同的规则和限制。</p>
 <hr>
 <ol class="footnote-definition">
 <li id="footnote-unsafe-2024">

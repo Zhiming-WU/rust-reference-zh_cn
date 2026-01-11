@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type"><a class="rule-link" href="#r-type" title="type"><span>[type]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type"><a class="rule-link" href="#r-type" title="type"><span>[type]</span></a>
 </div>
 
 <h1 id="类型"><a class="header" href="#类型">类型</a></h1>
@@ -229,8 +231,8 @@
 </li>
 <li>指针类型：
 <ul>
-<li><a href="types/pointer.html#shared-references-">引用</a></li>
-<li><a href="types/pointer.html#raw-pointers-const-and-mut">裸指针</a></li>
+<li><a href="types/pointer.html#共享引用">引用</a></li>
+<li><a href="types/pointer.html#裸指针const和mut">裸指针</a></li>
 <li><a href="types/function-pointer.html">函数指针</a></li>
 </ul>
 </li>
@@ -505,7 +507,7 @@ MacroInvocation</text>
 </div>
 
 <ul>
-<li>指针类型（ <a href="types/pointer.html#shared-references-">引用</a>、 <a href="types/pointer.html#raw-pointers-const-and-mut">裸指针</a>、 <a href="types/function-pointer.html">函数指针</a> ）。</li>
+<li>指针类型（ <a href="types/pointer.html#共享引用">引用</a>、 <a href="types/pointer.html#裸指针const和mut">裸指针</a>、 <a href="types/function-pointer.html">函数指针</a> ）。</li>
 </ul>
 <div class="rule" id="r-type.name.inference"><a class="rule-link" href="#r-type.name.inference" title="type.name.inference"><span>[type<wbr>.name<wbr>.inference]</span></a>
 </div>
@@ -595,7 +597,7 @@ Type</text>
 <div class="rule" id="r-type.name.parenthesized.intro"><a class="rule-link" href="#r-type.name.parenthesized.intro" title="type.name.parenthesized.intro"><span>[type<wbr>.name<wbr>.parenthesized<wbr>.intro]</span></a>
 </div>
 
-<p>在某些情况下，类型的组合可能会产生歧义。在类型周围使用括号以避免歧义。例如， <a href="types/pointer.html#shared-references-">引用类型</a> 中用于 <a href="trait-bounds.html">特型边界</a> 的 <code>+</code> 运算符不清楚边界应用于何处，因此需要使用括号。需要这种消除歧义的语法格式规则使用 <a href="types.html#grammar-TypeNoBounds">TypeNoBounds</a> 规则而不是 <a href="types.html#grammar-Type">类型</a> 。</p>
+<p>在某些情况下，类型的组合可能会产生歧义。在类型周围使用括号以避免歧义。例如， <a href="types/pointer.html#共享引用">引用类型</a> 中用于 <a href="trait-bounds.html">特型边界</a> 的 <code>+</code> 运算符不清楚边界应用于何处，因此需要使用括号。需要这种消除歧义的语法格式规则使用 <a href="types.html#grammar-TypeNoBounds">TypeNoBounds</a> 规则而不是 <a href="types.html#grammar-Type">类型</a> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">use std::any::Any;

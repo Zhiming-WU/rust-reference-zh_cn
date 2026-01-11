@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type.impl-trait"><a class="rule-link" href="#r-type.impl-trait" title="type.impl-trait"><span>[type<wbr>.impl-trait]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types/impl-trait.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type.impl-trait"><a class="rule-link" href="#r-type.impl-trait" title="type.impl-trait"><span>[type<wbr>.impl-trait]</span></a>
 </div>
 
 <h1 id="impl-trait"><a class="header" href="#impl-trait">Impl trait</a></h1>
@@ -407,7 +409,7 @@ fn with_impl_trait(arg: impl Trait) {
 <div class="rule" id="r-type.impl-trait.generic-capture.precise.use"><a class="rule-link" href="#r-type.impl-trait.generic-capture.precise.use" title="type.impl-trait.generic-capture.precise.use"><span>[type<wbr>.impl-trait<wbr>.generic-capture<wbr>.precise<wbr>.use]</span></a>
 </div>
 
-<p>由返回位置 <code>impl Trait</code> 抽象类型捕获的泛型参数集合可以通过 <a href="../trait-bounds.html#use-bounds"><code>use&lt;..&gt;</code> 界限</a> 进行显式控制。如果存在，则仅捕获 <code>use&lt;..&gt;</code> 界限中列出的泛型参数。例如：</p>
+<p>由返回位置 <code>impl Trait</code> 抽象类型捕获的泛型参数集合可以通过 <a href="../trait-bounds.html#use界限"><code>use&lt;..&gt;</code> 界限</a> 进行显式控制。如果存在，则仅捕获 <code>use&lt;..&gt;</code> 界限中列出的泛型参数。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn capture&lt;'a, 'b, T&gt;(x: &amp;'a (), y: T) -&gt; impl Sized + use&lt;'a, T&gt; {

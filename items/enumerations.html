@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-items.enum"><a class="rule-link" href="#r-items.enum" title="items.enum"><span>[items<wbr>.enum]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/items/enumerations.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-items.enum"><a class="rule-link" href="#r-items.enum" title="items.enum"><span>[items<wbr>.enum]</span></a>
 </div>
 
 <h1 id="枚举"><a class="header" href="#枚举">枚举</a></h1>
@@ -652,7 +654,7 @@ let z = StructLike { value: 123 }; // 结构体表达式。
 <div class="rule" id="r-items.enum.discriminant.repr-rust"><a class="rule-link" href="#r-items.enum.discriminant.repr-rust" title="items.enum.discriminant.repr-rust"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.repr-rust]</span></a>
 </div>
 
-<p>在  <a href="../type-layout.html#the-rust-representation"><code>Rust</code> 表示</a>  下，判别值被解释为一个 <code>isize</code> 值。但是，编译器允许在其实际内存布局中使用更小的类型（或其他区分变体的方法）。</p>
+<p>在  <a href="../type-layout.html#rust表示法"><code>Rust</code> 表示</a>  下，判别值被解释为一个 <code>isize</code> 值。但是，编译器允许在其实际内存布局中使用更小的类型（或其他区分变体的方法）。</p>
 <h3 id="分配判别值"><a class="header" href="#分配判别值">分配判别值</a></h3>
 <div class="rule" id="r-items.enum.discriminant.explicit"><a class="rule-link" href="#r-items.enum.discriminant.explicit" title="items.enum.discriminant.explicit"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.explicit]</span></a>
 </div>
@@ -673,7 +675,7 @@ let z = StructLike { value: 123 }; // 结构体表达式。
 
 <ol start="2">
 <li>
-<p>如果使用了  <a href="../type-layout.html#primitive-representations">原生表示</a> 。例如：</p>
+<p>如果使用了  <a href="../type-layout.html#原语表示法">原生表示</a> 。例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[repr(u8)]
@@ -749,7 +751,7 @@ enum OverflowingDiscriminantError2 {
 <div class="rule" id="r-items.enum.discriminant.access-opaque"><a class="rule-link" href="#r-items.enum.discriminant.access-opaque" title="items.enum.discriminant.access-opaque"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.access-opaque]</span></a>
 </div>
 
-<p><a href="../../core/mem/fn.discriminant.html"><code>std::mem::discriminant</code></a> 返回对枚举值判别值的不透明引用，该引用可以进行比较。这不能用于获取判别值的值。</p>
+<p><a href="https://doc.rust-lang.org/core/mem/fn.discriminant.html"><code>std::mem::discriminant</code></a> 返回对枚举值判别值的不透明引用，该引用可以进行比较。这不能用于获取判别值的值。</p>
 <div class="rule" id="r-items.enum.discriminant.coercion"><a class="rule-link" href="#r-items.enum.discriminant.coercion" title="items.enum.discriminant.coercion"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.coercion]</span></a>
 </div>
 
@@ -757,7 +759,7 @@ enum OverflowingDiscriminantError2 {
 <div class="rule" id="r-items.enum.discriminant.coercion.intro"><a class="rule-link" href="#r-items.enum.discriminant.coercion.intro" title="items.enum.discriminant.coercion.intro"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.coercion<wbr>.intro]</span></a>
 </div>
 
-<p>如果枚举是  <a href="#unit-only-enum">仅单元</a>  的（没有元组和结构体变体），则可以使用  <a href="../expressions/operator-expr.html#semantics">数值转换</a>  直接访问其判别值；例如：</p>
+<p>如果枚举是  <a href="#unit-only-enum">仅单元</a>  的（没有元组和结构体变体），则可以使用  <a href="../expressions/operator-expr.html#语义">数值转换</a>  直接访问其判别值；例如：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Enum {
@@ -805,7 +807,7 @@ assert_eq!(22, FieldlessWithDiscriminants::Unit as u8);
 <div class="rule" id="r-items.enum.discriminant.access-memory"><a class="rule-link" href="#r-items.enum.discriminant.access-memory" title="items.enum.discriminant.access-memory"><span>[items<wbr>.enum<wbr>.discriminant<wbr>.access-memory]</span></a>
 </div>
 
-<p>如果枚举指定了  <a href="../type-layout.html#primitive-representations">原生表示</a> ，则可以通过不安全的指针转换可靠地访问判别值：</p>
+<p>如果枚举指定了  <a href="../type-layout.html#原语表示法">原生表示</a> ，则可以通过不安全的指针转换可靠地访问判别值：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[repr(u8)]

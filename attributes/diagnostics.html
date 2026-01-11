@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-attributes.diagnostics"><a class="rule-link" href="#r-attributes.diagnostics" title="attributes.diagnostics"><span>[attributes<wbr>.diagnostics]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/attributes/diagnostics.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-attributes.diagnostics"><a class="rule-link" href="#r-attributes.diagnostics" title="attributes.diagnostics"><span>[attributes<wbr>.diagnostics]</span></a>
 </div>
 
 <h1 id="诊断属性"><a class="header" href="#诊断属性">诊断属性</a></h1>
@@ -229,7 +231,7 @@
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>通过 <code>rustc -W help</code> 可以找到 <code>rustc</code> 支持的 lint 检查，以及它们的默认设置，并记录在 <a href="https://doc.rust-lang.org/rustc/lints/index.html">rustc book</a> 中。</p>
+<p>通过 <code>rustc -W help</code> 可以找到 <code>rustc</code> 支持的 lint 检查，以及它们的默认设置，并记录在 <a href="../../rustc/lints/index.html">rustc book</a> 中。</p>
 </blockquote>
 </div>
 
@@ -290,7 +292,7 @@ pub mod m3 {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>rustc</code> 允许在 <a href="https://doc.rust-lang.org/rustc/lints/levels.html#via-compiler-flag">命令行</a> 上设置 lint 级别，并且还支持对报告的 lint <a href="https://doc.rust-lang.org/rustc/lints/levels.html#capping-lints">设置上限</a>。</p>
+<p><code>rustc</code> 允许在 <a href="../../rustc/lints/levels.html#via-compiler-flag">命令行</a> 上设置 lint 级别，并且还支持对报告的 lint <a href="../../rustc/lints/levels.html#capping-lints">设置上限</a>。</p>
 </blockquote>
 </div>
 
@@ -690,7 +692,7 @@ let _ = five();
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.format-string"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.format-string" title="attributes.diagnostic.on_unimplemented.format-string"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.format-string]</span></a>
 </div>
 
-<p>所有三个选项都接受一个字符串作为参数，使用与 <a href="../../alloc/fmt/index.html"><code>std::fmt</code></a> 字符串相同的格式进行解释。</p>
+<p>所有三个选项都接受一个字符串作为参数，使用与 <a href="https://doc.rust-lang.org/alloc/fmt/index.html"><code>std::fmt</code></a> 字符串相同的格式进行解释。</p>
 <div class="rule" id="r-attributes.diagnostic.on_unimplemented.format-parameters"><a class="rule-link" href="#r-attributes.diagnostic.on_unimplemented.format-parameters" title="attributes.diagnostic.on_unimplemented.format-parameters"><span>[attributes<wbr>.diagnostic<wbr>.on_unimplemented<wbr>.format-parameters]</span></a>
 </div>
 

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-names.scopes"><a class="rule-link" href="#r-names.scopes" title="names.scopes"><span>[names<wbr>.scopes]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/names/scopes.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-names.scopes"><a class="rule-link" href="#r-names.scopes" title="names.scopes"><span>[names<wbr>.scopes]</span></a>
 </div>
 
 <h1 id="作用域"><a class="header" href="#作用域">作用域</a></h1>
@@ -237,13 +239,13 @@
 </div>
 
 <ul>
-<li><a href="../statements.html#let-statements"><code>let</code> 语句</a> 绑定的范围从 <code>let</code> 语句之后直到声明它的块结束。</li>
+<li><a href="../statements.html#let语句"><code>let</code> 语句</a> 绑定的范围从 <code>let</code> 语句之后直到声明它的块结束。</li>
 </ul>
 <div class="rule" id="r-names.scopes.pattern-bindings.parameter"><a class="rule-link" href="#r-names.scopes.pattern-bindings.parameter" title="names.scopes.pattern-bindings.parameter"><span>[names<wbr>.scopes<wbr>.pattern-bindings<wbr>.parameter]</span></a>
 </div>
 
 <ul>
-<li><a href="../items/functions.html#function-parameters">函数参数</a> 绑定在函数体内部。</li>
+<li><a href="../items/functions.html#函数参数">函数参数</a> 绑定在函数体内部。</li>
 </ul>
 <div class="rule" id="r-names.scopes.pattern-bindings.closure"><a class="rule-link" href="#r-names.scopes.pattern-bindings.closure" title="names.scopes.pattern-bindings.closure"><span>[names<wbr>.scopes<wbr>.pattern-bindings<wbr>.closure]</span></a>
 </div>
@@ -255,19 +257,19 @@
 </div>
 
 <ul>
-<li><a href="../expressions/loop-expr.html#iterator-loops"><code>for</code></a> 绑定在循环体内部。</li>
+<li><a href="../expressions/loop-expr.html#迭代器循环"><code>for</code></a> 绑定在循环体内部。</li>
 </ul>
 <div class="rule" id="r-names.scopes.pattern-bindings.let-chains"><a class="rule-link" href="#r-names.scopes.pattern-bindings.let-chains" title="names.scopes.pattern-bindings.let-chains"><span>[names<wbr>.scopes<wbr>.pattern-bindings<wbr>.let-chains]</span></a>
 </div>
 
 <ul>
-<li><a href="../expressions/if-expr.html#if-let-patterns"><code>if let</code></a> 和 <a href="../expressions/loop-expr.html#while-let-patterns"><code>while let</code></a> 绑定在后续条件以及随后的块中有效。</li>
+<li><a href="../expressions/if-expr.html#if-let模式"><code>if let</code></a> 和 <a href="../expressions/loop-expr.html#while-let模式"><code>while let</code></a> 绑定在后续条件以及随后的块中有效。</li>
 </ul>
 <div class="rule" id="r-names.scopes.pattern-bindings.match-arm"><a class="rule-link" href="#r-names.scopes.pattern-bindings.match-arm" title="names.scopes.pattern-bindings.match-arm"><span>[names<wbr>.scopes<wbr>.pattern-bindings<wbr>.match-arm]</span></a>
 </div>
 
 <ul>
-<li><a href="../expressions/match-expr.html"><code>match</code> 臂</a> 绑定在 <a href="../expressions/match-expr.html#match-guards">match 守卫</a> 和 match 臂表达式内部。</li>
+<li><a href="../expressions/match-expr.html"><code>match</code> 臂</a> 绑定在 <a href="../expressions/match-expr.html#匹配臂守卫">match 守卫</a> 和 match 臂表达式内部。</li>
 </ul>
 <div class="rule" id="r-names.scopes.pattern-bindings.items"><a class="rule-link" href="#r-names.scopes.pattern-bindings.items" title="names.scopes.pattern-bindings.items"><span>[names<wbr>.scopes<wbr>.pattern-bindings<wbr>.items]</span></a>
 </div>
@@ -371,7 +373,7 @@ fn where_scope&lt;'a, T, U&gt;()
 </div>
 
 <h3 id="生命周期作用域"><a class="header" href="#生命周期作用域">生命周期作用域</a></h3>
-<p>生命周期参数在 <a href="../items/generics.html#grammar-GenericParams">GenericParams</a> 列表和 <a href="../trait-bounds.html#higher-ranked-trait-bounds">高阶特型界限</a> 中声明。</p>
+<p>生命周期参数在 <a href="../items/generics.html#grammar-GenericParams">GenericParams</a> 列表和 <a href="../trait-bounds.html#高阶特型界限">高阶特型界限</a> 中声明。</p>
 <div class="rule" id="r-names.scopes.lifetimes.special"><a class="rule-link" href="#r-names.scopes.lifetimes.special" title="names.scopes.lifetimes.special"><span>[names<wbr>.scopes<wbr>.lifetimes<wbr>.special]</span></a>
 </div>
 
@@ -380,13 +382,13 @@ fn where_scope&lt;'a, T, U&gt;()
 <div class="rule" id="r-names.scopes.lifetimes.generic"><a class="rule-link" href="#r-names.scopes.lifetimes.generic" title="names.scopes.lifetimes.generic"><span>[names<wbr>.scopes<wbr>.lifetimes<wbr>.generic]</span></a>
 </div>
 
-<p><a href="../items/constant-items.html">常量</a> 和 <a href="../items/static-items.html">静态</a> 项以及 <a href="../const_eval.html#const-context">常量上下文</a> 仅允许 <code>'static</code> 生命周期引用，因此它们内部不能有其他生命周期。
-<a href="../items/associated-items.html#associated-constants">关联常量</a> 确实允许引用其 特型 或实现中声明的生命周期。</p>
+<p><a href="../items/constant-items.html">常量</a> 和 <a href="../items/static-items.html">静态</a> 项以及 <a href="../const_eval.html#常量上下文">常量上下文</a> 仅允许 <code>'static</code> 生命周期引用，因此它们内部不能有其他生命周期。
+<a href="../items/associated-items.html#关联常量">关联常量</a> 确实允许引用其 特型 或实现中声明的生命周期。</p>
 <h4 id="高阶特型界限作用域"><a class="header" href="#高阶特型界限作用域">高阶特型界限作用域</a></h4>
 <div class="rule" id="r-names.scopes.lifetimes.higher-ranked"><a class="rule-link" href="#r-names.scopes.lifetimes.higher-ranked" title="names.scopes.lifetimes.higher-ranked"><span>[names<wbr>.scopes<wbr>.lifetimes<wbr>.higher-ranked]</span></a>
 </div>
 
-<p>声明为 <a href="../trait-bounds.html#higher-ranked-trait-bounds">高阶特型界限</a> 的生命周期参数的作用域取决于它的使用场景。</p>
+<p>声明为 <a href="../trait-bounds.html#高阶特型界限">高阶特型界限</a> 的生命周期参数的作用域取决于它的使用场景。</p>
 <ul>
 <li>作为 <a href="../items/generics.html#grammar-TypeBoundWhereClauseItem">TypeBoundWhereClauseItem</a>，声明的生命周期在类型和类型界限中处于作用域内。</li>
 <li>作为 <a href="../trait-bounds.html#grammar-TraitBound">TraitBound</a>，声明的生命周期在界限类型路径中处于作用域内。</li>
@@ -450,9 +452,9 @@ fn foo&lt;'a&gt;() -&gt; impl for&lt;'b&gt; Trait1&lt;Item = impl Trait2&lt;'a&g
 <div class="rule" id="r-names.scopes.loop-label.scope"><a class="rule-link" href="#r-names.scopes.loop-label.scope" title="names.scopes.loop-label.scope"><span>[names<wbr>.scopes<wbr>.loop-label<wbr>.scope]</span></a>
 </div>
 
-<p><a href="../expressions/loop-expr.html#loop-labels">循环标签</a> 可以由 <a href="../expressions/loop-expr.html">循环表达式</a> 声明。
+<p><a href="../expressions/loop-expr.html#循环标签">循环标签</a> 可以由 <a href="../expressions/loop-expr.html">循环表达式</a> 声明。
 循环标签的作用域从它被声明的那一点开始，直到循环表达式结束。
-该作用域不会延伸到 <a href="../items.html">项</a>、<a href="../expressions/closure-expr.html">闭包</a>、<a href="../expressions/block-expr.html#async-blocks">异步块</a>、<a href="../items/generics.html#const-generics">常量参数</a>、<a href="../const_eval.html#const-context">常量上下文</a> 以及定义它的 <a href="../expressions/loop-expr.html#iterator-loops"><code>for</code> 循环</a> 的迭代器表达式中。</p>
+该作用域不会延伸到 <a href="../items.html">项</a>、<a href="../expressions/closure-expr.html">闭包</a>、<a href="../expressions/block-expr.html#async块">异步块</a>、<a href="../items/generics.html#常量泛型">常量参数</a>、<a href="../const_eval.html#常量上下文">常量上下文</a> 以及定义它的 <a href="../expressions/loop-expr.html#迭代器循环"><code>for</code> 循环</a> 的迭代器表达式中。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>'a: for n in 0..3 {
@@ -513,11 +515,11 @@ fn foo&lt;'a&gt;() -&gt; impl for&lt;'b&gt; Trait1&lt;Item = impl Trait2&lt;'a&g
 <p>预导入是分层的，如果它们包含同名的实体，则其中一个会遮蔽另一个。
 预导入可能遮蔽其他预导入的顺序如下，其中前面的条目可以遮蔽后面的条目：</p>
 <ol>
-<li><a href="preludes.html#extern-prelude">外部预导入</a></li>
-<li><a href="preludes.html#tool-prelude">工具预导入</a></li>
+<li><a href="preludes.html#外部预导入">外部预导入</a></li>
+<li><a href="preludes.html#工具预导入">工具预导入</a></li>
 <li><a href="preludes.html#macro_use-prelude"><code>macro_use</code> 预导入</a></li>
-<li><a href="preludes.html#standard-library-prelude">标准库预导入</a></li>
-<li><a href="preludes.html#language-prelude">语言预导入</a></li>
+<li><a href="preludes.html#标准库预导入">标准库预导入</a></li>
+<li><a href="preludes.html#语言预导入">语言预导入</a></li>
 </ol>
 <div class="rule" id="r-names.scopes.macro_rules"><a class="rule-link" href="#r-names.scopes.macro_rules" title="names.scopes.macro_rules"><span>[names<wbr>.scopes<wbr>.macro_rules]</span></a>
 </div>

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-expr.operator"><a class="rule-link" href="#r-expr.operator" title="expr.operator"><span>[expr<wbr>.operator]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/expressions/operator-expr.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-expr.operator"><a class="rule-link" href="#r-expr.operator" title="expr.operator"><span>[expr<wbr>.operator]</span></a>
 </div>
 
 <h1 id="运算符表达式"><a class="header" href="#运算符表达式">运算符表达式</a></h1>
@@ -349,7 +351,7 @@ CompoundAssignmentExpression</text>
 </div>
 
 <ul>
-<li>对任何有符号整数类型的最小负值应用一元 <code>-</code> ，除非操作数是 <a href="literal-expr.html#integer-literal-expressions">字面量表达式</a> （或单独存在于一个或多个 <a href="grouped-expr.html">分组表达式</a> 中的字面量表达式）。</li>
+<li>对任何有符号整数类型的最小负值应用一元 <code>-</code> ，除非操作数是 <a href="literal-expr.html#整数字面量表达式">字面量表达式</a> （或单独存在于一个或多个 <a href="grouped-expr.html">分组表达式</a> 中的字面量表达式）。</li>
 </ul>
 <div class="rule" id="r-expr.operator.int-overflow.div"><a class="rule-link" href="#r-expr.operator.int-overflow.div" title="expr.operator.int-overflow.div"><span>[expr<wbr>.operator<wbr>.int-overflow<wbr>.div]</span></a>
 </div>
@@ -369,7 +371,7 @@ CompoundAssignmentExpression</text>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
 <p>一元 <code>-</code> 后的字面量表达式的例外情况意味着诸如 <code>-128_i8</code> 或 <code>let j: i8 = -(128)</code> 之类的形式永远不会导致 恐慌 ，并且具有预期的值 -128。</p>
-<p>在这些情况下，字面量表达式已经具有其类型的最小负值（例如， <code>128_i8</code> 的值为 -128），因为整数字面量会根据 <a href="literal-expr.html#integer-literal-expressions">整数字面量表达式</a> 中的描述被截断为其类型。</p>
+<p>在这些情况下，字面量表达式已经具有其类型的最小负值（例如， <code>128_i8</code> 的值为 -128），因为整数字面量会根据 <a href="literal-expr.html#整数字面量表达式">整数字面量表达式</a> 中的描述被截断为其类型。</p>
 <p>由于补码溢出约定，这些最小负值的取负操作保持原值不变。</p>
 <p>在 <code>rustc</code> 中，这些最小负数表达式也会被 <code>overflowing_literals</code> lint 检查忽略。</p>
 </blockquote>
@@ -569,7 +571,7 @@ Expression</text>
 <div class="rule" id="r-expr.operator.borrow.temporary"><a class="rule-link" href="#r-expr.operator.borrow.temporary" title="expr.operator.borrow.temporary"><span>[expr<wbr>.operator<wbr>.borrow<wbr>.temporary]</span></a>
 </div>
 
-<p>如果 <code>&amp;</code> 或 <code>&amp;mut</code> 运算符应用于 <a href="../expressions.html#位置表达式和值表达式">值表达式</a> ，则会创建一个 <a href="../expressions.html#temporaries">临时值</a> 。</p>
+<p>如果 <code>&amp;</code> 或 <code>&amp;mut</code> 运算符应用于 <a href="../expressions.html#位置表达式和值表达式">值表达式</a> ，则会创建一个 <a href="../expressions.html#临时变量">临时值</a> 。</p>
 <p>这些运算符不能被重载。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -718,7 +720,7 @@ Expression</text>
 <div class="rule" id="r-expr.deref.traits"><a class="rule-link" href="#r-expr.deref.traits" title="expr.deref.traits"><span>[expr<wbr>.deref<wbr>.traits]</span></a>
 </div>
 
-<p>在 <a href="../expressions.html#mutability">不可变位置表达式语境</a> 中，对于非指针类型， <code>*x</code> 等价于 <code>*std::ops::Deref::deref(&amp;x)</code> ；在可变位置表达式语境中，等价于 <code>*std::ops::DerefMut::deref_mut(&amp;mut x)</code> 。</p>
+<p>在 <a href="../expressions.html#可变性">不可变位置表达式语境</a> 中，对于非指针类型， <code>*x</code> 等价于 <code>*std::ops::Deref::deref(&amp;x)</code> ；在可变位置表达式语境中，等价于 <code>*std::ops::DerefMut::deref_mut(&amp;mut x)</code> 。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = &amp;7;
@@ -779,7 +781,7 @@ Expression</text>
 <div class="rule" id="r-expr.try.intro"><a class="rule-link" href="#r-expr.try.intro" title="expr.try.intro"><span>[expr<wbr>.try<wbr>.intro]</span></a>
 </div>
 
-<p>try 传播表达式使用内部表达式的值和 <a href="../../core/ops/try_trait/trait.Try.html"><code>Try</code></a> 特型 来决定是产生一个值（如果产生，产生什么值），还是向调用者返回一个值（如果返回，返回什么值）。</p>
+<p>try 传播表达式使用内部表达式的值和 <a href="https://doc.rust-lang.org/core/ops/try_trait/trait.Try.html"><code>Try</code></a> 特型 来决定是产生一个值（如果产生，产生什么值），还是向调用者返回一个值（如果返回，返回什么值）。</p>
 <div class="alert alert-example">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg>例子</p>
@@ -854,7 +856,7 @@ impl&lt;T&gt; TreeNode&lt;T&gt; {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><a href="../../core/ops/try_trait/trait.Try.html"><code>Try</code></a> 特型 目前不稳定，因此不能为用户类型实现。</p>
+<p><a href="https://doc.rust-lang.org/core/ops/try_trait/trait.Try.html"><code>Try</code></a> 特型 目前不稳定，因此不能为用户类型实现。</p>
 <p>try 传播表达式目前大致等价于：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -885,32 +887,32 @@ impl&lt;T&gt; TreeNode&lt;T&gt; {
 
 <p>try 传播运算符可以应用于具有以下类型的表达式：</p>
 <ul>
-<li><a href="../../core/result/enum.Result.html"><code>Result&lt;T, E&gt;</code></a>
+<li><a href="https://doc.rust-lang.org/core/result/enum.Result.html"><code>Result&lt;T, E&gt;</code></a>
 <ul>
 <li><code>Result::Ok(val)</code> 求值为 <code>val</code> 。</li>
 <li><code>Result::Err(e)</code> 返回 <code>Result::Err(From::from(e))</code> 。</li>
 </ul>
 </li>
-<li><a href="../../core/option/enum.Option.html"><code>Option&lt;T&gt;</code></a>
+<li><a href="https://doc.rust-lang.org/core/option/enum.Option.html"><code>Option&lt;T&gt;</code></a>
 <ul>
 <li><code>Option::Some(val)</code> 求值为 <code>val</code> 。</li>
 <li><code>Option::None</code> 返回 <code>Option::None</code> 。</li>
 </ul>
 </li>
-<li><a href="../../core/ops/control_flow/enum.ControlFlow.html"><code>ControlFlow&lt;B, C&gt;</code></a>
+<li><a href="https://doc.rust-lang.org/core/ops/control_flow/enum.ControlFlow.html"><code>ControlFlow&lt;B, C&gt;</code></a>
 <ul>
 <li><code>ControlFlow::Continue(c)</code> 求值为 <code>c</code> 。</li>
 <li><code>ControlFlow::Break(b)</code> 返回 <code>ControlFlow::Break(b)</code> 。</li>
 </ul>
 </li>
-<li><a href="../../core/task/poll/enum.Poll.html"><code>Poll&lt;Result&lt;T, E&gt;&gt;</code></a>
+<li><a href="https://doc.rust-lang.org/core/task/poll/enum.Poll.html"><code>Poll&lt;Result&lt;T, E&gt;&gt;</code></a>
 <ul>
 <li><code>Poll::Ready(Ok(val))</code> 求值为 <code>Poll::Ready(val)</code> 。</li>
 <li><code>Poll::Ready(Err(e))</code> 返回 <code>Poll::Ready(Err(From::from(e)))</code> 。</li>
 <li><code>Poll::Pending</code> 求值为 <code>Poll::Pending</code> 。</li>
 </ul>
 </li>
-<li><a href="../../core/task/poll/enum.Poll.html"><code>Poll&lt;Option&lt;Result&lt;T, E&gt;&gt;&gt;</code></a>
+<li><a href="https://doc.rust-lang.org/core/task/poll/enum.Poll.html"><code>Poll&lt;Option&lt;Result&lt;T, E&gt;&gt;&gt;</code></a>
 <ul>
 <li><code>Poll::Ready(Some(Ok(val)))</code> 求值为 <code>Poll::Ready(Some(val))</code> 。</li>
 <li><code>Poll::Ready(Some(Err(e)))</code> 返回 <code>Poll::Ready(Some(Err(From::from(e))))</code> 。</li>
@@ -1005,7 +1007,7 @@ Expression</text>
 </thead>
 <tbody>
 <tr><td><code>-</code></td><td>取负*</td><td></td><td>取负</td><td><code>std::ops::Neg</code></td></tr>
-<tr><td><code>!</code></td><td>按位取反</td><td><a href="../types/boolean.html#logical-not">逻辑非</a></td><td></td><td><code>std::ops::Not</code></td></tr>
+<tr><td><code>!</code></td><td>按位取反</td><td><a href="../types/boolean.html#逻辑非">逻辑非</a></td><td></td><td><code>std::ops::Not</code></td></tr>
 </tbody>
 </table>
 </div>
@@ -1324,9 +1326,9 @@ Expression</text>
 <tr><td><code>*</code></td><td>乘法</td><td></td><td>乘法</td><td><code>std::ops::Mul</code></td><td><code>std::ops::MulAssign</code></td></tr>
 <tr><td><code>/</code></td><td>除法*†</td><td></td><td>除法</td><td><code>std::ops::Div</code></td><td><code>std::ops::DivAssign</code></td></tr>
 <tr><td><code>%</code></td><td>取余**†</td><td></td><td>取余</td><td><code>std::ops::Rem</code></td><td><code>std::ops::RemAssign</code></td></tr>
-<tr><td><code>&amp;</code></td><td>按位与</td><td><a href="../types/boolean.html#logical-and">逻辑与</a></td><td></td><td><code>std::ops::BitAnd</code></td><td><code>std::ops::BitAndAssign</code></td></tr>
-<tr><td>`</td><td>`</td><td>按位或</td><td><a href="../types/boolean.html#logical-or">逻辑或</a></td><td></td><td><code>std::ops::BitOr</code></td></tr>
-<tr><td><code>^</code></td><td>按位异或</td><td><a href="../types/boolean.html#logical-xor">逻辑异或</a></td><td></td><td><code>std::ops::BitXor</code></td><td><code>std::ops::BitXorAssign</code></td></tr>
+<tr><td><code>&amp;</code></td><td>按位与</td><td><a href="../types/boolean.html#逻辑与">逻辑与</a></td><td></td><td><code>std::ops::BitAnd</code></td><td><code>std::ops::BitAndAssign</code></td></tr>
+<tr><td>`</td><td>`</td><td>按位或</td><td><a href="../types/boolean.html#逻辑或">逻辑或</a></td><td></td><td><code>std::ops::BitOr</code></td></tr>
+<tr><td><code>^</code></td><td>按位异或</td><td><a href="../types/boolean.html#逻辑异或">逻辑异或</a></td><td></td><td><code>std::ops::BitXor</code></td><td><code>std::ops::BitXorAssign</code></td></tr>
 <tr><td><code>&lt;&lt;</code></td><td>左移</td><td></td><td></td><td><code>std::ops::Shl</code></td><td><code>std::ops::ShlAssign</code></td></tr>
 <tr><td><code>&gt;&gt;</code></td><td>右移***</td><td></td><td></td><td><code>std::ops::Shr</code></td><td><code>std::ops::ShrAssign</code></td></tr>
 </tbody>
@@ -1941,7 +1943,7 @@ assert!((std::f64::NAN as f32).is_nan());
 转换仅限于以下几种枚举：</p>
 <ul>
 <li><a href="../items/enumerations.html#unit-only-enum">仅单元项枚举</a></li>
-<li><a href="../items/enumerations.html#field-less-enum">无字段枚举</a> 且没有 <a href="../items/enumerations.html#explicit-discriminants">显式判别值</a> ，或者只有单元项变体具有显式判别值</li>
+<li><a href="../items/enumerations.html#field-less-enum">无字段枚举</a> 且没有 <a href="../items/enumerations.html#显式判别值">显式判别值</a> ，或者只有单元项变体具有显式判别值</li>
 </ul>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -1953,7 +1955,7 @@ assert_eq!(Enum::C as i32, 2);
 <div class="rule" id="r-expr.as.enum.no-drop"><a class="rule-link" href="#r-expr.as.enum.no-drop" title="expr.as.enum.no-drop"><span>[expr<wbr>.as<wbr>.enum<wbr>.no-drop]</span></a>
 </div>
 
-<p>如果枚举实现了 <a href="../../core/ops/drop/trait.Drop.html"><code>Drop</code></a> ，则不允许进行转换。</p>
+<p>如果枚举实现了 <a href="https://doc.rust-lang.org/core/ops/drop/trait.Drop.html"><code>Drop</code></a> ，则不允许进行转换。</p>
 <div class="rule" id="r-expr.as.bool-char-as-int"><a class="rule-link" href="#r-expr.as.bool-char-as-int" title="expr.as.bool-char-as-int"><span>[expr<wbr>.as<wbr>.bool-char-as-int]</span></a>
 </div>
 
@@ -2110,7 +2112,7 @@ Expression</text>
 <div class="rule" id="r-expr.assign.assignee"><a class="rule-link" href="#r-expr.assign.assignee" title="expr.assign.assignee"><span>[expr<wbr>.assign<wbr>.assignee]</span></a>
 </div>
 
-<p>赋值表达式由一个 <a href="../expressions.html#mutability">可变</a> <a href="../expressions.html#位置表达式和值表达式">赋值目标表达式</a> （即 <em>赋值目标操作数</em> ），后跟一个等号（ <code>=</code> ）和一个 <a href="../expressions.html#位置表达式和值表达式">值表达式</a> （即 <em>被赋值操作数</em> ）组成。</p>
+<p>赋值表达式由一个 <a href="../expressions.html#可变性">可变</a> <a href="../expressions.html#位置表达式和值表达式">赋值目标表达式</a> （即 <em>赋值目标操作数</em> ），后跟一个等号（ <code>=</code> ）和一个 <a href="../expressions.html#位置表达式和值表达式">值表达式</a> （即 <em>被赋值操作数</em> ）组成。</p>
 <div class="rule" id="r-expr.assign.behavior-basic"><a class="rule-link" href="#r-expr.assign.behavior-basic" title="expr.assign.behavior-basic"><span>[expr<wbr>.assign<wbr>.behavior-basic]</span></a>
 </div>
 
@@ -2147,7 +2149,7 @@ Expression</text>
 <div class="rule" id="r-expr.assign.behavior"><a class="rule-link" href="#r-expr.assign.behavior" title="expr.assign.behavior"><span>[expr<wbr>.assign<wbr>.behavior]</span></a>
 </div>
 
-<p>接着，它要么将分配的值 <a href="../expressions.html#moved-and-copied-types">复制或移动</a> 到赋值位置。</p>
+<p>接着，它要么将分配的值 <a href="../expressions.html#移动和复制类型">复制或移动</a> 到赋值位置。</p>
 <div class="rule" id="r-expr.assign.result"><a class="rule-link" href="#r-expr.assign.result" title="expr.assign.result"><span>[expr<wbr>.assign<wbr>.result]</span></a>
 </div>
 
@@ -2608,7 +2610,7 @@ Expression</text>
 x += 1;
 assert!(x == 6);
 <span class="boring">}</span></code></pre>
-<p>复合赋值的语法是一个 <a href="../expressions.html#mutability">可变</a> <a href="../expressions.html#位置表达式和值表达式">位置表达式</a> （即 <em>被赋值操作数</em> ），然后是一个由运算符后跟 <code>=</code> 组成的单个 词法单元 （无空格），最后是一个 <a href="../expressions.html#位置表达式和值表达式">值表达式</a> （即 <em>修改操作数</em> ）。</p>
+<p>复合赋值的语法是一个 <a href="../expressions.html#可变性">可变</a> <a href="../expressions.html#位置表达式和值表达式">位置表达式</a> （即 <em>被赋值操作数</em> ），然后是一个由运算符后跟 <code>=</code> 组成的单个 词法单元 （无空格），最后是一个 <a href="../expressions.html#位置表达式和值表达式">值表达式</a> （即 <em>修改操作数</em> ）。</p>
 <div class="rule" id="r-expr.compound-assign.place"><a class="rule-link" href="#r-expr.compound-assign.place" title="expr.compound-assign.place"><span>[expr<wbr>.compound-assign<wbr>.place]</span></a>
 </div>
 

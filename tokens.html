@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-lex.token"><a class="rule-link" href="#r-lex.token" title="lex.token"><span>[lex<wbr>.token]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/tokens.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-lex.token"><a class="rule-link" href="#r-lex.token" title="lex.token"><span>[lex<wbr>.token]</span></a>
 </div>
 
 <h1 id="词法单元"><a class="header" href="#词法单元">词法单元</a></h1>
@@ -186,7 +188,7 @@
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-Token" onclick="show_railroad()"><a href="tokens.html#railroad-Token">Token</a></span> → <br>      <span class="grammar-text"><a href="tokens.html#grammar-RESERVED_TOKEN">RESERVED_TOKEN</a></span> <br>    | <span class="grammar-text"><a href="identifiers.html#grammar-RAW_IDENTIFIER">RAW_IDENTIFIER</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-CHAR_LITERAL">CHAR_LITERAL</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-STRING_LITERAL">STRING_LITERAL</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-RAW_STRING_LITERAL">RAW_STRING_LITERAL</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-BYTE_LITERAL">BYTE_LITERAL</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-BYTE_STRING_LITERAL">BYTE_STRING_LITERAL</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-RAW_BYTE_STRING_LITERAL">RAW_BYTE_STRING_LITERAL</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-C_STRING_LITERAL">C_STRING_LITERAL</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-RAW_C_STRING_LITERAL">RAW_C_STRING_LITERAL</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-FLOAT_LITERAL">FLOAT_LITERAL</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-INTEGER_LITERAL">INTEGER_LITERAL</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-LIFETIME_TOKEN">LIFETIME_TOKEN</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-PUNCTUATION">PUNCTUATION</a></span> <br>    | <span class="grammar-text"><a href="identifiers.html#grammar-IDENTIFIER_OR_KEYWORD">IDENTIFIER_OR_KEYWORD</a></span></p>
 <p><button class="grammar-toggle-railroad" type="button" title="Toggle railroad display" onclick="toggle_railroad()">Show Railroad</button></p>
@@ -495,7 +497,7 @@ IDENTIFIER_OR_KEYWORD</text>
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-SUFFIX" onclick="show_railroad()"><a href="tokens.html#railroad-SUFFIX">SUFFIX</a></span> → <span class="grammar-text"><a href="identifiers.html#grammar-IDENTIFIER_OR_KEYWORD">IDENTIFIER_OR_KEYWORD</a></span><sub class="grammar-text">except <code>_</code></sub></p>
 <p><span class="grammar-text grammar-production" id="grammar-SUFFIX_NO_E" onclick="show_railroad()"><a href="tokens.html#railroad-SUFFIX_NO_E">SUFFIX_NO_E</a></span> → <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX">SUFFIX</a></span><sub class="grammar-text">not beginning with <code>e</code> or <code>E</code></sub></p>
@@ -601,7 +603,7 @@ blackhole_lit!(1suffix); // OK
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-CHAR_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-CHAR_LITERAL">CHAR_LITERAL</a></span> → <br>    <span class="grammar-literal">'</span> <br>        ( ~[<span class="grammar-literal">'</span> <span class="grammar-literal">\</span> <a href="whitespace.html#grammar-LF">LF</a> <a href="whitespace.html#grammar-CR">CR</a> <a href="whitespace.html#grammar-TAB">TAB</a>] | <span class="grammar-text"><a href="tokens.html#grammar-QUOTE_ESCAPE">QUOTE_ESCAPE</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-ASCII_ESCAPE">ASCII_ESCAPE</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-UNICODE_ESCAPE">UNICODE_ESCAPE</a></span> ) <br>    <span class="grammar-literal">'</span> <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX">SUFFIX</a></span><sup>?</sup></p>
 <p><span class="grammar-text grammar-production" id="grammar-QUOTE_ESCAPE" onclick="show_railroad()"><a href="tokens.html#railroad-QUOTE_ESCAPE">QUOTE_ESCAPE</a></span> → <span class="grammar-literal">\'</span> | <span class="grammar-literal">\"</span></p>
@@ -928,7 +930,7 @@ _</text>
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-STRING_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-STRING_LITERAL">STRING_LITERAL</a></span> → <br>    <span class="grammar-literal">"</span> ( <br>        ~[<span class="grammar-literal">"</span> <span class="grammar-literal">\</span> <a href="whitespace.html#grammar-CR">CR</a>] <br>      | <span class="grammar-text"><a href="tokens.html#grammar-QUOTE_ESCAPE">QUOTE_ESCAPE</a></span> <br>      | <span class="grammar-text"><a href="tokens.html#grammar-ASCII_ESCAPE">ASCII_ESCAPE</a></span> <br>      | <span class="grammar-text"><a href="tokens.html#grammar-UNICODE_ESCAPE">UNICODE_ESCAPE</a></span> <br>      | <span class="grammar-text"><a href="tokens.html#grammar-STRING_CONTINUE">STRING_CONTINUE</a></span> <br>    )<sup>*</sup> <span class="grammar-literal">"</span> <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX">SUFFIX</a></span><sup>?</sup></p>
 <p><span class="grammar-text grammar-production" id="grammar-STRING_CONTINUE" onclick="show_railroad()"><a href="tokens.html#railroad-STRING_CONTINUE">STRING_CONTINUE</a></span> → <span class="grammar-literal">\</span> <span class="grammar-text"><a href="whitespace.html#grammar-LF">LF</a></span></p>
@@ -1114,7 +1116,7 @@ LF</text>
 <div class="rule" id="r-lex.token.literal.str.linefeed"><a class="rule-link" href="#r-lex.token.literal.str.linefeed" title="lex.token.literal.str.linefeed"><span>[lex<wbr>.token<wbr>.literal<wbr>.str<wbr>.linefeed]</span></a>
 </div>
 
-<p>换行符（由字符<code>U+000A</code> (LF)表示）在字符串字面量中是允许的。字符<code>U+000D</code> (CR)不得出现在字符串字面量中。当未转义的<code>U+005C</code>字符（<code>\</code>）紧接在换行符之前时，换行符不会出现在词法单元所表示的字符串中。有关详细信息，请参阅<a href="expressions/literal-expr.html#string-continuation-escapes">字符串续行转义</a>。</p>
+<p>换行符（由字符<code>U+000A</code> (LF)表示）在字符串字面量中是允许的。字符<code>U+000D</code> (CR)不得出现在字符串字面量中。当未转义的<code>U+005C</code>字符（<code>\</code>）紧接在换行符之前时，换行符不会出现在词法单元所表示的字符串中。有关详细信息，请参阅<a href="expressions/literal-expr.html#字符串续行转义">字符串续行转义</a>。</p>
 <div class="rule" id="r-lex.token.literal.char-escape"><a class="rule-link" href="#r-lex.token.literal.char-escape" title="lex.token.literal.char-escape"><span>[lex<wbr>.token<wbr>.literal<wbr>.char-escape]</span></a>
 </div>
 
@@ -1161,7 +1163,7 @@ LF</text>
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-RAW_STRING_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-RAW_STRING_LITERAL">RAW_STRING_LITERAL</a></span> → <span class="grammar-literal">r</span> <span class="grammar-text"><a href="tokens.html#grammar-RAW_STRING_CONTENT">RAW_STRING_CONTENT</a></span> <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX">SUFFIX</a></span><sup>?</sup></p>
 <p><span class="grammar-text grammar-production" id="grammar-RAW_STRING_CONTENT" onclick="show_railroad()"><a href="tokens.html#railroad-RAW_STRING_CONTENT">RAW_STRING_CONTENT</a></span> → <br>      <span class="grammar-literal">"</span> ( ~<span class="grammar-text"><a href="whitespace.html#grammar-CR">CR</a></span> )<sup>* (non-greedy)</sup> <span class="grammar-literal">"</span> <br>    | <span class="grammar-literal">#</span> <span class="grammar-text"><a href="tokens.html#grammar-RAW_STRING_CONTENT">RAW_STRING_CONTENT</a></span> <span class="grammar-literal">#</span></p>
@@ -1339,7 +1341,7 @@ r##"foo #"# bar"##;                // foo #"# bar
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-BYTE_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-BYTE_LITERAL">BYTE_LITERAL</a></span> → <br>    <span class="grammar-literal">b'</span> ( <span class="grammar-text"><a href="tokens.html#grammar-ASCII_FOR_CHAR">ASCII_FOR_CHAR</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-BYTE_ESCAPE">BYTE_ESCAPE</a></span> ) <span class="grammar-literal">'</span> <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX">SUFFIX</a></span><sup>?</sup></p>
 <p><span class="grammar-text grammar-production" id="grammar-ASCII_FOR_CHAR" onclick="show_railroad()"><a href="tokens.html#railroad-ASCII_FOR_CHAR">ASCII_FOR_CHAR</a></span> → <br>    <span class="grammar-text">&lt;any ASCII (i.e. 0x00 to 0x7F) except <code>'</code>, <code>\</code>, LF, CR, or TAB&gt;</span></p>
@@ -1539,7 +1541,7 @@ HEX_DIGIT</text>
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-BYTE_STRING_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-BYTE_STRING_LITERAL">BYTE_STRING_LITERAL</a></span> → <br>    <span class="grammar-literal">b"</span> ( <span class="grammar-text"><a href="tokens.html#grammar-ASCII_FOR_STRING">ASCII_FOR_STRING</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-BYTE_ESCAPE">BYTE_ESCAPE</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-STRING_CONTINUE">STRING_CONTINUE</a></span> )<sup>*</sup> <span class="grammar-literal">"</span> <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX">SUFFIX</a></span><sup>?</sup></p>
 <p><span class="grammar-text grammar-production" id="grammar-ASCII_FOR_STRING" onclick="show_railroad()"><a href="tokens.html#railroad-ASCII_FOR_STRING">ASCII_FOR_STRING</a></span> → <br>    <span class="grammar-text">&lt;any ASCII (i.e 0x00 to 0x7F) except <code>"</code>, <code>\</code>, or CR&gt;</span></p>
@@ -1657,7 +1659,7 @@ any ASCII (i.e 0x00 to 0x7F) except `"`, `\`, or CR</text>
 <div class="rule" id="r-lex.token.str-byte.linefeed"><a class="rule-link" href="#r-lex.token.str-byte.linefeed" title="lex.token.str-byte.linefeed"><span>[lex<wbr>.token<wbr>.str-byte<wbr>.linefeed]</span></a>
 </div>
 
-<p>换行符（由字符<code>U+000A</code> (LF)表示）在字节字符串字面量中是允许的。字符<code>U+000D</code> (CR)不得出现在字节字符串字面量中。当未转义的<code>U+005C</code>字符（<code>\</code>）紧接在换行符之前时，换行符不会出现在词法单元所表示的字符串中。有关详细信息，请参阅<a href="expressions/literal-expr.html#string-continuation-escapes">字符串续行转义</a>。</p>
+<p>换行符（由字符<code>U+000A</code> (LF)表示）在字节字符串字面量中是允许的。字符<code>U+000D</code> (CR)不得出现在字节字符串字面量中。当未转义的<code>U+005C</code>字符（<code>\</code>）紧接在换行符之前时，换行符不会出现在词法单元所表示的字符串中。有关详细信息，请参阅<a href="expressions/literal-expr.html#字符串续行转义">字符串续行转义</a>。</p>
 <div class="rule" id="r-lex.token.str-byte.escape"><a class="rule-link" href="#r-lex.token.str-byte.escape" title="lex.token.str-byte.escape"><span>[lex<wbr>.token<wbr>.str-byte<wbr>.escape]</span></a>
 </div>
 
@@ -1694,7 +1696,7 @@ any ASCII (i.e 0x00 to 0x7F) except `"`, `\`, or CR</text>
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-RAW_BYTE_STRING_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-RAW_BYTE_STRING_LITERAL">RAW_BYTE_STRING_LITERAL</a></span> → <br>    <span class="grammar-literal">br</span> <span class="grammar-text"><a href="tokens.html#grammar-RAW_BYTE_STRING_CONTENT">RAW_BYTE_STRING_CONTENT</a></span> <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX">SUFFIX</a></span><sup>?</sup></p>
 <p><span class="grammar-text grammar-production" id="grammar-RAW_BYTE_STRING_CONTENT" onclick="show_railroad()"><a href="tokens.html#railroad-RAW_BYTE_STRING_CONTENT">RAW_BYTE_STRING_CONTENT</a></span> → <br>      <span class="grammar-literal">"</span> <span class="grammar-text"><a href="tokens.html#grammar-ASCII_FOR_RAW">ASCII_FOR_RAW</a></span><sup>* (non-greedy)</sup> <span class="grammar-literal">"</span> <br>    | <span class="grammar-literal">#</span> <span class="grammar-text"><a href="tokens.html#grammar-RAW_BYTE_STRING_CONTENT">RAW_BYTE_STRING_CONTENT</a></span> <span class="grammar-literal">#</span></p>
@@ -1882,7 +1884,7 @@ b"\\x52"; br"\x52";                  // \x52
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-C_STRING_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-C_STRING_LITERAL">C_STRING_LITERAL</a></span> → <br>    <span class="grammar-literal">c"</span> ( <br>        ~[<span class="grammar-literal">"</span> <span class="grammar-literal">\</span> <a href="whitespace.html#grammar-CR">CR</a> <a href="input-format.html#grammar-NUL">NUL</a>] <br>      | <span class="grammar-text"><a href="tokens.html#grammar-BYTE_ESCAPE">BYTE_ESCAPE</a></span><sub class="grammar-text">except <code>\0</code> or <code>\x00</code></sub> <br>      | <span class="grammar-text"><a href="tokens.html#grammar-UNICODE_ESCAPE">UNICODE_ESCAPE</a></span><sub class="grammar-text">except <code>\u{0}</code>, <code>\u{00}</code>, …, <code>\u{000000}</code></sub> <br>      | <span class="grammar-text"><a href="tokens.html#grammar-STRING_CONTINUE">STRING_CONTINUE</a></span> <br>    )<sup>*</sup> <span class="grammar-literal">"</span> <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX">SUFFIX</a></span><sup>?</sup></p>
 <p><button class="grammar-toggle-railroad" type="button" title="Toggle railroad display" onclick="toggle_railroad()">Show Railroad</button></p>
@@ -2049,7 +2051,7 @@ SUFFIX</text>
 <div class="rule" id="r-lex.token.str-c.linefeed"><a class="rule-link" href="#r-lex.token.str-c.linefeed" title="lex.token.str-c.linefeed"><span>[lex<wbr>.token<wbr>.str-c<wbr>.linefeed]</span></a>
 </div>
 
-<p>换行符（由字符<code>U+000A</code> (LF)表示）在C字符串字面量中是允许的。字符<code>U+000D</code> (CR)不得出现在C字符串字面量中。当未转义的<code>U+005C</code>字符（<code>\</code>）紧接在换行符之前时，换行符不会出现在词法单元所表示的字符串中。有关详细信息，请参阅<a href="expressions/literal-expr.html#string-continuation-escapes">字符串续行转义</a>。</p>
+<p>换行符（由字符<code>U+000A</code> (LF)表示）在C字符串字面量中是允许的。字符<code>U+000D</code> (CR)不得出现在C字符串字面量中。当未转义的<code>U+005C</code>字符（<code>\</code>）紧接在换行符之前时，换行符不会出现在词法单元所表示的字符串中。有关详细信息，请参阅<a href="expressions/literal-expr.html#字符串续行转义">字符串续行转义</a>。</p>
 <div class="rule" id="r-lex.token.str-c.escape"><a class="rule-link" href="#r-lex.token.str-c.escape" title="lex.token.str-c.escape"><span>[lex<wbr>.token<wbr>.str-c<wbr>.escape]</span></a>
 </div>
 
@@ -2108,7 +2110,7 @@ c"\xC3\xA6";
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-RAW_C_STRING_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-RAW_C_STRING_LITERAL">RAW_C_STRING_LITERAL</a></span> → <br>    <span class="grammar-literal">cr</span> <span class="grammar-text"><a href="tokens.html#grammar-RAW_C_STRING_CONTENT">RAW_C_STRING_CONTENT</a></span> <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX">SUFFIX</a></span><sup>?</sup></p>
 <p><span class="grammar-text grammar-production" id="grammar-RAW_C_STRING_CONTENT" onclick="show_railroad()"><a href="tokens.html#railroad-RAW_C_STRING_CONTENT">RAW_C_STRING_CONTENT</a></span> → <br>      <span class="grammar-literal">"</span> ( ~[<a href="whitespace.html#grammar-CR">CR</a> <a href="input-format.html#grammar-NUL">NUL</a>] )<sup>* (non-greedy)</sup> <span class="grammar-literal">"</span> <br>    | <span class="grammar-literal">#</span> <span class="grammar-text"><a href="tokens.html#grammar-RAW_C_STRING_CONTENT">RAW_C_STRING_CONTENT</a></span> <span class="grammar-literal">#</span></p>
@@ -2313,7 +2315,7 @@ c"\\x52"; cr"\x52";                  // \x52
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-INTEGER_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-INTEGER_LITERAL">INTEGER_LITERAL</a></span> → <br>    ( <span class="grammar-text"><a href="tokens.html#grammar-BIN_LITERAL">BIN_LITERAL</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-OCT_LITERAL">OCT_LITERAL</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-HEX_LITERAL">HEX_LITERAL</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-DEC_LITERAL">DEC_LITERAL</a></span> ) <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX_NO_E">SUFFIX_NO_E</a></span><sup>?</sup></p>
 <p><span class="grammar-text grammar-production" id="grammar-DEC_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-DEC_LITERAL">DEC_LITERAL</a></span> → <span class="grammar-text"><a href="tokens.html#grammar-DEC_DIGIT">DEC_DIGIT</a></span> ( <span class="grammar-text"><a href="tokens.html#grammar-DEC_DIGIT">DEC_DIGIT</a></span> | <span class="grammar-literal">_</span> )<sup>*</sup></p>
@@ -2803,7 +2805,7 @@ A-F</text>
 <div class="rule" id="r-lex.token.literal.int.restriction"><a class="rule-link" href="#r-lex.token.literal.int.restriction" title="lex.token.literal.int.restriction"><span>[lex<wbr>.token<wbr>.literal<wbr>.int<wbr>.restriction]</span></a>
 </div>
 
-<p>像任何字面量一样，整数字面量可以紧跟（不带任何空格）一个如上所述的后缀。后缀不能以<code>e</code>或<code>E</code>开头，因为这将被解释为浮点字面量的指数。有关这些后缀的效果，请参阅<a href="expressions/literal-expr.html#integer-literal-expressions">整数字面量表达式</a>。</p>
+<p>像任何字面量一样，整数字面量可以紧跟（不带任何空格）一个如上所述的后缀。后缀不能以<code>e</code>或<code>E</code>开头，因为这将被解释为浮点字面量的指数。有关这些后缀的效果，请参阅<a href="expressions/literal-expr.html#整数字面量表达式">整数字面量表达式</a>。</p>
 <p>被接受为字面量表达式的整数字面量示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -2854,7 +2856,7 @@ A-F</text>
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-TUPLE_INDEX" onclick="show_railroad()"><a href="tokens.html#railroad-TUPLE_INDEX">TUPLE_INDEX</a></span> → <span class="grammar-text"><a href="tokens.html#grammar-DEC_LITERAL">DEC_LITERAL</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-BIN_LITERAL">BIN_LITERAL</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-OCT_LITERAL">OCT_LITERAL</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-HEX_LITERAL">HEX_LITERAL</a></span></p>
 <p><button class="grammar-toggle-railroad" type="button" title="Toggle railroad display" onclick="toggle_railroad()">Show Railroad</button></p>
@@ -2945,7 +2947,7 @@ let underscore = example.0_0; // ERROR no field `0_0` on type `(&amp;str, &amp;s
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-FLOAT_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-FLOAT_LITERAL">FLOAT_LITERAL</a></span> → <br>      <span class="grammar-text"><a href="tokens.html#grammar-DEC_LITERAL">DEC_LITERAL</a></span> ( <span class="grammar-literal">.</span> <span class="grammar-text"><a href="tokens.html#grammar-DEC_LITERAL">DEC_LITERAL</a></span> )<sup>?</sup> <span class="grammar-text"><a href="tokens.html#grammar-FLOAT_EXPONENT">FLOAT_EXPONENT</a></span> <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX">SUFFIX</a></span><sup>?</sup> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-DEC_LITERAL">DEC_LITERAL</a></span> <span class="grammar-literal">.</span> <span class="grammar-text"><a href="tokens.html#grammar-DEC_LITERAL">DEC_LITERAL</a></span> <span class="grammar-text"><a href="tokens.html#grammar-SUFFIX_NO_E">SUFFIX_NO_E</a></span><sup>?</sup> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-DEC_LITERAL">DEC_LITERAL</a></span> <span class="grammar-literal">.</span><sub class="grammar-text">not immediately followed by <code>.</code>, <code>_</code> or an XID_Start character</sub></p>
 <p><span class="grammar-text grammar-production" id="grammar-FLOAT_EXPONENT" onclick="show_railroad()"><a href="tokens.html#railroad-FLOAT_EXPONENT">FLOAT_EXPONENT</a></span> → <br>    ( <span class="grammar-literal">e</span> | <span class="grammar-literal">E</span> ) ( <span class="grammar-literal">+</span> | <span class="grammar-literal">-</span> )<sup>?</sup> <span class="grammar-literal">_</span><sup>*</sup> <span class="grammar-text"><a href="tokens.html#grammar-DEC_DIGIT">DEC_DIGIT</a></span> ( <span class="grammar-text"><a href="tokens.html#grammar-DEC_DIGIT">DEC_DIGIT</a></span> | <span class="grammar-literal">_</span> )<sup>*</sup></p>
@@ -3191,7 +3193,7 @@ _</text>
 <div class="rule" id="r-lex.token.literal.float.suffix"><a class="rule-link" href="#r-lex.token.literal.float.suffix" title="lex.token.literal.float.suffix"><span>[lex<wbr>.token<wbr>.literal<wbr>.float<wbr>.suffix]</span></a>
 </div>
 
-<p>像整数字面量一样，浮点数字面量可以后跟一个后缀，只要后缀前的部分不以<code>U+002E</code>（<code>.</code>）结尾。如果字面量不包含指数，则后缀不能以<code>e</code>或<code>E</code>开头。有关这些后缀的效果，请参阅<a href="expressions/literal-expr.html#floating-point-literal-expressions">浮点数字面量表达式</a>。</p>
+<p>像整数字面量一样，浮点数字面量可以后跟一个后缀，只要后缀前的部分不以<code>U+002E</code>（<code>.</code>）结尾。如果字面量不包含指数，则后缀不能以<code>e</code>或<code>E</code>开头。有关这些后缀的效果，请参阅<a href="expressions/literal-expr.html#浮点数字面量表达式">浮点数字面量表达式</a>。</p>
 <p>被接受为字面量表达式的浮点数字面量示例：</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -3222,7 +3224,7 @@ let x: f64 = 2.;
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-RESERVED_NUMBER" onclick="show_railroad()"><a href="tokens.html#railroad-RESERVED_NUMBER">RESERVED_NUMBER</a></span> → <br>      <span class="grammar-text"><a href="tokens.html#grammar-BIN_LITERAL">BIN_LITERAL</a></span> [<span class="grammar-literal">2</span>-<span class="grammar-literal">9</span>] <br>    | <span class="grammar-text"><a href="tokens.html#grammar-OCT_LITERAL">OCT_LITERAL</a></span> [<span class="grammar-literal">8</span>-<span class="grammar-literal">9</span>] <br>    | ( <span class="grammar-text"><a href="tokens.html#grammar-BIN_LITERAL">BIN_LITERAL</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-OCT_LITERAL">OCT_LITERAL</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-HEX_LITERAL">HEX_LITERAL</a></span> ) <span class="grammar-literal">.</span><sub class="grammar-text">not immediately followed by <code>.</code>, <code>_</code> or an XID_Start character</sub> <br>    | ( <span class="grammar-text"><a href="tokens.html#grammar-BIN_LITERAL">BIN_LITERAL</a></span> | <span class="grammar-text"><a href="tokens.html#grammar-OCT_LITERAL">OCT_LITERAL</a></span> ) ( <span class="grammar-literal">e</span> | <span class="grammar-literal">E</span> ) <br>    | <span class="grammar-literal">0b</span> <span class="grammar-literal">_</span><sup>*</sup> <span class="grammar-text">&lt;end of input or not BIN_DIGIT&gt;</span> <br>    | <span class="grammar-literal">0o</span> <span class="grammar-literal">_</span><sup>*</sup> <span class="grammar-text">&lt;end of input or not OCT_DIGIT&gt;</span> <br>    | <span class="grammar-literal">0x</span> <span class="grammar-literal">_</span><sup>*</sup> <span class="grammar-text">&lt;end of input or not HEX_DIGIT&gt;</span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-DEC_LITERAL">DEC_LITERAL</a></span> ( <span class="grammar-literal">.</span> <span class="grammar-text"><a href="tokens.html#grammar-DEC_LITERAL">DEC_LITERAL</a></span> )<sup>?</sup> ( <span class="grammar-literal">e</span> | <span class="grammar-literal">E</span> ) ( <span class="grammar-literal">+</span> | <span class="grammar-literal">-</span> )<sup>?</sup> <span class="grammar-text">&lt;end of input or not DEC_DIGIT&gt;</span></p>
 <p><button class="grammar-toggle-railroad" type="button" title="Toggle railroad display" onclick="toggle_railroad()">Show Railroad</button></p>
@@ -3583,7 +3585,7 @@ end of input or not DEC_DIGIT</text>
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-LIFETIME_TOKEN" onclick="show_railroad()"><a href="tokens.html#railroad-LIFETIME_TOKEN">LIFETIME_TOKEN</a></span> → <br>      <span class="grammar-text"><a href="tokens.html#grammar-RAW_LIFETIME">RAW_LIFETIME</a></span> <br>    | <span class="grammar-literal">'</span> <span class="grammar-text"><a href="identifiers.html#grammar-IDENTIFIER_OR_KEYWORD">IDENTIFIER_OR_KEYWORD</a></span><sub class="grammar-text">not immediately followed by <code>'</code></sub></p>
 <p><span class="grammar-text grammar-production" id="grammar-LIFETIME_OR_LABEL" onclick="show_railroad()"><a href="tokens.html#railroad-LIFETIME_OR_LABEL">LIFETIME_OR_LABEL</a></span> → <br>      <span class="grammar-text"><a href="tokens.html#grammar-RAW_LIFETIME">RAW_LIFETIME</a></span> <br>    | <span class="grammar-literal">'</span> <span class="grammar-text"><a href="identifiers.html#grammar-NON_KEYWORD_IDENTIFIER">NON_KEYWORD_IDENTIFIER</a></span><sub class="grammar-text">not immediately followed by <code>'</code></sub></p>
@@ -3843,7 +3845,7 @@ super</text>
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-PUNCTUATION" onclick="show_railroad()"><a href="tokens.html#railroad-PUNCTUATION">PUNCTUATION</a></span> → <br>      <span class="grammar-literal">...</span> <br>    | <span class="grammar-literal">..=</span> <br>    | <span class="grammar-literal">&lt;&lt;=</span> <br>    | <span class="grammar-literal">&gt;&gt;=</span> <br>    | <span class="grammar-literal">!=</span> <br>    | <span class="grammar-literal">%=</span> <br>    | <span class="grammar-literal">&amp;&amp;</span> <br>    | <span class="grammar-literal">&amp;=</span> <br>    | <span class="grammar-literal">*=</span> <br>    | <span class="grammar-literal">+=</span> <br>    | <span class="grammar-literal">-=</span> <br>    | <span class="grammar-literal">-&gt;</span> <br>    | <span class="grammar-literal">..</span> <br>    | <span class="grammar-literal">/=</span> <br>    | <span class="grammar-literal">::</span> <br>    | <span class="grammar-literal">&lt;-</span> <br>    | <span class="grammar-literal">&lt;&lt;</span> <br>    | <span class="grammar-literal">&lt;=</span> <br>    | <span class="grammar-literal">==</span> <br>    | <span class="grammar-literal">=&gt;</span> <br>    | <span class="grammar-literal">&gt;=</span> <br>    | <span class="grammar-literal">&gt;&gt;</span> <br>    | <span class="grammar-literal">&gt;</span> <br>    | <span class="grammar-literal">^=</span> <br>    | <span class="grammar-literal">|=</span> <br>    | <span class="grammar-literal">||</span> <br>    | <span class="grammar-literal">!</span> <br>    | <span class="grammar-literal">#</span> <br>    | <span class="grammar-literal">$</span> <br>    | <span class="grammar-literal">%</span> <br>    | <span class="grammar-literal">&amp;</span> <br>    | <span class="grammar-literal">(</span> <br>    | <span class="grammar-literal">)</span> <br>    | <span class="grammar-literal">*</span> <br>    | <span class="grammar-literal">+</span> <br>    | <span class="grammar-literal">,</span> <br>    | <span class="grammar-literal">-</span> <br>    | <span class="grammar-literal">.</span> <br>    | <span class="grammar-literal">/</span> <br>    | <span class="grammar-literal">:</span> <br>    | <span class="grammar-literal">;</span> <br>    | <span class="grammar-literal">&lt;</span> <br>    | <span class="grammar-literal">=</span> <br>    | <span class="grammar-literal">?</span> <br>    | <span class="grammar-literal">@</span> <br>    | <span class="grammar-literal">[</span> <br>    | <span class="grammar-literal">]</span> <br>    | <span class="grammar-literal">^</span> <br>    | <span class="grammar-literal">{</span> <br>    | <span class="grammar-literal">|</span> <br>    | <span class="grammar-literal">}</span> <br>    | <span class="grammar-literal">~</span></p>
 <p><button class="grammar-toggle-railroad" type="button" title="Toggle railroad display" onclick="toggle_railroad()">Show Railroad</button></p>
@@ -4340,7 +4342,7 @@ $</text>
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>有关标点符号字符如何使用的链接，请参阅<a href="syntax-index.html#operators-and-punctuation">语法格式索引</a>。</p>
+<p>有关标点符号字符如何使用的链接，请参阅<a href="syntax-index.html#运算符和标点符号">语法格式索引</a>。</p>
 </blockquote>
 </div>
 
@@ -4373,7 +4375,7 @@ $</text>
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-RESERVED_TOKEN" onclick="show_railroad()"><a href="tokens.html#railroad-RESERVED_TOKEN">RESERVED_TOKEN</a></span> → <br>      <span class="grammar-text"><a href="tokens.html#grammar-RESERVED_GUARDED_STRING_LITERAL">RESERVED_GUARDED_STRING_LITERAL</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-RESERVED_NUMBER">RESERVED_NUMBER</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-RESERVED_POUNDS">RESERVED_POUNDS</a></span> <br>    | <span class="grammar-text"><a href="identifiers.html#grammar-RESERVED_RAW_IDENTIFIER">RESERVED_RAW_IDENTIFIER</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-RESERVED_RAW_LIFETIME">RESERVED_RAW_LIFETIME</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-RESERVED_TOKEN_DOUBLE_QUOTE">RESERVED_TOKEN_DOUBLE_QUOTE</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-RESERVED_TOKEN_LIFETIME">RESERVED_TOKEN_LIFETIME</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-RESERVED_TOKEN_POUND">RESERVED_TOKEN_POUND</a></span> <br>    | <span class="grammar-text"><a href="tokens.html#grammar-RESERVED_TOKEN_SINGLE_QUOTE">RESERVED_TOKEN_SINGLE_QUOTE</a></span></p>
 <p><button class="grammar-toggle-railroad" type="button" title="Toggle railroad display" onclick="toggle_railroad()">Show Railroad</button></p>
@@ -4505,7 +4507,7 @@ RESERVED_TOKEN_SINGLE_QUOTE</text>
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-RESERVED_TOKEN_DOUBLE_QUOTE" onclick="show_railroad()"><a href="tokens.html#railroad-RESERVED_TOKEN_DOUBLE_QUOTE">RESERVED_TOKEN_DOUBLE_QUOTE</a></span> → <br>    <span class="grammar-text"><a href="identifiers.html#grammar-IDENTIFIER_OR_KEYWORD">IDENTIFIER_OR_KEYWORD</a></span><sub class="grammar-text">except <code>b</code> or <code>c</code> or <code>r</code> or <code>br</code> or <code>cr</code></sub> <span class="grammar-literal">"</span></p>
 <p><span class="grammar-text grammar-production" id="grammar-RESERVED_TOKEN_SINGLE_QUOTE" onclick="show_railroad()"><a href="tokens.html#railroad-RESERVED_TOKEN_SINGLE_QUOTE">RESERVED_TOKEN_SINGLE_QUOTE</a></span> → <br>    <span class="grammar-text"><a href="identifiers.html#grammar-IDENTIFIER_OR_KEYWORD">IDENTIFIER_OR_KEYWORD</a></span><sub class="grammar-text">except <code>b</code></sub> <span class="grammar-literal">'</span></p>
@@ -4734,7 +4736,7 @@ lexes!{'prefix#lt}
 </div>
 
 <div class="grammar-container">
-<p><strong><sup>Lexer</sup></strong>
+<p><strong><sup>Syntax</sup></strong>
 <br>
 <span class="grammar-text grammar-production" id="grammar-RESERVED_GUARDED_STRING_LITERAL" onclick="show_railroad()"><a href="tokens.html#railroad-RESERVED_GUARDED_STRING_LITERAL">RESERVED_GUARDED_STRING_LITERAL</a></span> → <span class="grammar-literal">#</span><sup>+</sup> <span class="grammar-text"><a href="tokens.html#grammar-STRING_LITERAL">STRING_LITERAL</a></span></p>
 <p><span class="grammar-text grammar-production" id="grammar-RESERVED_POUNDS" onclick="show_railroad()"><a href="tokens.html#railroad-RESERVED_POUNDS">RESERVED_POUNDS</a></span> → <span class="grammar-literal">#</span><sup>2..</sup></p>

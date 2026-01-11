@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-items.impl"><a class="rule-link" href="#r-items.impl" title="items.impl"><span>[items<wbr>.impl]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/items/implementations.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-items.impl"><a class="rule-link" href="#r-items.impl" title="items.impl"><span>[items<wbr>.impl]</span></a>
 </div>
 
 <h1 id="实现"><a class="header" href="#实现">实现</a></h1>
@@ -512,7 +514,7 @@ AssociatedItem</text>
 <div class="rule" id="r-items.impl.inherent.associated-items.allowed-items"><a class="rule-link" href="#r-items.impl.inherent.associated-items.allowed-items" title="items.impl.inherent.associated-items.allowed-items"><span>[items<wbr>.impl<wbr>.inherent<wbr>.associated-items<wbr>.allowed-items]</span></a>
 </div>
 
-<p>固有实现可以包含 <a href="associated-items.html#associated-functions-and-methods">关联函数</a>（包括 <a href="associated-items.html#方法">方法</a>）和 <a href="associated-items.html#associated-constants">关联常量</a>。</p>
+<p>固有实现可以包含 <a href="associated-items.html#关联函数和方法">关联函数</a>（包括 <a href="associated-items.html#方法">方法</a>）和 <a href="associated-items.html#关联常量">关联常量</a>。</p>
 <div class="rule" id="r-items.impl.inherent.type-alias"><a class="rule-link" href="#r-items.impl.inherent.type-alias" title="items.impl.inherent.type-alias"><span>[items<wbr>.impl<wbr>.inherent<wbr>.type-alias]</span></a>
 </div>
 
@@ -579,7 +581,7 @@ fn main() {
 <div class="rule" id="r-items.impl.trait.safety"><a class="rule-link" href="#r-items.impl.trait.safety" title="items.impl.trait.safety"><span>[items<wbr>.impl<wbr>.trait<wbr>.safety]</span></a>
 </div>
 
-<p><a href="traits.html#unsafe-traits">不安全特型</a> 要求特型实现以 <code>unsafe</code> 关键字开头。</p>
+<p><a href="traits.html#不安全特型">不安全特型</a> 要求特型实现以 <code>unsafe</code> 关键字开头。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">#[derive(Copy, Clone)]
@@ -639,11 +641,11 @@ impl Shape for Circle {
 
 <p>对于 <code>impl&lt;P1..=Pn&gt; Trait&lt;T1..=Tn&gt; for T0</code>，只有当以下至少一项为真时，<code>impl</code> 才是有效的：</p>
 <ul>
-<li><code>Trait</code> 是一个 <a href="../glossary.html#local-trait">本地特型</a></li>
+<li><code>Trait</code> 是一个 <a href="../glossary.html#局部特型">本地特型</a></li>
 <li>以下全部成立：
 <ul>
-<li>类型 <code>T0..=Tn</code> 中必须至少有一个是 <a href="../glossary.html#local-type">本地类型</a>。设 <code>Ti</code> 为第一个此类类型。</li>
-<li>在 <code>T0..Ti</code>（不包括 <code>Ti</code>）中不得出现 <a href="../glossary.html#uncovered-type">未覆盖的类型</a> 参数 <code>P1..=Pn</code></li>
+<li>类型 <code>T0..=Tn</code> 中必须至少有一个是 <a href="../glossary.html#局部类型">本地类型</a>。设 <code>Ti</code> 为第一个此类类型。</li>
+<li>在 <code>T0..Ti</code>（不包括 <code>Ti</code>）中不得出现 <a href="../glossary.html#未覆盖类型">未覆盖的类型</a> 参数 <code>P1..=Pn</code></li>
 </ul>
 </li>
 </ul>
@@ -654,7 +656,7 @@ impl Shape for Circle {
 <div class="rule" id="r-items.impl.trait.fundamental"><a class="rule-link" href="#r-items.impl.trait.fundamental" title="items.impl.trait.fundamental"><span>[items<wbr>.impl<wbr>.trait<wbr>.fundamental]</span></a>
 </div>
 
-<p>请注意，为了保持一致性，<a href="../glossary.html#fundamental-type-constructors">基础类型</a> 是特殊的。<code>Box&lt;T&gt;</code> 中的 <code>T</code> 不被视为已覆盖，且 <code>Box&lt;LocalType&gt;</code> 被视为本地的。</p>
+<p>请注意，为了保持一致性，<a href="../glossary.html#基本类型构造器">基础类型</a> 是特殊的。<code>Box&lt;T&gt;</code> 中的 <code>T</code> 不被视为已覆盖，且 <code>Box&lt;LocalType&gt;</code> 被视为本地的。</p>
 <div class="rule" id="r-items.impl.generics"><a class="rule-link" href="#r-items.impl.generics" title="items.impl.generics"><span>[items<wbr>.impl<wbr>.generics]</span></a>
 </div>
 
@@ -680,7 +682,7 @@ impl Seq&lt;bool&gt; for u32 {
 <ul>
 <li>实现的 特型（如果存在）</li>
 <li>实现类型</li>
-<li>作为包含另一个约束实现的参数的类型的 <a href="../trait-bounds.html">绑定</a> 中的 <a href="associated-items.html#associated-types">关联类型</a></li>
+<li>作为包含另一个约束实现的参数的类型的 <a href="../trait-bounds.html">界限</a> 中的 <a href="associated-items.html#关联类型">关联类型</a></li>
 </ul>
 <div class="rule" id="r-items.impl.generics.constrain"><a class="rule-link" href="#r-items.impl.generics.constrain" title="items.impl.generics.constrain"><span>[items<wbr>.impl<wbr>.generics<wbr>.constrain]</span></a>
 </div>
@@ -704,7 +706,7 @@ impl&lt;T&gt; Trait for GenericStruct&lt;T&gt; { /* ... */ }
 // 同样地，N 通过作为 ConstGenericStruct 的参数来产生约束
 impl&lt;const N: usize&gt; Trait for ConstGenericStruct&lt;N&gt; { /* ... */ }
 
-// T 通过作为类型 U 的绑定中的关联类型来产生约束，而 U 本身是约束该特型的泛型参数。
+// T 通过作为类型 U 的界限中的关联类型来产生约束，而 U 本身是约束该特型的泛型参数。
 impl&lt;T, U&gt; GenericTrait&lt;U&gt; for u32 where U: HasAssocType&lt;Ty = T&gt; { /* ... */ }
 
 // 与前一个类似，除了类型是 (U, isize)。U 出现在包含 T 的类型内部，而不是该类型本身。
@@ -726,10 +728,10 @@ impl&lt;T&gt; Struct {
     fn uses_t(t: &amp;T) { /* ... */ }
 }
 
-// T 在 U 的绑定中被用作关联类型，但 U 并不产生约束。
+// T 在 U 的界限中被用作关联类型，但 U 并不产生约束。
 impl&lt;T, U&gt; Struct where U: HasAssocType&lt;Ty = T&gt; { /* ... */ }
 
-// T 在绑定中使用，但不是作为关联类型使用，因此它不产生约束。
+// T 在界限中使用，但不是作为关联类型使用，因此它不产生约束。
 impl&lt;T, U&gt; GenericTrait&lt;U&gt; for u32 where U: GenericTrait&lt;T&gt; {}
 <span class="boring">}</span></code></pre>
 <p>允许的不产生约束的生命周期参数示例：</p>
@@ -751,7 +753,7 @@ impl&lt;T, U&gt; GenericTrait&lt;U&gt; for u32 where U: GenericTrait&lt;T&gt; {}
 </div>
 
 <h2 id="实现上的属性"><a class="header" href="#实现上的属性">实现上的属性</a></h2>
-<p>实现可以在 <code>impl</code> 关键字之前包含外部 <a href="../attributes.html">属性</a>，并在包含关联项的大括号内包含内部 <a href="../attributes.html">属性</a>。内部属性必须位于任何关联项之前。此处有意义的属性是 <a href="../conditional-compilation.html"><code>cfg</code></a>、<a href="../attributes/diagnostics.html#the-deprecated-attribute"><code>deprecated</code></a>、<a href="https://doc.rust-lang.org/rustdoc/the-doc-attribute.html"><code>doc</code></a> 和 <a href="../attributes/diagnostics.html#lint-check-attributes">lint 检查属性</a>。</p>
+<p>实现可以在 <code>impl</code> 关键字之前包含外部 <a href="../attributes.html">属性</a>，并在包含关联项的大括号内包含内部 <a href="../attributes.html">属性</a>。内部属性必须位于任何关联项之前。此处有意义的属性是 <a href="../conditional-compilation.html"><code>cfg</code></a>、<a href="../attributes/diagnostics.html#deprecated属性"><code>deprecated</code></a>、<a href="../../rustdoc/the-doc-attribute.html"><code>doc</code></a> 和 <a href="../attributes/diagnostics.html#lint检查属性">lint 检查属性</a>。</p>
 
                     </main>
 

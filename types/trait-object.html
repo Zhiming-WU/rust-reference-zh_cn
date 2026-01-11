@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type.trait-object"><a class="rule-link" href="#r-type.trait-object" title="type.trait-object"><span>[type<wbr>.trait-object]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types/trait-object.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type.trait-object"><a class="rule-link" href="#r-type.trait-object" title="type.trait-object"><span>[type<wbr>.trait-object]</span></a>
 </div>
 
 <h1 id="特型对象"><a class="header" href="#特型对象">特型对象</a></h1>
@@ -273,7 +275,7 @@ TraitBound</text>
 <div class="rule" id="r-type.trait-object.impls"><a class="rule-link" href="#r-type.trait-object.impls" title="type.trait-object.impls"><span>[type<wbr>.trait-object<wbr>.impls]</span></a>
 </div>
 
-<p>特型对象实现了基础特型、其自动特型以及基础特型的任何 <a href="../items/traits.html#supertraits">超特型</a> 。</p>
+<p>特型对象实现了基础特型、其自动特型以及基础特型的任何 <a href="../items/traits.html#父特型">超特型</a> 。</p>
 <div class="rule" id="r-type.trait-object.name"><a class="rule-link" href="#r-type.trait-object.name" title="type.trait-object.name"><span>[type<wbr>.trait-object<wbr>.name]</span></a>
 </div>
 
@@ -326,7 +328,7 @@ TraitBound</text>
 <p>由于值属于哪种具体类型是不透明的，特型对象是 <a href="../dynamically-sized-types.html">动态大小类型</a> 。像所有 <abbr title="dynamically sized types">DST</abbr> 一样，特型对象在某种类型的指针后面使用；例如 <code>&amp;dyn SomeTrait</code> 或 <code>Box&lt;dyn SomeTrait&gt;</code> 。特型对象指针的每个实例包括：</p>
 <ul>
 <li>一个指向实现了 <code>SomeTrait</code> 的类型 <code>T</code> 实例的指针</li>
-<li>一个 <em>虚方法表</em> ，通常简称为 <em>vtable</em> ，其中包含 <code>T</code> 针对 <code>SomeTrait</code> 及其 <a href="../items/traits.html#supertraits">超特型</a> 的每个方法的实现指针（即函数指针）。</li>
+<li>一个 <em>虚方法表</em> ，通常简称为 <em>vtable</em> ，其中包含 <code>T</code> 针对 <code>SomeTrait</code> 及其 <a href="../items/traits.html#父特型">超特型</a> 的每个方法的实现指针（即函数指针）。</li>
 </ul>
 <p>特型对象的目的是允许方法的 “后期绑定” 。在特型对象上调用方法会导致运行时的虚拟分派：即从特型对象 vtable 中加载函数指针并间接调用。每个 vtable 条目的实际实现可以因对象而异。</p>
 <p>一个特型对象的例子：</p>
@@ -350,7 +352,7 @@ fn main() {
 </div>
 
 <h2 id="特型对象生命周期界限"><a class="header" href="#特型对象生命周期界限">特型对象生命周期界限</a></h2>
-<p>由于特型对象可以包含引用，这些引用的生命周期需要作为特型对象的一部分来表达。该生命周期写为 <code>Trait + 'a</code> 。有一些 <a href="../lifetime-elision.html#default-trait-object-lifetimes">默认值</a> 允许通常以合理的选择推断此生命周期。</p>
+<p>由于特型对象可以包含引用，这些引用的生命周期需要作为特型对象的一部分来表达。该生命周期写为 <code>Trait + 'a</code> 。有一些 <a href="../lifetime-elision.html#默认特型对象生命周期">默认值</a> 允许通常以合理的选择推断此生命周期。</p>
 
                     </main>
 

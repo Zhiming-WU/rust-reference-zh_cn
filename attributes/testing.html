@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-attributes.testing"><a class="rule-link" href="#r-attributes.testing" title="attributes.testing"><span>[attributes<wbr>.testing]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/attributes/testing.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-attributes.testing"><a class="rule-link" href="#r-attributes.testing" title="attributes.testing"><span>[attributes<wbr>.testing]</span></a>
 </div>
 
 <h1 id="测试属性"><a class="header" href="#测试属性">测试属性</a></h1>
@@ -187,7 +189,7 @@
 <div class="rule" id="r-attributes.testing.test"><a class="rule-link" href="#r-attributes.testing.test" title="attributes.testing.test"><span>[attributes<wbr>.testing<wbr>.test]</span></a>
 </div>
 
-<h2 id="test-属性"><a class="header" href="#test-属性"><code>test</code> 属性</a></h2>
+<h2 id="test属性"><a class="header" href="#test属性"><code>test</code>属性</a></h2>
 <div class="rule" id="r-attributes.testing.test.intro"><a class="rule-link" href="#r-attributes.testing.test.intro" title="attributes.testing.test.intro"><span>[attributes<wbr>.testing<wbr>.test<wbr>.intro]</span></a>
 </div>
 
@@ -215,12 +217,12 @@ fn it_works() {
 <div class="rule" id="r-attributes.testing.test.allowed-positions"><a class="rule-link" href="#r-attributes.testing.test.allowed-positions" title="attributes.testing.test.allowed-positions"><span>[attributes<wbr>.testing<wbr>.test<wbr>.allowed-positions]</span></a>
 </div>
 
-<p><code>test</code> 属性只能应用于单态的、不带参数且返回类型实现 <a href="../../std/process/trait.Termination.html"><code>Termination</code></a> 特型 的 <a href="../glossary.html#自由项">自由函数</a>。</p>
+<p><code>test</code> 属性只能应用于单态的、不带参数且返回类型实现 <a href="https://doc.rust-lang.org/std/process/trait.Termination.html"><code>Termination</code></a> 特型 的 <a href="../glossary.html#自由项">自由函数</a>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>实现了 <a href="../../std/process/trait.Termination.html"><code>Termination</code></a> 特型 的一些类型包括：</p>
+<p>实现了 <a href="https://doc.rust-lang.org/std/process/trait.Termination.html"><code>Termination</code></a> 特型 的一些类型包括：</p>
 <ul>
 <li><code>()</code></li>
 <li><code>Result&lt;T, E&gt; where T: Termination, E: Debug</code></li>
@@ -244,7 +246,7 @@ fn it_works() {
 <div class="rule" id="r-attributes.testing.test.stdlib"><a class="rule-link" href="#r-attributes.testing.test.stdlib" title="attributes.testing.test.stdlib"><span>[attributes<wbr>.testing<wbr>.test<wbr>.stdlib]</span></a>
 </div>
 
-<p><code>test</code> 属性从标准库 预导入 <a href="../../core/macros/builtin/attr.test.html"><code>std::prelude::v1::test</code></a> 中导出。</p>
+<p><code>test</code> 属性从标准库 预导入 <a href="https://doc.rust-lang.org/core/macros/builtin/attr.test.html"><code>std::prelude::v1::test</code></a> 中导出。</p>
 <div class="rule" id="r-attributes.testing.test.enabled"><a class="rule-link" href="#r-attributes.testing.test.enabled" title="attributes.testing.test.enabled"><span>[attributes<wbr>.testing<wbr>.test<wbr>.enabled]</span></a>
 </div>
 
@@ -260,7 +262,7 @@ fn it_works() {
 <div class="rule" id="r-attributes.testing.test.success"><a class="rule-link" href="#r-attributes.testing.test.success" title="attributes.testing.test.success"><span>[attributes<wbr>.testing<wbr>.test<wbr>.success]</span></a>
 </div>
 
-<p>测试工具调用返回值的 <a href="../../std/process/trait.Termination.html#tymethod.report"><code>report</code></a> 方法，并根据生成的 <a href="../../std/process/struct.ExitCode.html"><code>ExitCode</code></a> 是否表示成功终止来将测试分类为通过或失败。
+<p>测试工具调用返回值的 <a href="https://doc.rust-lang.org/std/process/trait.Termination.html#tymethod.report"><code>report</code></a> 方法，并根据生成的 <a href="https://doc.rust-lang.org/std/process/struct.ExitCode.html"><code>ExitCode</code></a> 是否表示成功终止来将测试分类为通过或失败。
 特别是：</p>
 <ul>
 <li>返回 <code>()</code> 的测试只要终止且不 恐慌 就通过。</li>
@@ -291,7 +293,7 @@ fn test_the_thing() -&gt; io::Result&lt;()&gt; {
 <div class="rule" id="r-attributes.testing.ignore"><a class="rule-link" href="#r-attributes.testing.ignore" title="attributes.testing.ignore"><span>[attributes<wbr>.testing<wbr>.ignore]</span></a>
 </div>
 
-<h2 id="ignore-属性"><a class="header" href="#ignore-属性"><code>ignore</code> 属性</a></h2>
+<h2 id="ignore属性"><a class="header" href="#ignore属性"><code>ignore</code>属性</a></h2>
 <div class="rule" id="r-attributes.testing.ignore.intro"><a class="rule-link" href="#r-attributes.testing.ignore.intro" title="attributes.testing.ignore.intro"><span>[attributes<wbr>.testing<wbr>.ignore<wbr>.intro]</span></a>
 </div>
 
@@ -374,7 +376,7 @@ fn mytest() {
 <div class="rule" id="r-attributes.testing.should_panic"><a class="rule-link" href="#r-attributes.testing.should_panic" title="attributes.testing.should_panic"><span>[attributes<wbr>.testing<wbr>.should_panic]</span></a>
 </div>
 
-<h2 id="should_panic-属性"><a class="header" href="#should_panic-属性"><code>should_panic</code> 属性</a></h2>
+<h2 id="should_panic属性"><a class="header" href="#should_panic属性"><code>should_panic</code>属性</a></h2>
 <div class="rule" id="r-attributes.testing.should_panic.intro"><a class="rule-link" href="#r-attributes.testing.should_panic.intro" title="attributes.testing.should_panic.intro"><span>[attributes<wbr>.testing<wbr>.should_panic<wbr>.intro]</span></a>
 </div>
 

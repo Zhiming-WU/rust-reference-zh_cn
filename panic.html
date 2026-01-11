@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-panic"><a class="rule-link" href="#r-panic" title="panic"><span>[panic]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/panic.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-panic"><a class="rule-link" href="#r-panic" title="panic"><span>[panic]</span></a>
 </div>
 
 <h1 id="恐慌"><a class="header" href="#恐慌">恐慌</a></h1>
@@ -189,20 +191,20 @@
 <div class="rule" id="r-panic.lang-ops"><a class="rule-link" href="#r-panic.lang-ops" title="panic.lang-ops"><span>[panic<wbr>.lang-ops]</span></a>
 </div>
 
-<p>一些语言结构，例如越界的 <a href="expressions/array-expr.html#array-and-slice-indexing-expressions">数组索引</a>，会自动引发恐慌。</p>
+<p>一些语言结构，例如越界的 <a href="expressions/array-expr.html#数组和切片索引表达式">数组索引</a>，会自动引发恐慌。</p>
 <div class="rule" id="r-panic.control"><a class="rule-link" href="#r-panic.control" title="panic.control"><span>[panic<wbr>.control]</span></a>
 </div>
 
 <p>还有一些语言特性提供了一定程度的恐慌行为控制：</p>
 <ul>
 <li><a href="#the-panic_handler-attribute"><em>恐慌处理器 (panic handler)</em></a> 定义了恐慌的行为。</li>
-<li><a href="items/functions.html#unwinding">FFI ABI</a> 可能会改变恐慌的行为。</li>
+<li><a href="items/functions.html#展开">FFI ABI</a> 可能会改变恐慌的行为。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>标准库提供了通过 <a href="../std/macro.panic.html">panic! 宏</a> 显式引发恐慌的能力。</p>
+<p>标准库提供了通过 <a href="https://doc.rust-lang.org/std/macro.panic.html">panic! 宏</a> 显式引发恐慌的能力。</p>
 </blockquote>
 </div>
 
@@ -222,7 +224,7 @@
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><a href="../core/panic/panic_info/struct.PanicInfo.html">PanicInfo 结构体</a> 包含了有关恐慌发生位置的信息。</p>
+<p><a href="https://doc.rust-lang.org/core/panic/panic_info/struct.PanicInfo.html">PanicInfo 结构体</a> 包含了有关恐慌发生位置的信息。</p>
 </blockquote>
 </div>
 
@@ -276,8 +278,8 @@ fn panic(info: &amp;PanicInfo) -&gt; ! {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>链接 <code>std</code> 时使用的恐慌处理器可以通过 <a href="https://doc.rust-lang.org/rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 命令行标志设置。大多数 target 的默认值是 <code>unwind</code>。</p>
-<p>标准库的恐慌行为可以在运行时使用 <a href="../std/panicking/fn.set_hook.html"><code>std::panic::set_hook</code></a> 函数进行修改。</p>
+<p>链接 <code>std</code> 时使用的恐慌处理器可以通过 <a href="../rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 命令行标志设置。大多数 target 的默认值是 <code>unwind</code>。</p>
+<p>标准库的恐慌行为可以在运行时使用 <a href="https://doc.rust-lang.org/std/panicking/fn.set_hook.html"><code>std::panic::set_hook</code></a> 函数进行修改。</p>
 </blockquote>
 </div>
 
@@ -297,7 +299,7 @@ fn panic(info: &amp;PanicInfo) -&gt; ! {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>恐慌策略可以在 <code>rustc</code> 中使用 <a href="https://doc.rust-lang.org/rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 命令行标志进行选择。</p>
+<p>恐慌策略可以在 <code>rustc</code> 中使用 <a href="../rustc/codegen-options/index.html#panic"><code>-C panic</code></a> 命令行标志进行选择。</p>
 <p>当生成二进制文件、dylib、cdylib 或 staticlib 且链接 <code>std</code> 时， <code>-C panic</code> 命令行标志也会影响使用哪个 <a href="#the-panic_handler-attribute">恐慌处理器</a>。</p>
 </blockquote>
 </div>
@@ -342,7 +344,7 @@ fn panic(info: &amp;PanicInfo) -&gt; ! {
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p>标准库提供了两种从恐慌中恢复的机制：<a href="../std/panic/fn.catch_unwind.html"><code>std::panic::catch_unwind</code></a>（允许在发生恐慌的线程内恢复）和 <a href="../std/thread/functions/fn.spawn.html"><code>std::thread::spawn</code></a>（自动为生成的线程设置恐慌恢复，以便其他线程可以继续运行）。</p>
+<p>标准库提供了两种从恐慌中恢复的机制：<a href="https://doc.rust-lang.org/std/panic/fn.catch_unwind.html"><code>std::panic::catch_unwind</code></a>（允许在发生恐慌的线程内恢复）和 <a href="https://doc.rust-lang.org/std/thread/functions/fn.spawn.html"><code>std::thread::spawn</code></a>（自动为生成的线程设置恐慌恢复，以便其他线程可以继续运行）。</p>
 </blockquote>
 </div>
 
@@ -353,7 +355,7 @@ fn panic(info: &amp;PanicInfo) -&gt; ! {
 <div class="rule" id="r-panic.unwind.ffi.intro"><a class="rule-link" href="#r-panic.unwind.ffi.intro" title="panic.unwind.ffi.intro"><span>[panic<wbr>.unwind<wbr>.ffi<wbr>.intro]</span></a>
 </div>
 
-<p>可以使用 <a href="items/functions.html#unwinding">适当的 ABI 声明</a> 跨 FFI 边界进行展开。虽然在某些情况下很有用，但这为未定义行为创造了独特的机会，特别是在涉及多个语言运行时时。</p>
+<p>可以使用 <a href="items/functions.html#展开">适当的 ABI 声明</a> 跨 FFI 边界进行展开。虽然在某些情况下很有用，但这为未定义行为创造了独特的机会，特别是在涉及多个语言运行时时。</p>
 <div class="rule" id="r-panic.unwind.ffi.undefined"><a class="rule-link" href="#r-panic.unwind.ffi.undefined" title="panic.unwind.ffi.undefined"><span>[panic<wbr>.unwind<wbr>.ffi<wbr>.undefined]</span></a>
 </div>
 
@@ -365,10 +367,10 @@ fn panic(info: &amp;PanicInfo) -&gt; ! {
 <div class="rule" id="r-panic.unwind.ffi.catch-foreign"><a class="rule-link" href="#r-panic.unwind.ffi.catch-foreign" title="panic.unwind.ffi.catch-foreign"><span>[panic<wbr>.unwind<wbr>.ffi<wbr>.catch-foreign]</span></a>
 </div>
 
-<p>使用 <a href="../std/panic/fn.catch_unwind.html"><code>std::panic::catch_unwind</code></a>、<a href="../std/thread/join_handle/struct.JoinHandle.html#method.join"><code>std::thread::JoinHandle::join</code></a> 或让外部展开操作传播到 Rust <code>main()</code> 函数或线程根部之外来捕获它（例如 C++ 异常），将产生以下两种行为之一，且未指定具体会发生哪种：</p>
+<p>使用 <a href="https://doc.rust-lang.org/std/panic/fn.catch_unwind.html"><code>std::panic::catch_unwind</code></a>、<a href="https://doc.rust-lang.org/std/thread/join_handle/struct.JoinHandle.html#method.join"><code>std::thread::JoinHandle::join</code></a> 或让外部展开操作传播到 Rust <code>main()</code> 函数或线程根部之外来捕获它（例如 C++ 异常），将产生以下两种行为之一，且未指定具体会发生哪种：</p>
 <ul>
 <li>进程中止。</li>
-<li>函数返回一个包含不透明类型的 <a href="../core/result/enum.Result.html#variant.Err"><code>Result::Err</code></a>。</li>
+<li>函数返回一个包含不透明类型的 <a href="https://doc.rust-lang.org/core/result/enum.Result.html#variant.Err"><code>Result::Err</code></a>。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>

@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -511,7 +511,7 @@ fn main() {
 <div class="rule" id="r-items.use.path.disallowed"><a class="rule-link" href="#r-items.use.path.disallowed" title="items.use.path.disallowed"><span>[items<wbr>.use<wbr>.path<wbr>.disallowed]</span></a>
 </div>
 
-<p>它们不能导入 <a href="associated-items.html">关联项</a>、 <a href="generics.html">泛型参数</a>、 <a href="../variables.html">局部变量</a>、包含 <a href="../paths.html#self"><code>Self</code></a> 的路径或 <a href="../attributes.html#tool-attributes">工具属性</a>。更多限制如下所述。</p>
+<p>它们不能导入 <a href="associated-items.html">关联项</a>、 <a href="generics.html">泛型参数</a>、 <a href="../variables.html">局部变量</a>、包含 <a href="../paths.html#self"><code>Self</code></a> 的路径或 <a href="../attributes.html#工具属性">工具属性</a>。更多限制如下所述。</p>
 <div class="rule" id="r-items.use.path.namespace"><a class="rule-link" href="#r-items.use.path.namespace" title="items.use.path.namespace"><span>[items<wbr>.use<wbr>.path<wbr>.namespace]</span></a>
 </div>
 
@@ -551,7 +551,7 @@ mod bar {
 }
 
 <span class="boring">fn main() {}</span></code></pre>
-<p>2015 版次不允许 use 声明引用 <a href="../names/preludes.html#extern-prelude">外部预导入</a>。
+<p>2015 版次不允许 use 声明引用 <a href="../names/preludes.html#外部预导入">外部预导入</a>。
 因此，在 2015 版次中仍然需要 <a href="extern-crates.html"><code>extern crate</code></a> 声明才能在 use 声明中引用外部 crate。
 从 2018 版次开始， <code>use</code> 声明可以像 <code>extern crate</code> 一样指定外部 crate 依赖项。</p>
 </blockquote>

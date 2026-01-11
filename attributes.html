@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-99e7fd87.js"></script>
+        <script src="toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-attributes"><a class="rule-link" href="#r-attributes" title="attributes"><span>[attributes]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/attributes.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-attributes"><a class="rule-link" href="#r-attributes" title="attributes"><span>[attributes]</span></a>
 </div>
 
 <h1 id="属性"><a class="header" href="#属性">属性</a></h1>
@@ -488,7 +490,7 @@ type int8_t = i8;
 <ul>
 <li><a href="abi.html#the-export_name-attribute"><code>export_name</code></a></li>
 <li><a href="abi.html#the-link_section-attribute"><code>link_section</code></a></li>
-<li><a href="attributes/codegen.html#the-naked-attribute"><code>naked</code></a></li>
+<li><a href="attributes/codegen.html#naked属性"><code>naked</code></a></li>
 <li><a href="abi.html#the-no_mangle-attribute"><code>no_mangle</code></a></li>
 </ul>
 <div class="rule" id="r-attributes.kind"><a class="rule-link" href="#r-attributes.kind" title="attributes.kind"><span>[attributes<wbr>.kind]</span></a>
@@ -507,12 +509,12 @@ type int8_t = i8;
 <p>属性可以应用于语言中的多种形式：</p>
 <ul>
 <li>所有 <a href="items.html">项声明</a> 接受外部属性，而 <a href="items/external-blocks.html">外部块</a>、<a href="items/functions.html">函数</a>、<a href="items/implementations.html">实现</a> 和 <a href="items/modules.html">模块</a> 接受内部属性。</li>
-<li>大多数 <a href="statements.html">语句</a> 接受外部属性（有关表达式语句的限制，请参阅 <a href="expressions.html#expression-attributes">表达式属性</a>）。</li>
-<li><a href="expressions/block-expr.html">块表达式</a> 接受外部和内部属性，但仅当它们是 <a href="statements.html#expression-statements">表达式语句</a> 的外部表达式或另一个块表达式的最终表达式时。</li>
+<li>大多数 <a href="statements.html">语句</a> 接受外部属性（有关表达式语句的限制，请参阅 <a href="expressions.html#表达式属性">表达式属性</a>）。</li>
+<li><a href="expressions/block-expr.html">块表达式</a> 接受外部和内部属性，但仅当它们是 <a href="statements.html#表达式语句">表达式语句</a> 的外部表达式或另一个块表达式的最终表达式时。</li>
 <li><a href="items/enumerations.html">枚举</a> 变体和 <a href="items/structs.html">结构体</a> 及 <a href="items/unions.html">联合体</a> 字段接受外部属性。</li>
 <li><a href="expressions/match-expr.html">匹配表达式分支</a> 接受外部属性。</li>
 <li><a href="items/generics.html">泛型 生命周期或类型参数</a> 接受外部属性。</li>
-<li>表达式在有限情况下接受外部属性，详见 <a href="expressions.html#expression-attributes">表达式属性</a>。</li>
+<li>表达式在有限情况下接受外部属性，详见 <a href="expressions.html#表达式属性">表达式属性</a>。</li>
 <li><a href="items/functions.html">函数</a>、<a href="expressions/closure-expr.html">闭包</a> 和 <a href="types/function-pointer.html">函数指针</a> 参数接受外部属性。这包括在函数指针和 <a href="items/external-blocks.html#variadic-functions">外部块</a> 中用 <code>...</code> 表示的可变参数上的属性。</li>
 <li><a href="inline-assembly.html">内联汇编</a> 模板字符串和操作数接受外部属性。语义上只接受某些属性；有关详细信息，请参阅 <a href="inline-assembly.html#r-asm.attributes.supported-attributes">asm.attributes.supported-attributes</a>。</li>
 </ul>
@@ -1124,7 +1126,7 @@ MetaNameValueStr</text>
 <div class="rule" id="r-attributes.tool.intro"><a class="rule-link" href="#r-attributes.tool.intro" title="attributes.tool.intro"><span>[attributes<wbr>.tool<wbr>.intro]</span></a>
 </div>
 
-<p>编译器可能允许外部工具的属性，其中每个工具都位于 <a href="names/preludes.html#tool-prelude">工具预导入</a> 中的自己的模块中。属性路径的第一个段是工具的名称，带有一个或多个额外段，其解释由工具决定。</p>
+<p>编译器可能允许外部工具的属性，其中每个工具都位于 <a href="names/preludes.html#工具预导入">工具预导入</a> 中的自己的模块中。属性路径的第一个段是工具的名称，带有一个或多个额外段，其解释由工具决定。</p>
 <div class="rule" id="r-attributes.tool.ignored"><a class="rule-link" href="#r-attributes.tool.ignored" title="attributes.tool.ignored"><span>[attributes<wbr>.tool<wbr>.ignored]</span></a>
 </div>
 
@@ -1168,8 +1170,8 @@ pub fn f() {}
 <li>
 <p>测试</p>
 <ul>
-<li><a href="attributes/testing.html#the-test-attribute"><code>test</code></a> — 将函数标记为测试。</li>
-<li><a href="attributes/testing.html#the-ignore-attribute"><code>ignore</code></a> — 禁用测试函数。</li>
+<li><a href="attributes/testing.html#test属性"><code>test</code></a> — 将函数标记为测试。</li>
+<li><a href="attributes/testing.html#ignore属性"><code>ignore</code></a> — 禁用测试函数。</li>
 <li><a href="attributes/testing.html#the-should_panic-attribute"><code>should_panic</code></a> — 表示测试应生成一个 恐慌。</li>
 </ul>
 </li>
@@ -1193,8 +1195,8 @@ pub fn f() {}
 <li>
 <p>诊断</p>
 <ul>
-<li><a href="attributes/diagnostics.html#lint-check-attributes"><code>allow</code></a>、<a href="attributes/diagnostics.html#lint-check-attributes"><code>expect</code></a>、<a href="attributes/diagnostics.html#lint-check-attributes"><code>warn</code></a>、<a href="attributes/diagnostics.html#lint-check-attributes"><code>deny</code></a>、<a href="attributes/diagnostics.html#lint-check-attributes"><code>forbid</code></a> — 更改默认 lint 级别。</li>
-<li><a href="attributes/diagnostics.html#the-deprecated-attribute"><code>deprecated</code></a> — 生成弃用通知。</li>
+<li><a href="attributes/diagnostics.html#lint检查属性"><code>allow</code></a>、<a href="attributes/diagnostics.html#lint检查属性"><code>expect</code></a>、<a href="attributes/diagnostics.html#lint检查属性"><code>warn</code></a>、<a href="attributes/diagnostics.html#lint检查属性"><code>deny</code></a>、<a href="attributes/diagnostics.html#lint检查属性"><code>forbid</code></a> — 更改默认 lint 级别。</li>
+<li><a href="attributes/diagnostics.html#deprecated属性"><code>deprecated</code></a> — 生成弃用通知。</li>
 <li><a href="attributes/diagnostics.html#the-must_use-attribute"><code>must_use</code></a> — 对未使用的值生成 lint。</li>
 <li><a href="attributes/diagnostics.html#the-diagnosticon_unimplemented-attribute"><code>diagnostic::on_unimplemented</code></a> — 提示编译器在 未实现 特型 时发出特定错误消息。</li>
 <li><a href="attributes/diagnostics.html#the-diagnosticdo_not_recommend-attribute"><code>diagnostic::do_not_recommend</code></a> — 提示编译器不要在错误消息中显示某个 特型 实现。</li>
@@ -1203,26 +1205,26 @@ pub fn f() {}
 <li>
 <p>ABI、链接、符号和 FFI</p>
 <ul>
-<li><a href="items/external-blocks.html#the-link-attribute"><code>link</code></a> — 指定要与 <code>extern</code> 块链接的本地库。</li>
+<li><a href="items/external-blocks.html#link属性"><code>link</code></a> — 指定要与 <code>extern</code> 块链接的本地库。</li>
 <li><a href="items/external-blocks.html#the-link_name-attribute"><code>link_name</code></a> — 指定 <code>extern</code> 块中函数或静态变量的符号名称。</li>
 <li><a href="items/external-blocks.html#the-link_ordinal-attribute"><code>link_ordinal</code></a> — 指定 <code>extern</code> 块中函数或静态变量的符号序号。</li>
 <li><a href="items/extern-crates.html#the-no_link-attribute"><code>no_link</code></a> — 阻止链接外部 crate。</li>
-<li><a href="type-layout.html#representations"><code>repr</code></a> — 控制类型布局。</li>
+<li><a href="type-layout.html#表示法"><code>repr</code></a> — 控制类型布局。</li>
 <li><a href="linkage.html"><code>crate_type</code></a> — 指定 crate 的类型（库、可执行文件等）。</li>
 <li><a href="crates-and-source-files.html#no_main属性"><code>no_main</code></a> — 禁用发出 <code>main</code> 符号。</li>
 <li><a href="abi.html#the-export_name-attribute"><code>export_name</code></a> — 指定函数或静态变量的导出符号名称。</li>
 <li><a href="abi.html#the-link_section-attribute"><code>link_section</code></a> — 指定函数或静态变量要使用的对象文件节。</li>
 <li><a href="abi.html#the-no_mangle-attribute"><code>no_mangle</code></a> — 禁用符号名称编码。</li>
-<li><a href="abi.html#the-used-attribute"><code>used</code></a> — 强制编译器将静态 项 保留在输出对象文件中。</li>
+<li><a href="abi.html#used属性"><code>used</code></a> — 强制编译器将静态 项 保留在输出对象文件中。</li>
 <li><a href="crates-and-source-files.html#crate_name属性"><code>crate_name</code></a> — 指定 crate 名称。</li>
 </ul>
 </li>
 <li>
 <p>代码生成</p>
 <ul>
-<li><a href="attributes/codegen.html#the-inline-attribute"><code>inline</code></a> — 提示内联代码。</li>
-<li><a href="attributes/codegen.html#the-cold-attribute"><code>cold</code></a> — 提示函数不太可能被调用。</li>
-<li><a href="attributes/codegen.html#the-naked-attribute"><code>naked</code></a> — 阻止编译器发出函数序言和尾声。</li>
+<li><a href="attributes/codegen.html#inline属性"><code>inline</code></a> — 提示内联代码。</li>
+<li><a href="attributes/codegen.html#cold属性"><code>cold</code></a> — 提示函数不太可能被调用。</li>
+<li><a href="attributes/codegen.html#naked属性"><code>naked</code></a> — 阻止编译器发出函数序言和尾声。</li>
 <li><a href="attributes/codegen.html#the-no_builtins-attribute"><code>no_builtins</code></a> — 禁用使用某些内置函数。</li>
 <li><a href="attributes/codegen.html#the-target_feature-attribute"><code>target_feature</code></a> — 配置特定于平台的代码生成。</li>
 <li><a href="attributes/codegen.html#the-track_caller-attribute"><code>track_caller</code></a> — 将父调用位置传递给 <code>std::panic::Location::caller()</code>。</li>
@@ -1245,7 +1247,7 @@ pub fn f() {}
 <li>
 <p>模块</p>
 <ul>
-<li><a href="items/modules.html#the-path-attribute"><code>path</code></a> — 指定模块的文件名。</li>
+<li><a href="items/modules.html#path属性"><code>path</code></a> — 指定模块的文件名。</li>
 </ul>
 </li>
 <li>

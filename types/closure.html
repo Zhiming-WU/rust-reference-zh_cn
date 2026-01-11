@@ -36,10 +36,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a49bb37.js";
+            window.path_to_searchindex_js = "../searchindex-071306fd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-99e7fd87.js"></script>
+        <script src="../toc-b73b2c2b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,9 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <div class="rule" id="r-type.closure"><a class="rule-link" href="#r-type.closure" title="type.closure"><span>[type<wbr>.closure]</span></a>
+                        <!-- https://github.com/rust-lang/reference/blob/master/src/types/closure.md -->
+<!-- commit 68bdfd15fa9feebfbf94a06cf574de598e239198 -->
+<div class="rule" id="r-type.closure"><a class="rule-link" href="#r-type.closure" title="type.closure"><span>[type<wbr>.closure]</span></a>
 </div>
 
 <h1 id="闭包类型"><a class="header" href="#闭包类型">闭包类型</a></h1>
@@ -240,10 +242,10 @@ impl&lt;'a&gt; FnOnce&lt;()&gt; for Closure&lt;'a&gt; {
 <p>一个 <em>捕获模式</em> 决定了环境中的 <a href="../expressions.html#位置表达式和值表达式">位置表达式</a> 是如何被借用或移动到闭包中的。
 捕获模式有：</p>
 <ol>
-<li>不可变借用 (<code>ImmBorrow</code>) — 位置表达式作为 <a href="pointer.html#references--and-mut">共享引用</a> 被捕获。</li>
+<li>不可变借用 (<code>ImmBorrow</code>) — 位置表达式作为 <a href="pointer.html#引用和mut">共享引用</a> 被捕获。</li>
 <li>唯一不可变借用 (<code>UniqueImmBorrow</code>) — 类似于不可变借用，但必须是唯一的，如 <a href="#unique-immutable-borrows-in-captures">下文</a> 所述。</li>
-<li>可变借用 (<code>MutBorrow</code>) — 位置表达式作为 <a href="pointer.html#mutable-references-mut">可变引用</a> 被捕获。</li>
-<li>移动 (<code>ByValue</code>) — 位置表达式通过 <a href="../expressions.html#moved-and-copied-types">移动值</a> 到闭包中而被捕获。</li>
+<li>可变借用 (<code>MutBorrow</code>) — 位置表达式作为 <a href="pointer.html#可变引用mut">可变引用</a> 被捕获。</li>
+<li>移动 (<code>ByValue</code>) — 位置表达式通过 <a href="../expressions.html#移动和复制类型">移动值</a> 到闭包中而被捕获。</li>
 </ol>
 <div class="rule" id="r-type.closure.capture.precedence"><a class="rule-link" href="#r-type.closure.capture.precedence" title="type.closure.capture.precedence"><span>[type<wbr>.closure<wbr>.capture<wbr>.precedence]</span></a>
 </div>
@@ -275,7 +277,7 @@ let c = || {
 <div class="rule" id="r-type.closure.capture.precision.place-projection"><a class="rule-link" href="#r-type.closure.capture.precision.place-projection" title="type.closure.capture.precision.place-projection"><span>[type<wbr>.closure<wbr>.capture<wbr>.precision<wbr>.place-projection]</span></a>
 </div>
 
-<p>一个 <em>位置投影</em> 是对变量应用的 <a href="../expressions/field-expr.html">字段访问</a>、<a href="../expressions/tuple-expr.html#tuple-indexing-expressions">元组索引</a>、<a href="../expressions/operator-expr.html#the-dereference-operator">解引用</a>（以及自动解引用）、<a href="../expressions/array-expr.html#array-and-slice-indexing-expressions">数组或切片索引</a> 表达式或 <a href="../patterns.html#r-patterns.destructure">模式解构</a>。</p>
+<p>一个 <em>位置投影</em> 是对变量应用的 <a href="../expressions/field-expr.html">字段访问</a>、<a href="../expressions/tuple-expr.html#元组索引表达式">元组索引</a>、<a href="../expressions/operator-expr.html#解引用运算符">解引用</a>（以及自动解引用）、<a href="../expressions/array-expr.html#数组和切片索引表达式">数组或切片索引</a> 表达式或 <a href="../patterns.html#r-patterns.destructure">模式解构</a>。</p>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
@@ -358,7 +360,7 @@ fn foo&lt;'a, 'b&gt;(m: &amp;'a MyStruct&lt;'b&gt;) -&gt; impl FnMut() + 'static
 <div class="rule" id="r-type.closure.capture.precision.wildcard.reads"><a class="rule-link" href="#r-type.closure.capture.precision.wildcard.reads" title="type.closure.capture.precision.wildcard.reads"><span>[type<wbr>.closure<wbr>.capture<wbr>.precision<wbr>.wildcard<wbr>.reads]</span></a>
 </div>
 
-<p>闭包仅捕获需要读取的数据。使用 <a href="../patterns.html#wildcard-pattern">通配符模式</a> 绑定一个值不会读取该值，因此该位置不会被捕获。</p>
+<p>闭包仅捕获需要读取的数据。使用 <a href="../patterns.html#通配符模式">通配符模式</a> 绑定一个值不会读取该值，因此该位置不会被捕获。</p>
 <pre class="playground"><code class="language-rust no_run edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct S; // 一个非 `Copy` 类型。
@@ -689,7 +691,7 @@ c();
 
 <h3 id="对未对齐struct的引用"><a class="header" href="#对未对齐struct的引用">对未对齐<code>struct</code>的引用</a></h3>
 <p>由于创建对结构体中未对齐字段的引用是 <a href="../behavior-considered-undefined.html">未定义行为</a> ，
-闭包将仅捕获捕获路径的前缀，该前缀一直延伸到但不包括对使用 <a href="../type-layout.html#the-alignment-modifiers"> <code>packed</code> 表示</a> 的结构体的第一次字段访问。
+闭包将仅捕获捕获路径的前缀，该前缀一直延伸到但不包括对使用 <a href="../type-layout.html#对齐修饰符"> <code>packed</code> 表示</a> 的结构体的第一次字段访问。
 这包括所有字段，甚至是那些已对齐的字段，以防止将来结构体中的任何字段发生更改时产生兼容性问题。</p>
 <pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -818,24 +820,24 @@ let z = &amp;x;
 <div class="rule" id="r-type.closure.call.intro"><a class="rule-link" href="#r-type.closure.call.intro" title="type.closure.call.intro"><span>[type<wbr>.closure<wbr>.call<wbr>.intro]</span></a>
 </div>
 
-<p>闭包类型都实现了 <a href="../../core/ops/function/trait.FnOnce.html"><code>FnOnce</code></a> ，表示它们可以通过消耗闭包的所有权来调用一次。此外，一些闭包还实现了更具体的调用 特型 ：</p>
+<p>闭包类型都实现了 <a href="https://doc.rust-lang.org/core/ops/function/trait.FnOnce.html"><code>FnOnce</code></a> ，表示它们可以通过消耗闭包的所有权来调用一次。此外，一些闭包还实现了更具体的调用 特型 ：</p>
 <div class="rule" id="r-type.closure.call.fn-mut"><a class="rule-link" href="#r-type.closure.call.fn-mut" title="type.closure.call.fn-mut"><span>[type<wbr>.closure<wbr>.call<wbr>.fn-mut]</span></a>
 </div>
 
 <ul>
-<li>不从任何捕获变量中移出的闭包实现了 <a href="../../core/ops/function/trait.FnMut.html"><code>FnMut</code></a> ，表示它可以通过可变引用调用。</li>
+<li>不从任何捕获变量中移出的闭包实现了 <a href="https://doc.rust-lang.org/core/ops/function/trait.FnMut.html"><code>FnMut</code></a> ，表示它可以通过可变引用调用。</li>
 </ul>
 <div class="rule" id="r-type.closure.call.fn"><a class="rule-link" href="#r-type.closure.call.fn" title="type.closure.call.fn"><span>[type<wbr>.closure<wbr>.call<wbr>.fn]</span></a>
 </div>
 
 <ul>
-<li>不修改或从任何捕获变量中移出的闭包实现了 <a href="../../core/ops/function/trait.Fn.html"><code>Fn</code></a> ，表示它可以通过共享引用调用。</li>
+<li>不修改或从任何捕获变量中移出的闭包实现了 <a href="https://doc.rust-lang.org/core/ops/function/trait.Fn.html"><code>Fn</code></a> ，表示它可以通过共享引用调用。</li>
 </ul>
 <div class="alert alert-note">
 <blockquote>
 <p class="alert-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>注意</p>
 
-<p><code>move</code> 闭包仍可能实现 <a href="../../core/ops/function/trait.Fn.html"><code>Fn</code></a> 或 <a href="../../core/ops/function/trait.FnMut.html"><code>FnMut</code></a> ，即使它们通过移动捕获变量。这是因为由闭包类型实现的 特型 是由闭包对捕获值的操作决定的，而不是由它如何捕获它们决定的。</p>
+<p><code>move</code> 闭包仍可能实现 <a href="https://doc.rust-lang.org/core/ops/function/trait.Fn.html"><code>Fn</code></a> 或 <a href="https://doc.rust-lang.org/core/ops/function/trait.FnMut.html"><code>FnMut</code></a> ，即使它们通过移动捕获变量。这是因为由闭包类型实现的 特型 是由闭包对捕获值的操作决定的，而不是由它如何捕获它们决定的。</p>
 </blockquote>
 </div>
 
@@ -860,13 +862,13 @@ x = bo(5,7);
 <div class="rule" id="r-type.closure.async.traits.fn-family"><a class="rule-link" href="#r-type.closure.async.traits.fn-family" title="type.closure.async.traits.fn-family"><span>[type<wbr>.closure<wbr>.async<wbr>.traits<wbr>.fn-family]</span></a>
 </div>
 
-<p>异步闭包在是否实现 <a href="../../core/ops/function/trait.FnMut.html"><code>FnMut</code></a> 或 <a href="../../core/ops/function/trait.Fn.html"><code>Fn</code></a> 方面有进一步的限制。</p>
-<p>异步闭包返回的 <a href="../../core/future/future/trait.Future.html"><code>Future</code></a> 具有与闭包类似的捕获特性。它根据位置表达式的使用方式从异步闭包中捕获它们。如果异步闭包具有以下任一属性，则称其向其 <a href="../../core/future/future/trait.Future.html"><code>Future</code></a> <em>借出 (lending)</em> ：</p>
+<p>异步闭包在是否实现 <a href="https://doc.rust-lang.org/core/ops/function/trait.FnMut.html"><code>FnMut</code></a> 或 <a href="https://doc.rust-lang.org/core/ops/function/trait.Fn.html"><code>Fn</code></a> 方面有进一步的限制。</p>
+<p>异步闭包返回的 <a href="https://doc.rust-lang.org/core/future/future/trait.Future.html"><code>Future</code></a> 具有与闭包类似的捕获特性。它根据位置表达式的使用方式从异步闭包中捕获它们。如果异步闭包具有以下任一属性，则称其向其 <a href="https://doc.rust-lang.org/core/future/future/trait.Future.html"><code>Future</code></a> <em>借出 (lending)</em> ：</p>
 <ul>
 <li><code>Future</code> 包含一个可变捕获。</li>
 <li>异步闭包通过值捕获，除非该值是通过解引用投影访问的。</li>
 </ul>
-<p>如果异步闭包向其 <code>Future</code> 借出，则 <em>不</em> 实现 <a href="../../core/ops/function/trait.FnMut.html"><code>FnMut</code></a> 和 <a href="../../core/ops/function/trait.Fn.html"><code>Fn</code></a> 。 <a href="../../core/ops/function/trait.FnOnce.html"><code>FnOnce</code></a> 始终会被实现。</p>
+<p>如果异步闭包向其 <code>Future</code> 借出，则 <em>不</em> 实现 <a href="https://doc.rust-lang.org/core/ops/function/trait.FnMut.html"><code>FnMut</code></a> 和 <a href="https://doc.rust-lang.org/core/ops/function/trait.Fn.html"><code>Fn</code></a> 。 <a href="https://doc.rust-lang.org/core/ops/function/trait.FnOnce.html"><code>FnOnce</code></a> 始终会被实现。</p>
 <blockquote>
 <p><strong>示例</strong>：可变捕获的第一种情况可以通过以下方式说明：</p>
 <pre class="playground"><code class="language-rust compile_fail edition2024"><span class="boring">#![allow(unused)]
@@ -911,7 +913,7 @@ fn f() {
 <div class="rule" id="r-type.closure.async.traits.async-family"><a class="rule-link" href="#r-type.closure.async.traits.async-family" title="type.closure.async.traits.async-family"><span>[type<wbr>.closure<wbr>.async<wbr>.traits<wbr>.async-family]</span></a>
 </div>
 
-<p>异步闭包实现 <a href="../../core/ops/async_function/trait.AsyncFn.html"><code>AsyncFn</code></a> 、 <a href="../../core/ops/async_function/trait.AsyncFnMut.html"><code>AsyncFnMut</code></a> 和 <a href="../../core/ops/async_function/trait.AsyncFnOnce.html"><code>AsyncFnOnce</code></a> 的方式，与普通闭包实现 <a href="../../core/ops/function/trait.Fn.html"><code>Fn</code></a> 、 <a href="../../core/ops/function/trait.FnMut.html"><code>FnMut</code></a> 和 <a href="../../core/ops/function/trait.FnOnce.html"><code>FnOnce</code></a> 的方式类似；也就是说，取决于其体中对捕获变量的使用。</p>
+<p>异步闭包实现 <a href="https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFn.html"><code>AsyncFn</code></a> 、 <a href="https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFnMut.html"><code>AsyncFnMut</code></a> 和 <a href="https://doc.rust-lang.org/core/ops/async_function/trait.AsyncFnOnce.html"><code>AsyncFnOnce</code></a> 的方式，与普通闭包实现 <a href="https://doc.rust-lang.org/core/ops/function/trait.Fn.html"><code>Fn</code></a> 、 <a href="https://doc.rust-lang.org/core/ops/function/trait.FnMut.html"><code>FnMut</code></a> 和 <a href="https://doc.rust-lang.org/core/ops/function/trait.FnOnce.html"><code>FnOnce</code></a> 的方式类似；也就是说，取决于其体中对捕获变量的使用。</p>
 <div class="rule" id="r-type.closure.traits"><a class="rule-link" href="#r-type.closure.traits" title="type.closure.traits"><span>[type<wbr>.closure<wbr>.traits]</span></a>
 </div>
 
